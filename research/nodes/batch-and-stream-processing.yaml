@@ -42,12 +42,12 @@ resources:
     kind: book
     title: "Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing"
     by: "Tyler Akidau, Slava Chernyak, Reuven Lax"
-    url: https://streamingsystems.net/
+    url: https://www.oreilly.com/library/view/streaming-systems/9781491983867/
     edition_or_term: "O'Reilly, 2018"
     access: paid
     use: "Ch. 1-2 (event time vs processing time, windowing), Ch. 3 (watermarks), Ch. 4 (advanced windowing and triggers), Ch. 5 (exactly-once and side effects), Ch. 6 (streams and tables), later chapters on state and joins as needed."
     why: "Gap: DDIA treats stream semantics in a few pages; this is the definitive deep treatment of event time, watermarks and triggers by the Dataflow/Beam authors. Free taster: the two Streaming 101 and 102 articles that the book expands."
-    verified: true
+    verified: false
   - id: streaming-101
     role: secondary
     kind: article
@@ -166,7 +166,7 @@ resources:
       assignments_url: https://developer.confluent.io/courses/apache-flink/intro/
 considered:
   - {title: "Brown CS 1380 Milestone M5: Distributed Processing", url: "https://cs.brown.edu/courses/csci1380/", reason: "A build-your-own MapReduce-style engine in JavaScript; good project but not a stream-processing treatment."}
-  - {title: "Streaming Systems as the primary text", url: "https://streamingsystems.net/", reason: "Unmatched on stream semantics but excludes batch/MapReduce/Spark and log-based messaging internals; DDIA plus this as secondary covers the full scope."}
+  - {title: "Streaming Systems as the primary text", url: "https://www.oreilly.com/library/view/streaming-systems/9781491983867/", reason: "Unmatched on stream semantics but excludes batch/MapReduce/Spark and log-based messaging internals; DDIA plus this as secondary covers the full scope."}
   - {title: "Apache Beam programming guide", url: "https://beam.apache.org/documentation/programming-guide/", reason: "Portable model derived from Dataflow; useful once the Dataflow paper is read, but Flink and Spark docs are enough for a first pass."}
   - {title: "Confluent blog: Exactly-once semantics are possible", url: "https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/", reason: "Good vendor explanation of idempotent producers and transactions; the Kafka docs pages cover the same."}
   - {title: "Jay Kreps, The Log (LinkedIn Engineering)", url: "https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying", reason: "Classic essay on the log abstraction; the old URL returned 404 during verification, so it is not listed as a resource."}
@@ -175,6 +175,6 @@ split_proposal: null
 prereq_changes: "Add soft: [databases-intro] (SQL, joins) since Flink SQL, Spark SQL and stream-table duality assume it."
 open_questions:
   - "DDIA 2nd edition: Ch. 11 'Batch Processing' was confirmed from a Waterloo syllabus; the exact numbers and titles of the stream-processing chapters (seed says Ch. 11-13) could not be confirmed since O'Reilly pages return 403."
-  - "Streaming Systems page at streamingsystems.net was opened; O'Reilly's book page returned 403."
+  - "Streaming Systems: the authors' site (http://streamingsystems.net/) opened over plain HTTP only (HTTPS failed), and the O'Reilly book page returned 403 to my fetches, so the listed O'Reilly URL is confirmed only via search results (verified false)."
   - "CS 451/651 Fall 2025: I found no lecture recordings; the Section 001 instructor may have separate materials."
 last_verified: 2026-11-18
