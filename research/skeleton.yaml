@@ -1,0 +1,317 @@
+# Node skeleton for research. Structure only; final organization/presentation is NOT decided here.
+# hard = cannot reasonably do this node without it; soft = helps, can be skipped by a motivated learner.
+# branch = optional sub-route inside a path; optional = not needed to complete the path.
+
+paths:
+  core: Core CS
+  ml-foundations: ML & DL Foundations
+  llm: LLMs & NLP
+  rl: Reinforcement Learning
+  vision: Computer Vision
+  generative: Generative Models
+  safety: AI Safety & Interpretability
+  mlsys: ML Systems & GPU Computing
+  distributed: Distributed Systems
+  databases: Database Systems
+  os-perf: OS Internals & Performance Engineering
+  architecture: Computer Architecture & Hardware
+  plc: Programming Languages & Compilers
+  security: Security & Cryptography
+  theory: Theory & Advanced Algorithms
+
+groups:
+  G1: Programming languages & tooling
+  G2: Mathematics
+  G3: Algorithms & theory
+  G4: Machine & OS
+  G5: ML foundations
+  G6: Vision & generative
+  G7: LLMs
+  G8: RL & safety
+  G9: ML systems
+  G10: Data & distributed
+  G11: Hardware & compilers
+  G12: Security & cryptography
+
+nodes:
+# ---------------- G1 Programming languages & tooling ----------------
+- {id: python-programming, group: G1, paths: [core], hard: [], soft: [], title: "Programming I: Python",
+   scope: "First programming course in Python: control flow, functions, recursion, data abstraction, OOP basics, simple algorithms (SICP-style intro)."}
+- {id: python-in-depth, group: G1, paths: [core, ml-foundations], hard: [python-programming], soft: [], title: "Python in Depth",
+   scope: "Python data model, iterators/generators, decorators, typing, asyncio and the GIL, packaging, pytest; writing idiomatic production Python."}
+- {id: c-programming, group: G1, paths: [core], hard: [python-programming], soft: [], title: "Programming II: C",
+   scope: "Pointers, manual memory management, arrays/strings, structs, the C toolchain, undefined behavior, gdb/valgrind/sanitizers."}
+- {id: cpp-programming, group: G1, paths: [mlsys, os-perf], hard: [c-programming], soft: [], title: "Modern C++",
+   scope: "RAII, templates, STL, move semantics, smart pointers, C++17/20/23 features, performance idioms."}
+- {id: rust-programming, group: G1, paths: [os-perf, security], optional: true, hard: [python-programming], soft: [c-programming], title: "Rust",
+   scope: "Ownership and borrowing, traits, error handling, fearless concurrency, unsafe Rust, systems programming in Rust."}
+- {id: go-programming, group: G1, paths: [distributed], hard: [python-programming], soft: [c-programming], title: "Go",
+   scope: "Go for systems/distributed programming: goroutines, channels, sync, testing; enough to do MIT 6.5840-style labs."}
+- {id: data-structures, group: G1, paths: [core], hard: [python-programming], soft: [], title: "Data Structures",
+   scope: "Lists, stacks/queues, trees, balanced BSTs, heaps, hash tables, graph representations, asymptotic basics; programming at scale (CS 61B-style)."}
+- {id: software-construction, group: G1, paths: [core], hard: [python-programming], soft: [data-structures], title: "Software Construction",
+   scope: "Specifications, testing, debugging, abstraction and ADTs, design, immutability, code review (MIT 6.1020-style)."}
+- {id: dev-environment, group: G1, paths: [core], hard: [], soft: [python-programming], title: "Developer Tooling",
+   scope: "Shell, Unix/Linux, git, editors, build systems (make/cmake), debuggers/profilers, containers basics (Missing Semester-style)."}
+
+# ---------------- G2 Mathematics ----------------
+- {id: discrete-math, group: G2, paths: [core], hard: [], soft: [], title: "Discrete Math & Proofs",
+   scope: "Logic, proof techniques, induction, sets/relations/functions, counting, graph theory, number theory, discrete probability intro."}
+- {id: calculus, group: G2, paths: [core], hard: [], soft: [], title: "Calculus (single & multivariable)",
+   scope: "Limits, derivatives, integrals, series, partial derivatives, gradients, multiple integrals."}
+- {id: linear-algebra, group: G2, paths: [core], hard: [], soft: [calculus], title: "Linear Algebra",
+   scope: "Vector spaces, elimination, orthogonality, determinants, eigenvalues, SVD, with a computational view."}
+- {id: probability, group: G2, paths: [core], hard: [calculus], soft: [discrete-math], title: "Probability",
+   scope: "Random variables, distributions, expectation, conditioning, LLN/CLT, joint distributions, Markov chains intro."}
+- {id: statistics, group: G2, paths: [core, ml-foundations], hard: [probability], soft: [], title: "Statistical Inference",
+   scope: "Estimation, MLE, hypothesis testing, confidence intervals, bootstrap, regression, Bayesian basics."}
+- {id: matrix-calculus, group: G2, paths: [ml-foundations], hard: [linear-algebra, calculus], soft: [], title: "Matrix Calculus",
+   scope: "Derivatives of vector/matrix functions, Jacobians, vector chain rule, forward vs reverse mode differentiation."}
+- {id: optimization, group: G2, paths: [ml-foundations, theory], hard: [linear-algebra, calculus], soft: [], title: "Optimization",
+   scope: "Convex sets/functions, gradient methods, duality, stochastic optimization, constrained optimization; optimization for ML."}
+- {id: numerical-methods, group: G2, paths: [ml-foundations, mlsys], optional: true, branch: scientific-computing, hard: [linear-algebra], soft: [python-programming], title: "Numerical Computing",
+   scope: "Floating point, conditioning and stability, numerical linear algebra algorithms, iterative methods, ODE solvers basics."}
+- {id: information-theory, group: G2, paths: [generative, theory], hard: [probability], soft: [], title: "Information Theory",
+   scope: "Entropy, KL divergence, mutual information, source/channel coding, compression; connections to ML."}
+
+# ---------------- G3 Algorithms & theory ----------------
+- {id: algorithms, group: G3, paths: [core], hard: [data-structures, discrete-math], soft: [], title: "Algorithms I",
+   scope: "Asymptotics, sorting, searching, hashing, graph algorithms (BFS/DFS/shortest paths/MST), dynamic programming, greedy intro."}
+- {id: algorithm-design, group: G3, paths: [core, theory], hard: [algorithms], soft: [probability], title: "Algorithm Design & Analysis",
+   scope: "Divide and conquer, greedy proofs, DP, network flow, NP-completeness and reductions, intro randomized and approximation algorithms."}
+- {id: theory-of-computation, group: G3, paths: [core, theory], hard: [discrete-math], soft: [], title: "Theory of Computation",
+   scope: "Automata, regular and context-free languages, Turing machines, decidability, P vs NP."}
+- {id: advanced-algorithms, group: G3, paths: [theory], hard: [algorithm-design], soft: [], title: "Advanced Algorithms",
+   scope: "Amortized analysis, advanced data structures, flows and matchings, LP and duality, online and streaming algorithms."}
+- {id: randomized-algorithms, group: G3, paths: [theory], hard: [algorithm-design, probability], soft: [], title: "Randomized Algorithms",
+   scope: "Concentration bounds, probabilistic method, hashing, Markov chains, sketching and streaming."}
+- {id: approximation-algorithms, group: G3, paths: [theory], hard: [advanced-algorithms], soft: [], title: "Approximation Algorithms",
+   scope: "LP rounding, primal-dual, SDP relaxations, hardness of approximation."}
+- {id: computational-complexity, group: G3, paths: [theory], hard: [theory-of-computation, algorithm-design], soft: [], title: "Computational Complexity",
+   scope: "Hierarchy theorems, PH, randomized classes, circuits, interactive proofs, PCP intro."}
+- {id: learning-theory, group: G3, paths: [theory], hard: [probability, ml-fundamentals], soft: [optimization], title: "Learning Theory",
+   scope: "PAC learning, VC dimension, Rademacher complexity, online learning, generalization theory for deep learning."}
+- {id: quantum-computing, group: G3, paths: [theory], optional: true, hard: [linear-algebra, probability], soft: [], title: "Quantum Computation",
+   scope: "Qubits, circuits, Shor and Grover, quantum information basics. Elective."}
+
+# ---------------- G4 Machine & OS ----------------
+- {id: computer-systems, group: G4, paths: [core], hard: [c-programming], soft: [], title: "Computer Systems (programmer's view)",
+   scope: "Data representation, x86-64 machine code, memory hierarchy, linking, exceptional control flow, virtual memory, allocators, system I/O, network programming and concurrency basics (CS:APP)."}
+- {id: computer-architecture, group: G4, paths: [core, architecture], hard: [computer-systems], soft: [digital-logic], title: "Computer Architecture (organization)",
+   scope: "ISA (RISC-V), assembly, datapath and control, pipelining and hazards, caches, VM hardware, SIMD and multicore basics."}
+- {id: operating-systems, group: G4, paths: [core], hard: [computer-systems], soft: [], title: "Operating Systems",
+   scope: "Processes, scheduling, virtual memory, concurrency primitives, file systems, crash consistency (concepts)."}
+- {id: os-kernel-implementation, group: G4, paths: [core, os-perf], hard: [operating-systems], soft: [], title: "OS Implementation (kernel labs)",
+   scope: "Implementing syscalls, page tables, traps, COW fork, threads, a file system inside a teaching kernel."}
+- {id: concurrent-programming, group: G4, paths: [core, os-perf], hard: [computer-systems], soft: [operating-systems], title: "Concurrent Programming",
+   scope: "Threads, locks, condition variables, memory models, atomics, lock-free data structures, deadlock, async I/O."}
+- {id: parallel-programming, group: G4, paths: [core, mlsys], hard: [computer-systems], soft: [computer-architecture, concurrent-programming], title: "Parallel Programming",
+   scope: "Parallel models (SIMD, multicore, GPU intro), work/span, OpenMP, MPI basics, synchronization cost, locality, parallel performance analysis."}
+- {id: performance-engineering, group: G4, paths: [os-perf, mlsys], hard: [computer-systems, algorithms], soft: [parallel-programming], title: "Performance Engineering",
+   scope: "Work/span, cache-efficient algorithms, vectorization, bit hacks, profiling-driven optimization of software."}
+- {id: performance-analysis, group: G4, paths: [os-perf], hard: [operating-systems], soft: [], title: "Performance Analysis & Observability",
+   scope: "Methodologies (USE), CPU/memory/disk/network analysis, perf, flame graphs, eBPF tracing."}
+- {id: high-performance-python, group: G4, paths: [os-perf, mlsys], hard: [python-in-depth], soft: [computer-systems], title: "High-Performance Python",
+   scope: "Profiling Python, NumPy vectorization, Numba/Cython, multiprocessing, memory efficiency."}
+- {id: linux-kernel-internals, group: G4, paths: [os-perf], hard: [os-kernel-implementation], soft: [], title: "Linux Kernel Internals",
+   scope: "Kernel architecture, scheduler, memory management, VFS, device drivers, modules, kernel development workflow."}
+- {id: virtualization-and-containers, group: G4, paths: [os-perf], hard: [operating-systems], soft: [computer-architecture], title: "Virtualization & Containers",
+   scope: "Hypervisors, hardware-assisted virtualization, VMs, namespaces/cgroups, containers, microVMs."}
+- {id: storage-and-file-systems, group: G4, paths: [os-perf, databases], hard: [operating-systems], soft: [], title: "Storage & File Systems",
+   scope: "File system design (FFS, LFS, journaling, CoW), SSD/flash, storage stack, RAID."}
+- {id: advanced-operating-systems, group: G4, paths: [os-perf], hard: [os-kernel-implementation], soft: [], title: "Advanced OS & Systems Research",
+   scope: "Classic and modern systems papers: microkernels, exokernels, kernel bypass, scheduling, isolation; reading systems research."}
+
+# ---------------- G5 ML foundations ----------------
+- {id: intro-ai, group: G5, paths: [core], hard: [python-programming, probability], soft: [algorithms], title: "Introduction to AI",
+   scope: "Search, CSPs, games, MDPs and RL intro, Bayes nets, intro ML (CS 188-style)."}
+- {id: scientific-python, group: G5, paths: [ml-foundations], hard: [python-programming], soft: [], title: "Scientific Python & Data Tooling",
+   scope: "NumPy, pandas, matplotlib, Jupyter, scikit-learn API basics."}
+- {id: ml-fundamentals, group: G5, paths: [ml-foundations], hard: [linear-algebra, probability, calculus], soft: [statistics, optimization, matrix-calculus], title: "Machine Learning Fundamentals",
+   scope: "Supervised (linear/logistic, GLMs, kernels/SVM, trees/ensembles), unsupervised (k-means, GMM/EM, PCA), bias-variance, regularization, generalization basics."}
+- {id: applied-ml-practice, group: G5, paths: [ml-foundations], hard: [ml-fundamentals, scientific-python], soft: [], title: "Applied ML: Evaluation & Experimentation",
+   scope: "Splits and leakage, metrics, model selection, feature engineering, error analysis, calibration, distribution shift, experiment design."}
+- {id: deep-learning-fundamentals, group: G5, paths: [ml-foundations], hard: [ml-fundamentals, matrix-calculus], soft: [], title: "Deep Learning Fundamentals",
+   scope: "MLPs, backprop, losses, SGD/Adam, initialization and normalization, regularization, CNNs, RNNs, training dynamics."}
+- {id: dl-engineering, group: G5, paths: [ml-foundations], hard: [deep-learning-fundamentals, python-in-depth], soft: [], title: "PyTorch & DL Engineering",
+   scope: "PyTorch in depth, training loops, debugging training, mixed precision, data loading, experiment tracking, reproducibility."}
+- {id: transformers, group: G5, paths: [ml-foundations, llm, vision, generative], hard: [deep-learning-fundamentals], soft: [], title: "Attention & Transformers",
+   scope: "Attention, transformer blocks, positional encodings, encoder/decoder variants; implementing and training a small transformer."}
+- {id: bayesian-inference, group: G5, paths: [ml-foundations], optional: true, branch: probabilistic-ml, hard: [probability, statistics], soft: [ml-fundamentals], title: "Bayesian Modeling & Inference",
+   scope: "Priors/posteriors, hierarchical models, MCMC, variational inference, Gaussian processes, probabilistic programming."}
+- {id: probabilistic-graphical-models, group: G5, paths: [ml-foundations], optional: true, branch: probabilistic-ml, hard: [probability, ml-fundamentals], soft: [], title: "Probabilistic Graphical Models",
+   scope: "Bayes nets, MRFs, exact and approximate inference, learning."}
+- {id: causal-inference, group: G5, paths: [ml-foundations], optional: true, branch: probabilistic-ml, hard: [statistics], soft: [probabilistic-graphical-models], title: "Causal Inference",
+   scope: "Potential outcomes, causal DAGs, identification, confounding, IV, diff-in-diff, experiments."}
+- {id: graph-neural-networks, group: G5, paths: [ml-foundations], optional: true, hard: [deep-learning-fundamentals], soft: [], title: "Graph ML & GNNs",
+   scope: "Node embeddings, message passing GNNs, graph transformers, geometric deep learning."}
+
+# ---------------- G6 Vision & generative ----------------
+- {id: vision-foundations, group: G6, paths: [vision], hard: [linear-algebra, calculus], soft: [deep-learning-fundamentals], title: "Vision Foundations",
+   scope: "Image formation, cameras, filtering, features, optical flow, classical recognition."}
+- {id: deep-learning-for-vision, group: G6, paths: [vision], hard: [deep-learning-fundamentals], soft: [vision-foundations, transformers], title: "Deep Learning for Vision",
+   scope: "CNN architectures, detection, segmentation, ViTs, video models, training recipes."}
+- {id: self-supervised-learning, group: G6, paths: [vision, generative], hard: [deep-learning-for-vision], soft: [transformers], title: "Self-Supervised & Representation Learning",
+   scope: "Contrastive learning, masked modeling, DINO-style self-distillation, JEPA, CLIP-style objectives."}
+- {id: multi-view-geometry, group: G6, paths: [vision], hard: [vision-foundations, linear-algebra], soft: [optimization], title: "3D Vision & Multi-View Geometry",
+   scope: "Calibration, epipolar geometry, stereo, structure from motion, bundle adjustment, SLAM basics."}
+- {id: neural-3d, group: G6, paths: [vision, generative], hard: [multi-view-geometry, deep-learning-for-vision], soft: [], title: "Neural Rendering & 3D Deep Learning",
+   scope: "NeRF, Gaussian splatting, 3D representations, differentiable rendering, feed-forward 3D reconstruction."}
+- {id: vision-language-models, group: G6, paths: [vision, llm], hard: [transformers, deep-learning-for-vision], soft: [language-modeling], title: "Vision-Language & Multimodal Models",
+   scope: "CLIP, VLM architectures, multimodal pretraining and instruction tuning, VLM evaluation."}
+- {id: generative-modeling-foundations, group: G6, paths: [generative], hard: [deep-learning-fundamentals, probability], soft: [information-theory], title: "Deep Generative Models",
+   scope: "Latent-variable models, VAEs, autoregressive models, normalizing flows, GANs, EBMs, evaluation."}
+- {id: diffusion-and-flow-matching, group: G6, paths: [generative], hard: [generative-modeling-foundations], soft: [numerical-methods], title: "Diffusion & Flow Matching",
+   scope: "Score matching, DDPM/DDIM, SDE/ODE view, flow matching and rectified flow, guidance."}
+- {id: generative-models-at-scale, group: G6, paths: [generative], hard: [diffusion-and-flow-matching, transformers], soft: [], title: "Large-Scale Generative Systems",
+   scope: "Latent diffusion, DiT, text-to-image/video, conditioning, distillation and fast sampling, evaluation; audio generation."}
+
+# ---------------- G7 LLMs ----------------
+- {id: nlp-foundations, group: G7, paths: [llm], hard: [deep-learning-fundamentals], soft: [transformers], title: "NLP Foundations",
+   scope: "Word vectors, classic NLP tasks, seq2seq, evaluation of NLP systems, linguistic structure."}
+- {id: language-modeling, group: G7, paths: [llm], hard: [transformers, dl-engineering], soft: [], title: "Language Modeling from Scratch",
+   scope: "BPE tokenization, building and training a GPT, sampling, LM evaluation basics."}
+- {id: llm-architectures, group: G7, paths: [llm], hard: [language-modeling], soft: [], title: "Modern LLM Architectures",
+   scope: "RoPE, normalization choices, GQA/MQA/MLA, MoE, long context, attention alternatives (SSMs), numerics."}
+- {id: pretraining-data, group: G7, paths: [llm], hard: [language-modeling], soft: [], title: "Pretraining Data",
+   scope: "Web-scale data pipelines, extraction, filtering, dedup, mixtures, data quality."}
+- {id: scaling-and-pretraining, group: G7, paths: [llm], hard: [language-modeling], soft: [distributed-training-fundamentals], title: "Scaling Laws & Pretraining",
+   scope: "Scaling laws, compute-optimal training, hyperparameter transfer (muP), training stability, pretraining recipes."}
+- {id: llm-evaluation, group: G7, paths: [llm, safety], hard: [language-modeling], soft: [statistics], title: "LLM Evaluation",
+   scope: "Benchmarks, contamination, evaluation methodology, LLM-as-judge, statistical rigor."}
+- {id: post-training, group: G7, paths: [llm], hard: [language-modeling], soft: [policy-gradient-methods], title: "Post-Training: SFT & Preference Tuning",
+   scope: "Instruction tuning, SFT, reward models, RLHF overview, DPO and variants, distillation, synthetic data."}
+- {id: retrieval-and-rag, group: G7, paths: [llm], branch: ai-engineering, hard: [transformers], soft: [nlp-foundations, databases-intro], title: "Retrieval & RAG",
+   scope: "IR basics (BM25), embeddings, vector search (HNSW, IVF), RAG pipelines and evaluation."}
+- {id: llm-applications, group: G7, paths: [llm], branch: ai-engineering, hard: [python-in-depth], soft: [llm-evaluation], title: "Building LLM Applications",
+   scope: "Prompting, structured outputs, application evals, guardrails, cost/latency, production operation."}
+- {id: llm-agents, group: G7, paths: [llm], branch: ai-engineering, hard: [llm-applications], soft: [rl-for-llms], title: "LLM Agents & Tool Use",
+   scope: "Tool calling, agent loops, planning, memory, multi-agent setups, agent evaluation and security."}
+
+# ---------------- G8 RL & safety ----------------
+- {id: rl-foundations, group: G8, paths: [rl], hard: [probability, python-programming], soft: [intro-ai, ml-fundamentals], title: "RL Foundations",
+   scope: "MDPs, Bellman equations, dynamic programming, Monte Carlo, TD, SARSA/Q-learning, function approximation intro."}
+- {id: bandits-and-exploration, group: G8, paths: [rl], optional: true, hard: [probability], soft: [rl-foundations], title: "Bandits & Exploration",
+   scope: "Multi-armed bandits, UCB, Thompson sampling, contextual bandits, regret."}
+- {id: deep-value-based-rl, group: G8, paths: [rl], hard: [rl-foundations, deep-learning-fundamentals], soft: [], title: "Deep RL: Value-Based Methods",
+   scope: "DQN and extensions, replay, target networks, stability, distributional RL."}
+- {id: policy-gradient-methods, group: G8, paths: [rl], hard: [rl-foundations, deep-learning-fundamentals], soft: [], title: "Deep RL: Policy Gradients & Actor-Critic",
+   scope: "REINFORCE, baselines, actor-critic, GAE, TRPO/PPO, SAC/TD3 for continuous control."}
+- {id: model-based-rl, group: G8, paths: [rl], hard: [policy-gradient-methods, deep-value-based-rl], soft: [], title: "Model-Based RL & World Models",
+   scope: "Learned dynamics, MPC, Dyna, MuZero, Dreamer, planning with learned models."}
+- {id: offline-rl-and-imitation, group: G8, paths: [rl], hard: [policy-gradient-methods, deep-value-based-rl], soft: [], title: "Imitation & Offline RL",
+   scope: "Behavior cloning, DAgger, inverse RL, offline RL (CQL, IQL), off-policy evaluation."}
+- {id: multi-agent-rl, group: G8, paths: [rl], optional: true, hard: [policy-gradient-methods], soft: [], title: "Multi-Agent RL & Games",
+   scope: "Game theory basics, self-play, MARL algorithms, AlphaZero-style search."}
+- {id: rl-for-llms, group: G8, paths: [rl, llm], hard: [policy-gradient-methods, post-training], soft: [], title: "RL for LLMs & Reasoning",
+   scope: "RLHF with PPO, reward modeling, GRPO, RL with verifiable rewards, reasoning models, reward hacking."}
+- {id: ai-safety-foundations, group: G8, paths: [safety], hard: [deep-learning-fundamentals], soft: [language-modeling], title: "AI Safety Foundations",
+   scope: "Alignment problem, risk landscape, specification gaming, misuse, governance basics."}
+- {id: mechanistic-interpretability, group: G8, paths: [safety], hard: [transformers, language-modeling], soft: [], title: "Mechanistic Interpretability",
+   scope: "Transformer circuits, probing, activation patching, sparse autoencoders/transcoders, attribution graphs."}
+- {id: evals-and-red-teaming, group: G8, paths: [safety], hard: [llm-evaluation], soft: [ai-safety-foundations], title: "Safety Evals & Red-Teaming",
+   scope: "Dangerous-capability evals, red-teaming, jailbreaks, eval frameworks (e.g. Inspect), model organisms."}
+- {id: alignment-and-oversight, group: G8, paths: [safety], hard: [post-training], soft: [rl-for-llms, ai-safety-foundations], title: "Alignment Methods & Oversight",
+   scope: "RLHF failure modes, reward hacking, scalable oversight, debate, weak-to-strong generalization, AI control."}
+- {id: adversarial-robustness, group: G8, paths: [safety, security], hard: [deep-learning-fundamentals], soft: [], title: "Adversarial ML & Robustness",
+   scope: "Adversarial examples, robust training, certified defenses, data poisoning, prompt injection."}
+
+# ---------------- G9 ML systems ----------------
+- {id: ml-performance-modeling, group: G9, paths: [mlsys], hard: [transformers, computer-architecture], soft: [parallel-programming], title: "Performance Modeling for ML",
+   scope: "FLOPs and bytes accounting, roofline, arithmetic intensity, compute vs memory vs communication bounds for training and inference."}
+- {id: gpu-programming, group: G9, paths: [mlsys, architecture], hard: [parallel-programming, c-programming], soft: [cpp-programming, computer-architecture], title: "GPU Architecture & CUDA Programming",
+   scope: "GPU execution model, SMs/warps, memory hierarchy, CUDA basics, parallel patterns (reduction, scan, histogram)."}
+- {id: gpu-performance-optimization, group: G9, paths: [mlsys], hard: [gpu-programming], soft: [], title: "GPU Performance Optimization & Profiling",
+   scope: "Coalescing, shared-memory tiling, occupancy, bank conflicts, warp-level primitives, async copies, Nsight profiling."}
+- {id: gemm-and-tensor-cores, group: G9, paths: [mlsys], hard: [gpu-performance-optimization], soft: [], title: "Matmul, Tensor Cores & Low Precision",
+   scope: "GEMM optimization, tensor cores, CUTLASS/CuTe, FP8/FP4, FlashAttention as a fusion case study."}
+- {id: kernel-dsls, group: G9, paths: [mlsys], hard: [gpu-programming], soft: [gemm-and-tensor-cores], title: "Triton & Kernel DSLs",
+   scope: "Triton, CuTe DSL, ThunderKittens, Pallas; writing fused kernels."}
+- {id: dl-framework-internals, group: G9, paths: [mlsys], hard: [deep-learning-fundamentals, python-in-depth], soft: [cpp-programming, gpu-programming], title: "DL Framework Internals",
+   scope: "Tensors, autodiff engines, computation graphs, operator dispatch; building a mini framework."}
+- {id: ml-compilers, group: G9, paths: [mlsys, plc], hard: [dl-framework-internals], soft: [compiler-optimization, kernel-dsls], title: "ML Compilers",
+   scope: "Graph IRs, operator fusion, scheduling, autotuning, TVM, XLA, MLIR, torch.compile/Inductor."}
+- {id: distributed-training-fundamentals, group: G9, paths: [mlsys], hard: [dl-engineering, ml-performance-modeling], soft: [computer-networking, distributed-systems-fundamentals], title: "Distributed Training I: Collectives, DP & Sharding",
+   scope: "Collectives, NCCL, data parallelism, ZeRO/FSDP, compute-communication overlap, mixed precision at scale."}
+- {id: model-parallelism, group: G9, paths: [mlsys], hard: [distributed-training-fundamentals], soft: [], title: "Distributed Training II: Model Parallelism at Scale",
+   scope: "Tensor/sequence/context/pipeline/expert parallelism, multi-dimensional planning, checkpointing and fault tolerance."}
+- {id: llm-inference-and-serving, group: G9, paths: [mlsys, llm], hard: [language-modeling, ml-performance-modeling], soft: [gpu-programming], title: "LLM Inference & Serving",
+   scope: "Prefill/decode, KV cache, paged attention, continuous batching, speculative decoding, disaggregation, serving engines."}
+- {id: model-compression, group: G9, paths: [mlsys], hard: [deep-learning-fundamentals], soft: [ml-performance-modeling], title: "Model Compression & Efficient ML",
+   scope: "Quantization (PTQ/QAT), pruning, distillation, efficient architectures, on-device ML."}
+- {id: mlops-and-production, group: G9, paths: [mlsys], optional: true, hard: [applied-ml-practice], soft: [large-scale-system-design], title: "ML in Production (MLOps)",
+   scope: "Data and feature pipelines, deployment, monitoring and drift, ML platform design."}
+
+# ---------------- G10 Data & distributed ----------------
+- {id: computer-networking, group: G10, paths: [core, distributed], hard: [computer-systems], soft: [], title: "Computer Networking",
+   scope: "Layering, TCP/IP, routing, congestion control, DNS, HTTP, socket programming."}
+- {id: databases-intro, group: G10, paths: [core, databases], hard: [data-structures], soft: [discrete-math], title: "Databases",
+   scope: "Relational model, SQL, schema design and normalization, indexing basics, transactions intro."}
+- {id: distributed-systems-fundamentals, group: G10, paths: [distributed], hard: [operating-systems, computer-networking], soft: [concurrent-programming, go-programming], title: "Distributed Systems Fundamentals",
+   scope: "System models, RPC, failures, time and clocks, causality, MapReduce, fault-tolerance basics."}
+- {id: consensus-and-replication, group: G10, paths: [distributed], hard: [distributed-systems-fundamentals], soft: [], title: "Consensus & Replication",
+   scope: "Primary-backup, Paxos, Raft, linearizability and consistency models, quorums, CRDTs."}
+- {id: distributed-transactions-and-storage, group: G10, paths: [distributed, databases], hard: [consensus-and-replication], soft: [transactions-and-recovery], title: "Distributed Storage & Transactions",
+   scope: "Sharding, 2PC, distributed concurrency control, Spanner/Calvin-style systems, distributed KV stores."}
+- {id: batch-and-stream-processing, group: G10, paths: [distributed, databases], hard: [distributed-systems-fundamentals], soft: [], title: "Batch & Stream Processing",
+   scope: "MapReduce/Spark, dataflow, log-based messaging (Kafka), stream processing semantics, exactly-once."}
+- {id: formal-methods-for-systems, group: G10, paths: [distributed, plc], hard: [discrete-math], soft: [consensus-and-replication], title: "Formal Methods for Systems (TLA+)",
+   scope: "Specification, model checking, TLA+/PlusCal, verifying protocol properties."}
+- {id: large-scale-system-design, group: G10, paths: [distributed], hard: [distributed-systems-fundamentals], soft: [databases-intro], title: "Large-Scale System Design & Reliability",
+   scope: "System design, caching, load balancing, SRE practices, observability, capacity planning."}
+- {id: db-storage-and-indexing, group: G10, paths: [databases], hard: [databases-intro, computer-systems], soft: [], title: "Database Storage & Indexing",
+   scope: "Disk-oriented storage, buffer pools, page layouts, B+trees, hash indexes, LSM trees."}
+- {id: query-processing, group: G10, paths: [databases], hard: [db-storage-and-indexing], soft: [algorithms], title: "Query Processing & Optimization",
+   scope: "Operators, join algorithms, execution models, cost-based optimization."}
+- {id: transactions-and-recovery, group: G10, paths: [databases], hard: [db-storage-and-indexing], soft: [concurrent-programming], title: "Concurrency Control & Recovery",
+   scope: "2PL, OCC, MVCC, isolation levels, logging, ARIES."}
+- {id: advanced-database-systems, group: G10, paths: [databases], hard: [query-processing, transactions-and-recovery], soft: [], title: "Advanced Database Systems",
+   scope: "In-memory and columnar storage, vectorized/compiled execution, modern OLAP, cloud-native databases."}
+
+# ---------------- G11 Hardware & compilers ----------------
+- {id: digital-logic, group: G11, paths: [architecture], hard: [], soft: [discrete-math], title: "Digital Logic Design",
+   scope: "Boolean algebra, combinational and sequential logic, FSMs, timing, number representation."}
+- {id: hdl-and-fpga, group: G11, paths: [architecture], hard: [digital-logic], soft: [], title: "HDL Design & FPGA Workflow",
+   scope: "SystemVerilog/Verilog, simulation and testbenches, synthesis, FPGA flow, verification basics."}
+- {id: processor-design, group: G11, paths: [architecture], hard: [hdl-and-fpga, computer-architecture], soft: [], title: "Processor Design (RISC-V)",
+   scope: "Single-cycle and pipelined RISC-V cores, hazards and forwarding, branch prediction basics; built on an FPGA or simulator."}
+- {id: advanced-microarchitecture, group: G11, paths: [architecture], hard: [processor-design], soft: [], title: "Advanced Microarchitecture",
+   scope: "Superscalar and out-of-order execution, register renaming, speculation, advanced branch prediction, SMT."}
+- {id: memory-systems, group: G11, paths: [architecture], hard: [computer-architecture], soft: [advanced-microarchitecture], title: "Memory Systems & Multiprocessors",
+   scope: "Cache design, prefetching, DRAM, coherence protocols, memory consistency models, interconnects."}
+- {id: hardware-accelerators, group: G11, paths: [architecture, mlsys], hard: [computer-architecture, deep-learning-fundamentals], soft: [gpu-programming, hdl-and-fpga], title: "Hardware Accelerators for ML",
+   scope: "Dataflows, systolic arrays, DNN accelerator design, sparsity, hardware-software co-design."}
+- {id: programming-language-concepts, group: G11, paths: [core, plc], hard: [python-programming], soft: [data-structures], title: "Programming Language Concepts",
+   scope: "Functional programming, static vs dynamic typing, closures, pattern matching, modules, evaluation strategies, small interpreters."}
+- {id: interpreters, group: G11, paths: [plc], hard: [programming-language-concepts, data-structures], soft: [c-programming], title: "Building Interpreters",
+   scope: "Lexing, parsing, tree-walking and bytecode interpreters, closures, GC basics."}
+- {id: compiler-construction, group: G11, paths: [plc], hard: [interpreters, computer-systems], soft: [theory-of-computation], title: "Compiler Construction",
+   scope: "Front end, semantic analysis, IR, code generation, register allocation, runtime support."}
+- {id: compiler-optimization, group: G11, paths: [plc], hard: [compiler-construction], soft: [], title: "Compiler Optimization & LLVM",
+   scope: "SSA, dataflow analysis, loop optimizations, writing LLVM passes, JIT basics."}
+- {id: type-systems, group: G11, paths: [plc], hard: [programming-language-concepts, discrete-math], soft: [], title: "Type Systems & Semantics",
+   scope: "Operational semantics, lambda calculus, type soundness, polymorphism, subtyping."}
+- {id: program-verification, group: G11, paths: [plc], hard: [type-systems], soft: [], title: "Program Verification & Proof Assistants",
+   scope: "Proof assistants (Rocq/Coq, Lean), Hoare logic, separation logic intro, verified software."}
+- {id: program-analysis, group: G11, paths: [plc, security], hard: [programming-language-concepts, algorithms], soft: [compiler-optimization], title: "Static Program Analysis",
+   scope: "Lattices, dataflow, abstract interpretation, pointer analysis, symbolic execution."}
+- {id: language-runtimes, group: G11, paths: [plc], hard: [interpreters, computer-systems], soft: [], title: "Language Runtimes, GC & JITs",
+   scope: "Garbage collection, virtual machines, JIT compilation, dynamic language implementation."}
+
+# ---------------- G12 Security & cryptography ----------------
+- {id: security-fundamentals, group: G12, paths: [core, security], hard: [computer-systems], soft: [computer-networking], title: "Computer Security Fundamentals",
+   scope: "Threat models, memory-safety vulnerabilities, crypto usage basics, web and network security basics."}
+- {id: binary-exploitation, group: G12, paths: [security], hard: [security-fundamentals, computer-systems], soft: [], title: "Binary Exploitation & Reverse Engineering",
+   scope: "Memory corruption, ROP, heap exploitation, mitigations, reverse engineering with disassemblers/decompilers."}
+- {id: fuzzing-and-vuln-discovery, group: G12, paths: [security], hard: [security-fundamentals], soft: [program-analysis, binary-exploitation], title: "Fuzzing & Vulnerability Discovery",
+   scope: "Coverage-guided fuzzing, sanitizers, grammar/structure-aware fuzzing, symbolic execution for bug finding."}
+- {id: web-security, group: G12, paths: [security], hard: [security-fundamentals], soft: [computer-networking], title: "Web Security",
+   scope: "Browser security model, XSS, CSRF, injection, authentication/sessions, SSRF, modern web attack surface."}
+- {id: systems-security, group: G12, paths: [security], hard: [security-fundamentals, operating-systems], soft: [computer-architecture], title: "Systems & Hardware Security",
+   scope: "OS isolation, sandboxing, privilege separation, side channels (Spectre-class), trusted execution."}
+- {id: network-security, group: G12, paths: [security], hard: [security-fundamentals, computer-networking], soft: [], title: "Network Security",
+   scope: "TLS, network attacks and defenses, firewalls, DDoS, protocol security."}
+- {id: applied-cryptography, group: G12, paths: [security], hard: [discrete-math, probability], soft: [security-fundamentals], title: "Applied Cryptography",
+   scope: "Symmetric/asymmetric primitives, AEAD, key exchange, signatures, real protocols (TLS, Signal), implementation pitfalls."}
+- {id: cryptography-foundations, group: G12, paths: [security, theory], hard: [applied-cryptography, algorithm-design], soft: [computational-complexity], title: "Foundations of Cryptography",
+   scope: "Provable security, reductions, PRFs/PRPs, CPA/CCA security, zero-knowledge intro."}
