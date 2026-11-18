@@ -107,8 +107,8 @@ resources:
     kind: paper
     title: "A Mathematical Theory of Communication"
     by: "Claude E. Shannon"
-    url: http://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
-    edition_or_term: "Bell System Technical Journal, 1948 (Harvard-hosted PDF; note: URL is HTTP, not HTTPS; an HTTPS mirror was not checked)"
+    url: https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
+    edition_or_term: "Bell System Technical Journal, 1948 (Harvard-hosted PDF)"
     access: free
     use: "Parts I (discrete noiseless systems, entropy) and II (discrete noisy channel, capacity) after finishing the first two units; read for the original definitions and the statement of the source and channel coding theorems."
     why: "Primary source with unusually readable exposition; worth reading once after the textbook."
@@ -127,5 +127,4 @@ open_questions:
   - "Cover & Thomas Wiley page (Cloudflare 403) and Cambridge publisher page not opened; verified: false for Cover & Thomas."
   - "EE274 Fall 2025-26: whether this run's lectures are posted publicly is not stated (page says some sessions may be recorded for Stanford use); older Fall 2023 playlist is public."
   - "Stanford EE276 pages could not be opened (web.stanford.edu unreachable); its Winter 2025-26 data comes from search snippets."
-  - "Shannon PDF URL is http-only in the Harvard-hosted copy (listed HTTP; the schema asks for HTTPS; the https form was not tested)."
 last_verified: 2026-11-18
