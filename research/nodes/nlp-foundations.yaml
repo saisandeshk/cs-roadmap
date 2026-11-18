@@ -1,0 +1,114 @@
+id: nlp-foundations
+title: NLP Foundations
+group: G7
+paths: [llm]
+hard: [deep-learning-fundamentals]
+soft: [transformers]
+scope: "Word vectors, classic NLP tasks, seq2seq, evaluation of NLP systems, linguistic structure."
+
+level: intro
+estimated_hours: 50
+resources:
+  - id: slp3
+    role: primary-text
+    kind: book
+    title: "Speech and Language Processing (3rd ed. draft)"
+    by: "Dan Jurafsky, James H. Martin"
+    url: https://web.stanford.edu/~jurafsky/slp3/
+    edition_or_term: "Online draft released 2026-08-19 (previous drafts: Jan 2026, Aug 2025)"
+    access: free
+    use: "Vol. I ch. 2 Words and Tokens (incl. edit distance), ch. 3 N-gram LMs (perplexity, smoothing), ch. 4 Logistic Regression and Text Classification (evaluation: P/R/F1, significance), ch. 5 Embeddings (word2vec, GloVe), ch. 6 Neural Networks. Vol. II ch. 9 Masked LMs, ch. 13 Machine Translation and ch. 14 RNNs/LSTMs for seq2seq and linguistic-structure background. Skim ch. 1 for the framing; ch. 7-8 (Transformers/pretraining, post-training) belong to the language-modeling and post-training nodes. Slides (pptx/pdf) are published per chapter."
+    why: "The standard NLP textbook, rewritten around LLMs and still updated twice a year; free; covers exactly the classic-tasks / vectors / evaluation / seq2seq ground this node needs, with a statistically careful treatment of evaluation. Note: ch. 12 (Agents) is listed as not yet written."
+    verified: true
+  - id: cs224n
+    role: primary-course
+    kind: course
+    title: "Stanford CS224N: Natural Language Processing with Deep Learning"
+    by: "Diyi Yang, Yejin Choi (Winter 2026); Christopher Manning (Spring 2024 public videos)"
+    url: https://web.stanford.edu/class/cs224n/
+    edition_or_term: "Winter 2026"
+    access: free
+    use: "Word vectors and word2vec (A1), neural nets/backprop and dependency parsing (A2), RNNs/seq2seq/attention, self-attention and Transformers (A3), pretraining, and LLM benchmarking/evaluation (A4). Watch the Spring 2024 lectures; use the Winter 2026 slides/assignments (assignments_w26/a1-a4) for the fresher material. The LLM-heavy second half overlaps language-modeling/post-training; stop after the Transformer/pretraining lectures if time is short."
+    why: "Best public NLP-with-deep-learning course: strong lectures from Manning, real programming assignments, and the Winter 2026 offering has been refreshed for the LLM era (A4 is LLM evaluation). Public videos lag the current term."
+    verified: true
+    course:
+      latest_term: "Winter 2026"
+      latest_url: https://web.stanford.edu/class/cs224n/
+      videos: enrolled-only
+      public_videos_term: "Spring 2024"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D
+      assignments: public
+      assignments_url: https://web.stanford.edu/class/cs224n/#coursework
+  - id: cs224n-assignments
+    role: practice
+    kind: practice-site
+    title: "CS224N Winter 2026 assignments A1-A3 (code + handouts)"
+    by: "Stanford CS224N staff"
+    url: https://web.stanford.edu/class/cs224n/index.html#schedule
+    edition_or_term: "Winter 2026 (assignments_w26/a1.zip - a3.zip, a2.pdf, a3.pdf)"
+    access: free
+    use: "A1 word vectors (co-occurrence SVD + word2vec exploration, Colab), A2 tensor derivatives, neural network foundations and dependency parser, A3 self-attention/Transformers. A4 (LLM benchmarking) is cross-listed in llm-evaluation."
+    why: "Gives the node concrete, graded-style practice; the zips/PDFs are public (Gradescope autograder is not, so self-check against the handouts)."
+    verified: true
+  - id: illustrated-word2vec
+    role: secondary
+    kind: article
+    title: "The Illustrated Word2vec"
+    by: "Jay Alammar"
+    url: https://jalammar.github.io/illustrated-word2vec/
+    edition_or_term: "2019 (stable)"
+    access: free
+    use: "Whole article (about 30 min) before the CS224N word-vector lectures."
+    why: "Fills the intuition gap on skip-gram with negative sampling and embeddings that the slides compress; widely used on-ramp."
+    verified: true
+  - id: spacy-course
+    role: practice
+    kind: practice-site
+    title: "Advanced NLP with spaCy (free interactive course)"
+    by: "Ines Montani"
+    url: https://course.spacy.io/en/
+    edition_or_term: "Current web version"
+    access: free
+    use: "Chapters 1-4: linguistic annotations (tokens, POS, dependencies, NER), rule-based matching, pipelines/components, training a custom pipeline."
+    why: "Classic-NLP pipeline practice (tagging, parsing, NER, matcher rules) that the LLM-first courses skip; hands-on in the browser and fast (about 4-6 h)."
+    verified: true
+  - id: hf-llm-course-nlp-tasks
+    role: secondary
+    kind: course
+    title: "Hugging Face LLM Course, chapters 5-7 (datasets, tokenizers, classic NLP tasks)"
+    by: "Hugging Face"
+    url: https://huggingface.co/learn/llm-course/chapter7/1
+    edition_or_term: "Current web version"
+    access: free
+    use: "Ch. 5 Datasets, ch. 6 Tokenizers (BPE/WordPiece/Unigram walk-through), ch. 7 token classification, masked LM fine-tuning, translation, summarization, extractive QA. Skip chapters 1-4 if you already know the Transformers library."
+    why: "Practical seq2seq/QA/NER fine-tuning with modern tooling; complements the theory in SLP3. Self-paced, no assignments to submit."
+    verified: true
+    course:
+      latest_term: "Rolling (self-paced)"
+      latest_url: https://huggingface.co/learn/llm-course/chapter7/1
+      videos: none
+      assignments: none
+  - id: nltk-book
+    role: reference
+    kind: book
+    title: "Natural Language Processing with Python (NLTK Book)"
+    by: "Steven Bird, Ewan Klein, Edward Loper"
+    url: https://www.nltk.org/book/
+    edition_or_term: "3rd edition (online)"
+    access: free
+    use: "Look up ch. 1-3 (corpora, tokenization), ch. 5 tagging, ch. 6 classification, ch. 8 parsing when a linguistic-structure concept (POS tags, CFGs, treebanks) is unfamiliar."
+    why: "The most accessible free source on linguistic structure (grammar, tagging, parsing) that SLP3's LLM-first reordering now treats briefly."
+    verified: true
+considered:
+  - {title: "CMU 11-711 Advanced NLP (Spring 2026, Sean Welleck; Fall 2025; Fall 2024 Neubig)", url: "https://cmu-l3.github.io/anlp-spring2026/", reason: "Excellent graduate syllabus with code walkthroughs, but I could not find public recordings for 2025-26 (Fall 2024 lectures are on YouTube via Neubig's channel); more LLM-centric and graduate-level than needed here."}
+  - {title: "Stanford CS224U Natural Language Understanding", url: "http://web.stanford.edu/class/cs224u/", reason: "Strong on NLU/semantics and evaluation methodology; the public site shows Spring 2023 and the YouTube playlist is Spring 2021, so it is dated for an LLM roadmap."}
+  - {title: "Goldberg: A Primer on Neural Network Models for NLP", url: "https://u.cs.biu.ac.il/~yogo/nnlp.pdf", reason: "Still a clear bridge from classic NLP to neural models, but pre-Transformer (2015-16) and superseded by SLP3 ch. 5-6 and CS224N."}
+  - {title: "Eisenstein: Natural Language Processing (notes/book)", url: "https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf", reason: "Best free treatment of linguistic structure and classical statistical NLP; pre-LLM (2019) and GitHub not reachable for verification from my sandbox; kept as optional depth on parsing/semantics."}
+  - {title: "Hands-On Large Language Models (Alammar, Grootendorst)", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", reason: "Good applied intro (ch. 1-5: tokens, embeddings, classification, clustering) but better placed in retrieval/llm-applications."}
+notes: "NLP Foundations is deliberately light on LLM internals (language-modeling and post-training own those). Primary route: SLP3 ch. 2-6 and 9 alongside the CS224N lectures (Spring 2024 videos) and A1-A3; spaCy course for classic pipeline practice. CS224N Winter 2026 video recordings are on Canvas only (enrolled students). The 2023-24-era public YouTube playlist is the newest public one found on the course page's 'Lecture Videos' list."
+split_proposal: null
+prereq_changes: "Consider making 'transformers' a soft prerequisite only for the second half; as written the node works with deep-learning-fundamentals alone (CS224N A1-A2 need only backprop/PyTorch). Could add soft: [probability] for n-gram/LM perplexity and classifier evaluation."
+open_questions:
+  - "web.stanford.edu over HTTPS timed out from my sandbox (000); SLP3 and CS224N pages were opened over HTTP/redirect and via cs224n.stanford.edu, so the https URLs are believed correct but were not fetched directly."
+  - "Could not confirm whether Winter 2025 CS224N lecture videos are public; the course page lists Spring 2024 as the newest public playlist."
+last_verified: 2026-11-18

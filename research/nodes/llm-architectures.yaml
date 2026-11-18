@@ -1,0 +1,173 @@
+id: llm-architectures
+title: Modern LLM Architectures
+group: G7
+paths: [llm]
+hard: [language-modeling]
+soft: []
+scope: "RoPE, normalization choices, GQA/MQA/MLA, MoE, long context, attention alternatives (SSMs), numerics."
+
+level: advanced
+estimated_hours: 35
+resources:
+  - id: raschka-arch-comparison
+    role: primary-text
+    kind: article
+    title: "The Big LLM Architecture Comparison"
+    by: "Sebastian Raschka"
+    url: https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison
+    edition_or_term: "Published 2025-07-19; last updated 2026-04-02 (added Gemma 4)"
+    access: free
+    use: "Read in full (long): DeepSeek V3/R1 and V3.2 (MLA, MoE, sparse attention), OLMo 2/Olmo 3 (post-norm, QK-norm), Gemma 3/3n (sliding window, pre+post norm), Qwen3/Qwen3-Next (dense vs MoE, Gated DeltaNet), SmolLM3 (NoPE), Llama 4, gpt-oss, Kimi K2/Linear, MiniMax-M2, GLM-4.5, Gemma 4."
+    why: "Only continuously maintained, diagram-driven survey of what production open models actually do, organised by the design choices in this node's scope; free; cross-checks every claim against config files and reports."
+    verified: true
+  - id: cs336-arch
+    role: primary-course
+    kind: course
+    title: "Stanford CS336, Lectures 3-5: Architectures/Hyperparameters, Attention alternatives and MoE, GPUs/TPUs"
+    by: "Tatsunori Hashimoto"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 3 'Architectures, hyperparameters' (slides lecture_03.pdf) and Lecture 4 'Attention alternatives and mixture of experts' (lecture_04.pdf); the course page gives titles only, so check the slides for exact coverage. Lecture 5 (GPU/TPU hardware) is optional numerics context. Use the Spring 2025 versions as a cross-check."
+    why: "Dedicated architecture, hyperparameter, attention-alternative and MoE lectures in the same course that has you implement the model; recordings of the Spring 2026 run are public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      assignments: public-with-autograder
+      assignments_url: https://github.com/stanford-cs336/assignment1-basics
+  - id: llms-from-scratch-ch4-bonus
+    role: practice
+    kind: tool
+    title: "LLMs-from-scratch ch. 4/5 bonus notebooks (KV cache, GQA, MLA, sliding window, MoE, Gated DeltaNet, Qwen3/Gemma 3/Olmo 3 from scratch)"
+    by: "Sebastian Raschka"
+    url: https://github.com/rasbt/LLMs-from-scratch
+    edition_or_term: "Current main branch (bonus list includes Qwen3.5, Gemma 4, Olmo 3, Tiny Aya)"
+    access: free
+    use: "ch04: 02_performance-analysis (FLOPs), 03_kv-cache, 04_gqa, 05_mla, 06_swa, 07_moe and the linear/DeltaNet attention folders; ch05: converting GPT-2 to Llama and loading Llama 3.2 / Qwen3 / Gemma 3 / Olmo 3 weights with from-scratch implementations. Pick three architectures and diff their configs against the article."
+    why: "Turns the survey into runnable code you can step through; reimplementing each variant (MLA, MoE routing, sliding window) is the best test of understanding."
+    verified: true
+  - id: arch-gallery
+    role: reference
+    kind: website
+    title: "LLM Architecture Gallery"
+    by: "Sebastian Raschka"
+    url: https://sebastianraschka.com/blog/2026/llm-architecture-gallery.html
+    edition_or_term: "Updated 2026-03-14: 93 model cards from 42 articles/reports"
+    access: free
+    use: "Use the side-by-side diff tool and fact sheets (attention type, layer recipe, estimated KV-cache growth per token) when comparing two models; also at llm-gallery.com."
+    why: "Quick lookup/reference of architecture facts across 90+ models; complements the narrative article."
+    verified: true
+  - id: smol-playbook-arch
+    role: secondary
+    kind: article
+    title: "The Smol Training Playbook, 'Designing the Model Architecture' section"
+    by: "Hugging Face (Allal, Tunstall, Tazi, Bakouch, Beeching, et al.)"
+    url: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook
+    edition_or_term: "Published 2025-10-30"
+    access: free
+    use: "Architecture ablations at 1B/45B-token scale: MHA/MQA/GQA/MLA, document masking, embedding tying, RoPE vs NoPE vs partial RoPE, attention scope; read alongside SmolLM3 blog (https://huggingface.co/blog/smollm3)."
+    why: "Gives measured ablation evidence (not just descriptions) for individual design choices, which the survey articles lack."
+    verified: true
+  - id: olmo3
+    role: secondary
+    kind: paper
+    title: "Olmo 3 (technical report) and 2 OLMo 2 Furious"
+    by: "Ai2 (Olmo team)"
+    url: https://arxiv.org/abs/2512.13961
+    edition_or_term: "Olmo 3: Nov 2025 (arXiv 2512.13961); OLMo 2: arXiv 2501.00656"
+    access: free
+    use: "Architecture and stability sections: post-norm, QK-norm, RoPE/long-context extension, sliding-window layers; skim data/post-training sections (covered in other nodes). OLMo 2 paper (https://arxiv.org/abs/2501.00656) sections on architecture/stability."
+    why: "A fully open 'model flow' (data, code, intermediate checkpoints) so every architecture decision is inspectable; best case study to read after the survey."
+    verified: true
+  - id: deepseek-v3
+    role: secondary
+    kind: paper
+    title: "DeepSeek-V3 Technical Report (and DeepSeek-V2 for MLA)"
+    by: "DeepSeek-AI"
+    url: https://arxiv.org/abs/2412.19437
+    edition_or_term: "arXiv 2412.19437 (V3); V2: https://arxiv.org/abs/2405.04434"
+    access: free
+    use: "Section 2 (MLA, DeepSeekMoE with auxiliary-loss-free balancing, multi-token prediction) and the FP8 training discussion for numerics. DeepSeek-V2 section 2.1 for MLA derivation."
+    why: "The reference implementation of MLA + fine-grained MoE + FP8 numerics, three of this node's scope items in one paper."
+    verified: true
+  - id: rope-paper
+    role: reference
+    kind: paper
+    title: "RoFormer (RoPE) and YaRN"
+    by: "Su et al.; Peng et al."
+    url: https://arxiv.org/abs/2104.09864
+    edition_or_term: "RoPE 2021; YaRN https://arxiv.org/abs/2309.00071 (2023)"
+    access: free
+    use: "RoPE sections 3.1-3.4 (rotation formulation, relative-position property); YaRN for context extension (NTK-by-parts, attention temperature)."
+    why: "Primary sources for positional encoding and long-context extension."
+    verified: true
+  - id: gqa-paper
+    role: reference
+    kind: paper
+    title: "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints"
+    by: "Ainslie et al."
+    url: https://arxiv.org/abs/2305.13245
+    edition_or_term: "2023"
+    access: free
+    use: "Sections 2-3 (uptraining MHA to GQA, quality/speed trade-off)."
+    why: "Primary source for KV-cache-efficient attention that nearly every 2024-26 model uses."
+    verified: true
+  - id: switch-mixtral-moe
+    role: reference
+    kind: paper
+    title: "Switch Transformers and Mixtral of Experts (MoE)"
+    by: "Fedus et al.; Jiang et al."
+    url: https://arxiv.org/abs/2101.03961
+    edition_or_term: "Switch 2021; Mixtral https://arxiv.org/abs/2401.04088 (2024)"
+    access: free
+    use: "Switch: routing, load-balancing loss, capacity factor; Mixtral: top-2 routing in an open model; pair with Hugging Face 'Mixture of Experts Explained' (https://huggingface.co/blog/moe)."
+    why: "Canonical MoE routing and balancing references behind the 'MoE' scope item."
+    verified: true
+  - id: mamba2
+    role: reference
+    kind: paper
+    title: "Mamba and Transformers are SSMs (Mamba-2)"
+    by: "Gu and Dao; Dao and Gu"
+    url: https://arxiv.org/abs/2405.21060
+    edition_or_term: "Mamba https://arxiv.org/abs/2312.00752 (2023); Mamba-2 2024"
+    access: free
+    use: "Mamba-2 sections 1-5 (state-space duality, link to linear attention); read with Raschka 'Beyond Standard LLMs' (https://magazine.sebastianraschka.com/p/beyond-standard-llms) for linear/hybrid/diffusion alternatives in 2025-26 models."
+    why: "Covers the 'attention alternatives (SSMs)' scope item and shows why hybrids (Qwen3-Next, Kimi Linear) are now common."
+    verified: true
+  - id: visual-guides
+    role: secondary
+    kind: article
+    title: "A Visual Guide to Mixture of Experts / to Mamba and State Space Models"
+    by: "Maarten Grootendorst"
+    url: https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts
+    edition_or_term: "2024"
+    access: free
+    use: "Read before the MoE/SSM papers; Mamba guide at https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mamba-and-state"
+    why: "Fast visual on-ramp that makes the papers readable; fills the intuition gap for routing and selective state spaces."
+    verified: true
+  - id: glu-rmsnorm
+    role: reference
+    kind: paper
+    title: "GLU Variants Improve Transformer (SwiGLU) and Root Mean Square Layer Normalization"
+    by: "Noam Shazeer; Zhang and Sennrich"
+    url: https://arxiv.org/abs/2002.05202
+    edition_or_term: "2020; RMSNorm https://arxiv.org/abs/1910.07467 (2019)"
+    access: free
+    use: "Short papers; read the SwiGLU result table and RMSNorm definition."
+    why: "Primary sources for the FFN and normalization choices in virtually every modern decoder."
+    verified: true
+considered:
+  - {title: "Lilian Weng: The Transformer Family Version 2.0", url: "https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/", reason: "Excellent but 2023; predates MLA, modern MoE and hybrid attention."}
+  - {title: "Hugging Face Ultra-Scale Playbook", url: "https://huggingface.co/spaces/nanotron/ultrascale-playbook", reason: "Parallelism/GPU-systems focus (G9 territory) not architecture design."}
+  - {title: "Hands-On LLMs ch. 3 'Looking Inside Transformer LLMs'", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", reason: "Basic block-level view only; does not cover GQA/MLA/MoE."}
+  - {title: "Llama 3 Herd of Models / Qwen3 / Gemma 3 technical reports", url: "https://arxiv.org/abs/2407.21783", reason: "Good primary sources (Qwen3: 2505.09388, Gemma 3: 2503.19786) but already summarised in Raschka's article; read selectively."}
+  - {title: "How to Scale Your Model (JAX scaling book)", url: "https://jax-ml.github.io/scaling-book/", reason: "Transformer math and sharding for TPUs; belongs to ML-systems nodes, useful for architecture FLOP/memory accounting."}
+notes: "Primary route: read Raschka's comparison alongside CS336 L3-4, then reimplement 2-3 variants from the LLMs-from-scratch bonus code (GQA, MLA, MoE, sliding window). The field moves fast: Raschka's article and gallery are updated every 1-3 months (latest edit 2026-04-02 adds Gemma 4); revisit before use. The 'numerics' scope item is covered thinly here (DeepSeek-V3 FP8, CS336 L2/L5, nanochat); mixed-precision detail is better in dl-engineering/ML-systems nodes."
+split_proposal: null
+prereq_changes: "Add soft: [dl-engineering] for the numerics (bf16/fp8) material. Also suggest scaling-and-pretraining list llm-architectures as a soft prerequisite."
+open_questions:
+  - "CS336 lecture_03/04 PDFs are on GitHub (not reachable by curl from sandbox); the course page lists them for Spring 2026."
+  - "Raschka's article is a Substack post updated in place; the 2026-04-02 update date was read from the page, later additions (e.g. DeepSeek V4) may exist."
+last_verified: 2026-11-18

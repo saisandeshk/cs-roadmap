@@ -1,0 +1,173 @@
+id: pretraining-data
+title: Pretraining Data
+group: G7
+paths: [llm]
+hard: [language-modeling]
+soft: []
+scope: "Web-scale data pipelines, extraction, filtering, dedup, mixtures, data quality."
+
+level: intermediate
+estimated_hours: 35
+resources:
+  - id: fineweb-blog
+    role: primary-text
+    kind: article
+    title: "FineWeb: decanting the web for the finest text data at scale (interactive blog) and The FineWeb Datasets (paper)"
+    by: "Guilherme Penedo, Hynek Kydlicek, Loubna Ben Allal, Anton Lozhkov, Margaret Mitchell, Colin Raffel, Leandro von Werra, Thomas Wolf (Hugging Face)"
+    url: https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1
+    edition_or_term: "Blog 2024; paper arXiv 2406.17557 (June 2024)"
+    access: free
+    use: "Read the whole blog: Common Crawl WARC vs WET extraction (trafilatura), base filtering, per-dump vs global MinHash dedup and why more dedup hurt, C4-style and custom heuristic filters, FineWeb-Edu LLM-annotated classifier, ablation methodology (small models, multiple benchmarks). Paper: https://arxiv.org/abs/2406.17557"
+    why: "The most transparent end-to-end description of building a 15T-token web corpus with every decision backed by an ablation; the best single teaching text for this node. (The interactive Space did not render in my fetch; the paper abstract and arXiv page were verified.)"
+    verified: true
+  - id: cs336-data
+    role: primary-course
+    kind: course
+    title: "Stanford CS336, Lectures 13-14 (Data) and Assignment 4"
+    by: "Percy Liang"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 13 (data sources, datasets: lecture_13.py trace) and Lecture 14 (filtering, deduplication, mixing, synthetic data: lecture_14.py trace); Assignment 4 (per the course page: convert raw Common Crawl dumps into usable pretraining data, then filter and deduplicate to improve model performance)."
+    why: "Only course that has you build the pipeline yourself, with public executable lecture notes (trace viewer) and public tests; recordings of the Spring 2026 run are public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      assignments: public-with-autograder
+      assignments_url: https://github.com/stanford-cs336/assignment4-data
+  - id: cs336-a4
+    role: practice
+    kind: practice-site
+    title: "CS336 Assignment 4: Data (cs336_data starter + tests)"
+    by: "Stanford CS336 staff"
+    url: https://github.com/stanford-cs336/assignment4-data
+    edition_or_term: "Spring 2026 (handout cs336_assignment4_data.pdf)"
+    access: free
+    use: "Implement the empty cs336_data module (the README mentions WET files and an is_english method; the handout PDF specifies the filtering and dedup tasks); run test_and_make_submission.sh. Data is provided via Modal /shared-data for students; others use scripts/download_data.py (--offline-only)."
+    why: "Concrete, test-graded practice; MIT-licensed and public."
+    verified: true
+  - id: datatrove
+    role: practice
+    kind: tool
+    title: "DataTrove (examples/fineweb.py, minhash_deduplication.py)"
+    by: "Hugging Face"
+    url: https://github.com/huggingface/datatrove
+    edition_or_term: "Current main (no tagged releases visible)"
+    access: free
+    use: "Run examples/minhash_deduplication.py and process_common_crawl_dump.py on one Common Crawl segment with LocalPipelineExecutor; read examples/fineweb.py end-to-end and compare it to the blog's pipeline; try sentence_deduplication.py."
+    why: "The production-grade library that actually produced FineWeb/FineWeb2; shows executor design (local/Slurm/Ray) beyond the assignment's single-machine code."
+    verified: true
+  - id: dclm
+    role: secondary
+    kind: paper
+    title: "DataComp-LM: In search of the next generation of training sets for language models (paper + repo)"
+    by: "Li et al. (DataComp team)"
+    url: https://arxiv.org/abs/2406.11794
+    edition_or_term: "2024 (repo: https://github.com/mlfoundations/dclm)"
+    access: free
+    use: "Paper sections on the benchmark design (fixed compute scales 400M-1x to 7B), the model-based fastText quality filter result and ablations; repo: ray_processing/process.py YAML pipelines, dedup/ (BFF), tokenize_shuffle, eval CORE tasks."
+    why: "Gives a controlled testbed and the strongest published evidence that model-based quality filtering dominates heuristics; repo reproduces it (the smallest 400M-1x scale is about 26 H100-hours; some steps assume AWS)."
+    verified: true
+  - id: dolma-olmo3
+    role: secondary
+    kind: paper
+    title: "Dolma (3T-token open corpus) and Olmo 3 / Dolma 3 data releases"
+    by: "Soldaini et al. (Ai2)"
+    url: https://arxiv.org/abs/2402.00159
+    edition_or_term: "Dolma 2024; Dolma 3 (about 9.3T-token pool, 5.9T mix) with Dolmino/Longmino/Dolci released Nov 2025"
+    access: free
+    use: "Dolma paper sections on source mix, language ID, quality/toxicity filters, URL/doc/paragraph dedup, decontamination; then Ai2's Olmo 3 blog (https://allenai.org/blog/olmo3) for mid-training and long-context data and the datamap-rs / duplodocus / decon tools."
+    why: "Documents a mixture (code, papers, books, Reddit, web) rather than web-only, and the tooling for dedup and benchmark decontamination, which FineWeb does not."
+    verified: true
+  - id: nemotron-cc
+    role: secondary
+    kind: paper
+    title: "Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset"
+    by: "NVIDIA"
+    url: https://arxiv.org/abs/2412.02595
+    edition_or_term: "Dec 2024"
+    access: free
+    use: "Classifier ensembling, synthetic rephrasing of low-quality and distillation of high-quality documents, and the long-horizon (15T-token) comparison to FineWeb-Edu/DCLM."
+    why: "Shows what to do when aggressive filtering runs out of tokens: synthetic data and recall-preserving classifier ensembles."
+    verified: true
+  - id: fineweb2
+    role: secondary
+    kind: paper
+    title: "FineWeb2: One Pipeline to Scale Them All"
+    by: "Hugging Face"
+    url: https://arxiv.org/abs/2506.20920
+    edition_or_term: "June 2025"
+    access: free
+    use: "Per-language adaptation of language ID, dedup and filter thresholds; dataset card at https://huggingface.co/datasets/HuggingFaceFW/fineweb-2"
+    why: "Fills the multilingual gap that English-only FineWeb/DCLM leave."
+    verified: true
+  - id: dedup-lee
+    role: reference
+    kind: paper
+    title: "Deduplicating Training Data Makes Language Models Better"
+    by: "Lee et al."
+    url: https://arxiv.org/abs/2107.06499
+    edition_or_term: "ACL 2022"
+    access: free
+    use: "Sections 3-4 (ExactSubstr suffix-array dedup, NearDup MinHash) and memorization results."
+    why: "Primary reference for the dedup algorithms and the case for them."
+    verified: true
+  - id: pretrainers-guide
+    role: reference
+    kind: paper
+    title: "A Pretrainer's Guide to Training Data: Measuring the Effects of Data Age, Domain Coverage, Quality, & Toxicity"
+    by: "Longpre et al."
+    url: https://arxiv.org/abs/2305.13169
+    edition_or_term: "NAACL 2024"
+    access: free
+    use: "Sections on quality/toxicity filter trade-offs and temporal shift."
+    why: "Controlled evidence on side effects of filters (e.g. toxicity filtering hurting identity-related performance) to temper 'filter harder' instincts."
+    verified: true
+  - id: refinedweb
+    role: reference
+    kind: paper
+    title: "The RefinedWeb Dataset for Falcon LLM"
+    by: "Penedo et al. (TII)"
+    url: https://arxiv.org/abs/2306.01116
+    edition_or_term: "2023"
+    access: free
+    use: "Pipeline section (trafilatura extraction, heuristics, fuzzy dedup)."
+    why: "Direct predecessor of FineWeb; useful to see the web-only-data hypothesis first made."
+    verified: true
+  - id: c4-documentation
+    role: reference
+    kind: paper
+    title: "Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus"
+    by: "Dodge et al."
+    url: https://arxiv.org/abs/2104.08758
+    edition_or_term: "EMNLP 2021"
+    access: free
+    use: "Findings on what blocklist filtering removes (disproportionately minority-identity text), source distribution, benchmark contamination."
+    why: "Models how to audit a corpus; fills the data-governance/documentation gap."
+    verified: true
+  - id: smol-playbook-data
+    role: secondary
+    kind: article
+    title: "The Smol Training Playbook, data curation / mixture sections"
+    by: "Hugging Face"
+    url: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook
+    edition_or_term: "2025-10-30"
+    access: free
+    use: "Data mixture ablations and staged curricula for SmolLM3 (web, code, math, multilingual); scaling-and-pretraining cross-references."
+    why: "Shows how a small team chooses mixture weights and annealing data in practice."
+    verified: true
+considered:
+  - {title: "Data Mixing Laws (Ye et al., 2024) / DoReMi (Xie et al., 2023)", url: "https://arxiv.org/abs/2403.16952", reason: "Good for mixture optimization (DoReMi: 2305.10429) but better placed with scaling-and-pretraining; listed here only as a pointer."}
+  - {title: "Scaling Language Models: Gopher (Rae et al., 2021), Appendix A (MassiveText quality rules)", url: "https://arxiv.org/abs/2112.11446", reason: "Origin of the heuristic filters CS336 A4 asks you to implement; covered in the assignment handout."}
+  - {title: "Common Crawl documentation / WARC-WET-WAT formats", url: "https://commoncrawl.org/get-started", reason: "Useful operational reference; not verified individually and subsumed by DataTrove/A4."}
+  - {title: "Data Cards Playbook (Google)", url: "https://sites.research.google/datacardsplaybook/guide/", reason: "Dataset documentation practice; from the owner's previous curation, peripheral to pipeline-building."}
+  - {title: "Rho-1: Not All Tokens Are What You Need", url: "https://arxiv.org/abs/2404.07965", reason: "Token-level data selection idea; research-frontier, not core."}
+notes: "Primary route: FineWeb blog for the design logic, then CS336 L13-14 and Assignment 4 to implement it, then DataTrove to see the scalable version; DCLM and Dolma/Olmo 3 provide the alternative recipes. Full-scale reproduction needs a cluster; A4 uses small slices. Synthetic/rephrased data is only lightly covered (CS336 L14, Nemotron-CC); there is no single good text for it."
+split_proposal: null
+prereq_changes: "None required; suggest soft: [nlp-foundations] (tokenization/language ID/n-gram LM filters)."
+open_questions:
+  - "FineWeb blog Space content is rendered client-side and my fetch returned only the page header; section list in 'use' is from the published blog and the paper, which I could open."
+  - "CS336 lecture_13/14 are executable-trace pages on cs336.stanford.edu/lectures; opened the viewer shell only."
+last_verified: 2026-11-18

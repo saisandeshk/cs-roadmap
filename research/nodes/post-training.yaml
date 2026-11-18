@@ -1,0 +1,202 @@
+id: post-training
+title: "Post-Training: SFT & Preference Tuning"
+group: G7
+paths: [llm]
+hard: [language-modeling]
+soft: [policy-gradient-methods]
+scope: "Instruction tuning, SFT, reward models, RLHF overview, DPO and variants, distillation, synthetic data."
+
+level: advanced
+estimated_hours: 50
+resources:
+  - id: rlhf-book
+    role: primary-text
+    kind: book
+    title: "Reinforcement Learning from Human Feedback (The RLHF Book)"
+    by: "Nathan Lambert"
+    url: https://rlhfbook.com/
+    edition_or_term: "Web version live (changelog built 2026-11-11, arXiv 2504.12501); Manning print/ePub July 2026, first reprint Oct 2026"
+    access: mixed
+    use: "Ch. 3 training overview/canonical recipes (https://rlhfbook.com/c/03-training-overview), ch. 4 instruction tuning (https://rlhfbook.com/c/04-instruction-tuning), ch. 5 reward models, ch. 8 direct alignment (DPO and variants, https://rlhfbook.com/c/08-direct-alignment), ch. 11 preference data, ch. 12 synthetic data and distillation (https://rlhfbook.com/c/12-synthetic-data), ch. 14-15 over-optimization/regularization (https://rlhfbook.com/c/14-over-optimization). Ch. 6-7 (policy gradients, reasoning) belong to G8's rl-for-llms."
+    why: "The only book-length, up-to-date treatment of the whole post-training pipeline; free online, with a code repo and now a print edition. Free web text + paid print; judged on quality."
+    verified: true
+  - id: lambert-post-training-course
+    role: primary-course
+    kind: course
+    title: "The Post-Training Course (with Nathan Lambert's RLHF Book)"
+    by: "Nathan Lambert"
+    url: https://rlhfbook.com/course
+    edition_or_term: "2026 run (completed Aug 2026 per rlhfbook.com)"
+    access: free
+    use: "Lectures 0-2 (foundations, overview of post-training, instruction fine-tuning/reward models/rejection sampling), 6 (DPO), 7 (synthetic data and modern methods), 8 (preferences and preference data), 9-10 (over-optimization, regularization, why SFT forgets), plus Q&A sessions; lectures 3-5 (RL, reasoning) are G8 material. Slides, videos and source files are openly hosted."
+    why: "Course built directly on the primary text; recordings are free on YouTube. Gap: no assignments are posted (a Q&A entry asks for them with no answer), so pair with CS336 A5 and smol-course for practice."
+    verified: true
+    course:
+      latest_term: "2026 (course finished Aug 2026)"
+      latest_url: https://rlhfbook.com/course
+      videos: public
+      assignments: none
+  - id: cs336-post-training
+    role: secondary
+    kind: course
+    title: "Stanford CS336, Lectures 15-16 (Mid/post-training SFT/RLHF; RLVR) and Assignment 5"
+    by: "Tatsunori Hashimoto"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 15 'Mid/Post-training (SFT/RLHF)' (lecture_15.pdf); Assignment 5 (https://github.com/stanford-cs336/assignment5-alignment): SFT and RL for math reasoning; optional Part 2 safety alignment incl. DPO. RL parts overlap G8's rl-for-llms."
+    why: "Stanford-quality lecture plus the only public implementation assignment covering SFT and DPO from scratch with tests; recordings public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      assignments: public-with-autograder
+      assignments_url: https://github.com/stanford-cs336/assignment5-alignment
+  - id: tulu3
+    role: secondary
+    kind: paper
+    title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training"
+    by: "Lambert et al. (Ai2)"
+    url: https://arxiv.org/abs/2411.15124
+    edition_or_term: "Nov 2024 (Open Instruct code and Dolci data in Olmo 3 flow)"
+    access: free
+    use: "Sections 3-4 (SFT data mixture and recipe, decontamination), 5 (preference data, DPO with length-normalisation), 6 (RLVR), 7 (evaluation framework). Pair with Olmo 3 post-training (https://arxiv.org/abs/2512.13961: SFT, DPO, RLVR on Dolci)."
+    why: "The most complete open recipe with ablations and released data/code; ties the book's chapters to real numbers."
+    verified: true
+  - id: smol-course
+    role: practice
+    kind: course
+    title: "Hugging Face smol course (instruction tuning, evaluation, preference alignment)"
+    by: "Hugging Face"
+    url: https://huggingface.co/learn/smol-course
+    edition_or_term: "Cohort-based, self-paced; units 1-4 released, RL/synthetic-data units were listed as planned"
+    access: free
+    use: "Unit 1 Instruction Tuning (SFT, chat templates), Unit 2 Evaluation (custom domain evals), Unit 3 Preference Alignment (DPO), Unit 4 VLMs (optional). Use TRL (https://huggingface.co/docs/trl/index) SFTTrainer and DPOTrainer."
+    why: "Runs on a single modest GPU with TRL; the fastest hands-on loop for SFT + DPO that the book and lectures do not provide."
+    verified: true
+    course:
+      latest_term: "Rolling cohort (dates on page: October/November planned units)"
+      latest_url: https://huggingface.co/learn/smol-course
+      videos: none
+      assignments: public
+      assignments_url: https://huggingface.co/learn/smol-course
+  - id: raschka-ch7
+    role: practice
+    kind: book
+    title: "Build a Large Language Model (From Scratch), ch. 7 (instruction finetuning), appendix E (LoRA) and DPO bonus notebook"
+    by: "Sebastian Raschka"
+    url: https://www.manning.com/books/build-a-large-language-model-from-scratch
+    edition_or_term: "2024; repo ch07 bonus includes preference data generation and DPO"
+    access: paid
+    use: "Implement SFT loss masking, instruction batching and evaluation with an LLM judge; appendix E LoRA; ch07/04_preference-tuning-with-dpo notebook (free in repo: https://github.com/rasbt/LLMs-from-scratch)."
+    why: "From-scratch PyTorch implementations (no trainer abstraction) of SFT, LoRA and DPO that show the loss math."
+    verified: true
+  - id: hf-llm-course-ch11
+    role: secondary
+    kind: course
+    title: "Hugging Face LLM Course, chapter 11 (Supervised Fine-Tuning) and chapter 12 (Open R1)"
+    by: "Hugging Face"
+    url: https://huggingface.co/learn/llm-course/chapter11/1
+    edition_or_term: "Current web version"
+    access: free
+    use: "Chat templates, SFT with TRL, LoRA, evaluation; ch. 12 only as pointer to reasoning-model training (G8)."
+    why: "Concise practical SFT walkthrough with a library; complements the from-scratch notebooks."
+    verified: true
+    course:
+      latest_term: "Rolling (self-paced)"
+      latest_url: https://huggingface.co/learn/llm-course/chapter11/1
+      videos: none
+      assignments: none
+  - id: instructgpt
+    role: reference
+    kind: paper
+    title: "Training language models to follow instructions with human feedback (InstructGPT)"
+    by: "Ouyang et al."
+    url: https://arxiv.org/abs/2203.02155
+    edition_or_term: "2022"
+    access: free
+    use: "Sections 3-4 (SFT, reward model, PPO pipeline, data collection) as the template for the three-stage recipe."
+    why: "Primary source for the RLHF pipeline the book formalises."
+    verified: true
+  - id: dpo
+    role: reference
+    kind: paper
+    title: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model"
+    by: "Rafailov et al."
+    url: https://arxiv.org/abs/2305.18290
+    edition_or_term: "NeurIPS 2023"
+    access: free
+    use: "Sections 4-5 (derivation of the loss from the KL-constrained RLHF objective); variants: SimPO https://arxiv.org/abs/2405.14734, ORPO https://arxiv.org/abs/2403.07691, Zephyr https://arxiv.org/abs/2310.16944."
+    why: "The defining derivation for direct alignment; variants show reference-free and length-aware modifications."
+    verified: true
+  - id: lora-papers
+    role: reference
+    kind: paper
+    title: "LoRA, LoRA Learns Less and Forgets Less, QLoRA, and 'LoRA Without Regret'"
+    by: "Hu et al.; Biderman et al.; Dettmers et al.; Thinking Machines Lab"
+    url: https://arxiv.org/abs/2106.09685
+    edition_or_term: "LoRA 2021; Biderman https://arxiv.org/abs/2405.09673 (2024); QLoRA https://arxiv.org/abs/2305.14314; blog https://thinkingmachines.ai/blog/lora/"
+    access: free
+    use: "LoRA sections 4-5; Biderman for forgetting vs learning trade-offs; 'LoRA Without Regret' for when LoRA matches full fine-tuning (including RL)."
+    why: "Parameter-efficient adaptation is how most practitioners post-train; these give the evidence for when it works."
+    verified: true
+  - id: data-for-sft
+    role: reference
+    kind: paper
+    title: "LIMA: Less Is More for Alignment; Self-Instruct"
+    by: "Zhou et al.; Wang et al."
+    url: https://arxiv.org/abs/2305.11206
+    edition_or_term: "LIMA 2023; Self-Instruct https://arxiv.org/abs/2212.10560 (2022)"
+    access: free
+    use: "LIMA 'superficial alignment' argument and data-quality results; Self-Instruct bootstrapping pipeline."
+    why: "Primary sources for SFT data quality and synthetic instruction generation (the synthetic-data scope item)."
+    verified: true
+  - id: rlaif-cai
+    role: reference
+    kind: paper
+    title: "Constitutional AI and RLAIF vs. RLHF"
+    by: "Bai et al. (Anthropic); Lee et al."
+    url: https://arxiv.org/abs/2212.08073
+    edition_or_term: "CAI 2022; RLAIF https://arxiv.org/abs/2309.00267 (2023)"
+    access: free
+    use: "AI-feedback pipelines for preference data; critique-and-revision for SFT data."
+    why: "Covers AI-generated preference labels, the dominant data source in open recipes."
+    verified: true
+  - id: reward-model-issues
+    role: reference
+    kind: paper
+    title: "RewardBench; Scaling Laws for Reward Model Overoptimization; A Long Way to Go (length correlations in RLHF)"
+    by: "Lambert et al.; Gao et al.; Singhal et al."
+    url: https://arxiv.org/abs/2403.13787
+    edition_or_term: "RewardBench 2024; Gao https://arxiv.org/abs/2210.10760; Singhal https://arxiv.org/abs/2310.03716"
+    access: free
+    use: "How reward models are evaluated and where they fail (over-optimization, length bias)."
+    why: "Covers the reward-model portion of scope with the failure modes the book summarises."
+    verified: true
+  - id: distillation-papers
+    role: reference
+    kind: paper
+    title: "Distillation: Hinton et al., MiniLLM, On-Policy Distillation (GKD), and Thinking Machines' 'On-Policy Distillation'"
+    by: "Hinton et al.; Gu et al.; Agarwal et al.; Thinking Machines Lab"
+    url: https://arxiv.org/abs/1503.02531
+    edition_or_term: "Hinton 2015; MiniLLM https://arxiv.org/abs/2306.08543; GKD https://arxiv.org/abs/2306.13649; blog https://thinkingmachines.ai/blog/on-policy-distillation/"
+    access: free
+    use: "Hinton for soft-label KD; MiniLLM and GKD for sequence-level / on-policy KD of LLMs; the blog for a recent practical account."
+    why: "Covers the distillation scope item (off-policy vs on-policy)."
+    verified: true
+considered:
+  - {title: "CMU 11-711 / 11-667 (instruction tuning lectures; Fall 2024 YouTube)", url: "https://cmu-l3.github.io/anlp-fall2025/", reason: "Single lectures on instruction tuning/distillation; Lambert's course is deeper and fully public."}
+  - {title: "Allen AI Open Instruct (Tulu 3 training code)", url: "https://github.com/allenai/open-instruct", reason: "The production codebase behind Tulu/Olmo post-training; heavy to run; GitHub not reachable by curl (not verified)."}
+  - {title: "Maxime Labonne, LLM Course / LLM Engineer's Handbook", url: "https://github.com/mlabonne/llm-course", reason: "Popular notebooks for SFT/DPO/merging; not opened by me, quality varies."}
+  - {title: "Build a Reasoning Model (From Scratch), ch. 8 (distillation)", url: "https://www.manning.com/books/build-a-reasoning-model-from-scratch", reason: "Reasoning-focused; mostly G8; good for reasoning-trace distillation."}
+  - {title: "Karpathy nanochat chat_sft.py / chat_rl.py", url: "https://github.com/karpathy/nanochat", reason: "Minimal reference SFT/RL stage inside a full pipeline; already in language-modeling."}
+  - {title: "DeepSeek-R1 report", url: "https://arxiv.org/abs/2501.12948", reason: "RL-for-reasoning; belongs to rl-for-llms (G8)."}
+notes: "Primary route: RLHF Book chapters 3-5, 8, 11-12 with Lambert's lecture series, then do SFT+DPO via the smol-course/TRL or Raschka's notebooks, and read Tulu 3 for a full recipe. The RL halves (policy gradients, GRPO, RLVR) are intentionally left to rl-for-llms. The book is free on the web and printed by Manning (July 2026), so access is 'mixed'."
+split_proposal: null
+prereq_changes: "Hard prereq language-modeling is right; consider adding soft: [llm-evaluation] (judge/reward-model evaluation) and a note that rl-for-llms depends on this node."
+open_questions:
+  - "Lambert course page does not list assignments; whether a graded problem set exists elsewhere is unknown."
+  - "smol-course unit status (RL/synthetic-data units 'planned for October/November') may refer to 2025; check the page for the current state."
+  - "Whether the exact chapter numbers (e.g. ch. 8 direct alignment, ch. 11 preference data) match the print edition: URLs were opened on the web version."
+last_verified: 2026-11-18

@@ -1,0 +1,108 @@
+id: language-modeling
+title: Language Modeling from Scratch
+group: G7
+paths: [llm]
+hard: [transformers, dl-engineering]
+soft: []
+scope: "BPE tokenization, building and training a GPT, sampling, LM evaluation basics."
+
+level: intermediate
+estimated_hours: 70
+resources:
+  - id: raschka-llm-from-scratch
+    role: primary-text
+    kind: book
+    title: "Build a Large Language Model (From Scratch)"
+    by: "Sebastian Raschka"
+    url: https://www.manning.com/books/build-a-large-language-model-from-scratch
+    edition_or_term: "Manning, Sept 2024 (368 pp.); companion repo continuously updated with Qwen3/Gemma/Olmo 3 bonus material"
+    access: paid
+    use: "Ch. 2 text data/BPE (+ ch02/05_bpe-from-scratch), ch. 3 attention, ch. 4 GPT model (+ KV-cache and FLOPs bonus notebooks), ch. 5 pretraining and decoding (temperature/top-k, loading weights, perplexity), appendix D training-loop extras. Ch. 6-7 (classification and instruction finetuning) are used by post-training. Code is free: github.com/rasbt/LLMs-from-scratch."
+    why: "The most complete runnable walk from raw text to a trained GPT with sampling and basic evaluation, aimed exactly at this node's scope; the repo is freely usable and kept current (1,090 commits, modern-architecture bonus notebooks), so the paid book is optional but recommended."
+    verified: true
+  - id: cs336
+    role: primary-course
+    kind: course
+    title: "Stanford CS336: Language Modeling from Scratch"
+    by: "Tatsunori Hashimoto, Percy Liang"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 1 (overview, tokenization), Lecture 2 (PyTorch/einops, resource accounting: FLOPs, memory, arithmetic intensity), Assignment 1 (BPE tokenizer, Transformer LM, AdamW, training loop, decoding on TinyStories/OpenWebText). Later lectures are used by the other LLM nodes (3-4 architectures, 9/11 scaling, 12 evaluation, 13-14 data, 15-16 post-training)."
+    why: "The best end-to-end course on building an LM; minimal scaffolding, deep implementation, public pytest suite, recordings of the current (Spring 2026) run are public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      assignments: public-with-autograder
+      assignments_url: https://github.com/stanford-cs336/assignment1-basics
+  - id: cs336-a1
+    role: practice
+    kind: practice-site
+    title: "CS336 Assignment 1: Basics (tokenizer, Transformer LM, training)"
+    by: "Stanford CS336 staff"
+    url: https://github.com/stanford-cs336/assignment1-basics
+    edition_or_term: "Spring 2026 handout (cs336_assignment1_basics.pdf)"
+    access: free
+    use: "Implement byte-level BPE training + encoder, Transformer blocks, cross-entropy/AdamW/cosine schedule, checkpointing and generation; make `uv run pytest` pass via tests/adapters.py; train on TinyStories then an OpenWebText subsample."
+    why: "Only widely available assignment that grades a from-scratch tokenizer, model and training loop with hidden-shape unit tests; much harder (and more rigorous) than following a book notebook."
+    verified: true
+  - id: karpathy-zero-to-hero
+    role: secondary
+    kind: video-series
+    title: "Neural Networks: Zero to Hero (makemore, Let's build GPT, Let's build the GPT Tokenizer, Let's reproduce GPT-2)"
+    by: "Andrej Karpathy"
+    url: https://karpathy.ai/zero-to-hero.html
+    edition_or_term: "2022-2024 (series marked ongoing)"
+    access: free
+    use: "makemore parts 1-3 (bigram -> MLP -> activations/BatchNorm) if rusty on LM training diagnostics; 'Let's build GPT' (1h56m); 'Let's build the GPT Tokenizer' (2h13m, BPE gotchas); 'Let's reproduce GPT-2 (124M)' (https://www.youtube.com/watch?v=l8pRSuU81PU) for the speed/precision/torch.compile/DDP details. The page itself lists eight lectures and does not link the GPT-2 video."
+    why: "Best intuition-building live-coding; the tokenizer lecture explains pitfalls (spaces, numbers, glitch tokens) that books skim. Pairs well with the book chapter-by-chapter."
+    verified: true
+  - id: nanochat
+    role: practice
+    kind: tool
+    title: "nanochat (full-stack minimal ChatGPT-style training harness)"
+    by: "Andrej Karpathy"
+    url: https://github.com/karpathy/nanochat
+    edition_or_term: "Leaderboard entry dated 2026-03-14; README links guides from Oct 2025 - Feb 2026"
+    access: free
+    use: "Read tok_train.py, base_train.py, base_eval.py (CORE score, bits-per-byte); run speedrun.sh on rented 8xH100 (README: ~$48 for a GPT-2-capability model, ~1.5-2 h) as a capstone, or only read/run small-scale on one GPU."
+    why: "A single readable codebase (tokenizer, pretraining, SFT, RL, eval, KV-cache inference) that shows how a modern run is wired together; best capstone after the book/course. Requires paid GPU time for the full run."
+    verified: true
+  - id: slp3-ch7
+    role: reference
+    kind: book
+    title: "SLP3 ch. 3 (N-gram LMs) and ch. 7 (Transformers and Pretraining, incl. decoding/sampling)"
+    by: "Dan Jurafsky, James H. Martin"
+    url: https://web.stanford.edu/~jurafsky/slp3/7.pdf
+    edition_or_term: "Aug 19, 2026 draft"
+    access: free
+    use: "Perplexity definition and decoding/sampling methods (greedy, top-k/top-p, temperature) as a precise reference while implementing."
+    why: "Clean mathematical statement of LM evaluation (perplexity, bits-per-byte relationship) and decoding that implementation-first sources gloss over."
+    verified: false
+  - id: bpe-paper
+    role: reference
+    kind: paper
+    title: "Neural Machine Translation of Rare Words with Subword Units (BPE)"
+    by: "Sennrich, Haddow, Birch"
+    url: https://arxiv.org/abs/1508.07909
+    edition_or_term: "2015/ACL 2016"
+    access: free
+    use: "Sections 3-3.2 (the BPE algorithm); pair with SentencePiece (https://arxiv.org/abs/1808.06226) for language-independent training."
+    why: "Primary source for the tokenizer you implement in A1."
+    verified: true
+considered:
+  - {title: "karpathy/nanoGPT", url: "https://github.com/karpathy/nanoGPT", reason: "Repo says it is now deprecated in favour of nanochat (Nov 2025 note); still useful (train.py/model.py ~300 lines each, scaling_laws.ipynb) but superseded."}
+  - {title: "Hugging Face LLM Course (ch. 1-6)", url: "https://huggingface.co/learn/llm-course/chapter1/1", reason: "Library-usage oriented (use Transformers/Tokenizers) rather than build-from-scratch; kept for nlp-foundations tasks instead."}
+  - {title: "Build a Reasoning Model (From Scratch), Raschka (Manning, June 2026)", url: "https://www.manning.com/books/build-a-reasoning-model-from-scratch", reason: "Sequel on inference-time scaling, RLVR/GRPO and distillation on top of a pretrained Qwen3; belongs to llm-evaluation (ch. 3), post-training (ch. 8) and rl-for-llms (G8)."}
+  - {title: "Hands-On Large Language Models (Alammar, Grootendorst, O'Reilly 2024)", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", reason: "Excellent visual intuition but uses pretrained models via libraries; does not build a GPT."}
+  - {title: "CMU 11-711 Advanced NLP (Spring 2026)", url: "https://cmu-l3.github.io/anlp-spring2026/", reason: "Good code-walkthrough repos for LM fundamentals/pretraining, but no public lecture recordings found for 2025-26; CS336 is more implementation-focused."}
+  - {title: "Karpathy micrograd / makemore alone", url: "https://karpathy.ai/zero-to-hero.html", reason: "Included as secondary; not enough alone for tokenization and training-at-scale details."}
+notes: "Primary route: Raschka ch. 2-5 (free code) with Karpathy's GPT/tokenizer videos for intuition, then do CS336 Lectures 1-2 and Assignment 1 as the graded implementation, optionally nanochat as capstone. Prereqs 'transformers' (the architecture concept) and 'dl-engineering' (PyTorch training loops, mixed precision) are real: A1 gives no scaffolding. The 'LM evaluation basics' in scope = perplexity/bits-per-byte (SLP3 ch. 3/7, book ch. 5, nanochat base_eval); full evaluation methodology is in llm-evaluation."
+split_proposal: null
+prereq_changes: "None. Optional: add soft: [nlp-foundations] (n-gram LM and perplexity background)."
+open_questions:
+  - "SLP3 7.pdf URL not individually fetched (web.stanford.edu HTTPS unreachable from sandbox; chapter 7 confirmed on the index page as 'Transformers and Pretraining')."
+  - "Karpathy's Zero to Hero page does not list the GPT-2 reproduction lecture; verified the video separately via YouTube oEmbed."
+last_verified: 2026-11-18

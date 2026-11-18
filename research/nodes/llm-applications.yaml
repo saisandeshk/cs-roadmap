@@ -1,0 +1,177 @@
+id: llm-applications
+title: Building LLM Applications
+group: G7
+paths: [llm]
+branch: ai-engineering
+hard: [python-in-depth]
+soft: [llm-evaluation]
+scope: "Prompting, structured outputs, application evals, guardrails, cost/latency, production operation."
+
+level: intermediate
+estimated_hours: 45
+resources:
+  - id: ai-engineering-book
+    role: primary-text
+    kind: book
+    title: "AI Engineering: Building Applications with Foundation Models"
+    by: "Chip Huyen"
+    url: https://huyenchip.com/books/
+    edition_or_term: "O'Reilly, 2025 (publisher page blocked from my sandbox; author page lists the book)"
+    access: paid
+    use: "Ch. 1 (AI engineering stack and planning), ch. 3-4 (evaluation methodology and evaluating AI systems, incl. AI-as-judge), ch. 5 (prompt engineering, defensive prompting, injection), ch. 6 (RAG and agents overview), ch. 7-8 (finetuning, dataset engineering) as needed, ch. 9 (inference optimization: latency/cost), ch. 10 (architecture, monitoring, guardrails, user feedback). Skip the foundation-model internals chapter (ch. 2) if you did the language-modeling node."
+    why: "Best single book on building applications with foundation models: broad, current as of 2025, and explicitly about evaluation, cost/latency and production architecture; no competing book covers all of this node's scope. Paid; free alternatives below cover subsets."
+    verified: true
+  - id: cs329z
+    role: primary-course
+    kind: course
+    title: "Stanford CS329Z: Engineering AI Agents"
+    by: "Diyi Yang, Michael Ryan, John Yang"
+    url: https://cs329z.stanford.edu/
+    edition_or_term: "Fall 2026 (Mon/Wed 1:30-2:50pm; tentative schedule Sep 23 - Dec 2)"
+    access: free
+    use: "Weeks 1-4: foundations (compound AI systems), LLMs for builders (decoding, structured I/O and constrained decoding, context engineering), RAG, tool use/function calling and MCP, frameworks (DSPy, LangGraph) and agent design patterns; use the two homework repos (assignment1-harness, assignment2-harness) and lecture5-frameworks code. Memory/multi-agent weeks overlap llm-agents."
+    why: "Newest public course that teaches building LLM systems (pipelines, evals, tradeoffs) end to end; YouTube lectures on Stanford Online plus public MIT-licensed homework repos with pytest suites (live tests call a real model and cost money)."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://cs329z.stanford.edu/
+      videos: public
+      assignments: public-with-autograder
+      assignments_url: https://github.com/cs329z/assignment1-harness
+  - id: cs329z-hw1
+    role: practice
+    kind: practice-site
+    title: "CS329Z Assignment 1: Building an Agent Harness (data pipelines + tool-using agent)"
+    by: "Stanford CS329Z staff"
+    url: https://github.com/cs329z/assignment1-harness
+    edition_or_term: "Fall 2026 (handout cs329z_assignment1_harness.pdf)"
+    access: free
+    use: "Part 1 data pipelines (priority, digest, BM25 search, email Q&A, document search); Part 2 agent with tools and a terminal sandbox. Run deterministic pytest first, then `-m live` tests against a real model (costs money; thresholds in tests/thresholds.py)."
+    why: "Concrete, test-graded application-building project with offline tests, which is rare; also practises threshold-based evals."
+    verified: true
+  - id: claude-prompting-docs
+    role: secondary
+    kind: docs
+    title: "Prompt engineering overview (Claude Platform docs) and OpenAI prompt engineering guide"
+    by: "Anthropic; OpenAI"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
+    edition_or_term: "Current"
+    access: free
+    use: "Anthropic: clear/direct prompts, examples, XML structuring, chain of thought, system prompts, prefill, prompt chaining, long-context tips. OpenAI: https://platform.openai.com/docs/guides/prompt-engineering. Then structured output/tool docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/implement-tool-use."
+    why: "Vendor-maintained, up-to-date practical guidance; the two vendors disagree in places, which is itself instructive."
+    verified: true
+  - id: context-engineering
+    role: secondary
+    kind: article
+    title: "Effective context engineering for AI agents"
+    by: "Anthropic Engineering"
+    url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+    edition_or_term: "2025"
+    access: free
+    use: "Whole article: system prompt altitude, tool design, examples, just-in-time retrieval, compaction, structured note-taking."
+    why: "Current framing that extends prompting to managing the whole context window; matters for cost and latency."
+    verified: true
+  - id: applied-llms
+    role: secondary
+    kind: article
+    title: "What We've Learned From A Year of Building with LLMs"
+    by: "Eugene Yan, Bryan Bischof, Charles Frye, Hamel Husain, Jason Liu, Shreya Shankar"
+    url: https://applied-llms.org/
+    edition_or_term: "2024 (tactical/operational/strategic parts)"
+    access: free
+    use: "Read all three sections (about 1.5 h)."
+    why: "Hidden gem: concentrated practitioner lessons on prompting, evals, RAG, guardrails and team/process that textbooks lack."
+    verified: true
+  - id: hamel-evals-apps
+    role: secondary
+    kind: article
+    title: "AI Evals FAQ and Field Guide to Rapidly Improving AI Products"
+    by: "Hamel Husain"
+    url: https://hamel.dev/blog/posts/field-guide/
+    edition_or_term: "Living posts"
+    access: free
+    use: "Field guide (error analysis, custom viewers, synthetic data, LLM-as-judge validation); FAQ at https://hamel.dev/blog/posts/evals-faq/"
+    why: "Application-level evaluation workflow (look at your data first) which fills the 'application evals' scope item; complements llm-evaluation's benchmark focus."
+    verified: true
+  - id: anthropic-courses
+    role: practice
+    kind: practice-site
+    title: "Anthropic courses repo: prompt engineering interactive tutorial, real-world prompting, prompt evaluations, tool use"
+    by: "Anthropic"
+    url: https://github.com/anthropics/courses
+    edition_or_term: "Repo archived (read-only) on 2026-09-15; examples use Claude 3 Haiku"
+    access: free
+    use: "Do the prompt-engineering interactive tutorial (with exercises), 'Prompt evaluations' (write production prompt evals) and 'Tool use' notebooks; swap in a current cheap model."
+    why: "Hands-on, exercise-driven prompting and eval practice; archived and model-dated, but the exercises remain a good low-cost drill."
+    verified: true
+  - id: dspy
+    role: reference
+    kind: docs
+    title: "DSPy: programming (not prompting) LLMs"
+    by: "Stanford NLP / DSPy community"
+    url: https://dspy.ai/
+    edition_or_term: "Current docs; taught in CS329Z lecture 5"
+    access: free
+    use: "Signatures, modules, optimizers and evaluation metrics; implement one pipeline both ways (hand prompt vs optimized) and compare on a dev set."
+    why: "Shows prompt optimisation against a metric as an engineering practice; the main alternative to hand-written prompts."
+    verified: true
+  - id: structured-output
+    role: reference
+    kind: docs
+    title: "Structured outputs: Instructor (Pydantic-based) and provider JSON-schema features"
+    by: "Jason Liu / Instructor community"
+    url: https://python.useinstructor.com/
+    edition_or_term: "Current docs"
+    access: free
+    use: "Validation + retry loops with Pydantic; compare with provider-native structured output/tool-calling in Claude and OpenAI docs."
+    why: "Covers the 'structured outputs' scope item with the most widely used library pattern."
+    verified: true
+  - id: owasp-llm
+    role: reference
+    kind: docs
+    title: "OWASP Top 10 for LLM Applications"
+    by: "OWASP Gen AI Security Project"
+    url: https://genai.owasp.org/llm-top-10/
+    edition_or_term: "2025 list"
+    access: free
+    use: "Prompt injection, sensitive information disclosure, improper output handling, excessive agency, unbounded consumption; map each to a guardrail in your app."
+    why: "Fills the 'guardrails' scope item with the standard threat list."
+    verified: true
+  - id: eugene-yan-patterns
+    role: reference
+    kind: article
+    title: "Patterns for Building LLM-based Systems & Products"
+    by: "Eugene Yan"
+    url: https://eugeneyan.com/writing/llm-patterns/
+    edition_or_term: "2023 (still widely cited)"
+    access: free
+    use: "Seven patterns: evals, RAG, fine-tuning, caching, guardrails, defensive UX, collecting user feedback."
+    why: "Compact map of production patterns; partially superseded in details but still a good checklist."
+    verified: true
+  - id: hands-on-llms-ch6-7
+    role: secondary
+    kind: book
+    title: "Hands-On Large Language Models, ch. 6-7 (prompt engineering; advanced generation techniques and tools)"
+    by: "Jay Alammar, Maarten Grootendorst"
+    url: https://github.com/HandsOnLLM/Hands-On-Large-Language-Models
+    edition_or_term: "O'Reilly 2024 (notebooks free)"
+    access: mixed
+    use: "Chapter 6 and 7 notebooks: prompting, chains, memory, tools, constrained output."
+    why: "Visual, code-first complement if the O'Reilly book is not wanted; open-source model oriented (runs locally)."
+    verified: true
+considered:
+  - {title: "AI Engineering Handbook (handbook.academy)", url: "https://ai-eng.handbook.academy/", reason: "Free (CC BY-SA), 12 parts, 86 modules/170k words and growing, from the owner's previous curation; broad coverage of this node (APIs, prompting, eval, security, production) but anonymous authorship and still in development; revisit as a free alternative primary."}
+  - {title: "CMU 11-766 Large Language Model Applications (Spring 2026)", url: "https://cmu-llms.org/", reason: "Real course (Diaz, Ippolito) with assignments and project, but schedule/video/assignment visibility could not be established from the site (JS pages)."}
+  - {title: "CMU 17-445/645 Machine Learning in Production / AI Engineering 11-695", url: "https://mlip-cmu.github.io/s2026", reason: "Strong on ML-enabled system engineering and responsible AI; more MLOps than LLM-app specific; not examined in depth."}
+  - {title: "DeepLearning.AI short courses", url: "https://www.deeplearning.ai/short-courses/", reason: "Fast tool tutorials (LangChain, RAG, evals); variable depth and quickly dated; not verified individually."}
+  - {title: "Full Stack LLM Bootcamp (2023)", url: "https://fullstackdeeplearning.com/llm-bootcamp/", reason: "Landmark early course; videos still public but dated (2023)."}
+  - {title: "Hugging Face LLM Course / smol-course", url: "https://huggingface.co/learn/llm-course/chapter1/1", reason: "Model-side (Transformers/fine-tuning) not application-engineering."}
+  - {title: "LangChain/LangGraph/LlamaIndex docs", url: "https://docs.langchain.com/oss/python/langchain/overview", reason: "Framework docs: use as needed; frameworks churn and the course advises building the harness by hand first."}
+notes: "Primary route: Huyen's book (selected chapters) with the CS329Z Fall 2026 lectures and homework repos; use Anthropic/OpenAI docs and Applied LLMs/Hamel for practitioner depth. The primary text is paid; the free fallback is the Applied LLMs + Hamel + docs stack. The hard prerequisite python-in-depth is reasonable; an actual LLM API key and small budget are needed for practice."
+split_proposal: "Consider splitting production operation (observability, cost/latency, caching, routing, guardrails, security) into its own 'llmops-and-guardrails' node: the owner's seed treats it as its own unit (SRE book, OpenTelemetry GenAI conventions, prompt caching docs) and no single resource here covers it well."
+prereq_changes: "Add soft: [retrieval-and-rag] (RAG is a core application pattern) and soft: [post-training] (when to fine-tune vs prompt)."
+open_questions:
+  - "O'Reilly publisher page returns 403 from my sandbox; book details verified only via the author's books page."
+  - "CS329Z schedule is marked tentative; one lecture video (youtu.be/DGI4vucR71w) returned 'Unauthorized' to oEmbed, others resolve."
+  - "CMU 11-766 materials could not be inspected."
+last_verified: 2026-11-18
