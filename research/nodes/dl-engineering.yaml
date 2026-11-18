@@ -47,7 +47,7 @@ resources:
     kind: article
     title: "A Recipe for Training Neural Networks"
     by: "Andrej Karpathy"
-    url: http://karpathy.github.io/2019/04/25/recipe/
+    url: https://karpathy.github.io/2019/04/25/recipe/
     edition_or_term: "Blog post (April 2019)"
     access: free
     use: "Debugging checklist: verify loss at init, overfit one batch, inspect inputs just before the net, visualize predictions, add complexity step by step."
@@ -69,7 +69,7 @@ resources:
     kind: article
     title: "PyTorch internals"
     by: "Edward Z. Yang"
-    url: http://blog.ezyang.com/2019/05/pytorch-internals/
+    url: https://blog.ezyang.com/2019/05/pytorch-internals/
     edition_or_term: "Blog post (May 2019); concepts (tensor/storage/strides, dispatcher, autograd) still apply"
     access: free
     use: "Whole article: Tensor, Storage, strides, views, dispatch and autograd internals; useful before writing custom ops or debugging in-place/view errors."

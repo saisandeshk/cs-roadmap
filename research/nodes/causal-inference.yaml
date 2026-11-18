@@ -30,7 +30,7 @@ resources:
     url: https://www.bradyneal.com/causal-inference-course
     edition_or_term: "Fall 2020 (online, from the ML perspective); draft textbook 'Introduction to Causal Inference'"
     access: free
-    use: "Watch all lectures: motivation, potential outcomes, graphical models and flow of association/causation, backdoor adjustment and structural causal models, randomized experiments, nonparametric identification, estimation (propensity scores, matching, doubly robust, double ML, causal trees), unobserved confounding (sensitivity analysis, instruments), counterfactuals, transportability, discovery. Read the matching book chapters."
+    use: "Watch the lectures in schedule order (motivation, potential outcomes, graphs and the flow of association and causation, backdoor adjustment and structural causal models, then identification/estimation, unobserved confounding and later weeks; see the course page schedule for the full list). Read the matching chapters of the draft book."
     why: "The only full video course on the potential-outcomes + DAG + modern ML-estimation sequence that matches this node's scope; slides and the book draft are free."
     verified: true
     course:
@@ -47,7 +47,7 @@ resources:
     url: https://mixtape.scunning.com/
     edition_or_term: "Online version of the second edition (work in progress; do not mix with the 2021 first edition)"
     access: free
-    use: "Potential outcomes, DAGs, regression discontinuity, instrumental variables, difference-in-differences (including modern staggered-adoption estimators), synthetic control; code in R, Stata and Python."
+    use: "Potential outcomes, DAGs, regression discontinuity, instrumental variables, difference-in-differences, synthetic control; code in R/Stata/Python (check which languages each chapter ships, second edition is mid-revision)."
     why: "Fills the econometrics gap in Hernan-Robins: diff-in-diff, RD, IV and synthetic control with worked code."
     verified: true
   - id: effect-book
@@ -67,7 +67,7 @@ resources:
     title: "Applied Causal Inference Powered by ML and AI"
     by: "Victor Chernozhukov, Christian Hansen, Nathan Kallus, Martin Spindler, Vasilis Syrgkanis"
     url: https://causalml-book.org/
-    edition_or_term: "Open book (arXiv-based, 2024)"
+    edition_or_term: "Open online book (version/date not checked on the page)"
     access: free
     use: "Chapters on predictive inference with linear/high-dimensional models, causal inference via DAGs and potential outcomes, double/debiased ML for treatment effects, heterogeneous effects, and sensitivity."
     why: "Hidden gem: the modern double machine learning treatment with code, bridging ML and econometrics."
@@ -88,7 +88,7 @@ resources:
     kind: book
     title: "Causal Inference in Statistics: A Primer"
     by: "Judea Pearl, Madelyn Glymour, Nicholas P. Jewell"
-    url: http://bayes.cs.ucla.edu/PRIMER/
+    url: https://bayes.cs.ucla.edu/PRIMER/
     edition_or_term: "Wiley 2016; companion site with study questions"
     access: paid
     use: "Ch. 1-4 (graphical models, d-separation, intervention/do-calculus, counterfactuals) as a short structural-causal-model complement."
@@ -124,7 +124,7 @@ considered:
   - {title: "Trustworthy Online Controlled Experiments (Kohavi et al.)", url: "https://experimentguide.com/", reason: "Covers the 'experiments' scope in tech settings; placed in applied-ml-practice."}
 notes: "What If is the best single text for identification and avoids the narrowness of econometrics-only or DAG-only books; Mixtape and The Effect add quasi-experimental designs (DiD, RD, IV) that What If barely covers. Brady Neal's course is the only complete public-video course matching the ML audience (Fall 2020, so no 2026 run). Stanford stats/econ causal inference courses (e.g. STATS 361) could not be opened."
 split_proposal: null
-prereq_changes: "Consider adding soft: [bayesian-inference]? Not required; keep soft PGM edge for DAG/d-separation."
+prereq_changes: null
 open_questions:
   - "Newer causal inference course runs with public videos (e.g. Stanford STATS 361, Harvard/Berkeley courses) were not found; stats361 pages timed out."
   - "Hernan-Robins book chapter numbers recalled from the book's structure; verify against the current PDF."

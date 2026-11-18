@@ -77,7 +77,7 @@ resources:
     kind: article
     title: "A Recipe for Training Neural Networks"
     by: "Andrej Karpathy"
-    url: http://karpathy.github.io/2019/04/25/recipe/
+    url: https://karpathy.github.io/2019/04/25/recipe/
     edition_or_term: "Blog post (April 2019)"
     access: free
     use: "Read once after your first training run, again after Assignment 2: become one with the data, overfit a single batch, add complexity one piece at a time, regularize, tune, squeeze."

@@ -1,0 +1,64 @@
+id: hardware-accelerators
+title: Hardware Accelerators for ML
+group: G11
+paths: [architecture, mlsys]
+hard: [computer-architecture, deep-learning-fundamentals]
+soft: [gpu-programming, hdl-and-fpga]
+scope: Dataflows, systolic arrays, DNN accelerator design, sparsity, hardware-software co-design.
+level: advanced
+estimated_hours: 60
+resources:
+- {id: sze-book, role: primary-text, kind: book, title: Efficient Processing of Deep Neural Networks, by: 'Vivienne Sze, Yu-Hsin Chen, Tien-Ju Yang, Joel S. Emer', url: 'https://doi.org/10.2200/S01004ED1V01Y202004CAC050', edition_or_term: 'Synthesis Lectures on Computer Architecture, Morgan and Claypool, 2020', access: paid, use: 'Ch. 3 (key metrics), 4 (kernel computation: GEMM, FFT/Winograd), 5 (designing DNN accelerators: spatial architectures, temporal vs spatial dataflows, weight/output/row stationary), 6 (operation mapping), 7 (reducing precision), 8 (exploiting sparsity), 9 (co-design), 10 (advanced technologies). Free precursor: the 2017 arXiv tutorial/survey (see below).', why: Written by the MIT Eyeriss team; the definitive treatment of dataflows and DNN accelerator design and the assigned text of MIT 6.5930. The DOI/Springer page returned a bot challenge so the page was not opened; the book's details come from the MIT 6.5930 reading list and the Eyeriss tutorial site., verified: false}
+- id: mit-6-5930
+  role: primary-course
+  kind: course
+  title: MIT 6.5930/1 Hardware Architecture for Deep Learning
+  by: MIT (Vivienne Sze, Joel Emer)
+  url: https://csg.csail.mit.edu/6.5930/index.html
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Lecture slides (L01-L13: DNN components, mapping/dataflow, einsums and transformers, fusion, sparse architectures 1-3, advanced technologies, numeric precision, data movement in ISL), the reading list keyed to the Sze book, recitation notes (AccelForge and LoopTree tutorials), and the lab descriptions (Lab 1 analyze DNN workloads, Lab 2 hardware design and mapping, Lab 3 parallelism and fusion, Lab 4 sparsity, Lab 5 compute-in-memory).'
+  why: Most authoritative and current course on exactly this node, updated to transformers and the AccelForge/Timeloop model; the site publishes slides. Lectures are explicitly not recorded and graded labs run on a private GitHub Classroom.
+  verified: true
+  course: {latest_term: Spring 2026, latest_url: 'https://csg.csail.mit.edu/6.5930/index.html', videos: none, public_videos_term: no public recordings found for any term; see Cornell ECE 5545 (Spring 2022) and ETH lectures instead, assignments: partial, assignments_url: 'https://csg.csail.mit.edu/6.5930/syllabus.html'}
+- id: cornell-ece5545
+  role: secondary
+  kind: course
+  title: Cornell Tech ECE 5545 / CS 5775 Machine Learning Hardware and Systems
+  by: Cornell Tech (Mohamed Abdelfattah)
+  url: https://abdelfattah-class.github.io/ece5545/
+  edition_or_term: Course site current; lecture videos from Spring 2022
+  access: free
+  use: The Spring 2022 lecture playlist for pruning, quantization, distillation, accelerator dataflows and compilation, as video companion to Sze Ch. 5-9.
+  why: Only full public video course I found that covers ML hardware accelerators; broader than MIT 6.5930 and includes compiler/efficiency techniques.
+  verified: true
+  course: {latest_term: current site lists no term (schedule under construction); videos from Spring 2022, latest_url: 'https://abdelfattah-class.github.io/ece5545/', videos: public, public_videos_term: Spring 2022, public_videos_url: 'https://www.youtube.com/playlist?list=PL0mFAhrXqy9CuopJhAB8GVu_Oy7J0ery6', assignments: unknown}
+- {id: timeloop-accelergy, role: secondary, kind: website, title: Timeloop/Accelergy tutorial and v4 documentation, by: 'Parashar, Wu, Tsai, Sze, Emer', url: 'https://accelergy.mit.edu/tutorial.html', edition_or_term: 'ISCA 2020 tutorial (videos available); Timeloop+Accelergy v4 docs at https://timeloop.csail.mit.edu/v4', access: free, use: 'Watch the tutorial videos and slides (part 1 and 2), then do the exercises in the Docker-based exercise repo (Timeloop, Accelergy, fibertree), and the Sparseloop tutorial for sparse accelerator modelling.', why: Hands-on way to evaluate dataflows and mappings without writing RTL; the tools behind MIT 6.5930 labs. Tutorial videos use v3 syntax., verified: true}
+- {id: timeloop-exercises, role: practice, kind: tool, title: timeloop-accelergy-exercises, by: Accelergy Project, url: 'https://github.com/Accelergy-Project/timeloop-accelergy-exercises', edition_or_term: Rolling repository (MIT license; Docker setup), access: free, use: Run the baseline accelerator designs and the exercises (Docker + Jupyter workspace); reproduce an Eyeriss-like row-stationary mapping and compare energy/latency across mappings., why: 'Concrete, runnable counterpart to the book''s dataflow taxonomy; shows how mapping choices change energy and performance.', verified: true}
+- id: eth-systolic
+  role: secondary
+  kind: course
+  title: 'ETH Computer Architecture Fall 2025: L28 Systolic Array Architectures (and SIMD/GPU L29)'
+  by: ETH Zurich (Onur Mutlu)
+  url: https://safari.ethz.ch/architecture/fall2025/doku.php?id=schedule
+  edition_or_term: Fall 2025 (premiered Jan 2026)
+  access: free
+  use: L28 systolic arrays (Kung's design, TPU-style arrays) and L29 SIMD/GPU as short, public video lectures that precede the Sze dataflow material.
+  why: A clear 1-2 lecture primer on systolic arrays from the architecture side before diving into DNN-specific dataflows.
+  verified: true
+  course: {latest_term: Fall 2025, latest_url: 'https://safari.ethz.ch/architecture/fall2025/doku.php?id=schedule', videos: public, public_videos_term: Fall 2025, public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi8tTLVb-9CUHcfKXLWESjOD', assignments: public, assignments_url: 'https://safari.ethz.ch/architecture/fall2025/doku.php?id=labs'}
+- {id: caqa7-dsa, role: secondary, kind: book, title: 'Computer Architecture: A Quantitative Approach, Ch. 7 Domain-Specific Architectures', by: 'John L. Hennessy, David A. Patterson, Christos Kozyrakis', url: 'https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5', edition_or_term: '7th edition (Morgan Kaufmann/Elsevier, Dec 2025; Hennessy, Patterson, Kozyrakis)', access: paid, use: 'Ch. 7: guidelines for DSAs, the TPU (v1 through recent generations) case study, Catapult/Brainwave and other DNN accelerators, plus the performance/roofline comparisons.', why: Architecture-textbook framing of why DSAs exist and a vetted TPU case study; complements the DNN-specific details in Sze., verified: true}
+- {id: jouppi-tpu, role: secondary, kind: paper, title: In-Datacenter Performance Analysis of a Tensor Processing Unit, by: Norman P. Jouppi et al., url: 'https://arxiv.org/abs/1704.04760', edition_or_term: ISCA 2017, access: free, use: 'Read once after systolic arrays: the 256x256 matrix unit, unified buffer, roofline analysis and performance/Watt comparison.', why: The paper that popularized systolic arrays for DNN inference; a standard case study in every accelerator course., verified: true}
+- {id: sze-arxiv-survey, role: reference, kind: paper, title: 'Efficient Processing of Deep Neural Networks: A Tutorial and Survey', by: 'Vivienne Sze, Yu-Hsin Chen, Tien-Ju Yang, Joel Emer', url: 'https://arxiv.org/abs/1703.09039', edition_or_term: arXiv 2017 (Proc. IEEE); precursor to the book, access: free, use: 'Free fallback for the book''s core: DNN basics, dataflow taxonomy (WS/OS/RS/NLR), sparsity, reduced precision, and evaluation metrics.', why: 'Provides a free path to the main ideas if the book is unavailable, but older than the 2020 book and the 2026 course.', verified: true}
+- {id: gemmini, role: practice, kind: tool, title: 'Gemmini: full-stack spatial array (systolic) accelerator generator', by: UC Berkeley (ucb-bar), url: 'https://github.com/ucb-bar/gemmini', edition_or_term: Rolling repository (Chipyard-based; Verilator/Spike/FireSim flows), access: free, use: 'Generate a small systolic-array accelerator, run the provided baremetal matmul/conv tests in Verilator, change array size and scratchpad, and compare cycle counts.', why: 'Open-source accelerator you can generate, modify and simulate end to end, an RTL-level complement to the analytical Timeloop modelling; needs the Chipyard setup from advanced-microarchitecture.', verified: true}
+- {id: mlsysbook-hw, role: reference, kind: book, title: Machine Learning Systems (hardware acceleration chapter), by: Vijay Janapa Reddi et al. (Harvard), url: 'https://mlsysbook.ai/', edition_or_term: 'Online textbook, MIT Press (checked 2026-11-18)', access: free, use: 'Use the hardware-acceleration chapter as a gentler overview of GPUs, TPUs and NPUs before the Sze book.', why: 'Accessible, free overview with systems framing for readers who come from software/ML rather than architecture.', verified: true}
+considered:
+- {title: Stanford CS 217 Hardware Accelerators for Machine Learning (Winter 2026), url: 'https://cs217.stanford.edu/', reason: 'Strong complement (HLS in C++/SystemC, cloud FPGAs; instructors Tambe and Olukotun) but videos/assignments not confirmed public; kept as alternate if a design-oriented HLS course is wanted.'}
+- {title: MIT 6.5940 TinyML and Efficient Deep Learning Computing (Song Han), url: 'https://hanlab.mit.edu/courses/2024-fall-65940', reason: Public videos but focused on model compression/efficient algorithms; likely belongs to the ML-systems group (G9).}
+- {title: SCALE-Sim / gem5-Aladdin accelerator simulators, url: 'https://github.com/scalesim-project/scale-sim-v2', reason: Useful alternative simulators; not opened.}
+- {title: Cornell ECE 5545 (current term), url: 'https://abdelfattah-class.github.io/ece5545/', reason: Kept as secondary because only 2022 videos are public.}
+notes: 'Route (about 60 h): Sze book (Ch. 3-10) or the arXiv survey, MIT 6.5930 slides and reading list, Timeloop/Accelergy tutorial and exercises for hands-on, ETH L28 and the TPU paper for the architecture view. For a design-implementation flavor, generate a Gemmini accelerator or use Stanford CS 217''s HLS approach. Prerequisites deep-learning-fundamentals and computer-architecture are real; soft hdl-and-fpga helps for Gemmini but is not needed for the analytical modelling route.'
+split_proposal: null
+prereq_changes: null
+open_questions: [No public lecture videos of MIT 6.5930 exist for any term that I could find; only slides. Verify whether the MIT Professional Education course material is public., 'Sze book DOI/Springer page was not openable (bot challenge); also, Stanford CS217 video/assignment availability unknown.', Gemmini GitHub page was opened via a fetch tool; individual tutorial links not tested.]
+last_verified: '2026-11-18'

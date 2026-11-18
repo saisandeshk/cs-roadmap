@@ -1,0 +1,134 @@
+id: high-performance-python
+title: High-Performance Python
+group: G4
+paths: [os-perf, mlsys]
+hard: [python-in-depth]
+soft: [computer-systems]
+scope: "Profiling Python, NumPy vectorization, Numba/Cython, multiprocessing, memory efficiency."
+
+level: intermediate
+estimated_hours: 50
+resources:
+  - id: hpp-3e
+    role: primary-text
+    kind: book
+    title: "High Performance Python: Practical Performant Programming for Humans, 3rd edition"
+    by: "Micha Gorelick, Ian Ozsvald"
+    url: https://www.oreilly.com/library/view/high-performance-python/9781098165956/
+    edition_or_term: "3rd edition (O'Reilly, 2025)"
+    access: paid
+    use: "Read in order, coding along with the examples (Julia set and diffusion): understanding performant Python and the cost of abstractions; profiling (cProfile, line_profiler, py-spy and memory profilers); lists/tuples/dicts/sets/iterators; vector and matrix computation (NumPy, memory layout, vectorization); compiling to C (Cython, Numba, PyPy); asynchronous I/O; multiprocessing; clusters and job queues; using less RAM; lessons from the field. Chapter numbers/titles not checked against the 3e TOC."
+    why: "The best single book on the node: profile-first methodology, measured comparisons across the tools (NumPy, Numba, Cython, multiprocessing), and honest advice on when each pays off. The owner explicitly asked for it; 3rd edition updated in 2025."
+    verified: false
+  - id: hpp-3e-code
+    role: practice
+    kind: practice-site
+    title: "High Performance Python 3e: the code"
+    by: "Micha Gorelick, Ian Ozsvald"
+    url: https://github.com/mynameisfiber/high_performance_python_3e
+    edition_or_term: "current main (chapter directories)"
+    access: free
+    use: "Run each chapter directory's examples; reproduce the timings on your machine, then re-implement the Julia-set and diffusion benchmarks with NumPy, Numba, Cython and multiprocessing and compare."
+    why: "The authors' runnable chapter code; the most direct hands-on route through the book."
+    verified: true
+  - id: python-to-numpy
+    role: secondary
+    kind: book
+    title: "From Python to Numpy"
+    by: "Nicolas P. Rougier"
+    url: https://www.labri.fr/perso/nrougier/from-python-to-numpy/
+    edition_or_term: "online book (CC BY-NC-SA)"
+    access: free
+    use: "Anatomy of an array, code vectorization, problem vectorization, custom vectorization, beyond NumPy; do the exercises on temporary-array elimination, broadcasting and stride tricks."
+    why: "Fills the gap of deep NumPy vectorization technique beyond what HPP covers (thinking in arrays, memory layout, avoiding temporaries)."
+    verified: true
+  - id: numpy-100
+    role: practice
+    kind: practice-site
+    title: "100 NumPy exercises"
+    by: "Nicolas P. Rougier et al."
+    url: https://github.com/rougier/numpy-100
+    edition_or_term: "current master (notebook with hints/solutions)"
+    access: free
+    use: "Do all exercises marked intermediate or harder (about the last 60), focusing on strides, broadcasting, einsum and structured arrays; time each against a loop version."
+    why: "Concrete drill for array thinking; each exercise has a vectorized solution to compare against."
+    verified: true
+  - id: numba-cython-docs
+    role: secondary
+    kind: docs
+    title: "Numba 5-minute guide / Cython documentation"
+    by: "Numba and Cython projects"
+    url: https://numba.readthedocs.io/en/stable/user/5minguide.html
+    edition_or_term: "current stable (Numba docs, Cython 3.x)"
+    access: free
+    use: "Numba: the 5-minute guide, performance tips, parallel (prange), and 'Troubleshooting and tips'. Cython: the 'Basic tutorial', typed memoryviews and 'Using C libraries'; build a small extension from your own hot loop."
+    why: "Official, current docs for the two compile-to-fast-code tools named in the scope; versions move faster than the book."
+    verified: true
+  - id: free-threading
+    role: secondary
+    kind: docs
+    title: "Python free-threading HOWTO and PEP 703"
+    by: "Python core team (Sam Gross et al.)"
+    url: https://docs.python.org/3/howto/free-threading-python.html
+    edition_or_term: "current docs (Python 3.14+ supported status, PEP 779)"
+    access: free
+    use: "Read the HOWTO and PEP 703 summary; try a CPU-bound threading benchmark with and without the free-threaded build; read PEP 779 for supported-status criteria."
+    why: "New since the book's mental model of 'the GIL forces multiprocessing': the multi-threaded story is changing and the owner should know the current state."
+    verified: true
+  - id: profilers
+    role: practice
+    kind: tool
+    title: "Python profilers: py-spy, Scalene, memray"
+    by: "Ben Frederickson; Emery Berger et al.; Bloomberg"
+    url: https://github.com/plasma-umass/scalene
+    edition_or_term: "current master (py-spy, memray READMEs also checked)"
+    access: free
+    use: "Profile one real program three ways: sampling CPU profile and flame graph with py-spy, line-level CPU/GPU/memory with Scalene, allocation tracking with memray; fix the top hotspot and re-measure. Also python -X perf with Linux perf (docs.python.org/3/howto/perf_profiling.html)."
+    why: "Modern profilers beyond cProfile/line_profiler; the 'measure first' workflow the book preaches, with current tools."
+    verified: true
+  - id: pythonspeed
+    role: secondary
+    kind: article
+    title: "Python Speed (Itamar Turner-Trauring): performance and memory articles"
+    by: "Itamar Turner-Trauring"
+    url: https://pythonspeed.com/
+    edition_or_term: "ongoing articles"
+    access: free
+    use: "Read the Performance and Memory articles (memory profiling of data pipelines, Numba vs Cython trade-offs, process pools and fork pitfalls, 'speeding up NumPy with parallelism')."
+    why: "Practical, well-argued articles on real-world memory/data-pipeline problems that book chapters only touch."
+    verified: true
+  - id: pyo3
+    role: reference
+    kind: docs
+    title: "PyO3 user guide (Rust extensions) and mypyc"
+    by: "PyO3 developers; mypy team"
+    url: https://pyo3.rs/
+    edition_or_term: "current (v0.30)"
+    access: free
+    use: "PyO3 'Getting started' + maturin to write a Rust hot loop; mypyc 'Introduction' to compile type-annotated Python to C extensions. Optional once Numba/Cython are done."
+    why: "Covers the increasingly common 'rewrite the hot path in Rust' route not discussed in the book; bridges to the Rust node."
+    verified: true
+  - id: stdlib-concurrency
+    role: reference
+    kind: docs
+    title: "Python multiprocessing and concurrent.futures documentation"
+    by: "Python Software Foundation"
+    url: https://docs.python.org/3/library/multiprocessing.html
+    edition_or_term: "Python 3.15 docs (current)"
+    access: free
+    use: "multiprocessing (Pool, shared_memory, start methods fork/spawn/forkserver) and concurrent.futures (ProcessPoolExecutor, ThreadPoolExecutor)."
+    why: "Authoritative API and start-method semantics (changed in recent versions)."
+    verified: true
+considered:
+  - {title: "Dask / Polars / CuPy documentation", url: "https://www.dask.org/", reason: "Scale-out and dataframe/GPU tools; belong to data-engineering or GPU nodes; mention only in notes."}
+  - {title: "Python Data Science Handbook / Scientific Python Lectures (SciPy)", url: "https://docs.scipy.org/doc/scipy/tutorial/index.html", reason: "Cover NumPy/SciPy usage, not performance engineering."}
+  - {title: "Fluent Python 2e / Effective Python (language-level performance)", url: "https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/", reason: "Language-depth books belong to python-in-depth (G1)."}
+  - {title: "A university course on high-performance Python", url: "https://pythonspeed.com/", reason: "I found no university course on this topic with public videos; EuroSciPy/PyCon tutorials exist but vary in quality and date; not selected."}
+notes: "The owner explicitly asked for High Performance Python 3e; it is the primary text. O'Reilly's site blocked automated access from this environment, so the book URL is verified false, but the authors' 3e code repo README (which names the O'Reilly URL and 3e) was opened. No primary-course is chosen: no public course matches the scope better than the book plus the project docs. If the owner wants a video course, consider adding a PyCon/EuroSciPy tutorial in a later pass. The free-threaded Python material is new and may justify a refresh of the primary text's concurrency chapter."
+split_proposal: null
+prereq_changes: "Add soft: [parallel-programming] only for the multiprocessing section; otherwise unchanged. Also consider an optional link to rust-programming (PyO3)."
+open_questions:
+  - "O'Reilly HPP 3e page and TOC could not be opened (403); chapter titles listed in 'use' are from the 2nd/3rd edition structure, not checked."
+  - "mynameisfiber/high_performance_python_3e is confirmed by raw README (names HPP 3e, links O'Reilly) but the repository's chapter layout was not enumerated."
+  - "Fluent Python O'Reilly URL (considered) was not opened."
+last_verified: 2026-11-18

@@ -113,7 +113,7 @@ resources:
     kind: practice-site
     title: "Small transformer capstone"
     by: "Self-directed"
-    url: https://nlp.seas.harvard.edu/annotated-transformer/
+    url: https://karpathy.ai/zero-to-hero.html
     edition_or_term: "Use the Annotated Transformer toy copy-task and the Karpathy TinyShakespeare setup"
     access: free
     use: "(1) Reproduce the Annotated Transformer's synthetic copy task; (2) train the char-level GPT from the Karpathy video and plot validation loss against model size; (3) swap sinusoidal positions for RoPE and compare."

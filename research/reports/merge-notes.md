@@ -49,3 +49,10 @@
 - Overlap: 6.006 ~1/3 data structures (overlaps data-structures node).
 - Soft prereq suggestions: complexity += probability; randomized, complexity, advanced-algorithms, learning-theory += linear-algebra; quantum += theory-of-computation or algorithm-design; approximation += computational-complexity.
 - Unverified: CLRS MIT Press page (403); Mitzenmacher-Upfal 2e page (only 1e opened); some chapter numbers from memory; SSBD free PDF (huji) blocked; Gupta NYU approx 403; Stanford CS168; Karger NB problem sets public?; KAIST EE531 Spring 2026 not reviewed (promising).
+
+## G5 ML foundations — done, 0 errors
+- No splits. Soft prereq suggestions: ml-fundamentals, deep-learning-fundamentals += scientific-python; transformers += dl-engineering; probabilistic-graphical-models += bayesian-inference.
+- REVIEW FLAG (mine): deep-learning-fundamentals uses CS231n (a vision course) as primary-course; MIT 6.7960 (Fall 2024 OCW, public videos) or CMU 11-785 may fit the scope better. Reviewer should judge.
+- dl-engineering & transformers use Karpathy video-series in the primary-course slot (no real course).
+- Findings: nanoGPT deprecated Nov 2025 -> nanochat/build-nanogpt; CS229 recent terms enrolled-only (public: Autumn 2018); CS188 Spring 2026 public playlist; Statistical Rethinking 2026 public.
+- Unverified: GitHub contents (403); CS229/CS224W playlist oEmbed; CMU 10-708 Panopto public access; 11-785 / 6.7960 Fall 2026 / CS224N 2026 video policy; CS221, STATS 361 timed out; Kohavi and What If chapter numbers from memory.

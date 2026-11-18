@@ -1,0 +1,165 @@
+id: generative-models-at-scale
+title: Large-Scale Generative Systems
+group: G6
+paths: [generative]
+hard: [diffusion-and-flow-matching, transformers]
+soft: []
+scope: "Latent diffusion, DiT, text-to-image/video, conditioning, distillation and fast sampling, evaluation; audio generation."
+
+level: advanced
+estimated_hours: 50
+resources:
+  - id: sd3
+    role: primary-text
+    kind: paper
+    title: "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (Stable Diffusion 3)"
+    by: "Patrick Esser, Sumith Kulal, Andreas Blattmann, ... Robin Rombach (Stability AI)"
+    url: https://arxiv.org/abs/2403.03206
+    edition_or_term: "ICML 2024, arXiv 2403.03206"
+    access: free
+    use: "Read in full as the case study: rectified-flow training with logit-normal timestep sampling (Sec. 2-3), the MM-DiT architecture with separate text/image weights (Sec. 4), scaling studies, text encoders, and the autoencoder latent-channel ablation. Read the two ancestor papers first: Latent Diffusion Models (arXiv 2112.10752) and DiT (arXiv 2212.09748)."
+    why: "No textbook covers frontier-scale generative systems; this is the most complete public engineering and ablation record of a modern text-to-image model, and it unifies latent diffusion (LDM), transformer backbones (DiT) and flow matching (previous node). Pair with the CME296 lectures for the broader landscape."
+    verified: true
+  - id: cme296
+    role: primary-course
+    kind: course
+    title: "Stanford CME296 Diffusion & Large Vision Models"
+    by: "Afshine Amidi, Shervine Amidi (Stanford)"
+    url: https://cme296.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures 4-8: latent space and guidance (VAEs, latent diffusion, text/image representations, CLIP/SigLIP, classifier-free guidance), image-generation architectures (U-Net, attention, DiT, MMDiT, optimizations), model training (pretraining, SFT, preference tuning with Flow-GRPO/Diffusion-DPO, DreamBooth/LoRA, distillation), evaluation (human ratings, Elo, FID, CLIPScore, PickScore, LPIPS, MLLM-as-judge), trending topics (SOTA models, video). Lectures 1-3 recap diffusion/score/flow matching. Use the midterm and final (exams and solutions are linked on the syllabus page) as self-tests."
+    why: "The only public course whose syllabus is this node's scope (latent diffusion through DiT/MMDiT, post-training, distillation, evaluation, video), freshly recorded in Spring 2026 with public YouTube videos, slides and exam solutions. No programming homework, so pair with practice items."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cme296.stanford.edu/syllabus/
+      videos: public
+      assignments: none
+      assignments_url: https://cme296.stanford.edu/syllabus/
+  - id: cmu-10799-scale
+    role: secondary
+    kind: course
+    title: "CMU 10-799 Diffusion & Flow Matching (lectures 6-13 and homework 3-4 specialization paths)"
+    by: "Yutong (Kelly) He (CMU)"
+    url: https://kellyyutonghe.github.io/10799S26/schedule
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 6 (design space and fast solvers), 7 (guidance and controllable generation), 9 (SOTA text-to-image), 10 (distillation, consistency models, flow maps), 11 (guest: Luma AI), 12-13 (discrete diffusion). Homeworks 3-4 let you pick Fidelity, Controllability or Speed on an image dataset using shared starter code."
+    why: "Gives a hands-on implementation of fast sampling/distillation/controllability that CME296 does not have, with public videos and homework."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://kellyyutonghe.github.io/10799S26
+      videos: public
+      assignments: public
+      assignments_url: https://kellyyutonghe.github.io/10799S26/homework
+  - id: sota-image-papers
+    role: secondary
+    kind: paper
+    title: "Text-to-image and conditioning: LDM, DiT, SDXL, Imagen, DALL-E 2, ControlNet, DreamBooth, LoRA"
+    by: "Rombach et al.; Peebles and Xie; Podell et al.; Saharia et al.; Ramesh et al.; Zhang et al.; Ruiz et al.; Hu et al."
+    url: https://arxiv.org/abs/2112.10752
+    edition_or_term: "LDM 2112.10752, DiT 2212.09748, SDXL 2307.01952, Imagen 2205.11487, DALL-E 2 2204.06125, ControlNet 2302.05543, DreamBooth 2208.12242, LoRA 2106.09685"
+    access: free
+    use: "LDM (two-stage autoencoder+diffusion, cross-attention conditioning), DiT (adaLN transformer, scaling), SDXL (resolution/crop conditioning, refiner), Imagen (frozen large text encoder), ControlNet (spatial conditioning), DreamBooth and LoRA (personalization/finetuning). Skim DALL-E 2 for the CLIP-prior approach."
+    why: "The component papers behind every modern system; the course gives the map and the papers give the details."
+    verified: true
+  - id: distillation-papers
+    role: secondary
+    kind: paper
+    title: "Fast sampling and distillation: Progressive Distillation, Consistency Models, Adversarial Diffusion Distillation, DMD, DMD2"
+    by: "Salimans and Ho; Song et al.; Sauer et al.; Yin et al."
+    url: https://arxiv.org/abs/2303.01469
+    edition_or_term: "Progressive Distillation 2202.00512, Consistency Models 2303.01469, ADD 2311.17042, DMD 2311.18828, DMD2 2405.14867; Sander Dieleman posts 'The paradox of diffusion distillation' (https://sander.ai/2024/02/28/paradox.html) and 'Learning the integral of a diffusion model' (https://sander.ai/2026/05/06/flow-maps.html)"
+    access: free
+    use: "Read progressive distillation -> consistency models -> ADD -> DMD/DMD2 in order, with the two Dieleman posts for intuition on why one-step generators trade diversity and how flow maps unify them."
+    why: "Distillation and fast sampling are explicit scope items and move quickly; this path covers the main families (trajectory, consistency, adversarial, distribution-matching)."
+    verified: true
+  - id: video-audio-papers
+    role: secondary
+    kind: paper
+    title: "Video and audio generation: Movie Gen, HunyuanVideo, Wan, Voicebox, Stable Audio Open, MusicGen, F5-TTS"
+    by: "Meta; Tencent; Alibaba (Wan team); Le et al.; Evans et al.; Copet et al.; Chen et al."
+    url: https://arxiv.org/abs/2503.20314
+    edition_or_term: "Wan 2503.20314, Movie Gen 2410.13720, HunyuanVideo 2412.03603, Voicebox 2306.15687, Stable Audio Open 2407.14358, MusicGen 2306.05284, F5-TTS 2410.06885; Lilian Weng 'Diffusion Models for Video Generation' https://lilianweng.github.io/posts/2024-04-12-diffusion-video/"
+    access: free
+    use: "Read Lilian Weng's video post first, then Wan (open model; 3D VAE, DiT, data pipeline) and Movie Gen for the large-scale recipe; for audio, Voicebox (flow-matching speech), Stable Audio Open (latent diffusion music/sounds), MusicGen (autoregressive baseline) and F5-TTS (flow-matching TTS)."
+    why: "Fills the video and audio-generation scope items not covered by image-focused courses; shows flow matching and DiT transferring to new modalities."
+    verified: true
+  - id: dieleman-latents
+    role: secondary
+    kind: article
+    title: "Generative modelling in latent space"
+    by: "Sander Dieleman"
+    url: https://sander.ai/2025/04/15/latents.html
+    edition_or_term: "April 2025"
+    access: free
+    use: "Whole post: why two-stage latent generation, what makes a good autoencoder for generation (regularization, perceptual/adversarial losses), modality-specific latents (images, audio, video)."
+    why: "Best conceptual treatment of tokenizers/autoencoders for generative models, a topic papers treat as a side detail."
+    verified: true
+  - id: eval-gen
+    role: secondary
+    kind: paper
+    title: "Evaluating text-to-image: GenEval, ImageReward, Rethinking FID (+ clean-fid)"
+    by: "Ghosh et al.; Xu et al.; Jayasumana et al.; Parmar et al."
+    url: https://arxiv.org/abs/2310.11513
+    edition_or_term: "GenEval 2310.11513, ImageReward 2304.05977, Rethinking FID 2401.09603; clean-fid library (MIT) https://github.com/GaParmar/clean-fid"
+    access: free
+    use: "GenEval (object-focused alignment benchmark), ImageReward (learned human-preference model), Rethinking FID (why FID with Inception misleads; FD-DINOv2/CMMD); compute FID with clean-fid and compare with CMMD/CLIPScore on the same samples."
+    why: "Evaluation is a scope item and CME296 lecture 7 gives an overview only; these provide benchmark choices and a reproducible FID implementation."
+    verified: true
+  - id: diffusers-practice
+    role: practice
+    kind: docs
+    title: "Hugging Face diffusers training guides: LoRA, DreamBooth, ControlNet (+ diffusion course Unit 3)"
+    by: "Hugging Face"
+    url: https://huggingface.co/docs/diffusers/training/lora
+    edition_or_term: "Current docs; DreamBooth https://huggingface.co/docs/diffusers/training/dreambooth, ControlNet https://huggingface.co/docs/diffusers/using-diffusers/controlnet, course unit https://huggingface.co/learn/diffusion-course/unit3/1"
+    access: free
+    use: "Run a LoRA fine-tune of a Stable Diffusion/SDXL-class model on 10-30 images (DreamBooth-LoRA), then one ControlNet inference; read the Stable Diffusion unit of the HF diffusion course for pipeline anatomy (VAE, text encoder, scheduler, UNet)."
+    why: "Practical conditioning and personalization; low compute with LoRA."
+    verified: true
+  - id: minrf
+    role: practice
+    kind: tool
+    title: "minRF: minimal SD3-style rectified-flow transformer (and facebookresearch/flow_matching)"
+    by: "Simo Ryu (cloneofsimo)"
+    url: https://github.com/cloneofsimo/minRF
+    edition_or_term: "Current repo; two files dit.py and rf.py"
+    access: free
+    use: "Train the DiT + rectified flow on MNIST/CIFAR (rf.py), then read dit.py and the advanced/ ImageNet muP-sweep example; add classifier-free guidance dropout and compare samples."
+    why: "A small readable end-to-end code base for an SD3-style training loop; complements reading the SD3 paper and CMU HW3."
+    verified: true
+  - id: cme296-exams
+    role: practice
+    kind: course
+    title: "CME296 midterm and final exams with solutions"
+    by: "Afshine Amidi, Shervine Amidi (Stanford)"
+    url: https://cme296.stanford.edu/syllabus/
+    edition_or_term: "Spring 2026 (midterm May 1, final June 8)"
+    access: free
+    use: "Do the midterm (diffusion, score matching, flow matching, latents) and final (architectures, training, evaluation, video) before reading the solutions."
+    why: "Only checkable exercises the course provides, since it has no homework."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cme296.stanford.edu/
+      videos: public
+      assignments: partial
+      assignments_url: https://cme296.stanford.edu/syllabus/
+considered:
+  - {title: "KAIST CS492(C) Diffusion and Flow Models (Fall 2025)", url: "https://diffusion.kaist.ac.kr/", reason: "Includes image generation challenge and visual generation contest; page opened, not evaluated in detail."}
+  - {title: "MIT 6.S183 Practical Introduction to Diffusion Models (IAP 2026)", url: "https://www.practical-diffusion.org/lectures/", reason: "Good applied topics (conditioning, guidance, inverse problems, 3D) but short and pset-light; used in diffusion-and-flow-matching."}
+  - {title: "Karras et al. EDM2 (Analyzing and Improving the Training Dynamics of Diffusion Models)", url: "https://www.practical-diffusion.org/lectures/", reason: "Recommended by 6.S183; arXiv id not checked; a training-stability companion to SD3."}
+  - {title: "Lilian Weng and Sander Dieleman blogs (general)", url: "https://sander.ai/", reason: "Used above as secondary articles."}
+  - {title: "Hugging Face Open-Source AI Cookbook and diffusers docs overview", url: "https://huggingface.co/docs/diffusers/en/training/overview", reason: "Library docs; only the training guides are used."}
+  - {title: "Sora technical report (OpenAI) and Veo/Seedance technical reports", url: "https://openai.com/index/video-generation-models-as-world-simulators/", reason: "Not opened or verified; open Wan and Movie Gen papers give more detail."}
+notes: "No book exists for this node; the primary text is the SD3 paper as an engineering case study, and the primary course is CME296 (no homework). Real implementation practice comes from CMU 10799 HW3-4, minRF and diffusers training guides. Audio is covered only by a short paper path; if audio generation matters, split it into a separate node (neural codecs, AudioLM/MusicGen, flow-matching TTS)."
+split_proposal: "Split audio generation (neural audio codecs, AR/diffusion music and speech, TTS) into its own node, and optionally split 'video generation' from image systems; this node otherwise mixes three modalities plus distillation and evaluation in 50 hours."
+prereq_changes: "Add soft: vision-language-models (text encoders, CLIP/SigLIP conditioning, MLLM-as-judge) and self-supervised-learning (VAE/tokenizer and DINO-style evaluation). transformers hard prerequisite is correct (DiT/MMDiT)."
+open_questions:
+  - "CME296 lecture videos: playlist title verified via oembed and per-lecture links on the syllabus page; each video's accessibility not individually opened."
+  - "Authors of SD3 (Stability AI) listed partly from memory of the paper; abbreviated."
+  - "Sora/Veo reports and EDM2 arXiv id not verified."
+last_verified: 2026-11-18
