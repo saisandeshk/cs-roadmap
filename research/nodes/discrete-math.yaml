@@ -38,7 +38,7 @@ resources:
       public_videos_term: "Spring 2024"
       public_videos_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/video_galleries/lecture-videos/
       assignments: public
-      assignments_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/pages/problem-sets/
+      assignments_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/lists/problem-sets/
   - id: cs70
     role: secondary
     kind: course
