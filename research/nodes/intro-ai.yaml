@@ -1,0 +1,86 @@
+id: intro-ai
+title: Introduction to AI
+group: G5
+paths: [core]
+hard: [python-programming, probability]
+soft: [algorithms]
+scope: "Search, CSPs, games, MDPs and RL intro, Bayes nets, intro ML (CS 188-style)."
+
+level: intro
+estimated_hours: 110
+resources:
+  - id: cs188-textbook
+    role: primary-text
+    kind: website
+    title: "CS 188 Online Textbook (Introduction to Artificial Intelligence)"
+    by: "UC Berkeley CS 188 staff"
+    url: https://inst.eecs.berkeley.edu/~cs188/textbook/
+    edition_or_term: "Course-maintained web textbook (live; used by Spring 2026 and Fall 2026 offerings)"
+    access: free
+    use: "Read in lecture order: Search (agents, state spaces, uninformed/informed/local), CSPs, Games (minimax, expectimax, MCTS), MDPs, RL (model-based and model-free), Bayes Nets, Decision Networks and VPI, HMMs, ML (naive Bayes, perceptron, logistic regression, neural nets intro), Logic."
+    why: "Written to match the CS 188 course and Pacman projects exactly, short and example-driven, free, and updated each term; better as a first read than the 1,100-page AIMA."
+    verified: true
+  - id: cs188-course
+    role: primary-course
+    kind: course
+    title: "UC Berkeley CS 188: Introduction to Artificial Intelligence"
+    by: "UC Berkeley EECS (Fall 2026: Emma Pierson, Peyrin Kao; Spring 2026: Dan Klein, Stuart Russell)"
+    url: https://inst.eecs.berkeley.edu/~cs188/
+    edition_or_term: "Fall 2026 (current); Spring 2026 for public recordings"
+    access: free
+    use: "Watch the Spring 2026 lecture playlist in order (intro/agents, uninformed + A* + local search, CSPs, games, MDPs, RL, Bayes nets and inference, HMMs/particle filters, ML); do HW0-HW-series from the course site; do Projects 1-5 (see practice entries)."
+    why: "The canonical intro-AI course: complete public lectures, slides, written homework and autograded Pacman projects, kept current every semester."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://inst.eecs.berkeley.edu/~cs188/fa26/
+      videos: unknown
+      public_videos_term: "Spring 2026 (Klein, Russell; YouTube 'Live Lectures' playlist; Fall 2025 playlist also exists)"
+      public_videos_url: https://www.youtube.com/playlist?list=PLp8QV47qJEg5tSxKiwcZt4LVwN_ek2Kxy
+      assignments: public-with-autograder
+      assignments_url: https://inst.eecs.berkeley.edu/~cs188/sp26/projects/
+  - id: cs188-projects
+    role: practice
+    kind: practice-site
+    title: "CS 188 Projects 0-5 (Pacman)"
+    by: "UC Berkeley CS 188 staff"
+    url: https://inst.eecs.berkeley.edu/~cs188/sp26/projects/
+    edition_or_term: "Spring 2026 handouts (Fall 2025 copy also archived)"
+    access: free
+    use: "Do P1 Search, P2 Multi-Agent (minimax/expectimax), P3 Reinforcement Learning (value iteration, Q-learning), P4 Ghostbusters (Bayes nets/HMM inference, particle filtering), P5 Machine Learning (perceptron, regression, neural nets). P0 is a Python/autograder tutorial."
+    why: "The autograded Pacman projects are the main reason CS 188 sticks; they turn every algorithm in the lectures into code you must get working."
+    verified: true
+  - id: aima-4e
+    role: reference
+    kind: book
+    title: "Artificial Intelligence: A Modern Approach, 4th US edition"
+    by: "Stuart Russell, Peter Norvig"
+    url: https://aima.cs.berkeley.edu/
+    edition_or_term: "4th US edition (2020/2021)"
+    access: paid
+    use: "Consult for: Ch. 3-6 (search, constraint satisfaction, adversarial search), Ch. 12-14 (probabilistic reasoning, HMMs), Ch. 16-17 (decisions, MDPs), Ch. 19-22 (learning, RL). Ch. 7-10 (logic, planning) if you want symbolic AI depth. Companion exercises and code repositories are linked from the site."
+    why: "Fills the gap of formal definitions, proofs, historical context, and topics CS 188 skips (logical agents, planning, knowledge representation); the course readings reference AIMA chapters anyway."
+    verified: true
+  - id: aima-exercises
+    role: practice
+    kind: practice-site
+    title: "AIMA Exercises"
+    by: "AIMA contributors (aimacode)"
+    url: https://aimacode.github.io/aima-exercises/
+    edition_or_term: "4th edition exercises"
+    access: free
+    use: "Pick the exercises for Ch. 3 (search), Ch. 5 (CSPs), Ch. 6 (games), Ch. 16-17 (decisions/MDPs) as extra written practice after the CS 188 written homeworks."
+    why: "Extra written problems with different phrasing than CS 188 homework, useful for exam-style self-testing."
+    verified: true
+considered:
+  - {title: "CS50's Introduction to AI with Python (Harvard)", url: "https://cs50.harvard.edu/ai/2024/", reason: "Gentler and project-based with public videos; good for beginners but narrower and shallower on probabilistic reasoning and RL than CS 188."}
+  - {title: "MIT 6.034 Artificial Intelligence (Fall 2010, OCW)", url: "https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/", reason: "Excellent Winston lectures but 2010 vintage and symbolic-AI centered; not a CS 188 replacement."}
+  - {title: "CMU 15-281 AI: Representation and Problem Solving", url: "https://www.cs.cmu.edu/~15281/", reason: "Strong alternative syllabus; recordings and autograded assignments not confirmed public."}
+  - {title: "Stanford CS221 Artificial Intelligence: Principles and Techniques", url: "https://web.stanford.edu/class/cs221/", reason: "Could not open the site during this research (503/timeouts), so not evaluated."}
+notes: "CS 188 is chosen because it is current (taught every term), has public recordings, public autograded projects and a free textbook. Fall 2026 page lists a 'Recordings Playlist' link whose YouTube ID looked truncated, so Fall 2026 video availability is recorded as unknown and the verified Spring 2026 playlist is the pointer. The course covers RL only as an MDP/Q-learning introduction; the RL path nodes (owned by another group) go deeper. Intro ML in CS 188 is light; ml-fundamentals is the real treatment."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Fall 2026 recordings playlist link on the course page is malformed/truncated; confirm availability once the term ends."
+  - "Spring 2026 playlist contents (video count, completeness) not inspected beyond its title '[CS188 SP26] Live Lectures'."
+last_verified: 2026-11-18

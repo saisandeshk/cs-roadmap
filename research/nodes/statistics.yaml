@@ -1,0 +1,114 @@
+id: statistics
+title: Statistical Inference
+group: G2
+paths: [core, ml-foundations]
+hard: [probability]
+soft: []
+scope: "Estimation, MLE, hypothesis testing, confidence intervals, bootstrap, regression, Bayesian basics."
+
+level: intermediate
+estimated_hours: 110
+resources:
+  - id: wasserman-aos
+    role: primary-text
+    kind: book
+    title: "All of Statistics: A Concise Course in Statistical Inference"
+    by: "Larry Wasserman"
+    url: https://www.stat.cmu.edu/~larry/all-of-statistics/
+    edition_or_term: "Springer, 2004 (author page lists errata and data sets; no newer edition)"
+    access: paid
+    use: "Chapters 6-13: models and inference, bootstrap (8), parametric inference/MLE (9), hypothesis testing and p-values (10), Bayesian inference (11), statistical decision theory (12), linear and logistic regression (13); chapters 1-5 only as probability review."
+    why: "The densest correct treatment of exactly this scope (MLE, testing, confidence sets, bootstrap, regression, Bayes) at CS/ML-reader level; widely used in ML programs."
+    verified: true
+  - id: mit-18-650
+    role: primary-course
+    kind: course
+    title: "MIT 18.650 Statistics for Applications"
+    by: "Philippe Rigollet (MIT)"
+    url: https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/
+    edition_or_term: "Fall 2016 (OCW)"
+    access: free
+    use: "All lectures with slides: parametric estimation, MLE and method of moments, confidence intervals, hypothesis testing, Bayesian statistics, linear regression, generalized linear models/logistic regression, nonparametric estimation; do the problem sets."
+    why: "Public full lecture series with slides and problem sets that follows the same chapters as All of Statistics; theoretical but applied, aimed at ML-bound students."
+    verified: true
+    course:
+      latest_term: "Fall 2016 (OCW); later 18.650/18.6501x runs not publicly archived (edX Fundamentals of Statistics is no longer available)"
+      latest_url: https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/
+      videos: public
+      public_videos_term: "Fall 2016"
+      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP60uVBMaoNERc6knT_MgPKS0
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/pages/assignments/
+  - id: mit-18-05
+    role: secondary
+    kind: course
+    title: "MIT 18.05 Introduction to Probability and Statistics"
+    by: "Jeremy Orloff, Jennifer French Kamrin (MIT)"
+    url: https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/
+    edition_or_term: "Spring 2022 (OCW)"
+    access: free
+    use: "Classes on MLE, Bayesian updating and priors, frequentist inference (t-tests, confidence intervals, bootstrap, regression) via the reading notes, in-class problems, R studios and problem sets with solutions; the Bayesian sequence is the best free introduction to Bayesian basics."
+    why: "A gentler, problem-driven second source with free reading notes, applets, R code and graded problem sets with solutions; no lecture videos, but it fills the Bayesian basics gap in 18.650."
+    verified: true
+    course:
+      latest_term: "Spring 2022 (OCW)"
+      latest_url: https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/
+      videos: none
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/calendar/
+  - id: rethinking
+    role: secondary
+    kind: video-series
+    title: "Statistical Rethinking (book and lecture series)"
+    by: "Richard McElreath"
+    url: https://xcelab.net/rm/
+    edition_or_term: "2nd edition (CRC); newest public course materials: Rethinking 2024 (lectures on McElreath's YouTube channel; 2023 playlist: https://www.youtube.com/playlist?list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus); 3rd edition announced, not yet published"
+    access: mixed
+    use: "Lectures 1-8 (golem of Prague, Bayesian updating, linear models, causal thinking, MCMC) and lecture on model comparison/overfitting; homework with code translations (PyMC, NumPyro, Julia) linked on the page."
+    why: "Hidden-gem treatment of Bayesian data analysis and causal reasoning as engineering practice; fills the applied-Bayes gap beyond the theory in 18.650/AoS."
+    verified: true
+  - id: think-stats
+    role: practice
+    kind: book
+    title: "Think Stats, 3rd edition (and Think Bayes, 2nd edition)"
+    by: "Allen B. Downey"
+    url: https://allendowney.github.io/ThinkStats/
+    edition_or_term: "Think Stats 3e (Python, free online); Think Bayes: https://allendowney.github.io/ThinkBayes2/"
+    access: free
+    use: "Do the estimation, hypothesis testing, resampling/bootstrap and regression chapters of Think Stats and the Bayesian updating chapters of Think Bayes as runnable notebooks; reimplement each test by simulation."
+    why: "Code-first practice that makes confidence intervals, p-values and the bootstrap computational; a counterweight to the proof-heavy primaries."
+    verified: true
+  - id: seeing-theory-stats
+    role: reference
+    kind: website
+    title: "Seeing Theory: Frequentist and Bayesian Inference chapters"
+    by: "Brown University"
+    url: https://seeing-theory.brown.edu/
+    edition_or_term: "Current site"
+    access: free
+    use: "Estimation, confidence interval, hypothesis testing and Bayesian inference interactive chapters, as a 10-minute visual refresher."
+    why: "Interactive visualizations of sampling distributions and intervals that the books describe statically."
+    verified: true
+  - id: cmu-36-705
+    role: reference
+    kind: website
+    title: "CMU 36-705 Intermediate Statistics (Wasserman) course notes"
+    by: "Larry Wasserman (CMU)"
+    url: https://www.stat.cmu.edu/~larry/=stat705/
+    edition_or_term: "Fall 2020 page (notes follow All of Statistics Ch. 1-12)"
+    access: free
+    use: "Lecture notes on convergence, concentration inequalities, sufficiency, MLE theory and testing, when a proof or step in AoS is too terse."
+    why: "Author's own expanded notes that fill derivation gaps in the primary text (reference only; not a lecture course here)."
+    verified: true
+considered:
+  - {title: "Stanford STATS 200 Introduction to Statistical Inference", url: "https://stats200.stanford.edu/", reason: "Strong inference course; could not open Stanford pages from the research environment, so public status is unknown."}
+  - {title: "Computer Age Statistical Inference (Efron, Hastie)", url: "https://hastie.su.domains/CASI/", reason: "Free PDF and excellent modern overview (bootstrap, GLMs, empirical Bayes, deep learning) but a survey, not a first course; page not opened here."}
+  - {title: "Bayes Rules! An Introduction to Applied Bayesian Modeling", url: "https://www.bayesrulesbook.com/", reason: "Free and clear, R-based; Rethinking and 18.05 cover Bayesian basics."}
+notes: "AoS + 18.650 follows one chapter map; add 18.05 for Bayesian basics and problem-solving, and Statistical Rethinking for applied Bayes and causal intuition. Causal inference and A/B-testing practice are intentionally out of scope for this node (the owner's earlier curation placed them in a separate statistics-experimentation stage and may deserve their own node). Hours assume about 60 hours of lectures plus problems and simulations."
+split_proposal: "Consider a separate 'causal-inference-and-experimentation' node (Hernan-Robins What If, trustworthy A/B testing) because this node's scope stops at classical inference and Bayesian basics; the ai-atlas seed bundles both."
+prereq_changes: "Add soft: [linear-algebra] (regression and GLMs use matrix notation)."
+open_questions:
+  - "Latest public MIT 18.650 run after Fall 2016 not found."
+  - "Statistical Rethinking 2025 or 2026 lecture series not confirmed; xcelab.net lists Rethinking2024 as most recent."
+  - "Casella-Berger and ISLP were considered but not given URLs (not opened)."
+last_verified: 2026-11-18

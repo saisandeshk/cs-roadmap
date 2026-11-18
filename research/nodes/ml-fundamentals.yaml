@@ -1,0 +1,140 @@
+id: ml-fundamentals
+title: Machine Learning Fundamentals
+group: G5
+paths: [ml-foundations]
+hard: [linear-algebra, probability, calculus]
+soft: [statistics, optimization, matrix-calculus]
+scope: "Supervised (linear/logistic, GLMs, kernels/SVM, trees/ensembles), unsupervised (k-means, GMM/EM, PCA), bias-variance, regularization, generalization basics."
+
+level: intermediate
+estimated_hours: 140
+resources:
+  - id: pml1
+    role: primary-text
+    kind: book
+    title: "Probabilistic Machine Learning: An Introduction"
+    by: "Kevin P. Murphy"
+    url: https://probml.github.io/pml-book/book1.html
+    edition_or_term: "MIT Press 2022; free CC-BY-NC-ND draft PDF updated 2025-04-18"
+    access: free
+    use: "Ch. 4 Statistics (MLE, MAP, regularization, cross-validation), Ch. 5 Decision theory, Ch. 9 LDA/naive Bayes, Ch. 10 Logistic regression, Ch. 11 Linear regression (bias-variance, ridge/lasso), Ch. 12 GLMs, Ch. 16 Exemplar-based methods (kNN), Ch. 17 Kernel methods (SVMs), Ch. 18 Trees/forests/bagging/boosting, Ch. 20 Dimensionality reduction (PCA), Ch. 21 Clustering; mixture models in Ch. 3 (Sec. 3.5) and the EM algorithm in Ch. 8 (Optimization). Skip Ch. 13-15 (neural nets) here; they belong to deep-learning-fundamentals. Chapter numbers verified against the 2025 PDF."
+    why: "The most complete modern, mathematically consistent treatment of exactly this scope (GLMs, kernels, trees, EM, PCA) with a probabilistic view that carries into DL, Bayesian and PGM nodes; free; notebooks in pyprobml."
+    verified: true
+  - id: cs229
+    role: primary-course
+    kind: course
+    title: "Stanford CS229: Machine Learning"
+    by: "Stanford (Summer 2026: Jehangir Amjad, Anand Avati; originally Andrew Ng)"
+    url: https://cs229.stanford.edu/
+    edition_or_term: "Summer 2026 page; classic public videos from Autumn 2018 (Andrew Ng)"
+    access: free
+    use: "Watch the Autumn 2018 lectures (linear/logistic regression, GLMs, GDA/naive Bayes, SVMs and kernels, bias-variance and regularization, tree ensembles, k-means/GMM/EM, factor analysis, PCA/ICA; skip or defer the neural-net and RL lectures unless wanted). Use the CS229 lecture notes (see reference entry) as the written companion and do the problem sets."
+    why: "The canonical rigorous ML course: derivations-first, scope matches this node almost line for line; the 2018 recordings are the best complete free video set."
+    verified: true
+    course:
+      latest_term: "Summer 2026 (earlier 2025-26 runs: Fall 2025, Winter 2026, Spring 2026 pages archived on the site)"
+      latest_url: https://cs229.stanford.edu/
+      videos: enrolled-only
+      public_videos_term: "Autumn 2018 (Andrew Ng; Stanford Online YouTube); Summer 2019 and Spring 2022 recordings also listed on CS229 syllabus pages"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU
+      assignments: partial
+      assignments_url: https://cs229.stanford.edu/syllabus-autumn2018.html
+  - id: cs229-notes
+    role: secondary
+    kind: article
+    title: "CS229 Lecture Notes (main_notes.pdf)"
+    by: "Andrew Ng, Tengyu Ma, Anand Avati, Moses Charikar, Christopher Re and TAs"
+    url: https://cs229.stanford.edu/main_notes.pdf
+    edition_or_term: "Course notes PDF (current site copy; 2022 version also at https://cs229.stanford.edu/lectures-spring2022/main_notes.pdf)"
+    access: free
+    use: "Parts on supervised learning (linear/logistic regression, GLMs, generative models, kernels/SVM), learning theory (bias-variance, VC-style bounds, regularization, model selection), unsupervised learning (k-means, EM/GMM, factor analysis, PCA/ICA)."
+    why: "Short, derivation-complete notes that mirror the lectures; the best fast exam-style companion when Murphy is too long."
+    verified: true
+  - id: islp
+    role: secondary
+    kind: book
+    title: "An Introduction to Statistical Learning, with Applications in Python (ISLP)"
+    by: "Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor"
+    url: https://www.statlearning.com/
+    edition_or_term: "ISLP 2023 (Python); ISLR 2nd ed. 2021 (R); both free PDFs"
+    access: free
+    use: "Ch. 2 (statistical learning, bias-variance), 3-4 (regression/classification), 5 (resampling), 6 (shrinkage), 8 (trees), 9 (SVMs), 12 (unsupervised); do the Python labs at the end of each chapter."
+    why: "Gentler on-ramp with runnable Python labs; use before or alongside Murphy when the matrix algebra feels heavy."
+    verified: true
+  - id: cs4780
+    role: secondary
+    kind: course
+    title: "Cornell CS 4780 Machine Learning for Intelligent Systems (Kilian Weinberger)"
+    by: "Kilian Q. Weinberger (Cornell)"
+    url: https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/
+    edition_or_term: "Fall 2018 lecture notes + YouTube playlist; current CS 4/5780 page at https://www.cs.cornell.edu/courses/cs4780/"
+    access: free
+    use: "Lecture notes 1-18ish (ML setup, kNN/curse of dimensionality, perceptron, estimating probabilities, naive Bayes, logistic regression, gradient descent, linear/ridge regression, SVM, empirical risk minimization, bias-variance, boosting, decision trees/bagging) and the matching YouTube lectures (playlist linked from the page)."
+    why: "Hidden gem: unusually intuitive lectures (bias-variance, kernels, boosting) that make a good first pass before the heavier Stanford derivations."
+    verified: true
+    course:
+      latest_term: "Current page lists Weinberger and Sridharan (term not stated on the landing text I read)"
+      latest_url: https://www.cs.cornell.edu/courses/cs4780/
+      videos: unknown
+      public_videos_term: "Fall 2018"
+      public_videos_url: https://www.youtube.com/playlist?list=PLl8OlHZGYOQ7bkVbuRthEsaLr7bONzbXS
+      assignments: partial
+  - id: prml
+    role: reference
+    kind: book
+    title: "Pattern Recognition and Machine Learning"
+    by: "Christopher M. Bishop"
+    url: https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/
+    edition_or_term: "Springer 2006; full PDF free from Microsoft Research"
+    access: free
+    use: "Ch. 3 (linear regression, bias-variance), Ch. 4 (linear classification), Ch. 6-7 (kernels, SVM/RVM), Ch. 9 (mixture models and EM), Ch. 12 (PCA); Ch. 10 (variational inference) belongs to bayesian-inference."
+    why: "Still the clearest derivations of EM and kernel methods; older than Murphy but keep for those chapters."
+    verified: true
+  - id: esl
+    role: reference
+    kind: book
+    title: "The Elements of Statistical Learning, 2nd edition"
+    by: "Trevor Hastie, Robert Tibshirani, Jerome Friedman"
+    url: https://hastie.su.domains/ElemStatLearn/
+    edition_or_term: "2nd ed. (2009), 12th printing, free PDF"
+    access: free
+    use: "Ch. 7 (model assessment and selection), Ch. 9-10 (trees, additive models, boosting), Ch. 15 (random forests), Ch. 14 (unsupervised)."
+    why: "Definitive reference for regularization, model assessment, boosting and random forests."
+    verified: true
+  - id: handson-ml-pytorch
+    role: practice
+    kind: practice-site
+    title: "Hands-On Machine Learning with Scikit-Learn and PyTorch: notebooks 03-08"
+    by: "Aurelien Geron"
+    url: https://github.com/ageron/handson-mlp
+    edition_or_term: "1st edition of the Scikit-Learn and PyTorch book (O'Reilly, 2025); notebooks in the repo"
+    access: mixed
+    use: "Run notebooks 03 Classification, 04 Training Linear Models, 05 Decision Trees, 06 Ensemble Learning and Random Forests, 07 Dimensionality Reduction, 08 Unsupervised Learning; appendix C covers SVMs. Free notebooks; book is paid."
+    why: "Code-first counterpart to the theory: implement and compare each model on real data in scikit-learn."
+    verified: true
+  - id: cs229-psets
+    role: practice
+    kind: practice-site
+    title: "CS229 problem sets (implement-from-scratch parts)"
+    by: "Stanford CS229 staff"
+    url: https://cs229.stanford.edu/syllabus-autumn2018.html
+    edition_or_term: "Autumn 2018 syllabus page (PS0 public PDF; PS1-PS4 distributed through Piazza zips, not openly accessible)"
+    access: account-required
+    use: "If you can obtain them: implement logistic regression with Newton's method, GDA, naive Bayes spam filter, kernel SVM, EM for GMM, PCA. Otherwise do the same algorithms in numpy from the ISLP/Hands-On notebooks."
+    why: "Writing the algorithms yourself (without sklearn) is what makes the math stick."
+    verified: true
+considered:
+  - {title: "MIT 6.390 Introduction to Machine Learning (Fall 2026)", url: "https://introml.mit.edu/", reason: "Good modern course with open notes but the site requires login for full access; video availability unclear."}
+  - {title: "CMU 10-301/601 Introduction to Machine Learning (Spring 2026)", url: "https://www.cs.cmu.edu/~mgormley/courses/10601/", reason: "Strong syllabus and recitations; recordings on SCS Panopto, public access not confirmed."}
+  - {title: "Mathematics for Machine Learning (Deisenroth, Faisal, Ong)", url: "https://mml-book.github.io/", reason: "Math prerequisite review rather than ML itself; belongs with linear-algebra/probability nodes."}
+  - {title: "Probabilistic Machine Learning: Advanced Topics (Murphy)", url: "https://probml.github.io/pml-book/book2.html", reason: "Used in Bayesian/PGM/GNN nodes, too advanced here."}
+  - {title: "Hands-On ML (3rd ed. Keras/TensorFlow)", url: "https://github.com/ageron/handson-ml3", reason: "Superseded for this roadmap by the Scikit-Learn and PyTorch edition."}
+  - {title: "Dive into Deep Learning", url: "https://d2l.ai/", reason: "Linear/softmax regression chapters are fine but classical ML (SVM, trees, EM) is not covered."}
+notes: "Primary text Murphy PML1 (broad, modern, free) chosen over ISLP (too light on kernels/EM, statistics-flavored) and Bishop PRML (older, no trees/boosting depth). CS229 chosen as the primary course for scope match and complete public video (2018). Recent CS229 terms (Summer 2026, Spring 2026 etc.) are enrolled-only (Stanford login for documents); the course site's own materials require a Stanford account. Pair math-heavy items with ISLP/Cornell for intuition."
+split_proposal: null
+prereq_changes: "Consider adding soft: [scientific-python] because the practice notebooks assume NumPy/scikit-learn fluency."
+open_questions:
+  - "CS229 recent-term video status: the Summer 2026 page says all links require a Stanford login; I did not see a public playlist for 2025-26 runs."
+  - "CS229 Spring 2022 and Summer 2019 recordings are listed in CS229 syllabus pages but I did not open those individual playlists."
+  - "Cornell CS 4780 latest term and whether newer lecture videos are public not determined."
+last_verified: 2026-11-18

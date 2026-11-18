@@ -1,0 +1,151 @@
+id: neural-3d
+title: Neural Rendering & 3D Deep Learning
+group: G6
+paths: [vision, generative]
+hard: [multi-view-geometry, deep-learning-for-vision]
+soft: []
+scope: "NeRF, Gaussian splatting, 3D representations, differentiable rendering, feed-forward 3D reconstruction."
+
+level: advanced
+estimated_hours: 50
+resources:
+  - id: neural-fields-star
+    role: primary-text
+    kind: paper
+    title: "Neural Fields in Visual Computing and Beyond"
+    by: "Yiheng Xie, Towaki Takikawa, Shunsuke Saito, Or Litany, Shiqin Yan, Numair Khan, Federico Tombari, James Tompkin, Vincent Sitzmann, Srinath Sridhar"
+    url: https://arxiv.org/abs/2111.11426
+    edition_or_term: "Eurographics STAR report, arXiv 2111.11426 (2021-22)"
+    access: free
+    use: "Sec. 2-3 (what a neural field is; techniques: forward maps, hybrid representations, conditioning, differentiable rendering, sampling/regularization), Sec. 4 (rendering NeRF-style) and the applications sections as survey. Read before the NeRF and 3DGS papers."
+    why: "The only structured survey that frames NeRF as one instance of 'neural fields + differentiable rendering', so volumetric, SDF and splatting methods fit one vocabulary. It predates Gaussian splatting and feed-forward models, which the secondary papers/courses supply. No single textbook exists for this fast-moving topic."
+    verified: true
+  - id: kaist-cs479
+    role: primary-course
+    kind: course
+    title: "KAIST CS479 Machine Learning for 3D Data"
+    by: "Minhyuk Sung (KAIST)"
+    url: https://3dml.kaist.ac.kr/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures: 3D Representations, Point Clouds 1-2, 3D Rotations/Quaternions, Implicit Neural Representations, Camera Models, Epipolar Geometry, NeRF, Hybrid Representations, Gaussian Splatting, Representation Conversion 1-2, Mesh Deformation, 3D Generation. Assignments: PointNet, NeRF, Gaussian Splatting, Marching Squares/Implicit MLS (GitHub repos linked on the Programming Assignments page)."
+    why: "The most complete public course on the node: full lecture recordings on YouTube for the 2026 run, public assignment repos that make you implement NeRF and 3DGS rendering, and a syllabus matching the scope (representations, differentiable rendering, 3D generation). Weaker on feed-forward reconstruction, which CMU 16-825 and 6.8300 supply."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://3dml.kaist.ac.kr/
+      videos: public
+      assignments: public
+      assignments_url: https://3dml.kaist.ac.kr/programming-assignments/
+  - id: nerf-3dgs-papers
+    role: secondary
+    kind: paper
+    title: "Core papers: NeRF, Instant-NGP, Mip-NeRF 360, 3D Gaussian Splatting, 2D Gaussian Splatting, and 3DGS surveys"
+    by: "Mildenhall et al.; Mueller et al.; Barron et al.; Kerbl et al.; Huang et al.; Chen and Wang; Wu et al."
+    url: https://arxiv.org/abs/2003.08934
+    edition_or_term: "NeRF 2003.08934 (project page https://www.matthewtancik.com/nerf), Instant-NGP 2201.05989, Mip-NeRF 360 2111.12077, 3DGS 2308.04079 (project https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/), 2DGS 2403.17888, surveys 2401.03890 and 2403.11134"
+    access: free
+    use: "Read NeRF (volume rendering equation, positional encoding, hierarchical sampling), Instant-NGP (hash grids), Mip-NeRF 360 (anti-aliasing, unbounded scenes), then 3DGS (anisotropic Gaussians, differentiable tile rasterizer, adaptive densification); 2DGS for geometry; the two surveys to map the follow-up literature."
+    why: "These define the two dominant representations (implicit radiance fields, explicit Gaussians) and their trade-offs; the follow-up literature moves too fast for any book."
+    verified: true
+  - id: feedforward-papers
+    role: secondary
+    kind: paper
+    title: "Feed-forward 3D reconstruction: DUSt3R, MASt3R, VGGT, Depth Anything 3, pi^3; LRM and pixelSplat"
+    by: "Wang et al.; Leroy et al.; Wang et al. (VGGT); Lin et al. (Depth Anything 3); Wang et al. (pi^3); Hong et al.; Charatan et al."
+    url: https://arxiv.org/abs/2503.11651
+    edition_or_term: "VGGT 2503.11651 (CVPR 2025 paper), DUSt3R 2312.14132, MASt3R 2406.09756, Depth Anything V2 2406.09414, Depth Anything 3 2511.10647, pi^3 2507.13347, LRM 2311.04400, pixelSplat 2312.12337"
+    access: free
+    use: "Read DUSt3R (pointmaps), then VGGT (one transformer predicts cameras, depth, points, tracks), then Depth Anything 3 and pi^3 for the 2025 variants; LRM and pixelSplat for generalizable reconstruction/splatting from few views. Run the VGGT demo (COLMAP export) on your own photos."
+    why: "Replaces the classical SfM pipeline of multi-view-geometry with feed-forward networks; required for the 'feed-forward 3D reconstruction' scope item, which no course covers well except CMU 16-825 Fall 2026."
+    verified: true
+  - id: cmu-16-825
+    role: secondary
+    kind: course
+    title: "CMU 16-825 Learning for 3D Vision"
+    by: "Shubham Tulsiani (CMU)"
+    url: https://learning3d.github.io/
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Schedule/readings for Volume Rendering, NeRF, Neural Implicit Rendering, Differentiable Primitive Rendering (meshes and Gaussians), Multi-view Transformers (pixelNeRF, SRT, LVSM; VGGT, Depth Anything 3, pi^3), Generative 3D (DreamFusion, Zero-1-to-3, Trellis). Assignment 4 (Multi-View Transformers: Mini-LVSM and Mini-VGGT) is a public GitHub repo (learning3d/assignment4_f26); earlier assignments use PyTorch3D."
+    why: "The most up-to-date reading list and the only public assignment that builds a tiny VGGT / LVSM. Lecture recordings not found, so not the primary course."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://learning3d.github.io/
+      videos: unknown
+      assignments: public
+      assignments_url: https://github.com/learning3d/assignment4_f26
+  - id: mit-6-8300-diffrender
+    role: secondary
+    kind: course
+    title: "MIT 6.8300 Advances in Computer Vision, differentiable rendering lectures"
+    by: "Vincent Sitzmann (MIT)"
+    url: https://scenerepresentations.org/courses/2026/spring/advances-in-cv/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Differentiable Rendering: Data Structures and Signal Parameterizations (Mar 10), Novel View Synthesis 1 and 2 (Mar 12, Mar 17: sphere tracing, volume rendering, Gaussian splatting) and Prior-Based 3D Reconstruction (Mar 19); Dust3R/Mast3r in the Multi-View Geometry lecture (Mar 5)."
+    why: "Public recordings with the clearest conceptual account of fields vs. discretizations and why rendering choices matter; Sitzmann is a NeRF-era author (SRN, LFN, SRT)."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://scenerepresentations.org/courses/2026/spring/advances-in-cv/
+      videos: public
+      public_videos_term: "Spring 2025 (OCW)"
+      public_videos_url: https://ocw.mit.edu/courses/6-8300-advances-in-computer-vision-spring-2025/
+      assignments: public-with-autograder
+      assignments_url: https://github.com/6-8300/pset3-2026
+  - id: cs180-nerf
+    role: practice
+    kind: course
+    title: "Berkeley CS180 Project 4: Neural Radiance Field (plus discussion on cameras/rays and NeRF)"
+    by: "Angjoo Kanazawa, Alexei A. Efros (UC Berkeley)"
+    url: https://cal-cs180.github.io/fa25
+    edition_or_term: "Fall 2025"
+    access: free
+    use: "Project 4 (build a NeRF from scratch on a small multi-view dataset and your own captured images); discussion sheets for Week 9 (world, camera, pixels, rays) and Week 10 (NeRF) with solutions."
+    why: "Compact, well-scaffolded from-scratch NeRF in PyTorch that runs on a free Colab GPU, a lighter alternative to KAIST A2."
+    verified: true
+    course:
+      latest_term: "Fall 2025"
+      latest_url: https://cal-cs180.github.io/fa25
+      videos: unknown
+      assignments: public
+      assignments_url: https://cal-cs180.github.io/fa25
+  - id: nerfstudio-gsplat
+    role: practice
+    kind: tool
+    title: "nerfstudio and gsplat (docs and examples)"
+    by: "Nerfstudio team (UC Berkeley and contributors)"
+    url: https://docs.gsplat.studio/
+    edition_or_term: "Current docs; nerfstudio https://docs.nerf.studio/; gsplat repo Apache-2.0"
+    access: free
+    use: "Capture 50-100 photos of an object, run COLMAP (see multi-view-geometry), train splatfacto (nerfstudio) or the gsplat COLMAP example, compare PSNR/SSIM/LPIPS vs a NeRF baseline, and read the gsplat CUDA rasterizer source after the 3DGS paper."
+    why: "Gets a real captured-scene result and exposes the engineering of the rasterizer and densification that the papers describe only briefly."
+    verified: true
+  - id: hf-3dgs-blog
+    role: reference
+    kind: article
+    title: "Introduction to 3D Gaussian Splatting (Hugging Face blog)"
+    by: "Dylan Ebert (Hugging Face)"
+    url: https://huggingface.co/blog/gaussian-splatting
+    edition_or_term: "Sep 18, 2023"
+    access: free
+    use: "30-minute conceptual walkthrough (SfM point cloud to Gaussians, training with densification/pruning, rasterization) before reading the paper."
+    why: "Quick on-ramp for the 3DGS paper; no math, so not a primary text."
+    verified: true
+considered:
+  - {title: "Stanford CS348N / Wetzstein neural rendering material", url: "https://scenerepresentations.org/courses/", reason: "Not located during this research; MIT 6.8300 and Sitzmann's inverse-graphics course pages (2022/2023 Fall, listed at scenerepresentations.org/courses) are the public equivalents."}
+  - {title: "MIT 6.S980 Machine Learning for Inverse Graphics (Sitzmann, Fall 2022/2023)", url: "https://scenerepresentations.org/courses/", reason: "Dedicated course page listed; superseded by 6.8300 which has Spring 2025/2026 recordings."}
+  - {title: "KAIST CS479 Spring 2025 / Fall 2023 versions", url: "https://3dml.kaist.ac.kr/", reason: "Same course; use Spring 2026 (latest) and the older ones only as fallback."}
+  - {title: "Hugging Face ML for 3D Course (Dylan Ebert)", url: "https://huggingface.co/learn/ml-for-3d-course/unit0/introduction", reason: "Beginner-friendly, generative-demo oriented; table of contents not opened (intro page only). Too light for an advanced node."}
+  - {title: "KAIST CS492(C) Diffusion and Flow Models / 3D generation lectures", url: "https://diffusion.kaist.ac.kr/", reason: "Good for 3D generation via diffusion (DreamFusion lineage) but belongs to the diffusion and at-scale nodes."}
+  - {title: "UCSD Machine Learning meets Geometry (Hao Su)", url: "https://haosulab.github.io/ml-meets-geometry/WI21/", reason: "Referenced by CMU; 2021 vintage."}
+notes: "Course coverage is split: KAIST (Spring 2026) has the best public lectures and NeRF/3DGS assignments; CMU 16-825 (Fall 2026) has the best reading list and the only public mini-VGGT/LVSM assignment but no confirmed video. Feed-forward reconstruction and generalizable splatting are the fastest-moving parts and are carried by papers. Differentiable rendering is taught inside KAIST/6.8300/CMU; Mitsuba 3 / PyTorch3D / nvdiffrast were not evaluated."
+split_proposal: "Consider splitting into 'Neural rendering (NeRF, 3DGS, differentiable rendering)' and '3D deep learning and feed-forward reconstruction / generative 3D (point clouds, meshes, LVSM/VGGT, 3D generation)'. 50 focused hours already strains this single node."
+prereq_changes: "Add soft: diffusion-and-flow-matching (for 3D generation, DreamFusion-style score distillation and multi-view diffusion). computer-graphics basics (rasterization, rendering equation) would be a useful soft prerequisite if such a node exists elsewhere."
+open_questions:
+  - "CMU 16-825 Fall 2026 lecture recordings: none mentioned on the course site; check Canvas/YouTube."
+  - "Hugging Face ML for 3D course unit list was not opened."
+  - "Whether KAIST CS479 assignment repos have solutions/autograders was not checked beyond the NeRF repo README."
+last_verified: 2026-11-18

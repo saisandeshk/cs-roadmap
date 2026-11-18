@@ -1,0 +1,115 @@
+id: deep-learning-for-vision
+title: Deep Learning for Vision
+group: G6
+paths: [vision]
+hard: [deep-learning-fundamentals]
+soft: [vision-foundations, transformers]
+scope: "CNN architectures, detection, segmentation, ViTs, video models, training recipes."
+
+level: intermediate
+estimated_hours: 80
+resources:
+  - id: d2l
+    role: primary-text
+    kind: book
+    title: "Dive into Deep Learning"
+    by: "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola"
+    url: https://d2l.ai/
+    edition_or_term: "Version 1.0.3 (online, PyTorch/JAX/TF/MXNet code)"
+    access: free
+    use: "Ch. 7 (CNNs), 8 (modern CNNs: AlexNet, VGG, NiN, GoogLeNet, batch norm, ResNet/ResNeXt, DenseNet, RegNet-style design), 11.8 (Transformers for vision / ViT), 14 (computer vision: augmentation, fine-tuning, detection, SSD, R-CNN family, semantic segmentation, FCN). Run the notebooks."
+    why: "Executable, code-first coverage of exactly the CNN-to-detection-to-segmentation-to-ViT chain with runnable notebooks; free. Does not cover video models, modern detectors (DETR), promptable segmentation or large-scale training recipes, which is why the secondary items below exist."
+    verified: true
+  - id: cs231n
+    role: primary-course
+    kind: course
+    title: "Stanford CS231n: Deep Learning for Computer Vision"
+    by: "Fei-Fei Li, Ehsan Adeli, Justin Johnson, Zane Durante, Tiange Xiang (Stanford)"
+    url: https://cs231n.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures 5-11 of the 2025 videos (CNNs, CNN architectures, RNNs, attention/transformers, detection/segmentation/visualization, video understanding, large-scale distributed training); Assignment 1 and 2 (kNN/softmax/FC nets, batchnorm, dropout, ConvNets, network visualization) and Assignment 3 Q1 (captioning with transformers). Self-supervised, generative, 3D and VLM lectures are used in later nodes."
+    why: "The standard deep-vision course, refreshed every spring; public Colab assignments and (for 2025) public videos. 2026 schedule adds video understanding, distributed training and world models."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs231n.stanford.edu/
+      videos: enrolled-only
+      public_videos_term: "Spring 2025"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16
+      assignments: public
+      assignments_url: https://cs231n.github.io/assignments2026/assignment1/
+  - id: cs231n-notes
+    role: reference
+    kind: website
+    title: "CS231n course notes (Convolutional Neural Networks for Visual Recognition)"
+    by: "Andrej Karpathy, Justin Johnson, Fei-Fei Li and TAs (Stanford)"
+    url: https://cs231n.github.io/
+    edition_or_term: "Continuously updated; Spring 2026 assignments linked"
+    access: free
+    use: "Convolutional Networks, Transfer Learning, Neural Networks 1-3 (initialization, batchnorm, babysitting the learning process, hyperparameter search), Visualizing/Understanding CNNs."
+    why: "Concise, still-excellent written treatment of conv-net mechanics and training diagnostics; fills the practical training-recipe gap that d2l treats lightly."
+    verified: true
+  - id: cv3dst
+    role: secondary
+    kind: video-series
+    title: "TUM Computer Vision III: Detection, Segmentation and Tracking (CV3DST)"
+    by: "Laura Leal-Taixe (Technical University of Munich)"
+    url: https://www.youtube.com/playlist?list=PLog3nOPCjKBkamdw8F6Hw_4YbRiDRb2rb
+    edition_or_term: "WS 2021/22 recordings"
+    access: free
+    use: "Lectures on object detection (R-CNN family, YOLO/SSD, anchor-free), instance and semantic segmentation, multi-object tracking."
+    why: "Deeper, structured treatment of detection/segmentation/tracking than CS231n's single lecture; public videos (course page itself is not needed)."
+    verified: true
+  - id: hf-cv-course
+    role: secondary
+    kind: course
+    title: "Hugging Face Community Computer Vision Course"
+    by: "Hugging Face community"
+    url: https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome
+    edition_or_term: "Community course (units 1-13), living docs"
+    access: free
+    use: "Unit 3 (Vision Transformers), Unit 6 (basic CV tasks: classification, detection, segmentation), Unit 7 (video), Unit 9 (model optimization); run notebooks with transformers/timm."
+    why: "Modern library-level workflow (transformers, timm, datasets) for ViTs, detection, segmentation and video, the practical bridge from textbook code to current tooling. Community-written so quality is uneven; use selectively."
+    verified: true
+    course:
+      latest_term: "Living course, no fixed term"
+      latest_url: https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome
+      videos: none
+      assignments: partial
+      assignments_url: https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome
+  - id: torchvision-timm
+    role: practice
+    kind: docs
+    title: "torchvision models/references and timm (PyTorch Image Models)"
+    by: "PyTorch team; Ross Wightman / Hugging Face"
+    url: https://huggingface.co/docs/timm/index
+    edition_or_term: "Current docs"
+    access: free
+    use: "Fine-tune a pretrained timm backbone on a small dataset, then reproduce one recipe from the paper 'ResNet strikes back' (arXiv 2110.00476): augmentation (RandAugment, Mixup/CutMix), label smoothing, LAMB/AdamW, EMA. Also run torchvision detection and segmentation pretrained models (https://pytorch.org/vision/stable/index.html)."
+    why: "Training-recipe literacy (augmentation, schedules, EMA, fine-tuning) is what separates reading about CNN/ViT results from reproducing them."
+    verified: true
+  - id: paper-core
+    role: reference
+    kind: paper
+    title: "Core architecture papers: ResNet, ViT, Swin, ConvNeXt, DETR, SAM, SlowFast, VideoMAE"
+    by: "He et al.; Dosovitskiy et al.; Liu et al.; Carion et al.; Kirillov et al.; Feichtenhofer et al.; Tong et al."
+    url: https://arxiv.org/abs/2201.03545
+    edition_or_term: "ConvNeXt (A ConvNet for the 2020s) as entry point; ResNet 1512.03385, ViT 2010.11929, Swin 2103.14030, DETR 2005.12872, SAM 2304.02643, SAM 2 2408.00714, SlowFast 1812.03982, VideoMAE 2203.12602"
+    access: free
+    use: "Read in this order: ResNet, ViT, ConvNeXt (modernizing a CNN with ViT-era recipes), Swin, DETR; then SAM/SAM 2 for promptable segmentation and SlowFast or VideoMAE for video."
+    why: "These are the architecture decisions the node is about; d2l and CS231n cover only up to ViT-level material."
+    verified: true
+considered:
+  - {title: "Michigan EECS 498-007/598-005 Deep Learning for Computer Vision (Justin Johnson, Fall 2019 videos)", url: "https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r", reason: "Arguably the best-taught version (public videos, from-scratch PyTorch assignments), but 2019/2022 vintage and the Johnson-hosted course pages returned 404; CS231n 2025/2026 (taught partly by Johnson) is newer."}
+  - {title: "Understanding Deep Learning (Prince) ch. 10-12", url: "https://udlbook.github.io/udlbook/", reason: "Superb theory for CNNs/transformers but light on detection, segmentation and video; used in generative nodes instead."}
+  - {title: "Foundations of Computer Vision ch. 24-26, 50", url: "https://visionbook.mit.edu/", reason: "Good conceptual CNN/transformer chapters; already primary text of vision-foundations."}
+  - {title: "TUM ADL4CV (Leal-Taixe, Niessner, SS20)", url: "https://www.youtube.com/playlist?list=PLog3nOPCjKBnjhuHMIXu4ISE4Z4f2jm39", reason: "Advanced topics (GANs, 3D, video); partly overlaps later nodes and dated."}
+  - {title: "Berkeley CS 198-126 Modern Computer Vision (Fall 2022)", url: "https://www.youtube.com/playlist?list=PLzWRmD0Vi2KVsrCqA4VnztE4t71KnTnP5", reason: "Student-run, public videos; useful but CS231n is more authoritative."}
+notes: "No single book covers CNNs through ViTs, detection, segmentation and video; d2l is chosen for executable coverage and CS231n notes/lectures fill training practice. The Spring 2026 CS231n run is enrolled-only on video, but its schedule (video understanding, distributed training, SSL, generative, 3D, VLM, world models) is a good map of what a vision node should cover; the Spring 2025 playlist is the public recording. CS231n Assignment 3 also contains SSL, DDPM and CLIP/DINO components that are used by later nodes."
+split_proposal: null
+prereq_changes: "Optionally make vision-foundations soft only (already is). transformers soft prereq is right; ViT sections assume it."
+open_questions:
+  - "CS231n 2026 assignments page does not state autograder status; handouts and Colab starter code are public at cs231n.github.io/assignments2026."
+  - "CS231n Spring 2026 lecture videos exist on Stanford Canvas (enrolled-only); a 2026 YouTube release has not been seen yet."
+last_verified: 2026-11-18

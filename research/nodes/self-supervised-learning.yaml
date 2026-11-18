@@ -1,0 +1,112 @@
+id: self-supervised-learning
+title: Self-Supervised & Representation Learning
+group: G6
+paths: [vision, generative]
+hard: [deep-learning-for-vision]
+soft: [transformers]
+scope: "Contrastive learning, masked modeling, DINO-style self-distillation, JEPA, CLIP-style objectives."
+
+level: advanced
+estimated_hours: 35
+resources:
+  - id: ssl-cookbook
+    role: primary-text
+    kind: paper
+    title: "A Cookbook of Self-Supervised Learning"
+    by: "Randall Balestriero, Mark Ibrahim, Vlad Sobal, Ari Morcos, ... Yann LeCun, Micah Goldblum (Meta FAIR et al.)"
+    url: https://arxiv.org/abs/2304.12210
+    edition_or_term: "arXiv 2304.12210v2 (June 2023)"
+    access: free
+    use: "Sec. 1 (what SSL is and why), 2 (families and origins of SSL: deep metric learning, self-distillation, canonical correlation analysis, masked image modeling), 3 (a cook's guide to successful SSL training and deployment: augmentations, projector/heads, optimizers, evaluation, collapse), 4 (beyond images and classification). Skim 5."
+    why: "The only book-length, practitioner-oriented synthesis of SSL that treats the families under one framework and covers recipe details (collapse, projector, evaluation) that papers hide. Predates DINOv2/v3, I-JEPA and V-JEPA, which are picked up in the paper list below."
+    verified: true
+  - id: mit-6-8300
+    role: primary-course
+    kind: course
+    title: "MIT 6.8300 Advances in Computer Vision (Module 2: unsupervised representation learning and generative modeling)"
+    by: "Vincent Sitzmann, Kaiming He and others (MIT)"
+    url: https://scenerepresentations.org/courses/2026/spring/advances-in-cv/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures: Introduction to Representation Learning and Generative Modeling (Mar 31), Image Representation Learning (Apr 21), Video Representation Learning (Apr 23), guest lecture by Mathilde Caron (DINO author, Apr 28). Pset 5 (module 2). Spring 2025 equivalents on OCW."
+    why: "Graduate-level, taught by the people behind MoCo/MAE; frames SSL via contrastive and masking-based methods and ties it to generative modeling. Recordings are linked from the page (Panopto, publicly deliverable); psets are public on GitHub (github.com/6-8300) with student autograder files. It is a broad course, so only the module-2 lectures are used here."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://scenerepresentations.org/courses/2026/spring/advances-in-cv/
+      videos: public
+      public_videos_term: "Spring 2025 (also on OCW)"
+      public_videos_url: https://ocw.mit.edu/courses/6-8300-advances-in-computer-vision-spring-2025/
+      assignments: public-with-autograder
+      assignments_url: https://github.com/6-8300/pset-2-2026
+  - id: cs231n-a3-ssl
+    role: practice
+    kind: course
+    title: "CS231n Assignment 3 (Q2 Self-Supervised Learning for Image Classification; Q4 CLIP and DINO)"
+    by: "Stanford CS231n staff"
+    url: https://cs231n.github.io/assignments2026/assignment3/
+    edition_or_term: "Spring 2026 (due May 28, 2026)"
+    access: free
+    use: "Q2: self-supervised learning for image classification (learn representations from unlabeled images, then evaluate on classification). Q4: CLIP and DINO models (the exact tasks are in the assignment handout; check them before starting)."
+    why: "A free, Colab-based implementation exercise on the SSL, CLIP and DINO objectives; nothing else public is this compact. Lecture 12 (Self-supervised Learning) of the course gives the context."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs231n.stanford.edu/
+      videos: enrolled-only
+      public_videos_term: "Spring 2025"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16
+      assignments: public
+      assignments_url: https://cs231n.github.io/assignments2026/assignment3/
+  - id: ssl-papers
+    role: secondary
+    kind: paper
+    title: "Modern SSL paper path: SimCLR, MoCo, BYOL, DINO, MAE, I-JEPA, DINOv2, DINOv3, V-JEPA 2, LeJEPA"
+    by: "Chen et al.; He et al.; Grill et al.; Caron et al.; Assran et al.; Oquab et al.; Simeoni et al.; Meta FAIR; Balestriero and LeCun"
+    url: https://arxiv.org/abs/2304.07193
+    edition_or_term: "DINOv2 2304.07193 as anchor; SimCLR 2002.05709, MoCo 1911.05722, BYOL 2006.07733, DINO 2104.14294, MAE 2111.06377, I-JEPA 2301.08243, DINOv3 2508.10104, V-JEPA 2 2506.09985, LeJEPA 2511.08544, Web-SSL 2504.01017"
+    access: free
+    use: "Read in order: SimCLR, MoCo, BYOL, DINO (read main text + attention maps), MAE, I-JEPA, DINOv2 (data curation + distillation), then DINOv3, V-JEPA 2, LeJEPA and Web-SSL (language-free scaling) for the 2025 state of the art."
+    why: "The cookbook is from early 2023; these papers carry the objective-level details (centering/sharpening, masking ratio, prediction in latent space) and the 2025 results (DINOv3, V-JEPA 2, LeJEPA)."
+    verified: true
+  - id: weng-contrastive
+    role: secondary
+    kind: article
+    title: "Contrastive Representation Learning (and Self-Supervised Representation Learning)"
+    by: "Lilian Weng"
+    url: https://lilianweng.github.io/posts/2021-05-31-contrastive/
+    edition_or_term: "2021 (companion: 2019 post on self-supervised pretext tasks https://lilianweng.github.io/posts/2019-11-10-self-supervised/)"
+    access: free
+    use: "Whole post (contrastive losses: InfoNCE, triplet, N-pair; SimCLR/MoCo/BYOL/Barlow twins; practical tricks) before the paper path; the 2019 post for pretext tasks historically."
+    why: "Short, clear first read that makes the cookbook and papers easier; dated for 2024-25 methods but correct for contrastive foundations."
+    verified: true
+  - id: cs294-158-sp24
+    role: secondary
+    kind: course
+    title: "Berkeley CS294-158 Deep Unsupervised Learning (SSL lecture)"
+    by: "Pieter Abbeel, Wilson Yan, Kevin Frans, Philipp Wu (UC Berkeley)"
+    url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
+    edition_or_term: "Spring 2024"
+    access: free
+    use: "Lecture 7 (Self-Supervised Learning: contrastive/masked); its videos are linked on the course home page. The course's generative homeworks are used in generative-modeling-foundations."
+    why: "Second public video lecture on SSL from a different lineage (generative + SSL treated together); used when you want an alternative to 6.8300."
+    verified: true
+    course:
+      latest_term: "Spring 2024"
+      latest_url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
+      videos: public
+      assignments: public
+      assignments_url: https://github.com/rll/deepul
+considered:
+  - {title: "Stanford CS231n Lecture 12 (Self-supervised Learning, Spring 2026/2025)", url: "https://cs231n.stanford.edu/schedule.html", reason: "Good one-lecture intro; 2026 video enrolled-only so only the 2025 recording is public. Covered by the assignment above."}
+  - {title: "Understanding Deep Learning ch. 9.3 (self-supervision)", url: "https://udlbook.github.io/udlbook/", reason: "Too brief for this node."}
+  - {title: "NYU Deep Learning SP20 (LeCun/Canziani) SSL and EBM lectures", url: "https://www.youtube.com/@alfcnz", reason: "Historically valuable energy-based view of SSL; older than the cookbook; not re-verified."}
+  - {title: "Foundations of Computer Vision ch. 30 (Representation Learning) and 33", url: "https://visionbook.mit.edu/", reason: "Concise conceptual chapters; useful companion reading but not deep enough on recipes."}
+  - {title: "lightly-ai/lightly or solo-learn libraries", url: "https://github.com/lightly-ai/lightly", reason: "Unverified; practical SSL training libraries, skipped in favor of CS231n A3 plus official DINO/MAE repos."}
+notes: "CLIP-style objectives sit in both this node and vision-language-models. Recommendation: this node teaches the objective (InfoNCE, sigmoid loss, SigLIP) and the vision-only methods; vision-language-models teaches CLIP as a system and VLM construction. JEPA/world-model material (I-JEPA, V-JEPA 2) is conceptually adjacent to world-models nodes elsewhere in the graph."
+split_proposal: null
+prereq_changes: "Consider adding soft prereq generative-modeling-foundations (MAE/masked modeling and the generative-SSL connection; 6.8300 and CS294-158 teach them together), or conversely nothing. No hard change."
+open_questions:
+  - "6.8300 Spring 2026 Panopto recordings: delivery metadata returned without login for a sample session, but whole-playlist access was not checked."
+  - "The cookbook is a single arXiv paper, not a book; if the owner wants a book-form primary, there is none comparable."
+last_verified: 2026-11-18

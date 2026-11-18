@@ -1,0 +1,173 @@
+id: rust-programming
+title: Rust
+group: G1
+paths:
+- os-perf
+- security
+optional: true
+hard:
+- python-programming
+soft:
+- c-programming
+scope: Ownership and borrowing, traits, error handling, fearless concurrency, unsafe Rust, systems programming in Rust.
+level: intermediate
+estimated_hours: 75
+resources:
+- id: rust-book
+  role: primary-text
+  kind: book
+  title: The Rust Programming Language (the Book)
+  by: Steve Klabnik, Carol Nichols, Chris Krycho and contributors
+  url: https://doc.rust-lang.org/book/
+  edition_or_term: 3rd edition (No Starch, March 2026); online text assumes Rust 1.98 (2026-08-20) and edition 2024
+  access: free
+  use: Chapters 1-6 (ownership, structs, enums), 7-10 (modules, collections, error handling, generics/traits/lifetimes), 11 (tests), 13 (closures/iterators), 15 (smart pointers), 16 (concurrency), 17 (async), 19-20 (patterns, advanced features/unsafe); build the chapter 12 grep project and the chapter 21 server.
+  why: The official, always-current, free text; the 3rd edition is the version the language team maintains and it teaches the ownership model with the compiler error messages.
+  verified: true
+- id: ece1724
+  role: primary-course
+  kind: course
+  title: ECE 1724 Performant Software Systems with Rust
+  by: University of Toronto (Baochun Li)
+  url: https://iqua.ece.toronto.edu/baochun/ece1724/
+  edition_or_term: Fall 2026
+  access: free
+  use: Lecture videos and slides 1-7 (ownership, structs/enums, error handling, collections, generics/traits, lifetimes) plus the later lectures on smart pointers, concurrency and async; assignments grep (Search Utility), game (Reversi) and client (Web Client); the Rustrace project; sample quizzes and midterms with answer keys.
+  why: A full university course that follows the Rust Book with public lecture recordings (mp4 on the course site, dated from 2026-09-09), public assignments and sample exams, so it gives structure and deadlines to self-study.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://iqua.ece.toronto.edu/baochun/ece1724/
+    videos: public
+    assignments: public
+    assignments_url: https://iqua.ece.toronto.edu/baochun/ece1724/assignments/client
+- id: rustlings
+  role: practice
+  kind: practice-site
+  title: Rustlings
+  by: Rust project
+  url: https://rustlings.rust-lang.org/
+  edition_or_term: Official Rustlings (cargo install rustlings)
+  access: free
+  use: 'Do all exercises in order, in parallel with Book chapters: variables, functions, ownership/move_semantics, structs, enums, error handling, generics, traits, lifetimes, iterators, smart pointers, threads.'
+  why: Official small compiler-driven exercises mapped to Book chapters; the fastest way to internalise borrow-checker errors.
+  verified: true
+- id: rust-100-exercises
+  role: practice
+  kind: practice-site
+  title: 100 Exercises to Learn Rust
+  by: Mainmatter (Luca Palmieri)
+  url: https://rust-exercises.com/100-exercises/
+  edition_or_term: Free course
+  access: free
+  use: Work the whole structured sequence (about 100 exercises) from syntax through traits, ownership, threads and async; use after rustlings for a harder, project-style ladder.
+  why: 'Hidden gem: a test-driven ladder that goes beyond Rustlings into ecosystem and design (thread-based ticket system).'
+  verified: true
+- id: rust-by-example
+  role: reference
+  kind: website
+  title: Rust by Example
+  by: Rust project
+  url: https://doc.rust-lang.org/rust-by-example/
+  edition_or_term: Living
+  access: free
+  use: Use beside the Book for runnable snippets on traits, generics, error handling, std library types, macros and unsafe.
+  why: Alternate learn-by-example explanation when the Book prose is not enough.
+  verified: true
+- id: effective-rust
+  role: secondary
+  kind: book
+  title: 'Effective Rust: 35 Specific Ways to Improve Your Rust Code'
+  by: David Drysdale
+  url: https://www.lurklurk.org/effective-rust/
+  edition_or_term: Online edition (O Reilly 2024)
+  access: free
+  use: Chapters 1 Types (Items 1-9), 2 Traits (Items 10-14), 3 Concepts (Items 15-17 on borrow checker, lifetimes, references) and 5 Tooling.
+  why: 'Item-based idiom guide for the second month: moves from syntax to design decisions (errors, newtype, builders).'
+  verified: true
+- id: rustonomicon
+  role: secondary
+  kind: docs
+  title: The Rustonomicon
+  by: Rust project
+  url: https://doc.rust-lang.org/nomicon/
+  edition_or_term: Living
+  access: free
+  use: Meet Safe and Unsafe, Data Layout, Ownership (references, lifetimes, subtyping), Working with Unsafe, and FFI; read after Book ch. 20.
+  why: The unsafe Rust and systems-programming scope item; the Book only introduces it.
+  verified: true
+- id: comprehensive-rust
+  role: secondary
+  kind: course
+  title: Comprehensive Rust
+  by: Google (Android team)
+  url: https://google.github.io/comprehensive-rust/
+  edition_or_term: Living course (4-day format)
+  access: free
+  use: Rust Fundamentals days (1-3), then the Bare-metal Rust, Android/FFI and Concurrency days as the systems-programming add-on, doing every exercise.
+  why: Systems-oriented, exercise-driven pass that covers bare-metal and C/C++ interop, which neither the Book nor ECE 1724 do.
+  verified: true
+  course:
+    latest_term: Living (updated through 2026)
+    latest_url: https://google.github.io/comprehensive-rust/
+    videos: none
+    assignments: public
+- id: too-many-lists
+  role: secondary
+  kind: book
+  title: Learning Rust With Entirely Too Many Linked Lists
+  by: Alexis Beingessner (Gankra) and contributors
+  url: https://rust-unofficial.github.io/too-many-lists/
+  edition_or_term: Online book
+  access: free
+  use: A Bad Stack, An Ok Singly-Linked Stack, A Persistent Stack, An Ok Unsafe Queue; read after Book ch. 15.
+  why: Teaches ownership/borrowing/unsafe by confronting the classic data-structure problem Rust makes hard.
+  verified: true
+- id: crust-of-rust
+  role: secondary
+  kind: video-series
+  title: Crust of Rust
+  by: Jon Gjengset
+  url: https://www.youtube.com/playlist?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa
+  edition_or_term: Playlist (2020-)
+  access: free
+  use: Episodes on lifetime annotations, iterators, smart pointers and interior mutability, dispatch and fat pointers, and channels.
+  why: Intermediate live-coding that fills the gap between Book and real-world code; good video support absent from the Book.
+  verified: true
+- id: rust-atomics-locks
+  role: reference
+  kind: book
+  title: Rust Atomics and Locks
+  by: Mara Bos
+  url: https://mara.nl/atomics/
+  edition_or_term: O Reilly Jan 2023; free online
+  access: free
+  use: Ch. 1-3 (basics, atomics, memory ordering) only as a pointer; the deep concurrency work belongs to the G4 OS/performance concurrency node.
+  why: Included because fearless concurrency is in this node scope; the full book is G4 concurrency material.
+  verified: true
+considered:
+- title: UNSW COMP6991 Solving Modern Programming Problems with Rust
+  url: https://cgi.cse.unsw.edu.au/~cs6991/26T2/lectures
+  reason: Excellent course (26T2 exists; 2022 video playlist known) but UNSW server returned 503 so recordings/assignments not verified.
+- title: Stanford CS 110L Safety in Systems Programming (2020)
+  url: https://web.stanford.edu/class/cs110l/
+  reason: Systems-focused Rust course; 2020-era and not opened.
+- title: Programming Rust, 3rd edition (Blandy, Orendorff, Tindall)
+  url: https://www.oreilly.com/
+  reason: Deep and systems-focused; not verified for 2026 edition status; the free Book plus Rustonomicon covers scope.
+- title: Rust for Rustaceans (Jon Gjengset, No Starch)
+  url: https://nostarch.com/rust-rustaceans
+  reason: Best intermediate-to-advanced book; beyond this node, good next step.
+- title: Rust in Action (Tim McNamara)
+  url: https://www.manning.com/books/rust-in-action
+  reason: Systems projects but dated relative to the 2024 edition.
+- title: Exercism Rust track
+  url: https://exercism.org/tracks/rust
+  reason: Fine practice with mentoring; Rustlings and 100 Exercises are better aligned to the Book.
+notes: 'Optional node. Primary route: the Rust Book (3rd edition, edition 2024, Rust 1.98) plus ECE 1724 Fall 2026 lectures and assignments, with Rustlings and 100 Exercises in parallel; then Rustonomicon/Comprehensive Rust for the systems and unsafe scope. ECE 1724 is a good find: public mp4 recordings in the 2026 term with public assignments, which is unusual. Concurrency in depth (atomics, memory ordering) is G4: Rust Atomics and Locks is listed only as a pointer. The Rustlings GitHub repo moved to the rustlings organisation, but the official site is the stable entry.'
+split_proposal: null
+prereq_changes: 'None required. soft: [c-programming] is already right; a C background makes ownership easier to motivate.'
+open_questions:
+- UNSW COMP6991 pages returned 503 during checks; recordings and assignment access for 26T2 unverified.
+- ECE 1724 assignment pages are public but whether starter code/tests are public (GitHub ece1724-f26) could not be checked (GitHub unreachable).
+last_verified: '2026-11-18'

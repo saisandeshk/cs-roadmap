@@ -1,0 +1,152 @@
+id: kernel-dsls
+title: "Triton & Kernel DSLs"
+group: G9
+paths: [mlsys]
+hard: [gpu-programming]
+soft: [gemm-and-tensor-cores]
+scope: "Triton, CuTe DSL, ThunderKittens, Pallas; writing fused kernels."
+
+level: advanced
+estimated_hours: 45
+resources:
+  - id: triton-tutorials
+    role: primary-text
+    kind: docs
+    title: "Triton documentation and tutorials"
+    by: "Triton project (OpenAI, now open-source community)"
+    url: https://triton-lang.org/main/getting-started/tutorials/index.html
+    edition_or_term: "main docs (current)"
+    access: free
+    use: "Tutorials 01 vector add, 02 fused softmax, 03 matrix multiplication (autotuning, L2 swizzling), 05 layer normalization, 06 fused attention (FlashAttention), then Group GEMM, Persistent Matmul and Block Scaled Matrix Multiplication; read the Python API pages for tl.load/store, tl.dot, masks, autotune. The docs also now include a Gluon section (lower-level tile DSL)."
+    why: "Official, always-current and the de facto reference for the DSL used by PyTorch Inductor, vLLM and most custom ML kernels."
+    verified: true
+  - id: cs336-kernels
+    role: primary-course
+    kind: course
+    title: "Stanford CS336 Language Modeling from Scratch (Kernels and Triton lecture + Assignment 2 FlashAttention-2 in Triton)"
+    by: "Percy Liang, Tatsunori Hashimoto (Stanford)"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 5 (GPUs, TPUs) and Lecture 6 (Kernels, Triton); Assignment 2 part on writing FlashAttention-2 forward in pure PyTorch, then Triton (with autograd function and tests)."
+    why: "Public lecture + graded assignment that ends in a real fused Triton kernel with a test suite; the only mainstream course that does this."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+      assignments: public-with-autograder
+      assignments_url: https://github.com/stanford-cs336/assignment2-systems
+  - id: triton-paper
+    role: reference
+    kind: paper
+    title: "Triton: An Intermediate Language and Compiler for Tiled Neural Network Computations"
+    by: "Philippe Tillet, H. T. Kung, David Cox"
+    url: https://www.eecs.harvard.edu/~htk/publication/2019-mapl-tillet-kung-cox.pdf
+    edition_or_term: "MAPL 2019"
+    access: free
+    use: "Sections 1-4: tile-level programming model and why compiler-managed memory hierarchy matters. Pair with GPU MODE lecture 29 (Triton Internals)."
+    why: "Original design rationale; short."
+    verified: true
+  - id: triton-puzzles
+    role: practice
+    kind: practice-site
+    title: "Triton Puzzles"
+    by: "Sasha Rush, Tejas Ramesh, Keren Zhou"
+    url: https://github.com/srush/Triton-Puzzles
+    edition_or_term: "Colab notebook (interpreter mode, no GPU needed)"
+    access: free
+    use: "All puzzles in order (vector add through fused softmax, matmul, etc.), run under the Triton interpreter in Colab."
+    why: "Free, GPU-less on-ramp to Triton's programming model with instant feedback; mirrors GPU Puzzles."
+    verified: true
+  - id: gpumode-triton
+    role: secondary
+    kind: video-series
+    title: "GPU MODE lectures on kernel DSLs (Triton, CuTeDSL, ThunderKittens, Gluon, Iris, Mirage)"
+    by: "GPU MODE community"
+    url: https://github.com/gpu-mode/lectures
+    edition_or_term: "ongoing"
+    access: free
+    use: "Lecture 14 (Practitioner's Guide to Triton), 18 (Fused Kernels), 28 (Liger Kernel), 29 (Triton Internals), 34 (Low-bit Triton kernels), 75 (GPU programming fundamentals + ThunderKittens), 86 (Intro to CuTeDSL), 104 (Gluon), 114 (PyCuTe)."
+    why: "Talks by the DSL authors themselves; the fastest way to learn each DSL's idioms and limits."
+    verified: true
+  - id: cute-dsl
+    role: secondary
+    kind: docs
+    title: "CUTLASS Python DSL (CuTe DSL) documentation"
+    by: "NVIDIA"
+    url: https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/overview.html
+    edition_or_term: "CUTLASS 4.x docs"
+    access: free
+    use: "Overview, DSL programming model page (https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl.html), and the Hopper/Blackwell GEMM examples; rewrite your Triton matmul in CuTe DSL."
+    why: "NVIDIA's own Python route to CUTLASS-level performance; the layout algebra from the GEMM node carries over."
+    verified: true
+  - id: thunderkittens-paper
+    role: secondary
+    kind: paper
+    title: "ThunderKittens: Simple, Fast, and Adorable AI Kernels (and ParallelKittens)"
+    by: "Spector, Arora, Singhal, Fu, Re et al. (Hazy Research)"
+    url: https://arxiv.org/abs/2410.20399
+    edition_or_term: "ICLR 2025; ParallelKittens arXiv 2511.13940; TK 2.0 Jan 2026"
+    access: free
+    use: "Paper sections on the tile abstraction and warp-group programming model; the blog 'GPUs Go Brrr' (https://hazyresearch.stanford.edu/blog/2024-05-12-tk); repo manual and kernels."
+    why: "Shows the 'embedded C++ tiles' alternative to Triton's compiler approach, with FlashAttention-class kernels in a few dozen lines."
+    verified: true
+  - id: pallas
+    role: secondary
+    kind: docs
+    title: "Pallas: a JAX kernel language"
+    by: "JAX team (Google)"
+    url: https://docs.jax.dev/en/latest/pallas/index.html
+    edition_or_term: "current docs"
+    access: free
+    use: "Pallas quickstart, the TPU and Mosaic-GPU/Triton backend pages, and the matmul/attention examples."
+    why: "The kernel DSL for TPUs and JAX; gives a non-Triton design point (explicit grid/BlockSpec, TPU pipelining)."
+    verified: true
+  - id: helion-tilelang-cutile
+    role: reference
+    kind: docs
+    title: "Newer tile DSLs: Helion, TileLang, cuTile Python"
+    by: "PyTorch (Helion); TileLang community; NVIDIA (cuTile)"
+    url: https://helionlang.com/
+    edition_or_term: "Helion docs; TileLang 0.1.15 docs (https://tilelang.com/); cuTile Python (https://docs.nvidia.com/cuda/cutile-python/)"
+    access: free
+    use: "Skim each landing page and one GEMM or attention example to see how each differs from Triton (autotuning-first, scheduling-first, tile-based vendor DSL)."
+    why: "The DSL landscape is changing quickly; these three are the ones most likely to matter after Triton and CuTe DSL."
+    verified: true
+  - id: kernelbench
+    role: practice
+    kind: practice-site
+    title: "KernelBench"
+    by: "Stanford Scaling Intelligence Lab (Anne Ouyang et al.)"
+    url: https://scalingintelligence.stanford.edu/blogs/kernelbench/
+    edition_or_term: "2024-2025 (benchmark of 250 PyTorch workloads)"
+    access: free
+    use: "Pick 5-10 Level 1-2 problems (fused ops, small blocks), write Triton/CUDA kernels that beat the PyTorch eager baseline using the benchmark's correctness and timing harness."
+    why: "A ready-made set of fusion targets with correctness harness and speedup scoring; also the standard benchmark for LLM-written kernels."
+    verified: true
+  - id: leetgpu-triton
+    role: practice
+    kind: practice-site
+    title: "LeetGPU Triton problems"
+    by: "LeetGPU"
+    url: https://leetgpu.com/challenges
+    edition_or_term: "hosted"
+    access: account-required
+    use: "Solve softmax, layer norm, matmul and attention challenges in Triton, then compare with a CUDA solution."
+    why: "Hosted GPU for Triton practice without local setup."
+    verified: true
+considered:
+  - {title: "UCSD CSE 291A/DSC 291 PA2 (Spring 2026): Triton matmul and tensor-parallel communication", url: "https://haoailab.com/cse291-s26/assignments/", reason: "Good graded Triton assignment but starter repo says not to publish solutions and recordings access is unclear."}
+  - {title: "Liger Kernel and Unsloth kernels (source reading)", url: "https://github.com/linkedin/Liger-Kernel", reason: "Excellent real-world fused Triton kernels; not opened by me, mentioned for follow-on reading."}
+  - {title: "MLC Modern GPU Programming (TIRx)", url: "https://mlc.ai/modern-gpu-programming-for-mlsys/", reason: "TIRx DSL is covered in the book; used as secondary in gemm-and-tensor-cores."}
+  - {title: "Tensara", url: "https://tensara.org/", reason: "Practice site with Triton/CUDA; returned HTTP 522 when checked."}
+  - {title: "PyTorch Inductor-generated Triton code (torch.compile)", url: "https://docs.pytorch.org/docs/stable/torch.compiler.html", reason: "Excellent way to read machine-generated Triton; used in ml-compilers."}
+notes: "Triton is the primary DSL because of ecosystem reach (PyTorch, vLLM, FlashAttention-2 Triton variant). The DSL landscape (CuTe DSL, TileLang, Helion, cuTile, Gluon) is moving fast; re-check at each roadmap refresh. Hours: ~15 h tutorials + puzzles, ~30 h for the CS336 FlashAttention assignment and own fused kernels."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Which CS336 Spring 2026 lecture number covers 'Kernels, Triton' is taken from the course schedule fetched via WebFetch summary (lecture 6, Apr 15); the lecture materials page is JS-rendered so I did not open the lecture viewer itself."
+  - "Per-DSL maturity changes quickly (Gluon, cuTile, Helion not studied in depth)."
+last_verified: 2026-11-18

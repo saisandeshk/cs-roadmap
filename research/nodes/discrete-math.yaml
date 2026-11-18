@@ -1,0 +1,106 @@
+id: discrete-math
+title: Discrete Math & Proofs
+group: G2
+paths: [core]
+hard: []
+soft: []
+scope: "Logic, proof techniques, induction, sets/relations/functions, counting, graph theory, number theory, discrete probability intro."
+
+level: intro
+estimated_hours: 90
+resources:
+  - id: mcs
+    role: primary-text
+    kind: book
+    title: "Mathematics for Computer Science"
+    by: "Eric Lehman, F. Thomson Leighton, Albert R. Meyer"
+    url: https://courses.csail.mit.edu/6.042/spring18/mcs.pdf
+    edition_or_term: "Free PDF, CC BY-SA (revision hosted with the 6.042 Spring 2018 materials; the 6.1200 course points to the same text)"
+    access: free
+    use: "Follow the 6.1200 reading map: Ch 1-3 (proofs, predicates, sets), 4-5 (relations, induction), state machines, 9 (number theory), 10 and 12 (digraphs, graphs, matching, coloring), 14 (sums, asymptotics), 15 (counting), 17-20 (probability, conditioning, random variables, deviation bounds), 22 (recurrences). Do the chapter problems."
+    why: "The standard proof-first discrete math text for CS: it teaches how to write and check proofs while covering every topic in the scope; free, with a large bank of problems."
+    verified: true
+  - id: mit-6-1200j
+    role: primary-course
+    kind: course
+    title: "MIT 6.1200J / 18.062J Mathematics for Computer Science"
+    by: "Zachary Abel, Erik Demaine, Brynmor Chapman (OCW Spring 2024); Spring 2026 staff per MIT EECS listing: Abel, Kelner, Natarajan"
+    url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/
+    edition_or_term: "Spring 2024 (OCW); newest MIT run found: Spring 2026"
+    access: free
+    use: "All 24 lectures with the matching MCS readings (Readings page maps each lecture to sections), the recitation warm-up questions and the problem sets. Units: proofs/induction/state machines, algorithm analysis (sums, asymptotics, recurrences), number theory and RSA, graphs, counting, probability up to Chebyshev/Chernoff."
+    why: "The current incarnation of the classic 6.042J, with full public lecture videos, notes, warm-ups and problem sets aligned one-to-one with the free textbook."
+    verified: true
+    course:
+      latest_term: "Spring 2026 (MIT EECS who-is-teaching listing seen via search; no public site found for this run)"
+      latest_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/
+      videos: unknown
+      public_videos_term: "Spring 2024"
+      public_videos_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/video_galleries/lecture-videos/
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/pages/problem-sets/
+  - id: cs70
+    role: secondary
+    kind: course
+    title: "UC Berkeley CS 70 Discrete Mathematics and Probability Theory"
+    by: "Josh Hug, Manuel Sabin (Fall 2026)"
+    url: https://www.eecs70.org/
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Course notes n0-n23 (induction, modular arithmetic/RSA, polynomials and secret sharing, error-correcting codes, countability/computability, probability through Markov chains) and the weekly discussion sheets and homework PDFs that have posted solutions."
+    why: "Second source with many solved problems and applications MCS lacks (polynomials over finite fields, secret sharing, error-correcting codes, stable matching); also bridges discrete math into probability and Markov chains."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://www.eecs70.org/
+      videos: enrolled-only
+      public_videos_term: unknown
+      assignments: public
+      assignments_url: https://www.eecs70.org/
+  - id: levin-dmoi
+    role: secondary
+    kind: book
+    title: "Discrete Mathematics: An Open Introduction (3rd ed.)"
+    by: "Oscar Levin"
+    url: https://discrete.openmathbooks.org/dmoi3.html
+    edition_or_term: "3rd edition (web + PDF)"
+    access: free
+    use: "Chapters on logic, proofs, graph theory, counting and generating functions when MCS is too terse; use the in-text investigate-then-read problems and the exercises with solutions."
+    why: "Gentler first pass with many worked exercises and free solutions for a learner who has never written a proof."
+    verified: true
+  - id: concrete-math
+    role: reference
+    kind: book
+    title: "Concrete Mathematics: A Foundation for Computer Science (2nd ed.)"
+    by: "Ronald Graham, Donald Knuth, Oren Patashnik"
+    url: https://www-cs-faculty.stanford.edu/~knuth/gkp.html
+    edition_or_term: "2nd edition (1994)"
+    access: paid
+    use: "Chapters 1 (recurrences), 2 (sums), 5 (binomial coefficients), 7 (generating functions) after the MCS counting and sums units, for algorithm-analysis technique."
+    why: "Deeper toolkit for sums, recurrences and generating functions than any intro text; the standard bridge to analysis of algorithms."
+    verified: true
+  - id: nng4
+    role: practice
+    kind: practice-site
+    title: "Natural Number Game (NNG4) on the Lean Game Server"
+    by: "Kevin Buzzard, Mohammad Pedramfar, et al."
+    url: https://adam.math.hhu.de/#/g/leanprover-community/nng4
+    edition_or_term: "Lean 4 version"
+    access: free
+    use: "Tutorial, Addition and Multiplication worlds: prove commutativity/associativity of addition by induction in the Lean proof assistant."
+    why: "Instant machine feedback on proof steps and induction; optional complement to paper proofs for learners who want a checker."
+    verified: true
+considered:
+  - {title: "Stanford CS 103 Mathematical Foundations of Computing", url: "https://web.stanford.edu/class/cs103/", reason: "Excellent proofs/discrete-structures intro (Fall 2026 offering, lectures posted to Canvas), but half of it is automata/computability that belongs to the theory node; page not reachable from the research environment."}
+  - {title: "MIT 6.042J Spring 2015 / Fall 2010", url: "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/", reason: "Older runs of the same course (Fall 2010 has Leighton/Meyer videos); 6.1200 Spring 2024 supersedes them."}
+  - {title: "MIT 18.200 Principles of Discrete Applied Mathematics (Spring 2024)", url: "https://ocw.mit.edu/courses/18-200-principles-of-discrete-applied-mathematics-spring-2024/", reason: "Combinatorics/discrete applied math with lecture videos, but more math-major than CS proofs foundation."}
+  - {title: "Book of Proof (Hammack)", url: "https://www.people.vcu.edu/~rhammack/BookOfProof/", reason: "Good free proof-writing primer; could not open the page from this environment; Levin covers the same ground."}
+  - {title: "CMU 15-251 Great Ideas in Theoretical CS", url: "https://www.cs.cmu.edu/~15251/", reason: "Public page is the Fall 2018 run and theory-heavy; belongs to the theory path."}
+notes: "MCS + 6.1200 is the one-text-one-course pair: 6.1200 is the live descendant of 6.042J and its readings page gives a lecture-by-lecture map into the free book. The latest MIT run (Spring 2026) has no public page that I could find, so Spring 2024 OCW is the freshest usable material; videos are public on OCW. CS70 is kept as a second source for solved problems and coding-theory flavored topics. The probability unit of MCS/6.1200 (Lectures 18-24) overlaps with the probability node: it is fine as the discrete-probability intro here, with Stat 110 as the full treatment."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "6.1200 Spring 2026 (Abel/Kelner/Natarajan): no public course site or video status found; check courses.csail.mit.edu or Canvas-linked pages."
+  - "OCW 6.1200 problem sets: could not confirm whether solutions are posted (only 'Problem Sets' and 'Warm Up Problems' are listed). The 2015/2019 solutions are community-maintained (spamegg1/Math-for-CS-solutions)."
+  - "CS70 Fall 2026 lecture videos appear to be bCourses-only; a public YouTube playlist was not verified (a playlist listed in cs-video-courses resolved to an unrelated-looking channel title)."
+last_verified: 2026-11-18

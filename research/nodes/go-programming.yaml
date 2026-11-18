@@ -1,0 +1,135 @@
+id: go-programming
+title: Go
+group: G1
+paths:
+- distributed
+hard:
+- python-programming
+soft:
+- c-programming
+scope: 'Go for systems/distributed programming: goroutines, channels, sync, testing; enough to do MIT 6.5840-style labs.'
+level: intro
+estimated_hours: 35
+resources:
+- id: gopl
+  role: primary-text
+  kind: book
+  title: The Go Programming Language
+  by: Alan Donovan, Brian Kernighan
+  url: https://www.gopl.io/
+  edition_or_term: Addison-Wesley 2015 (Go 1.5, pre-generics)
+  access: paid
+  use: Chapter 1 Tutorial, 2-5 (program structure through functions) quickly, 6 Methods, 7 Interfaces, 8 Goroutines and Channels, 9 Concurrency with Shared Variables, 10 Packages and the Go Tool, 11 Testing. Skip reflection (12) and low-level programming (13) on first pass; learn generics from the Tour.
+  why: 'Still the best-written Go book: its concurrency chapters (8-9) are exactly what MIT 6.5840-style labs need, the exercises are well chosen, and it was written by the Go team and Kernighan. Predates generics, so pair it with the Tour of Go.'
+  verified: true
+- id: tour-of-go
+  role: secondary
+  kind: website
+  title: A Tour of Go
+  by: Go team
+  url: https://go.dev/tour/
+  edition_or_term: Current (Go 1.27 era site)
+  access: free
+  use: All modules (Basics, Methods and Interfaces, Generics, Concurrency); do first in about 4 hours. This is also the official Online Go tutorial that MIT 6.5840 requires before Lab 1.
+  why: Fast, interactive on-ramp that covers generics (missing from GOPL) and is the exact preparation MIT assigns.
+  verified: true
+- id: go-concurrency-sources
+  role: secondary
+  kind: article
+  title: 'Go concurrency primary sources: Concurrency Patterns talk, Pipelines, Context, Race Detector'
+  by: Rob Pike; Sameer Ajmani; Go team
+  url: https://go.dev/talks/2012/concurrency.slide
+  edition_or_term: Talk 2012; blog posts
+  access: free
+  use: 'Go Concurrency Patterns slides (generator, fan-in, timeout, select); Pipelines and cancellation (https://go.dev/blog/pipelines); Go Concurrency Patterns: Context (https://go.dev/blog/context); Introducing the Go Race Detector (https://go.dev/doc/articles/race_detector).'
+  why: Short authoritative sources for goroutine/channel idioms and data-race detection, which the book only partly covers (no context package).
+  verified: true
+- id: effective-go
+  role: reference
+  kind: docs
+  title: Effective Go and the Go Language Specification
+  by: Go team
+  url: https://go.dev/doc/effective_go
+  edition_or_term: Effective Go is not updated for generics
+  access: free
+  use: 'Effective Go: names, formatting, interfaces, embedding, errors, concurrency; the Spec (https://go.dev/ref/spec) for exact semantics; the Memory Model (https://go.dev/ref/mem) for sync guarantees.'
+  why: Authoritative idiom and semantics reference; read once and consult as needed.
+  verified: true
+- id: 100-go-mistakes
+  role: secondary
+  kind: book
+  title: 100 Go Mistakes and How to Avoid Them
+  by: Teiva Harsanyi
+  url: https://100go.co/
+  edition_or_term: Manning 2022 (summary site free)
+  access: mixed
+  use: 'On the free site read the sections Code and Project Organization, Error Management, Concurrency: Foundations, Concurrency: Practice and Testing; skip the standard-library and optimization sections on first pass.'
+  why: Catches the real-world traps (loop variable capture, goroutine leaks, context misuse, slice aliasing) that tutorials skip; hidden-gem checklist for distributed-systems code.
+  verified: true
+- id: learn-go-tests
+  role: practice
+  kind: website
+  title: Learn Go with Tests
+  by: Chris James (quii) and contributors
+  url: https://quii.gitbook.io/learn-go-with-tests
+  edition_or_term: Living book (includes Generics and testing/synctest)
+  access: free
+  use: Go fundamentals (Hello World through Maps, Dependency Injection, Mocking), then Concurrency, Select, Sync, Context, Generics; skip the HTTP and WebSockets build-an-application unless desired.
+  why: Test-driven practice for idiomatic Go and testing (the scope names testing); free and current.
+  verified: true
+- id: mit-6-5840-lab1
+  role: practice
+  kind: website
+  title: 'MIT 6.5840 Lab 1: MapReduce (target exercise)'
+  by: MIT PDOS
+  url: https://pdos.csail.mit.edu/6.824/labs/lab-mr.html
+  edition_or_term: Spring 2026
+  access: free
+  use: Complete the Go tutorial, then the lecture 2 examples (crawler.go, kv.go) and read the lab guidance (https://pdos.csail.mit.edu/6.824/labs/guidance.html); finish Lab 1 with go test -race as the check that you have enough Go for the distributed-systems path.
+  why: Defines the node success criterion ("enough Go to do 6.5840-style labs") directly; the distributed-systems node (G10) owns the full labs.
+  verified: true
+- id: exercism-go
+  role: practice
+  kind: practice-site
+  title: Exercism Go track
+  by: Exercism
+  url: https://exercism.org/tracks/go
+  edition_or_term: Go track
+  access: free
+  use: Concept exercises on slices, maps, structs, interfaces, errors, goroutines and channels, and generics.
+  why: Quick idiom drilling with automated tests and mentor review.
+  verified: true
+- id: gobyexample
+  role: reference
+  kind: website
+  title: Go by Example
+  by: Mark McGranaghan, Eli Bendersky
+  url: https://gobyexample.com/
+  edition_or_term: Current
+  access: free
+  use: Look-up snippets for channels, select, worker pools, WaitGroups, mutexes, atomic counters, context, testing and JSON.
+  why: Fast annotated snippets to jog memory while coding labs.
+  verified: true
+considered:
+- title: Concurrency in Go (Katherine Cox-Buday)
+  url: https://www.oreilly.com/library/view/concurrency-in-go/9781491941294/
+  reason: Best deep dive on Go concurrency patterns (2017); beyond this node scope but good optional follow-up for distributed systems.
+- title: Let us Go (Alex Edwards)
+  url: https://lets-go.alexedwards.net/
+  reason: Web-application focused; not needed for systems/distributed scope.
+- title: Go Programming Language user manual (go.dev/doc)
+  url: https://go.dev/doc/
+  reason: Official docs hub with modules, tutorials and release notes; use as reference.
+- title: Practical Go Lessons
+  url: https://www.practical-go-lessons.com/
+  reason: Broad paid-and-free tutorial book; adequate but not better than GOPL plus the Tour.
+- title: Go courses with public lectures
+  url: https://go.dev/doc/
+  reason: No university course with public 2026 videos found; MIT 6.5840 itself serves as the applied Go course (G10).
+notes: 'Small, tooling-flavoured node: Tour of Go (4 hours) then GOPL chapters 1-11 selectively, with the concurrency primary sources and 100 Go Mistakes, then Lab 1 of MIT 6.5840 as the exit test. No primary-course: I found no university-level Go course with public 2026 videos or autograded assignments; MIT 6.5840 requires Go but teaches distributed systems, not the language. GOPL is from 2015 and has no generics, so the Tour and Learn Go with Tests supply that. Current Go release observed on go.dev/dl is 1.27.x.'
+split_proposal: Consider merging into a distributed-systems prerequisites block (G10) as a 35-hour optional module rather than a stand-alone node.
+prereq_changes: 'None; soft c-programming is fine. Consider adding soft: [dev-environment] for go tooling (modules, go test -race).'
+open_questions:
+- No primary-course found.
+- 'GOPL edition freshness: no second edition found; book is 2015 and pre-generics (documented in notes).'
+last_verified: '2026-11-18'

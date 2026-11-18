@@ -1,0 +1,139 @@
+id: multi-view-geometry
+title: 3D Vision & Multi-View Geometry
+group: G6
+paths: [vision]
+hard: [vision-foundations, linear-algebra]
+soft: [optimization]
+scope: "Calibration, epipolar geometry, stereo, structure from motion, bundle adjustment, SLAM basics."
+
+level: intermediate
+estimated_hours: 70
+resources:
+  - id: hartley-zisserman
+    role: primary-text
+    kind: book
+    title: "Multiple View Geometry in Computer Vision, 2nd edition"
+    by: "Richard Hartley, Andrew Zisserman"
+    url: https://www.robots.ox.ac.uk/~vgg/hzbook/
+    edition_or_term: "Cambridge University Press, 2004 (2nd ed.; publisher page https://www.cambridge.org/core/books/multiple-view-geometry-in-computer-vision/0B6F289C78B2B23F596CAA76D3D43F7A)"
+    access: paid
+    use: "Ch. 2-3 (projective geometry 2D/3D), 4 (estimation, DLT), 6-8 (camera models, camera matrix computation), 9-12 (epipolar geometry, fundamental matrix, 3D reconstruction, triangulation), 13 (planes and homographies), 18 (n-view methods, bundle adjustment) and Appendix 6 (Levenberg-Marquardt, sparse bundle adjustment). Skip trifocal/affine chapters on first pass. Free: sample chapters (contents, intro, epipolar geometry, trifocal) and MATLAB code on the book page."
+    why: "Still the definitive treatment of projective geometry and estimation for cameras; every SfM/SLAM system implements its algorithms. Chosen on quality (no paid/free criterion). The free modern alternative (Foundations of Computer Vision ch. 38-45) is a gentler first pass and is listed as secondary."
+    verified: true
+  - id: tum-3dcv
+    role: primary-course
+    kind: course
+    title: "TUM 3D Computer Vision (IN2228, formerly Computer Vision II: Multiple View Geometry)"
+    by: "Daniel Cremers (Technical University of Munich)"
+    url: https://cvg.cit.tum.de/teaching/ss2026/3dcv
+    edition_or_term: "Summer Semester 2026"
+    access: free
+    use: "All lectures: Ch. 1-2 (linear algebra, Lie groups/rigid motion), 3 (perspective projection), 4 (point correspondences), 5 (two-view reconstruction: essential/fundamental matrix, eight-point), 6 (bundle adjustment and nonlinear optimization), 7 (direct methods for visual SLAM), 8-9 (3D CV in practice, recent developments incl. learned reconstruction). Do exercise sheets 1-7 with their solutions and the 'Practical' coding tasks."
+    why: "A mathematically rigorous but compact course whose syllabus equals the node scope (calibration through bundle adjustment through direct SLAM), with public slides, exercise sheets, solutions, and a full public YouTube lecture playlist. Earlier years (SS2025) used the same structure."
+    verified: true
+    course:
+      latest_term: "Summer Semester 2026"
+      latest_url: https://cvg.cit.tum.de/teaching/ss2026/3dcv
+      videos: public
+      assignments: public
+      assignments_url: https://cvg.cit.tum.de/teaching/ss2026/3dcv
+  - id: foundations-ch38-45
+    role: secondary
+    kind: book
+    title: "Foundations of Computer Vision, Part: Understanding Geometry (ch. 38-45) and Understanding Motion"
+    by: "Antonio Torralba, Phillip Isola, William T. Freeman"
+    url: https://visionbook.mit.edu/
+    edition_or_term: "MIT Press, 2024 (free web version)"
+    access: free
+    use: "Ch. 38 (representing images and geometry), 39 (camera modeling and calibration), 40 (stereo), 41 (homographies), 42 (single view metrology), 43 (learned depth from a single image), 44 (multiview geometry and SfM), 45 (radiance fields; preview for neural-3d)."
+    why: "Free, learning-era companion that connects classical geometry to learned depth and radiance fields; use as the gentle first pass before Hartley and Zisserman."
+    verified: true
+  - id: szeliski-geometry
+    role: reference
+    kind: book
+    title: "Computer Vision: Algorithms and Applications, 2nd edition (SfM and 3D chapters)"
+    by: "Richard Szeliski"
+    url: https://szeliski.org/Book/
+    edition_or_term: "2nd edition, 2022 (free personal-use PDF)"
+    access: free
+    use: "Chapters on feature-based alignment/SfM (bundle adjustment, outlier handling, self-calibration), dense stereo, 3D reconstruction and SLAM. Use as an algorithm cookbook alongside TUM exercises."
+    why: "Practical engineering detail (robust estimation, gauge freedoms, sparse BA tricks) beyond the theory-first H&Z and TUM treatments."
+    verified: true
+  - id: stachniss-photogrammetry
+    role: secondary
+    kind: video-series
+    title: "Photogrammetry I and II (Uni Bonn)"
+    by: "Cyrill Stachniss (University of Bonn)"
+    url: https://www.youtube.com/playlist?list=PLgnQpQtFTOGRYjqjdZxTEQPZuFHQa7O7Y
+    edition_or_term: "2021 recordings (Photogrammetry I and II); 2020 course page with public exercises ZIP: https://www.ipb.uni-bonn.de/photo1-2020/"
+    access: free
+    use: "Homogeneous coordinates, camera parameters, DLT, Zhang calibration, spatial resection (Photogrammetry I weeks 13-15); epipolar geometry, essential/fundamental matrix, bundle adjustment and orientation (Photogrammetry II). Pair with the exercises ZIP (https://www.ipb.uni-bonn.de/html/teaching/exercises-2020/2020-stachnisslab-all-exercises.zip, link checked live) for Python/Jupyter tasks."
+    why: "Clearest applied/engineering explanation of calibration and bundle adjustment with accompanying Python exercises; a gentler alternative to TUM and the best source for photogrammetric practice (control points, accuracy)."
+    verified: true
+  - id: cs231a-psets
+    role: practice
+    kind: course
+    title: "Stanford CS231A problem sets 1-3 (cameras, epipolar geometry, SfM)"
+    by: "Silvio Savarese, Jeannette Bohg (Stanford)"
+    url: https://cs231a.stanford.edu/syllabus.html
+    edition_or_term: "Spring 2025"
+    access: free
+    use: "Problem Sets 1-3 (handout + code + LaTeX linked on the syllabus page). By syllabus timing PS1 follows camera models/calibration/single-view metrology, PS2 follows epipolar geometry and stereo, PS3 follows structure from motion; confirm the exact questions in each handout. Python/NumPy starter code is public."
+    why: "Free, self-grading-ish (check against known outputs) implementation of the core algorithms; complements TUM's math-heavy exercises."
+    verified: true
+    course:
+      latest_term: "Spring 2025"
+      latest_url: https://cs231a.stanford.edu/
+      videos: enrolled-only
+      assignments: public
+      assignments_url: https://cs231a.stanford.edu/syllabus.html
+  - id: slam-handbook
+    role: secondary
+    kind: book
+    title: "SLAM Handbook: From Localization and Mapping to Spatial Intelligence"
+    by: "Luca Carlone, Ayoung Kim, Frank Dellaert, Timothy Barfoot, Daniel Cremers (eds.)"
+    url: https://github.com/SLAM-Handbook-contributors/slam-handbook-public-release
+    edition_or_term: "Cambridge University Press, 2026; public draft PDF in repo"
+    access: free
+    use: "Part 1 (factor graphs, robustness to outliers, differentiable optimization) and the visual SLAM chapter; Part 3 later for deep-learning SLAM."
+    why: "Fills the 'SLAM basics' item in scope with a current, authoritative text; factor-graph view unifies BA and SLAM. Draft status/license of the free PDF is not stated on the repo page."
+    verified: true
+  - id: barfoot
+    role: reference
+    kind: book
+    title: "State Estimation for Robotics (2nd edition)"
+    by: "Timothy D. Barfoot"
+    url: https://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser24.pdf
+    edition_or_term: "Cambridge University Press, 2024 (free PDF from author)"
+    access: free
+    use: "Ch. 6-7 (matrix Lie groups, rotations and poses, perturbations) and the batch/ nonlinear least-squares chapters, as a rigorous complement to TUM Ch. 2 and 6."
+    why: "Best treatment of SO(3)/SE(3) calculus and nonlinear least squares as used in BA/SLAM; fills the optimization-on-manifolds gap."
+    verified: true
+  - id: colmap-practice
+    role: practice
+    kind: tool
+    title: "COLMAP end-to-end SfM/MVS tutorial + GTSAM intro tutorial"
+    by: "Johannes Schoenberger et al.; Frank Dellaert et al."
+    url: https://colmap.github.io/tutorial.html
+    edition_or_term: "Current docs; GTSAM tutorial at https://gtsam.org/tutorials/intro.html"
+    access: free
+    use: "Reconstruct a small scene (30-60 photos) with COLMAP, inspect reprojection error and track statistics, then write a 2-view BA toy problem as a factor graph in GTSAM (Python)."
+    why: "Closes the loop between the theory and a production pipeline; the COLMAP output also feeds NeRF/3DGS in neural-3d."
+    verified: true
+considered:
+  - {title: "MIT 6.8300 Advances in Computer Vision (Module 1: geometry, Spring 2026)", url: "https://scenerepresentations.org/courses/2026/spring/advances-in-cv/", reason: "Excellent and public, but graduate/DL-era and shorter on classical estimation; used as primary course of self-supervised-learning and as a cross-reference for neural-3d."}
+  - {title: "Cyrill Stachniss SLAM Course (2012/2013) and Mobile Sensing and Robotics 2 (2021)", url: "https://www.youtube.com/playlist?list=PLgnQpQtFTOGQh_J16IMwDlji18SWQ2PZ6", reason: "Best free SLAM lectures (EKF/graph SLAM); belongs to a robotics-perception node rather than a vision node."}
+  - {title: "NUS 3D Computer Vision (CS4277/5477, Lee Gim Hee)", url: "https://www.youtube.com/playlist?list=PLxg0CGqViygP47ERvqHw_v7FVnUovJeaz", reason: "Public YouTube playlist but I could not open a course page/term; TUM is newer and has public exercises."}
+  - {title: "Cornell CS5670 / Berkeley CS180 projects (stitching, SfM, NeRF)", url: "https://cal-cs180.github.io/fa25", reason: "Great hands-on practice but classical-geometry coverage is thinner than TUM + H&Z; Project 3/4 are listed in vision-foundations / neural-3d."}
+  - {title: "An Invitation to 3D Vision (Ma, Soatto, Kosecka, Sastry)", url: "https://link.springer.com/book/10.1007/978-0-387-21779-6", reason: "The TUM lecture sequence follows this style (Lie groups, rigid motion); kept as an optional rigorous alternative text; not verified beyond Springer link loading."}
+  - {title: "Computer Vision II: Multiple View Geometry, TUM SS2016 recordings (cvprtum YouTube)", url: "https://www.youtube.com/playlist?list=PLTBdjV_4f-EJn6udZ34tht9EVIW7lbeo4", reason: "Older recordings of the same course; keep as fallback if the SS26 playlist disappears."}
+  - {title: "CMU 16-822 Geometry-based Methods in Vision (Michael Kaess, Fall 2026)", url: "https://geometric3d.github.io/", reason: "Right topic list (projective geometry through two-view/N-view, self-calibration, learning-based SfM/SLAM) but page shows no videos or public assignments; TUM has both."}
+notes: "SLAM basics are covered only at the visual-odometry/BA/direct-method level here; full SLAM (filtering, loop closure, LiDAR, inertial) belongs to a robotics/state-estimation node (G-robotics) if one exists. TUM's SS26 syllabus even ends with direct SLAM and recent learned reconstruction (DUSt3R/VGGT-style), bridging to neural-3d. H&Z is paid but is the right primary; the free alternative path is Foundations of CV ch. 38-45 + Szeliski + TUM."
+split_proposal: null
+prereq_changes: "optimization (currently soft) is effectively required for bundle adjustment: suggest making it hard or adding a small 'nonlinear least squares / Lie groups' note. Add soft prereq: probability (RANSAC, robust estimation)."
+open_questions:
+  - "TUM playlist link as given on the course page is youtube.com/playlist?list=PLNkLZ4QZfEDs (page title 'Lecture: 3D Computer Vision (SS26)'); the id looks short, number of videos not checked."
+  - "SLAM Handbook free PDF terms not stated on the repo page; Cambridge UP 2026 print publication."
+  - "H&Z chapter topics checked against the free Contents PDF; exact chapter numbers (e.g. ch. 18 n-view methods, Appendix 6) follow the 2nd edition numbering from memory."
+  - "CS231A problem-set PDFs not opened; topics inferred from syllabus timing."
+last_verified: 2026-11-18

@@ -1,0 +1,140 @@
+id: applied-ml-practice
+title: "Applied ML: Evaluation & Experimentation"
+group: G5
+paths: [ml-foundations]
+hard: [ml-fundamentals, scientific-python]
+soft: []
+scope: "Splits and leakage, metrics, model selection, feature engineering, error analysis, calibration, distribution shift, experiment design."
+
+level: intermediate
+estimated_hours: 60
+resources:
+  - id: sklearn-model-selection
+    role: primary-text
+    kind: docs
+    title: "scikit-learn User Guide: Model selection and evaluation, and Common pitfalls"
+    by: "scikit-learn developers"
+    url: https://scikit-learn.org/stable/model_selection.html
+    edition_or_term: "scikit-learn 1.9.1 documentation"
+    access: free
+    use: "Read Ch. 3 in full (cross-validation iterators incl. grouped/time-series splits, tuning hyperparameters, decision threshold post-tuning, metrics and scoring, validation and learning curves) plus 'Common pitfalls and recommended practices' (https://scikit-learn.org/stable/common_pitfalls.html: data leakage, pipelines, randomness) and 'Probability calibration' (https://scikit-learn.org/stable/modules/calibration.html)."
+    why: "Authoritative, always current, and the exact API you will use; the pitfalls and calibration pages cover leakage and calibration better than most books."
+    verified: true
+  - id: inria-mooc
+    role: primary-course
+    kind: course
+    title: "Machine learning in Python with scikit-learn (Inria MOOC)"
+    by: "Inria Learning Lab (Lemaitre, Grisel, Esteve et al.)"
+    url: https://inria.github.io/scikit-learn-mooc/
+    edition_or_term: "Self-paced, continuously updated; ~36 hours stated on FUN MOOC"
+    access: free
+    use: "Modules 1-2 skim (pipeline basics already seen), then do Module 3 Selecting the best model (cross-validation, validation/learning curves), Module 4 Hyperparameter tuning (grid/random search, nested CV), Module 5-7 (linear models, decision trees, ensembles) selectively, Module 8 Evaluating model performance (metrics, baselines). Appendix modules (feature selection, interpretation) when finished."
+    why: "Best structured hands-on course on methodology: every module has exercises, quizzes and solutions and stresses what can go wrong (leakage, over-tuning)."
+    verified: true
+    course:
+      latest_term: "Self-paced, continuously updated (FUN MOOC 41026)"
+      latest_url: https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/
+      videos: public
+      assignments: public
+      assignments_url: https://inria.github.io/scikit-learn-mooc/toc.html
+  - id: raschka-evaluation
+    role: secondary
+    kind: paper
+    title: "Model Evaluation, Model Selection, and Algorithm Selection in Machine Learning"
+    by: "Sebastian Raschka"
+    url: https://arxiv.org/abs/1811.12808
+    edition_or_term: "arXiv 1811.12808 (2018 review)"
+    access: free
+    use: "Sections on bias/variance of performance estimates, holdout vs bootstrap vs k-fold, confidence intervals, comparing algorithms (McNemar, 5x2cv t-test), and nested cross-validation."
+    why: "Hidden gem: the single clearest write-up of the statistics of evaluation and algorithm comparison; fills the gap the scikit-learn docs leave (why, not just how)."
+    verified: true
+  - id: rules-of-ml
+    role: secondary
+    kind: article
+    title: "Rules of Machine Learning: Best Practices for ML Engineering"
+    by: "Martin Zinkevich (Google)"
+    url: https://developers.google.com/machine-learning/guides/rules-of-ml
+    edition_or_term: "Google for Developers guide"
+    access: free
+    use: "Read Phase I-II rules on metrics, baselines, training-serving skew, feature engineering, and error analysis; skim Phase III."
+    why: "Concentrated practitioner wisdom on feature engineering, skew and what to measure; short."
+    verified: true
+  - id: handson-ml-ch2
+    role: secondary
+    kind: book
+    title: "Hands-On Machine Learning with Scikit-Learn and PyTorch, Ch. 1-2 (end-to-end project, checklist)"
+    by: "Aurelien Geron"
+    url: https://github.com/ageron/handson-mlp
+    edition_or_term: "1st ed. Scikit-Learn and PyTorch (2025); notebooks free in the repo"
+    access: mixed
+    use: "Ch. 2 End-to-End ML Project (test-set creation, stratified sampling, pipelines, fine-tuning, error analysis) and the ML project checklist in the repo."
+    why: "Walks a complete tabular project, including the splitting and leakage decisions, in one narrative."
+    verified: true
+  - id: huyen-shift
+    role: secondary
+    kind: article
+    title: "Machine Learning Systems Design (Stanford CS 329S lecture notes): data distribution shifts and monitoring"
+    by: "Chip Huyen"
+    url: https://huyenchip.com/machine-learning-systems-design/toc.html
+    edition_or_term: "Course notes (2019-2022 vintage); also published as the book Designing Machine Learning Systems (O'Reilly, 2022)"
+    access: free
+    use: "Chapters on training data, feature engineering, model development and offline evaluation (baselines, slice-based evaluation), and data distribution shifts (covariate, label, concept shift) and monitoring."
+    why: "Covers distribution shift and slice-based evaluation in a practice-oriented way missing from scikit-learn docs."
+    verified: true
+  - id: d2l-shift
+    role: reference
+    kind: book
+    title: "Dive into Deep Learning: Environment and Distribution Shift"
+    by: "Zhang, Lipton, Li, Smola"
+    url: https://d2l.ai/chapter_linear-classification/environment-and-distribution-shift.html
+    edition_or_term: "d2l 1.0.3"
+    access: free
+    use: "Sec. 4.7: covariate, label and concept shift, and correction by importance weighting."
+    why: "Short formal treatment of shift types with correction methods."
+    verified: true
+  - id: trustworthy-experiments
+    role: secondary
+    kind: book
+    title: "Trustworthy Online Controlled Experiments"
+    by: "Ron Kohavi, Diane Tang, Ya Xu"
+    url: https://experimentguide.com/
+    edition_or_term: "Cambridge University Press 2020"
+    access: paid
+    use: "Ch. 1-3 (A/B testing fundamentals, end-to-end example, Twyman's law and trustworthiness), Ch. 6-7 (metrics), Ch. 17-19 (statistical foundations, variance reduction, A/A tests), Ch. 21 (sample ratio mismatch). Chapter numbers from memory of the 2020 edition; check against the table of contents."
+    why: "Experiment design chapter of the scope: what offline evaluation cannot tell you and how online A/B tests are run and trusted."
+    verified: true
+  - id: kaggle-ml
+    role: practice
+    kind: practice-site
+    title: "Kaggle Learn: Intermediate Machine Learning and Feature Engineering"
+    by: "Kaggle"
+    url: https://www.kaggle.com/learn/intermediate-machine-learning
+    edition_or_term: "Self-paced micro-courses (also https://www.kaggle.com/learn/feature-engineering and https://www.kaggle.com/learn/data-cleaning)"
+    access: free
+    use: "Intermediate ML: missing values, categorical variables, pipelines, cross-validation, XGBoost, data leakage; Feature Engineering: mutual information, clustering/PCA features, target encoding. Do all exercises."
+    why: "Short autograded notebooks that drill leakage, pipelines, CV and feature engineering on real data."
+    verified: true
+  - id: capstone-project
+    role: practice
+    kind: practice-site
+    title: "Capstone: tabular project with documented evaluation (Kaggle competition or UCI dataset)"
+    by: "Self-directed"
+    url: https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset
+    edition_or_term: "UCI Bike Sharing dataset (or a Kaggle playground competition of your choice)"
+    access: free
+    use: "Frame the task, build a baseline, use time-aware splits, choose metrics, do slice-based error analysis, check calibration, and write a one-page evaluation report; the owner's ai-atlas classical-ml route uses this dataset."
+    why: "Evaluation skills are only learned by making and fixing mistakes on a real split-sensitive dataset."
+    verified: true
+considered:
+  - {title: "Machine Learning Yearning (Andrew Ng)", url: "https://www.mlyearning.org/", reason: "Good error-analysis / dev-test-set advice but the site returned 504 and the book is unfinished/dated."}
+  - {title: "Google Machine Learning Crash Course", url: "https://developers.google.com/machine-learning/crash-course", reason: "Free and clear (data, generalization, fairness, production ML) but too introductory beside the scikit-learn MOOC."}
+  - {title: "Made With ML (Anyscale)", url: "https://madewithml.com/", reason: "MLOps-oriented; belongs in an ML systems path."}
+  - {title: "Interpretable Machine Learning (Molnar)", url: "https://christophm.github.io/interpretable-ml-book/", reason: "Strong for error analysis/interpretation but not opened during this research."}
+  - {title: "Hands-On ML ch. 3 evaluation metrics", url: "https://github.com/ageron/handson-mlp", reason: "Metrics covered by sklearn guide; kept as part of Ch. 3 optional reading."}
+notes: "No single book covers evaluation + experimentation; the route combines the scikit-learn guide (authoritative), the Inria MOOC (exercises), Raschka's review (statistics of comparison), and Kohavi (online experiments). Experiment design beyond A/B testing (causal designs) is in causal-inference."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Interpretable ML book page opened (200) but content not reviewed; kept only in considered."
+  - "Kohavi chapter numbers recalled from memory, not checked against the book's TOC (publisher/Amazon-only)."
+last_verified: 2026-11-18

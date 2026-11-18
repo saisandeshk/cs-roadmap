@@ -1,0 +1,87 @@
+id: computer-systems
+title: "Computer Systems (programmer's view)"
+group: G4
+paths: [core]
+hard: [c-programming]
+soft: []
+scope: "Data representation, x86-64 machine code, memory hierarchy, linking, exceptional control flow, virtual memory, allocators, system I/O, network programming and concurrency basics (CS:APP)."
+
+level: intermediate
+estimated_hours: 150
+resources:
+  - id: csapp3e
+    role: primary-text
+    kind: book
+    title: "Computer Systems: A Programmer's Perspective (CS:APP), 3rd edition"
+    by: "Randal E. Bryant, David R. O'Hallaron"
+    url: https://www.pearson.com/store/p/computer-systems-a-programmer-s-perspective/P100002502659/9780134092669
+    edition_or_term: "3rd edition (Pearson, 2016; still the edition CMU 15-213 uses in Fall 2026)"
+    access: paid
+    use: "Ch. 1-3 (bits, integers/floats, x86-64 machine programming), 5-6 (optimization, memory hierarchy/caches), 7 (linking), 8 (exceptional control flow), 9 (virtual memory, malloc), 10-12 (system I/O, network programming, concurrency basics). Read in step with the labs."
+    why: "The canonical treatment of exactly this node's scope; the whole book is organized around what a programmer needs to know about the machine. The labs (bomb, attack, cache, malloc, shell, proxy) are the best part of the whole system."
+    verified: true
+  - id: cmu-15-213
+    role: primary-course
+    kind: course
+    title: "CMU 15-213/15-513 Introduction to Computer Systems"
+    by: "CMU (Phil Gibbons, Seth Goldstein)"
+    url: https://www.cs.cmu.edu/~213/
+    edition_or_term: "Fall 2026"
+    access: mixed
+    use: "Schedule/slides for the lecture order; labs L0-L8 (C programming, data, bomb, attack, cache, malloc, shell, proxy, SFS) for practice. For self-study, watch the Fall 2015 recorded lectures and use the CS:APP self-study versions of the labs."
+    why: "The course CS:APP was written for; current term's slides and lab list are public, and the public 2015 recordings track the 3rd-edition book chapter by chapter."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://www.cs.cmu.edu/~213/schedule.html
+      videos: enrolled-only
+      public_videos_term: "Fall 2015 (Panopto, videotaped lectures and recitations, linked from the official 2015 schedule)"
+      public_videos_url: https://scs.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22b96d90ae-9871-4fae-91e2-b1627b43e25e%22
+      assignments: partial
+      assignments_url: https://www.cs.cmu.edu/~213/labs.html
+  - id: dive-into-systems
+    role: secondary
+    kind: book
+    title: "Dive into Systems"
+    by: "Suzanne J. Matthews, Tia Newhall, Kevin C. Webb"
+    url: https://diveintosystems.org/
+    edition_or_term: "Online version 1.2 (Aug 2023); print: No Starch Press, 2022"
+    access: free
+    use: "Use as the gentle on-ramp or as a second explanation: ch. 2 (deeper C: pointers, malloc), 3 (GDB/Valgrind), 4 (binary and data representation), 5 (architecture), 6-7 and 9 (assembly intro, x86-64, ARMv8), 11 (storage and the memory hierarchy, caching), 12 (code optimization), 13 (the operating system: processes, virtual memory), 14 (shared memory, Pthreads). Do the exercises at the end of each chapter."
+    why: "Free, modern, and written for students who have only seen one programming course. Covers ARM64 as well as x86-64 (useful on Apple Silicon) and has a better C-and-debugging runway than CS:APP; weaker than CS:APP on linking, ECF, network programming and the depth of the labs."
+    verified: true
+  - id: csapp-labs
+    role: practice
+    kind: practice-site
+    title: "CS:APP3e self-study labs"
+    by: "Bryant, O'Hallaron (CMU)"
+    url: https://csapp.cs.cmu.edu/3e/labs.html
+    edition_or_term: "3e labs (Data, Bomb, Attack, Cache, Performance, Architecture, Malloc, Shell, Proxy)"
+    access: free
+    use: "Do Data Lab, Bomb Lab, Attack Lab, Cache Lab, Malloc Lab, Shell Lab (tshlab), Proxy Lab. Optional: Architecture Lab (Y86-64) and Performance Lab. Handout tarballs plus writeups are public; the autograder is not, so use the bundled driver scripts."
+    why: "These labs are the core of the learning; the self-study handouts are the legitimate public form of CMU's labs. The Fall 2026 L0-L8 names on the CMU labs page match."
+    verified: false
+  - id: godbolt
+    role: reference
+    kind: tool
+    title: "Compiler Explorer (godbolt.org)"
+    by: "Matt Godbolt et al."
+    url: https://godbolt.org/
+    edition_or_term: "live"
+    access: free
+    use: "Paste C snippets while reading CS:APP ch. 3 and 5 and compare -O0/-O2 x86-64 and ARM64 output; use it to see how loops, switch, structs and function calls compile."
+    why: "Instant feedback on how C maps to assembly, which the book can only show with static listings."
+    verified: true
+considered:
+  - {title: "Stanford CS107 Computer Organization & Systems", url: "https://cs107.stanford.edu/", reason: "Excellent C/assembly/heap-allocator assignments with public slides and handouts (Autumn 2026 page live), but no public lecture videos and lighter on linking, ECF and networking than 15-213. Good alternative for the C-and-assembly half."}
+  - {title: "UNSW COMP1521 Computer Systems Fundamentals", url: "https://cgi.cse.unsw.edu.au/~cs1521/25T2/", reason: "Full public site with lecture videos, MIPS-based; page returned a 500 error when checked and MIPS rather than x86-64/ARM limits relevance."}
+  - {title: "Nand2Tetris", url: "https://www.nand2tetris.org/", reason: "Soft background (gates to a toy computer); belongs with computer architecture or digital logic, not the programmer's-view systems node."}
+  - {title: "CS:APP 4th edition", url: "https://csapp.cs.cmu.edu/", reason: "I found no evidence of a published 4th edition; CMU's Fall 2026 textbook page still lists the 3rd edition."}
+notes: "CS:APP + 15-213 remains the clear best route; the owner asked for Dive into Systems to be considered, and it is kept as the free secondary/on-ramp rather than the primary because it is shallower on linking, ECF, networking and lab depth (it does add ARM64 and has good GDB material). csapp.cs.cmu.edu was unreachable from this environment (proxy gateway error), so the self-study labs URL is unverified; the lab names were cross-checked against CMU's current labs page (L0-L8) instead. The 15-213 Fall 2026 page does not state video policy; I treat it as enrolled-only (CMU does not publish current lectures)."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "csapp.cs.cmu.edu/3e/labs.html could not be opened (gateway 502); confirm the self-study lab list and handout availability from a normal network."
+  - "Confirm whether the Fall 2015 Panopto lectures are still anonymously viewable (the CMU schedule links them; the Panopto UI needs JavaScript)."
+  - "A newer public 15-213 recording set (e.g., Summer/Fall 2019-2022 on YouTube) may exist; the 2015 set is what the official CMU page links."
+last_verified: 2026-11-18

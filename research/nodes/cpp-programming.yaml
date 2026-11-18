@@ -1,0 +1,164 @@
+id: cpp-programming
+title: Modern C++
+group: G1
+paths:
+- mlsys
+- os-perf
+hard:
+- c-programming
+soft: []
+scope: RAII, templates, STL, move semantics, smart pointers, C++17/20/23 features, performance idioms.
+level: intermediate
+estimated_hours: 110
+resources:
+- id: learncpp
+  role: primary-text
+  kind: website
+  title: Learn C++
+  by: Alex (learncpp.com) and contributors
+  url: https://www.learncpp.com/
+  edition_or_term: Continuously updated; covers C++17/20/23 (Appendix B lists C++ updates)
+  access: free
+  use: Skim ch. 1-10 (you know C); read carefully ch. 11-17 (function templates, references/pointers, structs, classes, std::vector, std::array), ch. 20-27 (functions/lambdas, operator overloading, move semantics and smart pointers, object relationships, inheritance, virtual functions, class templates, exceptions) and ch. 28 (I/O). Chapters 18 (iterators/algorithms) and 19 (dynamic allocation) are marked under construction; use Tour of C++ and the STL docs for those.
+  why: 'The most thorough free, current, correct C++ tutorial: every lesson is example-driven, quizzed and warns about pitfalls (UB, narrowing, slicing). Updated for C++23.'
+  verified: true
+- id: cs106l
+  role: primary-course
+  kind: course
+  title: CS 106L Standard C++ Programming
+  by: Stanford University (Preston Seay, Emily Ai)
+  url: https://cs106l.stanford.edu/
+  edition_or_term: Fall 2026 (covers modern patterns up through C++26)
+  access: free
+  use: 'Fall 2026 lecture slides 1-16: types/structs, initialization and references, streams, containers, iterators/pointers, classes, class and function templates, lambdas/functors, operator overloading, special member functions (rule of 5), move semantics, std::optional and type safety, RAII/smart pointers and building C++ projects; do the in-class activities and the midterm (iSpell) and final projects.'
+  why: The one university course aimed exactly at modern C++ (RAII, move semantics, templates, STL) for people who already program; compact (about 25 hours) and current to C++26 with an in-browser activity site.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs106l.stanford.edu/
+    videos: unknown
+    public_videos_term: Fall 2019 (Avery Wang playlist on YouTube; pre-C++20, so slides are better than videos for modern features)
+    public_videos_url: https://www.youtube.com/playlist?list=PLCgD3ws8aVdolCexlz8f3U-RROA0s5jWA
+    assignments: partial
+    assignments_url: https://www.106l.com/
+- id: tour-of-cpp-3e
+  role: secondary
+  kind: book
+  title: A Tour of C++, 3rd edition
+  by: Bjarne Stroustrup
+  url: https://stroustrup.com/tour3.html
+  edition_or_term: 3rd edition (Addison-Wesley, 2022; C++20 with some C++23 library)
+  access: paid
+  use: Basics (ch. 1), essential operations (copy/move, ch. 6), templates and concepts (ch. 7-8), containers, algorithms, ranges (ch. 12-14), resources and smart pointers (ch. 15), plus concurrency overview only to know what exists.
+  why: 'The inventor concise whole-language view with concepts, ranges and modules: fills the iterators/algorithms/ranges gap left by learncpp chapters 18-19 and serves as a second, denser pass.'
+  verified: true
+- id: core-guidelines
+  role: reference
+  kind: website
+  title: C++ Core Guidelines
+  by: Bjarne Stroustrup, Herb Sutter (editors)
+  url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+  edition_or_term: Living document
+  access: free
+  use: Sections P (philosophy), I (interfaces), F (functions), C (classes, incl. the rule of zero/five), R (resource management), ES (expressions and statements), Per (performance); look up rules whenever a design question comes up.
+  why: The community-standard rules for RAII, ownership, and safe interfaces; teaches why, not just what.
+  verified: true
+- id: cppreference
+  role: reference
+  kind: docs
+  title: cppreference.com
+  by: cppreference community
+  url: https://en.cppreference.com/w/cpp
+  edition_or_term: Living reference
+  access: free
+  use: Look up container complexity and iterator invalidation, value categories, object lifetime, and the headers for algorithm, ranges, memory, utility.
+  why: The de facto language and library reference; faster and more precise than the ISO PDF.
+  verified: false
+- id: compiler-explorer
+  role: secondary
+  kind: tool
+  title: Compiler Explorer (godbolt) and C++ Insights
+  by: Matt Godbolt; Andreas Fertig
+  url: https://godbolt.org/
+  edition_or_term: Online tools
+  access: free
+  use: Paste copy/move examples, lambdas, range-for loops and templates; use C++ Insights (https://cppinsights.io/) to see compiler-expanded code, and godbolt to compare -O0/-O2 output.
+  why: Makes RAII, move elision, lambda captures and template instantiation visible, which is the fastest way to build the right mental model and to check performance idioms.
+  verified: true
+- id: hackingcpp
+  role: secondary
+  kind: website
+  title: hacking C++ visual cheat sheets and C++ Stories
+  by: Jakob Kuchenbecker (hackingcpp.com); Bartlomiej Filipek (cppstories.com)
+  url: https://hackingcpp.com/
+  edition_or_term: Living sites
+  access: free
+  use: 'hackingcpp: container, algorithm and iterator cheat-sheet series; cppstories.com (https://www.cppstories.com/): C++17/20 feature posts on std::optional, variant, string_view, structured bindings, ranges.'
+  why: Hidden gems that fill the visual overview of STL and the practical C++17/20 feature gap between the tutorial and the standard.
+  verified: true
+- id: cppcon-b2b
+  role: secondary
+  kind: video-series
+  title: CppCon Back to Basics talks
+  by: CppCon speakers
+  url: https://www.youtube.com/@CppCon
+  edition_or_term: Annual (2019-2025 tracks)
+  access: free
+  use: Watch the Back to Basics talks on RAII and smart pointers, move semantics, templates, lambdas, ranges and special member functions as the video counterpart to learncpp chapters 22-26 (search the channel for Back to Basics).
+  why: Public expert-delivered talks on exactly the scope items; fills the missing public lecture video for this node.
+  verified: true
+- id: cpp-quiz
+  role: practice
+  kind: practice-site
+  title: C++ Quiz
+  by: Anders Schau Knatten
+  url: https://cppquiz.org/
+  edition_or_term: Living quiz
+  access: free
+  use: Work the questions on object lifetime, overload resolution, value categories and initialization; aim to explain each answer from the standard before looking.
+  why: Hard-nosed practice that targets undefined and unspecified behaviour, the weak spot of tutorials.
+  verified: true
+- id: exercism-cpp
+  role: practice
+  kind: practice-site
+  title: Exercism C++ track
+  by: Exercism
+  url: https://exercism.org/tracks/cpp
+  edition_or_term: C++ track
+  access: free
+  use: Do the Learning-mode concept exercises on classes, templates, STL containers and algorithms, smart pointers; build with -Wall -Wextra -fsanitize=address,undefined.
+  why: Small automated-test exercises to cement idioms after reading.
+  verified: true
+considered:
+- title: 'Programming: Principles and Practice Using C++, 3rd edition (Stroustrup)'
+  url: https://stroustrup.com/PPP3.html
+  reason: Best textbook for true beginners (C++20/23, Qt GUI); too slow for someone who already knows C and Python.
+- title: Effective Modern C++ / Effective C++ (Meyers)
+  url: https://www.oreilly.com/
+  reason: Classic item-style guidance, but C++11/14 era; Core Guidelines and Tour 3e cover the same ground with C++20.
+- title: C++ Primer, 5th edition (Lippman et al)
+  url: https://www.informit.com/
+  reason: Thorough but C++11; superseded by learncpp.
+- title: TUM IN2377 Concepts of C++ programming (Winter 2023)
+  url: https://live.rbg.tum.de/course/2023/W/cpp
+  reason: Public recordings of a full university course; not verified in depth and C++17-era.
+- title: University of Bonn Modern C++ Course (2020)
+  url: https://www.ipb.uni-bonn.de/teaching/cpp-2020/lectures/
+  reason: Public lectures with exercises, CV/robotics flavour, C++17.
+- title: Stanford CS 106B/X
+  url: https://web.stanford.edu/class/cs106b/
+  reason: C++ data structures course; unreachable from this environment and covered by data-structures node.
+- title: CMU 15-445 BusTub projects
+  url: https://15445.courses.cs.cmu.edu/
+  reason: Excellent real-world C++17 practice in a database codebase; belongs to the databases node.
+- title: 'Performance idioms: Algorithmica HPC and Performance Ninja'
+  url: https://en.algorithmica.org/hpc/
+  reason: Best resources for performance-oriented C++; owned by G4 performance nodes.
+notes: 'Plan: learncpp (carefully ch. 11-17, 20-28) plus CS106L slides/projects, with Tour of C++ 3e as the dense second pass and Core Guidelines/cppreference as always-open references. CS106L is a 1-unit course designed for students with CS106B; the Fall 2026 site has slides and an in-browser activity platform (106l.com) but no lecture videos that I could find (the old public YouTube playlist is from Fall 2019), hence videos=unknown; CppCon Back to Basics fills that gap. Hard prerequisite on C is arguably too strong: learncpp starts from zero. Performance idioms (cache layout, SIMD, benchmarking) are intentionally left to G4/G9 resources (Algorithmica, Performance Ninja); concurrency/atomics also G4.'
+split_proposal: null
+prereq_changes: 'Downgrade hard: [c-programming] to soft: [c-programming] (learncpp assumes no prior programming) while keeping python-programming as the true prerequisite; keep C first for pointers/UB intuition.'
+open_questions:
+- cppreference.com returned 403 to automated fetches (bot protection); treated as live but not verified.
+- Whether Fall 2026 or Spring 2026 CS106L lecture videos exist publicly (Stanford sites flaky from this environment).
+- GitHub repos (cs106l-projects) could not be opened; assignment access recorded as partial.
+last_verified: '2026-11-18'

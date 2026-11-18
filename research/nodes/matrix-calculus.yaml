@@ -1,0 +1,132 @@
+id: matrix-calculus
+title: Matrix Calculus
+group: G2
+paths: [ml-foundations]
+hard: [linear-algebra, calculus]
+soft: []
+scope: "Derivatives of vector/matrix functions, Jacobians, vector chain rule, forward vs reverse mode differentiation."
+
+level: intermediate
+estimated_hours: 40
+resources:
+  - id: bej-notes
+    role: primary-text
+    kind: book
+    title: "Matrix Calculus (for Machine Learning and Beyond)"
+    by: "Paige Bright, Alan Edelman, Steven G. Johnson"
+    url: https://arxiv.org/abs/2501.14787
+    edition_or_term: "arXiv 2501.14787 (submitted 7 Jan 2025); lecture notes of MIT 18.063, based on the January 2023 run; the 2026 course keeps a newer PDF"
+    access: free
+    use: "Chapters 1-2 (derivatives as linear operators), then the chapters on gradients and Jacobians of matrix functions, Kronecker products/vectorization, forward- and reverse-mode differentiation (vJp/pullbacks), Hessians and second derivatives; skip adjoint-ODE and stochastic derivative chapters on first pass."
+    why: "Current definitive text for the topic: teaches derivatives as linearizations (f(x+dx)-f(x)=f'(x)[dx]) so matrix inverse, determinant and factorization derivatives follow without index gymnastics, and explains why reverse mode is backpropagation."
+    verified: true
+  - id: mit-18-s096
+    role: primary-course
+    kind: course
+    title: "MIT 18.S096 / 18.063 Matrix Calculus for Machine Learning and Beyond"
+    by: "Alan Edelman, Steven G. Johnson (MIT)"
+    url: https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/
+    edition_or_term: "IAP 2023 (OCW, 18.S096); newest run: January 2026 as 18.063 (lectures Jan 12-30, room 35-310, two psets via Canvas)"
+    access: free
+    use: "All lectures with the lecture-notes page, the two problem sets with solutions (and Julia notebook solutions), and the Julia/Pluto notebooks (2x2 Jacobians, etc.); watch lectures 1-5 for derivatives, Jacobians and chain rule, then Hessians and the forward/reverse-mode (computational graph) lectures."
+    why: "Taught by the authors of the notes; public videos and complete problem-set solutions; the only course focused on this topic."
+    verified: true
+    course:
+      latest_term: "January 2026 (18.063, IAP; course page https://github.com/mitmath/matrixcalc; 2024 and 2025 runs are on branches iap2024/iap2025)"
+      latest_url: https://github.com/mitmath/matrixcalc
+      videos: unknown
+      public_videos_term: "IAP 2023"
+      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP62EaLLH92E_VCN4izBKK6OE
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/pages/problem-sets/
+  - id: parr-howard
+    role: secondary
+    kind: article
+    title: "The Matrix Calculus You Need For Deep Learning"
+    by: "Terence Parr, Jeremy Howard"
+    url: https://explained.ai/matrix-calculus/
+    edition_or_term: "arXiv 1802.01528 v2 (2018)"
+    access: free
+    use: "Read sections on scalar derivative rules, gradients and Jacobians, element-wise operations, vector chain rule and the worked neuron/loss example before the MIT lectures if the notation is unfamiliar."
+    why: "Gentler on-ramp with explicit numerator-layout Jacobians written for deep-learning practitioners; MIT notes assume more math maturity."
+    verified: true
+  - id: ad-survey
+    role: secondary
+    kind: paper
+    title: "Automatic differentiation in machine learning: a survey"
+    by: "Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind"
+    url: https://arxiv.org/abs/1502.05767
+    edition_or_term: "JMLR 2018 / arXiv 1502.05767"
+    access: free
+    use: "Sections 2-4: why numeric and symbolic differentiation fail, forward mode with dual numbers, reverse mode, and the cost of each; read after MIT lecture on forward vs reverse mode."
+    why: "Standard reference clarifying forward vs reverse mode and complexity, directly matching the scope item."
+    verified: true
+  - id: matrixcalculus-org
+    role: practice
+    kind: tool
+    title: "matrixcalculus.org"
+    by: "Soeren Laue, Matthias Mitterreiter, Joachim Giesen"
+    url: https://www.matrixcalculus.org/
+    edition_or_term: "Online tool"
+    access: free
+    use: "Derive gradients of the MIT problem-set expressions by hand (x^T A x, ||Ax-b||^2, log det X, tr(X^-1 A)), then check the symbolic result in the tool."
+    why: "Instant checker for hand derivations of vector and matrix functions."
+    verified: true
+  - id: micrograd
+    role: practice
+    kind: practice-site
+    title: "micrograd: a tiny scalar-valued autograd engine"
+    by: "Andrej Karpathy"
+    url: https://github.com/karpathy/micrograd
+    edition_or_term: "GitHub repository (README opened via raw.githubusercontent.com)"
+    access: free
+    use: "Re-implement the roughly 100-line Value class (reverse-mode backpropagation over a DAG) yourself after the computational-graph lecture, then extend it to vector ops and verify against finite differences and PyTorch."
+    why: "The smallest working reverse-mode engine; makes the vector-Jacobian product view concrete in code. Karpathy's accompanying lecture 'The spelled-out intro to neural networks and backpropagation: building micrograd' on his YouTube channel walks through it."
+    verified: true
+  - id: jax-autodidax
+    role: practice
+    kind: docs
+    title: "Autodidax: JAX core from scratch (and the Autodiff Cookbook)"
+    by: "JAX team"
+    url: https://docs.jax.dev/en/latest/autodidax.html
+    edition_or_term: "Current JAX docs; cookbook: https://docs.jax.dev/en/latest/notebooks/autodiff_cookbook.html"
+    access: free
+    use: "Read the Autodiff Cookbook (jvp, vjp, jacfwd, jacrev, Hessians), then work through the JVP and VJP/linearize parts of Autodidax to build forward and reverse mode with a tracing mechanism."
+    why: "Shows how production AD systems implement forward and reverse mode; a step beyond micrograd's scalar engine."
+    verified: true
+  - id: matrix-cookbook
+    role: reference
+    kind: docs
+    title: "The Matrix Cookbook"
+    by: "Kaare Brandt Petersen, Michael Syskind Pedersen"
+    url: https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf
+    edition_or_term: "Version of Nov 2012 (widely mirrored)"
+    access: free
+    use: "Look up derivative identities (chapter 2: derivatives) after deriving them; formulas only, no derivations."
+    why: "Fast formula lookup to check results; the MIT notes explain derivations, this lists identities."
+    verified: true
+  - id: mml-ch5
+    role: reference
+    kind: book
+    title: "Mathematics for Machine Learning, Chapter 5 Vector Calculus"
+    by: "Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong"
+    url: https://mml-book.github.io/
+    edition_or_term: "Cambridge University Press 2020; free PDF"
+    access: free
+    use: "Chapter 5: partial derivatives, gradients, Jacobians, backpropagation and automatic differentiation, linearization and multivariate Taylor series, as a compact notation reference."
+    why: "Compact ML-notation bridge between multivariable calculus and backpropagation, with exercises."
+    verified: true
+considered:
+  - {title: "Hands-On ML with Scikit-Learn and PyTorch, Appendix A: Autodiff notebook", url: "https://raw.githubusercontent.com/ageron/handson-mlp/main/Appendix_A_autodiff.ipynb", reason: "Good notebook on numeric vs forward vs reverse AD (in the owner's ai-atlas seed); micrograd + Autodidax cover the same ground at more depth."}
+  - {title: "PyTorch Autograd mechanics", url: "https://docs.pytorch.org/docs/stable/notes/autograd.html", reason: "Documentation for the PyTorch tool rather than math; belongs to deep-learning/framework nodes (seed uses it after the handwritten engine)."}
+  - {title: "Roger Grosse CSC321 backpropagation lecture notes", url: "https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/readings/L06%20Backpropagation.pdf", reason: "Good short derivation of backprop as reverse-mode AD; covered by the survey and MIT notes."}
+  - {title: "Neural Networks and Deep Learning, Chapter 2 (Nielsen)", url: "http://neuralnetworksanddeeplearning.com/chap2.html", reason: "Classic backprop derivation in index notation; belongs to the deep-learning node."}
+  - {title: "MIT 18.02SC Multivariable Calculus Unit 2 (refresher)", url: "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/", reason: "Prerequisite refresher already covered in the calculus node."}
+notes: "This is a short, high-leverage node. The MIT notes/course are the primary because they derive everything from 'derivative = linear operator', which transfers to any framework. Julia is used in the MIT psets; the same ideas can be done in Python with JAX/PyTorch, so the practice items are Python. The Spring 2026 run (18.063) is the newest I found: it has a course page (README, notes PDF link, two problem sets) but I could not confirm public video; public recordings are IAP 2023. The OCW 18.S096 IAP 2023 course page is the best complete public package (notes, videos, psets with solutions)."
+split_proposal: null
+prereq_changes: "None. Possible soft prereq: optimization uses these gradients; consider adding matrix-calculus as soft prereq of optimization."
+open_questions:
+  - "Newer IAP runs (2024, 2025, 2026): whether video recordings are public (README for 2025 says recordings on YouTube but links to the 2023 playlist)."
+  - "Karpathy micrograd lecture on YouTube not opened (HTTP 429 from the research environment); the GitHub README was opened via raw.githubusercontent.com."
+  - "mitmath/matrixcalc is on github.com, which returns 403 to automated clients; content was read from raw.githubusercontent.com."
+last_verified: 2026-11-18

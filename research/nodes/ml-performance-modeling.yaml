@@ -1,0 +1,139 @@
+id: ml-performance-modeling
+title: "Performance Modeling for ML"
+group: G9
+paths: [mlsys]
+hard: [transformers, computer-architecture]
+soft: [parallel-programming]
+scope: "FLOPs and bytes accounting, roofline, arithmetic intensity, compute vs memory vs communication bounds for training and inference."
+
+level: intermediate
+estimated_hours: 30
+resources:
+  - id: scaling-book
+    role: primary-text
+    kind: book
+    title: "How to Scale Your Model: A Systems View of LLMs on TPUs (and GPUs)"
+    by: "Jacob Austin, Sholto Douglas, Roy Frostig, Anselm Levskaya, Charlie Chen, Sharad Vikram, Federico Lebron, Peter Choy, Vinay Ramasesh, Albert Webson, Reiner Pope (Google DeepMind)"
+    url: https://jax-ml.github.io/scaling-book/
+    edition_or_term: "Online book, 2025 (includes GPU chapter and inference chapters)"
+    access: free
+    use: "Ch. 1 All About Rooflines; Ch. 2 TPUs (read for the chip model, skim the TPU specifics); Ch. 4 All the Transformer Math You Need to Know; Ch. 5 How to Parallelize a Transformer for Training (the comm-bound analysis); Ch. 7 All About Transformer Inference; Ch. 12 How to Think About GPUs. Do the worked problems at the end of each chapter (answers are folded in the page)."
+    why: "The only text that treats FLOPs, bytes and communication as one quantitative framework and carries it from a single chip to a pod with exercises. Written by the people who ran PaLM/Gemini-scale systems; free."
+    verified: true
+  - id: cs336-perf
+    role: primary-course
+    kind: course
+    title: "Stanford CS336 Language Modeling from Scratch (resource accounting and GPU lectures + Assignment 2 profiling)"
+    by: "Percy Liang, Tatsunori Hashimoto (Stanford)"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 2 (PyTorch, resource accounting: FLOPs and memory by hand), Lecture 5 (GPUs, TPUs), Lecture 10 (Inference) for the performance-model view; Assignment 2 sections on benchmarking and profiling the Transformer (roofline-style questions, mixed precision, memory profiling)."
+    why: "The only public course that makes students do the napkin math (params, FLOPs, activation memory, MFU) and then check it against a profiler on their own Transformer."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs336.stanford.edu/
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+      assignments: public
+      assignments_url: https://github.com/stanford-cs336/assignment2-systems
+  - id: horace-brrr
+    role: secondary
+    kind: article
+    title: "Making Deep Learning Go Brrrr From First Principles"
+    by: "Horace He"
+    url: https://horace.io/brrr_intro.html
+    edition_or_term: "2022 (still the standard intro)"
+    access: free
+    use: "Whole post (30 min): compute-bound vs memory-bound vs overhead-bound, operator fusion as the main lever."
+    why: "Shortest correct introduction to the three-regime mental model before the heavier scaling-book chapters; framework-overhead regime is not covered by the scaling book."
+    verified: true
+  - id: kipply-arithmetic
+    role: secondary
+    kind: article
+    title: "Transformer Inference Arithmetic"
+    by: "kipply"
+    url: https://kipp.ly/p/transformer-inference-arithmetic
+    edition_or_term: "2022"
+    access: free
+    use: "Whole post: KV cache size, per-token FLOPs, memory-bandwidth-bound decode latency, tensor-parallel communication cost, with worked A100 numbers."
+    why: "Compact, GPU-flavoured worked example of the decode performance model; complements the TPU-flavoured scaling book."
+    verified: true
+  - id: eleuther-math101
+    role: reference
+    kind: article
+    title: "Transformer Math 101"
+    by: "Quentin Anthony, Stella Biderman, Hailey Schoelkopf (EleutherAI)"
+    url: https://blog.eleuther.ai/transformer-math/
+    edition_or_term: "2023"
+    access: free
+    use: "Memory formulas for parameters, optimizer states, gradients, activations (mixed precision, ZeRO); 6ND compute rule."
+    why: "One-page formula sheet for training memory/compute accounting; useful to check your own derivations."
+    verified: true
+  - id: roofline-paper
+    role: reference
+    kind: paper
+    title: "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures"
+    by: "Samuel Williams, Andrew Waterman, David Patterson"
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-134.html
+    edition_or_term: "EECS-2008-134 / CACM 2009"
+    access: free
+    use: "Sections 1-3: the model, ridge point, ceilings."
+    why: "The original source of the roofline model; short."
+    verified: true
+  - id: efficiently-scaling-inference
+    role: reference
+    kind: paper
+    title: "Efficiently Scaling Transformer Inference"
+    by: "Reiner Pope et al. (Google)"
+    url: https://arxiv.org/abs/2211.05102
+    edition_or_term: "MLSys 2023"
+    access: free
+    use: "Sections 2-3: analytical latency/MFU model for partitioning layouts."
+    why: "Canonical paper applying an analytical model to choose inference partitioning; the scaling-book inference chapter is its tutorial form."
+    verified: true
+  - id: mlsysbook-benchmarking
+    role: secondary
+    kind: book
+    title: "Introduction to Machine Learning Systems (Vol. I), Ch. 12 Benchmarking and Ch. 11 Hardware Acceleration"
+    by: "Vijay Janapa Reddi (Harvard) et al."
+    url: https://mlsysbook.ai/vol1/12_benchmarking/12_benchmarking.html
+    edition_or_term: "Vol. I, 2026 (MIT Press edition online)"
+    access: free
+    use: "Ch. 11 for accelerator memory hierarchy and roofline framing; Ch. 12 for how to measure (latency/throughput, MLPerf methodology)."
+    why: "Fills the measurement-methodology gap (how to benchmark honestly) that the scaling book assumes."
+    verified: true
+  - id: cs336-a2-profiling
+    role: practice
+    kind: practice-site
+    title: "CS336 Assignment 2 (Systems): benchmarking and profiling section"
+    by: "Stanford CS336 staff"
+    url: https://github.com/stanford-cs336/assignment2-systems
+    edition_or_term: "Spring 2026 handout"
+    access: free
+    use: "Benchmark forward/backward of the Transformer, add NVTX ranges and read an Nsight Systems trace, then do the mixed-precision and memory-profiling questions; compare measured vs predicted FLOPs/s."
+    why: "Closes the loop between the napkin model and a real GPU; written answers force you to explain each gap."
+    verified: true
+  - id: scaling-book-problems
+    role: practice
+    kind: practice-site
+    title: "Scaling Book worked problems (Ch. 1, 4, 5, 7)"
+    by: "Google DeepMind"
+    url: https://jax-ml.github.io/scaling-book/roofline/
+    edition_or_term: "Online, 2025"
+    access: free
+    use: "Do the numbered Worked Problems at the end of the Roofline, Transformers, Training and Inference chapters on paper before opening the answers."
+    why: "The exercises are where the roofline reasoning becomes automatic; no code or GPU needed."
+    verified: true
+considered:
+  - {title: "MIT 6.5940 EfficientML Fall 2026 (lectures 1-2, 11)", url: "https://hanlab.mit.edu/courses/2026-fall-65940", reason: "Good on hardware-efficiency basics but not a systematic performance-modeling treatment; used for model-compression node."}
+  - {title: "AI Systems Performance Engineering (Fregly, O'Reilly 2025)", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Large (about 1000 pp.), practitioner checklists rather than a model; O'Reilly page returns 403 to bots so I could not verify the contents; kept for gpu nodes as optional."}
+  - {title: "Stas Bekman ML Engineering Open Book", url: "https://github.com/stas00/ml-engineering", reason: "Excellent field reference (hardware, network, throughput) but not organized as a modeling course; used in distributed-training nodes."}
+  - {title: "Computer Architecture: A Quantitative Approach (Hennessy-Patterson)", url: "https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1", reason: "Source of roofline thinking, but already a prerequisite-side resource (computer-architecture node)."}
+notes: "Scaling book is the spine; CS336 gives the lecture + lab. TPU-heavy examples in the scaling book are acceptable because the math (bytes vs FLOPs vs bandwidth) is hardware-agnostic, and Ch. 12 and the kipply post supply GPU numbers. No dedicated 'performance modeling' course exists; this node is deliberately short (about 30 h) and is meant to be revisited by gpu-performance-optimization, distributed-training-fundamentals and llm-inference-and-serving."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Scaling book does not state a version number; 'edition_or_term' reflects the 2025 online release."
+last_verified: 2026-11-18

@@ -1,0 +1,119 @@
+id: probability
+title: Probability
+group: G2
+paths: [core]
+hard: [calculus]
+soft: [discrete-math]
+scope: "Random variables, distributions, expectation, conditioning, LLN/CLT, joint distributions, Markov chains intro."
+
+level: intermediate
+estimated_hours: 120
+resources:
+  - id: blitzstein-hwang
+    role: primary-text
+    kind: book
+    title: "Introduction to Probability, 2nd edition"
+    by: "Joseph K. Blitzstein, Jessica Hwang"
+    url: https://probabilitybook.net
+    edition_or_term: "2nd edition (CRC Press, 2019); authors' free PDF linked from probabilitybook.net (Google Drive); publisher page https://www.routledge.com/Introduction-to-Probability-Second-Edition/Blitzstein-Hwang/p/book/9780429428357"
+    access: mixed
+    use: "Chapters 1-11: counting and probability, conditional probability, random variables, expectation, continuous distributions, moments, joint distributions, transformations, conditional expectation, inequalities and limit theorems (LLN, CLT), Markov chains; chapters 12-13 (MCMC, Poisson processes) optional. Do the exercises with selected solutions."
+    why: "Story-proof approach builds real intuition and covers the whole scope including conditioning, joint distributions and Markov chains; written to go with Stat 110."
+    verified: true
+  - id: stat110
+    role: primary-course
+    kind: course
+    title: "Harvard Stat 110: Probability"
+    by: "Joe Blitzstein (Harvard)"
+    url: https://stat110.hsites.harvard.edu/
+    edition_or_term: "Fall 2025 (Harvard Statistics department course listing, seen via search); public lectures are the original YouTube recordings"
+    access: free
+    use: "All lectures on the YouTube playlist in order (counting, conditional probability, discrete and continuous RVs, expectation, moments, joint/conditional distributions, LLN/CLT, Markov chains); for each lecture do the matching Strategic Practice set and homework problems from the course site, then check solutions."
+    why: "The most-recommended public probability lecture series for CS/ML audiences; clear, example-driven, with problem sets and solutions designed around the book."
+    verified: false
+    course:
+      latest_term: "Fall 2025 (Harvard Statistics course listing; Stat 110 pages themselves returned HTTP 403 to automated fetches)"
+      latest_url: https://stat110.hsites.harvard.edu/
+      videos: unknown
+      public_videos_term: "Original Harvard recordings on YouTube (term not stated on the playlist page)"
+      public_videos_url: https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo
+      assignments: public
+      assignments_url: https://stat110.hsites.harvard.edu/strategic-practice-problems
+  - id: stat110-practice
+    role: practice
+    kind: website
+    title: "Stat 110 Strategic Practice and Homework problems with solutions"
+    by: "Harvard Statistics 110 teaching staff"
+    url: https://stat110.hsites.harvard.edu/strategic-practice-problems
+    edition_or_term: "Course site, per-lecture problem sets"
+    access: free
+    use: "Solve the Strategic Practice set matching each lecture (week-by-week sets: counting, conditional probability, discrete RVs, continuous RVs, moments, joint distributions, inequalities and limit theorems, Markov chains) before reading the solutions; use homework sets as test items."
+    why: "The core drill material for the course: hard story problems with full solutions; probability is learned by solving, not watching."
+    verified: false
+  - id: data140
+    role: secondary
+    kind: book
+    title: "Data 140 Textbook: Probability for Data Science"
+    by: "Ani Adhikari, Jim Pitman (UC Berkeley)"
+    url: https://data140.org/textbook/
+    edition_or_term: "Web textbook (CC BY-NC-ND); course Data 140 Fall 2026 at https://data140.org/"
+    access: free
+    use: "Chapters on Gaussians and the CLT, conditioning and Markov chains, and the simulation notebooks; use the course's homework and lab notebooks (Python) as computational practice."
+    why: "Second explanation with runnable simulations in Python and a conditional-expectation/Markov-chain emphasis; makes the computational and data-science side concrete."
+    verified: true
+  - id: piech-pfcs
+    role: reference
+    kind: book
+    title: "Probability for Computer Scientists (CS109 course reader)"
+    by: "Chris Piech (Stanford)"
+    url: https://chrispiech.github.io/probabilityForComputerScientists/en/index.html
+    edition_or_term: "Web reader; CS109 offered Autumn 2026 (https://cs109.stanford.edu/), lectures on Canvas (enrolled-only)"
+    access: free
+    use: "Core probability, discrete and continuous random variables, Gaussian, joint distributions, inference and the CLT, then the Information Theory and MLE sections that lead into later nodes."
+    why: "CS-oriented examples and code snippets (Python) for the same material; short chapters good for quick reference or review."
+    verified: true
+  - id: tsitsiklis-res6012
+    role: secondary
+    kind: course
+    title: "MIT RES.6-012 Introduction to Probability"
+    by: "John Tsitsiklis, Patrick Jaillet (MIT)"
+    url: https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/
+    edition_or_term: "Spring 2018 (short lecture videos); full 6.041SC at https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/"
+    access: free
+    use: "Video segments with the embedded exercises for any topic where Stat 110's treatment is too fast: conditioning/Bayes, independence, counting, discrete and continuous random variables, bounds and limit theorems, Markov chains."
+    why: "Alternative lecture style (short segments with built-in checks, more formal) and a second source of solved exercises; ties to the Bertsekas-Tsitsiklis textbook."
+    verified: true
+    course:
+      latest_term: "Spring 2018"
+      latest_url: https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/
+      videos: public
+      public_videos_term: "Spring 2018"
+      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP60hI9ATjSFgLZpbNJ7myAg6
+      assignments: partial
+      assignments_url: https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/
+  - id: seeing-theory
+    role: reference
+    kind: website
+    title: "Seeing Theory: a visual introduction to probability and statistics"
+    by: "Brown University (Daniel Kunin et al.)"
+    url: https://seeing-theory.brown.edu/
+    edition_or_term: "Current site"
+    access: free
+    use: "Basic Probability, Compound Probability and Probability Distributions chapters: interactive simulations for Bayes, LLN and distributions."
+    why: "Interactive visual intuition for LLN, CLT and distributions that books and videos only describe."
+    verified: true
+considered:
+  - {title: "MIT 18.600 Probability and Random Variables (Fall 2019, Sheffield)", url: "https://ocw.mit.edu/courses/18-600-probability-and-random-variables-fall-2019/", reason: "Strong alternative with public notes and problem sets; Stat 110 + book is the better-documented pairing."}
+  - {title: "MIT 6.041SC Probabilistic Systems Analysis", url: "https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/", reason: "Full course version of RES.6-012; heavier; kept as video backup."}
+  - {title: "Stanford CS109 Probability for Computer Scientists", url: "https://cs109.stanford.edu/", reason: "Great CS flavor (Autumn 2026) but lecture videos are on Canvas (enrolled-only) and it mixes ML topics; the course reader is used as a reference instead."}
+  - {title: "Berkeley Data 140 (Fall 2026)", url: "https://data140.org/", reason: "Textbook is kept as a secondary; the course itself has no public videos."}
+  - {title: "Markov Chains and Mixing Times (Levin, Peres, Wilmer)", url: "https://pages.uoregon.edu/dlevin/MARKOV/", reason: "Free definitive Markov chain text but graduate-level; use only after the Markov chain chapter of Blitzstein-Hwang if Markov chains become central (MCMC, randomized algorithms)."}
+  - {title: "Introduction to Probability, 2nd ed. (Bertsekas, Tsitsiklis)", url: "https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/", reason: "Excellent engineering-oriented textbook (paid; the 6.041SC course page is the verified link, publisher page not opened); Blitzstein-Hwang chosen for intuition and the matching course."}
+notes: "Stat 110 plus Blitzstein-Hwang is the strongest free pairing for CS. Harvard's course site (hsites.harvard.edu, projects.iq.harvard.edu) blocks automated clients (HTTP 403), so those two items are verified:false even though the YouTube playlist and the book PDF landing page were opened; treat the course's Strategic Practice URL as likely correct but needs a manual click. The MCS/6.1200 discrete-probability unit is a good warm-up; Stat 110 lectures 1-3 repeat counting for readers who skipped discrete math. Information-theory-related material (entropy, KL) is deliberately left to the information-theory node."
+split_proposal: null
+prereq_changes: "Calculus is hard-required for continuous distributions; discrete-math soft is right (counting, induction, expectation by indicators)."
+open_questions:
+  - "Stat 110 current-term data (Fall 2025) came from a search snippet of the Harvard statistics course listing; the course page itself was not openable. Confirm term, whether 2025 lectures are public, and the Strategic Practice URL."
+  - "Recording year of the YouTube Stat 110 playlist is not shown on the playlist page."
+  - "Data 140 Fall 2026 lecture videos: not found public."
+last_verified: 2026-11-18

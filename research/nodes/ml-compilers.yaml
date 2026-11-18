@@ -1,0 +1,172 @@
+id: ml-compilers
+title: "ML Compilers"
+group: G9
+paths: [mlsys, plc]
+hard: [dl-framework-internals]
+soft: [compiler-optimization, kernel-dsls]
+scope: "Graph IRs, operator fusion, scheduling, autotuning, TVM, XLA, MLIR, torch.compile/Inductor."
+
+level: advanced
+estimated_hours: 60
+resources:
+  - id: mlc-book
+    role: primary-text
+    kind: book
+    title: "Machine Learning Compilation (MLC course notes / book)"
+    by: "Tianqi Chen (CMU)"
+    url: https://book.mlc.ai/
+    edition_or_term: "2022 course notes (TVM Unity / TensorIR / Relax)"
+    access: free
+    use: "Ch. 1 Introduction, 2 Tensor Program Abstraction (incl. TensorIR case study and exercises), 3 End-to-End Model Execution, 4 Automatic Program Optimization, 5 Integration with ML Frameworks, 6 GPU and Hardware Acceleration (parts 1-2), 7 Computational Graph Optimization. Run each chapter's notebook."
+    why: "The only systematic textbook-style treatment of ML compilation (IR design, fusion, scheduling, search-based autotuning) from the creator of TVM; free with runnable notebooks. Concepts remain current even though the API is the 2022 TVM Unity."
+    verified: true
+  - id: mlc-summer22
+    role: primary-course
+    kind: course
+    title: "MLC: Machine Learning Compilation (Summer 2022 online course)"
+    by: "Tianqi Chen"
+    url: https://mlc.ai/summer22/
+    edition_or_term: "Summer 2022 (10 episodes)"
+    access: free
+    use: "All 10 episodes (videos on YouTube linked from the schedule page), the episode notebooks, TensorIR exercise and Assignment 1; follow with the GPU/tensor-core tutorial."
+    why: "Public videos plus exercises and an assignment for the primary text; best public recorded ML-compiler course. Dated (2022) but nothing newer with videos and assignments exists."
+    verified: true
+    course:
+      latest_term: "Summer 2022"
+      latest_url: https://mlc.ai/summer22/
+      videos: public
+      assignments: public
+      assignments_url: https://mlc.ai/summer22/schedule
+  - id: pytorch2-paper
+    role: secondary
+    kind: paper
+    title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation"
+    by: "Jason Ansel et al. (Meta)"
+    url: https://pytorch.org/assets/pytorch2-2.pdf
+    edition_or_term: "ASPLOS 2024"
+    access: free
+    use: "Sections 2-5: TorchDynamo (bytecode capture, guards, graph breaks), AOTAutograd, TorchInductor (define-by-run IR, fusion, Triton codegen); evaluation section for what speedups to expect."
+    why: "Primary source for the compiler ML engineers actually use; explains design decisions (capture at bytecode level) that differ from TVM/XLA."
+    verified: true
+  - id: inductor-design
+    role: secondary
+    kind: article
+    title: "TorchInductor: a PyTorch-native Compiler with Define-by-Run IR and Symbolic Shapes"
+    by: "Jason Ansel, Horace He et al. (PyTorch dev-discuss)"
+    url: https://dev-discuss.pytorch.org/t/torchinductor-a-pytorch-native-compiler-with-define-by-run-ir-and-symbolic-shapes/747
+    edition_or_term: "2022 design post"
+    access: free
+    use: "Full post: loop-level IR, scheduling/fusion decisions, codegen to Triton and C++."
+    why: "Design-level explanation of Inductor's IR and fusion that the paper compresses."
+    verified: true
+  - id: torch-compile-docs
+    role: reference
+    kind: docs
+    title: "PyTorch torch.compile documentation and tutorials"
+    by: "PyTorch"
+    url: https://docs.pytorch.org/docs/stable/torch.compiler.html
+    edition_or_term: "current (2.15 docs)"
+    access: free
+    use: "torch.compiler landing page, Dynamo overview (https://docs.pytorch.org/docs/stable/torch.compiler_dynamo_overview.html), troubleshooting and FAQ (graph breaks, recompilation), AOT Inductor page, and the Introduction to torch.compile tutorial (https://docs.pytorch.org/tutorials/intermediate/torch_compile_tutorial.html)."
+    why: "Current behavior and debugging recipes (TORCH_LOGS, explain, graph breaks) that papers do not cover."
+    verified: true
+  - id: openxla-docs
+    role: reference
+    kind: docs
+    title: "OpenXLA: XLA architecture and StableHLO"
+    by: "OpenXLA project (Google and partners)"
+    url: https://openxla.org/xla/architecture
+    edition_or_term: "current docs"
+    access: free
+    use: "XLA architecture page (HLO, passes, fusion, buffer assignment, GPU/TPU backends) and the StableHLO spec overview (https://openxla.org/stablehlo)."
+    why: "The reference for the whole-program, graph-first approach (JAX/TF/TPU); complements the Python-tracing approach of torch.compile."
+    verified: true
+  - id: mlir-toy
+    role: secondary
+    kind: docs
+    title: "MLIR Toy Tutorial"
+    by: "LLVM/MLIR community"
+    url: https://mlir.llvm.org/docs/Tutorials/Toy/
+    edition_or_term: "current docs, 7 chapters"
+    access: free
+    use: "Chapters 1-7: build a small language with dialects, ops, rewrite patterns, shape inference, lowering to LLVM; then skim the MLIR docs index for the Linalg/Tensor/Affine dialects."
+    why: "MLIR is the shared infrastructure under XLA/Triton/IREE; this is the official way to learn dialect and pass design."
+    verified: true
+  - id: tvm-paper
+    role: reference
+    kind: paper
+    title: "TVM: An Automated End-to-End Optimizing Compiler for Deep Learning"
+    by: "Tianqi Chen et al."
+    url: https://arxiv.org/abs/1802.04799
+    edition_or_term: "OSDI 2018"
+    access: free
+    use: "Sections 3-5 (graph-level optimizations, tensor expression language and schedule primitives, learned cost model); also Apache TVM docs at https://tvm.apache.org/docs/."
+    why: "The foundational paper for fusion plus schedule search; read after the MLC book."
+    verified: true
+  - id: dl-compiler-survey
+    role: reference
+    kind: paper
+    title: "The Deep Learning Compiler: A Comprehensive Survey"
+    by: "Mingzhen Li et al."
+    url: https://arxiv.org/abs/2002.03794
+    edition_or_term: "IEEE TPDS 2021"
+    access: free
+    use: "Sections on multi-level IR, frontend/backend optimizations; use as a map of the field."
+    why: "Broad taxonomy to place TVM, Glow, XLA, nGraph etc.; dated for LLM-era kernels."
+    verified: true
+  - id: cmu-15442-compiler
+    role: secondary
+    kind: course
+    title: "CMU 15-442/642 Machine Learning Systems (compiler lectures: data layouts, GEMM, ML compilation, superoptimization, mega-kernel)"
+    by: "Tianqi Chen, Zhihao Jia (CMU)"
+    url: https://mlsyscourse.org/schedule
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Slides for Week 7 (ML compiler: data layouts, GEMM on modern GPUs), Week 12 (ML compilation), Week 13 (superoptimization, mega-kernel) to see the 2026 view; Lab 3 for kernel-level compiler practice."
+    why: "Newest course by the TVM author; slides are public and cover where compilers are moving (TIRx, mega-kernels)."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://mlsyscourse.org/schedule
+      videos: unknown
+      public_videos_term: "none found; MLC Summer 2022 has public videos"
+      public_videos_url: https://mlc.ai/summer22/schedule
+      assignments: public-with-autograder
+      assignments_url: https://mlsyscourse.org/schedule
+  - id: inductor-output-code
+    role: practice
+    kind: tool
+    title: "Read what torch.compile generates"
+    by: "PyTorch"
+    url: https://docs.pytorch.org/tutorials/intermediate/torch_compile_tutorial.html
+    edition_or_term: "current tutorial"
+    access: free
+    use: "Compile a small transformer block with TORCH_LOGS=output_code and TORCH_COMPILE_DEBUG=1; find the fused Triton kernels, count graph breaks with torch._dynamo.explain, change mode (max-autotune) and compare timings; hand-write the same fusion in Triton."
+    why: "Ties the compiler theory to a real artifact you can inspect; follows naturally from the kernel-dsls node."
+    verified: true
+  - id: tensorir-exercises
+    role: practice
+    kind: practice-site
+    title: "MLC TensorIR exercises and Assignment 1"
+    by: "Tianqi Chen"
+    url: https://mlc.ai/summer22/schedule
+    edition_or_term: "Summer 2022 (notebooks on GitHub mlc-ai/notebooks)"
+    access: free
+    use: "Episode 3 TensorIR exercise, Episode 4 assignment (build and optimize an end-to-end model), Episode 8 tensor-core tutorial."
+    why: "The graded-style exercises for the primary text: write schedules (tile, vectorize, bind threads) and verify against baselines."
+    verified: true
+considered:
+  - {title: "MLC LLM documentation", url: "https://llm.mlc.ai/docs/", reason: "Shows a compiler-based LLM deployment stack (TVM) end to end; kept for llm-inference-and-serving as optional."}
+  - {title: "CMU 15-779 Advanced Topics in ML Systems (Fall 2025, Zhihao Jia)", url: "https://www.cs.cmu.edu/~zhihaoj2/15-779/", reason: "Paper-reading course with slides; compiler lectures are paper summaries (TASO, Mirage), no assignments."}
+  - {title: "Glow: Graph Lowering Compiler Techniques for Neural Networks", url: "https://arxiv.org/abs/1805.00907", reason: "Good second-opinion graph compiler design, but less central than TVM/XLA/Inductor."}
+  - {title: "Modern GPU Programming for MLSys (TIRx)", url: "https://mlc.ai/modern-gpu-programming-for-mlsys/", reason: "Kernel-level, Blackwell-specific; used in gemm-and-tensor-cores."}
+  - {title: "UCSD CSE 291A/DSC 291 (Spring 2026) Triton, graph optimization lectures", url: "https://haoailab.com/cse291-s26/", reason: "Reading list (TVM, Ansor, TASO, PET) is good, but recordings access unclear."}
+  - {title: "Cornell CS 6120 Advanced Compilers (self-guided)", url: "https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/", reason: "General compiler optimization belongs to the compiler-optimization prerequisite node."}
+notes: "No single modern text covers TVM + XLA + MLIR + torch.compile. The MLC book/course gives the conceptual core (IR, schedule, search, fusion) with exercises; PyTorch 2 paper + docs cover the dominant practical system; XLA/MLIR are references. The newest public-video course in the area is 2022, so the roadmap should accept that dated-but-sound foundation and add the 2024+ torch.compile material as secondary. CMU 15-442 Spring 2026 slides give a current view but videos are not confirmed public."
+split_proposal: null
+prereq_changes: "Consider soft prereq on gpu-programming (compiler backends target GPUs; MLC Ep. 7-8 assume CUDA basics)."
+open_questions:
+  - "Whether CMU 15-442 Spring 2026 lectures are publicly recorded."
+  - "mlc.ai/summer22 notebooks live in github.com/mlc-ai/notebooks (403 to curl; links taken from the schedule page)."
+  - "mlc.ai/chapter_* links on the summer22 schedule page are dead (404); the notes moved to book.mlc.ai."
+last_verified: 2026-11-18

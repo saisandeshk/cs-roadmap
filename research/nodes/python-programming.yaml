@@ -1,0 +1,121 @@
+id: python-programming
+title: 'Programming I: Python'
+group: G1
+paths:
+- core
+hard: []
+soft: []
+scope: 'First programming course in Python: control flow, functions, recursion, data abstraction, OOP basics, simple algorithms (SICP-style intro).'
+level: intro
+estimated_hours: 130
+resources:
+- id: composing-programs
+  role: primary-text
+  kind: website
+  title: Composing Programs (3rd edition)
+  by: John DeNero (adapted from SICP by Abelson and Sussman)
+  url: https://composingprograms.com/3ed/
+  edition_or_term: 3rd edition (current 2026 rewrite; Python chapters plus new Gleam appendices)
+  access: free
+  use: 'Chapter 1 Functions (1.1-1.7: names, environments, higher-order functions, recursion); Chapter 2 Data (2.1-2.9: sequences, mutable data, OOP, iterators/generators, orders of growth). Chapter 3 (interpreters) and the Gleam appendices are optional.'
+  why: 'The best free text for programming as abstraction: environment diagrams, higher-order functions, recursion and data abstraction taught in Python, with no hand-waving. CC BY-NC-SA, rewritten for the Fall 2026 course.'
+  verified: true
+- id: cs61a
+  role: primary-course
+  kind: course
+  title: 'CS 61A: Structure and Interpretation of Computer Programs'
+  by: UC Berkeley (John DeNero and staff)
+  url: https://cs61a.org/fa26/
+  edition_or_term: Fall 2026
+  access: free
+  use: Lectures 1-25 (functions through iterators/generators/efficiency), labs 00-09, homeworks 1-7, projects Hog and Cats (then Ants if time allows). Treat the Gleam interpreter unit, SQL lab and the agentic Animator project as optional.
+  why: 'The canonical SICP-descended first course: Python as vehicle for abstraction, recursion, OOP and interpreters. Assignments are public with local pytest tests, so it can be self-taught end to end.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs61a.org/fa26/
+    videos: public
+    public_videos_term: Fall 2026 lecture pages link to per-lecture YouTube videos by John DeNero (public; at least some were recorded in earlier terms, e.g. the Control lecture links a Multiple Environments video). Full live recordings of Fall 2026 are on bcourses (enrolled only) and Askademia (login).
+    public_videos_url: https://www.youtube.com/@JohnDeNero
+    assignments: public-with-autograder
+    assignments_url: https://cs61a.org/fa26/hw/hw01/
+- id: python-tutor
+  role: secondary
+  kind: tool
+  title: Python Tutor
+  by: Philip Guo
+  url: https://pythontutor.com/
+  access: free
+  use: Paste any lab or homework function and step through it to see frames, objects and references; use for every environment-diagram or aliasing bug in the first 8 weeks.
+  why: Fills the gap of seeing the execution model; it is also the tool the 61A site itself links.
+  verified: true
+- id: think-python-3e
+  role: secondary
+  kind: book
+  title: Think Python, 3rd edition
+  by: Allen B. Downey
+  url: https://allendowney.github.io/ThinkPython/
+  edition_or_term: 3rd edition
+  access: free
+  use: Chapters 1-17 as a gentler on-ramp (runnable Jupyter notebooks) before or alongside 61A weeks 1-4 if you have never programmed.
+  why: 61A itself warns that it is hard without prior programming; Think Python is the lowest-friction free on-ramp and is current (3rd edition, notebooks).
+  verified: true
+- id: sicp-js
+  role: secondary
+  kind: book
+  title: Structure and Interpretation of Computer Programs, JavaScript edition
+  by: Harold Abelson, Gerald Jay Sussman, Martin Henz, Tobias Wrigstad
+  url: https://sicp.sourceacademy.org/
+  edition_or_term: JavaScript adaptation (MIT Press 2022)
+  access: free
+  use: Section 3.5 (streams), Chapter 4 (metacircular evaluator) and 4.4 (logic programming) only, after finishing 61A.
+  why: Fall 2026 61A dropped Scheme for Gleam and cut macros, so the classic evaluator/streams material now lives only in SICP; read these sections for the original treatment.
+  verified: true
+- id: py-tutorial
+  role: reference
+  kind: docs
+  title: The Python Tutorial
+  by: Python Software Foundation
+  url: https://docs.python.org/3/tutorial/
+  edition_or_term: Python 3.15 docs
+  access: free
+  use: Chapters 3-9 as a syntax lookup (data structures, modules, errors, classes) while working through labs.
+  why: Authoritative, always current syntax reference; avoids third-party blog drift.
+  verified: true
+- id: exercism-python
+  role: practice
+  kind: practice-site
+  title: Exercism Python track
+  by: Exercism
+  url: https://exercism.org/tracks/python
+  edition_or_term: Python track (Learning Mode)
+  access: free
+  use: After each 61A unit, do the track concepts basics, lists, dicts, strings, loops, classes, inheritance, generators; then a handful of Practice exercises from the same concepts with mentor-free test-driven feedback.
+  why: 61A is heavy on abstraction but light on idiomatic small-program volume; Exercism supplies automated-test drilling and common-idiom practice.
+  verified: true
+considered:
+- title: MIT 6.100L Introduction to CS and Programming using Python (OCW Fall 2022)
+  url: https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/
+  reason: Public videos, finger exercises and psets; gentler pace and more computational-thinking, but less on abstraction/environment model. Best fallback if 61A is too fast.
+- title: CMU 15-112 Fundamentals of Programming (Fall 2026)
+  url: https://www.cs.cmu.edu/~112/
+  reason: Rigorous, graphics-driven Python course with open notes; video status not checked and notes live on CS Academy. Alternative to 61A.
+- title: CS50x 2026 / CS50P
+  url: https://cs50.harvard.edu/x/
+  reason: Excellent motivation and public videos, but broad and shallow (C then Python); CS50P (https://cs50.harvard.edu/python/) is a good light option.
+- title: SICP original (Scheme edition)
+  url: https://sicp.sourceacademy.org/
+  reason: Classic; lecture-style rigor but Scheme-first and needs more maturity. Used here only selectively via the JS edition.
+- title: How to Design Programs (HtDP 2e)
+  url: https://htdp.org/
+  reason: The design-recipe alternative to SICP; excellent for design habits but uses Racket teaching languages.
+- title: MIT 6.100A/6.100L newer terms
+  url: https://ocw.mit.edu/
+  reason: Only Fall 2022 verified on OCW; newer terms not checked.
+notes: 'Primary route: Composing Programs 3e plus CS 61A (Fall 2026). IMPORTANT: Fall 2026 61A was restructured for the AI era: Scheme is replaced by Gleam in the interpreters/functional unit, macros were cut, topics duplicated in CS 61B were deferred, and a 2-week agentic-coding software-application unit was added. Core abstraction/recursion/OOP/iterator content is unchanged, so the first ~25 lectures and Python projects are still the right route. The older Scheme interpreter project is no longer on the current site (older terms are not publicly archived at a URL I could open), so SICP section 4 is the substitute. Fall 2026 homework credit requires a Preceptor/provenance flow that self-learners should ignore; run the local pytest tests instead. Exercism now points absolute beginners to a separate platform, Jiki, but the Python track is unchanged.'
+split_proposal: null
+prereq_changes: null
+open_questions:
+- Exact term of the YouTube per-lecture videos linked from Fall 2026 pages not determined (they appear to be recordings from earlier terms).
+- Whether the Fall 2026 starter zips run offline with the same ok-style local tests was only partly checked (HW1 uses python3 -m pytest -k).
+last_verified: '2026-11-18'

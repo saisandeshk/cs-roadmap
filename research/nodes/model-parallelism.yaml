@@ -1,0 +1,176 @@
+id: model-parallelism
+title: "Distributed Training II: Model Parallelism at Scale"
+group: G9
+paths: [mlsys]
+hard: [distributed-training-fundamentals]
+soft: []
+scope: "Tensor/sequence/context/pipeline/expert parallelism, multi-dimensional planning, checkpointing and fault tolerance."
+
+level: advanced
+estimated_hours: 60
+resources:
+  - id: ultrascale-playbook-mp
+    role: primary-text
+    kind: book
+    title: "The Ultra-Scale Playbook: Training LLMs on GPU Clusters (second half)"
+    by: "Hugging Face (Tazi, Mom, Zhao, Nguyen, Mekkouri, Werra, Wolf)"
+    url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
+    edition_or_term: "Feb 2025"
+    access: free
+    use: "Tensor Parallelism (incl. sequence parallelism); Context Parallelism (ring attention, zig-zag); Pipeline Parallelism (AFAB, 1F1B, interleaving, zero bubble, DualPipe); Expert Parallelism; 5D Parallelism in a Nutshell; Finding the Best Training Configuration; Diving into the GPUs (fusing, mixed precision); Appendix A2 typical scales."
+    why: "Single story line through every parallelism axis with real benchmark numbers and a decision procedure for choosing a configuration; same book as the previous node, other half."
+    verified: true
+  - id: cmu-15442-mp
+    role: primary-course
+    kind: course
+    title: "CMU 15-442/642 Machine Learning Systems (model and pipeline parallelism, MoE, memory optimization)"
+    by: "Zhihao Jia, Tianqi Chen (CMU)"
+    url: https://mlsyscourse.org/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Week 6 slides (Model and Pipeline Parallelism; Tensor Rematerialization and Offload), Week 11 (Mixture of Experts), Week 5 recap (DP and ZeRO); Lab 2 (distributed training with MPI: naive and Megatron-style tensor parallelism, ZeRO-3)."
+    why: "Most recent course that treats TP/PP/MoE with a graded implementation assignment whose repo is public. Lecture videos not confirmed public, so pair the slides with the Playbook and CS336 lecture 8."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://mlsyscourse.org/schedule
+      videos: unknown
+      public_videos_term: "CS336 Spring 2026 parallelism lectures 7-8 are public"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+      assignments: public-with-autograder
+      assignments_url: https://github.com/mlsyscourse/assignment-distributed-training
+  - id: megatron-papers
+    role: secondary
+    kind: paper
+    title: "Megatron-LM (tensor parallelism) and Efficient Large-Scale Language Model Training on GPU Clusters (PTD-P)"
+    by: "Mohammad Shoeybi, Deepak Narayanan et al. (NVIDIA)"
+    url: https://arxiv.org/abs/1909.08053
+    edition_or_term: "arXiv 1909.08053; SC 2021 paper arXiv 2104.04473; sequence parallelism and selective recompute arXiv 2205.05198"
+    access: free
+    use: "Megatron-LM: column/row-parallel MLP and attention; PTD-P: interleaved 1F1B and combining TP, PP, DP; Reducing Activation Recomputation: sequence parallelism and selective checkpointing."
+    why: "The primary sources behind the Playbook's TP/PP/SP sections; short and quantitative."
+    verified: true
+  - id: pipeline-papers
+    role: reference
+    kind: paper
+    title: "GPipe; Zero Bubble Pipeline Parallelism; DeepSeek-V3 (DualPipe)"
+    by: "Huang et al. (Google); Qi et al. (Sea AI Lab); DeepSeek-AI"
+    url: https://arxiv.org/abs/1811.06965
+    edition_or_term: "GPipe arXiv 1811.06965; Zero Bubble arXiv 2401.10241; DeepSeek-V3 arXiv 2412.19437"
+    access: free
+    use: "GPipe schedule and bubble analysis; zero-bubble B/W split; DeepSeek-V3 Sections on DualPipe and expert-parallel communication overlap."
+    why: "How pipeline schedules evolved and what frontier labs actually run."
+    verified: true
+  - id: context-moe-papers
+    role: reference
+    kind: paper
+    title: "Ring Attention; DeepSpeed Ulysses; GShard; Switch Transformers"
+    by: "Liu et al.; Jacobs et al. (Microsoft); Lepikhin et al.; Fedus et al."
+    url: https://arxiv.org/abs/2310.01889
+    edition_or_term: "Ring Attention arXiv 2310.01889; Ulysses arXiv 2309.14509; GShard arXiv 2006.16668; Switch arXiv 2101.03961"
+    access: free
+    use: "Context parallelism (ring vs all-to-all head-sharding) and expert parallelism with load balancing/capacity factors; read with the Hugging Face blog Mixture of Experts Explained (https://huggingface.co/blog/moe)."
+    why: "Primary sources for the context- and expert-parallel parts of the scope."
+    verified: true
+  - id: scaling-book-training
+    role: secondary
+    kind: book
+    title: "How to Scale Your Model, Ch. 5 How to Parallelize a Transformer for Training and Ch. 6 Training LLaMA 3 on TPUs"
+    by: "Google DeepMind"
+    url: https://jax-ml.github.io/scaling-book/training/
+    edition_or_term: "2025"
+    access: free
+    use: "Ch. 5 (data/FSDP/tensor/pipeline and their combinations; communication-bound regimes), Ch. 6 (https://jax-ml.github.io/scaling-book/applied-training/) as a worked sizing example; do the problems."
+    why: "Gives the analytic model to pick mesh shapes before you launch, complementing the Playbook's empirical sweeps."
+    verified: true
+  - id: pytorch-parallel-docs
+    role: reference
+    kind: docs
+    title: "PyTorch tutorials: Tensor Parallel, Pipeline Parallelism, Distributed Checkpoint; DTensor docs"
+    by: "PyTorch"
+    url: https://docs.pytorch.org/tutorials/intermediate/TP_tutorial.html
+    edition_or_term: "PyTorch 2.15 docs"
+    access: free
+    use: "TP tutorial (parallelize_module, ColwiseParallel/RowwiseParallel), pipelining tutorial (https://docs.pytorch.org/tutorials/intermediate/pipelining_tutorial.html), DCP recipe (https://docs.pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html), DTensor (https://docs.pytorch.org/docs/stable/distributed.tensor.html)."
+    why: "How the ideas are exposed in the mainstream framework (DeviceMesh/DTensor), plus checkpointing."
+    verified: true
+  - id: mlsysbook-fault-tolerance
+    role: secondary
+    kind: book
+    title: "Scaling Machine Learning Systems (Vol. II), Ch. 7 Fault Tolerance, Ch. 8 Fleet Orchestration, Ch. 9 Performance Engineering"
+    by: "Vijay Janapa Reddi (Harvard) et al."
+    url: https://mlsysbook.ai/vol2/07_fault_tolerance/07_fault_tolerance.html
+    edition_or_term: "Vol. II, online 2026"
+    access: free
+    use: "Ch. 7 (failure rates at scale, checkpoint frequency models, elastic training), Ch. 8 (scheduling/orchestration, https://mlsysbook.ai/vol2/08_fleet_orchestration/08_fleet_orchestration.html), Ch. 9 (performance engineering)."
+    why: "Covers the checkpointing and fault-tolerance half of the scope in one place with an analytical treatment."
+    verified: true
+  - id: llama3-infra
+    role: reference
+    kind: paper
+    title: "The Llama 3 Herd of Models (Sec. 3.3 training infrastructure and 4D parallelism)"
+    by: "Meta"
+    url: https://arxiv.org/abs/2407.21783
+    edition_or_term: "2024"
+    access: free
+    use: "Section 3.3: 4D parallelism config, pipeline schedule changes, collective library (NCCLX), reliability and interruption statistics over 54 days."
+    why: "Rare public numbers on failures and parallelism choices at 16K GPUs."
+    verified: true
+  - id: stas-chronicles
+    role: secondary
+    kind: book
+    title: "Machine Learning Engineering Open Book: training, orchestration and debugging sections"
+    by: "Stas Bekman"
+    url: https://github.com/stas00/ml-engineering
+    edition_or_term: "active 2026"
+    access: free
+    use: "Training (checkpoints, storage, fault tolerance, hanging diagnosis), Orchestration (SLURM), and the BLOOM/IDEFICS training chronicles."
+    why: "Practitioner view of how multi-week runs fail and recover."
+    verified: true
+  - id: picotron-4d
+    role: practice
+    kind: practice-site
+    title: "Picotron: tensor, pipeline, context parallelism and 4D composition"
+    by: "Hugging Face"
+    url: https://github.com/huggingface/picotron
+    edition_or_term: "active; tutorial playlist and companion repo linked from README"
+    access: free
+    use: "Read tensor_parallel/tensor_parallel.py + tp_communications.py, pipeline_parallel, context_parallel; re-implement a column/row-parallel linear first, then run 2D/3D layouts with torchrun on 2-8 GPUs and compare with the Playbook plots."
+    why: "Each parallelism axis in under 300 lines; the tutorial builds the same thing step by step."
+    verified: true
+  - id: cmu-lab2
+    role: practice
+    kind: practice-site
+    title: "CMU 15-442 Lab 2: distributed training with MPI (naive and Megatron-style tensor parallelism, ZeRO-3)"
+    by: "CMU 15-442 staff"
+    url: https://github.com/mlsyscourse/assignment-distributed-training
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Parts 2-7 (communication groups, naive vs Megatron forward/backward communication) and parts 8-9 (ZeRO-3); pytest with mpirun, no GPU needed."
+    why: "Hand-written TP communication pattern verified by tests; cheap to run."
+    verified: true
+  - id: planning-exercise
+    role: practice
+    kind: practice-site
+    title: "Parallelism planning exercise (paper-and-spreadsheet)"
+    by: "Scaling book / Ultra-Scale Playbook"
+    url: https://jax-ml.github.io/scaling-book/training/
+    edition_or_term: "problems in Ch. 5"
+    access: free
+    use: "For a 70B dense model on 1024 H100s and for an MoE model, choose DP/FSDP/TP/PP/CP/EP degrees and microbatch counts; check memory, global batch size and comm-to-compute ratios using the Playbook's three-step configuration procedure."
+    why: "Multi-dimensional planning is the skill this node is about; no hardware needed."
+    verified: true
+considered:
+  - {title: "UCSD CSE 234 Winter 2025 / CSE 291A Spring 2026 (Hao Zhang)", url: "https://haoailab.com/cse234-w25/", reason: "Lectures on Megatron, GPipe, Alpa and collective communication; recording access via UCSD podcast unconfirmed and assignments are private-repo."}
+  - {title: "CS336 Spring 2026 lectures 7-8 (Parallelism)", url: "https://cs336.stanford.edu/", reason: "Public and good; used as primary-course in the previous node and referenced here as video companion."}
+  - {title: "MIT 6.5940 Fall 2026 Distributed Training I/II", url: "https://hanlab.mit.edu/courses/2026-fall-65940", reason: "Public videos but introductory."}
+  - {title: "TorchTitan (paper and repo)", url: "https://arxiv.org/abs/2410.06511", reason: "Production reference implementation of composable parallelism; read after Picotron."}
+  - {title: "TorchFeather minimal examples (hkproj)", url: "https://github.com/hkproj/torchfeather", reason: "From the owner's earlier curation; page returned 403 so unverified."}
+  - {title: "Megatron-LM / Megatron Core and DeepSpeed repos", url: "https://github.com/NVIDIA/Megatron-LM", reason: "Production frameworks to read after the minimal implementations; large codebases."}
+notes: "Same primary-text as the previous node by design (the Playbook spans both); owner may prefer to anchor it once. CMU 15-442 videos unverified, so CS336 lecture 8 and the Playbook carry the conceptual load. Practice requires multiple GPUs for realism; the CMU MPI lab and the planning exercise do not."
+split_proposal: "Checkpointing and fault tolerance could become its own short node (shared with mlops-and-production) if the owner wants it separate from parallelism strategies."
+prereq_changes: null
+open_questions:
+  - "Whether CMU 15-442 Spring 2026 lectures are recorded publicly."
+  - "TorchFeather repo could not be opened (403)."
+last_verified: 2026-11-18

@@ -1,0 +1,117 @@
+id: linear-algebra
+title: Linear Algebra
+group: G2
+paths: [core]
+hard: []
+soft: [calculus]
+scope: "Vector spaces, elimination, orthogonality, determinants, eigenvalues, SVD, with a computational view."
+
+level: intro
+estimated_hours: 110
+resources:
+  - id: strang-ila6
+    role: primary-text
+    kind: book
+    title: "Introduction to Linear Algebra, 6th edition"
+    by: "Gilbert Strang"
+    url: https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html
+    edition_or_term: "6th edition (2023), Wellesley-Cambridge Press"
+    access: paid
+    use: "Chapters 1-8 in order: vectors and matrices, solving Ax=b (elimination, LU, A=CR), vector spaces and the four subspaces, orthogonality and least squares, determinants, eigenvalues, SVD, linear transformations; skip Ch 9-12 on first pass. Do the problem sets (selected solutions are free on the book page)."
+    why: "The computational, matrix-first view the scope asks for (elimination, four subspaces, LU/QR, SVD) and the book 18.06 is taught from; the publisher page also offers free sample sections, selected solutions and old MIT exams."
+    verified: true
+  - id: mit-18-06
+    role: primary-course
+    kind: course
+    title: "MIT 18.06 Linear Algebra (Strang lectures); 18.06SC adds problem-solving videos"
+    by: "Gilbert Strang (OCW Spring 2010); 18.06SC Fall 2011 adds recitation/problem-solving videos"
+    url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/
+    edition_or_term: "Spring 2010 (OCW); SC version: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/; newest MIT run found: Spring 2025 (Nike Sun)"
+    access: free
+    use: "All 34 lectures on the YouTube/OCW playlist with the problem sets, exams and solutions; first-pass priority: lectures 1-11 (Ax=b, four subspaces), 14-17 (orthogonality, least squares, determinants), 21-25 (eigenvalues, symmetric/positive definite), 29-31 (SVD), 33."
+    why: "The definitive public lecture series on the subject, with graded problem sets, solutions and exams; matches Strang's book chapter for chapter."
+    verified: true
+    course:
+      latest_term: "Spring 2025 (Nike Sun; mitmath/1806 repository; lecture notes on Canvas only)"
+      latest_url: https://github.com/mitmath/1806
+      videos: unknown
+      public_videos_term: "Spring 2010 (Strang)"
+      public_videos_url: https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/assignments/
+  - id: 3b1b-linalg
+    role: secondary
+    kind: video-series
+    title: "Essence of Linear Algebra"
+    by: "Grant Sanderson (3Blue1Brown)"
+    url: https://www.3blue1brown.com/topics/linear-algebra
+    edition_or_term: "2016 series (YouTube playlist: https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)"
+    access: free
+    use: "Watch chapters 1-9 (vectors, linear transformations, matrix multiplication, determinant, inverse/rank/null space, change of basis, eigenvectors) before or alongside 18.06 lectures 1-10 and 21-22."
+    why: "Geometric picture of what matrices do, which Strang's algebra-first lectures only imply; no exercises."
+    verified: true
+  - id: axler-ladr
+    role: secondary
+    kind: book
+    title: "Linear Algebra Done Right, 4th edition"
+    by: "Sheldon Axler"
+    url: https://linear.axler.net/
+    edition_or_term: "4th edition (open access, CC BY-NC; use the corrected PDF from the author page rather than older copies)"
+    access: free
+    use: "After 18.06: chapters on vector spaces, finite-dimensional spaces, linear maps, eigenvalues, inner product spaces, and the spectral theorem/SVD for a proof-based second pass; read for rigorous definitions of span, basis, dimension, and operators."
+    why: "Fills the abstract/proof gap Strang's matrix-first treatment leaves (vector spaces and operators without determinants); the standard second course and a good fit for the theory path."
+    verified: true
+  - id: mit-18-065
+    role: secondary
+    kind: course
+    title: "MIT 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning"
+    by: "Gilbert Strang (OCW Spring 2018); Steven G. Johnson taught Spring 2023"
+    url: https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/
+    edition_or_term: "Spring 2018 (OCW); textbook Linear Algebra and Learning from Data (https://math.mit.edu/~gs/learningfromdata/)"
+    access: free
+    use: "Lectures 1-10 (column space and CR, SVD, norms, low-rank approximation, PCA, randomized/least-squares solvers) after 18.06; the rest (optimization, deep learning) belongs to later nodes."
+    why: "Computational and ML-facing continuation (SVD, PCA, low rank, norms) with public lecture videos; bridges linear algebra into matrix calculus, optimization and numerical methods."
+    verified: true
+    course:
+      latest_term: "Spring 2023 (S. Johnson; mitmath/18065 repository; videos MIT-only)"
+      latest_url: https://github.com/mitmath/18065
+      videos: enrolled-only
+      public_videos_term: "Spring 2018"
+      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP63oMNUHXqIUcrkS2PivhN3k
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/
+  - id: vmls
+    role: secondary
+    kind: book
+    title: "Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares"
+    by: "Stephen Boyd, Lieven Vandenberghe"
+    url: https://web.stanford.edu/~boyd/vmls/
+    edition_or_term: "Cambridge University Press 2018; free PDF, Julia/Python companions"
+    access: free
+    use: "Chapters 1-13 (vectors, norms, clustering, matrices, least squares, classification, constrained least squares) with the Python/Julia language companions; do the extra exercises from the book site."
+    why: "Applications-first, code-first treatment (least squares, k-means, classification) that makes the computations concrete; no eigenvalues/SVD, so it complements rather than replaces Strang."
+    verified: false
+  - id: ila-gatech
+    role: reference
+    kind: book
+    title: "Interactive Linear Algebra"
+    by: "Dan Margalit, Joseph Rabinoff (Georgia Tech)"
+    url: https://textbooks.math.gatech.edu/ila/
+    edition_or_term: "Current web edition (free, open source)"
+    access: free
+    use: "Use the interactive 2D/3D demos for span, row reduction, transformations, eigenvectors and diagonalization when a picture is missing; checkpoints and exercises with solutions."
+    why: "Free interactive web text with manipulable figures, a middle path between 3Blue1Brown videos and Strang's textbook."
+    verified: true
+considered:
+  - {title: "Mathematics for Machine Learning (Deisenroth, Faisal, Ong), Chapters 2-4", url: "https://mml-book.github.io/", reason: "Good compact ML-flavored reference, but not a course; Strang + 18.065 cover the same ground with more practice."}
+  - {title: "MIT 18.06 Spring 2025 (Nike Sun) / earlier Johnson runs", url: "https://github.com/mitmath/1806", reason: "Newest runs; lecture notes are Canvas-only and videos MIT-only, so not usable as a primary."}
+  - {title: "Strang, Linear Algebra for Everyone (2020) and 'A Vision of Linear Algebra'", url: "https://math.mit.edu/~gs/everyone/", reason: "Strang's shorter, newer presentation (A = CR first) with a free video set at https://ocw.mit.edu/courses/res-18-010-a-2020-vision-of-linear-algebra-spring-2020/; good for review, redundant as the main path."}
+  - {title: "Jim Hefferon, Linear Algebra", url: "http://joshua.smcvt.edu/linearalgebra/", reason: "Free proof-leaning text with answers; could not open the site (503); Axler and Margalit-Rabinoff cover the role."}
+  - {title: "UT Austin LAFF / ALAFF (Linear Algebra: Foundations to Frontiers; Advanced LAFF)", url: "https://www.cs.utexas.edu/~flame/laff/alaff/", reason: "Excellent computation-centred course (algorithms, FLAME notation) but heavy for a first pass; page text could not be read here."}
+notes: "Primary pairing is Strang text + 18.06 lectures: matrix-first, computational, with free videos. Add Axler only if the learner wants proofs (theory path); add 18.065 for the ML bridge. Soft prerequisite on calculus is for mathematical maturity only; elimination, subspaces and SVD need none. Hours assume 18.06 first-pass lectures plus problem sets, about 110 focused hours; shortening: skip proofs and do lectures 1-11, 14-17, 21-25, 29-31."
+split_proposal: null
+prereq_changes: "Consider dropping the soft edge from calculus (linear algebra needs essentially no calculus except for context)."
+open_questions:
+  - "VMLS page (web.stanford.edu) not reachable from the research environment; content known from the book but URL not opened (verified: false)."
+  - "Latest MIT 18.06 terms (Fall 2025, Spring 2026) not found; Spring 2025 info comes from the mitmath/1806 README."
+last_verified: 2026-11-18

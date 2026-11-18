@@ -1,0 +1,99 @@
+id: os-kernel-implementation
+title: "OS Implementation (kernel labs)"
+group: G4
+paths: [core, os-perf]
+hard: [operating-systems]
+soft: []
+scope: "Implementing syscalls, page tables, traps, COW fork, threads, a file system inside a teaching kernel."
+
+level: intermediate
+estimated_hours: 120
+resources:
+  - id: xv6-book
+    role: primary-text
+    kind: book
+    title: "xv6: a simple, Unix-like teaching operating system (RISC-V edition)"
+    by: "Russ Cox, Frans Kaashoek, Robert Morris"
+    url: https://mit-pdos.github.io/xv6-riscv-book/
+    edition_or_term: "rev5 (RISC-V), also as PDF with the source booklet"
+    access: free
+    use: "Read all chapters: 1 interfaces, 2 organization, 3 page tables, 4 traps and syscalls, 5 page faults, 6 interrupts and drivers, 7 locking, 8 scheduling, 9 sleep/wakeup, 10 file system, 11 summary. Read each chapter alongside the matching source files (kernel/*.c) in the xv6-riscv repo."
+    why: "A code-level commentary on a ~10k-line kernel; short enough to read entirely and designed for exactly the labs in this node."
+    verified: true
+  - id: mit-6-1810
+    role: primary-course
+    kind: course
+    title: "MIT 6.1810 Operating System Engineering (formerly 6.S081)"
+    by: "MIT (Frans Kaashoek, Robert Morris, Nickolai Zeldovich)"
+    url: https://pdos.csail.mit.edu/6.1810/
+    edition_or_term: "Fall 2026 (schedule 'under construction'; Fall 2025 labs used for lab details)"
+    access: free
+    use: "Do all labs: util, syscall, pgtbl (page tables), traps, cow (copy-on-write fork), net (network driver), lock, fs (large files, symlinks), mmap. Read the lecture notes (lec/*.txt), do the short homeworks, and read the assigned papers (microkernels, system call interposition, superpages, user-level VM). Use the Fall 2020 videos for lectures."
+    why: "The gold-standard hands-on kernel course: every lab is a local, runnable, 'make grade' exercise in a real small Unix kernel; lecture notes, labs and homeworks are public every year."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://pdos.csail.mit.edu/6.1810/
+      videos: unknown
+      public_videos_term: "Fall 2020 (per-lecture YouTube links on the official 6.S081 2020 schedule); Fall 2021 schedule also links recordings"
+      public_videos_url: https://pdos.csail.mit.edu/6.S081/2020/schedule.html
+      assignments: public-with-autograder
+      assignments_url: https://pdos.csail.mit.edu/6.1810/2025/labs/util.html
+  - id: ostep-xv6-projects
+    role: practice
+    kind: practice-site
+    title: "OSTEP kernel-hacking projects (xv6)"
+    by: "Remzi H. Arpaci-Dusseau et al. (Wisconsin)"
+    url: https://github.com/remzi-arpacidusseau/ostep-projects
+    edition_or_term: "current master"
+    access: free
+    use: "initial-xv6 (add a syscall), scheduling-xv6-lottery (lottery scheduler), vm-xv6-intro (null-pointer and read-only regions), concurrency-xv6-threads (clone/join kernel threads), filesystems-checker (xv6 fsck)."
+    why: "Smaller, gentler single-feature projects that make a good warm-up before the MIT labs (or a second pass), each with test scripts."
+    verified: true
+  - id: os-in-1000-lines
+    role: secondary
+    kind: website
+    title: "Operating System in 1,000 Lines"
+    by: "Seiya Nuta"
+    url: https://operating-system-in-1000-lines.vercel.app/en/
+    edition_or_term: "current"
+    access: free
+    use: "Build a tiny RISC-V kernel from scratch in one weekend: booting, console I/O, memory allocation, processes and context switching, page tables, user mode, system calls, a disk driver and a file system. Do after chapters 1-4 of the xv6 book."
+    why: "Fills the 'build it from an empty directory' gap: MIT labs start from a finished kernel, this starts from nothing; short enough to finish and RISC-V so it ports to xv6 knowledge."
+    verified: true
+  - id: phil-opp
+    role: secondary
+    kind: website
+    title: "Writing an OS in Rust"
+    by: "Philipp Oppermann"
+    url: https://os.phil-opp.com/
+    edition_or_term: "2nd edition blog series (x86_64); a 3rd edition is in progress"
+    access: free
+    use: "Bare-bones kernel to paging, heap allocation, interrupts, async/await multitasking in Rust on x86_64."
+    why: "Best modern from-scratch kernel tutorial for an x86_64 + Rust learner; contrasts with xv6's C/RISC-V and shows what memory-safe kernel code looks like."
+    verified: true
+  - id: riscv-specs
+    role: reference
+    kind: docs
+    title: "RISC-V ratified specifications (unprivileged and privileged ISA)"
+    by: "RISC-V International"
+    url: https://riscv.org/specifications/ratified/
+    edition_or_term: "current ratified volumes"
+    access: free
+    use: "Privileged spec for CSRs, traps, Sv39 page tables, PMP and PLIC when reading xv6's trampoline, vm.c and plic.c; unprivileged spec for the instruction listings."
+    why: "Primary source for the hardware interface xv6 programs against."
+    verified: true
+considered:
+  - {title: "CMU 15-410/605 Operating System Design and Implementation (Pebbles kernel)", url: "https://www.cs.cmu.edu/~410/", reason: "Excellent and rigorous (build a kernel and user-level threading library for x86), Fall 2026 page public, but projects require CMU's Simics-based environment and the lecture page is behind login; keep for later or an x86-flavored alternative."}
+  - {title: "Stanford CS140e Operating Systems (bare-metal Raspberry Pi in Rust)", url: "https://cs140e.sergio.bz/", reason: "Superb 'from nothing' hardware-level OS course, but requires a Pi kit and is a mirror of the 2018 offering (Stanford host unreachable); good stretch project."}
+  - {title: "Berkeley CS 162 Pintos projects", url: "https://cs162.org/static/proj/pintos-docs/", reason: "Used under operating-systems; Pintos grading needs the course autograder."}
+  - {title: "UNSW COMP9242 Advanced Operating Systems (seL4 OS project)", url: "https://cgi.cse.unsw.edu.au/~cs9242/26/", reason: "Follow-on: write an OS on seL4; routed to advanced-operating-systems."}
+  - {title: "Linux kernel teaching labs (linux-kernel-labs)", url: "https://linux-kernel-labs.github.io/refs/heads/master/", reason: "Driver-oriented labs on Linux (v5.10); routed to linux-kernel-internals."}
+notes: "MIT 6.1810 + xv6 book is the clear primary; the lab list on the Fall 2025 page (util, syscall, pgtbl, traps, cow, net, lock, fs, mmap) matches the Fall 2026 menu. The Fall 2026 schedule was 'under construction' when checked, so the Fall 2025 lab pages are used as the stable reference; the thread lab was dropped from the menu (thread.html still exists). Official per-lecture video links exist only up to roughly 2020-2021 (YouTube); later years publish lecture notes only. MIT's autograding is a local 'make grade' script, so the labs are fully self-gradable."
+split_proposal: null
+prereq_changes: "Add computer-architecture (soft) or at least RISC-V basics: xv6 is RISC-V and the labs read assembly; CS 61C RISC-V labs are enough."
+open_questions:
+  - "Fall 2026 video policy for 6.1810 not stated on the course page."
+  - "YouTube links on the 2020 schedule were not played (YouTube rate-limited the checker); the URL of the 2020 schedule page itself was opened and lists them."
+  - "Whether OCW 6.1810 Fall 2023 (ocw.mit.edu/courses/6-1810-operating-system-engineering-fall-2023/) has lecture videos: it lists lecture notes and labs only."
+last_verified: 2026-11-18

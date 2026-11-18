@@ -1,0 +1,150 @@
+id: databases-intro
+title: Databases
+group: G10
+paths: [core, databases]
+hard: [data-structures]
+soft: [discrete-math]
+scope: "Relational model, SQL, schema design and normalization, indexing basics, transactions intro."
+
+level: intro
+estimated_hours: 60
+resources:
+  - id: dsc7
+    role: primary-text
+    kind: book
+    title: "Database System Concepts, 7th edition"
+    by: "Abraham Silberschatz, Henry F. Korth, S. Sudarshan"
+    url: https://www.db-book.com/
+    edition_or_term: "7th edition (McGraw-Hill, March 2019)"
+    access: paid
+    use: "Ch. 1-5 (relational model, SQL basic/intermediate/advanced), Ch. 6-7 (E-R design, functional dependencies, normal forms), Ch. 9 (application development, brief), plus the introductory sections of Ch. 14 (indexing) and Ch. 17 (transactions, ACID). Do the practice exercises (solutions on the site) and run queries in the in-browser SQL lab at db-book.com/university-lab-dir/sqljs.html."
+    why: "The most complete and carefully organised relational-database textbook; its university schema, free slides, online practice-exercise solutions and SQL sandbox make it self-study friendly. It is also the assigned text for CMU 15-445, so it carries straight into the databases path."
+    verified: true
+  - id: cs186
+    role: primary-course
+    kind: course
+    title: "UC Berkeley CS 186: Introduction to Database Systems"
+    by: "Alvin Cheung (UC Berkeley)"
+    url: https://cs186berkeley.net/
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Lectures on SQL I and II, relational algebra, DB design (ER, functional dependencies, BCNF), and the intro to transactions and concurrency; Project 1 (SQL) from the public project pages. Use the Spring 2024 recordings for video."
+    why: "Covers SQL, relational design and normalization, indexing and transactions in one coherent pass and ties them to a real code base (RookieDB, later projects). Public lecture videos are from Spring 2024; notes, slides, discussion worksheets and project specs are public."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://cs186berkeley.net/
+      videos: enrolled-only
+      public_videos_term: "Spring 2024"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLzzVuDSjP25R1px8yE4wJcXcRbwsCuunP"
+      assignments: public
+      assignments_url: https://cs186berkeley.net/projects/
+  - id: cs186-notes
+    role: secondary
+    kind: website
+    title: "CS 186 online notes (Database Systems)"
+    by: "UC Berkeley CS 186 staff"
+    url: https://cs186berkeley.net/notes/
+    edition_or_term: "Rolling; Spring 2025 banner says notes are under construction"
+    access: free
+    use: "Notes 1-2 (SQL), 6 (relational algebra), 13 (DB design), 11 (transactions and concurrency I)."
+    why: "Gap: a free, concise written companion to the lectures with join animations. Self-described as not fully comprehensive, so pair it with the primary text."
+    verified: true
+  - id: cmu-15445-intro
+    role: secondary
+    kind: course
+    title: "CMU 15-445/645 Intro to Database Systems: lectures 1-2 and Homework 1"
+    by: "Andy Pavlo, Jignesh Patel (CMU)"
+    url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
+    edition_or_term: "Fall 2025 (public YouTube videos); Spring and Fall 2026 are enrolled-only"
+    access: free
+    use: "Lecture 1 (relational model and algebra), Lecture 2 (modern SQL: window functions, CTEs, lateral joins); Homework 1 (SQL)."
+    why: "Gap: Pavlo's modern-SQL lecture covers CTEs, window functions and recursive queries that older texts treat lightly. Also the on-ramp to the databases-path nodes, which use the same course."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://15445.courses.cs.cmu.edu/fall2026/
+      videos: enrolled-only
+      public_videos_term: "Fall 2025"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5"
+      assignments: public-with-autograder
+      assignments_url: https://15445.courses.cs.cmu.edu/fall2025/assignments.html
+  - id: pgexercises
+    role: practice
+    kind: practice-site
+    title: "PostgreSQL Exercises"
+    by: "Alisdair Owens"
+    url: https://pgexercises.com/
+    edition_or_term: "Current"
+    access: free
+    use: "Do all sections: Simple SQL Queries, Joins and Subqueries, Modifying Data, Aggregates, Working with Timestamps, String Operations, Recursive Queries (about 80 problems on one club-facilities schema)."
+    why: "Gap: graded, in-browser SQL practice with hints and solutions on a single realistic schema; the best free ladder from basics to aggregates and recursion."
+    verified: true
+  - id: sqlbolt
+    role: practice
+    kind: practice-site
+    title: "SQLBolt"
+    by: "SQLBolt"
+    url: https://sqlbolt.com/
+    edition_or_term: "Current"
+    access: free
+    use: "Lessons 1-18 (SELECT, joins, aggregates, subqueries, set ops, CREATE/ALTER/DROP) as a one-evening warm-up before pgexercises."
+    why: "Gap: the gentlest interactive first hour for readers who have never typed a query; skip if already comfortable with SELECT and JOIN."
+    verified: true
+  - id: selectstarsql
+    role: practice
+    kind: practice-site
+    title: "Select Star SQL"
+    by: "Zi Chong Kao"
+    url: https://selectstarsql.com/
+    edition_or_term: "Current"
+    access: free
+    use: "Chapters 1-4 (aggregations, subqueries, joins and self-joins, case-study questions on the Texas Death Row dataset)."
+    why: "Hidden gem: teaches SQL by answering real analytic questions on one real dataset rather than toy tables; good for building query-writing judgement after the basics."
+    verified: true
+  - id: use-the-index-luke
+    role: secondary
+    kind: website
+    title: "Use The Index, Luke"
+    by: "Markus Winand"
+    url: https://use-the-index-luke.com/
+    edition_or_term: "Free web edition of SQL Performance Explained"
+    access: free
+    use: "Anatomy of an Index, The Where Clause (equality, ranges, functions, partial and compound indexes), and The Join Operation chapters."
+    why: "Gap: the node scope includes indexing basics. This is the clearest developer-facing explanation of B-tree indexes, covers multiple SQL engines, and sets up the internals in db-storage-and-indexing."
+    verified: true
+  - id: pg-tutorial
+    role: reference
+    kind: docs
+    title: "PostgreSQL Documentation, Part I: Tutorial (current release)"
+    by: "PostgreSQL Global Development Group"
+    url: https://www.postgresql.org/docs/current/tutorial.html
+    edition_or_term: "PostgreSQL 18"
+    access: free
+    use: "Install Postgres locally and work through chapters 2-3 (SQL language, advanced features: views, foreign keys, transactions, window functions)."
+    why: "Gap: a real DBMS to practise on and the reference for dialect details; the primary text is engine-neutral."
+    verified: true
+  - id: codd
+    role: reference
+    kind: paper
+    title: "A Relational Model of Data for Large Shared Data Banks"
+    by: "E. F. Codd (CACM 1970)"
+    url: https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf
+    edition_or_term: "1970"
+    access: free
+    use: "Read Sections 1-2 after the relational-model chapters, for motivation (data independence, normal form)."
+    why: "Gap: the founding paper, short and still readable; gives the 'why' behind the relational model."
+    verified: true
+considered:
+  - {title: "Stanford Databases self-paced courses (Jennifer Widom) on edX", url: "https://www.edx.org/learn/databases", reason: "Excellent short video modules on relational algebra, SQL and design theory with free audit, but split across five courses and platform-gated; used as an alternative explanation rather than a primary."}
+  - {title: "Database Management Systems (Ramakrishnan and Gehrke), 3rd edition", url: "https://pages.cs.wisc.edu/~dbbook/", reason: "The CS 186 text with the clearest implementation chapters, but from 2003; Silberschatz covers the relational design and SQL standard better and is current."}
+  - {title: "SQLZoo", url: "https://sqlzoo.net/", reason: "Fine practice but pgexercises is more structured and more rigorous."}
+  - {title: "SQL Murder Mystery", url: "https://mystery.knightlab.com/", reason: "Fun, but too small to be a curriculum item."}
+  - {title: "MIT 6.5830 Database Systems (Spring 2026)", url: "https://dsg.csail.mit.edu/6.5830/", reason: "Paper-reading graduate course with GoDB labs; better suited to the advanced nodes than an intro."}
+notes: "Primary text Database System Concepts 7e because it covers the whole node scope (relational model, SQL, ER and normalization, indexing and transaction intros) and is the CMU 15-445 text. Primary course Berkeley CS 186 for breadth and public notes; CMU 15-445 lectures 1-2 are added for modern SQL. The SQL practice ladder is SQLBolt (optional), pgexercises, then Select Star SQL. The deeper internals live in the db-storage-and-indexing, query-processing and transactions-and-recovery nodes."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "CS 186 Fall 2026 lecture videos are on bCourses (enrolled-only); I did not open the Spring 2024 YouTube playlist video by video, only the playlist page."
+  - "CMU 15-445 Spring 2026 lectures are on CMU Box and Fall 2026 on CMU Panopto; both redirected to a CMU login, so I treat them as enrolled-only."
+last_verified: 2026-11-18

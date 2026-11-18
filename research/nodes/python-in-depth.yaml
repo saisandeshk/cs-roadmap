@@ -1,0 +1,152 @@
+id: python-in-depth
+title: Python in Depth
+group: G1
+paths:
+- core
+- ml-foundations
+hard:
+- python-programming
+soft: []
+scope: Python data model, iterators/generators, decorators, typing, asyncio and the GIL, packaging, pytest; writing idiomatic production Python.
+level: intermediate
+estimated_hours: 80
+resources:
+- id: fluent-python-2e
+  role: primary-text
+  kind: book
+  title: Fluent Python, 2nd edition
+  by: Luciano Ramalho
+  url: https://www.fluentpython.com/
+  edition_or_term: 2nd edition (O Reilly, 2022; Python 3.10); no 3rd edition found as of 2026-11
+  access: paid
+  use: 'Part I Data structures and the data model (ch. 1-6); Part II Functions as objects, type hints, decorators and closures (ch. 7-10); Part III Classes and protocols (ch. 11-17, incl. descriptors in 23); Part V Control flow: iterators/generators/async (ch. 17-21). Skip metaprogramming (ch. 22-24) on first pass.'
+  why: The best book on the Python data model, iterators/generators, decorators, typing and asyncio; the companion site has free extra content. Targets 3.10, so cross-check newer features against the 3.14/3.15 What is New pages.
+  verified: true
+- id: effective-python-3e
+  role: secondary
+  kind: book
+  title: 'Effective Python: 125 Specific Ways to Write Better Python, 3rd edition'
+  by: Brett Slatkin
+  url: https://effectivepython.com/
+  edition_or_term: 3rd edition (Pearson, Nov 2024; up to Python 3.13)
+  access: paid
+  use: Chapters on comprehensions/generators, functions, classes, metaclasses and attributes, concurrency (incl. asyncio), robustness and testing, and the new chapter on performance; skim items you already know.
+  why: Item-style idiom reference that is newer than Fluent Python (3.13, free-threading and modern asyncio items); good for review and code-review vocabulary.
+  verified: true
+- id: py-datamodel
+  role: reference
+  kind: docs
+  title: 'Python Language Reference: Data model and Descriptor HowTo'
+  by: Python Software Foundation
+  url: https://docs.python.org/3/reference/datamodel.html
+  edition_or_term: Python 3.15 docs
+  access: free
+  use: Sections 3.1-3.3 (objects, special methods, customization); the Descriptor HowTo (https://docs.python.org/3/howto/descriptor.html) when reading Fluent Python ch. 23.
+  why: Authoritative semantics to settle any dispute between books and implementations.
+  verified: true
+- id: py-typing
+  role: reference
+  kind: docs
+  title: Static Typing with Python (typing documentation and specification)
+  by: Python typing community
+  url: https://typing.python.org/en/latest/
+  edition_or_term: Living docs (spec at /en/latest/spec/)
+  access: free
+  use: 'Guides: type hints cheat sheet, protocols, generics, TypedDict; spec chapters on generics and protocols when mypy/pyright disagree.'
+  why: The official home of the typing spec; replaces scattered blog posts and covers up-to-date generics syntax (PEP 695) and tooling.
+  verified: true
+- id: py-concurrency-docs
+  role: reference
+  kind: docs
+  title: asyncio documentation and Python free-threading HOWTO
+  by: Python Software Foundation
+  url: https://docs.python.org/3/library/asyncio.html
+  edition_or_term: Python 3.15 docs
+  access: free
+  use: asyncio Runners, Tasks/TaskGroup, Queues, Streams and cancellation; then the free-threading HOWTO (https://docs.python.org/3/howto/free-threading-python.html) for the GIL-removal story.
+  why: Fluent Python predates free-threaded builds and TaskGroup; these are the current sources for the GIL and asyncio scope items.
+  verified: true
+- id: py-packaging
+  role: secondary
+  kind: docs
+  title: Python Packaging User Guide plus uv documentation
+  by: Python Packaging Authority; Astral
+  url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
+  edition_or_term: Current
+  access: free
+  use: Packaging Projects tutorial (src layout, pyproject.toml, build, upload to TestPyPI); then the uv docs (https://docs.astral.sh/uv/) projects, lockfiles and tool guides for modern workflow.
+  why: Fills the packaging scope gap that neither Fluent Python nor Effective Python covers; uv is now the de facto fast workflow tool.
+  verified: true
+- id: pytest-hypothesis
+  role: secondary
+  kind: docs
+  title: pytest documentation and Hypothesis documentation
+  by: pytest-dev; HypothesisWorks
+  url: https://docs.pytest.org/en/stable/getting-started.html
+  edition_or_term: Current
+  access: free
+  use: 'pytest: get started, fixtures, parametrize, monkeypatch, tmp_path; Hypothesis (https://hypothesis.readthedocs.io/en/latest/): quickstart and strategies for property-based tests of your own data structures.'
+  why: Closes the pytest scope item and adds property-based testing, which is the real upgrade over example tests.
+  verified: true
+- id: cosmic-python
+  role: secondary
+  kind: book
+  title: Architecture Patterns with Python (Cosmic Python)
+  by: Harry Percival, Bob Gregory
+  url: https://www.cosmicpython.com/book/preface.html
+  edition_or_term: O Reilly 2020, free online
+  access: free
+  use: Parts I (domain model, repository, service layer, unit of work) and the TDD-high-gear-low-gear chapter; skip the event-driven part until needed.
+  why: Shows idiomatic production Python structure (dependency inversion, testable layering) that connects python-in-depth to software-construction.
+  verified: true
+- id: practical-python
+  role: practice
+  kind: website
+  title: Practical Python Programming
+  by: David Beazley
+  url: https://dabeaz-course.github.io/practical-python/
+  edition_or_term: Course notes (Python 3 era, not updated for 3.12+)
+  access: free
+  use: 'Sections 2 (Working with data), 3 (Program organization: functions, modules, error checking, closures) and 7 (Advanced topics: variable arguments, decorators, generators) exercises with the provided Data files.'
+  why: Exercise-heavy, no fluff; practice for iterators, generators and decorators before or alongside Fluent Python.
+  verified: true
+- id: exercism-python-deep
+  role: practice
+  kind: practice-site
+  title: Exercism Python track, intermediate concepts
+  by: Exercism
+  url: https://exercism.org/tracks/python
+  edition_or_term: Python track
+  access: free
+  use: Concept exercises on decorators, generators, iterators, dataclasses, context managers, generic type hints, and mentor-style refactors of your solutions.
+  why: Free test-driven drilling after the reading; mentors comment on idiom quality.
+  verified: true
+considered:
+- title: Dave Beazley Advanced Python Mastery (dabeaz-course/python-mastery)
+  url: https://github.com/dabeaz-course/python-mastery
+  reason: Superb exercise-driven metaprogramming/generator course, but the author archived the repo (notice dated 2026-10-22) and says recent Python versions broke some material and typing/async/pattern matching are not covered.
+- title: Python Distilled (Beazley)
+  url: https://www.dabeaz.com/
+  reason: Compact experienced-programmer reference; overlaps Fluent Python for this node. Could not verify a canonical page.
+- title: Python Cookbook, 3rd edition (Beazley and Jones)
+  url: https://www.oreilly.com/
+  reason: Recipe collection, Python 3.3 era; superseded by Effective Python plus docs for most items.
+- title: Stas Bekman Python Cookbook (seed pick)
+  url: https://github.com/stas00/python-cookbook
+  reason: Owner seed primary for the old Programming node; GitHub unreachable from this environment so unverified. Good practical collection but not a primary text.
+- title: Robust Python (Patrick Viafore)
+  url: https://www.oreilly.com/
+  reason: Typing and design for maintainability; good, but typing guide plus Fluent Python cover scope.
+- title: Python Morsels
+  url: https://www.pythonmorsels.com/
+  reason: Paid exercise subscription; strong intermediate drilling but Exercism is free and comparable.
+- title: Real Python
+  url: https://realpython.com/
+  reason: Large article library; useful for lookup but uneven depth and blocks bots, not opened.
+notes: 'No single university-grade course exists for idiomatic Python beyond the first course, so no primary-course is named: the closest candidate (Beazley Advanced Python Mastery) was archived in October 2026 after being broken by newer Python. Fluent Python 2e is still the primary; treat its 3.10 baseline as the floor and layer current docs for typing (PEP 695), asyncio TaskGroup, free-threaded builds (Python 3.15 is the current release) and packaging with uv. Performance Python belongs to G4 and NumPy/pandas to G5; asyncio/GIL here is conceptual only. Overlaps software-construction on testing/typing; keep pytest/Hypothesis here and spec-and-design principles there.'
+split_proposal: null
+prereq_changes: 'Consider adding soft: [dev-environment] because virtualenvs, git and packaging are assumed here; software-construction and python-in-depth can run in parallel.'
+open_questions:
+- 'No primary-course for this node: no 2026 university course with public videos found that covers advanced Python.'
+- Could not confirm an O Reilly or publisher page for Fluent Python 2e via curl (403); used the author companion site, and web search confirmed the 2022 2nd edition is current.
+last_verified: '2026-11-18'

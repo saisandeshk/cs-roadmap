@@ -1,0 +1,148 @@
+id: c-programming
+title: 'Programming II: C'
+group: G1
+paths:
+- core
+hard:
+- python-programming
+soft: []
+scope: Pointers, manual memory management, arrays/strings, structs, the C toolchain, undefined behavior, gdb/valgrind/sanitizers.
+level: intermediate
+estimated_hours: 90
+resources:
+- id: modern-c
+  role: primary-text
+  kind: book
+  title: Modern C (C23 edition)
+  by: Jens Gustedt
+  url: https://gustedt.gitlabpages.inria.fr/modern-c/
+  edition_or_term: C23 edition (free PDF latest release 2024-10-15; Manning print/ebook Sept 2025)
+  access: mixed
+  use: Levels 0-2 (ch. 1-12) on core language, objects, values and pointers; then Level 3 (ch. 13-15 on lifetime, storage, I/O) and the UB discussion in Level 3-4. Skip Level 4 (concurrency, atomics) and defer to G4.
+  why: The only rigorous modern C tutorial; teaches C as specified (objects, effective types, UB) rather than as folk wisdom, covers C23, and is free as a PDF under CC BY-NC-ND (Manning edition for print).
+  verified: true
+- id: cs107
+  role: primary-course
+  kind: course
+  title: CS 107 Computer Organization and Systems
+  by: Stanford University (Jerry Cain)
+  url: https://cs107.stanford.edu/
+  edition_or_term: Autumn 2026
+  access: free
+  use: Lectures 1-12 (Unix and C, bits and bytes, C strings, pointers, stack and heap, generics/void*, function pointers) and the C assignments assign0-assign4; lectures 13-25 (x86-64, heap allocator, security) overlap the computer-systems node and can be deferred. Pair with labs 1-4.
+  why: The best-designed C-and-memory course with fully public lecture slides, labs, quizzes, assignment specs and GDB/Valgrind guides; its pointer/void* assignments are the standard hands-on C workout.
+  verified: true
+  course:
+    latest_term: Autumn 2026
+    latest_url: https://cs107.stanford.edu/
+    videos: enrolled-only
+    public_videos_term: unknown (lecture recordings are on Canvas; older Stanford Engineering Everywhere Programming Paradigms lectures by the same instructor are public but a different course)
+    assignments: partial
+    assignments_url: https://web.stanford.edu/class/archive/cs/cs107/cs107.1272/assign1/
+- id: beej-c
+  role: secondary
+  kind: book
+  title: Beej Guide to C Programming
+  by: Brian Hall (Beej)
+  url: https://beej.us/guide/bgc/
+  edition_or_term: Current online edition (marked beta quality by author)
+  access: free
+  use: Read first as a friendly skim of syntax, pointers, structs, strings and malloc before Modern C level 1, and as a lookup afterwards; also the free library-reference volume.
+  why: Warmer and faster than Modern C for a Python-first learner; fills the on-ramp gap.
+  verified: true
+- id: dis-c
+  role: secondary
+  kind: book
+  title: Dive into Systems chapters 1 and 2 (C)
+  by: Suzanne Matthews, Tia Newhall, Kevin Webb
+  url: https://diveintosystems.org/book/C2-C_depth/index.html
+  edition_or_term: Online edition
+  access: free
+  use: Ch. 1 By the C, the Beautiful C (syntax for programmers who know Python) and Ch. 2 A Deeper Dive into C (memory layout, pointers, malloc, function pointers, structs, C libraries); use the end-of-chapter exercises.
+  why: A concise Python-to-C bridge with memory diagrams; the rest of the book belongs to G4 computer-systems.
+  verified: true
+- id: effective-c
+  role: secondary
+  kind: book
+  title: Effective C, 2nd edition
+  by: Robert C. Seacord
+  url: https://nostarch.com/effective-c-2nd-edition
+  edition_or_term: 2nd edition (No Starch, Sept 2024; C23)
+  access: paid
+  use: Chapters on objects/functions/types, pointers, dynamic memory, strings, and the program-structure/debugging-testing-analysis chapters for UB and static analysis practice.
+  why: Security-minded view of the same material (Seacord chaired CERT C), complementing Modern C with concrete UB and bug classes.
+  verified: true
+- id: kr-c
+  role: reference
+  kind: book
+  title: The C Programming Language, 2nd edition (K and R)
+  by: Brian Kernighan, Dennis Ritchie
+  url: https://www.informit.com/store/c-programming-language-9780131103627
+  edition_or_term: 2nd edition (1988, ANSI C)
+  access: paid
+  use: Chapters 1 (tutorial), 5 (pointers and arrays) and Appendix A as a classic style reference; do the exercises only as supplementary kata.
+  why: Historical standard with beautiful exposition; kept as reference only because it predates C99 and modern UB awareness.
+  verified: true
+- id: c-ub-sanitizers
+  role: reference
+  kind: docs
+  title: AddressSanitizer / UndefinedBehaviorSanitizer docs and Regehr Guide to Undefined Behavior
+  by: LLVM project; John Regehr
+  url: https://clang.llvm.org/docs/AddressSanitizer.html
+  edition_or_term: Current
+  access: free
+  use: ASan and UBSan docs (https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html) plus John Regehr A Guide to Undefined Behavior in C and C++, Parts 1-3 (https://blog.regehr.org/archives/213). Compile every assignment with -fsanitize=address,undefined; use Valgrind (https://valgrind.org/docs/manual/quick-start.html) and gdb (https://sourceware.org/gdb/current/onlinedocs/gdb.html) as complements.
+  why: 'Closes the UB and tooling items in scope: teaches how to find memory bugs mechanically, not by staring.'
+  verified: true
+- id: c-projects
+  role: practice
+  kind: website
+  title: Build Your Own Lisp and Build Your Own Text Editor (kilo)
+  by: Daniel Holden; Paige Ruten (snaptoken)
+  url: https://viewsourcecode.org/snaptoken/kilo/
+  edition_or_term: Online tutorials
+  access: free
+  use: 'Kilo: build a terminal text editor in about 1000 lines of C (all steps); then Build Your Own Lisp (https://www.buildyourownlisp.com/) chapters 1-12 as a second project; also Stephen Brennan Write a Shell in C (https://brennan.io/2015/01/16/write-a-shell-in-c/) in an afternoon.'
+  why: Real, finishable C projects that force structs, dynamic memory and the toolchain to be used together; hidden-gem practice.
+  verified: true
+- id: exercism-c
+  role: practice
+  kind: practice-site
+  title: Exercism C track
+  by: Exercism
+  url: https://exercism.org/tracks/c
+  edition_or_term: C track
+  access: free
+  use: Learning-mode exercises on pointers, strings, arrays, structs, and memory allocation; run each under -fsanitize=address,undefined.
+  why: Free small-program drilling with automated tests; complements the bigger CS107 assignments.
+  verified: true
+considered:
+- title: CS50x 2026 weeks 1-5 (C)
+  url: https://cs50.harvard.edu/x/
+  reason: Public videos but covers C as a quick first language; too light on pointers and UB for this node (good teaser only).
+- title: 'C Programming: A Modern Approach, 2nd edition (K. N. King)'
+  url: https://www.informit.com/
+  reason: Still the best long-form textbook for learners and C99-based; kept out because Modern C is newer (C23), free and stricter about semantics. Could not open the author page (knking.com unreachable).
+- title: CMU 15-213 / CS:APP (Bryant and OHallaron)
+  url: https://www.cs.cmu.edu/~213/
+  reason: Better placed in G4 computer-systems; C is taught only as a means there.
+- title: MIT 6.S096 Effective Programming in C and C++ (IAP 2014)
+  url: https://ocw.mit.edu/courses/6-s096-effective-programming-in-c-and-c-january-iap-2014/
+  reason: Public OCW lectures but 2014 and C99-era; superseded.
+- title: UW CSE 333 Systems Programming
+  url: https://courses.cs.washington.edu/courses/cse333/
+  reason: Autumn 2026 page exists but needs CSE 351 and mixes C/C++/POSIX; better for systems node.
+- title: 21st Century C (Ben Klemens) / Learn C the Hard Way
+  url: https://www.oreilly.com/
+  reason: Opinionated or dated; skipped.
+- title: Beej Guide to Network Programming
+  url: https://beej.us/guide/bgnet/
+  reason: Great but belongs to networking node (G4/G10).
+notes: Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one.
+split_proposal: 'Consider splitting CS107: lectures 1-12 here (C), lectures 13-25 into computer-systems (assembly and allocator).'
+prereq_changes: null
+open_questions:
+- Public lecture videos for any CS 107 run could not be confirmed; Stanford Canvas only.
+- Beej guide self-labels as beta-quality; fine for an on-ramp but should not be cited as authoritative.
+- 'knking.com and C-FAQ-style pages: author site for King book unreachable from this environment.'
+last_verified: '2026-11-18'

@@ -1,0 +1,172 @@
+id: gpu-performance-optimization
+title: "GPU Performance Optimization & Profiling"
+group: G9
+paths: [mlsys]
+hard: [gpu-programming]
+soft: []
+scope: "Coalescing, shared-memory tiling, occupancy, bank conflicts, warp-level primitives, async copies, Nsight profiling."
+
+level: advanced
+estimated_hours: 60
+resources:
+  - id: boehm-matmul
+    role: primary-text
+    kind: article
+    title: "How to Optimize a CUDA Matmul Kernel for cuBLAS-like Performance: a Worklog"
+    by: "Simon Boehm"
+    url: https://siboehm.com/articles/22/CUDA-MMM
+    edition_or_term: "2022 (still the reference worklog)"
+    access: free
+    use: "Whole post: naive kernel, global-memory coalescing, shared-memory cache-blocking, occupancy calculation, 1D/2D blocktiling, vectorized loads, warptiling. Re-implement kernels 1-6 yourself, profile each with Nsight Compute, and compare with the author's numbers."
+    why: "The best single walk-through of the optimization loop (hypothesis, change, profile) on one problem; covers nearly every item in the scope except async copies. Free, with open-source code."
+    verified: true
+  - id: mit-6s894-opt
+    role: primary-course
+    kind: course
+    title: "MIT 6.S894 Accelerated Computing (memory, overlapping, specialization lectures and matmul labs)"
+    by: "Jonathan Ragan-Kelley and staff (MIT EECS)"
+    url: https://accelerated-computing.academy/fall25/
+    edition_or_term: "Fall 2025"
+    access: free
+    use: "Lectures 3-6 (Memory part 1-2, Overlapping compute and IO, Energy and specialization); Lab 4 (matmul tiling and reuse) and Lab 5 (improved scheduling); Lab 8 (One Million Circles) as an open-ended optimization exercise."
+    why: "Teaches how to reason about GPU performance from first principles, then makes you optimize against a roofline; the labs are the closest public equivalent to a performance-engineering class on GPUs."
+    verified: true
+    course:
+      latest_term: "Fall 2025"
+      latest_url: https://accelerated-computing.academy/fall25/
+      videos: public
+      assignments: partial
+      assignments_url: https://accelerated-computing.academy/fall25/labs
+  - id: pmpp-perf
+    role: secondary
+    kind: book
+    title: "Programming Massively Parallel Processors, 5th edition, Ch. 5-6 and 10"
+    by: "Hwu, Kirk, El Hajj"
+    url: https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-443-43900-1
+    edition_or_term: "5th edition (2026)"
+    access: paid
+    use: "Ch. 5 memory architecture and data locality (tiling, bank conflicts), Ch. 6 performance considerations (coalescing, occupancy, thread coarsening), Ch. 10 reduction as the worked optimization sequence."
+    why: "Rigorous textbook treatment of the same ideas, with exercises; useful when the worklog's intuition needs the underlying rules."
+    verified: true
+  - id: cuda-best-practices
+    role: reference
+    kind: docs
+    title: "CUDA C++ Best Practices Guide"
+    by: "NVIDIA"
+    url: https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/
+    edition_or_term: "CUDA 13.5 docs"
+    access: free
+    use: "Chapters on memory optimizations (coalescing, shared memory, bank conflicts), execution configuration and occupancy, instruction optimization; use as a checklist after each kernel."
+    why: "The vendor's canonical APOD checklist; dry but authoritative."
+    verified: true
+  - id: nsight-compute
+    role: reference
+    kind: docs
+    title: "Nsight Compute Profiling Guide (and CLI)"
+    by: "NVIDIA"
+    url: https://docs.nvidia.com/nsight-compute/ProfilingGuide/
+    edition_or_term: "current"
+    access: free
+    use: "Metric definitions, SOL (speed-of-light) sections, memory chart, warp-state stalls, roofline section; use `ncu` CLI on every kernel in the practice list."
+    why: "Reading profiler output correctly is the skill this node teaches; the guide defines each metric."
+    verified: true
+  - id: nsight-systems
+    role: reference
+    kind: docs
+    title: "Nsight Systems User Guide"
+    by: "NVIDIA"
+    url: https://docs.nvidia.com/nsight-systems/UserGuide/
+    edition_or_term: "current"
+    access: free
+    use: "Timeline profiling, NVTX ranges, CUDA streams and launch overhead, CPU/GPU gaps."
+    why: "Whole-program view (launch gaps, copies, overlap) that kernel-level profiling does not show."
+    verified: true
+  - id: compute-sanitizer
+    role: reference
+    kind: docs
+    title: "Compute Sanitizer"
+    by: "NVIDIA"
+    url: https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/
+    edition_or_term: "current"
+    access: free
+    use: "memcheck, racecheck and synccheck tools for the shared-memory and warp-primitive kernels you write here."
+    why: "Optimized kernels break in subtle ways (races, out-of-bounds); this is the standard debugging tool."
+    verified: true
+  - id: nvidia-dev-blog-classics
+    role: secondary
+    kind: article
+    title: "NVIDIA Parallel Forall classics: efficient matrix transpose, shared memory, global memory access, data transfers"
+    by: "Mark Harris, Greg Ruetsch et al. (NVIDIA)"
+    url: https://developer.nvidia.com/blog/efficient-matrix-transpose-cuda-cc/
+    edition_or_term: "2013-2014, still valid"
+    access: free
+    use: "Efficient Matrix Transpose (bank conflicts, coalescing), Using Shared Memory in CUDA C/C++, How to Access Global Memory Efficiently, How to Optimize Data Transfers."
+    why: "Short, concrete before/after studies; the transpose post is the cleanest bank-conflict example."
+    verified: true
+  - id: harris-reduction
+    role: practice
+    kind: article
+    title: "Optimizing Parallel Reduction in CUDA"
+    by: "Mark Harris (NVIDIA)"
+    url: https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
+    edition_or_term: "slide deck, classic"
+    access: free
+    use: "Implement all 7 reduction kernels in order, measure bandwidth for each, then add a warp-shuffle version (not in the deck)."
+    why: "Canonical step-by-step optimization exercise with a clear target (peak bandwidth); finishes with warp-level primitives."
+    verified: true
+  - id: gpumode-lectures-perf
+    role: secondary
+    kind: video-series
+    title: "GPU MODE lectures on performance"
+    by: "GPU MODE community"
+    url: https://github.com/gpu-mode/lectures
+    edition_or_term: "ongoing"
+    access: free
+    use: "Lecture 1 (profiling), 8 (CUDA Performance Checklist), 16 (hands-on profiling), 37 (SASS and GPU microarchitecture), 41 (CUDA docs for humans)."
+    why: "Practitioner-level video walk-throughs of profiling and checklists; fills the gap on reading SASS and using profilers live."
+    verified: true
+  - id: hopper-dissection
+    role: reference
+    kind: paper
+    title: "Benchmarking and Dissecting the Nvidia Hopper GPU Architecture"
+    by: "Luo et al."
+    url: https://arxiv.org/abs/2402.13499
+    edition_or_term: "IPDPS 2024"
+    access: free
+    use: "Skim the microbenchmark results for latencies/bandwidths of memory levels, async copy and tensor cores; also arXiv 1804.06826 for Volta."
+    why: "Hidden gem: measured numbers behind the rules of thumb, useful for building a realistic cost model."
+    verified: true
+  - id: leetgpu-opt
+    role: practice
+    kind: practice-site
+    title: "LeetGPU optimization challenges"
+    by: "LeetGPU"
+    url: https://leetgpu.com/challenges
+    edition_or_term: "hosted"
+    access: account-required
+    use: "Matrix Transpose, Reduction, Prefix Sum, Softmax and Matrix Multiplication: submit a naive version, then iterate with tiling and warp primitives, comparing runtime in the leaderboard."
+    why: "Hosted GPU with timing so you can practice without hardware; same problems as Harris/Boehm."
+    verified: true
+  - id: gpumode-leaderboard
+    role: practice
+    kind: practice-site
+    title: "GPU MODE kernel leaderboards"
+    by: "GPU MODE"
+    url: https://www.gpumode.com/leaderboard
+    edition_or_term: "ongoing competitions"
+    access: account-required
+    use: "Pick an open problem (e.g. matmul, grayscale, vectoradd tracks), submit via the Discord bot or popcorn-cli, and read the top submissions after your own attempt."
+    why: "Real benchmark infra with expert reference solutions; the best place to see what 'good' looks like on current GPUs."
+    verified: true
+considered:
+  - {title: "AI Systems Performance Engineering (Fregly, O'Reilly 2025)", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Broad and recent with companion code, but ~1000 pages of mixed depth and I could not open the publisher page (403) to verify; Boehm + PMPP + vendor docs are tighter."}
+  - {title: "Pranjal Shankhdhar: Outperforming cuBLAS on H100", url: "https://cudaforfun.substack.com/p/outperforming-cublas-on-h100-a-worklog", reason: "Hopper-specific (TMA/wgmma); placed in gemm-and-tensor-cores."}
+  - {title: "NVIDIA architecture tuning guides (Ampere/Hopper/Blackwell)", url: "https://docs.nvidia.com/cuda/hopper-tuning-guide/", reason: "Useful look-ups per architecture; not a learning path."}
+  - {title: "Stanford CS149 / CME 213", url: "https://gfxcourses.stanford.edu/cs149", reason: "Parallel-programming breadth; less GPU performance depth than 6.S894."}
+notes: "6.S894 appears as primary-course in three G9 nodes (gpu-programming, this one, gemm-and-tensor-cores), each with a different slice of lectures/labs; the owner may want to anchor it once and reference slices. The primary-text is a single worklog, deliberately: PMPP is the textbook for the previous node and is listed here only as a secondary. Needs an NVIDIA GPU with Nsight Compute access (consumer cards work; cloud GPUs often block ncu counters)."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Whether popcorn-cli / GPU MODE leaderboards stay open to new accounts; page loads but I did not create an account."
+  - "Cloud GPU providers differ on whether Nsight Compute counters are enabled; not verified."
+last_verified: 2026-11-18

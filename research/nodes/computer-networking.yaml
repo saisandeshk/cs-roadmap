@@ -1,0 +1,139 @@
+id: computer-networking
+title: Computer Networking
+group: G10
+paths: [core, distributed]
+hard: [computer-systems]
+soft: []
+scope: "Layering, TCP/IP, routing, congestion control, DNS, HTTP, socket programming."
+
+level: intro
+estimated_hours: 100
+resources:
+  - id: kurose-ross
+    role: primary-text
+    kind: book
+    title: "Computer Networking: A Top-Down Approach"
+    by: "James F. Kurose, Keith W. Ross"
+    url: https://gaia.cs.umass.edu/kurose_ross/
+    edition_or_term: "9th edition (Pearson, published summer 2025; authors' site lists it as the 2026 copyright year in the video slides)"
+    access: paid
+    use: "Ch. 1 (Internet, layering, delay/loss/throughput), Ch. 2 (application layer: HTTP incl. HTTP/3 and QUIC, DNS, CDNs, socket programming), Ch. 3 (transport: reliable data transfer, TCP, congestion control), Ch. 4-5 (network layer data plane and control plane: IP, NAT, OSPF, BGP), Ch. 6 (link layer, Ethernet, ARP). Skim Ch. 7-8 (wireless, security) later."
+    why: "The standard, best-paced first treatment of networking; the authors' site bundles free companion lectures, knowledge checks, interactive problems and Wireshark labs, and the 9th edition is current (HTTP/3, QUIC, datacenter and CDN material). Covers every item in the node scope including socket programming."
+    verified: true
+  - id: cs168-fa26
+    role: primary-course
+    kind: course
+    title: "UC Berkeley CS 168: Introduction to the Internet (Architecture and Protocols)"
+    by: "Ion Stoica, Sylvia Ratnasamy (UC Berkeley)"
+    url: https://fa26.cs168.io/
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Lectures 1-16 (architecture and layering, routing: distance-vector/link-state/BGP, transport: TCP and congestion control, DNS, HTTP/CDNs); optional lectures 17-22 (Ethernet/ARP/NAT/TLS, datacenter networking). Projects 1 (traceroute), 2 (distance-vector routing) and 3 (reliable transport). Read the free CS 168 textbook alongside."
+    why: "Newest term found (Fall 2026) with public live-lecture recordings, a free online textbook and three projects whose starter code and unit tests are downloadable from the course site. Teaches the same core as Kurose and Ross but with real programming (routing and transport protocols in a simulator), which the book alone does not give."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://fa26.cs168.io/
+      videos: public
+      public_videos_url: "https://www.youtube.com/playlist?list=PLC-TJxRRxRyA"
+      assignments: public-with-autograder
+      assignments_url: https://fa26.cs168.io/proj2/
+  - id: kurose-videos
+    role: secondary
+    kind: video-series
+    title: "Kurose and Ross online lectures, knowledge checks and interactive problems"
+    by: "Jim Kurose"
+    url: https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm
+    edition_or_term: "Recorded Fall 2020 and extended; slides updated to the 9th edition"
+    access: free
+    use: "Chapters 1-6 videos (short segments per section) with the matching knowledge-check questions and interactive end-of-chapter problems; use as the lecture track for the book."
+    why: "Gap: the primary text has no video track. These are the authors' own short lectures, public on YouTube, and map one-to-one to book sections. Chapters 5-8 coverage was still partial when the page was last updated."
+    verified: true
+  - id: wireshark-labs
+    role: practice
+    kind: practice-site
+    title: "Wireshark Labs (Kurose and Ross)"
+    by: "Jim Kurose, Keith Ross"
+    url: https://gaia.cs.umass.edu/kurose_ross/wireshark.php
+    edition_or_term: "Companion to the 9th edition"
+    access: free
+    use: "Do the Getting Started, HTTP, DNS, TCP, UDP, IP, ICMP and Ethernet/ARP labs (one per chapter 1-6), using the supplied packet traces if you do not want to capture live."
+    why: "Gap: reading about protocols is not enough; packet-level inspection of real HTTP, DNS, TCP and IP exchanges is the quickest way to make the layering model concrete."
+    verified: true
+  - id: cs144
+    role: practice
+    kind: course
+    title: "Stanford CS 144: Introduction to Computer Networking (TCP/IP stack labs)"
+    by: "Keith Winstein (Stanford)"
+    url: https://cs144.github.io/
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Lab checkpoints 0-3 (webget over a kernel socket, in-memory ByteStream, stream reassembler, TCP receiver, TCP sender) then 5-6 (network interface with ARP, IP router). The handouts are PDFs on the course page; lab code is in the CS144 'imp' repo."
+    why: "Gap: the best public build-your-own-TCP/IP lab sequence. Optional deepening after CS 168; needs solid C++. The repo asks that solutions not be posted, and most hidden tests only run on Stanford's server, so local verification is partial."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://cs144.github.io/
+      videos: unknown
+      public_videos_term: "Fall 2013 MOOC (unofficial re-upload on YouTube)"
+      public_videos_url: "https://www.youtube.com/playlist?list=PL6RdenZrxrw9inR-IJv-erlOKRHjymxMN"
+      assignments: partial
+      assignments_url: https://cs144.github.io/
+  - id: beej
+    role: secondary
+    kind: website
+    title: "Beej's Guide to Network Programming"
+    by: "Brian 'Beej' Hall"
+    url: https://beej.us/guide/bgnet/
+    edition_or_term: "Current online version (HTML, PDF and print available)"
+    access: free
+    use: "Sections on sockets, getaddrinfo, client-server background, and the select/poll chapters; write a TCP echo server, a multi-client chat server with poll(), and a UDP talker/listener."
+    why: "Gap: the node scope includes socket programming, which Kurose and Ross covers only lightly in Python. Beej is the short, canonical, correct walkthrough of the Berkeley sockets API in C that the later distributed-systems nodes assume."
+    verified: true
+  - id: hpbn
+    role: secondary
+    kind: website
+    title: "High Performance Browser Networking"
+    by: "Ilya Grigorik"
+    url: https://hpbn.co/
+    edition_or_term: "O'Reilly 2013 (free online edition); predates HTTP/3"
+    access: free
+    use: "Part I networking 101 (latency/bandwidth, building blocks of TCP, UDP, TLS) and Part II HTTP/1.1 and HTTP/2 chapters."
+    why: "Hidden gem: connects TCP behaviour (slow start, head-of-line blocking, handshake cost) to what web developers see. Dated on HTTP/3 and QUIC, so read the 9th-edition Kurose chapter 2 section for those."
+    verified: true
+  - id: systems-approach
+    role: reference
+    kind: book
+    title: "Computer Networks: A Systems Approach"
+    by: "Larry L. Peterson, Bruce S. Davie"
+    url: https://book.systemsapproach.org/
+    edition_or_term: "6th edition (free, open source); 7th edition preview at 7e.systemsapproach.org"
+    access: free
+    use: "Use as a second explanation for internetworking (Ch. 3-4), end-to-end protocols (Ch. 5), congestion control (Ch. 6) and security (Ch. 8) when Kurose or CS 168 is unclear."
+    why: "Gap: a free, systems-oriented alternative explanation with real code snippets and a bottom-up ordering; kept as reference rather than primary because the top-down book plus CS 168 already cover the scope."
+    verified: true
+  - id: rfc9293
+    role: reference
+    kind: docs
+    title: "RFC 9293: Transmission Control Protocol (TCP)"
+    by: "IETF (Eddy, ed.)"
+    url: https://www.ietf.org/rfc/rfc9293.html
+    edition_or_term: "RFC 9293 (August 2022; obsoletes RFC 793)"
+    access: free
+    use: "Read the state machine, sequence-number and window sections after the TCP chapter; consult RFC 9000 (QUIC) for the modern transport."
+    why: "Gap: learners should see a real protocol specification once; this is the current normative TCP document."
+    verified: true
+considered:
+  - {title: "Stanford CS 144 as the primary course", url: "https://cs144.github.io/", reason: "Outstanding labs, but heavy C++ prerequisites, Fall 2026 lecture videos mostly not public, and its hidden tests need Stanford's server; kept as optional practice."}
+  - {title: "MIT 6.1800 Computer Systems Engineering (Spring 2026)", url: "https://web.mit.edu/6.1800/www/", reason: "A systems survey (OS, networking, distributed, security) with a networking unit, not a dedicated networking course."}
+  - {title: "Computer Networks: A Systems Approach as primary text", url: "https://book.systemsapproach.org/", reason: "Excellent and free, but Kurose and Ross has the better-integrated video, labs and problem ecosystem for a first pass; kept as reference."}
+  - {title: "Julia Evans, Networking! ACK! zine", url: "https://wizardzines.com/zines/networking/", reason: "Friendly intuition-builder, but not a substitute for a text; optional light read."}
+  - {title: "Mininet walkthrough", url: "http://mininet.org/walkthrough/", reason: "Useful for emulated topologies in later experiments; not needed for a first course."}
+notes: "Primary text is Kurose and Ross (canonical, current edition, authors provide free labs/videos); primary course is Berkeley CS 168 Fall 2026 because it has public recordings, a free textbook and programming projects with local tests. The CS 168 textbook (https://textbook.cs168.io) is free and public and can substitute for the book if cost matters. CS 144 is the strongest optional deep dive. Socket programming is covered by Beej plus Kurose Ch. 2. Node is a hard prerequisite for distributed-systems-fundamentals, so the TCP, congestion-control and RPC-relevant material (transport, DNS, HTTP) matters most."
+split_proposal: null
+prereq_changes: "Consider adding soft: [operating-systems] (sockets, processes) for readers taking the CS 144 labs; computer-systems as hard is sufficient for Kurose and CS 168."
+open_questions:
+  - "Kurose 9th edition copyright year: the video slides say 2026, the Pearson page says published summer 2025; treat as the same 9th edition."
+  - "CS 144 Fall 2026: only four lecture videos (congestion control) are linked on the course page; no full lecture recordings found. Public 2013 MOOC copies on YouTube are unofficial re-uploads."
+  - "CS 168 lecture recordings: the playlist page loads, but individual youtu.be links were rate limited during verification, so each video was not opened."
+last_verified: 2026-11-18

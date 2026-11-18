@@ -1,0 +1,134 @@
+id: dl-engineering
+title: PyTorch & DL Engineering
+group: G5
+paths: [ml-foundations]
+hard: [deep-learning-fundamentals, python-in-depth]
+soft: []
+scope: "PyTorch in depth, training loops, debugging training, mixed precision, data loading, experiment tracking, reproducibility."
+
+level: intermediate
+estimated_hours: 60
+resources:
+  - id: pytorch-docs
+    role: primary-text
+    kind: docs
+    title: "PyTorch Tutorials and Notes (official)"
+    by: "PyTorch Foundation / Meta"
+    url: https://docs.pytorch.org/tutorials/
+    edition_or_term: "PyTorch 2.15 docs (tutorials 2.15.0)"
+    access: free
+    use: "Learn the Basics (https://docs.pytorch.org/tutorials/beginner/basics/intro.html: tensors, datasets/dataloaders, nn.Module, autograd, optimization, saving); 'Introduction to PyTorch' and 'Training with PyTorch' (introyt series); then the Notes: Autograd mechanics (https://docs.pytorch.org/docs/2.15/notes/autograd.html), Reproducibility (.../notes/randomness.html), Automatic Mixed Precision examples (.../notes/amp_examples.html), torch.utils.data (.../data.html); recipes: Performance Tuning Guide, PyTorch Profiler, saving/loading models, torch.compile tutorial and troubleshooting."
+    why: "The framework docs are the ground truth and have improved a lot; they cover every item in the scope (training loops, AMP, data loading, profiling, reproducibility, compile) and stay current."
+    verified: true
+  - id: zero-to-hero-gpt2
+    role: primary-course
+    kind: video-series
+    title: "Karpathy: Let's reproduce GPT-2 (124M) (with build-nanogpt)"
+    by: "Andrej Karpathy"
+    url: https://www.youtube.com/watch?v=l8pRSuU81PU
+    edition_or_term: "YouTube, June 2024 (companion repo karpathy/build-nanogpt; nanoGPT itself is now deprecated in favor of nanochat)"
+    access: free
+    use: "Watch after the Zero to Hero playlist videos (https://karpathy.ai/zero-to-hero.html): shows a real training loop with mixed precision (bf16), torch.compile, flash attention, gradient accumulation, LR schedule, weight decay, data loading, checkpointing and DDP. Replicate the repo commit by commit."
+    why: "Best single demonstration of production-style PyTorch training engineering and of debugging loss curves; there is no formal university course dedicated to this node."
+    verified: true
+  - id: tuning-playbook
+    role: secondary
+    kind: article
+    title: "Deep Learning Tuning Playbook"
+    by: "Varun Godbole, George E. Dahl, Justin Gilmer, Christopher J. Shallue, Zachary Nado (Google Research)"
+    url: https://github.com/google-research/tuning_playbook
+    edition_or_term: "GitHub playbook (41 commits; 30k+ stars)"
+    access: free
+    use: "Read all: starting a new project (model, optimizer, batch size), scientific approach to improving performance, determining training steps, additional guidance on training pipelines, experiment tracking."
+    why: "Systematic, experiment-driven guidance on hyperparameter tuning and experiment design from Google Research; the best written source for the 'engineering of training' mindset."
+    verified: true
+  - id: recipe
+    role: secondary
+    kind: article
+    title: "A Recipe for Training Neural Networks"
+    by: "Andrej Karpathy"
+    url: http://karpathy.github.io/2019/04/25/recipe/
+    edition_or_term: "Blog post (April 2019)"
+    access: free
+    use: "Debugging checklist: verify loss at init, overfit one batch, inspect inputs just before the net, visualize predictions, add complexity step by step."
+    why: "Practical debugging methodology; complements the Tuning Playbook."
+    verified: true
+  - id: horace-brrr
+    role: secondary
+    kind: article
+    title: "Making Deep Learning go Brrrr From First Principles"
+    by: "Horace He"
+    url: https://horace.io/brrr_intro.html
+    edition_or_term: "Blog post (2022)"
+    access: free
+    use: "Compute-bound vs memory-bound vs overhead-bound regimes; reading a profiler trace; why fusion/torch.compile help."
+    why: "Hidden gem: the mental model needed to know what to optimize when training is slow; bridges to the mlsys path."
+    verified: true
+  - id: ezyang-internals
+    role: secondary
+    kind: article
+    title: "PyTorch internals"
+    by: "Edward Z. Yang"
+    url: http://blog.ezyang.com/2019/05/pytorch-internals/
+    edition_or_term: "Blog post (May 2019); concepts (tensor/storage/strides, dispatcher, autograd) still apply"
+    access: free
+    use: "Whole article: Tensor, Storage, strides, views, dispatch and autograd internals; useful before writing custom ops or debugging in-place/view errors."
+    why: "Explains how PyTorch actually works, which makes debugging shape/stride/in-place errors tractable."
+    verified: true
+  - id: dlwpt
+    role: reference
+    kind: book
+    title: "Deep Learning with PyTorch"
+    by: "Eli Stevens, Luca Antiga, Thomas Viehmann"
+    url: https://www.manning.com/books/deep-learning-with-pytorch
+    edition_or_term: "Manning; 1st ed. 2020 (a 2nd edition has been in progress; check publisher page)"
+    access: paid
+    use: "Parts 1-2 (tensors, datasets, training loops, CT-scan project) as a long-form alternative to the tutorials."
+    why: "Book-length treatment for readers who prefer a narrative project; kept as reference since the official docs are current and free."
+    verified: true
+  - id: tracking-docs
+    role: reference
+    kind: docs
+    title: "Experiment tracking: TensorBoard tutorial and MLflow Tracking"
+    by: "PyTorch / MLflow projects"
+    url: https://docs.pytorch.org/tutorials/intermediate/tensorboard_tutorial.html
+    edition_or_term: "PyTorch 2.15 tutorials; MLflow tracking docs at https://mlflow.org/docs/latest/ml/tracking/"
+    access: free
+    use: "TensorBoard tutorial (logging scalars, images, graphs), then MLflow tracking quickstart (params, metrics, artifacts); Weights & Biases (https://wandb.ai/site/) is an optional hosted alternative."
+    why: "Covers the experiment-tracking item with free, open-source tools."
+    verified: true
+  - id: learnpytorch
+    role: practice
+    kind: practice-site
+    title: "Learn PyTorch for Deep Learning (Zero to Mastery)"
+    by: "Daniel Bourke"
+    url: https://www.learnpytorch.io/
+    edition_or_term: "Free online book/notebooks"
+    access: free
+    use: "Sections 00 Fundamentals, 01 Workflow, 03 Computer Vision, 04 Custom Datasets, 06 Transfer learning, 07 Experiment tracking, 08 Paper replicating; use exercises at the end of each section."
+    why: "Exercise-rich code-along that drills the PyTorch API, custom datasets and experiment tracking."
+    verified: true
+  - id: engineering-capstone
+    role: practice
+    kind: practice-site
+    title: "Capstone: reproduce a small training run end to end"
+    by: "Self-directed (build-nanogpt, or CS231n Assignment 2 rewritten in PyTorch)"
+    url: https://cs231n.stanford.edu/assignments.html
+    edition_or_term: "Spring 2026 handouts"
+    access: free
+    use: "Write your own Dataset/DataLoader, training loop with AMP, gradient clipping, LR schedule, checkpoint/resume, seed control and logging; verify run-to-run determinism using the Reproducibility note; profile one epoch with the PyTorch Profiler and fix one bottleneck."
+    why: "Engineering skill is shown by a reproducible, profiled, resumable run, not by reading."
+    verified: true
+considered:
+  - {title: "Full Stack Deep Learning course", url: "https://fullstackdeeplearning.com/course/", reason: "Strong on MLOps/product but focused on deployment, not PyTorch internals and training engineering; candidate for the ML systems path."}
+  - {title: "PyTorch Lightning docs", url: "https://lightning.ai/docs/pytorch/stable/", reason: "Useful abstraction but hides the training loop this node wants you to master; optional later."}
+  - {title: "Hugging Face Accelerate", url: "https://huggingface.co/docs/accelerate/index", reason: "Multi-GPU/mixed-precision wrapper; belongs to distributed-training nodes."}
+  - {title: "PyTorch blog: Understanding GPU Memory", url: "https://pytorch.org/blog/understanding-gpu-memory-1/", reason: "Good for memory debugging; use as extra reading in ML systems path."}
+  - {title: "Karpathy nanoGPT", url: "https://github.com/karpathy/nanoGPT", reason: "README says it is deprecated (Nov 2025) in favor of nanochat; build-nanogpt video/repo is the maintained teaching version."}
+notes: "No formal course exists for this node; the primary-course slot is a video-series (Karpathy's GPT-2 reproduction), kind video-series rather than course. The official PyTorch docs are the primary text because they cover every listed topic and are current. If a course is preferred, CS231n assignments in PyTorch serve as the structured exercises."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "Karpathy GPT-2 video verified via YouTube oEmbed (title and author), not by watching."
+  - "Deep Learning with PyTorch 2nd edition status not confirmed on Manning page."
+last_verified: 2026-11-18

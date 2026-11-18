@@ -1,0 +1,136 @@
+id: transformers
+title: Attention & Transformers
+group: G5
+paths: [ml-foundations, llm, vision, generative]
+hard: [deep-learning-fundamentals]
+soft: []
+scope: "Attention, transformer blocks, positional encodings, encoder/decoder variants; implementing and training a small transformer."
+
+level: intermediate
+estimated_hours: 40
+resources:
+  - id: udl-ch12
+    role: primary-text
+    kind: book
+    title: "Understanding Deep Learning, Chapter 12: Transformers"
+    by: "Simon J.D. Prince"
+    url: https://udlbook.github.io/udlbook/
+    edition_or_term: "MIT Press 2023; free PDF (site lists update 09 Feb 2026)"
+    access: free
+    use: "Ch. 12 in full: dot-product self-attention, scaled dot-product, multi-head attention, transformer layers, positional encodings, encoder (BERT), decoder (GPT-3), encoder-decoder, long-sequence variants, and extensions to images (ViT); do the chapter notebooks."
+    why: "The most coherent first-principles derivation of attention and transformer blocks with diagrams that make tensor shapes explicit; free and consistent with the DL fundamentals notation."
+    verified: true
+  - id: karpathy-gpt
+    role: primary-course
+    kind: video-series
+    title: "Karpathy: Let's build GPT: from scratch, in code, spelled out (plus the GPT tokenizer lecture)"
+    by: "Andrej Karpathy"
+    url: https://www.youtube.com/watch?v=kCc8FmEb1nY
+    edition_or_term: "YouTube; part of Neural Networks: Zero to Hero (https://karpathy.ai/zero-to-hero.html)"
+    access: free
+    use: "Watch and code along (1h56m): bigram baseline, self-attention math trick, single head, multi-head, feed-forward, residuals, LayerNorm, training a character-level GPT on TinyShakespeare. Optionally the tokenizer lecture (2h13m, https://youtu.be/zduSFxRajkE) and the GPT-2 reproduction (see dl-engineering)."
+    why: "The best 'implement it yourself' walkthrough: every component of a decoder transformer built and trained in one sitting."
+    verified: true
+  - id: annotated-transformer
+    role: secondary
+    kind: website
+    title: "The Annotated Transformer"
+    by: "Alexander Rush and contributors (Harvard NLP)"
+    url: https://nlp.seas.harvard.edu/annotated-transformer/
+    edition_or_term: "Updated PyTorch version of the 2018 original (exact update year not checked)"
+    access: free
+    use: "Read alongside the original paper: the line-by-line PyTorch implementation of the encoder-decoder transformer (attention, multi-head, positional encoding, label smoothing, training loop, translation example)."
+    why: "Encoder-decoder (seq2seq) variant and training mechanics that Karpathy's decoder-only build skips; it is the reference code walkthrough."
+    verified: true
+  - id: attention-paper
+    role: reference
+    kind: paper
+    title: "Attention Is All You Need"
+    by: "Vaswani et al. (2017)"
+    url: https://arxiv.org/abs/1706.03762
+    edition_or_term: "arXiv 1706.03762"
+    access: free
+    use: "Read Sections 3-5 (model architecture, why self-attention, training) after UDL ch. 12; also the earlier additive attention paper (Bahdanau et al., https://arxiv.org/abs/1409.0473) for the origin of attention."
+    why: "The primary source; short; every later variant is described relative to it."
+    verified: true
+  - id: formal-algorithms
+    role: secondary
+    kind: paper
+    title: "Formal Algorithms for Transformers"
+    by: "Mary Phuong, Marcus Hutter (DeepMind)"
+    url: https://arxiv.org/abs/2207.09238
+    edition_or_term: "arXiv 2207.09238"
+    access: free
+    use: "Pseudocode for attention, multi-head attention, layer norm, embeddings, encoder/decoder/encoder-decoder transformers, training and inference; use to check your own implementation."
+    why: "Unambiguous pseudocode precisely specifying shapes and operations; hidden gem for people who find prose ambiguous."
+    verified: true
+  - id: illustrated-transformer
+    role: secondary
+    kind: article
+    title: "The Illustrated Transformer"
+    by: "Jay Alammar"
+    url: https://jalammar.github.io/illustrated-transformer/
+    edition_or_term: "Blog post (2018)"
+    access: free
+    use: "Read first if the math is unclear; visual walk-through of self-attention, multi-head, positional encoding, and the encoder-decoder flow."
+    why: "Most widely used visual intuition; low effort."
+    verified: true
+  - id: d2l-attention
+    role: secondary
+    kind: book
+    title: "Dive into Deep Learning, Ch. 11: Attention Mechanisms and Transformers"
+    by: "Aston Zhang, Zachary Lipton, Mu Li, Alex Smola"
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html
+    edition_or_term: "d2l 1.0.3"
+    access: free
+    use: "Queries/keys/values, attention pooling, scoring functions, Bahdanau attention, multi-head attention, self-attention and positional encoding, The Transformer architecture (11.7), Transformers for vision (11.8), large-scale pretraining (11.9)."
+    why: "Executable code for each concept, including attention scoring variants and ViT."
+    verified: true
+  - id: positional-variants
+    role: reference
+    kind: paper
+    title: "Architecture variants: RoPE, Pre-LN, BERT, T5, ViT, FlashAttention"
+    by: "Su et al.; Xiong et al.; Devlin et al.; Raffel et al.; Dosovitskiy et al.; Dao et al."
+    url: https://arxiv.org/abs/2104.09864
+    edition_or_term: "RoFormer/RoPE arXiv 2104.09864; also https://arxiv.org/abs/2002.04745 (Pre-LN), https://arxiv.org/abs/1810.04805 (BERT), https://arxiv.org/abs/1910.10683 (T5), https://arxiv.org/abs/2010.11929 (ViT), https://arxiv.org/abs/2205.14135 (FlashAttention)"
+    access: free
+    use: "Read RoPE (positional encodings), 'On Layer Normalization in the Transformer Architecture' (pre-LN vs post-LN), BERT (encoder-only), T5 (encoder-decoder), ViT (patches as tokens); FlashAttention only as an efficiency pointer."
+    why: "Covers positional-encoding and encoder/decoder variant coverage that the basic references do not, with the primary papers."
+    verified: true
+  - id: cs336-a1
+    role: practice
+    kind: practice-site
+    title: "Stanford CS336 Assignment 1: Basics (tokenizer, Transformer LM, AdamW, training)"
+    by: "Stanford CS336 (Tatsunori Hashimoto, Percy Liang)"
+    url: https://cs336.stanford.edu/
+    edition_or_term: "Spring 2026 course page; assignment repo https://github.com/stanford-cs336/assignment1-basics (linked from the course page); lectures on YouTube"
+    access: free
+    use: "Implement the BPE tokenizer, Transformer decoder (the Spring 2025 handout uses RMSNorm, RoPE, SwiGLU and causal multi-head attention; check the 2026 handout), cross-entropy, AdamW and a training loop with the provided unit tests, then train a small LM. Do after the Karpathy video."
+    why: "The most rigorous test-driven 'implement and train a small transformer' exercise, with public handout and tests; sits on the LLM path too."
+    verified: true
+  - id: transformer-from-scratch
+    role: practice
+    kind: practice-site
+    title: "Small transformer capstone"
+    by: "Self-directed"
+    url: https://nlp.seas.harvard.edu/annotated-transformer/
+    edition_or_term: "Use the Annotated Transformer toy copy-task and the Karpathy TinyShakespeare setup"
+    access: free
+    use: "(1) Reproduce the Annotated Transformer's synthetic copy task; (2) train the char-level GPT from the Karpathy video and plot validation loss against model size; (3) swap sinusoidal positions for RoPE and compare."
+    why: "Verifies understanding by testing a variant (positional encoding), not just reproducing a result."
+    verified: true
+considered:
+  - {title: "Stanford CS224N Natural Language Processing with Deep Learning (Winter 2026)", url: "https://cs224n.stanford.edu/", reason: "Excellent attention/transformer lectures, YouTube playlists linked from the page; NLP-wide and belongs to the LLM/NLP path owner (not evaluated in detail here)."}
+  - {title: "Stanford CS336 Language Modeling from Scratch (Spring 2026)", url: "https://cs336.stanford.edu/", reason: "Used for Assignment 1 here; full course is the LLM path's job."}
+  - {title: "Speech and Language Processing, Ch. Transformers (Jurafsky, Martin)", url: "https://web.stanford.edu/~jurafsky/slp3/", reason: "Strong free textbook; the site timed out during verification."}
+  - {title: "A Mathematical Framework for Transformer Circuits", url: "https://transformer-circuits.pub/2021/framework/index.html", reason: "Superb deeper view of attention heads; belongs to the interpretability path."}
+  - {title: "Lil'Log: Attention? Attention!", url: "https://lilianweng.github.io/posts/2018-06-24-attention/", reason: "Good survey of attention variants; secondary to the references chosen."}
+  - {title: "Dive into Deep Learning attention chapter", url: "https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html", reason: "Kept as secondary, not primary, because UDL ch. 12 is tighter."}
+  - {title: "Karpathy nanoGPT", url: "https://github.com/karpathy/nanoGPT", reason: "Deprecated by the author in Nov 2025 (points to nanochat); the video + build-nanogpt remains valid."}
+notes: "UDL Ch.12 as primary text, Karpathy's video as the primary hands-on course (no university course isolates transformers). Transformer node is shared across ML-foundations, LLM, vision and generative paths, so keep it conceptually complete but short; deeper pretraining/systems material lives in LLM and ML-systems nodes."
+split_proposal: null
+prereq_changes: "Consider adding soft: [dl-engineering] for the PyTorch fluency the capstones assume."
+open_questions:
+  - "CS336 assignment repo reached via link on the course page; GitHub itself returned 403 to my fetcher, so the repo contents were not opened."
+  - "CS224N 2026 recording availability not verified."
+last_verified: 2026-11-18
