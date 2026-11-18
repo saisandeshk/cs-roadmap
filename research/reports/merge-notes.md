@@ -81,3 +81,11 @@
 - Prereq changes proposed: program-verification hard type-systems -> soft, hard += programming-language-concepts, discrete-math; interpreters c-programming soft -> hard (clox) or split tree-walking vs bytecode; language-runtimes soft += compiler-construction; program-analysis soft += discrete-math; memory-systems soft += concurrent-programming.
 - Splits (optional): program-verification -> proof assistants + Hoare logic / separation logic + verified systems; compiler-construction -> front end / back end (~120h).
 - Unverified: Springer (Sze book, Primer) bot challenges; Shen & Lipasti, Agner Fog 406; Coursera audit for Grossman; CS152 recordings (401); ETH Fall 2026 playback; 15-745 term label; FRAP JS site; CS143 HTTP-only with 2021 syllabus dates; GC Handbook/TAPL chapter numbers from memory.
+
+## G10 Data & distributed — done, 0 errors
+- computer-networking primary course switched to Berkeley CS 168 Fall 2026 (public videos); CS 144 kept as optional TCP-stack practice.
+- Video reality: CS 186 F26 enrolled-only (public Spring 2024); 6.5840 Sp26 no public videos (public Spring 2020); CMU 15-445 F26/Sp26 login-only (public Fall 2025); 15-721 public Spring 2024; Waterloo CS 451 no videos; Kleppmann Cambridge public 2020 series.
+- No primary course: large-scale-system-design.
+- Splits proposed for consensus-and-replication, distributed-transactions-and-storage, large-scale-system-design, transactions-and-recovery, advanced-database-systems (see each file's split_proposal).
+- Prereq changes: distributed-systems-fundamentals concurrent-programming soft -> hard; distributed-transactions-and-storage transactions-and-recovery soft -> hard; batch-and-stream-processing soft += databases-intro; computer-networking soft += operating-systems.
+- Unverified: DDIA 2e chapter numbers 9/10/12/13 (O'Reilly 403); redbook.io HTTPS; Streaming Systems page; UDS chapter structure; R&G / BHG chapter numbers from slide indexes; GitHub repos via WebFetch only.

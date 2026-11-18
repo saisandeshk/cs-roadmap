@@ -14,12 +14,12 @@ resources:
     kind: book
     title: "Readings in Database Systems, 5th edition (the Red Book)"
     by: "Peter Bailis, Joseph M. Hellerstein, Michael Stonebraker (eds.)"
-    url: http://www.redbook.io/
+    url: https://www.redbook.io/
     edition_or_term: "5th edition (2015); free HTML and PDF, CC BY-NC-SA 4.0"
     access: free
     use: "Preface; Ch. 4 New DBMS Architectures (introduction plus C-Store column store, Hekaton memory-optimized OLTP, OLTP Through the Looking Glass), Ch. 5 Large-Scale Dataflow Engines, Ch. 8 Interactive Analytics; Ch. 2 (Traditional RDBMS Systems, includes the Architecture of a Database System paper) as background. Read the editors' chapter introductions in full and the listed papers selectively."
     why: "A free, opinionated, expert-curated map of the field: each chapter introduction explains why the architectures changed (the death of one-size-fits-all) and points to the primary papers. It is from 2015, so vectorized/compiled execution, lakehouses and cloud-native engines come from the 15-721 papers below. No single modern textbook covers this node, hence the papers-plus-course route."
-    verified: true
+    verified: false
   - id: cmu-15721
     role: primary-course
     kind: course
@@ -139,5 +139,5 @@ prereq_changes: null
 open_questions:
   - "The Fall 2025 15-721 page shows no lecture schedule or video links, only logistics and a pointer to a lecture-notes repository; a /schedule.html page returned 404. Whether Fall 2025 lectures were recorded privately is unknown."
   - "Spring 2024 15-721 was verified through its schedule page and YouTube playlist page; individual lecture videos were not opened."
-  - "Red Book chapter contents were read from the site; the primary text is 2015, so confirm whether a newer edition exists (none found)."
+  - "Red Book (redbook.io) opened and read over plain HTTP only (http://www.redbook.io/ch4-newdbms.html); HTTPS connections fail, so the listed https URL is unverified (verified false). The text is from 2015 and no newer edition was found."
 last_verified: 2026-11-18

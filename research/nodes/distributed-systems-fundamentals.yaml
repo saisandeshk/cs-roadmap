@@ -32,7 +32,7 @@ resources:
     why: "Compact, public, and exactly aligned with the primary text. The 2020 YouTube recordings are the newest public ones; recordings of the current Cambridge run are on Panopto behind the student login."
     verified: true
     course:
-      latest_term: "2025-26 (Cambridge Part IB, Lent term; 2026-27 page already published)"
+      latest_term: "2025-26 (Cambridge Part IB; 2026-27 course page already published)"
       latest_url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/
       videos: enrolled-only
       public_videos_term: "2020 (Kleppmann, 8 lectures, YouTube)"

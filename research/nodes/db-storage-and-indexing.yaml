@@ -143,7 +143,7 @@ considered:
   - {title: "Berkeley CS 186 as the primary course", url: "https://cs186berkeley.net/", reason: "Good and has public notes and a Java skeleton, but newest public videos are Spring 2024 and storage coverage is lighter than CMU's."}
   - {title: "MIT 6.5830 Database Systems (Spring 2026, GoDB labs)", url: "https://dsg.csail.mit.edu/6.5830/", reason: "Paper-driven with Go labs; slides public; recordings on Panopto, access unverified."}
   - {title: "Readings in Database Systems (Red Book), Ch. 2 Traditional RDBMS Systems", url: "http://www.redbook.io/ch2-importantdbms.html", reason: "Includes the classic Architecture of a Database System; used in the advanced-database-systems node instead."}
-notes: "CMU 15-445 is the center: watch lectures 3-10, do BusTub Projects 1-2, and read Petrov Part I as the textbook; Mini-LSM supplies the LSM side that CMU covers only briefly. If C++ is a barrier, use the CS 186 B+tree project in Java, or Let's Build a Simple Database in C. Hash indexes and extendible hashing appear in lecture #7."
+notes: "CMU 15-445 is the center: watch lectures 3-10, do BusTub Projects 1-2, and read Petrov Part I as the textbook; Mini-LSM supplies the LSM side that CMU covers only briefly. If C++ is a barrier, use the CS 186 B+tree project in Java, or Let's Build a Simple Database in C. Hash indexes (hash tables on disk and in memory) are in lecture #7."
 split_proposal: null
 prereq_changes: null
 open_questions:
