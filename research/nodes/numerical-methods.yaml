@@ -1,0 +1,126 @@
+id: numerical-methods
+title: Numerical Computing
+group: G2
+paths: [ml-foundations, mlsys]
+hard: [linear-algebra]
+soft: [python-programming]
+scope: "Floating point, conditioning and stability, numerical linear algebra algorithms, iterative methods, ODE solvers basics."
+
+level: intermediate
+estimated_hours: 90
+resources:
+  - id: fnc-python
+    role: primary-text
+    kind: book
+    title: "Fundamentals of Numerical Computation (Python edition)"
+    by: "Tobin A. Driscoll, Richard J. Braun"
+    url: https://fncbook.com/python/
+    edition_or_term: "SIAM textbook, free online with Julia, MATLAB and Python editions (https://fncbook.com/); Python edition opened"
+    access: free
+    use: "Ch 1 (floating point, conditioning, stability, algorithms), 2 (linear systems: LU, pivoting, conditioning), 3 (least squares, QR), 4 (nonlinear equations), 6 (ODE initial-value problems), 7 (matrix analysis: eigenvalues, SVD), 8 (Krylov methods); run the Python code and do the exercises."
+    why: "Only free text that covers the whole scope (floating point, conditioning, numerical linear algebra, iterative/Krylov methods, ODE solvers) with runnable code in Python and exercises."
+    verified: true
+  - id: mit-18-335
+    role: primary-course
+    kind: course
+    title: "MIT 18.335J / 6.7310J Introduction to Numerical Methods"
+    by: "Steven G. Johnson (OCW Spring 2019); Shi Chen (Fall 2025)"
+    url: https://ocw.mit.edu/courses/18-335j-introduction-to-numerical-methods-spring-2019/
+    edition_or_term: "Spring 2019 (OCW); newest run: Fall 2025 (Shi Chen, mitmath/18335)"
+    access: free
+    use: "Weekly lecture notes, summaries and problem sets with solutions on floating-point arithmetic, backward error analysis, conditioning, QR/SVD/LU, iterative methods (conjugate gradient, GMRES), and eigenvalue algorithms, following Trefethen and Bau; do the Julia problem sets (translatable to NumPy)."
+    why: "Best public graduate-level numerical analysis course focused on accuracy and efficiency, with full problem sets and solutions and notes that are updated every year; no public lecture video, so combine with the fast.ai videos for orientation."
+    verified: true
+    course:
+      latest_term: "Fall 2025 (Shi Chen; per mitmath/18335 README, Monday/Wednesday lectures, Julia psets)"
+      latest_url: https://github.com/mitmath/18335
+      videos: unknown
+      assignments: public
+      assignments_url: https://ocw.mit.edu/courses/18-335j-introduction-to-numerical-methods-spring-2019/
+  - id: trefethen-bau
+    role: secondary
+    kind: book
+    title: "Numerical Linear Algebra"
+    by: "Lloyd N. Trefethen, David Bau III"
+    url: https://people.maths.ox.ac.uk/trefethen/text.html
+    edition_or_term: "SIAM 1997 (author page with errata and lecture list)"
+    access: paid
+    use: "Lectures 1-5 (SVD), 6-11 (QR, least squares), 12-18 (conditioning, floating point, stability), 20-23 (Gaussian elimination, Cholesky), 24-28 (eigenvalue algorithms), 32-38 (Arnoldi, GMRES, Lanczos, conjugate gradient); read after FNC chapters 1-3 for depth."
+    why: "The classic short-lecture treatment of conditioning, stability and iterative methods that 18.335 is built on; deeper and more elegant than FNC for numerical linear algebra but with no ODEs."
+    verified: true
+  - id: fastai-nla
+    role: secondary
+    kind: course
+    title: "fast.ai Computational Linear Algebra"
+    by: "Rachel Thomas (with Jeremy Howard)"
+    url: https://www.fast.ai/posts/2017-07-17-num-lin-alg.html
+    edition_or_term: "2017 (University of San Francisco MS Analytics; online textbook and videos)"
+    access: free
+    use: "Videos and Jupyter notebooks on floating-point/machine epsilon, SVD and NMF for topic modelling, randomized SVD, LU and QR, sparse matrices and PageRank, CT reconstruction with compressed sensing."
+    why: "Hidden gem with public lecture videos and Python notebooks, application-first and GPU/Numba-aware; fills the practical, code-and-speed gap that the proof-oriented primaries lack (dated tooling, but algorithms are current)."
+    verified: true
+    course:
+      latest_term: "2017"
+      latest_url: https://www.fast.ai/posts/2017-07-17-num-lin-alg.html
+      videos: public
+      public_videos_term: "2017"
+      public_videos_url: https://www.youtube.com/playlist?list=PLtmWHNX-gukIc92m1K0P6bIOnZb-mg0hY
+      assignments: partial
+      assignments_url: https://github.com/fastai/numerical-linear-algebra
+  - id: goldberg-fp
+    role: reference
+    kind: article
+    title: "What Every Computer Scientist Should Know About Floating-Point Arithmetic"
+    by: "David Goldberg"
+    url: https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+    edition_or_term: "ACM Computing Surveys 1991 (Oracle-hosted version with Sun appendix)"
+    access: free
+    use: "Sections 1-2 (rounding error, IEEE 754 formats, guard digits, cancellation) and the section on the IEEE standard; read alongside FNC chapter 1."
+    why: "The canonical short paper on floating-point behaviour that every systems and ML programmer meets (rounding, cancellation, ulps)."
+    verified: true
+  - id: floating-point-gui
+    role: reference
+    kind: website
+    title: "The Floating-Point Guide"
+    by: "Floating-Point Guide authors"
+    url: https://floating-point-gui.de/
+    edition_or_term: "Current site"
+    access: free
+    use: "Quick lookups for comparing floats, rounding, language-specific pitfalls and formats."
+    why: "Pragmatic cheat sheet for floating-point surprises before the formal treatment."
+    verified: true
+  - id: higham-asna
+    role: reference
+    kind: book
+    title: "Accuracy and Stability of Numerical Algorithms, 2nd edition"
+    by: "Nicholas J. Higham"
+    url: https://www.maths.manchester.ac.uk/~higham/asna/
+    edition_or_term: "SIAM 2002"
+    access: paid
+    use: "Chapters on floating-point arithmetic, summation, polynomials and error analysis for specific algorithms; dip in when you need the rounding-error analysis of a particular algorithm (for example summation, dot products, LU)."
+    why: "The reference for rigorous rounding-error analysis; too heavy as a course text, essential as a lookup."
+    verified: true
+  - id: fnc-practice
+    role: practice
+    kind: practice-site
+    title: "FNC exercises and the 18.335 problem sets"
+    by: "Driscoll and Braun; MIT 18.335 staff"
+    url: https://fncbook.com/python/
+    edition_or_term: "FNC Python edition; 18.335 Spring 2019 psets on OCW"
+    access: free
+    use: "Do the end-of-section exercises (computational and analytical) of FNC chapters 1-3, 6 and 8, and implement from scratch: LU with partial pivoting, Householder QR, power/inverse iteration, conjugate gradient; then the 18.335 problem sets on floating-point error, QR and Krylov methods (solutions on OCW)."
+    why: "Numerical analysis is learned by coding and by measuring error; these tasks make conditioning and backward stability observable."
+    verified: true
+considered:
+  - {title: "Cornell CS 4220 Numerical Analysis: Linear and Nonlinear Problems (David Bindel, Spring 2026)", url: "https://www.cs.cornell.edu/courses/cs4220/2026sp/", reason: "Newest public course site found (notes, assignments, 2026); no confirmed public videos; 18.335 + Trefethen-Bau cover the same ground."}
+  - {title: "MIT 18.330 Introduction to Numerical Analysis (Spring 2012)", url: "https://ocw.mit.edu/courses/18-330-introduction-to-numerical-analysis-spring-2012/", reason: "More classical numerical analysis (interpolation, quadrature, ODEs); older; FNC covers it with code."}
+  - {title: "Holistic Numerical Methods (Autar Kaw)", url: "https://nm.mathforcollege.com/", reason: "Large set of public video lectures for undergraduate numerical methods; more engineering-calculus oriented and less on numerical linear algebra and stability."}
+  - {title: "Fundamentals of Numerical Computation (Julia edition)", url: "https://tobydriscoll.net/fnc-julia/home.html", reason: "Same text; Julia version is the most complete; Python edition chosen for the roadmap's Python-centered paths."}
+notes: "FNC Python is the primary text for breadth (floating point, linear systems, least squares, nonlinear equations, ODEs, Krylov methods) and code; 18.335 is the primary course because it provides the rigor and public problem sets with solutions, but has no public lecture video (OCW Spring 2019 pages list notes, problem sets and exams only), so the fast.ai course supplies videos. Trefethen-Bau is the classic companion for NLA. The node is optional (scientific-computing branch). The mlsys path mostly needs floating point, conditioning/mixed precision intuition and SVD/QR/iterative solvers: chapters 1-3 and 7-8 of FNC plus Goldberg are the minimum. The optimization and matrix-calculus nodes use numerical linear algebra implicitly."
+split_proposal: "Possibly split a short 'floating-point-and-mixed-precision' node (Goldberg + FNC ch. 1 + hardware formats) from the numerical-linear-algebra core, since mlsys needs the former more than the latter."
+prereq_changes: "Add soft: [calculus]; the hard prerequisite linear-algebra is right. Consider dropping python-programming as soft if the Julia edition is allowed."
+open_questions:
+  - "MIT 18.335 Fall 2025 lecture video availability: README mentions Zoom/recording behind MIT authentication, treated as unknown."
+  - "fast.ai notebooks repo (github.com/fastai/numerical-linear-algebra) returns HTTP 403 to automated clients; not opened. The fast.ai landing page and the YouTube playlist were opened."
+  - "Numerical Recipes, Heath and Demmel were considered but not given URLs (not opened)."
+last_verified: 2026-11-18

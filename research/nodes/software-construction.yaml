@@ -1,0 +1,145 @@
+id: software-construction
+title: Software Construction
+group: G1
+paths:
+- core
+hard:
+- python-programming
+soft:
+- data-structures
+scope: Specifications, testing, debugging, abstraction and ADTs, design, immutability, code review (MIT 6.1020-style).
+level: intermediate
+estimated_hours: 60
+resources:
+- id: mit-6102-readings
+  role: primary-text
+  kind: website
+  title: 'MIT 6.102 Software Construction: readings'
+  by: MIT EECS course staff (6.005/6.031 lineage, Rob Miller and Max Goldman)
+  url: https://web.mit.edu/6.102/www/sp26/classes/01-static-checking/
+  edition_or_term: Spring 2026 (TypeScript; successor of 6.005/6.031)
+  access: free
+  use: 'Readings 01 Static Checking through 13 Debugging: testing, code review, specifications and designing specifications, abstract data types, abstraction functions and rep invariants, interfaces and subtyping, equality, functional programming, recursive data types, grammars and parsing; do the reading exercises and Praxis TypeScript tutor. Readings 14-18 (concurrency, promises, callbacks, message passing) and 19 little languages are optional and overlap G4.'
+  why: The most rigorous, safe-from-bugs / easy-to-understand / ready-for-change treatment of specs, testing and ADT design in a free text; readings are written to stand alone and are the best statement of the node scope.
+  verified: true
+- id: mit-6102
+  role: primary-course
+  kind: course
+  title: MIT 6.102 Software Construction
+  by: MIT EECS
+  url: https://web.mit.edu/6.102/www/sp26/
+  edition_or_term: Spring 2026
+  access: free
+  use: Problem sets PS0 Turtle Graphics, PS1 Specific Graphics (test-first, specifications), PS2 Multi-Startup Set (ADTs), PS3 Memely (functional programming), PS4 Memory Scramble (concurrency, optional), and the Star Battle group project design as a capstone; git psets Git 1-3 and Basic TypeScript.
+  why: The only major course whose materials, readings and problem sets are completely public and which is built around specs, testing, and design; no videos, but the readings substitute for lectures.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://web.mit.edu/6.102/www/sp26/
+    videos: none
+    public_videos_term: none found (6.005 Spring 2016 on OCW also has no lecture videos; MITx 6.005.1x had videos)
+    assignments: partial
+    assignments_url: https://web.mit.edu/6.102/www/sp26/psets/ps1/
+- id: swe-at-google
+  role: secondary
+  kind: book
+  title: Software Engineering at Google
+  by: Titus Winters, Tom Manshreck, Hyrum Wright
+  url: https://abseil.io/resources/swe-book
+  edition_or_term: O Reilly 2020; free online
+  access: free
+  use: Code Review chapter, Documentation, and the Testing chapters (Testing Overview, Unit Testing, Test Doubles, Larger Testing); optionally Version Control and Dependency Management.
+  why: Brings team-scale code review, test design and maintainability economics that a course on single-person construction omits.
+  verified: true
+- id: philosophy-of-software-design
+  role: secondary
+  kind: book
+  title: A Philosophy of Software Design, 2nd edition
+  by: John Ousterhout
+  url: https://web.stanford.edu/~ouster/cgi-bin/book.php
+  edition_or_term: 2nd edition (Yaknyam Press, 2021)
+  access: paid
+  use: 'Whole book (about 190 pages): deep modules, information hiding, comments as design, red flags,.'
+  why: Strongest short treatment of module and interface design (complexity management); complements 6.102 specs-and-ADT view with an industry-practitioner view.
+  verified: false
+- id: debugging-book
+  role: secondary
+  kind: book
+  title: The Debugging Book
+  by: Andreas Zeller et al.
+  url: https://www.debuggingbook.org/
+  edition_or_term: Living online book with Jupyter notebooks
+  access: free
+  use: Introduction to Debugging, Tracing Executions, How Debuggers Work, Asserting Expectations, Tracking Failure Origins, Reducing Failure-Inducing Inputs (delta debugging), Isolating Failure-Inducing Changes; skip the automated-repair parts.
+  why: 'Hidden gem: debugging as a scientific method with runnable Python implementations; covers the node debugging item more systematically than 6.102 reading 13.'
+  verified: true
+- id: google-eng-practices
+  role: secondary
+  kind: docs
+  title: 'Google Engineering Practices: Code Review guide'
+  by: Google
+  url: https://google.github.io/eng-practices/
+  edition_or_term: Living
+  access: free
+  use: The Standard of Code Review, How to do a code review, The CL author guide (small changes, good descriptions, handling reviewer comments).
+  why: Concrete checklists for the code-review scope item; quick to apply to your own pull requests.
+  verified: true
+- id: refactoring-fowler
+  role: reference
+  kind: book
+  title: Refactoring, 2nd edition
+  by: Martin Fowler
+  url: https://martinfowler.com/books/refactoring.html
+  edition_or_term: 2nd edition (2018, JavaScript examples)
+  access: paid
+  use: Chapters 1-4 (refactoring principles, bad smells, building tests) and the catalog entries as needed (Extract Function, Replace Conditional with Polymorphism, Encapsulate Variable).
+  why: The standard catalogue for restructuring code without changing behaviour; 6.102 further reading lists it.
+  verified: true
+- id: mit-6102-psets
+  role: practice
+  kind: website
+  title: MIT 6.102 problem sets (specs, ADTs, functional)
+  by: MIT EECS
+  url: https://web.mit.edu/6.102/www/sp26/psets/ps1/
+  edition_or_term: Spring 2026
+  access: free
+  use: PS1 Specific Graphics (write tests for given specs), PS2 Multi-Startup Set (ADT with rep invariants and checkRep), PS3 Memely; for each, write the spec and tests first and then the implementation.
+  why: Concrete test-first and ADT-design practice; starter code is on MIT GitHub (students only), so recreate the skeleton from the problem set text.
+  verified: true
+- id: python-spec-practice
+  role: practice
+  kind: docs
+  title: pytest and Hypothesis applied to your own CS 61A projects
+  by: pytest-dev; HypothesisWorks
+  url: https://hypothesis.readthedocs.io/en/latest/
+  edition_or_term: Current
+  access: free
+  use: 'Retrofit tests onto CS 61A Hog and Cats: write specs as docstrings, example tests with pytest, then a Hypothesis property test for each pure function and an ADT with checkRep (see Hypothesis quickstart).'
+  why: Bridges 6.102 TypeScript examples back into the Python used in earlier nodes; property-based testing is the real power-tool for specs.
+  verified: true
+considered:
+- title: MIT 6.005 Software Construction (OCW Spring 2016, Java)
+  url: https://ocw.mit.edu/ans7870/6/6.005/s16/
+  reason: Older Java edition of the same readings, stable on OCW; 6.102 is the maintained version.
+- title: UW CSE 331 Software Design and Implementation
+  url: https://courses.cs.washington.edu/courses/cse331/
+  reason: Strong specification and ADT course in Java; kept as an alternative if TypeScript is a barrier (term/video status not checked).
+- title: How to Design Programs (HtDP 2e)
+  url: https://htdp.org/
+  reason: Design-recipe approach for novices; more about function design than testing/ADTs at scale; earlier-level resource.
+- title: Code Complete, 2nd edition / The Pragmatic Programmer 20th anniversary / Clean Code
+  url: https://www.oreilly.com/
+  reason: Popular practice-oriented books; broad and anecdotal; 6.102 plus Philosophy of Software Design gives the principled version.
+- title: Architecture Patterns with Python (Cosmic Python)
+  url: https://www.cosmicpython.com/book/preface.html
+  reason: Placed in python-in-depth; good Python-native design follow-up.
+- title: CMU 17-214 Principles of Software Construction / CMU 17-313 Foundations of Software Engineering
+  url: https://www.cs.cmu.edu/
+  reason: Strong design/OO-course alternatives; not opened.
+notes: 'Two-source design: 6.102 for rigour on specs/ADTs/testing, plus industry books for design taste and team practice. 6.102 uses TypeScript (Basic TypeScript and Praxis Tutor exercises are in the course), which is a short detour for a Python-first learner; python-spec-practice suggests carrying the exercises back into Python. All course materials are public but there are no videos and starter code lives on MIT GitHub, so assignments are partial. Concurrency readings overlap G4; keep them optional. Language note: the skeleton names the course "6.1020-style"; the live site calls it 6.102 and the catalogue number is 6.1020.'
+split_proposal: null
+prereq_changes: 'Consider adding soft: [dev-environment] (git is a required skill from reading 1-3 and Git 1-3 psets).'
+open_questions:
+- Starter code for the 6.102 psets is on github.mit.edu (MIT login), so assignments are recorded as partial.
+- 'A Philosophy of Software Design: publisher/author page web.stanford.edu/~ouster not reachable from this environment (unverified).'
+last_verified: '2026-11-18'

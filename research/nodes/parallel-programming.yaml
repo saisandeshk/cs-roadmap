@@ -15,9 +15,9 @@ resources:
     title: "An Introduction to Parallel Programming, 2nd edition"
     by: "Peter S. Pacheco, Matthew Malensek"
     url: https://shop.elsevier.com/books/an-introduction-to-parallel-programming/pacheco/978-0-12-804605-0
-    edition_or_term: "2nd edition (Morgan Kaufmann/Elsevier, Nov 2021)"
+    edition_or_term: "2nd edition (Morgan Kaufmann/Elsevier, Nov 2021). Elsevier lists a 3rd edition (Steven A. Wright) with a publication date of Dec 28, 2026, i.e. not yet out as of 2026-11-18"
     access: paid
-    use: "Ch. 1-2 (why parallel; hardware/software background, speedup, Amdahl, scalability), 3 (MPI), 4 (Pthreads), 5 (OpenMP), 6 (case study: n-body/tree search), 7 (CUDA intro; defer to the GPU node). Do the programming assignments at chapter ends."
+    use: "Ch. 1-2 (why parallel; hardware/software background, speedup, Amdahl, scalability), 3 (MPI), 4 (Pthreads), 5 (OpenMP), 7 (parallel program development: n-body and tree-search case studies). Ch. 6 (GPU/CUDA) is deferred to the GPU node. Do the programming assignments at chapter ends."
     why: "A single, language-neutral textbook that covers all three mainstream CPU models (MPI, Pthreads, OpenMP) with performance analysis and exercises; closest match to the node scope. No book is perfect here because the strongest teaching is in course notes (below)."
     verified: true
   - id: cs149
@@ -110,6 +110,7 @@ notes: "No single text covers this scope as well as the combination of CS149 lec
 split_proposal: null
 prereq_changes: "Consider soft prerequisite on performance-engineering or place work/span explicitly; otherwise unchanged."
 open_questions:
+  - "Elsevier lists a 3rd edition (new author, reordered chapters: Pthreads, OpenMP, MPI, GPU with OpenMP, CUDA) dated 2026-12-28; re-evaluate when it ships."
   - "ppc-exercises.cs.aalto.fi (self-study exercises) was unreachable from this environment; autograder access not verified."
   - "CS149 Fall 2023 YouTube playlist: page title verified (Stanford CS149 Parallel Computing 2023), per-lecture playback not tested."
   - "CMU 15-418 Fall 2026 YouTube links (about 30) could not be played (YouTube rate-limiting); marked public because they are linked anonymously from the public schedule, partial coverage."

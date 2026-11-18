@@ -1,0 +1,131 @@
+id: information-theory
+title: Information Theory
+group: G2
+paths: [generative, theory]
+hard: [probability]
+soft: []
+scope: "Entropy, KL divergence, mutual information, source/channel coding, compression; connections to ML."
+
+level: intermediate
+estimated_hours: 70
+resources:
+  - id: mackay-itila
+    role: primary-text
+    kind: book
+    title: "Information Theory, Inference, and Learning Algorithms"
+    by: "David J. C. MacKay"
+    url: https://www.inference.org.uk/mackay/itila/book.html
+    edition_or_term: "Cambridge University Press 2003 (free PDF, 4th printing 2005, on the author's page)"
+    access: free
+    use: "Ch 1-2 (introduction, probability/entropy/inference), 4-6 (source coding theorem, symbol codes, stream codes: Huffman and arithmetic coding), 8-10 (joint entropy, mutual information, channel capacity), 9-11 (noisy channel coding theorem), then 20-22 and 28 (inference, clustering, maximum likelihood) and 29-30 (Monte Carlo) for ML links; do the many exercises with solutions."
+    why: "Teaches entropy, coding and inference together, so KL divergence, mutual information and compression arrive with their machine-learning meaning; free, with exercises and solutions; ideal for the generative path."
+    verified: true
+  - id: mackay-lectures
+    role: primary-course
+    kind: course
+    title: "Information Theory, Pattern Recognition, and Neural Networks (Cambridge lectures)"
+    by: "David J. C. MacKay (Cambridge)"
+    url: https://www.inference.org.uk/itprnn_lectures/
+    edition_or_term: "2012 lecture series (16 recorded lectures with slides)"
+    access: free
+    use: "Lectures 1-6 (introduction, entropy and data compression I-IV, noisy channels) and the lectures on error-correcting codes and inference; follow with the book exercises referenced in each lecture."
+    why: "The only complete public lecture series built around the primary text, by the author, with slides and snapshots; no formal graded assignments but the book exercises have solutions."
+    verified: true
+    course:
+      latest_term: "2012 (recorded Cambridge lectures; the course page has video downloads, slides and snapshots)"
+      latest_url: https://www.inference.org.uk/itprnn_lectures/
+      videos: public
+      public_videos_term: "2012"
+      public_videos_url: https://www.youtube.com/playlist?list=PLruBu5BI5n4aFpG32iMbdWoRVAA-Vcso6
+      assignments: partial
+      assignments_url: https://www.inference.org.uk/mackay/itila/book.html
+  - id: cover-thomas
+    role: reference
+    kind: book
+    title: "Elements of Information Theory, 2nd edition"
+    by: "Thomas M. Cover, Joy A. Thomas"
+    url: https://www.wiley.com/en-us/Elements+of+Information+Theory%2C+2nd+Edition-p-9780471748823
+    edition_or_term: "Wiley 2006"
+    access: paid
+    use: "Chapters 2 (entropy, relative entropy, mutual information), 3 (AEP), 5 (data compression), 7 (channel capacity), 8 (differential entropy), 9 (Gaussian channel), 10 (rate distortion), 11 (information theory and statistics); use for rigorous proofs and exercises when MacKay's treatment is informal."
+    why: "The standard rigorous reference for the whole field, with the proofs and problem sets most courses use; kept as reference because MacKay is the better learning path for ML-oriented readers."
+    verified: false
+  - id: polyanskiy-wu
+    role: secondary
+    kind: book
+    title: "Information Theory: From Coding to Learning"
+    by: "Yury Polyanskiy, Yihong Wu"
+    url: https://people.lids.mit.edu/yp/homepage/data/itbook-export.pdf
+    edition_or_term: "Cambridge University Press, Feb 2025; free prepublication PDF (Aug 2024 draft) for personal use; publisher page https://www.cambridge.org/universitypress/subjects/engineering/communications-and-signal-processing/information-theory-coding-learning"
+    access: mixed
+    use: "Parts on information measures (entropy, KL, mutual information, f-divergences), lossless compression and hypothesis testing/large deviations; later parts connect to statistics and ML (PAC-Bayes, estimation lower bounds); read selectively after MacKay or Cover-Thomas."
+    why: "Modern, rigorous text aimed at the theory and learning communities that covers f-divergences, strong data processing and information-theoretic lower bounds absent from older books; covers the theory path."
+    verified: true
+  - id: ee274
+    role: secondary
+    kind: course
+    title: "Stanford EE274 Data Compression: Theory and Applications"
+    by: "Tsachy Weissman and teaching staff (Stanford)"
+    url: https://stanforddatacompressionclass.github.io/Fall25/
+    edition_or_term: "Fall 2025-26 (in progress); Fall 2023 lectures recorded on YouTube"
+    access: free
+    use: "Lossless part: prefix-free codes, Kraft inequality and entropy, Huffman, AEP, arithmetic coding, ANS/rANS, conditional entropy and context models; do the homework with the Stanford Compression Library (SCL) and the demos linked from each lecture week; lossy-compression and ML-compression weeks are optional."
+    why: "Hidden gem: the practical counterpart to coding theorems: you implement entropy coders and measure them against entropy; public notes, slides, YouTube lectures and homework with solutions; includes compression-and-ML connections."
+    verified: true
+    course:
+      latest_term: "Fall 2025-26 (third offering; lecture schedule runs through Week 9 at time of check; recorded lectures not stated public for this run)"
+      latest_url: https://stanforddatacompressionclass.github.io/Fall25/
+      videos: unknown
+      public_videos_term: "Fall 2023 (YouTube playlist)"
+      public_videos_url: https://youtube.com/playlist?list=PLoROMvodv4rPj4uhbgUAaEKwNNak8xgkz
+      assignments: public
+      assignments_url: https://stanforddatacompressionclass.github.io/Fall25/assignments
+  - id: colah-visual-it
+    role: secondary
+    kind: article
+    title: "Visual Information Theory"
+    by: "Christopher Olah"
+    url: https://colah.github.io/posts/2015-09-Visual-Information/
+    edition_or_term: "September 2015 blog post"
+    access: free
+    use: "Read in one sitting before the first MacKay lectures: entropy as code length, cross-entropy, KL divergence, mutual information and joint entropy."
+    why: "Visual intuition that links entropy, cross-entropy loss and KL divergence for ML readers in an hour."
+    verified: true
+  - id: d2l-info
+    role: practice
+    kind: website
+    title: "Dive into Deep Learning: Information Theory (section 22.11)"
+    by: "D2L authors"
+    url: https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/information-theory.html
+    edition_or_term: "d2l 1.0.3 web edition"
+    access: free
+    use: "Sections 22.11.1-22.11.5: runnable examples and exercises for self-information, entropy, mutual information, KL divergence and cross-entropy in PyTorch/NumPy."
+    why: "Short code-level practice linking the definitions to training losses."
+    verified: true
+  - id: shannon-1948
+    role: reference
+    kind: paper
+    title: "A Mathematical Theory of Communication"
+    by: "Claude E. Shannon"
+    url: http://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
+    edition_or_term: "Bell System Technical Journal, 1948 (Harvard-hosted PDF; note: URL is HTTP, not HTTPS; an HTTPS mirror was not checked)"
+    access: free
+    use: "Parts I (discrete noiseless systems, entropy) and II (discrete noisy channel, capacity) after finishing the first two units; read for the original definitions and the statement of the source and channel coding theorems."
+    why: "Primary source with unusually readable exposition; worth reading once after the textbook."
+    verified: true
+considered:
+  - {title: "Stanford EE276 Information Theory (Weissman; Winter 2025-26)", url: "https://web.stanford.edu/class/ee276/", reason: "Strong first course with public notes and readings, but recordings are on Canvas (enrolled-only) and the pages could not be opened from the research environment."}
+  - {title: "MIT 6.7480 Information Theory: From Coding to Learning (Fall 2025, Polyanskiy)", url: "https://people.lids.mit.edu/yp/homepage/6_7480.html", reason: "Newest MIT course (Mon/Wed, textbook shared on Canvas); graduate-level and no public videos; the Polyanskiy-Wu book is kept as a secondary."}
+  - {title: "MIT 6.441 Information Theory (Spring 2016, Polyanskiy)", url: "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/", reason: "OCW lecture notes (the draft of the Polyanskiy-Wu book); no lecture videos; advanced."}
+  - {title: "NPTEL Information Theory and Coding (IISc Bangalore)", url: "https://nptel.ac.in/courses/108108168", reason: "Public video course; more communications-engineering oriented; MacKay better matches the ML framing."}
+  - {title: "Harvard Information Theory 2022 (Gregory Falkovich)", url: "https://www.youtube.com/playlist?list=PLDEN2FPNHwVZKAFqfFl1b_NNAESTJwV9o", reason: "Physics-flavored lectures; listed in cs-video-courses, not evaluated in depth."}
+  - {title: "Probabilistic Machine Learning: An Introduction (Murphy), Chapter 5 Information Theory", url: "https://probml.github.io/pml-book/book1.html", reason: "Compact ML-oriented chapter and reference; not a course."}
+notes: "MacKay (book + 2012 Cambridge lectures) is chosen as the primary pair because it integrates information theory with inference and learning, matching the generative path, and everything is free with videos and exercises. Cover & Thomas stays as the rigorous reference and Polyanskiy-Wu as the modern theory-path text. EE274 is the practical compression course (implementations of Huffman, arithmetic coding and ANS) and has public notes/homework even though the newest run has no confirmed public video. The node scope also includes channel coding; MacKay covers noisy-channel coding and error-correcting codes in Part I and II."
+split_proposal: null
+prereq_changes: "None. Hard prerequisite probability is right; consider adding soft: [discrete-math] (counting, typical sets) and soft: [calculus] for differential entropy."
+open_questions:
+  - "Cover & Thomas Wiley page (Cloudflare 403) and Cambridge publisher page not opened; verified: false for Cover & Thomas."
+  - "EE274 Fall 2025-26: whether this run's lectures are posted publicly is not stated (page says some sessions may be recorded for Stanford use); older Fall 2023 playlist is public."
+  - "Stanford EE276 pages could not be opened (web.stanford.edu unreachable); its Winter 2025-26 data comes from search snippets."
+  - "Shannon PDF URL is http-only in the Harvard-hosted copy (listed HTTP; the schema asks for HTTPS; the https form was not tested)."
+last_verified: 2026-11-18

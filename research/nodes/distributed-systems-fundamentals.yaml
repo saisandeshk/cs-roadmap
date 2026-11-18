@@ -1,0 +1,156 @@
+id: distributed-systems-fundamentals
+title: Distributed Systems Fundamentals
+group: G10
+paths: [distributed]
+hard: [operating-systems, computer-networking]
+soft: [concurrent-programming, go-programming]
+scope: "System models, RPC, failures, time and clocks, causality, MapReduce, fault-tolerance basics."
+
+level: intermediate
+estimated_hours: 70
+resources:
+  - id: kleppmann-notes
+    role: primary-text
+    kind: book
+    title: "Concurrent and Distributed Systems: Distributed Systems lecture notes"
+    by: "Martin Kleppmann (University of Cambridge, Part IB)"
+    url: https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf
+    edition_or_term: "2021-22 version of the notes (91 pages); the course page has current-year versions"
+    access: free
+    use: "Ch. 1 (RPC, distributed systems vs networking), Ch. 2 (two generals, Byzantine generals, system models, fault tolerance), Ch. 3 (physical clocks, NTP, Lamport and vector clocks, happens-before), Ch. 4 (broadcast protocols and logical time). Do the numbered exercises (solutions are for supervisors, so discuss them or check against the lectures). Ch. 5-8 are reused by the consensus and distributed-transactions nodes."
+    why: "The most rigorous short treatment of system models, failures, time and causality in print, written for strong second-year students; free, and the same author wrote DDIA so the two complement each other. Covers every item in the node scope except MapReduce (taken from MIT 6.5840)."
+    verified: true
+  - id: kleppmann-lectures
+    role: primary-course
+    kind: course
+    title: "Cambridge CST Part IB: Concurrent and Distributed Systems (distributed half) and Kleppmann's 8-lecture Distributed Systems series"
+    by: "Martin Kleppmann (University of Cambridge)"
+    url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/
+    edition_or_term: "2025-26 delivered; 2026-27 page published"
+    access: free
+    use: "Watch lectures 1-4 of the 8-lecture YouTube series (introduction/RPC, system models, time/clocks, broadcast and logical time) alongside notes chapters 1-4; lectures 5-8 (replication, consensus, consistency, case studies) belong to the next two nodes."
+    why: "Compact, public, and exactly aligned with the primary text. The 2020 YouTube recordings are the newest public ones; recordings of the current Cambridge run are on Panopto behind the student login."
+    verified: true
+    course:
+      latest_term: "2025-26 (Cambridge Part IB, Lent term; 2026-27 page already published)"
+      latest_url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/
+      videos: enrolled-only
+      public_videos_term: "2020 (Kleppmann, 8 lectures, YouTube)"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"
+      assignments: partial
+      assignments_url: https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf
+  - id: mit-6824-start
+    role: practice
+    kind: course
+    title: "MIT 6.5840 Distributed Systems: Lectures 1-3 with Lab 1 (MapReduce) and Lab 2 (Key/Value server)"
+    by: "MIT (Robert Morris, Frans Kaashoek)"
+    url: https://pdos.csail.mit.edu/6.824/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lecture 1 + MapReduce paper, Lecture 2 (RPC and threads in Go; do the Go tour first), Lecture 3 + GFS paper; labs: Lab 1 MapReduce (https://pdos.csail.mit.edu/6.824/labs/lab-mr.html) and Lab 2 key/value server with at-most-once semantics (https://pdos.csail.mit.edu/6.824/labs/lab-kvsrv1.html). Labs 3-5 are used by the next two nodes."
+    why: "Gap: the primary text has no programming labs and no MapReduce. Lab 1 is the canonical MapReduce exercise and Lab 2 forces you to confront unreliable-network RPC and duplicate requests. Local tests are public (go test); no autograder is run for outsiders."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://pdos.csail.mit.edu/6.824/schedule.html
+      videos: none
+      public_videos_term: "Spring 2020 (official MIT 6.824 YouTube playlist)"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB"
+      assignments: public-with-autograder
+      assignments_url: https://pdos.csail.mit.edu/6.824/labs/lab-mr.html
+  - id: gossip-glomers
+    role: practice
+    kind: practice-site
+    title: "Gossip Glomers (Fly.io distributed systems challenges, built on Maelstrom)"
+    by: "Fly.io and Kyle Kingsbury (Jepsen)"
+    url: https://fly.io/dist-sys/
+    edition_or_term: "Current"
+    access: free
+    use: "Challenges #1 Echo, #2 Unique ID Generation, #3a-#3e Broadcast (single-node, multi-node, fault-tolerant, efficient I and II), #4 Grow-Only Counter. Use any language; Maelstrom (github.com/jepsen-io/maelstrom) runs and checks your nodes under simulated partitions and delays."
+    why: "Hidden gem and the fastest hands-on way to feel network partitions, retries and gossip with an automated checker; language-agnostic, so it works if you have not learned Go."
+    verified: true
+  - id: ddia2-trouble
+    role: secondary
+    kind: book
+    title: "Designing Data-Intensive Applications, 2nd edition: The Trouble with Distributed Systems and Encoding and Evolution"
+    by: "Martin Kleppmann, Chris Riccomini"
+    url: https://dataintensive.net/
+    edition_or_term: "2nd edition (O'Reilly, March 2026, 670 pages)"
+    access: paid
+    use: "Chapter 9 'The Trouble with Distributed Systems' (unreliable networks, clocks, process pauses, knowledge/truth, fencing) and Chapter 5 'Encoding and Evolution' (serialization, schema evolution, RPC/REST dataflow). Read after the lecture notes as the practitioner's counterpart."
+    why: "Gap: the notes are model-oriented; DDIA adds real-world failure stories (clock skew, GC pauses, ambiguous RPC outcomes) and serialization formats used in RPC systems."
+    verified: true
+  - id: lamport-time-clocks
+    role: reference
+    kind: paper
+    title: "Time, Clocks, and the Ordering of Events in a Distributed System"
+    by: "Leslie Lamport (CACM 1978)"
+    url: https://lamport.azurewebsites.net/pubs/time-clocks.pdf
+    edition_or_term: "1978"
+    access: free
+    use: "Read in full (about 8 pages) after the clocks lecture; implement Lamport and vector clocks in the Gossip Glomers or a short Go exercise."
+    why: "Gap: the founding paper for happens-before; short and readable, and cited by every later node."
+    verified: true
+  - id: mapreduce-paper
+    role: reference
+    kind: paper
+    title: "MapReduce: Simplified Data Processing on Large Clusters"
+    by: "Jeffrey Dean, Sanjay Ghemawat (OSDI 2004)"
+    url: https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf
+    edition_or_term: "OSDI 2004"
+    access: free
+    use: "Read before MIT Lab 1; focus on Sections 2-3 (programming model, fault tolerance via re-execution) and the discussion of stragglers."
+    why: "Gap: MapReduce is in the node scope and is the textbook example of fault tolerance by deterministic re-execution; the batch-and-stream-processing node then builds on it."
+    verified: true
+  - id: aws-retries
+    role: secondary
+    kind: article
+    title: "Timeouts, retries, and backoff with jitter (AWS Builders' Library)"
+    by: "Marc Brooker (AWS)"
+    url: https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+    edition_or_term: "Current"
+    access: free
+    use: "Read in full, then the companion article 'Making retries safe with idempotent APIs'; relate to the at-most-once RPC problem in MIT Lab 2."
+    why: "Gap: connects the abstract failure models to the concrete rules (timeouts, bounded retries, jitter, idempotency keys) that production RPC systems use."
+    verified: true
+  - id: brown-1380
+    role: practice
+    kind: course
+    title: "Brown CS 1380/1385/2380 Distributed Systems (milestones M1-M3)"
+    by: "Brown University CS Department"
+    url: https://cs.brown.edu/courses/csci1380/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Public milestone handouts: M1 Serialization/Deserialization, M2 Actors and RPCs, M3 Node Groups and Gossip; later milestones (distributed storage, distributed processing) are reused by the batch-processing node."
+    why: "Hidden gem: a staged build-a-distributed-runtime project (RPC layer, gossip membership) in JavaScript, useful if you want a non-Go alternative to MIT's labs. Autograding is not public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs.brown.edu/courses/csci1380/
+      videos: unknown
+      assignments: public
+      assignments_url: https://cs.brown.edu/courses/csci1380/milestones/
+  - id: van-steen
+    role: reference
+    kind: book
+    title: "Distributed Systems, 4th edition"
+    by: "Maarten van Steen, Andrew S. Tanenbaum"
+    url: https://www.distributed-systems.net/index.php/books/ds4/
+    edition_or_term: "4th edition, version 4.03 (January 2025)"
+    access: free
+    use: "Look-up reference for communication (RPC, message queues), coordination (clocks, mutual exclusion, election) and fault tolerance chapters; slides and runnable Python examples are provided."
+    why: "Gap: a broad free reference with code, kept off the primary route because it is more survey-like and less rigorous than the Cambridge notes."
+    verified: true
+considered:
+  - {title: "UW CSE 452 Distributed Systems (Autumn 2026, DSLabs)", url: "https://courses.cs.washington.edu/courses/cse452/", reason: "Strong DSLabs-based course, but lectures are captured only for enrolled students; DSLabs itself is used in the consensus node."}
+  - {title: "Understanding Distributed Systems, 2nd edition (Vitillo)", url: "https://understandingdistributed.systems/", reason: "Readable practitioner overview; used in large-scale-system-design instead of here."}
+  - {title: "Building Distributed Systems (builddistributedsystem.com)", url: "https://builddistributedsystem.com/tracks", reason: "34 tracks of Maelstrom-style tasks; has a paid tier and I could not assess depth, so Gossip Glomers remains the primary practice."}
+  - {title: "MIT 6.1800 Computer Systems Engineering (Spring 2026)", url: "https://web.mit.edu/6.1800/www/", reason: "Survey with one distributed unit; too broad."}
+notes: "Course is intentionally split: Kleppmann (rigorous models, time, causality, broadcast) as primary text and primary course, MIT 6.5840 supplies the programming labs and MapReduce. Kleppmann's notes also serve the next nodes (ch. 5 replication, 6 consensus/Raft, 7 consistency and 2PC, 8 Spanner and CRDTs). Go is not a hard prerequisite because Gossip Glomers and Brown CS 1380 allow other languages, but MIT's labs assume Go (soft prerequisite)."
+split_proposal: null
+prereq_changes: "Consider promoting concurrent-programming from soft to hard: the MIT labs require comfort with threads, locks and channels."
+open_questions:
+  - "DDIA 2nd edition chapter numbers: Ch. 1, 3, 4, 5, 6, 7 and 11 were confirmed from the Waterloo CS 451 syllabus; Ch. 9 for The Trouble with Distributed Systems follows the owner's seed and could not be confirmed because the O'Reilly pages return 403."
+  - "The Kleppmann lecture playlist is the 2020 recording; the notes linked are the 2021-22 version. I did not open each of the 8 videos."
+  - "Cambridge 2025-26 recordings page says to check Panopto via Moodle, so I treat the latest term as enrolled-only."
+last_verified: 2026-11-18

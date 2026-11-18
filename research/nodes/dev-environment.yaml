@@ -1,0 +1,169 @@
+id: dev-environment
+title: Developer Tooling
+group: G1
+paths:
+- core
+hard: []
+soft:
+- python-programming
+scope: Shell, Unix/Linux, git, editors, build systems (make/cmake), debuggers/profilers, containers basics (Missing Semester-style).
+level: intro
+estimated_hours: 35
+resources:
+- id: tlcl
+  role: primary-text
+  kind: book
+  title: The Linux Command Line
+  by: William Shotts
+  url: https://linuxcommand.org/tlcl.php
+  edition_or_term: Seventh Internet Edition (free PDF, 596 pp; No Starch print 3rd edition)
+  access: free
+  use: 'Part 1 (Learning the shell: navigation, files, permissions, processes), Part 2 (Configuration and environment), Part 3 (Common tasks: package management, storage, networking, searching, archiving, regular expressions), Part 4 (Writing shell scripts). Skip the later reference chapters on first pass.'
+  why: The most thorough, patient book for the Unix shell, which every later node assumes; free; pairs with Missing Semester which is faster but shallower.
+  verified: true
+- id: missing-semester
+  role: primary-course
+  kind: course
+  title: The Missing Semester of Your CS Education
+  by: MIT (Anish Athalye, Jon Gjengset, Jose Javier Gonzalez Ortiz)
+  url: https://missing.csail.mit.edu/2026/
+  edition_or_term: IAP January 2026 (9 lectures)
+  access: free
+  use: Lectures 1 Course Overview and Introduction to the Shell, 2 Command-line Environment, 3 Development Environment and Tools, 4 Debugging and Profiling, 5 Version Control and Git, 6 Packaging and Shipping Code; then 7 Agentic Coding, 8 Beyond the Code, 9 Code Quality. Do the exercises at the end of every lecture page.
+  why: The exact scope of this node (shell, tooling, debugging/profiling, git, packaging) with a 2026 refresh adding packaging/shipping code, agentic coding and code quality; public videos and notes.
+  verified: true
+  course:
+    latest_term: IAP 2026 (Jan 12-23, 2026)
+    latest_url: https://missing.csail.mit.edu/2026/
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLyzOVJj3bHQunmnnTXrNbZnBaCA-ieK4L
+    assignments: public
+    assignments_url: https://missing.csail.mit.edu/2026/debugging-profiling/
+- id: pro-git
+  role: secondary
+  kind: book
+  title: Pro Git, 2nd edition
+  by: Scott Chacon, Ben Straub
+  url: https://git-scm.com/book/en/v2
+  edition_or_term: 2nd edition (online, kept current)
+  access: free
+  use: Ch. 2 Git Basics, 3 Git Branching, 5 Distributed Git (workflows), 7 Git Tools (revision selection, stashing, rewriting history, reset demystified, advanced merging, rerere), 10 Git Internals.
+  why: Fills the git-internals and recovery gap in the 90-minute Missing Semester lecture; the canonical reference.
+  verified: true
+- id: learn-git-branching
+  role: practice
+  kind: practice-site
+  title: Learn Git Branching
+  by: Peter Cottle
+  url: https://learngitbranching.js.org/
+  edition_or_term: Interactive
+  access: free
+  use: 'Main levels: Introduction Sequence, Ramping Up, Moving Work Around, A Mixed Bag; then the Advanced Topics (interactive rebase, rebasing over 9000 times); also Oh My Git (https://ohmygit.org/) for a game version.'
+  why: Visualised practice of branches, rebase and cherry-pick that actually builds the commit-graph mental model.
+  verified: true
+- id: bandit
+  role: practice
+  kind: practice-site
+  title: OverTheWire Bandit
+  by: OverTheWire
+  url: https://overthewire.org/wargames/bandit/
+  edition_or_term: Living wargame
+  access: free
+  use: Levels 0-20 (ssh, file permissions, find/grep/sort/uniq, pipes, base64, cron, netcat); skip beyond 25 unless desired.
+  why: Learn the shell by solving puzzles on a real remote Unix box; cements pipes, permissions and SSH.
+  verified: true
+- id: make-cmake
+  role: secondary
+  kind: website
+  title: Makefile Tutorial by Example and the CMake Tutorial
+  by: Chase Lambert; Kitware
+  url: https://makefiletutorial.com/
+  edition_or_term: Current
+  access: free
+  use: 'Makefile tutorial: Getting started, Makefile syntax, targets, variables, automatic variables, implicit rules, pattern rules; then CMake tutorial (https://cmake.org/cmake/help/latest/guide/tutorial/index.html) first steps: basic starting point, adding a library, usage requirements, adding tests, installing.'
+  why: 'The build-systems scope item: Make for understanding dependency graphs and CMake as the practical cross-platform C/C++ build.'
+  verified: true
+- id: debug-profile-tools
+  role: secondary
+  kind: docs
+  title: GDB, Valgrind and Linux perf profiling references
+  by: GNU; Valgrind; Brendan Gregg
+  url: https://sourceware.org/gdb/current/onlinedocs/gdb.html
+  edition_or_term: Current docs
+  access: free
+  use: 'GDB: sample session, breakpoints, stack, print/x; Valgrind quick start (https://valgrind.org/docs/manual/quick-start.html); Brendan Gregg Linux Performance page (https://www.brendangregg.com/linuxperf.html) for perf/flame graphs; use pdb for Python.'
+  why: Missing Semester only introduces debuggers/profilers; these are the tool-specific references you will actually open when debugging C and measuring.
+  verified: true
+- id: docker-get-started
+  role: secondary
+  kind: docs
+  title: Docker Get Started
+  by: Docker
+  url: https://docs.docker.com/get-started/
+  edition_or_term: Current
+  access: free
+  use: Containerize an application, update/share it, persist data with volumes, bind mounts, multi-container apps with Compose, and the build-best-practices guide.
+  why: Containers basics scope item; Missing Semester packaging lecture mentions containers but does not teach them hands-on.
+  verified: true
+- id: wizard-zines
+  role: secondary
+  kind: website
+  title: Wizard Zines (Julia Evans)
+  by: Julia Evans
+  url: https://wizardzines.com/
+  edition_or_term: Zines (some free, some paid)
+  access: mixed
+  use: Pick the zines on the command line, bash, debugging, containers and git; browse the free black-and-white-cover zines first.
+  why: 'Hidden gem: one-page mental models for tools that docs explain poorly; good revision aid.'
+  verified: true
+- id: man-pages-shellcheck
+  role: reference
+  kind: docs
+  title: Linux man pages and ShellCheck
+  by: Michael Kerrisk (man7.org); ShellCheck authors
+  url: https://man7.org/linux/man-pages/
+  edition_or_term: Living
+  access: free
+  use: 'Look up section 1 (commands) and section 7 (overviews: path_resolution, signal, pipe); paste scripts into ShellCheck (https://www.shellcheck.net/) and explain each warning; explainshell.com decodes unknown command lines.'
+  why: 'Reference habits: man pages and a linter are what make shell scripts reliable.'
+  verified: true
+- id: neovim-docs
+  role: reference
+  kind: docs
+  title: Neovim user manual and :Tutor
+  by: Neovim project
+  url: https://neovim.io/doc/user/
+  edition_or_term: Current docs
+  access: free
+  use: Run :Tutor, then the user manual starting at the first-steps and motion chapters; Vim keybindings alone are enough for remote editing even if you use another editor.
+  why: 'The editors scope item: learn one modal editor well enough to edit on a server; Missing Semester shows it but does not drill it.'
+  verified: true
+considered:
+- title: 'Software Carpentry: The Unix Shell'
+  url: https://swcarpentry.github.io/shell-novice/
+  reason: Excellent gentle lesson, shorter than TLCL; good alternative for non-programmers.
+- title: Missing Semester 2020 edition
+  url: https://missing.csail.mit.edu/2020/
+  reason: Previous edition with separate lectures on metaprogramming, security and cryptography, and Q&A; kept as extra material, not current.
+- title: Atlassian Git tutorials
+  url: https://www.atlassian.com/git/tutorials
+  reason: Fine intro; Pro Git is more authoritative and free.
+- title: Beej Quick Guide to GDB
+  url: https://beej.us/guide/bggdb/
+  reason: Short but 2009; GDB manual and Stanford CS107 GDB guide are better.
+- title: The Art of Debugging (Stas Bekman, owner seed)
+  url: https://github.com/stas00/the-art-of-debugging
+  reason: Seed pick; GitHub unreachable from this environment so unverified; good practical debugging notes.
+- title: GNU Make manual
+  url: https://www.gnu.org/software/make/manual/
+  reason: Complete reference; unreachable by curl during research, so the example-driven tutorial is listed instead.
+- title: Linux Journey / The Art of Command Line (GitHub)
+  url: https://linuxjourney.com/
+  reason: Linux Journey now redirects to a vendor site; Art of Command Line is a cheat-sheet, not a course.
+notes: The Missing Semester has a 2026 refresh (IAP Jan 2026, nine lectures, YouTube playlist titled Missing Semester IAP 2026). Compared to the 2020 edition it dropped the separate security/cryptography/metaprogramming sessions and added packaging and shipping, agentic coding, code quality and Beyond the Code. It is short (about 9 x 1 hour) so I added TLCL as the primary text for depth on the shell, Pro Git for git depth, and tool-specific resources (Make/CMake, GDB/Valgrind/perf, Docker) that the course only samples. This node can be done in parallel with python-programming (hard prerequisites are empty); a first pass of lectures 1-5 is recommended in week 1.
+split_proposal: null
+prereq_changes: Consider making dev-environment a soft prerequisite of c-programming, data-structures and software-construction (git and terminal are assumed there).
+open_questions:
+- Which of the Wizard Zines titles are currently free was not checked (page lists black-and-white cover zines as free).
+- GNU make manual and Stanford CS107 pages were unreachable by curl; example-based tutorials listed instead.
+last_verified: '2026-11-18'

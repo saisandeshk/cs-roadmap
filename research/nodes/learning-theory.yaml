@@ -1,0 +1,136 @@
+# --- copied from research/skeleton.yaml ---
+id: learning-theory
+title: Learning Theory
+group: G3
+paths: [theory]
+hard: [probability, ml-fundamentals]
+soft: [optimization]
+scope: "PAC learning, VC dimension, Rademacher complexity, online learning, generalization theory for deep learning."
+
+# --- curation data ---
+level: advanced
+estimated_hours: 150
+resources:
+  - id: ssbd-understanding-ml
+    role: primary-text
+    kind: book
+    title: "Understanding Machine Learning: From Theory to Algorithms"
+    by: "Shai Shalev-Shwartz, Shai Ben-David"
+    url: https://www.cambridge.org/core/books/understanding-machine-learning/3059695661405D25673058E43C8BE2A6
+    edition_or_term: "Cambridge University Press 2014; free author PDF (huji.ac.il/~shais/UnderstandingMachineLearning; the site was blocked from this environment)"
+    access: mixed
+    use: "Part I: ch. 2-6 (PAC, agnostic PAC, uniform convergence, bias-complexity, VC dimension), 7-8 (non-uniform learnability, runtime); Part II: ch. 9 (linear predictors), 12-14 (convex learning, regularization and stability, SGD), 16 (kernels); Part III: ch. 21 (online learning), 26 (Rademacher complexity), 27 (covering numbers), 31 (PAC-Bayes); optionally 28 (proof of fundamental theorem). Do the exercises on every chapter read. Chapter numbers are from memory of the printed edition and were not checked against the table of contents."
+    why: "The standard rigorous introduction that matches the scope (PAC, VC, Rademacher, online); written as a book with exercises; free PDF from the authors. Does not cover overparameterized/deep generalization, hence Bach and Telgarsky below."
+    verified: true
+  - id: cs229m
+    role: primary-course
+    kind: course
+    title: "Stanford STATS214 / CS229M Machine Learning Theory"
+    by: "Stanford (Tengyu Ma 2021; Percy Liang earlier; Tselil Schramm Fall 2024)"
+    url: https://tselilschramm.org/mltheory/stats214-fall24.html
+    edition_or_term: "Fall 2024 page (instructor Schramm); public lecture videos are Fall 2021 (Tengyu Ma)"
+    access: free
+    use: "Lecture notes (Tengyu Ma 167 pp. PDF, Percy Liang notes) and the Fall 2021 YouTube playlist: ERM, asymptotics and uniform convergence, Rademacher complexity and generalization bounds, kernels and margin bounds, online learning, implicit regularization, deep-learning generalization (NTK, double descent, etc.). Read the schedule on the Fall 2024 page for readings."
+    why: "Only public graduate course that goes from classical uniform convergence to modern deep-learning generalization, with lecture videos and typed notes. The recent term (Fall 2024) lists no public recordings or problem sets, so the 2021 videos plus the notes carry the load."
+    verified: true
+    course:
+      latest_term: "Fall 2024 (Schramm); newer Stanford offerings not located"
+      latest_url: https://tselilschramm.org/mltheory/stats214-fall24.html
+      videos: none
+      public_videos_term: "Fall 2021 (Tengyu Ma)"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rP8nAmISxFINlGKSK4rbLKh
+      assignments: unknown
+  - id: bach-ltfp
+    role: secondary
+    kind: book
+    title: "Learning Theory from First Principles"
+    by: "Francis Bach"
+    url: https://www.di.ens.fr/~fbach/ltfp_book.pdf
+    edition_or_term: "MIT Press 2024; free author PDF (version dated May 26, 2025, about 470 pp.)"
+    access: free
+    use: "Ch. 4 (empirical risk minimization), 5 (optimization for ML), 7 (kernel methods), 9 (neural networks), 11 (from online learning to bandits), 12 (overparameterized models: implicit bias, double descent, lazy regime/NTK), 14.4 (PAC-Bayes), 15 (lower bounds). Read ch. 12 after the classical chapters of Shalev-Shwartz and Ben-David."
+    why: "Gap: modern, unified treatment including overparameterized models, double descent and bandits missing in S-S&B; rigorous and self-contained; free PDF from the author."
+    verified: true
+  - id: mohri-fml
+    role: secondary
+    kind: book
+    title: "Foundations of Machine Learning, 2nd edition"
+    by: "Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar"
+    url: https://cs.nyu.edu/~mohri/mlbook/
+    edition_or_term: "MIT Press 2018 (official free PDF and HTML on the author page; lecture slides)"
+    access: free
+    use: "Chapters on PAC learning, Rademacher complexity and VC dimension, SVMs/margin theory, boosting, online learning, and the appendices on concentration inequalities; use the lecture slides as a quick overview."
+    why: "Gap: cleaner Rademacher-complexity-first exposition than S-S&B, with extensive margin theory and an appendix of concentration tools; lecture slides provided."
+    verified: true
+  - id: hazan-oco
+    role: secondary
+    kind: book
+    title: "Introduction to Online Convex Optimization"
+    by: "Elad Hazan"
+    url: https://arxiv.org/abs/1909.05207
+    edition_or_term: "2nd edition (arXiv v5+; MIT Press 2022)"
+    access: free
+    use: "Ch. 1-4 (online learning basics, online gradient descent, regret minimization, strong convexity), 5 (regularization/FTRL), 6 (bandit convex optimization) for the online-learning unit; optional later chapters on boosting and game theory."
+    why: "Gap: the online learning portion of the scope gets only a chapter in S-S&B; Hazan is the compact standard reference for regret analysis, FTRL and mirror descent ideas."
+    verified: true
+  - id: telgarsky-dlt
+    role: secondary
+    kind: website
+    title: "Deep learning theory lecture notes"
+    by: "Matus Telgarsky"
+    url: https://mjt.cs.illinois.edu/dlt/
+    edition_or_term: "Alpha version v0.0 (2021-10-27); site live"
+    access: free
+    use: "Approximation (universal approximation, Barron norm, benefits of depth), optimization (convex optimization, NTK proofs, nonsmoothness), and generalization chapters (Rademacher and covering bounds for networks)."
+    why: "Gap: the generalization-for-deep-learning unit needs a theorem-proof treatment of what neural nets can represent, optimize and generalize; these notes provide clean, focused proofs."
+    verified: true
+  - id: bmr-statistical-viewpoint
+    role: reference
+    kind: paper
+    title: "Deep learning: a statistical viewpoint"
+    by: "Peter L. Bartlett, Andrea Montanari, Alexander Rakhlin"
+    url: https://arxiv.org/abs/2103.09177
+    edition_or_term: "Acta Numerica 2021 (arXiv 2103.09177)"
+    access: free
+    use: "Read the sections on benign overfitting, implicit regularization and interpolation to see how the classical bounds are rethought for overparameterized models."
+    why: "Gap: the 30-page survey that connects classical bounds to modern phenomena; a good capstone reading."
+    verified: true
+  - id: vershynin-hdp
+    role: reference
+    kind: book
+    title: "High-Dimensional Probability: An Introduction with Applications in Data Science"
+    by: "Roman Vershynin"
+    url: https://webapps.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html
+    edition_or_term: "Cambridge University Press 2018 (free author version)"
+    access: free
+    use: "Sub-Gaussian and sub-exponential tails, concentration inequalities, covering numbers, chaining and generic chaining, VC dimension, Rademacher symmetrization: look up the technique when a proof calls it."
+    why: "Gap: the probability toolbox behind uniform convergence and Rademacher bounds, in textbook form with exercises."
+    verified: true
+  - id: ssbd-exercises
+    role: practice
+    kind: book
+    title: "Understanding Machine Learning: chapter exercises (and proofs to reproduce)"
+    by: "Shalev-Shwartz, Ben-David"
+    url: https://www.cambridge.org/core/books/understanding-machine-learning/3059695661405D25673058E43C8BE2A6
+    edition_or_term: "Exercises at the end of each chapter"
+    access: mixed
+    use: "Prove yourself: sample complexity of finite hypothesis classes (ch. 2-4), VC dimension of halfspaces and axis-aligned rectangles (ch. 6), Rademacher bound for linear predictors with bounded norm (ch. 26), regret bound for online gradient descent (ch. 21); attempt at least 4 exercises per chapter."
+    why: "Learning theory is learned by proving; these named derivations are the checks that you can produce the core theorems unaided."
+    verified: true
+considered:
+  - {title: "MIT 9.520 Statistical Learning Theory and Applications (Fall 2015 videos)", url: "https://www.youtube.com/playlist?list=PLyGKBDfnk-iDj3FBd0Avr_dLbrU8VG73O", reason: "Verified live playlist; older and kernel/regularization-centric (Poggio, Rosasco); broader than classical PAC; alternative for the kernel/RKHS unit."}
+  - {title: "KAIST EE531 Statistical Learning Theory (Spring 2026)", url: "https://www.youtube.com/playlist?list=PL7ToDS7cyORV5XtQ_Kkj07yp_3BnNouWK", reason: "Verified live playlist titled 'EE531: Statistical Learning'; very recent video recordings (course listed in cs-video-courses as Spring 2026); selection not checked, so a candidate to evaluate as alternate course."}
+  - {title: "KAIST CS492 Computational Learning Theory (Fall 2021)", url: "https://www.youtube.com/playlist?list=PLvV9DPeJV9xzOggE1dvO4gcFr6Rf2AfeN", reason: "Verified live playlist; PAC-centric; not examined."}
+  - {title: "Wainwright, High-Dimensional Statistics", url: "https://www.cambridge.org/core/books/highdimensional-statistics/8A91ECEEC38F46DAB53E9FF8757C7A4E", reason: "Gold standard for non-asymptotic statistics; advanced; URL from memory not opened."}
+  - {title: "Mohri et al. course materials / Mohri slides", url: "https://cs.nyu.edu/~mohri/mlbook/", reason: "Used as secondary text."}
+  - {title: "Statistical Learning Theory and Sequential Prediction (Rakhlin, Sridharan notes)", url: "https://www.mit.edu/~rakhlin/courses/", reason: "Excellent for online and sequential complexities; URL not opened."}
+notes: "Primary pairing: Shalev-Shwartz & Ben-David for classical PAC/VC/Rademacher/online, with CS229M (2021 videos and 2022 notes) as the course and Bach plus Telgarsky as the modern/deep-learning extension. The newest public lecture recordings I confirmed are Fall 2021 (CS229M); KAIST EE531 Spring 2026 playlist exists and may be a good fresher alternative but is not vetted. Scope's 'generalization theory for deep learning' has no single text: use Bach ch. 12, Telgarsky and the Bartlett-Montanari-Rakhlin survey. 150 hours assume the classical core in depth and DL theory at survey depth."
+split_proposal: "Possible split into 'Statistical Learning Theory' (PAC, VC, Rademacher, online) and 'Theory of Deep Learning' (approximation, optimization, generalization of overparameterized nets, NTK), since the latter is a research-level topic."
+prereq_changes: "Add soft: [linear-algebra] and soft: [algorithm-design] (for the NP-hardness of learning and boosting sections); optimization is already soft."
+open_questions:
+  - "Author PDF of S-S&B (huji.ac.il) returned a security block, so the free-PDF claim is based on search results and not opened."
+  - "Whether STATS214/CS229M has 2025 or 2026 offerings with public notes or videos."
+  - "CS229M assignments availability (not found on the public page)."
+  - "KAIST EE531 Spring 2026 playlist contents not reviewed."
+  - "S-S&B chapter numbers from memory."
+last_verified: 2026-11-18

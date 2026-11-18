@@ -80,7 +80,7 @@ resources:
     role: practice
     kind: tool
     title: "nanoVLM: the simplest, fastest repository for training and fine-tuning small VLMs"
-    by: "Hugging Face (Luis Wiedmann, Andres Marafioti and contributors)"
+    by: "Hugging Face (nanoVLM contributors)"
     url: https://github.com/huggingface/nanoVLM
     edition_or_term: "Sept 2025 update (image splitting, multi-node); Apache-2.0"
     access: free
