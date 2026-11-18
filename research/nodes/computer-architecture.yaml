@@ -28,14 +28,14 @@ resources:
     url: https://cs61c.org/
     edition_or_term: "Fall 2026 (Dan Garcia)"
     access: mixed
-    use: "Follow the Fall 2026 calendar and labs/projects: Labs 3-4 (RISC-V, calling convention), Lab 5 (Logisim), Lab 6 (CPU, pipelining), Lab 7 (parallelism: SIMD/OpenMP); Projects 2 (CS61Classify, RISC-V assembly) and 3 (CS61CPU, build a pipelined RISC-V CPU). Use the 2020 recordings or course notes for lecture content."
+    use: "Follow the Fall 2026 calendar and labs/projects: Labs 3-4 (RISC-V, calling convention), Lab 5 (Logisim), Lab 6 (CPU, pipelining), Lab 7 (parallelism); Projects 2 (CS61Classify, RISC-V assembly) and 3 (CS61CPU, build a pipelined RISC-V CPU). Use the 2020 recordings or course notes for lecture content."
     why: "Takes a C programmer through RISC-V assembly, a CPU built in a logic simulator, caches, virtual memory and parallelism, with real labs/projects. Closest match to the scope; public notes, labs and projects every term."
     verified: true
     course:
       latest_term: "Fall 2026"
       latest_url: https://cs61c.org/fa26/
       videos: enrolled-only
-      public_videos_term: "Summer 2020 (YouTube playlist); Fall 2020 recordings are linked from the archived course site"
+      public_videos_term: "Summer 2020 (YouTube playlist, verified); Fall 2020 recordings reportedly also public per csdiy.wiki (archived site is behind CalNet, unverified)"
       public_videos_url: https://youtube.com/playlist?list=PLDoI-XvXO0aqgoMQvogzmf7CKiSMSUS3M
       assignments: public
       assignments_url: https://cs61c.org/fa26/labs/
@@ -58,7 +58,7 @@ resources:
     url: https://safari.ethz.ch/digitaltechnik/spring2026/
     edition_or_term: "Spring 2026 (227-0003-10V)"
     access: free
-    use: "Use the public lecture/livestream playlists for deeper treatment of microarchitecture: ISA and assembly, single-cycle and pipelined processors, out-of-order basics, caches, SIMD/GPU. Do the optional HWs; Verilog labs are good if the owner wants to go toward digital-logic."
+    use: "Use the public lecture/livestream playlists for deeper treatment of microarchitecture: ISA and assembly, processor design and pipelining, caches, and the later microarchitecture topics (see the schedule). Do the optional HWs; Verilog labs are good if the owner wants to go toward digital-logic."
     why: "Fills the gap of fully public, current-term video lectures (61C's 2026 recordings are enrolled-only) and goes further into microarchitecture; bottom-up from transistors so it overlaps the digital-logic node."
     verified: true
     course:

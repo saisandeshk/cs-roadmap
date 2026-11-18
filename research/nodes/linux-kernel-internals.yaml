@@ -17,7 +17,7 @@ resources:
     url: https://www.packtpub.com/en-us/product/linux-kernel-programming-9781803232225
     edition_or_term: "2nd edition (Packt, Feb 2024; based on the 6.1 LTS kernel)"
     access: paid
-    use: "Parts 1-2 and 3-4: building the kernel from source, kernel architecture and LKM framework, kernel memory allocation (page allocator, slab, vmalloc), process/thread internals, CPU scheduling (incl. cgroups v2), and kernel synchronization/locking (spinlocks, mutexes, RCU, lockdep). Run the book's code in a VM; pair with the companion repo."
+    use: "Read by topic (chapter numbers not checked): building the kernel from source, kernel architecture and LKM framework, kernel memory allocation (page allocator, slab, vmalloc), process/thread internals, CPU scheduling (incl. cgroups v2), and kernel synchronization/locking (spinlocks, mutexes, RCU, lockdep). Run the book's code in a VM; pair with the companion repo."
     why: "The only recent book that teaches kernel internals and module development against a modern LTS kernel, so code and APIs still compile; Love's classic is a decade behind. Covers the scope's architecture, scheduler, memory management and modules; weaker on VFS and device drivers (use the course and Bootlin for those)."
     verified: false
   - id: linux-kernel-teaching
@@ -106,7 +106,7 @@ resources:
     url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
     edition_or_term: "free self-paced course"
     access: free
-    use: "Do the full free course (about 10 hours): development process, tools, first patch."
+    use: "Do the full free course: development process, tools, first patch."
     why: "Official on-ramp to contributing; complements the Kernel Newbies material."
     verified: true
     course:
@@ -120,7 +120,6 @@ considered:
   - {title: "Linux Device Drivers, 3rd ed. (LDD3)", url: "https://lwn.net/Kernel/LDD3/", reason: "Free but 2.6.10; use LKMPG and the kernel's driver-api docs instead."}
   - {title: "Linux Inside (0xAX)", url: "https://0xax.gitbooks.io/linux-insides/content/", reason: "Fascinating x86_64 boot/interrupt/memory walkthrough but a snapshot of an older kernel; good optional reading for boot, not a primary."}
   - {title: "Understanding the Linux Kernel (Bovet & Cesati) / Understanding the Linux Virtual Memory Manager", url: "https://lwn.net/Kernel/Index/", reason: "Detailed but 2.6-era; out of date for scheduler and mm."}
-  - {title: "Linux Kernel Module Programming Guide vs Packt LKP 1st ed.", url: "https://sysprog21.github.io/lkmpg/", reason: "Used LKMPG; 1st edition superseded by the second."}
   - {title: "Bootlin Elixir cross-referencer", url: "https://elixir.bootlin.com/linux/latest/source", reason: "Essential for reading source online but showed a bot-check page to curl; use in a browser."}
 notes: "Book choice is a compromise: no modern free book covers the whole scope. Linux Kernel Programming 2e (6.1 LTS) is preferred because it is current and teaches by running code. The primary course is the UPB Linux Kernel Teaching set (rolling, 5.10-based) because its lecture/lab coverage matches the node scope; Bootlin adds modern driver/device-tree content. VFS and block layer coverage is mainly in the UPB labs and kernel docs; the scope's 'device drivers' item is best served by UPB labs + LKMPG + Bootlin."
 split_proposal: "Possibly split into 'linux-kernel-core' (scheduler, mm, synchronization, VFS) and 'linux-device-drivers' (module/driver model, device tree, interrupts, DMA)."

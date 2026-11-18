@@ -1,0 +1,63 @@
+id: program-verification
+title: Program Verification & Proof Assistants
+group: G11
+paths: [plc]
+hard: [type-systems]
+soft: []
+scope: Proof assistants (Rocq/Coq, Lean), Hoare logic, separation logic intro, verified software.
+level: advanced
+estimated_hours: 90
+resources:
+- {id: sf-series, role: primary-text, kind: book, title: 'Software Foundations (Rocq): Vol. 1 Logical Foundations, Vol. 2 Programming Language Foundations (Hoare chapters), Vol. 6 Separation Logic Foundations', by: Benjamin C. Pierce et al.; Arthur Chargueraud (Vol. 6), url: 'https://softwarefoundations.cis.upenn.edu/', edition_or_term: LF and PLF Version 7.1 (2026-08-24; Rocq/Coq 9.0+); SLF Version 3.1 (2026-08-24), access: free, use: 'LF: Basics, Induction, Lists, Poly, Tactics, Logic, IndProp, Maps, Imp (as needed to reach Hoare logic). PLF: Equiv, Hoare (Hoare Logic Part I), Hoare2 (decorated programs, loop invariants, weakest preconditions), HoareAsLogic (soundness and completeness). SLF: Basic (first taste), Repr (representation predicates: lists, trees), then the chapters on the separation-logic machinery. Optionally Vol. 3 Verified Functional Algorithms and Vol. 5 Verifiable C for verified software.', why: 'The standard machine-checked curriculum for proof assistants and program logics; fully free, kept current to Rocq 9 (Aug 2026), with graded exercises. Vol. 6 gives a real introduction to separation logic (the node''s ''separation logic intro''), and the Verifiable C volume is the path to verified C software.', verified: true}
+- id: frap-mit-6512
+  role: primary-course
+  kind: course
+  title: MIT 6.5120 / 6.512 Formal Reasoning About Programs (FRAP)
+  by: MIT (Adam Chlipala)
+  url: https://frap.csail.mit.edu/main
+  edition_or_term: 'Fall 2025 (earlier runs as 6.822: Spring 2016-2023)'
+  access: free
+  use: 'Chlipala''s FRAP book/course (https://adam.chlipala.net/frap/): Rocq tactics and proof automation, operational semantics, program verification by Hoare logic and abstract interpretation, separation logic, model checking, and compiler verification; use the posted exercises (problem sets) from earlier runs, which are published on the book site.'
+  why: Course built around a free book with large Rocq exercise sets for exactly this scope (verification of programs with automation); Chlipala's emphasis on proof automation complements SF's more pedagogical approach. Video availability is unknown (course site is JavaScript-only; not readable).
+  verified: true
+  course: {latest_term: Fall 2025, latest_url: 'https://frap.csail.mit.edu/main', videos: unknown, public_videos_term: see OPLSS 2026 Rocq/Iris lectures and DeepSpec 2017/2018 videos, public_videos_url: 'https://www.cs.uoregon.edu/research/summerschool/summer26/topics.php', assignments: public, assignments_url: 'https://adam.chlipala.net/frap/'}
+- {id: oplss-2026-rocq-iris, role: secondary, kind: video-series, title: 'Oregon Programming Languages Summer School (OPLSS) 2026: Types, Proofs, and Program Logics', by: 'Azevedo de Amorim, Dreyer, Gardner et al.', url: 'https://www.cs.uoregon.edu/research/summerschool/summer26/topics.php', edition_or_term: 'June 22 - July 4, 2026 (archives to 2002 at https://www.cs.uoregon.edu/research/summerschool/archives.html)', access: free, use: 'Azevedo de Amorim: ''Introduction to Rocq'' (4 lectures with notes); Dreyer: ''Modern Separation Logic'' (5 lectures; Iris/Rocq setup instructions); Gardner: ''Separation Logic and Compositional Symbolic Execution'' (4 lectures, notes and exercises). MP4 videos are linked from the topics page.', why: 'Complete, public, very recent lectures on exactly this node: proof assistant intro, modern separation logic (Iris) from its main author, and compositional symbolic execution tooling.', verified: true}
+- id: penn-cis5000-hoare
+  role: secondary
+  kind: course
+  title: Penn CIS 5000 Software Foundations (Lean edition)
+  by: University of Pennsylvania (Michael Hicks, Fall 2026)
+  url: https://www.engineering.upenn.edu/~cis5000/current/index.html
+  edition_or_term: Fall 2026
+  access: free
+  use: Part I Logical Foundations (Lean) and Part II Hoare Logic (sf-hl-lean) of the Lean edition of Software Foundations, with the Lean setup page and the 'Theorem Proving in Lean 4' companion.
+  why: Gives the Lean route through Hoare logic using the current Penn course materials; recordings are enrolled-only but the text and exercises are public.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://www.engineering.upenn.edu/~cis5000/current/index.html', videos: enrolled-only, public_videos_term: none found for CIS 5000/500; see OPLSS and DeepSpec 2017/2018 lectures, public_videos_url: 'https://www.cs.uoregon.edu/research/summerschool/summer26/topics.php', assignments: partial, assignments_url: 'https://www.engineering.upenn.edu/~cis5000/current/syllabus.html'}
+- id: cmu-15414
+  role: secondary
+  kind: course
+  title: 'CMU 15-414 Bug Catching: Automated Program Verification and Testing'
+  by: CMU (Matt Fredrikson)
+  url: https://www.cs.cmu.edu/~15414/
+  edition_or_term: 'Fall 2026 (earlier: Fall 2025, Spring 2025, 2024, ...)'
+  access: free
+  use: 'Schedule with public lecture notes: contracts, data structures and ghost code in Why3, semantics, dynamic logic and Hoare-style loop invariants, predicate transformers, sequent calculus, SAT/resolution, SMT (equality and uninterpreted functions, theory combination), LTL/CTL model checking, bounded model checking; homework HW0-HW7 and mini-projects MP1-MP2.'
+  why: The automated half of verification (SMT/Why3/model checking) that proof-assistant courses omit; notes and assignment handouts are public; recordings and Gradescope are not.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://www.cs.cmu.edu/~15414/schedule.html', videos: none, assignments: public, assignments_url: 'https://www.cs.cmu.edu/~15414/assignments.html'}
+- {id: lean-tpil, role: secondary, kind: book, title: Theorem Proving in Lean 4 and Functional Programming in Lean, by: 'Jeremy Avigad, Leonardo de Moura, Soonho Kong, Sebastian Ullrich; David Thrane Christiansen', url: 'https://lean-lang.org/theorem_proving_in_lean4/', edition_or_term: 'Free online books for Lean 4 (checked 2026-11-18); FP in Lean at https://lean-lang.org/functional_programming_in_lean/', access: free, use: 'TPIL: propositions and proofs, quantifiers, tactics, inductive types, structures, type classes; FPIL: Lean as a programming language including its sections on proving programs correct and termination.', why: 'The core free Lean texts, needed for the CIS 5000 route and for verifying Lean programs; use them alongside SF if you choose Lean rather than Rocq.', verified: true}
+- {id: program-proofs, role: secondary, kind: book, title: Program Proofs (with Dafny), by: K. Rustan M. Leino, url: 'https://program-proofs.com/', edition_or_term: 'MIT Press, 2023; Dafny docs at https://dafny.org/', access: paid, use: 'Ch. 0-7 (basics, specifications, termination, loop invariants, data structures with ghost state) and the Dafny online tutorial (https://dafny.org/dafny/OnlineTutorial/guide) to practice auto-active verification where an SMT solver does most of the proof.', why: Practical verified-software route with immediate feedback and industrial relevance (Dafny used at AWS); a welcome contrast to interactive proof assistants., verified: true}
+- {id: verus-guide, role: secondary, kind: docs, title: Verus Tutorial and Reference (verified Rust), by: Verus project, url: 'https://verus-lang.github.io/verus/guide/', edition_or_term: Live guide (checked 2026-11-18), access: free, use: 'The overview and first tutorial chapters (specification, proof functions, loop invariants, ghost code) with the online playground examples.', why: A modern way to verify real systems code (Rust) using SMT; popular in recent OS/storage verification projects., verified: true}
+- {id: deepspec-dsss, role: secondary, kind: video-series, title: DeepSpec Summer School 2017 and 2018 lectures (Coq/Rocq), by: 'DeepSpec (Appel, Chlipala, Pierce, Zdancewic et al.)', url: 'https://deepspec.org/event/dsss18/', edition_or_term: 'July 2017 and July 2018 (Coq Intensive, verified functional algorithms, proof automation, verified compiler, QuickChick, CertiKOS, Vellvm)', access: free, use: 'The ''Coq Intensive'' lecture days (Logical Foundations material) and ''Verified functional algorithms'' lectures: official lecture videos for Software Foundations (2017 quality is poor at the start). Individual lecture links are on the event pages (dsss17: https://deepspec.org/event/dsss17/).', why: The only public video lecture series for SF that its own Preface points to; older Coq syntax but concepts hold., verified: true}
+- {id: sf-practice, role: practice, kind: tool, title: 'Software Foundations exercises: Hoare and SLF chapters', by: Benjamin C. Pierce et al.; Arthur Chargueraud, url: 'https://softwarefoundations.cis.upenn.edu/plf-current/Hoare2.html', edition_or_term: Version 7.1, access: free, use: 'PLF Hoare2: Exercises ''Slow Assignment'', ''Factorial'', ''Minimum'', ''Two Loops'', ''Power Series'' and the optional weakest-precondition section; SLF Basic and Repr exercises (increment, swap, list reverse, stacks); then one of the CMU 15-414 mini-projects (Why3) if you want automation.', why: Concrete verification tasks of increasing difficulty with a machine as the grader; names given so you can budget time., verified: true}
+considered:
+- {title: 'Chlipala, Certified Programming with Dependent Types (CPDT)', url: 'http://adam.chlipala.net/cpdt/', reason: Advanced Rocq automation book; too much beyond the node scope; page not opened.}
+- {title: Software Foundations Vol. 5 Verifiable C and Vol. 3 VFA, url: 'https://softwarefoundations.cis.upenn.edu/vc-current/index.html', reason: 'Valuable for verified software, listed as optional in the primary entry; too long to be required.'}
+- {title: Cornell CS 6110 / 6120 courses, url: 'https://www.cs.cornell.edu/courses/cs6110/2025sp/', reason: Semantics-oriented; not verification-focused.}
+- {title: Hitchhiker's Guide to Logical Verification (Lean), url: 'https://hitchhikers.logical-verification.org/', reason: Lean course notes; site did not load from this environment.}
+notes: 'Choose a proof assistant: Rocq (Software Foundations volumes, FRAP book, OPLSS 2026 lectures, DeepSpec videos) has the richest materials and public lectures; Lean (CIS 5000 materials, TPIL/FPIL) is newer and easier to install. A reasonable route (about 90 h): SF LF to Imp (30 h), PLF Hoare chapters (15 h), SLF intro (15 h), OPLSS 2026 Dreyer and Gardner lectures, then one automated-verification layer (Dafny/Why3/Verus) for ''verified software'' (15 h). The node''s hard prerequisite type-systems is arguably unnecessary for Hoare/separation logic (SF teaches Hoare before types), see prereq_changes.'
+split_proposal: Consider splitting into 'proof assistants and Hoare logic' and 'separation logic and verified systems' if material exceeds about 90 h.
+prereq_changes: 'type-systems as a hard prerequisite is heavier than needed: LF + PLF Hoare chapters need only programming-language-concepts and discrete-math. Suggest hard: [programming-language-concepts, discrete-math] and soft: [type-systems].'
+open_questions: [MIT 6.512 Fall 2025 site is JavaScript-rendered; content and video availability could not be read., OPLSS 2026 MP4 links are relative paths on the topics page; playback not tested., Penn CIS 5000 Lean homework availability (as opposed to lecture files) not confirmed.]
+last_verified: '2026-11-18'

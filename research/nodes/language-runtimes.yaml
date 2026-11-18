@@ -1,0 +1,64 @@
+id: language-runtimes
+title: Language Runtimes, GC & JITs
+group: G11
+paths: [plc]
+hard: [interpreters, computer-systems]
+soft: []
+scope: Garbage collection, virtual machines, JIT compilation, dynamic language implementation.
+level: advanced
+estimated_hours: 70
+resources:
+- {id: gc-handbook, role: primary-text, kind: book, title: 'The Garbage Collection Handbook: The Art of Automatic Memory Management, 2nd edition', by: 'Richard Jones, Antony Hosking, Eliot Moss', url: 'https://gchandbook.org/', edition_or_term: 'Second edition (CRC Press, 2023)', access: paid, use: 'Ch. 1-2 (introduction, mark-sweep), 3 (mark-compact), 4 (copying), 5 (reference counting), 6 (comparing collectors), 7 (allocation), 9-11 (generational, other partitioned schemes, run-time interface), 13-15 (concurrent and real-time collection) selectively; use the pseudo-code to implement a mark-sweep and a semispace collector.', why: 'The definitive reference on GC (algorithms, trade-offs, interfaces to the runtime), updated in 2023 with concurrent, region-based and persistent-memory collectors. Chosen as the primary text because GC is the hardest and most underserved item in the node scope.', verified: true}
+- id: cmu-17770
+  role: primary-course
+  kind: course
+  title: CMU 17-770 Virtual Machines and Managed Runtimes
+  by: CMU (Ben L. Titzer)
+  url: https://www.cs.cmu.edu/~wasm/cs17-770/fall2025/
+  edition_or_term: Fall 2025 (Fall 2024 also online; no Fall 2026 page found)
+  access: free
+  use: 'Public lecture notes: what is a VM, code formats (WebAssembly binary, Java class format), WebAssembly and Java runtime semantics, object models and inline caches, intro to JIT compilers, baseline JITs, optimizing JITs, garbage collection (five lectures), threads; use the syllabus project descriptions (interpreters in Project 1-2, JIT/GC projects) as exercises.'
+  why: The best recent course on VMs, JITs and GC together with a runtime-engine project and public lecture notes by the creator of the Wizard engine; no recordings and only the syllabus-level project specs are public.
+  verified: true
+  course: {latest_term: Fall 2025, latest_url: 'https://www.cs.cmu.edu/~wasm/cs17-770/fall2025/', videos: none, assignments: partial, assignments_url: 'https://www.cs.cmu.edu/~wasm/cs17-770/fall2025/syllabus.html'}
+- id: cs6120-runtime
+  role: secondary
+  kind: course
+  title: 'Cornell CS 6120 lessons 11-12: Memory Management and Dynamic Compilers'
+  by: Cornell (Adrian Sampson)
+  url: https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/11/
+  edition_or_term: Fall 2025 (lesson 12 at https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/12/)
+  access: free
+  use: 'Lesson 11 (video and notes on GC: reference counting, tracing, generational; task), lesson 12 (dynamic compilers, tracing JITs; papers ''Tracing via Speculation''), lesson 14 (fast compilers).'
+  why: 'Public video lectures with notes and papers on GC and JITs: a gentle entry before the Handbook or CMU 17-770.'
+  verified: true
+  course: {latest_term: Fall 2025, latest_url: 'https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/', videos: public, assignments: public, assignments_url: 'https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/'}
+- {id: ci-gc, role: secondary, kind: book, title: 'Crafting Interpreters: ch. 25 Closures, ch. 26 Garbage Collection, ch. 30 Optimization', by: Robert Nystrom, url: 'https://craftinginterpreters.com/garbage-collection.html', edition_or_term: Free web edition, access: free, use: 'Ch. 26 (mark-sweep GC for clox, roots, tri-color marking, GC stress testing), ch. 25 (upvalues and closures), ch. 30 (hash table and NaN-boxing optimizations).', why: 'Smallest complete working GC in a real VM; implement it first, then read the Handbook for the design space.', verified: true}
+- {id: mmtk, role: secondary, kind: docs, title: MMTk (Memory Management Toolkit) user guide, by: MMTk project (ANU and collaborators), url: 'https://docs.mmtk.io/', edition_or_term: Rust rewrite; docs live (checked 2026-11-18), access: free, use: 'Read the introduction and porting guide to see how a pluggable GC (NoGC, MarkSweep, Immix, generational plans) binds to OpenJDK, V8, Julia, Ruby, CRuby; optionally run a plan on the dummy VM.', why: 'Industrial-strength, language-independent GC framework by the Handbook''s authors'' community; shows the real runtime-GC interface (roots, object model, write barriers).', verified: true}
+- {id: cpython-jit, role: secondary, kind: article, title: 'PEP 744: JIT Compilation (CPython copy-and-patch JIT) and "What is new" for Python 3.13', by: 'Brandt Bucher, Savannah Ostrowski et al.', url: 'https://peps.python.org/pep-0744/', edition_or_term: PEP 744 (checked 2026-11-18), access: free, use: 'Read the PEP for the motivation, tier-2 micro-op optimizer and copy-and-patch design; compare with a method JIT (V8) and tracing JIT (PyPy).', why: 'Unusually clear, current write-up of how a major dynamic-language implementation adds a JIT incrementally.', verified: true}
+- {id: v8-blog, role: reference, kind: website, title: V8 blog (JavaScript engine internals), by: V8 team, url: 'https://v8.dev/blog', edition_or_term: Live blog (checked 2026-11-18), access: free, use: 'Pick posts on Ignition/Sparkplug/Maglev/TurboFan tiers, hidden classes and inline caches, and Orinoco GC to see production-grade tiering and GC.', why: Authoritative explanations from the engine's developers on tiered JITs and concurrent GC., verified: true}
+- {id: wasm-jvm-spec, role: reference, kind: docs, title: WebAssembly core specification and JVM specification, by: W3C/WebAssembly CG; Oracle, url: 'https://webassembly.github.io/spec/core/', edition_or_term: 'WebAssembly 3.0 draft (2026-11-16); JVM spec SE 25 at https://docs.oracle.com/javase/specs/jvms/se25/html/index.html', access: free, use: 'WebAssembly: structure, validation and execution chapters (the 17-770 reference VM); JVM: the class-file format, instruction set and verification chapters.', why: 'Primary-source definitions of two real VMs, which 17-770 uses as its case studies.', verified: true}
+- {id: graal-pypy, role: reference, kind: website, title: GraalVM/Truffle and PyPy documentation, by: Oracle Labs; PyPy team, url: 'https://www.pypy.org/', edition_or_term: 'Live sites (GraalVM: https://www.graalvm.org/)', access: free, use: 'PyPy: the RPython tracing-JIT toolchain description and blog; GraalVM: Truffle language implementation framework and partial evaluation overview.', why: 'Two research-grade approaches to building fast dynamic-language implementations from interpreters, as alternatives to hand-written JITs.', verified: true}
+- id: stanford-cs143-gc
+  role: reference
+  kind: course
+  title: Stanford CS 143 lectures on Automatic Memory Management and JIT Compilers
+  by: Stanford (Alex Aiken)
+  url: https://web.stanford.edu/class/cs143/
+  edition_or_term: Spring 2026 lectures list
+  access: free
+  use: The 'Automatic Memory Management' and 'JIT Compilers and Fast Compilation' lecture slides for a concise exam-style overview.
+  why: Short slide-based summary of GC and JIT basics from a general compilers course.
+  verified: true
+  course: {latest_term: Spring 2026, latest_url: 'https://web.stanford.edu/class/cs143/', videos: none, assignments: public, assignments_url: 'https://web.stanford.edu/class/cs143/'}
+considered:
+- {title: 'Virtual Machines: Versatile Platforms for Systems and Processes (Smith and Nair)', url: 'https://www.elsevier.com/', reason: 'Broad VM text including process VMs and ISA-level translation; larger scope than a language-runtime node, 2005, publisher page not opened.'}
+- {title: Charles University NPRG076 Managed Runtimes (2024/25) / CTU NI-RUN Runtime Systems, url: 'https://d3s.mff.cuni.cz/teaching/nprg076/202425/', reason: Alternative courses found by search; public materials not examined in detail.}
+- {title: EPFL CS-420 Advanced Compiler Construction (spring 2025), url: 'https://cs420.epfl.ch/archive/25/s/acc_01_overview.pdf', reason: Includes memory management goals; not examined.}
+- {title: Foivos Zakkak "Managed Runtime Systems" lecture slides, url: 'https://speakerdeck.com/zakkak/managed-runtime-systems-lecture-00-course-introduction', reason: Public slides on JIT and GC (2018 vintage); dated.}
+- {title: UW CSE 401 / CMU 15-411 lectures on JIT and GC, url: 'https://www.cs.cmu.edu/~15411/', reason: Single lectures only.}
+notes: 'Route (about 70 h): CMU 17-770 notes (VM design, object models, JIT tiers) with CS 6120 lessons 11-12 videos; implement GC from Crafting Interpreters ch. 26 (mark-sweep) and extend to a copying or generational collector from the Handbook; study the MMTk guide or V8 posts for production examples. The hard prerequisites interpreters and computer-systems are right; compiler-construction would help for the JIT half (17-770 assumes compiler knowledge), so consider it a soft prereq. ML compilers are not in scope here.'
+split_proposal: null
+prereq_changes: 'Add soft: compiler-construction (17-770 explicitly requires prior compiler knowledge for the JIT lectures).'
+open_questions: [CMU 17-770 Fall 2026 offering not found (only fall2024 and fall2025 directories); project handouts were not opened individually., Garbage Collection Handbook chapter numbers are from memory of the 2nd edition and should be double-checked against the contents page at gchandbook.org., 'Smith and Nair, Charles University and EPFL pages were not opened.']
+last_verified: '2026-11-18'

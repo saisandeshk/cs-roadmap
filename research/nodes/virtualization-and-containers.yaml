@@ -1,0 +1,136 @@
+id: virtualization-and-containers
+title: "Virtualization & Containers"
+group: G4
+paths: [os-perf]
+hard: [operating-systems]
+soft: [computer-architecture]
+scope: "Hypervisors, hardware-assisted virtualization, VMs, namespaces/cgroups, containers, microVMs."
+
+level: advanced
+estimated_hours: 80
+resources:
+  - id: bugnion-virt
+    role: primary-text
+    kind: book
+    title: "Hardware and Software Support for Virtualization"
+    by: "Edouard Bugnion, Jason Nieh, Dan Tsafrir"
+    url: https://doi.org/10.2200/S00754ED1V01Y201701CAC038
+    edition_or_term: "Synthesis Lectures on Computer Architecture #38 (Morgan & Claypool, 2017; Springer reissue 2022)"
+    access: paid
+    use: "Read in full (short monograph): Popek-Goldberg and classical virtualization, binary translation, x86-64 and ARM hardware support (VT-x/VMX, EPT, VHE), memory and I/O virtualization (SR-IOV, IOMMU, virtio), and the KVM, VMware and Xen case studies; the final performance comparison chapter on x86 vs ARM."
+    why: "The only rigorous, compact textbook on how hypervisors and CPU virtualization support actually work; co-authored by builders of VMware and Dune. Covers the 'hypervisors, hardware-assisted virtualization, VMs' half of the scope; it is not about containers."
+    verified: false
+  - id: iximiuz-bottom-up
+    role: secondary
+    kind: website
+    title: "Learning Containers From The Bottom Up (and iximiuz tutorials)"
+    by: "Ivan Velichko"
+    url: https://iximiuz.com/en/posts/container-learning-path/
+    edition_or_term: "evolving series"
+    access: free
+    use: "Read the path in order: containers are processes with isolation, Linux namespaces and cgroups, container images and OCI, container runtimes (runc, containerd, CRI), container networking, then the 'Implementing container runtime shim' posts. Build a minimal container by hand (unshare/chroot/cgroup)."
+    why: "Best free, systematic explanation of containers from the kernel up; fills the containers half of the node which the primary book does not touch."
+    verified: true
+  - id: lwn-namespaces
+    role: secondary
+    kind: article
+    title: "Namespaces in operation (LWN series) and namespaces(7)/cgroups(7)/cgroup v2 docs"
+    by: "Michael Kerrisk (LWN); Linux kernel docs"
+    url: https://lwn.net/Articles/531114/
+    edition_or_term: "2013 series (parts 1-7), man pages and cgroup-v2.rst current"
+    access: free
+    use: "Read parts 1-7 of 'Namespaces in operation' (overview, mount, UTS/IPC/PID, user, network); then man7.org namespaces(7), cgroups(7) and the kernel's cgroup-v2 admin guide for resource controllers (cpu, memory, io, pids)."
+    why: "Authoritative treatment of the two kernel mechanisms; the LWN series is still accurate for core concepts, kernel docs cover newer cgroup v2 controllers."
+    verified: true
+  - id: containers-from-scratch
+    role: practice
+    kind: practice-site
+    title: "Containers from scratch (Liz Rice) and bocker"
+    by: "Liz Rice; Peter Wilmott"
+    url: https://github.com/lizrice/containers-from-scratch
+    edition_or_term: "current master"
+    access: free
+    use: "Reproduce the talk in Go: clone with CLONE_NEWUTS/NEWPID/NEWNS, chroot, mount /proc, add a cgroup limit; then read bocker (Docker in about 100 lines of bash) to see images/layers/networks via btrfs, ip and cgroups."
+    why: "Small, readable code that makes namespaces and cgroups concrete; a one-evening project that anchors the theory."
+    verified: true
+  - id: hypervisor-101-rust
+    role: practice
+    kind: practice-site
+    title: "Hypervisor 101 in Rust"
+    by: "Satoshi Tanda"
+    url: https://tandasat.github.io/Hypervisor-101-in-Rust/
+    edition_or_term: "current mdBook (2023-24 workshop)"
+    access: free
+    use: "Work through the exercises: build and run the hypervisor in the Bochs emulator, VMX operation cycle, VM exits, EPT, and extending the guest handler. Intel-first; AMD tasks exist."
+    why: "Hidden gem: a guided, runnable workshop on writing a bare-metal Intel VT-x hypervisor without a real machine; the best hands-on hardware-virtualization exercise I found."
+    verified: true
+  - id: kvm-api
+    role: practice
+    kind: article
+    title: "Using the KVM API (LWN) and the KVM API reference"
+    by: "Josh Triplett (LWN); Linux kernel documentation"
+    url: https://lwn.net/Articles/658511/
+    edition_or_term: "2015 article; kernel docs current"
+    access: free
+    use: "Write a ~100-line C program that creates a VM, loads a few real-mode instructions into guest memory, and handles KVM_EXIT_IO/HLT; consult docs.kernel.org virt/kvm/api for the ioctl reference."
+    why: "The minimum viable VMM; gets you from theory to running guest code on Linux/KVM in an hour."
+    verified: true
+  - id: jos-vm
+    role: secondary
+    kind: paper
+    title: "Teaching Virtualization by Building a Hypervisor (JOS-based lab)"
+    by: "Abhinand Palicherla, Tao Zhang, Donald E. Porter"
+    url: https://www.cs.unc.edu/~porter/pubs/jos-vm.pdf
+    edition_or_term: "SIGCSE-style paper describing a lab for MIT's JOS"
+    access: free
+    use: "Read the lab design (build a VMM inside a JOS-style teaching kernel) and use it as a project outline if you want a kernel-level hypervisor project after xv6/JOS labs."
+    why: "Shows how to structure a first hypervisor project at teaching scale; no public autograded course ships it, so this is an outline only."
+    verified: true
+  - id: unsw-vm-lecture
+    role: secondary
+    kind: video-series
+    title: "UNSW COMP9242 lecture: Virtual Machines (introduction and principles)"
+    by: "Gernot Heiser (UNSW)"
+    url: https://cgi.cse.unsw.edu.au/~cs9242/26/lectures.shtml
+    edition_or_term: "2026/T3 (Week 4 Thursday lecture; public recording linked on the page)"
+    access: free
+    use: "Watch the Virtual Machines lecture and read the paired papers: Barham et al., 'Xen and the Art of Virtualization' (2003) and Waldspurger, 'Memory Resource Management in VMware ESX Server' (2002); also the 'Hardware considerations' lecture."
+    why: "Fills the gap of a high-quality public lecture on VMs from a microkernel/OS-research perspective, with a reading list."
+    verified: true
+  - id: firecracker-paper
+    role: reference
+    kind: paper
+    title: "Firecracker: Lightweight Virtualization for Serverless Applications (NSDI 2020) and gVisor docs"
+    by: "Agache et al. (AWS); gVisor authors"
+    url: https://www.usenix.org/system/files/nsdi20-paper-agache.pdf
+    edition_or_term: "NSDI '20; gVisor docs current"
+    access: free
+    use: "Read the Firecracker paper for microVM design (minimal VMM, KVM, virtio, jailer, snapshotting) and skim gvisor.dev/docs (user-space kernel) for the contrast between VM-based and syscall-interception isolation."
+    why: "Covers the 'microVMs' scope item with the canonical production design; gVisor shows the third isolation point in the design space."
+    verified: true
+  - id: oci-runtime-spec
+    role: reference
+    kind: docs
+    title: "OCI Runtime Specification"
+    by: "Open Container Initiative"
+    url: https://raw.githubusercontent.com/opencontainers/runtime-spec/main/spec.md
+    edition_or_term: "current main"
+    access: free
+    use: "Read the introduction, 'Configuration' (namespaces, cgroups, rootfs, seccomp) and 'Runtime' lifecycle; compare with runc's behavior."
+    why: "Pins down exactly what a container runtime must do, tying namespaces/cgroups to the container abstraction."
+    verified: true
+considered:
+  - {title: "Writing Hypervisor in Zig (Ymir)", url: "https://writing-hypervisor-in-zig.pages.dev/en/", reason: "Excellent from-scratch series: bootloader, kernel and VMM with VT-x; needs Zig knowledge; kept as a stretch alternative to Hypervisor 101 in Rust."}
+  - {title: "Hypervisor From Scratch (Sina Karvandi)", url: "https://rayanfam.com/topics/hypervisor-from-scratch-part-1/", reason: "Long Windows-driver VT-x series; useful but Windows-centric."}
+  - {title: "Container Security (Liz Rice, O'Reilly 2020)", url: "https://www.oreilly.com/library/view/container-security/9781492056690/", reason: "Strong on how containers work and are attacked; more security than internals; not opened (blocked)."}
+  - {title: "Virtual Machines: Versatile Platforms for Systems and Processes (Smith & Nair, 2005)", url: "https://www.elsevier.com/books/virtual-machines/smith/978-1-55860-910-5", reason: "Broader (process VMs, emulation) but dated for hardware-assisted virtualization; link not opened."}
+  - {title: "iximiuz Labs playgrounds and skill paths", url: "https://labs.iximiuz.com/skill-paths", reason: "Hands-on Linux/Docker/Kubernetes labs in a browser; some free, some paid; useful for practice but not verified in detail."}
+  - {title: "Kernel Virtual Machine docs (docs.kernel.org/virt)", url: "https://www.kernel.org/doc/html/latest/virt/index.html", reason: "Reference for KVM internals; use with the KVM API article."}
+notes: "No good university course exists with public videos and labs for the whole scope. The route is: Bugnion book (+ UNSW lecture) for hypervisors; iximiuz/LWN/man pages for containers; then two builds (a hand-rolled container, and a KVM or VT-x hypervisor). Primary-course omitted for that reason. The primary text is a paid monograph; the OS-research-level free alternative is the Xen and ESX papers (linked via the UNSW lecture). The node mixes two sub-topics; a split could make sense."
+split_proposal: "Split into 'hypervisors-and-hardware-virtualization' (Bugnion, KVM, VT-x/EPT, Firecracker) and 'containers-and-isolation' (namespaces, cgroups, OCI runtimes, seccomp, gVisor); containers fit a DevOps/systems path while hypervisors need computer-architecture."
+prereq_changes: null
+open_questions:
+  - "Bugnion et al. book page (doi.org to Springer) returned a Client Challenge, so access/price/edition not confirmed by opening; details come from search results (Morgan & Claypool 2017, Springer ebook 2022)."
+  - "Liz Rice talk video links (YouTube) not verified (rate-limited); repo code verified via raw GitHub."
+  - "The UNSW Virtual Machines lecture's public echo360 link was not played."
+last_verified: 2026-11-18

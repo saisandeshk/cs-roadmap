@@ -1,0 +1,62 @@
+id: programming-language-concepts
+title: Programming Language Concepts
+group: G11
+paths: [core, plc]
+hard: [python-programming]
+soft: [data-structures]
+scope: Functional programming, static vs dynamic typing, closures, pattern matching, modules, evaluation strategies, small interpreters.
+level: intermediate
+estimated_hours: 70
+resources:
+- {id: plai, role: primary-text, kind: book, title: 'Programming Languages: Application and Interpretation (PLAI), 3rd edition', by: Shriram Krishnamurthi, url: 'https://www.plai.org/', edition_or_term: 'Third edition (Dec 2022), current version 3.2.5 (2025-07-14); free PDF/EPUB under CC BY-NC-SA, paper via Lulu', access: free, use: 'Read in order with the interpreter chapters as the through-line: core language and desugaring, interpreters for functions, closures/environments and recursion, mutation and state, laziness/evaluation strategies, type checking and inference basics, objects, and continuations; do the SMoL Tutor (below) first for the ''Standard Model of Languages''; implement each interpreter in Racket.', why: 'Teaches language concepts by implementing them as small interpreters, which matches the node scope (closures, evaluation strategies, static vs dynamic typing, small interpreters) better than a survey text. Free, current (3.2.5 in July 2025) and written to pair with a real course (Brown CSCI 1730).', verified: true}
+- id: grossman-pl
+  role: primary-course
+  kind: course
+  title: Programming Languages, Parts A, B and C (UW CSE 341, Dan Grossman)
+  by: Dan Grossman (University of Washington / Coursera)
+  url: https://www.coursera.org/learn/programming-languages
+  edition_or_term: Coursera self-paced; Part A = SML, Part B = Racket, Part C = Ruby; UW CSE 341 itself last taught by Grossman in Spring 2023 (now OCaml/Racket)
+  access: mixed
+  use: 'Part A (SML: bindings, functions, pattern matching, datatypes, tail recursion, first-class functions and closures, type inference, modules/signatures), Part B (Racket: dynamic typing, thunks/laziness/streams, macros, a small interpreter for a toy language, static vs dynamic typing), Part C (Ruby: OOP vs functional decomposition, subclassing vs subtyping, generics). Do all three homeworks per part.'
+  why: 'The best-regarded course for this exact scope: closures, pattern matching, modules, evaluation strategies, static vs dynamic typing and a small interpreter, each taught in a language that makes the idea visible. Whether lecture videos are free without paying for Coursera was not confirmable (the Part A page shows enroll/join buttons and graded assignments), so see open questions; the original UW 2013 site is now behind UW login.'
+  verified: true
+  course: {latest_term: 'Coursera self-paced (Parts A, B, C); UW CSE 341 Spring 2023 was the last Grossman run', latest_url: 'https://www.coursera.org/learn/programming-languages', videos: unknown, public_videos_term: Coursera (access model unverified), public_videos_url: 'https://www.coursera.org/learn/programming-languages', assignments: public-with-autograder, assignments_url: 'https://www.coursera.org/learn/programming-languages'}
+- {id: smol-tutor, role: secondary, kind: website, title: The SMoL Tutor (Standard Model of Languages), by: 'Kuang-Chen Lu, Shriram Krishnamurthi, et al.', url: 'https://smol-tutor.xyz/tutor/', edition_or_term: Web tutor linked from PLAI 3.2.5, access: free, use: 'Complete the whole tutor before PLAI ch. 3+: predict-the-output exercises on scope, mutation, aliasing, closures and call-by-value across SMoL syntaxes (Python/JS/Scala/etc. look-alikes).', why: 'Targets the misconceptions that survive years of programming (aliasing, scope, mutation) and gives a language-independent semantic vocabulary; unique among free resources.', verified: true}
+- {id: cs3110-text, role: secondary, kind: book, title: 'OCaml Programming: Correct + Efficient + Beautiful (Cornell CS 3110 textbook) and video series', by: Michael Clarkson et al., url: 'https://cs3110.github.io/textbook/cover.html', edition_or_term: Open-source book; companion YouTube series (checked 2026-11-18); course CS 3110 Data Structures and Functional Programming, access: free, use: 'Chapters on functional programming (expressions, functions, lists, variants, pattern matching, higher-order functions), modules and functors, imperative features, laziness, and the interpreter case study; use its exercises for typed functional practice.', why: 'Free, current typed-functional text with a public video playlist (the only fully public video route in this node), used to get fluent in an ML-family language that PLAI/Grossman expect.', verified: true}
+- id: brown-1730
+  role: secondary
+  kind: course
+  title: Brown CSCI 1730 Programming Languages (Fall 2026, redesigned for the AI era)
+  by: Brown University (Shriram Krishnamurthi)
+  url: https://cs.brown.edu/courses/csci1730/2026/
+  edition_or_term: Fall 2026 (Fall 2025 site also public)
+  access: free
+  use: Assignments page (SMoL, Mystery Languages, Stacker, implementation, analysis threads) plus the Fall 2025 course page and assignments as the established version; Racket-based.
+  why: The assignment sequence that accompanies PLAI, including the 'Mystery Languages' idea of learning semantics by experiment; Fall 2026 is a heavily revised experimental design so Fall 2025 is the safer reference.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://cs.brown.edu/courses/csci1730/2026/', videos: enrolled-only, public_videos_term: older Brown CS 173 videos (Fall 2012) listed in cs-video-courses; not rechecked, public_videos_url: 'https://cs.brown.edu/courses/cs173/', assignments: public, assignments_url: 'https://cs.brown.edu/courses/csci1730/2025/assignments.html'}
+- id: uw-cse341-fa26
+  role: secondary
+  kind: course
+  title: UW CSE 341 Programming Languages (OCaml and Racket)
+  by: University of Washington (Gilbert Bernstein, Fall 2026; Dan Grossman, Spring 2023)
+  url: https://sites.google.com/cs.washington.edu/cse341fall2026/home
+  edition_or_term: 'Fall 2026 (Spring 2023 Grossman run: https://sites.google.com/cs.washington.edu/cse341spring2023/lecture)'
+  access: mixed
+  use: Calendar, homework (OCaml and Racket, 'implement reference interpreters') and the public Google Drive slides/reading notes and GitLab code for Spring 2023 (Grossman).
+  why: Shows how the course has evolved (OCaml+Racket instead of SML/Racket/Ruby) and offers public reading notes; videos are not public ('for student-privacy reasons, videos are available only to students').
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://sites.google.com/cs.washington.edu/cse341fall2026/home', videos: enrolled-only, assignments: partial, assignments_url: 'https://sites.google.com/cs.washington.edu/cse341spring2023/homework'}
+- {id: beautiful-racket, role: secondary, kind: book, title: Beautiful Racket, by: Matthew Butterick, url: 'https://beautifulracket.com/', edition_or_term: Online book (checked 2026-11-18), access: free, use: 'Optional: the first chapters and one small language implementation (e.g. a stack-based or Basic-like language) to see how Racket''s macro and module system implements languages.', why: 'A gentle, project-driven introduction to implementing little languages in Racket for learners who find PLAI''s pace abrupt.', verified: true}
+- {id: sicp, role: secondary, kind: book, title: Structure and Interpretation of Computer Programs (JavaScript edition and Scheme original), by: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', url: 'https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html', edition_or_term: 'Scheme edition (MIT Press 1996, free online); JavaScript edition (2022)', access: free, use: 'Ch. 1-3 (procedures, data abstraction, state, streams) for the conceptual core; ch. 4 (metacircular evaluator, lazy evaluation) is the bridge to the interpreters node.', why: 'A classic whose lessons on abstraction and evaluation models underlie the whole node; included as an alternative primary text for readers who prefer a longer, more programming-heavy approach.', verified: true}
+considered:
+- {title: 'Essentials of Programming Languages (Friedman and Wand), 3rd edition', url: 'https://www.eopl3.com/', reason: Another interpreter-based PL text; more terse and Scheme-only than PLAI. Page not opened.}
+- {title: 'Concepts, Techniques, and Models of Computer Programming (Van Roy and Haridi)', url: 'https://www.info.ucl.ac.be/~pvr/book.html', reason: Encyclopedic paradigm survey; too large for this node. Page not opened.}
+- {title: 'Programming Language Pragmatics (Scott), 4th ed.', url: 'https://www.elsevier.com/', reason: Survey-style text; less hands-on than the interpreter approach; publisher page not opened.}
+- {title: Stanford CS 242 Programming Languages, url: 'https://web.stanford.edu/class/cs242/', reason: Rust-based PL course; not examined for this pass (listed in csdiy.wiki).}
+- {title: Cornell CS 3110 (course assignments), url: 'https://www.cs.cornell.edu/courses/cs3110/2025fa/', reason: Textbook and videos are public (used above); problem sets and the full syllabus are in Canvas only.}
+notes: 'Route (about 70 h): SMoL Tutor (3 h), then either Grossman''s Parts A-C (about 45 h; includes SML, Racket, Ruby) or PLAI chapters with interpreters (about 45 h), plus CS 3110''s book for a typed-functional language if you want OCaml. Because the node''s hard prereq is python-programming only, a typed functional language is new to most learners; choose one of SML/OCaml/Racket and stick with it. ''Modules'' is best covered in SML/OCaml (Grossman Part A, CS 3110); ''evaluation strategies'' in Grossman Part B and PLAI laziness chapters. Compare with interpreters (node 2) which then builds the full tree-walking and bytecode interpreters.'
+split_proposal: null
+prereq_changes: Consider adding soft prereq discrete-math (induction and recursion), and note that type-systems already hard-requires this node plus discrete-math.
+open_questions: ['Whether Coursera''s Programming Languages Part A-C lecture videos can be watched free (audit) in 2026 could not be confirmed; marked videos: unknown. Verify before making Grossman the sole primary.', Brown CSCI 1730 recordings are on Panopto (not opened; assumed Brown-login)., Essentials of Programming Languages and CTM pages were not opened.]
+last_verified: '2026-11-18'

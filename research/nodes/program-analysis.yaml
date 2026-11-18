@@ -1,0 +1,52 @@
+id: program-analysis
+title: Static Program Analysis
+group: G11
+paths: [plc, security]
+hard: [programming-language-concepts, algorithms]
+soft: [compiler-optimization]
+scope: Lattices, dataflow, abstract interpretation, pointer analysis, symbolic execution.
+level: advanced
+estimated_hours: 70
+resources:
+- {id: spa-book, role: primary-text, kind: book, title: Static Program Analysis, by: 'Anders Moller, Michael I. Schwartzbach', url: 'https://cs.au.dk/~amoeller/spa/', edition_or_term: 'Free PDF, version dated October 15, 2026 (CC BY-NC-ND 4.0); Aarhus University lecture notes', access: free, use: 'Ch. 2 (TIP language, CFGs), 3 (type analysis by unification), 4 (lattice theory), 5 (dataflow analysis with monotone frameworks), 6 (widening/narrowing), 7 (path sensitivity), 8-9 (interprocedural and distributive analysis/IFDS), 10 (control-flow analysis), 11 (pointer analysis), 12 (abstract interpretation).', why: 'Best compact, rigorous introduction covering lattices, dataflow, abstract interpretation and pointer analysis in one voice; free, regularly updated (latest 2026-10-15), with a Scala implementation (TIP) of every analysis. Symbolic execution is not covered (see secondary resources).', verified: true}
+- id: nju-spa
+  role: primary-course
+  kind: course
+  title: Nanjing University Software Analysis / Static Program Analysis (Tai-e platform)
+  by: Nanjing University (Yue Li, Tian Tan)
+  url: https://tai-e.pascal-lab.net/en/lectures.html
+  edition_or_term: Developed Spring 2020; page shows no term label; Tai-e README lists 2026 activity
+  access: free
+  use: 16 lectures (IR; dataflow applications and foundations; interprocedural analysis; pointer analysis, foundations and context sensitivity; security/taint analysis; Datalog-based analysis; CFL-reachability and IFDS; soundness and soundiness) with English slides, plus all eight assignments on the Tai-e Java framework (Assignments 1-8; the online judge at https://oj.pascal-lab.net/ is open to everyone).
+  why: The only course I found with public videos, English slides and publicly runnable, auto-judged assignments covering the full static-analysis pipeline through pointer and taint analysis. Videos are in Chinese on Bilibili (https://www.bilibili.com/video/BV1b7411K7P4); English slides and assignment docs are available.
+  verified: true
+  course: {latest_term: Spring 2020 (original; later offerings not labelled on site), latest_url: 'https://tai-e.pascal-lab.net/en/lectures.html', videos: public, public_videos_term: Original 2020 Chinese-language Bilibili videos, public_videos_url: 'https://www.bilibili.com/video/BV1b7411K7P4', assignments: public-with-autograder, assignments_url: 'https://tai-e.pascal-lab.net/intro/overview.html'}
+- id: cmu-17355
+  role: secondary
+  kind: course
+  title: CMU 17-355/17-665/17-819 Program Analysis
+  by: CMU (Fraser Brown, Fall 2026; Rohan Padhye 2025; Aldrich and Le Goues earlier)
+  url: https://cmu-program-analysis.github.io/2026/
+  edition_or_term: Fall 2026
+  access: free
+  use: 'Syllabus and public slides/recitations: program representations, dataflow analysis, interprocedural and CFA, pointer analysis, Hoare logic, software model checking, SAT/SMT, symbolic execution and concolic testing, fuzzing, dynamic analysis; study guides and homework repositories (hw1, hw3, hw5 under the course GitHub organization).'
+  why: 'Broader than NJU: includes symbolic execution, SMT, model checking and fuzzing, with public slides and resources; recordings are not public and graded repositories are via GitHub Classroom.'
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://cmu-program-analysis.github.io/2026/', videos: none, assignments: partial, assignments_url: 'https://cmu-program-analysis.github.io/2026/syllabus.html'}
+- {id: oplss-gardner, role: secondary, kind: video-series, title: 'Oregon Programming Languages Summer School (OPLSS) 2026: Types, Proofs, and Program Logics', by: 'Azevedo de Amorim, Dreyer, Gardner et al.', url: 'https://www.cs.uoregon.edu/research/summerschool/summer26/topics.php', edition_or_term: 'June 22 - July 4, 2026 (archives to 2002 at https://www.cs.uoregon.edu/research/summerschool/archives.html)', access: free, use: 'Gardner''s four lectures ''Separation Logic and Compositional Symbolic Execution: Verification and Bug Detection at Scale'' (intro to separation logic; from separation logic to compositional symbolic execution; compositional symbolic execution; semi-automatic verification and automatic bug detection).', why: 'Up-to-date public lectures on symbolic execution scaling, a topic the SPA book omits.', verified: true}
+- {id: cam-optcomp-analysis, role: secondary, kind: video-series, title: 'Cambridge Optimising Compilers 2023-24 (lectures 9-14: abstract interpretation, strictness, constraint-based, inference-based analysis, effect systems, alias/points-to)', by: University of Cambridge, url: 'https://www.cl.cam.ac.uk/teaching/2324/OptComp/youtube/', edition_or_term: 2023-24, access: free, use: 'Lectures 9-14 (about 2.5 hours) as an alternate, formal presentation of abstract interpretation, constraint and inference-based analyses and points-to analysis.', why: Short lectures with a different style of presentation that reinforces SPA ch. 10-12., verified: true}
+- {id: fuzzingbook-symbolic, role: secondary, kind: book, title: 'The Fuzzing Book: Symbolic Fuzzing (and Concolic/Concolic chapters)', by: Andreas Zeller et al., url: 'https://www.fuzzingbook.org/html/SymbolicFuzzer.html', edition_or_term: Rolling online book (checked 2026-11-18), access: free, use: 'The Symbolic Fuzzing chapter as an executable Python introduction to symbolic execution, constraint solving with Z3 and path exploration.', why: 'Hands-on, code-first introduction to symbolic execution with working Python; short enough to complete in an afternoon.', verified: true}
+- {id: baldoni-symexec, role: reference, kind: paper, title: A Survey of Symbolic Execution Techniques, by: Roberto Baldoni et al., url: 'https://arxiv.org/abs/1610.00502', edition_or_term: 'ACM Computing Surveys, 2018', access: free, use: 'Read sections on path explosion, memory models, constraint solving and tools (KLEE, SAGE, angr) after the Fuzzing Book chapter.', why: Standard survey for symbolic execution to fill the book's gap., verified: true}
+- {id: souffle, role: reference, kind: tool, title: Soufflé Datalog synthesis tool, by: Soufflé project, url: 'https://souffle-lang.github.io/', edition_or_term: Live documentation (checked 2026-11-18), access: free, use: 'Tutorial: express a points-to analysis (Andersen-style) in Datalog and run it on facts extracted from a program (follow NJU lecture 14).', why: 'Datalog is how many industrial and academic analyzers (Doop, CodeQL-style) are written; a different implementation style than imperative solvers.', verified: true}
+- {id: tai-e, role: practice, kind: tool, title: Tai-e static analysis framework for Java (educational and research versions), by: 'PASCAL Research Group, Nanjing University', url: 'https://github.com/pascal-lab/Tai-e', edition_or_term: 'Rolling repository (3,190 commits; LGPL/GPL; v0.5.4 per README)', access: free, use: 'Assignments 1-8 in the educational version: (1) liveness analysis and iterative solver, (2) constant propagation and worklist solver, (3) dead-code detection, (4) class hierarchy analysis and interprocedural constant propagation, (5) context-insensitive pointer analysis, (6) context-sensitive pointer analysis, (7) alias-aware interprocedural constant propagation, (8) taint analysis.', why: Complete worked path from dataflow to pointer and taint analysis in a real framework; the online judge provides automated grading., verified: true}
+considered:
+- {title: 'Principles of Program Analysis (Nielson, Nielson, Hankin)', url: 'https://www.springer.com/', reason: 'Rigorous reference on dataflow, abstract interpretation and type/effect analysis; more formal than SPA; publisher page not opened.'}
+- {title: 'Miné, Tutorial on Static Inference of Numeric Invariants by Abstract Interpretation', url: 'https://www-apr.lip6.fr/~mine/publi/article-mine-now.pdf', reason: Excellent abstract-interpretation tutorial (Foundations and Trends); URL did not load from this environment.}
+- {title: 'Cornell CS 6120 lessons 4-5, 9-10 (dataflow, interprocedural and alias analysis)', url: 'https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/', reason: Implementation-oriented overlap with compiler-optimization; videos public; kept as secondary there.}
+- {title: 'CMU 15-414 Bug Catching (SMT, symbolic execution, model checking)', url: 'https://www.cs.cmu.edu/~15414/', reason: Overlaps with program-verification; listed there.}
+- {title: 'Smaragdakis and Balatsouras, Pointer Analysis (Foundations and Trends)', url: 'https://yanniss.github.io/', reason: Compact survey of pointer analysis; not opened.}
+notes: 'Route (about 70 h): SPA book ch. 1-6 and 8-12 alongside NJU lectures 1-16 (English slides + Chinese videos) with Tai-e assignments 1-8; add symbolic execution via the Fuzzing Book chapter and Gardner''s lectures; use CMU 17-355 as an English-language syllabus/problem source. Overlap: dataflow analysis and SSA also appear in compiler-optimization; do them once and cross-reference. Soft prereq compiler-optimization is useful but not necessary because SPA ch. 2-5 re-derive CFGs and dataflow.'
+split_proposal: null
+prereq_changes: Add soft prereq discrete-math (lattices, fixed points) since SPA ch. 4 is lattice theory.
+open_questions: [NJU videos are Chinese-language (Bilibili); no English-dubbed official version found; Bilibili page opened but title not shown., 'CMU 17-355 homework repositories live in a GitHub organization (course-private classroom links), exact public status not tested.', NJU course page lacks a term label; later runs may exist.]
+last_verified: '2026-11-18'

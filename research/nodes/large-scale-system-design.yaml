@@ -1,0 +1,147 @@
+id: large-scale-system-design
+title: Large-Scale System Design & Reliability
+group: G10
+paths: [distributed]
+hard: [distributed-systems-fundamentals]
+soft: [databases-intro]
+scope: "System design, caching, load balancing, SRE practices, observability, capacity planning."
+
+level: intermediate
+estimated_hours: 60
+resources:
+  - id: uds
+    role: primary-text
+    kind: book
+    title: "Understanding Distributed Systems, 2nd edition"
+    by: "Roberto Vitillo"
+    url: https://understandingdistributed.systems/
+    edition_or_term: "2nd edition (2022, 344 pages)"
+    access: paid
+    use: "Read front to back (about 15 hours): communication (reliable links, discovery, APIs), coordination, scalability (HTTP caching, CDNs, partitioning, load balancing, data storage, caching, microservices), resiliency (redundancy, fault isolation, downstream and upstream resiliency), and maintainability (testing, continuous delivery, monitoring, observability)."
+    why: "The one concise book organized around the scope of this node (scalability patterns, load balancing, caching, resiliency, observability); written by a DynamoDB engineer and aligned with the preceding fundamentals node. Alex Xu's interview books are more example-driven but less principled."
+    verified: true
+  - id: sre-book
+    role: secondary
+    kind: book
+    title: "Site Reliability Engineering: How Google Runs Production Systems"
+    by: "Betsy Beyer, Chris Jones, Jennifer Petoff, Niall Richard Murphy (eds.)"
+    url: https://sre.google/sre-book/table-of-contents/
+    edition_or_term: "O'Reilly 2016; free online"
+    access: free
+    use: "Embracing Risk, Service Level Objectives, Monitoring Distributed Systems, Practical Alerting, Load Balancing in the Datacenter, Handling Overload, Addressing Cascading Failures, Software Engineering in SRE (capacity planning), Postmortem Culture."
+    why: "Gap: the canonical source for SLO-based reliability, alerting, overload and cascading-failure handling and capacity planning, which the node scope names; free, but dated in places (2016)."
+    verified: true
+  - id: sre-workbook
+    role: secondary
+    kind: book
+    title: "The Site Reliability Workbook"
+    by: "Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara, Stephen Thorne (eds.)"
+    url: https://sre.google/workbook/table-of-contents/
+    edition_or_term: "O'Reilly 2018; free online"
+    access: free
+    use: "Implementing SLOs, Alerting on SLOs, Managing Load, Incident Response, and Non-Abstract Large System Design (https://sre.google/workbook/non-abstract-design/)."
+    why: "Gap: actionable how-to chapters that complement the principles-oriented SRE book; the NALSD chapter teaches capacity arithmetic with worked designs."
+    verified: true
+  - id: nalsd-practice
+    role: practice
+    kind: article
+    title: "Non-Abstract Large System Design (NALSD) exercises"
+    by: "Google SRE"
+    url: https://sre.google/workbook/non-abstract-design/
+    edition_or_term: "SRE Workbook chapter; additional material at https://sre.google/classroom/"
+    access: free
+    use: "Work through the chapter's design examples yourself: write the resource-and-capacity arithmetic (QPS, storage, bandwidth, failure domains) for each iteration before reading its solution; repeat for two of your own systems (a URL shortener and a chat service)."
+    why: "Hidden gem: forces a back-of-envelope, numbers-first design practice that most interview material skips, directly covering capacity planning."
+    verified: true
+  - id: aws-builders
+    role: secondary
+    kind: article
+    title: "AWS Builders' Library (selected articles)"
+    by: "AWS engineers (Marc Brooker and others)"
+    url: https://aws.amazon.com/builders-library/
+    edition_or_term: "Current"
+    access: free
+    use: "Timeouts, retries and backoff with jitter; Using load shedding to avoid overload; Caching challenges and strategies; Avoiding insurmountable queue backlogs."
+    why: "Gap: engineering-practice essays from a hyperscaler on exactly the resilience and caching problems the node covers; short and concrete."
+    verified: true
+  - id: patterns
+    role: reference
+    kind: article
+    title: "Patterns of Distributed Systems"
+    by: "Unmesh Joshi (martinfowler.com)"
+    url: https://martinfowler.com/articles/patterns-of-distributed-systems/
+    edition_or_term: "Catalog, current"
+    access: free
+    use: "Look up patterns (write-ahead log, leader and followers, lease, heartbeat, quorum, consistent core, request pipeline) when reading about real systems."
+    why: "Gap: a named-pattern vocabulary for the mechanisms in Kafka, etcd, Cassandra and similar systems; good for design discussions."
+    verified: true
+  - id: tail-at-scale
+    role: reference
+    kind: paper
+    title: "The Tail at Scale"
+    by: "Jeffrey Dean, Luiz Andre Barroso (CACM 2013)"
+    url: https://research.google/pubs/the-tail-at-scale/
+    edition_or_term: "CACM 2013"
+    access: free
+    use: "Read in full (short): hedged requests, tail tolerance, micro-partitions."
+    why: "Gap: explains why p99 latency dominates at scale, the basis of SLO and capacity work."
+    verified: true
+  - id: metastable
+    role: reference
+    kind: paper
+    title: "Metastable Failures in Distributed Systems / Metastable Failures in the Wild"
+    by: "Nathan Bronson et al. (HotOS 2021); Lexiang Huang et al. (OSDI 2022)"
+    url: https://sigops.org/s/conferences/hotos/2021/papers/hotos21-s11-bronson.pdf
+    edition_or_term: "HotOS 2021; follow-up OSDI 2022 at https://www.usenix.org/system/files/osdi22-huang-lexiang.pdf"
+    access: free
+    use: "Read the HotOS paper, then the OSDI study's taxonomy of retry storms and cache-driven failures."
+    why: "Gap: names the failure mode (overload that persists after the trigger is gone) that load shedding, retries and caching can cause."
+    verified: true
+  - id: otel
+    role: reference
+    kind: docs
+    title: "OpenTelemetry: Observability primer and signals"
+    by: "Cloud Native Computing Foundation"
+    url: https://opentelemetry.io/docs/concepts/observability-primer/
+    edition_or_term: "Current docs"
+    access: free
+    use: "Read the primer and the Signals pages (traces, metrics, logs); instrument one small service. Also read Brendan Gregg's USE method (https://www.brendangregg.com/usemethod.html) for resource saturation analysis."
+    why: "Gap: the vendor-neutral standard for the observability part of the node scope."
+    verified: true
+  - id: xu
+    role: secondary
+    kind: book
+    title: "System Design Interview, An Insider's Guide, Volumes 1 and 2"
+    by: "Alex Xu (and Sahn Lam, vol. 2)"
+    url: https://bytebytego.com/courses/system-design-interview/scale-from-zero-to-millions-of-users
+    edition_or_term: "Vol. 1 (2020), Vol. 2 (2022); the ByteByteGo site hosts the text"
+    access: paid
+    use: "Vol. 1: Scale from Zero to Millions of Users, Back-of-the-envelope Estimation, Design a Rate Limiter, Design Consistent Hashing, Design a Key-Value Store, Design a Unique ID Generator, Design a URL Shortener, Design a Notification System, Design a News Feed System."
+    why: "Gap: worked design problems with diagrams that show how the building blocks combine; interview-oriented and shallow on correctness, so treat it as examples, not theory."
+    verified: true
+  - id: hello-interview
+    role: practice
+    kind: practice-site
+    title: "Hello Interview: System Design in a Hurry"
+    by: "Hello Interview"
+    url: https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction
+    edition_or_term: "Current"
+    access: mixed
+    use: "Delivery framework and Key Technologies pages (free), then design two systems end to end on paper and time-box yourself."
+    why: "Gap: a structured delivery framework and practice prompts; some problem breakdowns are paid."
+    verified: true
+considered:
+  - {title: "System Design Primer (donnemartin)", url: "https://github.com/donnemartin/system-design-primer", reason: "Huge free repo with Anki decks and design exercises, but interview-targeted, uneven in depth and sometimes dated; good as a checklist."}
+  - {title: "Building Secure and Reliable Systems", url: "https://google.github.io/building-secure-and-reliable-systems/raw/toc.html", reason: "Free Google book on resilience, recovery and incident response; excellent but a security-flavoured sequel to the SRE books."}
+  - {title: "MIT 6.1800 Computer Systems Engineering (Spring 2026)", url: "https://web.mit.edu/6.1800/www/", reason: "Includes 'The Tail at Scale' and distributed-systems design principles, but is a broad systems survey, not a large-scale design course."}
+  - {title: "High Scalability blog", url: "https://highscalability.com/", reason: "Architecture write-ups of real companies; useful reading list, not a curriculum."}
+  - {title: "Grokking the System Design Interview (Educative)", url: "https://www.educative.io/courses/grokking-the-system-design-interview", reason: "Paid interactive interview prep; overlaps Alex Xu."}
+  - {title: "Cornell CS 5412 Cloud Computing", url: "https://www.cs.cornell.edu/courses/cs5412/", reason: "Course page for the cloud-scale design topics; the 2025 term page I tried returned 404 and I did not find public videos."}
+notes: "No primary course is listed: I did not find a public university course that covers large-scale design plus SRE in a way better than the books (MIT 6.1800 and Cornell CS 5412 were checked). Route: read Understanding Distributed Systems, then SRE book/workbook chapters, then Builders' Library essays, then do NALSD-style capacity exercises and two end-to-end designs. This node is also where the owner's HLD Handbook and AlgoMaster seed items would fit as practice."
+split_proposal: "Consider splitting into (a) System design and scalability patterns (caching, partitioning, load balancing, capacity planning) and (b) Reliability engineering and observability (SLOs, alerting, incident response, chaos), because the SRE material is a distinct skill set."
+prereq_changes: null
+open_questions:
+  - "Understanding Distributed Systems: the site returns only the title to my fetch tools; chapter structure above is from my knowledge of the book and not independently confirmed. The 2nd edition (2022, 344 pages) was confirmed via search results."
+  - "ByteByteGo hosts Alex Xu's text (paywalled); I opened the page but could not view chapter content."
+  - "Seed items (HLD Handbook, AlgoMaster) were not re-verified here."
+last_verified: 2026-11-18

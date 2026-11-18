@@ -63,3 +63,13 @@
 - CLIP objective: SSL teaches objective, VLM teaches CLIP as a system.
 - Prereq suggestions (soft): vision-language-models += self-supervised-learning; neural-3d += diffusion-and-flow-matching; generative-models-at-scale += vision-language-models, self-supervised-learning; multi-view-geometry += probability. Relax: diffusion-and-flow-matching hard generative-modeling-foundations -> soft (6.S184 needs only prob + DL). Promote: multi-view-geometry optimization soft -> hard (bundle adjustment).
 - Unverified: Michigan EECS 498 pages 404 (Fall 2019 playlist works); CS231A canonical URL failed (alias used, Spring 2025); CS180 / 6.S058 / 16-825 video status; UDL & Bishop chapter numbers from atlas notes/memory; CS236 homework restricted; TUM SS26 playlist completeness.
+
+## G4 Machine & OS — done, 0 errors
+- Video reality: 15-213 F26 enrolled-only (public Fall 2015 Panopto); CS 61C F26 enrolled-only (public Summer 2020); CS 162 F26 enrolled-only, NO official public playlist; 6.1810 public Fall 2020; CS149 public Fall 2023; 6.172 public OCW Fall 2018; UNSW COMP9242 2026 T3 public echo360.
+- REVIEW FLAG (mine): operating-systems primary-course CS 162 has no official public videos; reviewer should consider an OS course with public lectures (e.g. Wisconsin CS 537 / Remzi, ECE344 Fall 2024 fully public, or 6.1810 Fall 2020).
+- No primary course: high-performance-python, virtualization-and-containers, storage-and-file-systems.
+- Splits proposed: virtualization-and-containers -> hypervisors / containers; linux-kernel-internals -> core subsystems / device drivers; performance-engineering -> CPU tuning / algorithms-for-hardware.
+- Prereq suggestions (soft): os-kernel-implementation += computer-architecture (xv6 is RISC-V); performance-engineering += computer-architecture; concurrent-programming += rust-programming (CS431 is Rust); advanced-operating-systems += concurrent-programming, linux-kernel-internals.
+- Cross-group overlaps: ETH DDCA also primary for G11 digital-logic/processor-design; CS107 is G1 c-programming primary (only considered here); CUDA content goes to G9.
+- Time-sensitive: Pacheco 3e (new author Steven Wright) dated 2026-12-28, not out yet -> kept 2e. 1024cores.net now a gambling domain (not linked).
+- Unverified: csapp.cs.cmu.edu; O'Reilly (HPP, LKD); Packt LKP 2e (search snippet only); Springer Bugnion; perf-ninja.com; ppc-exercises.cs.aalto.fi; Stanford CS 240; YouTube 429; KAIST CS431 post-2024 terms; 6.5810 / CS 736 reading lists not public; CS 61C Fall 2020 recordings.

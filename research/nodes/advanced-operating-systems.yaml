@@ -1,0 +1,115 @@
+id: advanced-operating-systems
+title: "Advanced OS & Systems Research"
+group: G4
+paths: [os-perf]
+hard: [os-kernel-implementation]
+soft: []
+scope: "Classic and modern systems papers: microkernels, exokernels, kernel bypass, scheduling, isolation; reading systems research."
+
+level: advanced
+estimated_hours: 100
+resources:
+  - id: cmu-15712-reading
+    role: primary-text
+    kind: website
+    title: "CMU 15-712 Advanced and Distributed Operating Systems: schedule and reading list"
+    by: "David G. Andersen et al. (CMU)"
+    url: https://www.cs.cmu.edu/~15712/schedule.html
+    edition_or_term: "Fall 2026 (last updated 2026-10-27); paper summaries on the 15-712 site"
+    access: free
+    use: "Read the 'wisdom papers' first (Keshav 'How to Read a Paper', Lampson 'Hints for Computer System Design', Hamming), then the OS parts: RPC (Birrell and Nelson), thread usage (Hauser), Eraser race detector, Rosenblum LFS, RAID, SPIN and exokernel (Bershad95, Kaashoek97), extensible kernels (eBPF-style, Dwivedi24), plus the distributed/transactions parts if desired. Write a one-page summary per paper."
+    why: "A carefully curated list of ~40 classic and recent systems papers with direct PDF links and a built-in method for reading and presenting research; the 2026 list mixes classics with SOSP/OSDI '23-'24 papers. The list is OS-plus-distributed rather than pure OS."
+    verified: true
+  - id: unsw-comp9242
+    role: primary-course
+    kind: course
+    title: "UNSW COMP9242 Advanced Operating Systems"
+    by: "UNSW (Gernot Heiser and guest lecturers)"
+    url: https://cgi.cse.unsw.edu.au/~cs9242/26/
+    edition_or_term: "2026/T3"
+    access: mixed
+    use: "Watch the public lecture recordings in the lecture table: microkernels and seL4 (API, capabilities), OS execution models (events/threads), hardware considerations (caches and devices), Unix and Linux internals, real-time systems, multicore/memory ordering/locking, virtual machines, performance measurement and analysis, and later weeks. Read the paired papers (von Behren 2003, McKenney 2004, Mellor-Crummey & Scott 1991, Barham 2003 Xen, Waldspurger 2002 ESX). Read the project spec: build an OS on seL4 for an ARM board."
+    why: "The best public advanced-OS course I found: Heiser's microkernel/seL4 perspective, a research-grade OS project, and most lectures linked with public (echo360/YouTube) recordings for the current term. Fits microkernels, isolation, multicore, VMs and measurement."
+    verified: true
+    course:
+      latest_term: "2026/T3"
+      latest_url: https://cgi.cse.unsw.edu.au/~cs9242/26/lectures.shtml
+      videos: public
+      assignments: partial
+      assignments_url: https://cgi.cse.unsw.edu.au/~cs9242/26/project/index.shtml
+  - id: sel4-learn
+    role: secondary
+    kind: docs
+    title: "seL4 Learn (tutorials, manual) and Microkernel docs"
+    by: "seL4 Foundation"
+    url: https://sel4.systems/Learn/
+    edition_or_term: "current"
+    access: free
+    use: "Work through the tutorials and manual linked from the Learn page (seL4 API, capabilities, threads/IPC, memory, interrupts); read the seL4 reference manual."
+    why: "Gives the hands-on microkernel experience that backs the COMP9242 lectures; seL4 is the production microkernel/isolation reference."
+    verified: true
+  - id: mit-6810-papers
+    role: secondary
+    kind: paper
+    title: "MIT 6.1810 paper homeworks (microkernels, Janus, superpages, user-level VM, Shenango)"
+    by: "MIT PDOS"
+    url: https://pdos.csail.mit.edu/6.1810/2025/homework/paper-microkernel.html
+    edition_or_term: "Fall 2025"
+    access: free
+    use: "A gentle reading course: the paper homeworks for microkernels, system call interposition (Janus), transparent superpages, virtual memory for applications (uvm), and Shenango (lec/l-shenango, high-performance networking and scheduling) with each lecture's notes."
+    why: "Short, guided paper reads with questions, written for undergrads who already know xv6; a bridge before graduate reading lists."
+    verified: true
+  - id: sigops-hof
+    role: reference
+    kind: website
+    title: "ACM SIGOPS Hall of Fame Award (list of landmark OS papers)"
+    by: "ACM SIGOPS"
+    url: https://www.sigops.org/awards/hof/
+    edition_or_term: "living list (papers at least 10 years old, awarded yearly)"
+    access: free
+    use: "Use as the canonical checklist of influential OS and systems papers (each entry cites the paper); pick unread papers by topic (kernels, file systems, virtualization, scheduling, security) to extend the 15-712 list."
+    why: "Expert-curated landmark list that 15-712 itself cites repeatedly ('SigOps HoF paper'); useful to check coverage of classics."
+    verified: true
+  - id: cs262a
+    role: secondary
+    kind: course
+    title: "UC Berkeley CS 262A Graduate Computer Systems (reading-list course)"
+    by: "John Kubiatowicz (Berkeley)"
+    url: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F25/
+    edition_or_term: "Fall 2025"
+    access: free
+    use: "Use the posted Reading #N handouts as an alternate reading list (topic split not checked); the course page is frame-based (notes.html has announcements and reading links)."
+    why: "A second, Berkeley-style paper list with public handouts (about 23 reading handouts in Fall 2025); overlaps with 15-712."
+    verified: true
+    course:
+      latest_term: "Fall 2025"
+      latest_url: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F25/
+      videos: unknown
+      assignments: public
+      assignments_url: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F25/notes.html
+  - id: lampson-hints
+    role: reference
+    kind: paper
+    title: "Hints for Computer System Design (Lampson) and 'How to Read a Paper' (Keshav)"
+    by: "Butler Lampson; S. Keshav"
+    url: https://www.cs.cmu.edu/~15712/papers/lampson83.pdf
+    edition_or_term: "SOSP 1983; Keshav CCR 2007 (HowtoReadPaper.pdf on the same 15-712 site)"
+    access: free
+    use: "Read Lampson first for design heuristics, Keshav's three-pass method for reading papers; both are assigned at the start of 15-712."
+    why: "Covers 'reading systems research' as a skill in the scope."
+    verified: true
+considered:
+  - {title: "MIT 6.5810 (Operating System Engineering, graduate)", url: "https://pdos.csail.mit.edu/6.828/", reason: "Course page redirects to 6.1810; no public 6.5810 page found; graduate OS reading list not retrievable."}
+  - {title: "Stanford CS 240 Advanced Topics in Operating Systems", url: "https://web.stanford.edu/class/cs240/", reason: "Excellent reading list but host unreachable from this environment; check manually."}
+  - {title: "UW-Madison CS 736 Advanced Operating Systems (Remzi)", url: "https://pages.cs.wisc.edu/~remzi/Classes/736/", reason: "Only old-term directory listings (Fall 2010 etc.) are public."}
+  - {title: "ETH Advanced Operating Systems (Roscoe, Barrelfish)", url: "https://systems.ethz.ch/education/courses.html", reason: "Course list page opened but no specific AOS page located; Barrelfish multikernel is covered by the SOSP'09 paper."}
+  - {title: "CMU 15-410 Operating System Design and Implementation", url: "https://www.cs.cmu.edu/~410/", reason: "Prerequisite-level kernel course; project handouts public but needs CMU environment; belongs to os-kernel-implementation."}
+  - {title: "UC Berkeley CS 162 / CS 262A lectures; USENIX OSDI/SOSP proceedings", url: "https://www.usenix.org/conferences/past", reason: "For going beyond course lists: read best-paper awards of OSDI and SOSP yearly; no curated sequence."}
+notes: "No single advanced OS 'textbook' exists; the best primary is the 15-712 reading list because it is current, links PDFs and teaches how to read papers. The primary course is UNSW COMP9242 (public recordings for 2026/T3; seL4-based project). Kernel bypass and scheduling are covered by papers in the 15-712 list (Ensō NIC streaming interface, extensible kernels) and by MIT's Shenango lecture; for deeper kernel-bypass add IX, Arrakis, Demikernel and Caladan in a later pass (not verified here). COMP9242 requires a seL4/ARM project environment; the 6.1810 paper homeworks provide a gentler entry."
+split_proposal: null
+prereq_changes: "Add soft: [concurrent-programming, linux-kernel-internals] (the papers assume locking, RCU and Linux internals); optional bridge to distributed-systems nodes (G10) since 15-712 mixes in distributed topics."
+open_questions:
+  - "COMP9242 echo360 recordings were not played; 17 public echo360 links and 2 YouTube icons were counted in the 2026 page source."
+  - "Stanford CS 240 page unreachable; confirm and consider as an alternative reading list."
+  - "Verify kernel-bypass papers (Arrakis, IX, Demikernel, Caladan) as separate links in a follow-up."
+last_verified: 2026-11-18

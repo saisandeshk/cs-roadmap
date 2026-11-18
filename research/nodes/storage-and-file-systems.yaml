@@ -1,0 +1,158 @@
+id: storage-and-file-systems
+title: "Storage & File Systems"
+group: G4
+paths: [os-perf, databases]
+hard: [operating-systems]
+soft: []
+scope: "File system design (FFS, LFS, journaling, CoW), SSD/flash, storage stack, RAID."
+
+level: intermediate
+estimated_hours: 80
+resources:
+  - id: ostep-persistence
+    role: primary-text
+    kind: book
+    title: "Operating Systems: Three Easy Pieces, Part III: Persistence"
+    by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
+    url: https://pages.cs.wisc.edu/~remzi/OSTEP/
+    edition_or_term: "Version 1.10 (Nov 2023)"
+    access: free
+    use: "I/O devices; hard disk drives; RAID; files and directories; file system implementation (vsfs); locality and the Fast File System; crash consistency (fsck and journaling); log-structured file systems; flash-based SSDs; data integrity and protection; then the distributed-FS chapters (NFS, AFS) if wanted. Chapter PDFs: file-devices, file-disks, file-raid, file-intro, file-implementation, file-ffs, file-journaling, file-lfs, file-ssd, file-integrity."
+    why: "The clearest and most complete short treatment of exactly this scope (disks, RAID, FFS, journaling, LFS, SSDs) with simulators for each; free. Copy-on-write file systems (ZFS/Btrfs) get only a few pages, so add the secondary reading."
+    verified: true
+  - id: ostep-fs-homework
+    role: practice
+    kind: practice-site
+    title: "OSTEP file-system homework simulators"
+    by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
+    url: https://github.com/remzi-arpacidusseau/ostep-homework
+    edition_or_term: "current master"
+    access: free
+    use: "file-disks (disk.py: seek/rotation/scheduling), file-raid (raid.py), file-implementation (vsfs.py), file-ffs (ffs.py), file-journaling (fsck.py: crash scenarios), file-lfs (lfs.py), file-ssd (ssd.py: FTL, garbage collection, wear), file-integrity (checksum.py)."
+    why: "Each simulator makes one design decision visible (allocation policy, journal modes, FTL mapping); fast feedback on whether the chapter's logic is understood."
+    verified: true
+  - id: mit-fs-lectures-lab
+    role: practice
+    kind: practice-site
+    title: "MIT 6.1810 file-system lecture notes and fs lab (xv6)"
+    by: "MIT PDOS"
+    url: https://pdos.csail.mit.edu/6.1810/2025/labs/fs.html
+    edition_or_term: "Fall 2025"
+    access: free
+    use: "Read lecture notes l-fs.txt (file systems), l-crash.txt (crash recovery, logging) and l-journal.txt (file-system performance and fast crash recovery); do the fs lab (large files via doubly-indirect blocks, symbolic links) and read xv6 book ch. 10-11 (file system and logging) side by side."
+    why: "Builds and debugs a real inode/log file system in a small kernel; the OS-level counterpart to OSTEP's simulators."
+    verified: true
+  - id: ostep-fs-checker
+    role: practice
+    kind: practice-site
+    title: "OSTEP project: xv6 file system checker (filesystems-checker)"
+    by: "Remzi H. Arpaci-Dusseau et al."
+    url: https://github.com/remzi-arpacidusseau/ostep-projects
+    edition_or_term: "current master"
+    access: free
+    use: "Write a program that reads an xv6 file-system image and reports inconsistencies (bad inodes, directory loops, bitmap mismatches); test scripts supplied."
+    why: "Teaches on-disk layout and invariants (what fsck verifies) by writing the checker yourself."
+    verified: true
+  - id: lfs-paper
+    role: secondary
+    kind: paper
+    title: "The Design and Implementation of a Log-Structured File System"
+    by: "Mendel Rosenblum, John K. Ousterhout"
+    url: https://people.eecs.berkeley.edu/~brewer/cs262/LFS.pdf
+    edition_or_term: "SOSP 1991 / TOCS 1992"
+    access: free
+    use: "Read in full after OSTEP's LFS chapter; focus on segment cleaning policy and write cost analysis."
+    why: "Primary source for the log-structured idea that underlies modern flash file systems and LSM trees."
+    verified: true
+  - id: ssd-tradeoffs
+    role: secondary
+    kind: paper
+    title: "Design Tradeoffs for SSD Performance"
+    by: "Nitin Agrawal et al."
+    url: https://www.usenix.org/legacy/event/usenix08/tech/full_papers/agrawal/agrawal.pdf
+    edition_or_term: "USENIX ATC 2008"
+    access: free
+    use: "Read sections on SSD organization (planes, packages, striping), FTL mapping, garbage collection and write amplification; compare with OSTEP's SSD chapter."
+    why: "A deeper treatment of flash internals than the book, with an SSD simulator-based analysis; foundation for later reading on NVMe and ZNS."
+    verified: true
+  - id: crash-consistency-paper
+    role: secondary
+    kind: paper
+    title: "All File Systems Are Not Created Equal: On the Complexity of Crafting Crash-Consistent Applications"
+    by: "Thanumalayan Pillai et al."
+    url: https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-pillai.pdf
+    edition_or_term: "OSDI 2014"
+    access: free
+    use: "Read for the persistence-property differences between ext3/ext4/btrfs/xfs and why application-level crash safety (rename, fsync ordering) is hard."
+    why: "Connects file-system crash consistency to application correctness (databases, editors); important for the databases path."
+    verified: true
+  - id: data-corruption-paper
+    role: secondary
+    kind: paper
+    title: "An Analysis of Data Corruption in the Storage Stack"
+    by: "Lakshmi Bairavasundaram et al."
+    url: https://www.usenix.org/legacy/event/fast08/tech/full_papers/bairavasundaram/bairavasundaram.pdf
+    edition_or_term: "FAST 2008"
+    access: free
+    use: "Read the field study of silent corruption (checksum mismatches, misdirected and torn writes) to motivate end-to-end checksums in ZFS/btrfs."
+    why: "Empirical grounding for the data-integrity chapter and for copy-on-write designs."
+    verified: true
+  - id: wisckey
+    role: secondary
+    kind: paper
+    title: "WiscKey: Separating Keys from Values in SSD-Conscious Storage"
+    by: "Lanyue Lu et al."
+    url: https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf
+    edition_or_term: "FAST 2016"
+    access: free
+    use: "Read to see how LSM-tree storage engines adapt to SSD characteristics (write amplification, parallel random reads)."
+    why: "Bridges file-system/flash knowledge to key-value storage engines (databases path)."
+    verified: true
+  - id: mini-lsm
+    role: practice
+    kind: practice-site
+    title: "Mini-LSM: build a database storage engine in Rust"
+    by: "Alex Chi Z (skyzh)"
+    url: https://skyzh.github.io/mini-lsm/
+    edition_or_term: "current three-week guided course (complete)"
+    access: free
+    use: "Do week 1 (memtable, SSTs, merge iterators, a working engine) and week 2 (compaction strategies, manifest, write-ahead log for crash recovery); week 3 (MVCC and transactions) is optional and database-oriented. Basic Rust needed; tests are provided."
+    why: "Hidden gem: a structured, tested exercise path for log-structured storage in the LSM form; complements LFS and WiscKey with a real implementation."
+    verified: true
+  - id: kernel-storage-docs
+    role: reference
+    kind: docs
+    title: "Linux kernel docs: VFS, ext4 data structures, block layer, Btrfs and OpenZFS docs"
+    by: "Linux kernel community; Btrfs and OpenZFS projects"
+    url: https://www.kernel.org/doc/html/latest/filesystems/ext4/index.html
+    edition_or_term: "current mainline; Btrfs and OpenZFS docs current"
+    access: free
+    use: "ext4 'Data Structures and Algorithms' (superblock, block groups, extents, journal); docs.kernel.org/filesystems/vfs.html (VFS objects); the Block docs (blk-mq, I/O schedulers); btrfs.readthedocs.io and openzfs.github.io/openzfs-docs for copy-on-write features (snapshots, send/receive, scrub); Thomas-Krenn Linux Storage Stack Diagram for the whole stack."
+    why: "Real on-disk formats and the Linux storage stack, which the book abstracts; covers the CoW and storage-stack scope items."
+    verified: true
+  - id: fuse-tutorial
+    role: practice
+    kind: practice-site
+    title: "Write a FUSE file system (libfuse examples + Pfeiffer's tutorial)"
+    by: "Joseph J. Pfeiffer; libfuse project"
+    url: https://www.cs.nmsu.edu/~pfeiffer/fuse-tutorial/
+    edition_or_term: "tutorial (older libfuse API, concepts current); libfuse examples current"
+    access: free
+    use: "Read the tutorial, then build an in-memory or single-file-backed file system using libfuse's example/hello.c and passthrough examples: getattr, readdir, read/write, create, unlink, truncate; test with fsx or pjdfstest-style checks."
+    why: "The easiest way to implement a complete file system on Linux without kernel code; tests VFS-level semantics."
+    verified: true
+considered:
+  - {title: "Database Internals (Alex Petrov, O'Reilly 2019), Part I Storage Engines", url: "https://www.databass.dev/", reason: "B-tree vs LSM storage engines in depth; belongs to the databases path (G10); page checked but book not opened."}
+  - {title: "Designing Data-Intensive Applications, ch. 3 (Storage and Retrieval)", url: "https://dataintensive.net/", reason: "Excellent overview of LSM/B-tree/column storage; more database-oriented, owned by G10."}
+  - {title: "ETH 'Understanding and Designing Modern Storage Systems' (Mutlu group, Spring 2026)", url: "https://safari.ethz.ch/projects_and_seminars/spring2026/doku.php?id=modern_storage_systems", reason: "Project/seminar course with SSD focus; page exists but is a project course and I found no lecture series to follow; see also 'Modern SSDs' course on the same site."}
+  - {title: "Operating Systems: Principles and Practice, Vol. 4 Persistent Storage", url: "https://ospp.cs.washington.edu/", reason: "Alternative to OSTEP; overlaps heavily; paid."}
+  - {title: "Course: CMU 15-746 / UW CS 736 / Stony Brook CSE 590 storage systems", url: "https://www3.cs.stonybrook.edu/~ezk/cse590-s25", reason: "Graduate storage courses exist (Stony Brook CSE 590 Spring 2025 syllabus public) but I found none with public lectures; 15-746 and CS 736 pages did not resolve or are only old directory listings."}
+  - {title: "Linux Storage Stack Diagram (Thomas-Krenn)", url: "https://www.thomas-krenn.com/en/wiki/Linux_Storage_Stack_Diagram", reason: "Folded into the kernel-docs reference above."}
+notes: "OSTEP's persistence part is the primary text and the same book as the OS node's primary; the OSTEP homeworks overlap with that node (use them there or here, not twice). No video course for storage was found; the strongest hands-on resources are the OSTEP simulators, xv6 fs lab and FUSE. The scope 'SSD/flash, storage stack, RAID' is covered by OSTEP chapters plus papers and kernel docs. Copy-on-write file systems (ZFS/Btrfs) are under-served: the references are the OpenZFS/Btrfs docs; ZFS design papers (Bonwick) were not reachable (usenix legacy URL 404). If the owner wants CoW depth, add the Btrfs paper (Rodeh et al.) and ZFS end-to-end integrity materials in a later pass."
+split_proposal: null
+prereq_changes: "Consider adding soft: [concurrent-programming] (journaling/locking) and databases (storage engine cross-link) as 'related' rather than prerequisites."
+open_questions:
+  - "No primary-course found: confirm if a public storage-systems course (CMU 15-746, Wisconsin CS 736, UCSC CSE 232) has video."
+  - "Bonwick ZFS paper URL (usenix.org/legacy/event/usenix99/...) returned 404; find a current link."
+  - "Stony Brook CSE 590 URL in considered was returned by search but not opened."
+last_verified: 2026-11-18
