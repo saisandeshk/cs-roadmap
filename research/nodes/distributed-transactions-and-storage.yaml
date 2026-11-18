@@ -48,7 +48,7 @@ resources:
     edition_or_term: "Current course branch (Go)"
     access: free
     use: "Project 3 (multi-Raft KV: membership change, region split, scheduler) and Project 4 (transactions: MVCC layer, KvGet, KvPrewrite, KvCommit in the Percolator style). Projects 1-2 (standalone KV, Raft KV) overlap MIT Labs 3-4 and can be skipped if those are done."
-    why: "Hidden gem: the only public course that takes you from Raft to sharding (regions) to Percolator-style distributed transactions in one codebase; autograded via GitHub Classroom for the original course, with local make targets. Its last commit date was not visible, so check issues before starting."
+    why: "Hidden gem: the only public course that takes you from Raft to sharding (regions) to Percolator-style distributed transactions in one codebase; the README says autograding for the original course moved to GitHub Classroom. Its last commit date was not visible, so check issues before starting."
     verified: true
   - id: dslabs-4
     role: practice
