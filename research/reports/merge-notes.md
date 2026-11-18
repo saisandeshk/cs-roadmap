@@ -56,3 +56,10 @@
 - dl-engineering & transformers use Karpathy video-series in the primary-course slot (no real course).
 - Findings: nanoGPT deprecated Nov 2025 -> nanochat/build-nanogpt; CS229 recent terms enrolled-only (public: Autumn 2018); CS188 Spring 2026 public playlist; Statistical Rethinking 2026 public.
 - Unverified: GitHub contents (403); CS229/CS224W playlist oEmbed; CMU 10-708 Panopto public access; 11-785 / 6.7960 Fall 2026 / CS224N 2026 video policy; CS221, STATS 361 timed out; Kohavi and What If chapter numbers from memory.
+
+## G6 Vision & generative — done, 0 errors
+- Strong 2026 public-video courses found: MIT 6.8300 Sp26 (Panopto public), TUM 3D CV SS2026, KAIST CS479 Sp26, MIT MAS.S60 Sp26, MIT 6.S184 IAP 2026, Stanford CME296 Sp26, CMU 10-799 Sp26.
+- Splits proposed: neural-3d -> neural rendering / 3D DL & feed-forward reconstruction; generative-models-at-scale -> split out audio (and optionally video).
+- CLIP objective: SSL teaches objective, VLM teaches CLIP as a system.
+- Prereq suggestions (soft): vision-language-models += self-supervised-learning; neural-3d += diffusion-and-flow-matching; generative-models-at-scale += vision-language-models, self-supervised-learning; multi-view-geometry += probability. Relax: diffusion-and-flow-matching hard generative-modeling-foundations -> soft (6.S184 needs only prob + DL). Promote: multi-view-geometry optimization soft -> hard (bundle adjustment).
+- Unverified: Michigan EECS 498 pages 404 (Fall 2019 playlist works); CS231A canonical URL failed (alias used, Spring 2025); CS180 / 6.S058 / 16-825 video status; UDL & Bishop chapter numbers from atlas notes/memory; CS236 homework restricted; TUM SS26 playlist completeness.
