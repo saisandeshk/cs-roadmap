@@ -158,7 +158,6 @@ resources:
     why: "Gap: modern, practical way to verify isolation; ties to the distributed-transactions node."
     verified: true
 considered:
-  - {title: "Transaction Processing: Concepts and Techniques (Gray and Reuter)", url: "https://www.db-book.com/", reason: "The classic reference (not linked: publisher page not verified); too long for a first pass."}
   - {title: "Database System Concepts 7th ed., Ch. 17-19", url: "https://www.db-book.com/", reason: "Current and complete treatment of transactions, concurrency control and recovery; the CMU course text. R and G chosen for clarity and ARIES presentation."}
   - {title: "Database Internals (Petrov) Ch. 5", url: "https://www.databass.dev/", reason: "Good short introduction to transaction processing and recovery in storage engines; used in the storage node."}
   - {title: "Mini-LSM weeks 2-3 (MVCC and transactions)", url: "https://skyzh.github.io/mini-lsm/", reason: "Implements MVCC and OCC on an LSM engine in Rust; a nice alternative project but already referenced in the storage node."}
