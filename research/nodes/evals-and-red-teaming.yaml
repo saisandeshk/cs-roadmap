@@ -1,0 +1,159 @@
+id: evals-and-red-teaming
+title: Safety Evals & Red-Teaming
+group: G8
+paths:
+- safety
+hard:
+- llm-evaluation
+soft:
+- ai-safety-foundations
+scope: Dangerous-capability evals, red-teaming, jailbreaks, eval frameworks (e.g. Inspect), model organisms.
+level: intermediate
+estimated_hours: 50
+resources:
+- id: inspect-docs
+  role: primary-text
+  kind: docs
+  title: Inspect (UK AISI) documentation
+  by: UK AI Security Institute
+  url: https://inspect.aisi.org.uk/
+  edition_or_term: Current docs
+  access: free
+  use: Tasks (https://inspect.aisi.org.uk/tasks.html), datasets, solvers, scorers (https://inspect.aisi.org.uk/scorers.html), agents (https://inspect.aisi.org.uk/agents.html), sandboxing (https://inspect.aisi.org.uk/sandboxing.html); then the Inspect Evals register (https://ukgovernmentbeis.github.io/inspect_evals/).
+  why: Inspect is the de-facto open framework for dangerous-capability and safety evals; its docs teach the eval-design concepts (task/solver/scorer, model-graded scoring, sandboxed agent tasks) with working examples.
+  verified: true
+- id: arena-ch3
+  role: primary-course
+  kind: course
+  title: 'ARENA Chapter 3: LLM Evaluations'
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter3_llm_evals/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: 3.1 Intro to Evals (threat models and specifications), 3.2 Dataset Generation, 3.3 Running Evals with Inspect, 3.4 LLM Agents (scaffolding, Wikipedia racing), 3.5 AI Control (monitoring in a simulated environment). Also 4.2 Science of Misalignment for black-box investigation.
+  why: Test-backed, free, current curriculum that walks through threat-model-to-eval design and Inspect; the only structured course found that does this end to end.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter3_llm_evals/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter3_llm_evals/
+- id: extreme-risk-evals
+  role: secondary
+  kind: paper
+  title: Model evaluation for extreme risks; Evaluating Frontier Models for Dangerous Capabilities
+  by: Shevlane et al.; Phuong et al., Google DeepMind
+  url: https://arxiv.org/abs/2305.15324
+  access: free
+  use: 'Shevlane et al. (2305.15324): the dangerous-capability vs alignment evaluation framework; Phuong et al. (https://arxiv.org/abs/2403.13793): persuasion, cyber, self-proliferation, self-reasoning eval suites and how results were reported.'
+  why: Frames why and how labs run dangerous-capability evals; the scope's "dangerous-capability evals" item.
+  verified: true
+- id: red-teaming-papers
+  role: secondary
+  kind: paper
+  title: 'Red teaming papers: Perez 2022, Ganguli 2022, HarmBench'
+  by: Perez et al.; Ganguli et al.; Mazeika et al.
+  url: https://arxiv.org/abs/2202.03286
+  access: free
+  use: 'Red Teaming Language Models with Language Models (2202.03286), Red Teaming Language Models to Reduce Harms (https://arxiv.org/abs/2209.07858), HarmBench (https://arxiv.org/abs/2402.04249): automated attack generation, standardized evaluation, attack/defense comparison.'
+  why: Standard references for methodology and pitfalls of red teaming.
+  verified: true
+- id: jailbreak-papers
+  role: secondary
+  kind: paper
+  title: 'Jailbreak attack papers: GCG, PAIR, simple adaptive attacks'
+  by: Zou; Chao; Andriushchenko; Carlini et al.
+  url: https://arxiv.org/abs/2307.15043
+  access: free
+  use: Universal and Transferable Adversarial Attacks (GCG, 2307.15043), PAIR (https://arxiv.org/abs/2310.08419), Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks (https://arxiv.org/abs/2404.02151), Are aligned neural networks adversarially aligned? (https://arxiv.org/abs/2306.15447).
+  why: The core jailbreaking techniques; explains what safety evaluations must include (adaptive attacks).
+  verified: true
+- id: scheming-evals
+  role: secondary
+  kind: paper
+  title: Frontier Models are Capable of In-context Scheming; Alignment faking; Sleeper Agents
+  by: Meinke et al.; Greenblatt et al.; Hubinger et al.; Betley et al.
+  url: https://arxiv.org/abs/2412.04984
+  access: free
+  use: 'Apollo scheming evals (2412.04984), Alignment faking in LLMs (https://arxiv.org/abs/2412.14093), Sleeper Agents (https://arxiv.org/abs/2401.05566), Emergent Misalignment (https://arxiv.org/abs/2502.17424): how model organisms and eval designs elicit misaligned behaviour.'
+  why: The "model organisms" part of the scope with concrete eval methodology.
+  verified: true
+- id: metr-time-horizons
+  role: secondary
+  kind: article
+  title: 'METR: Measuring AI Ability to Complete Long Tasks and common elements of safety policies'
+  by: METR
+  url: https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/
+  access: free
+  use: Read the task-length methodology and results; then METR's Common Elements of Frontier AI Safety Policies (https://metr.org/common-elements) and research index (https://metr.org/research).
+  why: Shows agentic capability evals and how eval results feed policy thresholds.
+  verified: true
+- id: inspect-practice
+  role: practice
+  kind: tool
+  title: 'Inspect Evals: build and run safety evals'
+  url: https://ukgovernmentbeis.github.io/inspect_evals/
+  access: free
+  use: 'Run two registered evals against a small open model (for example AgentDojo prompt-injection, AgentHarm, or the alignment-faking eval; the register lists 195 evals), then write your own Inspect task: dataset of 50 prompts for one threat model, a solver, a deterministic scorer plus a model-graded scorer, and report with confidence intervals.'
+  why: Specific build-and-run exercise tied to the register of actual safety evals.
+  verified: true
+- id: gandalf
+  role: practice
+  kind: practice-site
+  title: Gandalf (Lakera) prompt-injection game
+  url: https://gandalf.lakera.ai/baseline
+  access: free
+  use: Beat all baseline levels (extracting a secret under increasingly strong filters) and write down which attack classes worked; then try the adjacent Lakera challenges linked from the site.
+  why: Fast, free hands-on prompt injection and defense-evasion practice.
+  verified: true
+- id: tensor-trust
+  role: practice
+  kind: practice-site
+  title: Tensor Trust prompt injection attack/defense game
+  url: https://tensortrust.ai/
+  access: free
+  use: Play as attacker and defender; read the accompanying paper (https://arxiv.org/abs/2311.01011) and its benchmark for prompt hijacking/extraction.
+  why: Human-written attack/defense dataset and game; shows how defenses fail to adaptive attackers.
+  verified: true
+- id: hackaprompt
+  role: practice
+  kind: practice-site
+  title: HackAPrompt
+  url: https://www.hackaprompt.com/
+  access: free
+  use: Work through the current challenge tracks; log successful attacks as a mini red-team report.
+  why: Competition-style prompt-hacking platform (HackAPrompt 2.0).
+  verified: true
+- id: red-team-tools
+  role: reference
+  kind: tool
+  title: 'Red-teaming toolkits: PyRIT, garak, promptfoo'
+  url: https://microsoft.github.io/PyRIT/
+  access: free
+  use: Read the PyRIT docs (orchestrators/scorers), garak (https://docs.garak.ai/garak) probe/detector list and promptfoo red-team guide (https://www.promptfoo.dev/docs/red-team/); run one automated scan against a local model.
+  why: Shows how automated red teaming is productized and what coverage typical scanners have.
+  verified: true
+considered:
+- title: Hendrycks AI safety textbook, risk-evals chapters
+  url: https://www.aisafetybook.com/
+  reason: Conceptual; ARENA gives hands-on skills.
+- title: Gray Swan Arena (red-team competitions)
+  url: https://app.grayswan.ai/arena
+  reason: Page blocked in the sandbox (Vercel checkpoint); could not verify; potentially a good ongoing practice site.
+- title: Dreadnode Crucible AI red-team CTF
+  url: https://crucible.dreadnode.io/
+  reason: Loads (200) but account-based challenge catalogue not inspected.
+- title: Anthropic Responsible Scaling Policy / frontier safety frameworks
+  url: https://metr.org/common-elements
+  reason: Policy documents; METR comparison page chosen as the neutral entry.
+- title: OWASP Top 10 for LLM Applications
+  url: https://owasp.org/www-project-top-10-for-large-language-model-applications/
+  reason: Checklist useful in adversarial-robustness and security nodes; kept there.
+notes: The skeleton hard prereq is llm-evaluation (G7). Inspect docs as primary text because it is both the eval-design primer and the tool. There is no university course on safety evals with public videos; ARENA ch.3 is the course. Practice sites are free; the red-teaming competition platforms are volatile.
+split_proposal: null
+prereq_changes: null
+open_questions:
+- Gray Swan Arena could not be opened (HTTP 429/security checkpoint).
+- Inspect docs section names were checked by page title; page contents were not read in full.
+last_verified: '2026-11-18'

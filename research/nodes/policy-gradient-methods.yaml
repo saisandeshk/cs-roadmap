@@ -1,0 +1,197 @@
+id: policy-gradient-methods
+title: 'Deep RL: Policy Gradients & Actor-Critic'
+group: G8
+paths:
+- rl
+hard:
+- rl-foundations
+- deep-learning-fundamentals
+soft: []
+scope: REINFORCE, baselines, actor-critic, GAE, TRPO/PPO, SAC/TD3 for continuous control.
+level: intermediate
+estimated_hours: 50
+resources:
+- id: spinning-up
+  role: primary-text
+  kind: website
+  title: OpenAI Spinning Up in Deep RL
+  by: Joshua Achiam, OpenAI
+  url: https://spinningup.openai.com/en/latest/
+  edition_or_term: Current docs (latest)
+  access: free
+  use: 'Intro to RL Parts 1-3 (https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html is the policy-gradient derivation: policy gradient theorem, baselines, GAE); algorithm docs for VPG, TRPO, PPO, DDPG, TD3 and SAC; "Spinning Up as a Deep RL Researcher" and the Key Papers list.'
+  why: The clearest end-to-end exposition of REINFORCE -> actor-critic -> PPO/TD3/SAC with pseudocode and annotated implementations; slightly older code (2018-20) but the math and algorithm docs remain the best compact reference.
+  verified: true
+- id: cs285-pg
+  role: primary-course
+  kind: course
+  title: Berkeley CS 185/285 Deep Reinforcement Learning
+  by: Sergey Levine (UC Berkeley)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  edition_or_term: Spring 2026 (slides, homework PDFs); Fall 2023 (public videos)
+  access: free
+  use: 'Spring 2026 Lectures 5-6 (policy gradients, actor-critic) and 9-10 (advanced policy gradients: natural gradient, TRPO/PPO), Homework 2 (policy gradients) and Homework 3 (actor-critic); Fall 2023 video lectures for the same topics.'
+  why: Rigorous derivations plus homework that implements PG, baselines and GAE; the most complete public deep-RL course, updated every year.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://rail.eecs.berkeley.edu/deeprlcourse/
+    videos: unknown
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: sb-ch13
+  role: secondary
+  kind: book
+  title: Sutton-Barto Ch. 13 Policy Gradient Methods
+  by: Richard S. Sutton, Andrew G. Barto
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  access: free
+  use: 'Ch. 13: policy gradient theorem, REINFORCE with baseline, one-step actor-critic, continuous actions.'
+  why: Proof of the policy gradient theorem and the actor-critic framing.
+  verified: true
+- id: cs224r-pg
+  role: secondary
+  kind: course
+  title: Stanford CS224R Deep Reinforcement Learning (policy gradient / actor-critic / off-policy AC lectures)
+  by: Chelsea Finn (Stanford)
+  url: https://cs224r.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Spring 2026 slides: 03 Policy Gradients, 04 Actor-Critic, 05 Off-Policy Actor-Critic with Homework 2; watch the Spring 2025 versions.'
+  why: A second, more applied explanation with public videos (2025) when CS 285 recordings are unavailable; includes SAC/off-policy actor-critic.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs224r.stanford.edu/
+    videos: unknown
+    public_videos_term: Spring 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL
+    assignments: public
+    assignments_url: https://cs224r.stanford.edu/
+- id: ppo-papers
+  role: secondary
+  kind: paper
+  title: PPO, GAE, TRPO and continuous-control actor-critic papers
+  by: Schulman et al.; Fujimoto et al.; Haarnoja et al.
+  url: https://arxiv.org/abs/1707.06347
+  access: free
+  use: Read PPO (1707.06347), GAE (https://arxiv.org/abs/1506.02438), TRPO (https://arxiv.org/abs/1502.05477), TD3 (https://arxiv.org/abs/1802.09477), SAC with applications (https://arxiv.org/abs/1812.05905).
+  why: Primary sources for the algorithms named in the scope.
+  verified: true
+- id: ppo-37-details
+  role: secondary
+  kind: article
+  title: The 37 Implementation Details of Proximal Policy Optimization
+  by: Shengyi Huang et al.
+  url: https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/
+  edition_or_term: ICLR Blog Track 2022
+  access: free
+  use: Read in full while implementing PPO; check each detail (advantage normalization, value clipping, orthogonal init, observation normalization) against your code.
+  why: Explains why textbook PPO and working PPO differ; essential for reproducing results.
+  verified: true
+- id: deep-rl-bootcamp
+  role: secondary
+  kind: video-series
+  title: Deep RL Bootcamp (Berkeley, 2017) lectures and labs
+  by: Abbeel, Schulman, Levine, Duan and others
+  url: https://sites.google.com/view/deep-rl-bootcamp/lectures
+  edition_or_term: 2017 bootcamp
+  access: free
+  use: Lectures on policy gradients (Abbeel), TRPO/PPO (Schulman), actor-critic/SAC, plus Schulman "Nuts and Bolts of Deep RL Experimentation"; the lab handouts are the problem sets.
+  why: 'Hidden gem: recorded by the algorithm authors; the "nuts and bolts" talk is a unique source of debugging practice.'
+  verified: true
+- id: cleanrl-ppo
+  role: practice
+  kind: docs
+  title: CleanRL PPO (ppo.py, ppo_continuous_action.py) and SAC/TD3
+  by: Costa Huang et al.
+  url: https://docs.cleanrl.dev/rl-algorithms/ppo/
+  access: free
+  use: Re-implement ppo_continuous_action.py without looking, then compare with the reference on HalfCheetah/Hopper from published curves; run SAC (https://docs.cleanrl.dev/rl-algorithms/sac/) and TD3 (https://docs.cleanrl.dev/rl-algorithms/td3/) for comparison.
+  why: 'Single-file, benchmarked baselines: the best way to verify a from-scratch PPO.'
+  verified: true
+- id: spinning-up-exercises
+  role: practice
+  kind: docs
+  title: 'Spinning Up Exercises: Problem Sets 1-2'
+  url: https://spinningup.openai.com/en/latest/spinningup/exercises.html
+  access: free
+  use: 'Problem Set 1 (Exercise 1.1 Gaussian log-likelihood, 1.2 PPO policy, 1.3 TD3 computation graph) and Problem Set 2 (algorithm failure modes: buggy value learning and policy-gradient code to diagnose).'
+  why: Short, targeted exercises that expose the exact bugs people hit in PG implementations.
+  verified: true
+- id: arena-ppo
+  role: practice
+  kind: course
+  title: ARENA 2.2.2 VPG and 2.3 PPO
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Implement vanilla policy gradient for CartPole, then a full PPO agent from scratch with tests and W&B logging.
+  why: Test-backed PPO build; pairs with the 37-details post.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: hf-deep-rl-units-4-8
+  role: practice
+  kind: course
+  title: Hugging Face Deep RL Course, Units 4, 6 and 8
+  by: Hugging Face
+  url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+  edition_or_term: Self-paced
+  access: free
+  use: Unit 4 (REINFORCE in PyTorch), Unit 6 (A2C on robotics environments), Unit 8 Parts 1-2 (PPO, from scratch and with Doom).
+  why: Gentler notebook route for learners who need scaffolding before CS 285 homework.
+  verified: true
+  course:
+    latest_term: Self-paced (current docs)
+    latest_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+    videos: none
+    assignments: public
+    assignments_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+- id: lilian-weng-pg
+  role: reference
+  kind: article
+  title: Policy Gradient Algorithms (Lil'Log)
+  by: Lilian Weng
+  url: https://lilianweng.github.io/posts/2018-04-08-policy-gradient/
+  access: free
+  use: One-page lookup for REINFORCE, A3C, DPG/DDPG, TRPO/PPO, SAC, TD3, IMPALA derivations.
+  why: Compact reference sheet of every policy-gradient variant in one place.
+  verified: true
+- id: murphy-policy
+  role: reference
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 3 Policy-based RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5
+  access: free
+  use: Chapter 3 for current-notation derivations of PG, actor-critic, TRPO/PPO, SAC.
+  why: Up-to-date unified notation across the path.
+  verified: true
+considered:
+- title: Stanford CS234 lectures 5-7 (policy gradient)
+  url: https://web.stanford.edu/class/cs234/
+  reason: Good but shorter than CS 285; Spring 2024 videos public. Kept as alternate watchable option.
+- title: David Silver lecture 7 (policy gradient)
+  url: https://davidstarsilver.wordpress.com/teaching/
+  reason: Pre-deep-RL; fine intro but misses GAE/PPO/SAC.
+- title: Stable-Baselines3 docs
+  url: https://stable-baselines3.readthedocs.io/en/master/
+  reason: Library docs rather than learning material; cited as reference in value-based node.
+- title: Hands-on Modern RL (walkinglabs) PPO chapter
+  url: https://walkinglabs.github.io/hands-on-modern-rl/en/chapter10_ppo/ppo-math
+  reason: From the owner seed; not independently reviewed.
+notes: Spinning Up is chosen as the primary text because it is the only single resource that derives PG and then documents PPO/TD3/SAC consistently; its code is old, so CleanRL is paired for a modern reference implementation. SAC/TD3 coverage (continuous control) is spread across Spinning Up, CS 224R and CleanRL.
+split_proposal: null
+prereq_changes: null
+open_questions:
+- Spinning Up has not had major updates since ~2020 (PyTorch/TF1 mix); should the owner prefer a newer primary text? None found that is better.
+last_verified: '2026-11-18'

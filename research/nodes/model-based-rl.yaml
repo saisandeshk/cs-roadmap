@@ -1,0 +1,169 @@
+id: model-based-rl
+title: Model-Based RL & World Models
+group: G8
+paths:
+- rl
+hard:
+- policy-gradient-methods
+- deep-value-based-rl
+soft: []
+scope: Learned dynamics, MPC, Dyna, MuZero, Dreamer, planning with learned models.
+level: advanced
+estimated_hours: 45
+resources:
+- id: moerland-mbrl-survey
+  role: primary-text
+  kind: paper
+  title: 'Model-based Reinforcement Learning: A Survey'
+  by: Thomas M. Moerland, Joost Broekens, Aske Plaat, Catholijn M. Jonker
+  url: https://arxiv.org/abs/2006.16712
+  edition_or_term: Foundations and Trends in ML 2023; arXiv
+  access: free
+  use: Sections on dynamics-model learning (deterministic, stochastic, uncertainty, latent models), planning (MPC, MCTS, backprop through the model), and integrating planning and learning (Dyna-style, MBPO, Dreamer-style); read the algorithm tables and the open-problems section.
+  why: The most systematic single text on the model-based design space; complements the lecture-style treatment in the course. (Written 2020, published 2023; later systems such as DreamerV3 and TD-MPC2 come from the papers below.)
+  verified: true
+- id: cs285-mbrl
+  role: primary-course
+  kind: course
+  title: Berkeley CS 185/285 Deep Reinforcement Learning
+  by: Sergey Levine (UC Berkeley)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  edition_or_term: Spring 2026 (slides, homework PDFs); Fall 2023 (public videos)
+  access: free
+  use: Spring 2026 Lectures 15-16 (model-based RL parts 1-2) and Section 8 (model-based RL); Fall 2023 public lectures on model-based RL and model-based policy learning (MPC, PETS-style ensembles, latent-space models).
+  why: Levine covers learned dynamics, uncertainty, MPC/CEM and model-based policy learning with a worked-through algorithm view; the most complete public lecture sequence.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://rail.eecs.berkeley.edu/deeprlcourse/
+    videos: unknown
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: sb-ch8
+  role: secondary
+  kind: book
+  title: Sutton-Barto Ch. 8 Planning and Learning with Tabular Methods
+  by: Richard S. Sutton, Andrew G. Barto
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  access: free
+  use: 'Ch. 8: Dyna-Q, prioritized sweeping, trajectory sampling, real-time DP, MCTS (8.1-8.11).'
+  why: The conceptual foundation (model = simulator, planning vs learning) for everything else here.
+  verified: true
+- id: murphy-mbrl
+  role: secondary
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 4 Model-based RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5
+  access: free
+  use: 'Chapter 4: world models, MPC, MuZero/Dreamer-type latent models, decision-time vs background planning.'
+  why: Updated through 2025 notation incl. recent world-model systems that the 2020 survey cannot cover.
+  verified: true
+- id: mbrl-papers
+  role: secondary
+  kind: paper
+  title: Key model-based deep RL papers (PETS, MBPO, Dreamer line, MuZero, TD-MPC2)
+  by: Chua et al.; Janner et al.; Hafner et al.; Schrittwieser et al.; Hansen et al.
+  url: https://arxiv.org/abs/1906.08253
+  access: free
+  use: 'Read in order: PETS (https://arxiv.org/abs/1805.12114), MBPO (1906.08253), Dreamer (https://arxiv.org/abs/1912.01603), DreamerV2 (https://arxiv.org/abs/2010.02193), DreamerV3 (https://arxiv.org/abs/2301.04104), MuZero (https://arxiv.org/abs/1911.08265), TD-MPC2 (https://arxiv.org/abs/2310.16828; project page https://www.tdmpc2.com/).'
+  why: The algorithms named in the scope; TD-MPC2 and DreamerV3 are the current strong baselines.
+  verified: true
+- id: world-models
+  role: secondary
+  kind: article
+  title: World Models (Ha and Schmidhuber, interactive article)
+  by: David Ha, Jurgen Schmidhuber
+  url: https://worldmodels.github.io/
+  edition_or_term: '2018'
+  access: free
+  use: Read the full interactive article (VAE + MDN-RNN + controller, training in the "dream").
+  why: Highly readable gentle intro to latent world models before the Dreamer papers.
+  verified: true
+- id: silver-lecture-8
+  role: secondary
+  kind: video-series
+  title: 'David Silver, Lecture 8: Integrating Learning and Planning'
+  by: David Silver
+  url: https://davidstarsilver.wordpress.com/teaching/
+  edition_or_term: '2015'
+  access: free
+  use: 'Lecture 8 slides (https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-8-integrating-learning-and-planning.pdf) and the video: Dyna, simulation-based search, MCTS.'
+  why: Short, clear video treatment of Dyna and MCTS.
+  verified: true
+- id: dyna-practice
+  role: practice
+  kind: book
+  title: Implement Dyna-Q and Dyna-Q+ (Sutton-Barto Ch. 8)
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  access: free
+  use: Reproduce the Dyna maze (Fig. 8.2), blocking maze and shortcut maze (Fig. 8.4-8.5, Dyna-Q+) and Exercise 8.4; then add a learned neural dynamics model and random-shooting MPC on a Gymnasium classic-control task.
+  why: Specific from-scratch exercises that make planning vs learning measurable.
+  verified: true
+- id: dreamerv3-repo
+  role: practice
+  kind: tool
+  title: DreamerV3 reference implementation (JAX)
+  by: Danijar Hafner
+  url: https://github.com/danijar/dreamerv3
+  edition_or_term: Current main (repo status not dated on page)
+  access: free
+  use: Run the reference code on a small benchmark (Crafter or an Atari 100k game); reproduce a published score curve and read the world-model / actor-critic split in dreamerv3/.
+  why: Official, tested to reproduce published results; shows what a modern world-model agent looks like.
+  verified: true
+- id: mbrl-hw
+  role: practice
+  kind: course
+  title: Berkeley CS 285 model-based RL homework (Fall 2023 hw4 / Spring 2026 section 8 and lecture materials)
+  by: Sergey Levine and course staff
+  url: https://github.com/berkeleydeeprlcourse/homework_fall2023
+  edition_or_term: Fall 2023 repo; Spring 2026 repo lists hw1-hw5 without a model-based homework
+  access: free
+  use: Fall 2023 repo has hw1-hw5 folders (the model-based assignment is expected to be one of them; exact folder not confirmed); Spring 2026 provides Section 8 notes on model-based RL (https://rail.eecs.berkeley.edu/deeprlcourse/static/sections/section-8.pdf) but no model-based homework.
+  why: Public starter-code route to learned-dynamics MPC practice, if the Fall 2023 model-based homework is present. Content of the folders was not opened.
+  verified: true
+  course:
+    latest_term: Fall 2023 / Spring 2026
+    latest_url: https://github.com/berkeleydeeprlcourse/homework_fall2023
+    videos: none
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_fall2023
+- id: cs224r-mbrl
+  role: secondary
+  kind: course
+  title: Stanford CS224R Deep Reinforcement Learning (Model-Based RL lecture)
+  by: Chelsea Finn (Stanford)
+  url: https://cs224r.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Spring 2026 slide deck 11 (Model-Based RL: https://cs224r.stanford.edu/slides/11_cs224r_mbrl_2026.pdf); the Spring 2025 video for the same lecture.'
+  why: Alternative short lecture with a robotics/world-model slant and a recent guest/world-model component.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs224r.stanford.edu/
+    videos: unknown
+    public_videos_term: Spring 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL
+    assignments: public
+    assignments_url: https://cs224r.stanford.edu/
+considered:
+- title: mbrl-lib (Facebook Research)
+  url: https://github.com/facebookresearch/mbrl-lib
+  reason: PETS/MBPO library; GitHub page could not be opened in the sandbox, so not recommended without verification.
+- title: Stanford CS234 lectures 13-14 (MCTS and "conquering Go"; Shane Gu on world modeling)
+  url: https://web.stanford.edu/class/cs234/
+  reason: Good lecture slides on MCTS/AlphaGo and world models; videos enrolled-only (Winter 2026).
+- title: Kochenderfer, Algorithms for Decision Making (online planning, MPC chapters)
+  url: https://algorithmsbook.com/
+  reason: Excellent on planning/POMDPs; less on learned deep models.
+notes: 'Primary text choice: no complete textbook covers learned world models; Moerland et al. is the most systematic with Murphy Ch. 4 as the updated companion. DreamerV3 / TD-MPC2 are the practical frontier. Public assignments for model-based RL are scarce; Dyna from Sutton-Barto plus reproducing a published agent is the pragmatic practice.'
+split_proposal: null
+prereq_changes: 'soft prereq: add sutton-barto Ch. 8 context via rl-foundations (already hard through policy-gradient and deep-value)'
+open_questions:
+- Which homework number in homework_fall2023 is model-based was not confirmed (WebFetch only listed hw1-hw5).
+- Neither CS 285 nor CS 224R Spring 2026 videos were publicly linked.
+last_verified: '2026-11-18'

@@ -1,0 +1,147 @@
+id: rl-foundations
+title: RL Foundations
+group: G8
+paths:
+- rl
+hard:
+- probability
+- python-programming
+soft:
+- intro-ai
+- ml-fundamentals
+scope: MDPs, Bellman equations, dynamic programming, Monte Carlo, TD, SARSA/Q-learning, function approximation intro.
+level: intro
+estimated_hours: 70
+resources:
+- id: sutton-barto
+  role: primary-text
+  kind: book
+  title: 'Reinforcement Learning: An Introduction (2nd ed.)'
+  by: Richard S. Sutton, Andrew G. Barto
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  edition_or_term: 2nd edition, 2018 (free 2020 PDF)
+  access: free
+  use: Ch. 1-8 in order (bandits, finite MDPs, dynamic programming, Monte Carlo, TD/SARSA/Q-learning, n-step, planning with Dyna), then Ch. 9-10 for the function-approximation intro. Ch. 11-13 are picked up in the deep-RL nodes. Do the marked exercises; reproduce the Cliff Walking and Blackjack examples.
+  why: Still the canonical, clearest exposition of exactly this scope; the author site hosts the free PDF, code and solutions. MIT Press print is optional.
+  verified: true
+- id: cs234
+  role: primary-course
+  kind: course
+  title: Stanford CS234 Reinforcement Learning
+  by: Emma Brunskill (Stanford)
+  url: https://web.stanford.edu/class/cs234/
+  edition_or_term: Winter 2026
+  access: free
+  use: 'Lectures 1-4 (intro, tabular MDP planning, tabular policy evaluation, Q-learning) with Assignments 1-2 (written + coding: value/policy iteration, tabular Q-learning). Watch Spring 2024 recordings for the same content; use Winter 2026 slides (pre/post-class) and assignment PDFs.'
+  why: Newest term of a well-taught course that follows Sutton and Barto chapter by chapter and ships public written + coding assignments. Lecture 3 even points to Silver for videos. Winter 2026 videos are Canvas-only, so the YouTube Spring 2024 run is the watchable one.
+  verified: true
+  course:
+    latest_term: Winter 2026
+    latest_url: https://web.stanford.edu/class/cs234/
+    videos: enrolled-only
+    public_videos_term: Spring 2024
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rN4wG6Nk6sNpTEbuOSosZdX
+    assignments: public
+    assignments_url: https://web.stanford.edu/class/cs234/assignments.html
+- id: silver-ucl
+  role: secondary
+  kind: course
+  title: UCL / DeepMind Introduction to Reinforcement Learning (COMPM050/COMPGI13)
+  by: David Silver
+  url: https://davidstarsilver.wordpress.com/teaching/
+  edition_or_term: 2015 course; video lectures on YouTube, slides re-hosted 2025
+  access: free
+  use: Lectures 1-5 (intro, MDPs, planning by DP, model-free prediction, model-free control) as the video companion to Sutton-Barto Ch. 3-7; attempt the Easy21 assignment (Monte Carlo + SARSA(lambda) + function approximation on a toy card game). Lectures 6-10 reappear in later nodes.
+  why: The classic spoken explanation of the MDP/Bellman/TD material, with a creative assignment; fills the gap of a public full-length video set for tabular RL. Dated (2015) but this material has not changed.
+  verified: true
+  course:
+    latest_term: 2015 (UCL COMPM050/COMPGI13)
+    latest_url: https://davidstarsilver.wordpress.com/teaching/
+    videos: public
+    public_videos_term: '2015'
+    public_videos_url: https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ
+    assignments: public
+    assignments_url: https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/easy21-assignment.pdf
+- id: zhao-math-rl
+  role: secondary
+  kind: book
+  title: Mathematical Foundations of Reinforcement Learning
+  by: Shiyu Zhao (Westlake University)
+  url: https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning
+  edition_or_term: Springer 2025; free all-in-one PDF on GitHub
+  access: free
+  use: Ch. 1-8 (basic concepts, Bellman equation and optimality, value/policy iteration, Monte Carlo, stochastic approximation, TD, value-function methods); watch the matching 54-lecture English playlist https://www.youtube.com/playlist?list=PLEhdbSEZZbDaFWPX4gehhwB9vJZJ1DNm8. Use when a proof or the contraction-mapping / stochastic-approximation argument in Sutton-Barto is too terse.
+  why: 'Hidden gem: a rigorous but friendly grid-world-based treatment with the convergence proofs Sutton-Barto skips (Bellman contraction, Robbins-Monro stochastic approximation behind TD). Free PDF on GitHub; Springer print edition. Strong with its lecture videos.'
+  verified: true
+- id: gymnasium-train-agent
+  role: practice
+  kind: docs
+  title: 'Gymnasium: Training an Agent (Blackjack Q-learning) plus toy-text environments'
+  url: https://gymnasium.farama.org/introduction/train_agent/
+  access: free
+  use: Implement tabular Q-learning with epsilon decay on Blackjack following the tutorial, then write your own SARSA, Expected SARSA and Monte-Carlo control and compare them on Cliff Walking (https://gymnasium.farama.org/environments/toy_text/cliff_walking/) to reproduce Sutton-Barto Example 6.6.
+  why: The standard environment API (reset/step, terminated vs truncated) you will use in every later RL node; small, fast tabular problems for implementing each algorithm from scratch.
+  verified: true
+- id: hf-deep-rl-units-1-2
+  role: practice
+  kind: course
+  title: Hugging Face Deep RL Course, Units 0-2
+  by: Thomas Simonini, Hugging Face
+  url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+  edition_or_term: Self-paced; Units 0-8 plus bonus units
+  access: free
+  use: Unit 1 (RL framework, LunarLander with SB3) and Unit 2 (Q-learning from scratch on FrozenLake and Taxi, with a hub-submitted agent). Skip the later units here (they reappear in deep-value and policy-gradient nodes).
+  why: Gentle, notebook-driven first contact with the training loop; a lower-barrier alternative if Sutton-Barto exercises feel abstract.
+  verified: true
+  course:
+    latest_term: Self-paced (current docs)
+    latest_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+    videos: none
+    assignments: public
+    assignments_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+- id: murphy-overview
+  role: reference
+  kind: paper
+  title: 'Reinforcement Learning: An Overview'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5, 1 Dec 2025
+  access: free
+  use: Use Ch. 1 (introduction/taxonomy of value-, policy-, model-based methods) as a map; the same document is the reference for Ch. 2-6 in later RL nodes.
+  why: One free, continuously updated (v5, Dec 2025) overview that covers deep RL, model-based, multi-agent and LLM+RL under one notation; a good single lookup reference across the whole RL path.
+  verified: true
+- id: szepesvari-algs
+  role: reference
+  kind: book
+  title: Algorithms for Reinforcement Learning
+  by: Csaba Szepesvari
+  url: https://sites.ualberta.ca/~szepesva/RLBook.html
+  edition_or_term: Morgan & Claypool 2010, free PDF
+  access: free
+  use: 'Short theory reference: Ch. 2-4 (value prediction, control, TD with function approximation) when you need a terse proof-level statement.'
+  why: Compact (~100 pages) and proof-oriented; complements the intuition-first Sutton-Barto.
+  verified: true
+considered:
+- title: Algorithms for Decision Making (Kochenderfer et al.)
+  url: https://algorithmsbook.com/
+  reason: Excellent MIT Press text (free PDF) on MDPs, POMDPs, planning and RL under uncertainty; broader than needed and Julia-based, so Sutton-Barto stays primary. Good optional reference.
+- title: RL Theory and Algorithms (Agarwal, Jiang, Kakade, Sun)
+  url: https://rltheorybook.github.io/
+  reason: Graduate-level sample-complexity theory; too advanced for a foundations node; better as an optional deep-theory reference attached to bandits/exploration.
+- title: Bertsekas, Reinforcement Learning and Optimal Control
+  url: https://web.mit.edu/dimitrib/www/RLbook.html
+  reason: Rigorous DP/optimal-control viewpoint (also paid). Valuable for control-minded learners; not the best first treatment.
+- title: Berkeley CS 185/285
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  reason: Assumes RL basics (only one RL-basics lecture); belongs to the deep-RL nodes, not here.
+- title: Stanford CS224R
+  url: https://cs224r.stanford.edu/
+  reason: Deep-RL, robotics/LLM oriented; explicitly assumes Sutton-Barto Ch. 3-4 background.
+notes: Primary text plus CS234 gives exactly MDP/DP/MC/TD/Q-learning with graded written and coding work. CS234 Winter 2026 is lecture-enrolled-only, so Silver (2015, still excellent) and Zhao (54 videos) are listed as the watchable alternatives; if the owner wants a single "video-first" path, Silver lectures 1-5 + Easy21 is a good swap for CS234. The Spring 2024 CS234 YouTube playlist title was verified; individual video quality was not reviewed. Winter 2026 slides carry pre-class and annotated post-class versions.
+split_proposal: null
+prereq_changes: null
+open_questions:
+- sutton-barto https URL could not be opened from the research sandbox (https connection failed); the same page opened fine over http://incompleteideas.net/book/the-book-2nd.html. Published URL is the canonical https one.
+- CS234 pages were opened over http (https to web.stanford.edu was blocked in the sandbox); content confirmed Winter 2026, videos via Canvas only.
+- Is there a Winter 2025 CS234 public playlist newer than Spring 2024? Search did not surface one.
+last_verified: '2026-11-18'

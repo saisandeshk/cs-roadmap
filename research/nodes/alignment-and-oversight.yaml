@@ -1,0 +1,170 @@
+id: alignment-and-oversight
+title: Alignment Methods & Oversight
+group: G8
+paths:
+- safety
+hard:
+- post-training
+soft:
+- rl-for-llms
+- ai-safety-foundations
+scope: RLHF failure modes, reward hacking, scalable oversight, debate, weak-to-strong generalization, AI control.
+level: advanced
+estimated_hours: 50
+resources:
+- id: bluedot-technical-ai-safety
+  role: primary-text
+  kind: website
+  title: BlueDot Technical AI Safety curriculum (readings)
+  by: BlueDot Impact
+  url: https://bluedot.org/courses/technical-ai-safety/1/1
+  edition_or_term: Current (cohorts 30 Nov 2026 onward)
+  access: free
+  use: 'Browse the six units: (1) the technical challenge with AI, (2) safety training techniques (feeding AI good data, teaching AI right from wrong, more safety techniques), (3) detecting danger (evaluations and lab safety testing), (4) understanding AI (interpretability), (5) minimising harm (assuming harm, building defences, breaking the kill chain), (6) start contributing; read the core readings per unit.'
+  why: 'Most up-to-date curated reading path (cohorts run through early 2027) spanning safety training, evaluations, interpretability and defences in one place; free to read. Note: it is a curated reading list, not a self-contained textbook.'
+  verified: true
+- id: arena-ch4
+  role: primary-course
+  kind: course
+  title: 'ARENA Chapter 4: Alignment Science'
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter4_alignment_science/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: 4.1 Emergent Misalignment, 4.2 Science of Misalignment, 4.3 Interpreting Reasoning Models, 4.4 LLM Psychology and Persona Vectors, 4.5 Investigator Agents; plus 3.5 AI Control and 2.4.3 RLAIF (Goodhart) from the evals/RL chapters.
+  why: Hands-on case studies (white-box and black-box) of misalignment, with provided notebooks; fills the empirical-practice gap left by reading lists.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter4_alignment_science/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter4_alignment_science/
+- id: harvard-alignment-lectures
+  role: secondary
+  kind: course
+  title: Harvard CS 2881R AI Safety (alignment-relevant lectures)
+  by: Boaz Barak (Harvard)
+  url: https://boazbk.github.io/mltheoryseminar/
+  edition_or_term: Fall 2026 (current); Fall 2025 archive
+  access: free
+  use: 'Fall 2025: Model Specifications, Capabilities vs Safety, Scheming and Deception, Recursive Self-Improvement, Interpretability; Fall 2026 schedule: Grading and Reward Hacking, Model Policies, Alignment and Recursive Self-Improvement (videos posted as the term proceeds).'
+  why: University-style lectures with experiments on specs, reward hacking and scheming; complements the reading/hands-on items.
+  verified: true
+  course:
+    latest_term: Fall 2026 (running)
+    latest_url: https://boazbk.github.io/mltheoryseminar/
+    videos: public
+    public_videos_term: Fall 2025 (full playlist) and Fall 2026 lectures posted so far
+    public_videos_url: https://youtube.com/playlist?list=PL_b4B2IWlal3j01Rbj5ebT663E7x4bl_W
+    assignments: partial
+    assignments_url: https://boazbk.github.io/mltheoryseminar/fall2025/
+- id: open-problems-rlhf
+  role: secondary
+  kind: paper
+  title: Open Problems and Fundamental Limitations of RLHF
+  by: Casper et al.
+  url: https://arxiv.org/abs/2307.15217
+  edition_or_term: TMLR 2023
+  access: free
+  use: 'Full survey: problems with feedback, reward model, policy; tractable vs fundamental limitations.'
+  why: The standard catalogue of RLHF failure modes (scope item).
+  verified: true
+- id: overopt-and-cai
+  role: secondary
+  kind: paper
+  title: 'Reward over-optimization and AI feedback: Gao et al., Constitutional AI'
+  by: Gao et al.; Bai et al.
+  url: https://arxiv.org/abs/2210.10760
+  access: free
+  use: 'Scaling Laws for Reward Model Overoptimization (2210.10760): gold vs proxy reward and KL; Constitutional AI (https://arxiv.org/abs/2212.08073); Training a Helpful and Harmless Assistant (https://arxiv.org/abs/2204.05862).'
+  why: Quantitative treatment of reward hacking in RLHF and the first scalable-feedback methods.
+  verified: true
+- id: scalable-oversight
+  role: secondary
+  kind: paper
+  title: 'Scalable oversight: debate, reward modeling agenda, measuring progress, weak-to-strong'
+  by: Irving et al.; Leike et al.; Bowman et al.; Burns et al.
+  url: https://arxiv.org/abs/1805.00899
+  access: free
+  use: AI safety via debate (1805.00899), Scalable agent alignment via reward modeling (https://arxiv.org/abs/1811.07871), Measuring Progress on Scalable Oversight (https://arxiv.org/abs/2211.03540), Weak-to-Strong Generalization (https://arxiv.org/abs/2312.09390).
+  why: Primary papers for debate and weak-to-strong generalization named in the scope.
+  verified: true
+- id: ai-control
+  role: secondary
+  kind: paper
+  title: 'AI control: Greenblatt et al. and follow-ups'
+  by: Greenblatt et al., Redwood Research and collaborators
+  url: https://arxiv.org/abs/2312.06942
+  access: free
+  use: 'AI Control: Improving Safety Despite Intentional Subversion (2312.06942), Ctrl-Z: Controlling AI Agents via Resampling (https://arxiv.org/abs/2504.10374), A sketch of an AI control safety case (https://arxiv.org/abs/2501.17315); browse the Alignment Forum AI Control sequence (https://www.alignmentforum.org/s/PC3yJgdKvk8kzqZyA).'
+  why: The main reading for "AI control", a distinct approach from alignment; includes safety-case framing.
+  verified: true
+- id: misalignment-evidence
+  role: secondary
+  kind: paper
+  title: 'Empirical misalignment: Sleeper Agents, Alignment faking, Emergent misalignment, CoT monitoring'
+  by: Hubinger et al.; Greenblatt et al.; Betley et al.; Baker et al.; Korbak et al.
+  url: https://arxiv.org/abs/2401.05566
+  access: free
+  use: Sleeper Agents (2401.05566), Alignment faking (https://arxiv.org/abs/2412.14093), Emergent Misalignment (https://arxiv.org/abs/2502.17424), Monitoring Reasoning Models for Misbehavior (https://arxiv.org/abs/2503.11926), Chain of Thought Monitorability (https://arxiv.org/abs/2507.11473).
+  why: Demonstrations that safety training can fail and how monitoring might help.
+  verified: true
+- id: anthropic-research-directions
+  role: reference
+  kind: article
+  title: Recommendations for Technical AI Safety Research Directions (Anthropic Alignment Science)
+  by: Anthropic Alignment Science team
+  url: https://alignment.anthropic.com/2025/recommended-directions/
+  edition_or_term: '2025'
+  access: free
+  use: Read as a map of the open problems (evaluations, control, scalable oversight, model organisms, interpretability); browse the blog index (https://alignment.anthropic.com/) for new posts.
+  why: Lab-side prioritisation that helps select projects after the reading.
+  verified: true
+- id: ji-survey
+  role: reference
+  kind: paper
+  title: 'AI Alignment: A Comprehensive Survey'
+  by: Jiaming Ji et al.
+  url: https://arxiv.org/abs/2310.19852
+  edition_or_term: arXiv, latest version
+  access: free
+  use: Use the forward/backward alignment framework (learning from feedback, distribution shift, assurance, governance) as a lookup; companion site https://www.alignmentsurvey.com/.
+  why: Structured taxonomy of alignment methods for finding related work.
+  verified: true
+- id: arena-control-rlaif
+  role: practice
+  kind: course
+  title: ARENA 3.5 AI Control and 2.4.3 RLAIF (reward hacking against an LLM judge)
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter3_llm_evals/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: '3.5: build a trusted-monitor protocol in a simulated environment and measure safety/usefulness tradeoffs; 2.4.3 (https://learn.arena.education/chapter2_rl/): train against an LLM judge and watch the student learn to fool it.'
+  why: Practices the two central methods of the node (control, reward hacking) with tests.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter3_llm_evals/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter3_llm_evals/
+considered:
+- title: Jan Leike, Musings on the Alignment Problem
+  url: https://aligned.substack.com/
+  reason: Blog; valuable commentary, but not structured as a path.
+- title: Redwood Research / AI Control sequence
+  url: https://www.redwoodresearch.org/
+  reason: Used via the Alignment Forum sequence.
+- title: RLHF Book lecture 9 (over-optimization, Ch. 14)
+  url: https://rlhfbook.com/course
+  reason: Used in rl-for-llms; bridge to this node.
+- title: Hendrycks AI Safety textbook technical chapters
+  url: https://www.aisafetybook.com/
+  reason: Used in ai-safety-foundations.
+notes: No textbook covers scalable oversight, debate, weak-to-strong and control; a curated reading list (BlueDot) plus hands-on ARENA content is the best available. This node overlaps rl-for-llms (RLHF failure modes) and evals (model organisms); the paper bundles are intentionally cross-listed. BlueDot unit contents were verified from the course page listing (six units); the readings inside each unit were not individually opened.
+split_proposal: null
+prereq_changes: null
+open_questions:
+- BlueDot readings within each unit were not individually opened; they change between cohorts.
+last_verified: '2026-11-18'

@@ -1,0 +1,159 @@
+id: mechanistic-interpretability
+title: Mechanistic Interpretability
+group: G8
+paths:
+- safety
+hard:
+- transformers
+- language-modeling
+soft: []
+scope: Transformer circuits, probing, activation patching, sparse autoencoders/transcoders, attribution graphs.
+level: advanced
+estimated_hours: 80
+resources:
+- id: transformer-circuits
+  role: primary-text
+  kind: website
+  title: Transformer Circuits Thread
+  by: Anthropic Interpretability team
+  url: https://transformer-circuits.pub/
+  edition_or_term: Index current through October 2026
+  access: free
+  use: 'Core path in order: A Mathematical Framework for Transformer Circuits (https://transformer-circuits.pub/2021/framework/index.html), In-context Learning and Induction Heads, Toy Models of Superposition, Towards Monosemanticity, Scaling Monosemanticity, Circuit Tracing (https://transformer-circuits.pub/2025/attribution-graphs/methods.html) and On the Biology of a Large Language Model (https://transformer-circuits.pub/2025/attribution-graphs/biology.html); then the monthly Circuits Updates (the index lists updates through October 2026).'
+  why: The field's primary, continuously published source for exactly the scope (circuits, SAEs, transcoders, attribution graphs); readable articles with interactive figures.
+  verified: true
+- id: arena-ch1
+  role: primary-course
+  kind: course
+  title: 'ARENA Chapter 1: Transformer Interpretability'
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter1_transformer_interp/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Sections 1.1 (Transformers from scratch), 1.2 (Intro to mech interp with TransformerLens), 1.3.1-1.3.4 (linear probes, function vectors/steering with nnsight, SAEs, activation oracles), 1.4.1-1.4.2 (IOI circuit, SAE circuits), 1.5.1-1.5.4 (bracket classifier, grokking, OthelloGPT, superposition replication). Do the "Monthly Algorithmic Problems" as hackathon practice.
+  why: Free, test-backed, regularly updated exercise curriculum written and reviewed by researchers; the standard way to learn the tooling and replicate key papers. 13 sections listed on the site (2026-11-18 build).
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter1_transformer_interp/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter1_transformer_interp/
+- id: nanda-guide
+  role: secondary
+  kind: article
+  title: How To Become A Mechanistic Interpretability Researcher (Neel Nanda)
+  by: Neel Nanda
+  url: https://www.neelnanda.io/mechanistic-interpretability/getting-started
+  edition_or_term: Updated 2 Sep 2025
+  access: free
+  use: 'Read in full (updated Sep 2025): the three-stage plan (learn the ropes in about a month, mini-projects, full projects) with concrete tutorials and reading lists.'
+  why: Best opinionated roadmap by the leading practitioner-educator; gives mindset and project-selection guidance that exercise sets omit.
+  verified: true
+- id: nanda-glossary
+  role: secondary
+  kind: article
+  title: A Comprehensive Mechanistic Interpretability Explainer and Glossary
+  by: Neel Nanda
+  url: https://www.neelnanda.io/mechanistic-interpretability/glossary
+  access: free
+  use: 'Use as a lookup while reading the circuits papers: residual stream, QK/OV circuits, induction heads, SAEs, patching terminology.'
+  why: Fast definitions for the jargon-heavy literature.
+  verified: true
+- id: open-problems-mi
+  role: secondary
+  kind: paper
+  title: Open Problems in Mechanistic Interpretability
+  by: Sharkey et al.
+  url: https://arxiv.org/abs/2501.16496
+  edition_or_term: arXiv, Jan 2025
+  access: free
+  use: Read the methods overview and the open-problems sections to see where SAEs, transcoders and attribution methods currently fall short.
+  why: Consolidated 2025 view of the field and its unsolved problems; good for choosing projects.
+  verified: true
+- id: ioi-paper
+  role: secondary
+  kind: paper
+  title: 'Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 small'
+  by: Wang et al.
+  url: https://arxiv.org/abs/2211.00593
+  edition_or_term: ICLR 2023
+  access: free
+  use: Read with ARENA 1.4.1; focus on path patching, circuit validation and faithfulness metrics.
+  why: The reference example of full circuit analysis and activation/path patching.
+  verified: true
+- id: gemma-scope
+  role: secondary
+  kind: paper
+  title: 'Gemma Scope: Open Sparse Autoencoders Everywhere All At Once'
+  by: Lieberum et al., Google DeepMind
+  url: https://arxiv.org/abs/2408.05147
+  edition_or_term: 2024; project page https://deepmind.google/models/gemma/gemma-scope/
+  access: free
+  use: Skim the SAE training details, then browse features on Neuronpedia (https://www.neuronpedia.org/gemma-scope) and load SAEs with SAELens.
+  why: Open, pretrained SAEs on a modern model so learners can do SAE experiments without training them.
+  verified: true
+- id: transformerlens-docs
+  role: reference
+  kind: docs
+  title: TransformerLens documentation
+  url: https://transformerlensorg.github.io/TransformerLens/
+  access: free
+  use: Getting-started tutorial, hooks and activation-cache API, and the main demo notebooks.
+  why: Reference for the default open-source mech-interp library (hooked transformers, activation patching).
+  verified: true
+- id: nnsight-docs
+  role: reference
+  kind: docs
+  title: nnsight documentation
+  url: https://nnsight.net/
+  access: free
+  use: Tutorials on tracing, interventions and running remote-hosted large models (NDIF).
+  why: Complements TransformerLens for larger or arbitrary Hugging Face models.
+  verified: true
+- id: saelens
+  role: reference
+  kind: tool
+  title: SAELens (sparse autoencoder library)
+  url: https://github.com/jbloomAus/SAELens
+  access: free
+  use: 'Tutorials: loading and analysing pre-trained SAEs, training an SAE, logit-lens analysis of features, and SAE Lens plus Neuronpedia.'
+  why: Standard library for training and analysing SAEs, with TransformerLens integration (README mentions a v6 refactor).
+  verified: true
+- id: neuronpedia
+  role: practice
+  kind: tool
+  title: Neuronpedia (feature and attribution-graph explorer)
+  url: https://www.neuronpedia.org/
+  access: free
+  use: Explore Gemma Scope features and published attribution graphs; reproduce one finding from On the Biology of an LLM by steering a feature, as a mini-project.
+  why: Free interactive environment for the SAE/transcoder/attribution-graph part of the scope.
+  verified: true
+- id: circuit-tracer
+  role: practice
+  kind: tool
+  title: circuit-tracer (open-source attribution-graph tool)
+  url: https://github.com/safety-research/circuit-tracer
+  access: free
+  use: Generate an attribution graph for a prompt on a supported model with the tutorial notebooks; check the graph by intervening on features.
+  why: Open implementation of the circuit-tracing method (cross-layer transcoders; Gemma-2 2B, Llama-3.2 1B, Qwen-3, Gemma-3 supported); the main tutorial replicates two findings from the Biology paper and runs on Colab; hosted graphs on Neuronpedia let you try it without installing.
+  verified: true
+considered:
+- title: Neel Nanda MATS curriculum / 200 Concrete Open Problems
+  url: https://www.alignmentforum.org/posts/LbrPTJ4fmABEdEnLf/200-concrete-open-problems-in-mechanistic-interpretability
+  reason: Useful research-idea list but from 2022; partially stale.
+- title: 'Zoom In: An Introduction to Circuits (Distill)'
+  url: https://distill.pub/2020/circuits/zoom-in/
+  reason: Foundational vision article; historical, now covered by the Thread.
+- title: BlueDot Technical AI Safety interpretability week
+  url: https://bluedot.org/courses/technical-ai-safety
+  reason: Reading-list only; ARENA is more hands-on.
+- title: Gemma Scope 2 / Goodfire / EleutherAI SAE tooling
+  url: https://deepmind.google/models/gemma/gemma-scope/
+  reason: Not individually reviewed.
+notes: 'There is no university course with public lectures that matches; ARENA ch.1 + Transformer Circuits + Nanda''s guide is the de-facto curriculum. ARENA covers probes, steering, SAEs, attribution via IOI/SAE circuits and OthelloGPT; attribution graphs/transcoders are best covered by the circuit-tracing and Biology papers plus circuit-tracer. Also useful for deep-learning-oriented readers: Harvard CS 2881R includes an interpretability lecture (Fall 2025).'
+split_proposal: null
+prereq_changes: Consider soft prereq on a hands-on PyTorch/transformer implementation (transformers hard prereq already covers).
+open_questions:
+- Should activation oracles / natural-language-autoencoder style tools (2026 Transformer Circuits items) be added once stable?
+last_verified: '2026-11-18'

@@ -1,0 +1,151 @@
+id: offline-rl-and-imitation
+title: Imitation & Offline RL
+group: G8
+paths:
+- rl
+hard:
+- policy-gradient-methods
+- deep-value-based-rl
+soft: []
+scope: Behavior cloning, DAgger, inverse RL, offline RL (CQL, IQL), off-policy evaluation.
+level: advanced
+estimated_hours: 45
+resources:
+- id: levine-offline-tutorial
+  role: primary-text
+  kind: paper
+  title: 'Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems'
+  by: Sergey Levine, Aviral Kumar, George Tucker, Justin Fu
+  url: https://arxiv.org/abs/2005.01643
+  edition_or_term: arXiv v3, 2020
+  access: free
+  use: 'Sections 1-6: the offline problem, off-policy evaluation and distribution shift, importance-sampling and fitted Q methods, policy constraints, conservative methods (CQL), model-based offline RL; read the open-problems section last.'
+  why: The canonical tutorial for offline RL, written by the field leaders; pairs with the lecture course. (Imitation learning/IRL is covered by Osa et al. and the course.)
+  verified: true
+- id: cs285-imitation-offline
+  role: primary-course
+  kind: course
+  title: Berkeley CS 185/285 Deep Reinforcement Learning
+  by: Sergey Levine (UC Berkeley)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  edition_or_term: Spring 2026 (slides, homework PDFs); Fall 2023 (public videos)
+  access: free
+  use: 'Spring 2026 Lectures 2-3 (behavioral cloning, distribution shift, DAgger), 17-18 (offline RL: AWAC, IQL, CQL), Section 7 (IRL), Section 9 (offline RL), HW1 (imitation learning) and HW5 (offline RL), plus the offline-to-online default project; use Fall 2023 videos.'
+  why: Covers BC/DAgger -> IRL -> offline RL in one sequence with public homework PDFs and starter code.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://rail.eecs.berkeley.edu/deeprlcourse/
+    videos: unknown
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: osa-imitation
+  role: secondary
+  kind: paper
+  title: An Algorithmic Perspective on Imitation Learning
+  by: Takayuki Osa et al.
+  url: https://arxiv.org/abs/1811.06711
+  edition_or_term: Foundations and Trends in Robotics 2018
+  access: free
+  use: Behavioral cloning, DAgger-style interactive methods, inverse RL (max-entropy, GAIL/AIRL-style adversarial methods).
+  why: Fills the imitation/IRL half of the scope that the offline-RL tutorial leaves out.
+  verified: true
+- id: cs224r-imitation-offline
+  role: secondary
+  kind: course
+  title: Stanford CS224R Deep Reinforcement Learning (imitation, offline RL, reward learning)
+  by: Chelsea Finn (Stanford)
+  url: https://cs224r.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: Spring 2026 slides 02 (Imitation), 07 (Offline RL), 08 (Reward Learning) and Homework 1 (imitation learning with starter code); Spring 2025 videos.
+  why: Second source with public videos (2025) and a robotics emphasis.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs224r.stanford.edu/
+    videos: unknown
+    public_videos_term: Spring 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL
+    assignments: public
+    assignments_url: https://cs224r.stanford.edu/
+- id: offline-papers
+  role: secondary
+  kind: paper
+  title: Offline RL and imitation algorithm papers (IQL, CQL, TD3+BC, Decision Transformer, Diffusion Policy, DAgger, D4RL, DOPE)
+  by: Kostrikov; Kumar; Fujimoto; Chen; Chi; Ross; Fu; Fu et al.
+  url: https://arxiv.org/abs/2110.06169
+  access: free
+  use: IQL (2110.06169), CQL (https://arxiv.org/abs/2006.04779), TD3+BC (https://arxiv.org/abs/2106.06860), Decision Transformer (https://arxiv.org/abs/2106.01345), Diffusion Policy (https://arxiv.org/abs/2303.04137), DAgger (https://arxiv.org/abs/1011.0686), D4RL (https://arxiv.org/abs/2004.07219), Benchmarks for Deep OPE (https://arxiv.org/abs/2103.16596).
+  why: Primary sources for the named algorithms; the DOPE benchmark covers off-policy evaluation, which the course treats lightly.
+  verified: true
+- id: levine-neurips-tutorial
+  role: secondary
+  kind: video-series
+  title: NeurIPS 2020 Offline RL Tutorial (Levine and Kumar)
+  by: Aviral Kumar, Sergey Levine
+  url: https://sites.google.com/view/offlinerltutorial-neurips2020/home
+  edition_or_term: NeurIPS 2020
+  access: free
+  use: 'The tutorial site: slides and recorded talk linked from the page.'
+  why: The authors' own two-hour spoken version of the tutorial paper; fastest orientation.
+  verified: true
+- id: corl-practice
+  role: practice
+  kind: tool
+  title: 'CORL: single-file offline RL implementations'
+  by: Tinkoff AI (Denis Tarasov et al.)
+  url: https://github.com/tinkoff-ai/CORL
+  edition_or_term: Public archive
+  access: free
+  use: Run BC, TD3+BC, IQL and CQL on D4RL halfcheetah-medium-v2, hopper-medium-expert-v2 and antmaze-umaze; compare to the logged reports and implement one variant yourself.
+  why: Research-friendly single-file baselines with reproducible scores. Repo is marked as a public archive (no longer developed), so pin versions; use Minari for new datasets.
+  verified: true
+- id: minari
+  role: practice
+  kind: docs
+  title: Minari offline datasets (Farama Foundation)
+  url: https://minari.farama.org/
+  access: free
+  use: Load maintained datasets (D4RL ports such as pointmaze/antmaze/Adroit), write your own dataset collection script from a policy, and train BC/IQL on it.
+  why: The maintained successor API for offline datasets in the Gymnasium ecosystem.
+  verified: true
+- id: imitation-lib
+  role: practice
+  kind: docs
+  title: imitation library (Center for Human-Compatible AI)
+  url: https://imitation.readthedocs.io/en/latest/
+  access: free
+  use: Tutorials for behavioral cloning, DAgger, GAIL and AIRL on CartPole/Pendulum; compare sample efficiency with and without expert queries.
+  why: Clean reference implementations of BC/DAgger/IRL for the imitation half of the scope.
+  verified: true
+- id: lerobot
+  role: practice
+  kind: docs
+  title: LeRobot (Hugging Face) imitation-learning policies
+  url: https://huggingface.co/docs/lerobot/index
+  access: free
+  use: Train an ACT or Diffusion Policy model on a provided teleoperation dataset in simulation (for example the PushT / ALOHA sim sets in the docs).
+  why: 'Hidden gem: modern robot-learning imitation stack (behavior cloning with transformers/diffusion) that connects the theory to current practice.'
+  verified: true
+considered:
+- title: Stanford CS 224R alone
+  url: https://cs224r.stanford.edu/
+  reason: Kept as secondary; CS 285 has deeper offline RL lectures and a dedicated offline homework.
+- title: Offline RL book chapters (Agarwal et al. RL Theory book, offline chapters)
+  url: https://rltheorybook.github.io/
+  reason: Theory-heavy; good for pessimism guarantees, not an applied path.
+- title: Hands-on Modern RL, offline RL chapter
+  url: https://walkinglabs.github.io/hands-on-modern-rl/en/chapter12_offline_rl/offline-data-distribution-shift
+  reason: Owner-seed item; not independently reviewed.
+- title: CS 285 Fall 2023 hw1 / hw5
+  url: https://github.com/berkeleydeeprlcourse/homework_fall2023
+  reason: Same assignment families as Spring 2026; use whichever has working starter code.
+notes: 'The primary text covers offline RL; imitation learning and IRL come from the course and Osa et al. CORL and Minari handle the offline dataset/benchmark side (CORL archived, so treat as reference code). Off-policy evaluation is the thinnest area: only the DOPE benchmark and course lectures; consider adding a dedicated OPE resource later.'
+split_proposal: null
+prereq_changes: null
+open_questions:
+- No strong standalone OPE tutorial found; the Spring 2026 CS 285 lecture 17-18 content on OPE was not inspected in detail.
+last_verified: '2026-11-18'

@@ -1,0 +1,206 @@
+id: rl-for-llms
+title: RL for LLMs & Reasoning
+group: G8
+paths:
+- rl
+- llm
+hard:
+- policy-gradient-methods
+- post-training
+soft: []
+scope: RLHF with PPO, reward modeling, GRPO, RL with verifiable rewards, reasoning models, reward hacking.
+level: advanced
+estimated_hours: 70
+resources:
+- id: rlhf-book
+  role: primary-text
+  kind: book
+  title: 'RLHF Book: Reinforcement Learning from Human Feedback and LLM Post-Training'
+  by: Nathan Lambert
+  url: https://rlhfbook.com/
+  edition_or_term: Online edition, updated through 2026
+  access: free
+  use: 'Read in order: introduction/training overview, instruction tuning, reward models (https://rlhfbook.com/c/05-reward-models.html), rejection sampling, policy gradients and regularization (https://rlhfbook.com/c/06-policy-gradients.html), reasoning and RLVR (https://rlhfbook.com/c/07-reasoning.html), direct alignment (https://rlhfbook.com/c/08-direct-alignment.html), over-optimization/reward hacking (course lecture 9, Ch. 14), synthetic data and CAI, tool use, evaluation.'
+  why: The only book-length, regularly updated treatment of RLHF/RLVR/DPO/GRPO from the practitioner who ran Tulu/Olmo post-training; free online; print edition exists.
+  verified: true
+- id: rlhf-course
+  role: primary-course
+  kind: course
+  title: RLHF Book Course (Post-Training Course)
+  by: Nathan Lambert
+  url: https://rlhfbook.com/course
+  edition_or_term: '2026'
+  access: free
+  use: 'Lectures 0-13 with slides: ML foundations, overview, IFT/reward models/rejection sampling, RL motivation and math (policy gradients), RL implementation, reasoning models (RLVR), DPO, synthetic data, preferences, over-optimization, regularization in RL, tool use, evaluation, character training; Q&A videos.'
+  why: Newest dedicated public video course on post-training RL (frontier-recipes conversation labeled 2026); designed to be followed alongside the book with a companion codebase.
+  verified: true
+  course:
+    latest_term: 2026 (course pages updated through 2026)
+    latest_url: https://rlhfbook.com/course
+    videos: public
+    public_videos_term: '2026'
+    public_videos_url: https://rlhfbook.com/course
+    assignments: none
+    assignments_url: https://github.com/natolambert/rlhf-book
+- id: cs336-a5
+  role: practice
+  kind: course
+  title: 'Stanford CS336 Language Modeling from Scratch: Assignment 5 (alignment and reasoning RL)'
+  by: Percy Liang, Tatsunori Hashimoto et al.
+  url: https://github.com/stanford-cs336/assignment5-alignment
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Main handout (Spring 2026): implement SFT baselines and a GRPO loop with reward grading, group-normalized advantages, policy-gradient/clip losses and training on a math task; tests via `uv run pytest tests/test_grpo.py` with `tests/adapters.py`. Optional supplement: safety alignment, instruction tuning and DPO/RLHF (the 2025 supplement PDF is linked from the course page).'
+  why: Best public, tested, from-scratch GRPO assignment; lectures 15-17 (post-training, RLVR) are on the public Spring 2026 YouTube playlist.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs336.stanford.edu/
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+    assignments: public
+    assignments_url: https://github.com/stanford-cs336/assignment5-alignment
+- id: cs285-llm-rl
+  role: secondary
+  kind: course
+  title: Berkeley CS 185/285 Deep Reinforcement Learning (LLM RL lecture 14 and Homework 4)
+  by: Sergey Levine (UC Berkeley)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  edition_or_term: Spring 2026 (slides, homework PDFs); Fall 2023 (public videos)
+  access: free
+  use: Spring 2026 Lecture 14 (LLM RL, https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-14.pdf), Homework 4 (LLM RL, https://rail.eecs.berkeley.edu/deeprlcourse/static/homeworks/hw4.pdf), Section 7 (IRL and LLM RL), and the LLM RL default final project.
+  why: RL-theory-first view of the same pipeline with a homework; fills the "LLM RL as a standard RL problem" gap.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://rail.eecs.berkeley.edu/deeprlcourse/
+    videos: unknown
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: cs224r-llm-rl
+  role: secondary
+  kind: course
+  title: Stanford CS224R Deep Reinforcement Learning (RL for LLMs lectures)
+  by: Chelsea Finn (Stanford)
+  url: https://cs224r.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Spring 2026 slides 08 Reward Learning, 09 RLHF/Preference Optimization (Guest: Archit Sharma), 10 RL for LLMs: Reasoning (Guest: Noam Brown); default project (LLM RL) PDF https://cs224r.stanford.edu/material/CS224R_Default_Project_Guidelines.pdf.'
+  why: Two frontier-lab guest lectures plus a public LLM-RL project spec.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs224r.stanford.edu/
+    videos: unknown
+    public_videos_term: Spring 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL
+    assignments: public
+    assignments_url: https://cs224r.stanford.edu/
+- id: core-llm-rl-papers
+  role: secondary
+  kind: paper
+  title: Core RLHF/RLVR papers
+  by: Ouyang; Stiennon; Gao; Rafailov; Ahmadian; Shao; DeepSeek-AI; Lambert; Yu; Liu; Lightman
+  url: https://arxiv.org/abs/2203.02155
+  access: free
+  use: InstructGPT (2203.02155), Learning to summarize (https://arxiv.org/abs/2009.01325), Scaling Laws for Reward Model Overoptimization (https://arxiv.org/abs/2210.10760), DPO (https://arxiv.org/abs/2305.18290), RLOO / Back to Basics (https://arxiv.org/abs/2402.14740), DeepSeekMath/GRPO (https://arxiv.org/abs/2402.03300), DeepSeek-R1 (https://arxiv.org/abs/2501.12948), Tulu 3 Section 6 RLVR (https://arxiv.org/abs/2411.15124), DAPO (https://arxiv.org/abs/2503.14476), Dr. GRPO critique (https://arxiv.org/abs/2503.20783), Let's Verify Step by Step (https://arxiv.org/abs/2305.20050).
+  why: Primary sources for each algorithm; read the loss definitions and the ablations. DAPO and Dr. GRPO document the practical fixes (clip-higher, length bias) to GRPO.
+  verified: true
+- id: rl-llm-survey
+  role: secondary
+  kind: paper
+  title: A Survey of Reinforcement Learning for Large Reasoning Models
+  by: Zhang et al.
+  url: https://arxiv.org/abs/2509.08827
+  edition_or_term: arXiv 2025
+  access: free
+  use: Skim the taxonomy and use it as a map of the post-R1 literature.
+  why: Keeps the node current with the fast-moving reasoning-RL literature.
+  verified: true
+- id: hf-n-details-ppo
+  role: secondary
+  kind: article
+  title: The N Implementation Details of RLHF with PPO
+  by: Shengyi Huang et al., Hugging Face
+  url: https://huggingface.co/blog/the_n_implementation_details_of_rlhf_with_ppo
+  access: free
+  use: 'Full post: reward normalization, KL penalty handling, value head, padding/masking details when running PPO on language models.'
+  why: 'Hidden gem: the LLM analogue of the 37 PPO details; essential for debugging PPO-based RLHF.'
+  verified: true
+- id: trl-grpo
+  role: practice
+  kind: docs
+  title: TRL GRPOTrainer and DPOTrainer docs
+  url: https://huggingface.co/docs/trl/grpo_trainer
+  access: free
+  use: Train a small instruct model on GSM8K-style verifiable rewards with GRPOTrainer (custom reward functions, group size, KL beta); compare against the DPOTrainer page for preference training.
+  why: Most widely used open trainer; the same API underlies many tutorials. (Open-R1, once a reproduction effort, is no longer maintained and points users to TRL.)
+  verified: true
+- id: rlhf-book-code
+  role: practice
+  kind: tool
+  title: RLHF Book companion code
+  url: https://github.com/natolambert/rlhf-book
+  access: free
+  use: 'code/ directory: policy_gradients (PPO, REINFORCE, GRPO, RLOO), reward_models (preference/ORM/PRM), direct_alignment (DPO variants), rejection_sampling, instruction_tuning, distillation. Run one module end to end per book chapter.'
+  why: Minimal reference implementations matched to the book chapters.
+  verified: true
+- id: arena-rlhf
+  role: practice
+  kind: course
+  title: ARENA 2.4.1 RLHF, 2.4.2 RLVR (Dr. GRPO), 2.4.3 RLAIF
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Implement RLHF end to end with PPO on a language model, train with verifiable rewards and Dr. GRPO then probe whether RL adds skills, and train against an LLM judge to watch Goodhart effects.
+  why: Test-backed notebooks including a reward-hacking exercise.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: verl-openrlhf
+  role: reference
+  kind: docs
+  title: verl and OpenRLHF framework docs
+  url: https://verl.readthedocs.io/en/latest/
+  access: free
+  use: 'Read the quickstart and algorithm pages (verl: PPO/GRPO/RLOO and HybridFlow, https://arxiv.org/abs/2409.19256; OpenRLHF: https://openrlhf.readthedocs.io/en/latest/, paper https://arxiv.org/abs/2405.11143) to see how rollout and training workers are separated at scale.'
+  why: Scaled-up RL infrastructure used by open reasoning-model work; needed for multi-GPU runs.
+  verified: true
+- id: murphy-llm-rl
+  role: reference
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 6 LLMs and RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5
+  access: free
+  use: Chapter 6 for a compact notation-consistent summary (includes code snippets for training LLMs with RL).
+  why: Bridges classical RL notation to LLM post-training.
+  verified: true
+considered:
+- title: Build a Reasoning Model (From Scratch) (Raschka)
+  url: https://www.manning.com/books/build-a-reasoning-model-from-scratch
+  reason: Paid Manning book building reasoning RL from scratch; good implementation companion but not verified chapter by chapter; kept out as the RLHF Book + CS336 cover the same path.
+- title: Hands-on Modern RL (walkinglabs)
+  url: https://walkinglabs.github.io/hands-on-modern-rl/en/chapter22_agentic/build-agentic-training-system
+  reason: Owner seed item (agentic RL training chapters); not independently reviewed.
+- title: Open-R1 (Hugging Face)
+  url: https://github.com/huggingface/open-r1
+  reason: README states the project is no longer maintained and points to TRL; useful as a historical recipe.
+- title: CS 336 lectures 15-17 as the course
+  url: https://cs336.stanford.edu/
+  reason: Excellent but part of a large from-scratch LM course (prerequisite model/data assignments); used as practice for A5 instead.
+notes: 'Skeleton hard prereq post-training (G7 node) is consistent with the RLHF Book intro chapters overlapping it. There is a clear overlap between this node and alignment-and-oversight (reward hacking, over-optimization); the RLHF Book lecture 9 is the bridge. Course primary is the RLHF Book course (public videos); CS336 A5 is the best public graded assignment. Course-quality verification: the course page itself was read; individual videos were not watched.'
+split_proposal: null
+prereq_changes: null
+open_questions:
+- 'CS336 A5 assignment autograder: the repo has pytest tests; whether a hosted autograder exists was not confirmed.'
+- 'CS 336 Spring 2026 playlist: only the playlist title and a video count were seen.'
+last_verified: '2026-11-18'

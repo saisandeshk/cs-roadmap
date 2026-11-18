@@ -1,0 +1,155 @@
+id: deep-value-based-rl
+title: 'Deep RL: Value-Based Methods'
+group: G8
+paths:
+- rl
+hard:
+- rl-foundations
+- deep-learning-fundamentals
+soft: []
+scope: DQN and extensions, replay, target networks, stability, distributional RL.
+level: intermediate
+estimated_hours: 40
+resources:
+- id: murphy-value
+  role: primary-text
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 2 Value-based RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5, 1 Dec 2025
+  access: free
+  use: 'Chapter 2 (value-based RL): fitted/neural Q-learning, DQN, replay and target networks, Double DQN, prioritized replay, distributional RL, the deadly triad and stabilization tricks. Read alongside Sutton-Barto Ch. 9-11 for the function-approximation theory.'
+  why: The only single free text that covers DQN, Rainbow-style extensions and distributional RL in current notation (v5, Dec 2025); Sutton-Barto predates deep RL.
+  verified: true
+- id: cs285
+  role: primary-course
+  kind: course
+  title: Berkeley CS 185/285 Deep Reinforcement Learning
+  by: Sergey Levine (UC Berkeley)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  edition_or_term: Spring 2026 (slides, homework PDFs); Fall 2023 (public videos)
+  access: free
+  use: Spring 2026 Lectures 7-8 (value-based RL, Q-learning in practice) and Homework 3 (Q-learning and actor-critic); for video, the corresponding Fall 2023 value-function / deep Q-learning lectures.
+  why: Best-taught deep-RL course with public slides and homework every year; Fall 2023 is the newest run with full public video. Spring 2026 is recorded but recordings were not linked yet.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://rail.eecs.berkeley.edu/deeprlcourse/
+    videos: unknown
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
+    assignments: public
+    assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: sb-ch9-11
+  role: secondary
+  kind: book
+  title: Sutton-Barto Ch. 9-11 (function approximation, off-policy methods)
+  by: Richard S. Sutton, Andrew G. Barto
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  access: free
+  use: Ch. 9 (on-policy prediction), Ch. 10 (control), Ch. 11 (off-policy with approximation, deadly triad, gradient-TD).
+  why: Gives the theory behind why DQN needs replay and target networks.
+  verified: true
+- id: dqn-papers
+  role: secondary
+  kind: paper
+  title: DQN and its core extensions (Mnih 2013; van Hasselt 2015; Wang 2015; Schaul 2015; Rainbow)
+  by: Mnih et al.; van Hasselt et al.; Wang et al.; Schaul et al.; Hessel et al.
+  url: https://arxiv.org/abs/1312.5602
+  access: free
+  use: 'Read in order: Playing Atari with Deep RL (1312.5602), Double Q-learning (https://arxiv.org/abs/1509.06461), Dueling networks (https://arxiv.org/abs/1511.06581), Prioritized Experience Replay (https://arxiv.org/abs/1511.05952), Rainbow (https://arxiv.org/abs/1710.02298).'
+  why: The canonical ablation-ready sequence; Rainbow shows how the pieces combine.
+  verified: true
+- id: distributional-rl-book
+  role: secondary
+  kind: book
+  title: Distributional Reinforcement Learning
+  by: Marc G. Bellemare, Will Dabney, Mark Rowland
+  url: https://www.distributional-rl.org/
+  edition_or_term: MIT Press 2023; open-access draft
+  access: free
+  use: Ch. 1-6 (return distributions, learning them, operators/metrics, distributional DP, incremental algorithms) then the chapter(s) on deep-RL agents (C51/QR-DQN) after Rainbow; pair with C51 (https://arxiv.org/abs/1707.06887) and QR-DQN (https://arxiv.org/abs/1710.10044).
+  why: 'Hidden gem: MIT Press open-access textbook by the authors of the field; fills the distributional-RL scope item that general courses only skim.'
+  verified: true
+- id: cleanrl-dqn
+  role: practice
+  kind: docs
+  title: CleanRL DQN / C51 single-file implementations
+  by: Costa Huang et al.
+  url: https://docs.cleanrl.dev/rl-algorithms/dqn/
+  access: free
+  use: Read dqn.py (classic control) then dqn_atari.py line by line; run Breakout or Pong with tracked curves and ablate the target-network update frequency and replay size. Compare with the C51 doc (https://docs.cleanrl.dev/rl-algorithms/c51/).
+  why: Readable single-file reference implementations with published benchmark curves to check your own runs against.
+  verified: true
+- id: hf-deep-rl-unit-3
+  role: practice
+  kind: course
+  title: 'Hugging Face Deep RL Course, Unit 3: Deep Q-Learning with Atari'
+  by: Hugging Face
+  url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+  edition_or_term: Self-paced
+  access: free
+  use: Unit 3 Colab (DQN on Space Invaders with SB3 / RL Zoo) and Bonus Unit 2 (Optuna hyperparameter tuning).
+  why: A guided end-to-end Atari DQN run with hyperparameter-tuning practice.
+  verified: true
+  course:
+    latest_term: Self-paced (current docs)
+    latest_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+    videos: none
+    assignments: public
+    assignments_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+- id: arena-dqn
+  role: practice
+  kind: course
+  title: ARENA 2.2.1 DQN
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Implement DQN for CartPole with the provided tests, then extend toward Atari.
+  why: Test-backed from-scratch implementation; good before reading CleanRL.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: rliable-precipice
+  role: reference
+  kind: paper
+  title: Deep Reinforcement Learning at the Edge of the Statistical Precipice
+  by: Agarwal, Schwarzer, Castro, Courville, Bellemare
+  url: https://arxiv.org/abs/2108.13264
+  edition_or_term: NeurIPS 2021
+  access: free
+  use: Sections 1-4 and the rliable recommendations (interquartile mean, performance profiles, stratified bootstrap CIs).
+  why: Teaches how to report DQN-style results across seeds and games honestly.
+  verified: true
+- id: sb3-rl-tips
+  role: reference
+  kind: docs
+  title: 'Stable-Baselines3: RL Tips and Tricks'
+  url: https://stable-baselines3.readthedocs.io/en/master/guide/rl_tips.html
+  access: free
+  use: 'The whole page when your DQN does not learn: debugging checklist, hyperparameter advice, evaluation protocol.'
+  why: Practitioner debugging checklist missing from papers.
+  verified: true
+considered:
+- title: Stanford CS224R Q-learning and off-policy lectures
+  url: https://cs224r.stanford.edu/
+  reason: Good second source (Spring 2025 videos public) but overlaps CS285 and has less value-based depth.
+- title: Hands-on Modern RL (walkinglabs) DQN chapter
+  url: https://walkinglabs.github.io/hands-on-modern-rl/en/chapter07_dqn/dqn-components
+  reason: Seed-recommended in the owner list; not independently reviewed here, so not promoted.
+- title: David Silver lecture 6 (value function approximation)
+  url: https://davidstarsilver.wordpress.com/teaching/
+  reason: Pre-deep-RL; useful theory refresher only.
+notes: No dedicated deep-value textbook exists; Murphy Ch. 2 plus the seminal papers is the best compact route. Mnih et al. Nature paper (2015) is not linked because nature.com returned HTTP 429 to the sandbox; the arXiv 2013 paper is the free substitute. Spring 2026 CS 285 lectures are described as streamed and recorded but archive links were not posted at check time.
+split_proposal: null
+prereq_changes: Consider adding soft prereq on pytorch/deep learning practice (already hard on deep-learning-fundamentals).
+open_questions:
+- 'CS285 Spring 2026 recordings: will a public YouTube playlist appear? Not linked on 2026-11-18.'
+- Exact mapping of Fall 2023 lecture numbers for value-function lectures was not opened video by video.
+last_verified: '2026-11-18'

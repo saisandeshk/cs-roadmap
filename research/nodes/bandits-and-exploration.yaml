@@ -1,0 +1,130 @@
+id: bandits-and-exploration
+title: Bandits & Exploration
+group: G8
+paths:
+- rl
+hard:
+- probability
+soft:
+- rl-foundations
+scope: Multi-armed bandits, UCB, Thompson sampling, contextual bandits, regret.
+optional: true
+level: intermediate
+estimated_hours: 30
+resources:
+- id: lattimore-szepesvari
+  role: primary-text
+  kind: book
+  title: Bandit Algorithms
+  by: Tor Lattimore, Csaba Szepesvari
+  url: https://tor-lattimore.com/downloads/book/book.pdf
+  edition_or_term: CUP 2020; free online edition
+  access: free
+  use: 'Part I (Ch. 1-5: bandit language, probability and concentration, stochastic bandits), Ch. 6-8 (explore-then-commit, UCB, asymptotic optimality), Ch. 11 (Exp3 adversarial bandits), Ch. 18-19 (contextual and stochastic linear bandits, LinUCB), Ch. 36 (Thompson sampling). Do the exercises on regret analysis; skip lower-bound chapters on a first pass.'
+  why: The reference text on regret analysis; free online edition identical in content to the Cambridge University Press print version.
+  verified: true
+- id: cs234-exploration
+  role: primary-course
+  kind: course
+  title: Stanford CS234 Reinforcement Learning (bandits and exploration lectures)
+  by: Emma Brunskill (Stanford)
+  url: https://web.stanford.edu/class/cs234/
+  edition_or_term: Winter 2026
+  access: free
+  use: 'Winter 2026 Lectures 9-12 (slides lecture9-lecture12): multi-armed bandits, optimism/UCB, Thompson/Bayesian approaches, exploration in MDPs. Watch the matching Spring 2024 exploration lectures; Lecture 12 reading is Bandit Algorithms Section 7.1.'
+  why: Best public lecture treatment that goes from bandits to exploration in full MDPs and ties directly to Lattimore-Szepesvari. No standalone bandit course with public videos and assignments was found (see considered).
+  verified: true
+  course:
+    latest_term: Winter 2026
+    latest_url: https://web.stanford.edu/class/cs234/
+    videos: enrolled-only
+    public_videos_term: Spring 2024
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rN4wG6Nk6sNpTEbuOSosZdX
+    assignments: public
+    assignments_url: https://web.stanford.edu/class/cs234/assignments.html
+- id: slivkins-mab
+  role: secondary
+  kind: book
+  title: Introduction to Multi-Armed Bandits
+  by: Aleksandrs Slivkins
+  url: https://arxiv.org/abs/1904.07272
+  edition_or_term: Foundations and Trends in ML; arXiv, latest version
+  access: free
+  use: Ch. 1-2 (stochastic bandits, UCB/successive elimination), Ch. 3 (Bayesian bandits and Thompson sampling), Ch. 4-5 (contextual bandits, bandits with experts). Read first if Lattimore-Szepesvari is too heavy.
+  why: A gentler, shorter monograph (~130 pages) with the same core algorithms and clean regret proofs; useful on-ramp before the larger text.
+  verified: true
+- id: russo-ts-tutorial
+  role: secondary
+  kind: paper
+  title: A Tutorial on Thompson Sampling
+  by: Daniel Russo, Benjamin Van Roy, Abbas Kazerouni, Ian Osband, Zheng Wen
+  url: https://arxiv.org/abs/1707.02038
+  edition_or_term: Foundations and Trends in ML 2018
+  access: free
+  use: Sections 1-5 (Bernoulli bandit, shortest-path and other examples, why TS works) and the discussion of practical considerations.
+  why: The practitioner-oriented explanation of Thompson sampling with worked applications; fills the "how do I actually use it" gap left by the regret-theory text.
+  verified: true
+- id: silver-lecture-9
+  role: secondary
+  kind: video-series
+  title: 'David Silver, Lecture 9: Exploration and Exploitation'
+  by: David Silver
+  url: https://davidstarsilver.wordpress.com/teaching/
+  edition_or_term: '2015'
+  access: free
+  use: 'Lecture 9 slides (https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-9-exploration-and-exploitation.pdf) and the matching video in the UCL playlist: epsilon-greedy, optimism, probability matching, information-state search.'
+  why: Compact one-lecture overview that frames bandits inside RL; quick refresher before the formal text.
+  verified: true
+- id: sb-ch2-testbed
+  role: practice
+  kind: book
+  title: Sutton-Barto Ch. 2 10-armed testbed
+  url: https://incompleteideas.net/book/the-book-2nd.html
+  access: free
+  use: 'Implement the 10-armed testbed: epsilon-greedy, optimistic initial values, UCB and gradient bandit; reproduce Figures 2.2-2.6; do Exercises 2.5 (non-stationary), 2.11 (parameter study). Then add Thompson sampling and a LinUCB contextual variant on a synthetic linear-reward environment and plot cumulative regret.'
+  why: Specific, runnable regret experiments in an afternoon; makes the UCB/TS analysis concrete.
+  verified: true
+- id: arena-2-1
+  role: practice
+  kind: course
+  title: ARENA 2.1 Intro to RL (MDPs, policies, multi-armed bandits)
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: 'Section 2.1: multi-armed bandit environments and agents (epsilon-greedy, UCB) with provided tests, then the tabular MDP solvers.'
+  why: Auto-tested exercise notebook; a quick way to confirm your implementations are correct.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: agarwal-rl-theory
+  role: reference
+  kind: book
+  title: 'Reinforcement Learning: Theory and Algorithms'
+  by: Alekh Agarwal, Nan Jiang, Sham Kakade, Wen Sun
+  url: https://rltheorybook.github.io/
+  edition_or_term: Draft, living online book
+  access: free
+  use: Ch. 6 onward (bandit and contextual-bandit chapters, exploration in tabular and linear MDPs) as an advanced reference on sample complexity.
+  why: Graduate-level reference for exploration theory; use after the primary text if you want PAC/regret bounds for MDPs.
+  verified: true
+considered:
+- title: Waterloo CS885 Winter 2025 (Pascal Poupart)
+  url: https://cs.uwaterloo.ca/~ppoupart/teaching/cs885-winter25/
+  reason: Has public slides/assignments with a multi-armed-bandit lecture, but a general RL course; video availability not confirmed.
+- title: CMU / UW online-learning and bandit courses (e.g. Kevin Jamieson bandit lectures, Koolen MLT 2025)
+  url: https://courses.cs.washington.edu/courses/cse599i/18wi/
+  reason: Strong theory lecture notes but not a packaged course with public videos and assignments; page behind login at time of check.
+- title: Berkeley CS 285 exploration lectures (Lectures 19 and 23, Spring 2026)
+  url: https://rail.eecs.berkeley.edu/deeprlcourse/
+  reason: Deep exploration (RND, count-based) rather than classical bandits; used in deep-RL nodes.
+notes: 'Marked optional in the skeleton. Honest gap: there is no standalone bandit course with public videos and public assignments; CS234 lectures 9-12 are the best watchable option, and Spring 2024 is the newest public CS234 recording found. The book + Sutton-Barto Ch. 2 experiments are the main path. The ARENA 2.1 section is cited from the chapter-2 landing page (section pages were not individually opened).'
+split_proposal: null
+prereq_changes: null
+open_questions:
+- Which CS234 Spring 2024 lecture numbers map to Winter 2026 Lectures 9-12 was not checked video by video.
+last_verified: '2026-11-18'

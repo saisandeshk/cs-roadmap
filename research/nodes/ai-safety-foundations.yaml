@@ -1,0 +1,163 @@
+id: ai-safety-foundations
+title: AI Safety Foundations
+group: G8
+paths:
+- safety
+hard:
+- deep-learning-fundamentals
+soft:
+- language-modeling
+scope: Alignment problem, risk landscape, specification gaming, misuse, governance basics.
+level: intro
+estimated_hours: 30
+resources:
+- id: hendrycks-text
+  role: primary-text
+  kind: book
+  title: Introduction to AI Safety, Ethics, and Society
+  by: Dan Hendrycks (Center for AI Safety)
+  url: https://www.aisafetybook.com/
+  edition_or_term: Taylor and Francis 2024/2025; online edition
+  access: free
+  use: 'Read online: chapter summaries and chapters on AI risk sources (malicious use, AI races, organizational risks, rogue AIs), technical safety (opaqueness, proxy gaming, adversarial robustness), collective action, and governance. Use the curriculum page (https://www.aisafetybook.com/curriculum) for slides and lecture videos per chapter.'
+  why: The only textbook-format, free and regularly maintained survey that covers risk landscape, technical problems and governance; includes slides and an audiobook. Print edition from Taylor and Francis.
+  verified: true
+- id: harvard-cs2881r
+  role: primary-course
+  kind: course
+  title: Harvard CS 2881R AI Safety
+  by: Boaz Barak (Harvard)
+  url: https://boazbk.github.io/mltheoryseminar/
+  edition_or_term: Fall 2026 (current); Fall 2025 archive
+  access: free
+  use: 'Fall 2025 archive lectures (https://boazbk.github.io/mltheoryseminar/fall2025/): Introduction, Modern LLM Training, Adversarial Robustness, Model Specifications, Content Policies, Recursive Self-Improvement, Capabilities vs Safety, Scheming and Deception, Interpretability, plus the lecture notes (LessWrong tag cs-2881r) and student experiments. The Fall 2026 page lists new lectures (cyber capabilities, reward hacking, frontier regulation, biosecurity).'
+  why: 'A graduate course with public YouTube lectures, blog-post notes and student experiments, taught by a theoretical computer scientist; the newest and most complete university-grade course on alignment and safety. Prerequisite: undergraduate ML level (matches deep-learning-fundamentals).'
+  verified: true
+  course:
+    latest_term: Fall 2026 (running)
+    latest_url: https://boazbk.github.io/mltheoryseminar/
+    videos: public
+    public_videos_term: Fall 2025 (full playlist) and Fall 2026 lectures posted so far
+    public_videos_url: https://youtube.com/playlist?list=PL_b4B2IWlal3j01Rbj5ebT663E7x4bl_W
+    assignments: partial
+    assignments_url: https://boazbk.github.io/mltheoryseminar/fall2025/
+- id: bluedot-agi-strategy
+  role: secondary
+  kind: course
+  title: BlueDot Impact AGI Strategy course
+  by: BlueDot Impact
+  url: https://bluedot.org/courses/agi-strategy
+  edition_or_term: Cohorts starting Dec 2026 (applications Nov 2026)
+  access: free
+  use: The cohort course (about 25-40 hours, intensive week or part-time) for the strategic overview; the page also points to a free 90-minute introductory course for newcomers. Apply for a cohort or read the posted curriculum.
+  why: Most widely used structured on-ramp, with a facilitator and community; use when you want a cohort or the governance side.
+  verified: true
+  course:
+    latest_term: Cohorts starting 7 Dec 2026 (apply by 29 Nov)
+    latest_url: https://bluedot.org/courses/agi-strategy
+    videos: none
+    assignments: none
+- id: mlsafety-course
+  role: secondary
+  kind: course
+  title: Intro to ML Safety (Center for AI Safety)
+  by: Dan Hendrycks et al.
+  url: https://course.mlsafety.org/
+  edition_or_term: Course site (copyright 2023)
+  access: free
+  use: Weeks 3-5 safety engineering (risk decomposition, accident models, black swans), robustness, monitoring (anomaly detection, transparency, trojans, emergent behavior), control (honest models, power aversion, machine ethics), systemic safety and x-risk discussion; most weeks have a recorded lecture, slides and notes, and several have coding assignments.
+  why: Fills the safety-engineering and ML-safety-research view (monitoring, robustness, alignment, systemic safety) that the textbook covers at a higher level; public lecture recordings and coding assignments.
+  verified: true
+  course:
+    latest_term: 2023 materials (site shows copyright 2023; next semester announced as interest form)
+    latest_url: https://course.mlsafety.org/
+    videos: public
+    assignments: public
+    assignments_url: https://course.mlsafety.org/
+- id: hendrycks-coursera
+  role: secondary
+  kind: course
+  title: Introduction to AI Safety (Coursera, free)
+  by: Dan Hendrycks
+  url: https://www.coursera.org/learn/intro-to-ai-safety/
+  edition_or_term: Current
+  access: account-required
+  use: Three modules (what AI can do and drivers of progress, major risks, governance strategies); an abridged version of the textbook.
+  why: Short video format if reading a textbook is not suitable; needs a Coursera account.
+  verified: true
+  course:
+    latest_term: Current (self-paced)
+    latest_url: https://www.coursera.org/learn/intro-to-ai-safety/
+    videos: unknown
+    assignments: none
+- id: concrete-problems
+  role: secondary
+  kind: paper
+  title: Concrete Problems in AI Safety and The Alignment Problem from a Deep Learning Perspective
+  by: Amodei et al.; Ngo, Chan, Mindermann; Shevlane et al.
+  url: https://arxiv.org/abs/1606.06565
+  access: free
+  use: 'Concrete Problems (2016): side effects, reward hacking, scalable supervision, safe exploration, distributional shift; The Alignment Problem from a DL Perspective (https://arxiv.org/abs/2209.00626): situational awareness, misaligned goals, deceptive alignment; Model evaluation for extreme risks (https://arxiv.org/abs/2305.15324).'
+  why: The primary-source problem statements that the textbook and courses build on.
+  verified: true
+- id: spec-gaming
+  role: secondary
+  kind: article
+  title: 'Specification gaming: the flip side of AI ingenuity'
+  by: Victoria Krakovna et al., Google DeepMind
+  url: https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/
+  edition_or_term: '2020'
+  access: free
+  use: Full post and the linked list of specification-gaming examples.
+  why: Short, concrete illustration of the scope item "specification gaming" with real RL examples.
+  verified: true
+- id: arena-goal-misgen
+  role: practice
+  kind: course
+  title: ARENA 2.3.2 Goal Misgeneralisation
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Gridworld exercises on reward hacking, potential shaping and goal misgeneralisation (reproduce an agent that learns the proxy instead of the goal).
+  why: Hands-on specification gaming/goal misgeneralisation, which most intro safety material only discusses.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: bluedot-tech-curriculum
+  role: reference
+  kind: course
+  title: BlueDot Technical AI Safety curriculum
+  by: BlueDot Impact
+  url: https://bluedot.org/courses/technical-ai-safety
+  edition_or_term: Current cohorts Nov 2026 - Jan 2027
+  access: free
+  use: Unit 1 "The technical challenge with AI" readings (https://bluedot.org/courses/technical-ai-safety/1/1) as the next step after this node; the curriculum is browsable without joining a cohort.
+  why: Curated, regularly updated reading list linking the foundations to technical work.
+  verified: true
+  course:
+    latest_term: Cohorts 30 Nov 2026 / 7 Dec 2026 (apply by 22 and 29 Nov)
+    latest_url: https://bluedot.org/courses/technical-ai-safety
+    videos: none
+    assignments: none
+considered:
+- title: Anthropic Alignment Science blog (research directions)
+  url: https://alignment.anthropic.com/
+  reason: Great current reading but written for researchers; used in alignment-and-oversight.
+- title: Superintelligence / Human Compatible / The Alignment Problem (books)
+  url: https://www.aisafetybook.com/
+  reason: Popular and conceptual books; not opened or evaluated here; Hendrycks textbook is more structured for study.
+- title: NIST AI Risk Management Framework
+  url: https://www.nist.gov/itl/ai-risk-management-framework
+  reason: Governance reference listed in owner seed; not opened here.
+notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Harvard CS 2881R is a graduate course (proof-level maturity assumed) so some learners may prefer BlueDot AGI Strategy as the first pass. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
+split_proposal: null
+prereq_changes: Consider making language-modeling a hard prereq only for later nodes; foundations itself is fine with deep-learning-fundamentals (as in skeleton).
+open_questions:
+- 'Intro to ML Safety: site shows copyright 2023 and no run dates; the recordings were not opened.'
+- 'Fall 2026 Harvard lectures: only some videos are posted so far (term in progress as of 2026-11-18).'
+last_verified: '2026-11-18'

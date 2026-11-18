@@ -1,0 +1,171 @@
+id: adversarial-robustness
+title: Adversarial ML & Robustness
+group: G8
+paths:
+- safety
+- security
+hard:
+- deep-learning-fundamentals
+soft: []
+scope: Adversarial examples, robust training, certified defenses, data poisoning, prompt injection.
+level: intermediate
+estimated_hours: 55
+resources:
+- id: kolter-madry
+  role: primary-text
+  kind: website
+  title: 'Adversarial Robustness: Theory and Practice (Kolter and Madry)'
+  by: Zico Kolter, Aleksander Madry
+  url: https://adversarial-ml-tutorial.org/
+  edition_or_term: NeurIPS 2018 tutorial notes
+  access: free
+  use: 'Chapter 1 (introduction), 2 (linear models), 3 (adversarial examples: solving the inner maximization, FGSM/PGD) and 4 (adversarial training: the outer minimization); each chapter can be downloaded as a Jupyter notebook; watch the NeurIPS 2018 tutorial video linked from the page.'
+  why: Clean, code-first notes from two leaders in the field that derive robust optimization and give runnable attacks and training. Page states notes are an early draft (Chapter 5 "Beyond adversaries" never finished).
+  verified: true
+- id: eth-rtai
+  role: primary-course
+  kind: course
+  title: ETH Zurich Reliable and Trustworthy Artificial Intelligence (RTAI)
+  by: Martin Vechev et al. (ETH SRI Lab)
+  url: https://eth-sri.github.io/teaching/rtai25
+  edition_or_term: Fall 2025
+  access: free
+  use: Fall 2025 lectures on adversarial attacks and defenses, neural-network certification (Box, MILP, DeepPoly, branch and bound), certified training, randomized smoothing, LLM attacks and defenses, LLM privacy/prompt injection and security of AI agents, watermarking and evaluation; use the recordings on the ETH video portal (https://video.ethz.ch/lectures/d-infk/2025/autumn/263-2400-00L.html) and the 2020 YouTube playlist (https://www.youtube.com/playlist?list=PLWjm4hHpaNg6c-W7JjNYDEC_kJK9oSp0Y) for the classic parts.
+  why: Newest course found that covers both classical robustness and certification and current LLM attacks/prompt injection with public lecture recordings. Slides and exercises require an ETH NETHZ login (HTTP 401 for outsiders).
+  verified: true
+  course:
+    latest_term: Fall 2025
+    latest_url: https://eth-sri.github.io/teaching/rtai25
+    videos: public
+    public_videos_term: Fall 2025 (ETH video portal)
+    public_videos_url: https://video.ethz.ch/lectures/d-infk/2025/autumn/263-2400-00L.html
+    assignments: restricted
+    assignments_url: https://eth-sri.github.io/teaching/rtai25
+- id: carlini-eval
+  role: secondary
+  kind: paper
+  title: On Evaluating Adversarial Robustness
+  by: Nicholas Carlini et al.
+  url: https://arxiv.org/abs/1902.06705
+  edition_or_term: '2019'
+  access: free
+  use: Full checklist paper; pair with Obfuscated Gradients (https://arxiv.org/abs/1802.00420) and Towards Evaluating the Robustness of Neural Networks (C&W, https://arxiv.org/abs/1608.04644).
+  why: Teaches how defenses get broken and how to evaluate honestly; the main fix for the "gradient masking" trap.
+  verified: true
+- id: core-robustness-papers
+  role: secondary
+  kind: paper
+  title: 'Core robust-ML papers: FGSM, PGD, TRADES-era trade-offs, randomized smoothing, RobustBench'
+  by: Goodfellow; Madry; Tsipras; Cohen; Croce et al.
+  url: https://arxiv.org/abs/1412.6572
+  access: free
+  use: FGSM (1412.6572), Madry et al. PGD adversarial training (https://arxiv.org/abs/1706.06083), Robustness May Be at Odds with Accuracy (https://arxiv.org/abs/1805.12152), Certified Robustness via Randomized Smoothing (https://arxiv.org/abs/1902.02918), RobustBench (https://arxiv.org/abs/2010.09670; leaderboard https://robustbench.github.io/).
+  why: Primary sources for robust training, trade-offs, certification and benchmarking.
+  verified: true
+- id: llm-adversarial-papers
+  role: secondary
+  kind: paper
+  title: LLM adversarial attacks, prompt injection and poisoning papers
+  by: Zou; Carlini; Greshake; Debenedetti; Chen; Hubinger et al.
+  url: https://arxiv.org/abs/2307.15043
+  access: free
+  use: 'GCG (2307.15043), Are aligned neural networks adversarially aligned? (https://arxiv.org/abs/2306.15447), Not what you''ve signed up for: indirect prompt injection (https://arxiv.org/abs/2302.12173), AgentDojo (https://arxiv.org/abs/2406.13352), Meta SecAlign (https://arxiv.org/abs/2507.02735), Poisoning Web-Scale Training Datasets is Practical (https://arxiv.org/abs/2302.10149), Sleeper Agents (https://arxiv.org/abs/2401.05566).'
+  why: Covers the LLM/prompt-injection/data-poisoning half of the scope, which classic robust-ML courses skip.
+  verified: true
+- id: willison-prompt-injection
+  role: secondary
+  kind: article
+  title: 'Simon Willison: Prompt injection series'
+  by: Simon Willison
+  url: https://simonwillison.net/series/prompt-injection/
+  access: free
+  use: Read the series in order (posts on why prompt injection is hard to fix and on design patterns that limit damage).
+  why: Best practitioner-level writing on why prompt injection is unsolved and what design patterns limit damage.
+  verified: true
+- id: carlini-talks
+  role: secondary
+  kind: video-series
+  title: Nicholas Carlini talks and slides
+  by: Nicholas Carlini
+  url: https://nicholas.carlini.com/talks
+  edition_or_term: 2021-2023 talks
+  access: free
+  use: An Intro to Adversarial Machine Learning (Simons Institute 2023), A crisis in adversarial machine learning (2022), Are aligned language models adversarially aligned? (2023), Practical poisoning of machine learning models (2023).
+  why: 'Hidden gem: the clearest candid talks on why most defenses failed, by the field''s best attacker.'
+  verified: true
+- id: notebooks-kolter
+  role: practice
+  kind: practice-site
+  title: Kolter-Madry notebooks (Chapters 2-4)
+  url: https://adversarial-ml-tutorial.org/adversarial_examples/
+  access: free
+  use: 'Download chapter 3 and 4 notebooks: implement FGSM and multi-step PGD on a CIFAR/MNIST classifier, then do adversarial training and report clean vs robust accuracy; evaluate with a stronger attack than the one used in training.'
+  why: Concrete exercises that cover attack, defense and evaluation.
+  verified: true
+- id: robustbench-practice
+  role: practice
+  kind: tool
+  title: RobustBench and attack libraries (foolbox, ART)
+  url: https://robustbench.github.io/
+  access: free
+  use: Load a leaderboard model with the RobustBench API, run AutoAttack/PGD against it, and reproduce its reported robust accuracy; try foolbox (https://foolbox.jonasrauber.de/) or the Adversarial Robustness Toolbox (https://adversarial-robustness-toolbox.readthedocs.io/) for other threat models.
+  why: Standardised evaluation, avoiding the pitfalls in Carlini's checklist.
+  verified: true
+- id: gandalf-adv
+  role: practice
+  kind: practice-site
+  title: Gandalf and Tensor Trust (prompt injection practice)
+  url: https://gandalf.lakera.ai/baseline
+  access: free
+  use: Beat all Gandalf baseline levels, then play Tensor Trust (https://tensortrust.ai/) as attacker and defender.
+  why: Hands-on prompt injection practice; see evals-and-red-teaming for the full list.
+  verified: true
+- id: owasp-llm
+  role: reference
+  kind: website
+  title: OWASP Top 10 for LLM Applications
+  url: https://owasp.org/www-project-top-10-for-large-language-model-applications/
+  access: free
+  use: Use the risk list (prompt injection, data poisoning, sensitive information disclosure, supply chain) as a threat-model checklist.
+  why: Compact industry checklist for LLM application security.
+  verified: true
+- id: mlsafety-robustness
+  role: secondary
+  kind: course
+  title: Intro to ML Safety, Week on Adversarial Robustness (Center for AI Safety)
+  by: Dan Hendrycks et al.
+  url: https://course.mlsafety.org/
+  edition_or_term: Site copyright 2023
+  access: free
+  use: 'Adversarial Robustness unit: lecture, slides, notes and the coding assignment (PGD, white-box vs black-box, transferability, robustness certificates).'
+  why: A single-week public lecture and graded notebook if the full ETH course is too heavy.
+  verified: true
+  course:
+    latest_term: 2023 materials
+    latest_url: https://course.mlsafety.org/
+    videos: public
+    assignments: public
+    assignments_url: https://course.mlsafety.org/
+considered:
+- title: NTU Security and Privacy of Machine Learning, Fall 2025
+  url: https://www.csie.ntu.edu.tw/~stchen/teaching/spml25
+  reason: Good syllabus and reading list (attacks, certified defenses); slides and homework are on NTU COOL only.
+- title: CISPA Trustworthy Machine Learning 2025
+  url: https://cms.cispa.saarland/tml2025/
+  reason: Flipped course with pre-recorded videos but access appears CMS-restricted; not verified.
+- title: Adversarial Robustness book (Chen and Liu)
+  url: https://adversarial-ml-tutorial.org/
+  reason: Not opened; Kolter-Madry notes preferred.
+- title: Carlini, A Complete List of All Adversarial Example Papers
+  url: https://nicholas.carlini.com/writing/2019/all-adversarial-example-papers.html
+  reason: Reference list, not a learning path.
+- title: Adversarial ML Tutorial Chapter 5 (not completed)
+  url: https://adversarial-ml-tutorial.org/
+  reason: Chapter 5 "Beyond adversaries" listed as coming soon; certified defenses covered by RTAI/randomized smoothing instead.
+notes: 'The scope is wide (classic robust ML + LLM security). Classic part: Kolter-Madry + Carlini evaluation + RTAI lectures. LLM part: GCG/prompt-injection papers and Simon Willison. ETH RTAI is the only recent course with public lecture video found but its slides/exercises need a university login. The CAIS course provides one public week. Data poisoning is covered mostly by papers (Carlini 2023) rather than a structured course.'
+split_proposal: null
+prereq_changes: Consider adding soft prereq on security-basics or llm-evaluation for the LLM-attack half (cross-listed in security path).
+open_questions:
+- 'ETH video portal access: the portal page loads, but whether the Fall 2025 recordings play without login was not tested.'
+- No structured resource found for data poisoning beyond papers.
+last_verified: '2026-11-18'

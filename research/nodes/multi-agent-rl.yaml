@@ -1,0 +1,160 @@
+id: multi-agent-rl
+title: Multi-Agent RL & Games
+group: G8
+paths:
+- rl
+hard:
+- policy-gradient-methods
+soft: []
+scope: Game theory basics, self-play, MARL algorithms, AlphaZero-style search.
+optional: true
+level: advanced
+estimated_hours: 50
+resources:
+- id: marl-book
+  role: primary-text
+  kind: book
+  title: 'Multi-Agent Reinforcement Learning: Foundations and Modern Approaches'
+  by: Stefano V. Albrecht, Filippos Christianos, Lukas Schafer
+  url: https://www.marl-book.com/
+  edition_or_term: MIT Press 2024 (second printing errata)
+  access: free
+  use: Ch. 2-6 (RL recap, games, solution concepts, MARL in games, foundational algorithms) then Ch. 9-10 (multi-agent deep RL, practice), Ch. 11 (environments). Download the free PDF.
+  why: The first comprehensive MARL textbook with a free PDF, a codebase, and lecture slides/videos from the authors.
+  verified: true
+- id: marl-lectures
+  role: primary-course
+  kind: video-series
+  title: MARL book lecture recordings and exercises
+  by: Stefano V. Albrecht et al.
+  url: https://www.youtube.com/playlist?list=PLkoCa1tf0XjCU6GkAfRCkChOOSH6-JC_2
+  edition_or_term: Lecture slides at https://github.com/marl-book/slides
+  access: free
+  use: Watch the recorded lectures chapter by chapter alongside the book; do the three exercise sessions in https://github.com/marl-book/marl-book-exercises (Tuesday tabular IQL on Prisoners' Dilemma; Wednesday IA2C/MAA2C on Level-Based Foraging and RWARE; Thursday VDN/QMIX on SMAClite).
+  why: Authors' own lectures and exercises; the only complete public lecture + code-exercise set for MARL. No standard university course with public videos, so this is used as the "course".
+  verified: true
+- id: farina-6s890
+  role: secondary
+  kind: course
+  title: MIT 6.S890 Topics in Multiagent Learning (Farina)
+  by: Gabriele Farina (MIT)
+  url: https://www.mit.edu/~gfarina/6S890
+  edition_or_term: Fall 2024 page
+  access: free
+  use: Lecture notes (html and pdf) on normal-form games and Nash/correlated equilibria, regret minimization (RM, Blackwell, CFR), extensive-form games and imperfect-information games; skip proofs on first pass.
+  why: Theory-oriented lecture notes on game theory and learning-in-games that the MARL book treats lightly; page is titled Fall 2024; no public lecture videos are linked (it states Canvas is used).
+  verified: true
+  course:
+    latest_term: Fall 2024 (page); possibly Fall 2025 per third-party listing
+    latest_url: https://www.mit.edu/~gfarina/6S890
+    videos: none
+    assignments: partial
+    assignments_url: https://www.mit.edu/~gfarina/6S890
+- id: sandholm-15-888
+  role: secondary
+  kind: course
+  title: CMU 15-888 Computational Game Solving
+  by: Tuomas Sandholm, Gabriele Farina (CMU)
+  url: https://www.cs.cmu.edu/~sandholm/cs15-888F21/
+  edition_or_term: Fall 2021
+  access: free
+  use: Lecture slides/notes on sequence-form, regret matching, CFR and its variants, and the poker-solving pipeline; the page links the recorded lectures.
+  why: Hidden gem for imperfect-information game solving (poker/CFR) that MARL texts omit; videos linked on the page.
+  verified: true
+  course:
+    latest_term: Fall 2021
+    latest_url: https://www.cs.cmu.edu/~sandholm/cs15-888F21/
+    videos: public
+    assignments: partial
+    assignments_url: https://www.cs.cmu.edu/~sandholm/cs15-888F21/
+- id: alphazero-silver
+  role: secondary
+  kind: paper
+  title: AlphaZero and AlphaGo-style search
+  by: Silver et al.
+  url: https://arxiv.org/abs/1712.01815
+  edition_or_term: '2017'
+  access: free
+  use: Read AlphaZero (1712.01815) with Silver's UCL Lecture 10 (RL in classic games, slides https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-10-case-study-rl-in-classic-games.pdf) and CS234 Winter 2026 Lectures 13-14 slides (MCTS and Go); MuZero (https://arxiv.org/abs/1911.08265) for the learned-model extension.
+  why: The scope's "AlphaZero-style search"; self-play and MCTS with a neural policy/value.
+  verified: true
+- id: openspiel
+  role: practice
+  kind: docs
+  title: OpenSpiel (Google DeepMind) games and algorithms framework
+  url: https://openspiel.readthedocs.io/en/latest/
+  access: free
+  use: 'Work through the intro and algorithm docs: run CFR / MCCFR on Kuhn poker and Leduc poker, compute exploitability, and train a self-play AlphaZero agent on tic-tac-toe or connect-four with the provided examples.'
+  why: Standard library for imperfect-information games, with exploitability evaluation and reference algorithms.
+  verified: true
+- id: pettingzoo
+  role: practice
+  kind: docs
+  title: PettingZoo multi-agent environment API (Farama Foundation)
+  url: https://pettingzoo.farama.org/
+  access: free
+  use: Train independent PPO agents on a cooperative environment (for example the MPE/simple_spread tasks) and then add parameter sharing; evaluate with fixed opponents.
+  why: The standard Gymnasium-style API for multi-agent environments; pairs with CleanRL PPO PettingZoo scripts.
+  verified: true
+- id: arena-alphazero
+  role: practice
+  kind: course
+  title: ARENA 2.5 MCTS and AlphaZero
+  by: ARENA (Callum McDougall and contributors)
+  url: https://learn.arena.education/chapter2_rl/
+  edition_or_term: Continuously updated (site build 2026-11-18)
+  access: free
+  use: Implement MCTS and AlphaZero to train agents on a small game with provided tests.
+  why: Test-backed from-scratch AlphaZero.
+  verified: true
+  course:
+    latest_term: Continuously updated (2026-11-18 build)
+    latest_url: https://learn.arena.education/chapter2_rl/
+    videos: none
+    assignments: public
+    assignments_url: https://learn.arena.education/chapter2_rl/
+- id: hf-unit-7
+  role: practice
+  kind: course
+  title: 'Hugging Face Deep RL Course, Unit 7: Multi-Agents and AI vs AI'
+  by: Hugging Face
+  url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+  edition_or_term: Self-paced
+  access: free
+  use: 'Unit 7: SoccerTwos with Unity ML-Agents self-play and leaderboard evaluation.'
+  why: Low-friction self-play experiment with a public leaderboard.
+  verified: true
+  course:
+    latest_term: Self-paced (current docs)
+    latest_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+    videos: none
+    assignments: public
+    assignments_url: https://huggingface.co/learn/deep-rl-course/unit0/introduction
+- id: murphy-marl
+  role: reference
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 5 Multi-agent RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5
+  access: free
+  use: Chapter 5 as a short taxonomy of MARL methods and games.
+  why: Concise update with recent methods.
+  verified: true
+considered:
+- title: Shoham and Leyton-Brown, Multiagent Systems
+  url: http://www.masfoundations.org/
+  reason: Standard game-theory text (free PDF); heavier on game theory, not RL. Not opened here.
+- title: Georgia Tech CS 7642 RL and Carleton COMP 4900I Multi-agent Aspects of Deep RL (Fall 2026, follows the MARL book)
+  url: https://outline.scs.carleton.ca/media/2026/F/COMP4900IF2026/COMP-4900-I-F-2026.pdf
+  reason: Syllabi only; no public videos or assignments found.
+- title: JaxMARL / PettingZoo-based benchmark libraries
+  url: https://pettingzoo.farama.org/
+  reason: Useful tools but not learning material.
+notes: Marked optional in the skeleton. Game theory prerequisites are partly inside the MARL book (Ch. 3-4). MIT 6.S890 notes are public but videos are not linked. The MARL book playlist covers lectures from the authors; the course page itself was not independently scheduled by a university.
+split_proposal: null
+prereq_changes: Consider a soft prerequisite on probability and a game-theory basics resource (the MARL book Ch. 3-4 covers the minimum).
+open_questions:
+- '6.S890 term: page says Fall 2024; a search listing suggested Fall 2025. Check before use.'
+- 'MARL playlist: individual lecture count and chapter mapping not reviewed.'
+last_verified: '2026-11-18'
