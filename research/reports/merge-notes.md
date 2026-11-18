@@ -73,3 +73,11 @@
 - Cross-group overlaps: ETH DDCA also primary for G11 digital-logic/processor-design; CS107 is G1 c-programming primary (only considered here); CUDA content goes to G9.
 - Time-sensitive: Pacheco 3e (new author Steven Wright) dated 2026-12-28, not out yet -> kept 2e. 1024cores.net now a gambling domain (not linked).
 - Unverified: csapp.cs.cmu.edu; O'Reilly (HPP, LKD); Packt LKP 2e (search snippet only); Springer Bugnion; perf-ninja.com; ppc-exercises.cs.aalto.fi; Stanford CS 240; YouTube 429; KAIST CS431 post-2024 terms; 6.5810 / CS 736 reading lists not public; CS 61C Fall 2020 recordings.
+
+## G11 Hardware & compilers — done, 0 errors
+- ETH DDCA Spring 2026 (public videos+labs) anchors digital-logic, processor-design (MIPS lab ISA), advanced-microarchitecture; ETH Computer Architecture Fall 2026 in progress (Fall 2025 full public). H&P CAQA 7th ed. (Dec 2025).
+- Video gaps: EECS 151 F26 enrolled-only; MIT 6.5930 Sp26 not recorded (Cornell ECE 5545 2022 is the public-video secondary); CS143 no recent official videos (archived Aiken); CIS 5000 F26 enrolled-only; 6.512 FRAP video unknown; CMU 17-770 no recordings; program-analysis course (NJU) videos in Chinese.
+- No primary course: interpreters.
+- Prereq changes proposed: program-verification hard type-systems -> soft, hard += programming-language-concepts, discrete-math; interpreters c-programming soft -> hard (clox) or split tree-walking vs bytecode; language-runtimes soft += compiler-construction; program-analysis soft += discrete-math; memory-systems soft += concurrent-programming.
+- Splits (optional): program-verification -> proof assistants + Hoare logic / separation logic + verified systems; compiler-construction -> front end / back end (~120h).
+- Unverified: Springer (Sze book, Primer) bot challenges; Shen & Lipasti, Agner Fog 406; Coursera audit for Grossman; CS152 recordings (401); ETH Fall 2026 playback; 15-745 term label; FRAP JS site; CS143 HTTP-only with 2021 syllabus dates; GC Handbook/TAPL chapter numbers from memory.

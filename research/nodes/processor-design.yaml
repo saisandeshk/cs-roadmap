@@ -37,7 +37,7 @@ resources:
   role: secondary
   kind: course
   title: Cornell ECE 4750 Computer Architecture (handouts and lab specs)
-  by: Cornell (Jose F. Martinez; materials descended from Christopher Batten)
+  by: Cornell (Jose F. Martinez)
   url: https://www.csl.cornell.edu/courses/ece4750/
   edition_or_term: Fall 2026
   access: free

@@ -1,0 +1,173 @@
+id: transactions-and-recovery
+title: Concurrency Control & Recovery
+group: G10
+paths: [databases]
+hard: [db-storage-and-indexing]
+soft: [concurrent-programming]
+scope: "2PL, OCC, MVCC, isolation levels, logging, ARIES."
+
+level: advanced
+estimated_hours: 70
+resources:
+  - id: rg-txn
+    role: primary-text
+    kind: book
+    title: "Database Management Systems, 3rd edition (the 'Cow Book'), Part V Transaction Management"
+    by: "Raghu Ramakrishnan, Johannes Gehrke"
+    url: https://pages.cs.wisc.edu/~dbbook/
+    edition_or_term: "3rd edition (McGraw-Hill, 2003); slides at https://pages.cs.wisc.edu/~dbbook/openAccess/thirdEdition/slides/slides3ed.html"
+    access: paid
+    use: "Ch. 16 (Overview of Transaction Management: ACID, schedules, serializability, conflict and view equivalence, isolation levels), Ch. 17 (Concurrency Control: strict 2PL, deadlocks, multigranularity locking, optimistic and timestamp methods, multiversion), Ch. 18 (Crash Recovery: WAL, ARIES analysis/redo/undo, checkpoints, media recovery)."
+    why: "The most readable textbook treatment of the full path from serializability theory to ARIES, with worked examples of the log and recovery phases; it matches the CS 186 course and prepares you for the original ARIES paper. It predates snapshot isolation and modern MVCC, which the CMU course and Postgres docs fill in."
+    verified: true
+  - id: cmu-15445-txn
+    role: primary-course
+    kind: course
+    title: "CMU 15-445/645 Intro to Database Systems (concurrency control, logging and recovery units)"
+    by: "Andy Pavlo, Jignesh Patel (CMU)"
+    url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
+    edition_or_term: "Fall 2025 (public videos); Fall 2026 is the latest term"
+    access: free
+    use: "Lectures #17 Concurrency Control Theory, #18 Two-Phase Locking, #19 Timestamp Ordering (OCC), #20 Multi-Version Concurrency Control, #21 Database Logging, #22 Database Recovery; Homework 5 (Transactions) and Homework 6 (Recovery); Project 4 (MVCC with optimistic concurrency control: snapshot isolation then serializable, with a primary-key index)."
+    why: "Modern, implementation-oriented coverage of 2PL, OCC/TO and MVCC (the survey of real systems is the best part) plus a project that builds snapshot isolation and serializable validation. Videos: Fall 2025 on YouTube; Spring 2026 and Fall 2026 lectures are behind CMU logins."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://15445.courses.cs.cmu.edu/fall2026/
+      videos: enrolled-only
+      public_videos_term: "Fall 2025"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5"
+      assignments: public-with-autograder
+      assignments_url: https://15445.courses.cs.cmu.edu/fall2025/project4/
+  - id: cs186-txn
+    role: practice
+    kind: course
+    title: "UC Berkeley CS 186 RookieDB Projects 4 (Concurrency) and 5 (Recovery)"
+    by: "UC Berkeley CS 186 staff"
+    url: https://cs186berkeley.net/projects/5/
+    edition_or_term: "Fall 2026 specs (public skeleton at github.com/berkeley-cs186/fa26-rookiedb)"
+    access: free
+    use: "Project 4 (lock manager queueing and multigranularity locking: https://cs186berkeley.net/projects/4/) and Project 5 (ARIES-style recovery: log records, rollback, checkpoints, analysis/redo/undo). Pair with CS 186 notes 11, 12 (Transactions and Concurrency I and II) and 14 (Recovery) at https://cs186berkeley.net/notes/."
+    why: "Gap: BusTub's Fall 2025 projects cover MVCC but not a recovery project; CS 186 Project 5 is the standard public ARIES exercise. Java, public skeleton with tests; lecture videos are enrolled-only (public: Spring 2024 YouTube)."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://cs186berkeley.net/
+      videos: enrolled-only
+      public_videos_term: "Spring 2024"
+      public_videos_url: "https://www.youtube.com/playlist?list=PLzzVuDSjP25R1px8yE4wJcXcRbwsCuunP"
+      assignments: public
+      assignments_url: https://cs186berkeley.net/projects/
+  - id: ddia2-txn
+    role: secondary
+    kind: book
+    title: "Designing Data-Intensive Applications, 2nd edition: Transactions"
+    by: "Martin Kleppmann, Chris Riccomini"
+    url: https://dataintensive.net/
+    edition_or_term: "2nd edition (O'Reilly, March 2026); Chapter 8"
+    access: paid
+    use: "Chapter 8 'Transactions': what ACID really means, weak isolation levels (read committed, snapshot isolation, lost updates, write skew, phantoms), and serializability by actual serial execution, 2PL and SSI."
+    why: "Gap: the clearest practitioner explanation of weak isolation anomalies and how real databases implement snapshot isolation and SSI, which R and G predates."
+    verified: true
+  - id: pg-mvcc
+    role: secondary
+    kind: docs
+    title: "PostgreSQL documentation: Concurrency Control (MVCC, Transaction Isolation, Explicit Locking) and InterDB Ch. 5 and 9"
+    by: "PostgreSQL Global Development Group; Hironobu Suzuki"
+    url: https://www.postgresql.org/docs/current/mvcc.html
+    edition_or_term: "PostgreSQL 18; interdb.jp Concurrency Control at https://www.interdb.jp/pg/pgsql05.html and WAL at https://www.interdb.jp/pg/pgsql09.html"
+    access: free
+    use: "Read Chapter 13 (13.2 Transaction Isolation, 13.3 Explicit Locking) with the isolation-level tables; interdb Ch. 5 for tuple visibility, snapshot and SSI internals; Ch. 9 for the write-ahead log and checkpoints."
+    why: "Gap: how a real MVCC system implements snapshot isolation and WAL, to compare with the textbook and with BusTub's undo-log version chains."
+    verified: true
+  - id: hermitage
+    role: practice
+    kind: tool
+    title: "Hermitage: testing transaction isolation levels"
+    by: "Martin Kleppmann"
+    url: https://github.com/ept/hermitage
+    edition_or_term: "Current repository (PostgreSQL, MySQL/InnoDB, Oracle, SQL Server, CockroachDB, YugabyteDB, others)"
+    access: free
+    use: "Run the hand-driven test cases (G0 write cycles, G1a/b/c dirty reads, P4 lost update, G-single read skew, G2 write skew) in two terminals on a local PostgreSQL and a local MySQL; compare your results to the published table."
+    why: "Hidden gem: shows that the labels (repeatable read, serializable) mean different things in different databases, and trains you to find anomalies by hand."
+    verified: true
+  - id: bhg
+    role: reference
+    kind: book
+    title: "Concurrency Control and Recovery in Database Systems"
+    by: "Philip A. Bernstein, Vassos Hadzilacos, Nathan Goodman"
+    url: https://www.microsoft.com/en-us/research/people/philbe/book/
+    edition_or_term: "Addison-Wesley 1987; free PDF from the authors (zip, 8 chapters)"
+    access: free
+    use: "Reference for serializability theory (Ch. 2-3), 2PL and timestamp ordering (Ch. 3-4), multiversion concurrency control (Ch. 5) and recovery (Ch. 6-7); consult when R and G or CMU lectures are too informal."
+    why: "Gap: the rigorous treatment of serializability and multiversion theory, free, from the authors. Dated (1987) and dense; reference only."
+    verified: true
+  - id: aries
+    role: reference
+    kind: paper
+    title: "ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging"
+    by: "C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh, Peter Schwarz (TODS 1992)"
+    url: https://cs.stanford.edu/people/chrismre/cs345/rl/aries.pdf
+    edition_or_term: "TODS 1992 (course copy hosted at Stanford)"
+    access: free
+    use: "After the Cow Book recovery chapter, read Sections 1-6 (data structures, normal processing, restart: analysis, redo, undo, CLRs) and skip the later extensions."
+    why: "Gap: the original ARIES specification; the textbook is a simplified version."
+    verified: true
+  - id: berenson
+    role: reference
+    kind: paper
+    title: "A Critique of ANSI SQL Isolation Levels"
+    by: "Hal Berenson et al. (SIGMOD 1995)"
+    url: https://arxiv.org/abs/cs/0701157
+    edition_or_term: "1995"
+    access: free
+    use: "Read in full: why the ANSI definitions are ambiguous, phenomena P0-P3, and the definition of snapshot isolation and write skew."
+    why: "Gap: the foundational paper on isolation level anomalies; pair with Hermitage."
+    verified: true
+  - id: ssi
+    role: reference
+    kind: paper
+    title: "Serializable Snapshot Isolation in PostgreSQL"
+    by: "Dan R. K. Ports, Kevin Grittner (VLDB 2012)"
+    url: https://arxiv.org/abs/1208.4179
+    edition_or_term: "VLDB 2012"
+    access: free
+    use: "Read for how a production system implements serializability on top of snapshot isolation with predicate locks and dependency tracking."
+    why: "Gap: bridges the theory of rw-antidependency cycles to code."
+    verified: true
+  - id: mvcc-eval
+    role: reference
+    kind: paper
+    title: "An Empirical Evaluation of In-Memory Multi-Version Concurrency Control and Staring into the Abyss"
+    by: "Yingjun Wu et al. (VLDB 2017); Xiangyao Yu et al. (VLDB 2014)"
+    url: https://www.vldb.org/pvldb/vol10/p781-Wu.pdf
+    edition_or_term: "VLDB 2017; companion paper at http://www.vldb.org/pvldb/vol8/p209-yu.pdf"
+    access: free
+    use: "Skim the design-space tables (protocol, version storage, garbage collection, index management) after the MVCC lecture."
+    why: "Gap: compares 2PL, OCC, TO and MVCC variants empirically; the source for CMU's MVCC lecture."
+    verified: true
+  - id: elle
+    role: reference
+    kind: paper
+    title: "Elle: Inferring Isolation Anomalies from Experimental Observations"
+    by: "Kyle Kingsbury, Peter Alvaro (VLDB 2020)"
+    url: https://arxiv.org/abs/2003.10554
+    edition_or_term: "VLDB 2020"
+    access: free
+    use: "Optional: see how isolation anomalies are detected from transaction histories; browse Jepsen analyses (https://jepsen.io/analyses) for real-database failures."
+    why: "Gap: modern, practical way to verify isolation; ties to the distributed-transactions node."
+    verified: true
+considered:
+  - {title: "Transaction Processing: Concepts and Techniques (Gray and Reuter)", url: "https://www.db-book.com/", reason: "The classic reference (not linked: publisher page not verified); too long for a first pass."}
+  - {title: "Database System Concepts 7th ed., Ch. 17-19", url: "https://www.db-book.com/", reason: "Current and complete treatment of transactions, concurrency control and recovery; the CMU course text. R and G chosen for clarity and ARIES presentation."}
+  - {title: "Database Internals (Petrov) Ch. 5", url: "https://www.databass.dev/", reason: "Good short introduction to transaction processing and recovery in storage engines; used in the storage node."}
+  - {title: "Mini-LSM weeks 2-3 (MVCC and transactions)", url: "https://skyzh.github.io/mini-lsm/", reason: "Implements MVCC and OCC on an LSM engine in Rust; a nice alternative project but already referenced in the storage node."}
+  - {title: "MIT 6.5830 Database Systems (Spring 2026)", url: "https://dsg.csail.mit.edu/6.5830/", reason: "Paper-reading course with problem sets on transactions, GoDB labs; the recordings' public access is unverified."}
+notes: "CMU 15-445 lectures 17-22 are the spine, with R and G chapters 16-18 as the text and CS 186 Project 5 as the recovery exercise; use Hermitage to see isolation anomalies for real. If BusTub's MVCC project (Project 4) feels like too much, do CS 186 Project 4 (multigranularity locking) instead. The seed (owner's ai-atlas) draws the same CMU 15-445 sequence."
+split_proposal: "Consider splitting into (a) Concurrency control and isolation (serializability, 2PL, OCC, MVCC, snapshot isolation) and (b) Logging and recovery (WAL, ARIES) if the owner wants smaller units; each is about 35 hours."
+prereq_changes: null
+open_questions:
+  - "R and G chapter numbers (16-18) come from the 3rd-edition slide index on the authors' site; the book itself was not opened."
+  - "BHG book chapter-to-topic mapping (Ch. 2-7) comes from my knowledge of the book; the Microsoft page lists 8 chapter files but no titles."
+  - "Hermitage was verified through GitHub page text (fetched by WebFetch), not through a browser."
+last_verified: 2026-11-18
