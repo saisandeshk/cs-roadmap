@@ -42,3 +42,10 @@
 ## Environment note (applies to all groups)
 - github.com web pages: 403 from the egress proxy for curl (policy); workers used WebFetch where available.
 - web.stanford.edu over HTTPS fails TLS through the proxy ("self-signed certificate in chain" even with the CA bundle); HTTP works. Several university hosts are unreachable from the egress (e.g. some *.csail.mit.edu, *.stanford.edu subdomains, assets.cambridge.org). Marked verified:false where not opened.
+
+## G3 Algorithms & theory — done, 0 errors
+- Video reality: 6.1210/6.1220 Spring 2026 not publicly recorded (public: 6.006 Spring 2020, 6.046 Spring 2015); 18.404 public Fall 2020; 6.5220 Karger Fall 2025 public on YouTube; CS 583 Spring 2026 no recordings; 15-855 O'Donnell Fall 2017 public; CS229M public Fall 2021.
+- Splits proposed: advanced-algorithms -> advanced data structures / streaming & sketching / flows-LP core; computational-complexity -> Complexity I / II (IP, PCP, derandomization); learning-theory -> statistical learning theory / theory of deep learning.
+- Overlap: 6.006 ~1/3 data structures (overlaps data-structures node).
+- Soft prereq suggestions: complexity += probability; randomized, complexity, advanced-algorithms, learning-theory += linear-algebra; quantum += theory-of-computation or algorithm-design; approximation += computational-complexity.
+- Unverified: CLRS MIT Press page (403); Mitzenmacher-Upfal 2e page (only 1e opened); some chapter numbers from memory; SSBD free PDF (huji) blocked; Gupta NYU approx 403; Stanford CS168; Karger NB problem sets public?; KAIST EE531 Spring 2026 not reviewed (promising).
