@@ -136,6 +136,7 @@ split_proposal: null
 prereq_changes: null
 open_questions:
   - "CLRS MIT Press page returns 403 to bots; URL taken from a search result and not opened."
+  - "CLRS chapter numbers given from memory of the 4th edition; not checked against the table of contents."
   - "Whether MIT 6.1210 Spring 2026 recordings or a public course site exist (none found)."
   - "Coursera Algorithms Part I: current video access and whether graded assignments require a paid enrollment."
 last_verified: 2026-11-18

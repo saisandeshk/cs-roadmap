@@ -1,0 +1,154 @@
+id: bayesian-inference
+title: Bayesian Modeling & Inference
+group: G5
+paths: [ml-foundations]
+optional: true
+branch: probabilistic-ml
+hard: [probability, statistics]
+soft: [ml-fundamentals]
+scope: "Priors/posteriors, hierarchical models, MCMC, variational inference, Gaussian processes, probabilistic programming."
+
+level: intermediate
+estimated_hours: 90
+resources:
+  - id: rethinking
+    role: primary-text
+    kind: book
+    title: "Statistical Rethinking: A Bayesian Course with Examples in R and Stan (2nd edition)"
+    by: "Richard McElreath"
+    url: https://xcelab.net/rm/
+    edition_or_term: "2nd edition (CRC Press, 2020); 3rd edition in progress per author site"
+    access: paid
+    use: "Ch. 1-9 (golem of Prague, small and large worlds, sampling the imaginary, linear models, causes/confounds, overfitting, MCMC), Ch. 10-11 (GLMs, counts), Ch. 12-14 (monsters/mixtures, multilevel models, adventures in covariance incl. Gaussian processes), Ch. 15-16 as time allows. Use the Python (PyMC/NumPyro) code translations linked from the site if you do not use R."
+    why: "Best teaching of Bayesian modeling as workflow (priors, causal reasoning, multilevel models, diagnostics); pairs exactly with the lectures; many code ports."
+    verified: true
+  - id: rethinking-2026
+    role: primary-course
+    kind: course
+    title: "Statistical Rethinking 2026 (lecture series)"
+    by: "Richard McElreath (MPI-EVA)"
+    url: https://github.com/rmcelreath/stat_rethinking_2026
+    edition_or_term: "January-March 2026, 10 weeks; two tracks (beginner Tue, experienced Fri)"
+    access: free
+    use: "Follow the beginner track (Garden of Forking Data, Geocentric Models, Categories and Causes, Estimands, Elemental Confounds, Good and Bad Controls, MCMC and Item Response Models, Modeling Events, Confounds and Sensitivity) then the experienced track (multilevel models and expansion, correlated features, social networks, Gaussian processes, measurement models, missing/censored data, generalized linear madness, HMMs). Do the weekly problem sets."
+    why: "Newest full public video run; the best-explained Bayesian course available, covers hierarchical models, MCMC and Gaussian processes, with public problem sets and solutions."
+    verified: true
+    course:
+      latest_term: "2026 (Jan 6 - Mar 13, 2026)"
+      latest_url: https://github.com/rmcelreath/stat_rethinking_2026
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLDcUM9US4XdNOlqSyhe38US8mFgmqzI14
+      assignments: public
+      assignments_url: https://github.com/rmcelreath/stat_rethinking_2026
+  - id: bda3
+    role: reference
+    kind: book
+    title: "Bayesian Data Analysis, 3rd edition (BDA3)"
+    by: "Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, Donald Rubin"
+    url: https://sites.stat.columbia.edu/gelman/book/
+    edition_or_term: "3rd edition (CRC 2013); free PDF from the book home page"
+    access: free
+    use: "Ch. 1-5 (fundamentals, hierarchical models), Ch. 10-13 (computation, MCMC, HMC), Ch. 14-18 (regression, GLMs), Ch. 21 (Gaussian process regression); also use the course notes and demos (Aki Vehtari) listed on the site."
+    why: "The canonical rigorous reference for hierarchical Bayesian modeling and computation; read the specific chapters when Rethinking is not deep enough."
+    verified: true
+  - id: bmcp
+    role: secondary
+    kind: book
+    title: "Bayesian Modeling and Computation in Python"
+    by: "Osvaldo A. Martin, Ravin Kumar, Junpeng Lao"
+    url: https://www.bayesiancomputationbook.com/
+    edition_or_term: "CRC Press 2021; full online version with code (updated notebooks folder)"
+    access: free
+    use: "Ch. 1-3 (inference, exploratory analysis of Bayesian models with ArviZ, linear models and probabilistic programming languages), Ch. 9 (end-to-end Bayesian workflow), Ch. 10 (probabilistic programming languages and how they work)."
+    why: "Hidden gem: the Python-native companion (PyMC, ArviZ, Bambi, TensorFlow Probability); fills the probabilistic-programming gap since Rethinking is R-first."
+    verified: true
+  - id: pml2
+    role: secondary
+    kind: book
+    title: "Probabilistic Machine Learning: Advanced Topics"
+    by: "Kevin P. Murphy"
+    url: https://probml.github.io/pml-book/book2.html
+    edition_or_term: "MIT Press 2023; free PDF (draft dated 2025-12-10), CC-BY-NC-ND"
+    access: free
+    use: "Ch. 3 Statistics (Bayesian), Ch. 10 Variational inference, Ch. 11 Monte Carlo methods, Ch. 12 Markov chain Monte Carlo, Ch. 17 Bayesian neural networks, Ch. 18 Gaussian processes. Chapter numbers verified against the PDF."
+    why: "Fills the variational inference and Gaussian-process gaps that Rethinking handles lightly, with an ML orientation."
+    verified: true
+  - id: gpml
+    role: reference
+    kind: book
+    title: "Gaussian Processes for Machine Learning"
+    by: "Carl Edward Rasmussen, Christopher K. I. Williams"
+    url: https://www.gaussianprocess.org/gpml/
+    edition_or_term: "MIT Press 2006; free PDF and chapters online"
+    access: free
+    use: "Ch. 2 (regression), Ch. 4 (covariance functions), Ch. 5 (model selection/hyperparameters), Ch. 3 (classification) as needed."
+    why: "The definitive GP text; free."
+    verified: true
+  - id: vi-review
+    role: secondary
+    kind: paper
+    title: "Variational Inference: A Review for Statisticians"
+    by: "David M. Blei, Alp Kucukelbir, Jon D. McAuliffe"
+    url: https://arxiv.org/abs/1601.00670
+    edition_or_term: "arXiv 1601.00670 (JASA 2017)"
+    access: free
+    use: "Sections 1-4 (ELBO, mean-field VI, CAVI) and the stochastic VI section."
+    why: "Concise rigorous tutorial on VI; one sitting."
+    verified: true
+  - id: bayesian-workflow
+    role: secondary
+    kind: paper
+    title: "Bayesian Workflow"
+    by: "Andrew Gelman, Aki Vehtari, Daniel Simpson, et al."
+    url: https://arxiv.org/abs/2011.01808
+    edition_or_term: "arXiv 2011.01808 (2020)"
+    access: free
+    use: "Whole paper: model building, prior and posterior predictive checks, fake-data simulation, computation diagnostics, model comparison."
+    why: "Teaches the iterative practice (checking, diagnosing, expanding) that separates real Bayesian modeling from running a sampler."
+    verified: true
+  - id: hmc-intro
+    role: secondary
+    kind: paper
+    title: "A Conceptual Introduction to Hamiltonian Monte Carlo"
+    by: "Michael Betancourt"
+    url: https://arxiv.org/abs/1701.02434
+    edition_or_term: "arXiv 1701.02434 (2017); more at https://betanalpha.github.io/writing/"
+    access: free
+    use: "Whole paper for the geometry behind HMC/NUTS and its diagnostics (divergences); skim the Betancourt writing index for 'Towards a Principled Bayesian Workflow' and the Stan case studies (https://mc-stan.org/learn-stan/case-studies.html)."
+    why: "Hidden gem: the intuition for why modern samplers work and fail, which MCMC chapters usually do not give."
+    verified: true
+  - id: think-bayes
+    role: reference
+    kind: book
+    title: "Think Bayes, 2nd edition"
+    by: "Allen B. Downey"
+    url: https://allendowney.github.io/ThinkBayes2/
+    edition_or_term: "O'Reilly 2021; free online as Jupyter notebooks"
+    access: free
+    use: "Ch. 1-8 as a gentle code-first on-ramp if probability/statistics feels rusty."
+    why: "Computational, grid-and-simulation-based intro; useful before Rethinking for beginners."
+    verified: true
+  - id: pymc-numpyro
+    role: practice
+    kind: practice-site
+    title: "PyMC examples gallery and NumPyro tutorials"
+    by: "PyMC and NumPyro projects"
+    url: https://www.pymc.io/projects/examples/en/latest/gallery.html
+    edition_or_term: "PyMC docs v6; NumPyro at https://num.pyro.ai/en/stable/getting_started.html; Pyro examples https://pyro.ai/examples/"
+    access: free
+    use: "Re-implement each Rethinking problem set in PyMC or NumPyro; then work through PyMC gallery notebooks for hierarchical regression, Gaussian processes (GP latent/marginal), and ADVI vs NUTS comparison; the NumPyro 'Getting Started' plus a stochastic VI (SVI) tutorial from Pyro examples."
+    why: "Gets you fluent in two modern PPLs and shows MCMC vs VI trade-offs on real models."
+    verified: true
+considered:
+  - {title: "Regression and Other Stories (Gelman, Hill, Vehtari)", url: "https://regressionandotherstories.com/", reason: "Superb applied regression/causal book; site timed out during verification; belongs partly to statistics/causal inference."}
+  - {title: "Bayesian Methods for Hackers (Davidson-Pilon)", url: "https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers", reason: "Friendly PyMC intro, but PyMC code is dated; BMCP and Rethinking are better."}
+  - {title: "PRML chapters 10-11 (Bishop)", url: "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/", reason: "Clear derivations of VI/EM/sampling; older and less workflow-oriented."}
+  - {title: "Information Theory, Inference, and Learning Algorithms (MacKay)", url: "https://www.inference.org.uk/itila/book.html", reason: "Beautiful free book with Monte Carlo and inference chapters; broader than needed."}
+  - {title: "Statistical Rethinking 2023 lecture series", url: "https://www.youtube.com/playlist?list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus", reason: "Prior public run; superseded by 2026 but fully valid (listed on the 2026 repo page)."}
+notes: "Rethinking is chosen as the primary text and course because it teaches modeling judgement and causal thinking along with Bayesian computation, and its 2026 run has public videos and homework. VI and GP depth come from Murphy PML2 and the Blei review. Probabilistic programming language practice is split between PyMC and NumPyro so the learner can use Python throughout."
+split_proposal: null
+prereq_changes: null
+open_questions:
+  - "2026 homework solutions: README says problem sets and solutions are in the repo's homework folder; I did not open the folder contents."
+  - "Statistical Rethinking 3rd edition publication date unknown."
+last_verified: 2026-11-18

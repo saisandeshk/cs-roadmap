@@ -1,0 +1,60 @@
+id: processor-design
+title: Processor Design (RISC-V)
+group: G11
+paths: [architecture]
+hard: [hdl-and-fpga, computer-architecture]
+soft: []
+scope: Single-cycle and pipelined RISC-V cores, hazards and forwarding, branch prediction basics; built on an FPGA or simulator.
+level: intermediate
+estimated_hours: 70
+resources:
+- {id: harris-ch6-7, role: primary-text, kind: book, title: 'Digital Design and Computer Architecture, RISC-V Edition: Ch. 6 Architecture and Ch. 7 Microarchitecture', by: 'Sarah L. Harris, David Harris', url: 'https://pages.hmc.edu/harris/ddca/ddcarv.html', edition_or_term: 'RISC-V Edition (Morgan Kaufmann/Elsevier, 2021; Elsevier still lists it as the latest edition, no 2025-26 edition found)', access: paid, use: 'Ch. 6 (RISC-V ISA and assembly, as reference) and Ch. 7 (single-cycle, multicycle and pipelined RISC-V datapath and control, hazards, forwarding, stalls, branch prediction basics) including the SystemVerilog implementations of each core; Ch. 7.8 previews advanced microarchitecture.', why: 'The only mainstream textbook that derives all three RISC-V microarchitectures and gives complete HDL for each, directly matching the node scope (single-cycle, pipelined, hazards, forwarding, built in HDL). Companion HDL files and slides are free on the author page.', verified: true}
+- id: eth-ddca-ss26-proc
+  role: primary-course
+  kind: course
+  title: ETH Zurich Digital Design and Computer Architecture (227-0003-10L)
+  by: ETH Zurich (Onur Mutlu and the SAFARI group)
+  url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule
+  edition_or_term: Spring 2026 (lectures 19 Feb - 29 May 2026; problem-solving sessions to 31 Jul)
+  access: free
+  use: 'L7-L13: Von Neumann model and ISAs, microarchitecture fundamentals, multi-cycle and pipelined processor design I-II, precise exceptions and interrupts; Labs 5-9 (ALU, testing, assembly programming, full-system integration, performance of the MIPS-like processor).'
+  why: 'Newest public videos that build a processor stage by stage with the design-tradeoff discussion (control, hazards, exceptions) the book glosses; labs are public. Caveat: lecture/lab ISA is MIPS, so implement the RISC-V cores from Harris ch. 7 or the EECS 151 project in parallel.'
+  verified: true
+  course: {latest_term: Spring 2026, latest_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule', videos: public, public_videos_term: 'Spring 2026 (full livestream playlist, 51 videos; Spring 2025 playlist also public)', public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd', assignments: public, assignments_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs'}
+- id: eecs151-project
+  role: secondary
+  kind: course
+  title: 'UC Berkeley EECS 151/251A: FPGA final project (pipelined RISC-V CPU)'
+  by: UC Berkeley
+  url: https://eecs151.org/fpga/final-project/overview/
+  edition_or_term: Fall 2026
+  access: free
+  use: 'Final-project docs: Checkpoint 1/2 (draw the datapath and pipeline, then implement a pipelined RV32I core in SystemVerilog that passes the supplied cpu/asm/ISA (38 tests)/C testbenches, runs a matrix-multiply benchmark with CPI < 1.2 at >= 100 MHz, BIOS and ILA debugging).'
+  why: A concrete, well-specified RISC-V CPU build with a test infrastructure; the best public project spec for this node. Starter repo/autograding access is not public, so you reproduce testbenches yourself or follow the spec only.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://eecs151.org/', videos: enrolled-only, assignments: partial, assignments_url: 'https://eecs151.org/fpga/final-project/docs/fa26_checkpoint1_2/'}
+- id: ece4750
+  role: secondary
+  kind: course
+  title: Cornell ECE 4750 Computer Architecture (handouts and lab specs)
+  by: Cornell (Jose F. Martinez; materials descended from Christopher Batten)
+  url: https://www.csl.cornell.edu/courses/ece4750/
+  edition_or_term: Fall 2026
+  access: free
+  use: Handouts T01 (processor concepts, tinyRV1 ISA) and T02 (processor microarchitecture) with the problem sets (T01/T02 '-problems' PDFs), pipeline-diagram handout, lab 1 (iterative multiplier) and lab 2 (pipelined processor) specs, and the 'RTL design with Verilog' tutorial.
+  why: Unusually clear open lecture notes and worked problems on single-cycle/FSM/pipelined processors, with lab specs that treat design as an engineering process (test-first, pipe diagrams). Videos are not public and the lab code org is 'not ready yet', so it supplements rather than replaces a course.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://www.csl.cornell.edu/courses/ece4750/', videos: none, assignments: partial, assignments_url: 'https://www.csl.cornell.edu/courses/ece4750/handouts/'}
+- {id: learn-fpga-femtorv, role: secondary, kind: website, title: 'learn-fpga: From Blinky to RISC-V (FemtoRV) and Pipelining', by: Bruno Levy, url: 'https://github.com/BrunoLevy/learn-fpga', edition_or_term: Rolling repository (BSD-3-Clause), access: free, use: 'Follow ''From Blinky to RISC-V (Episode I)'' to grow a minimal RV32I core step by step in readable Verilog on a low-cost iCE40/ECP5 board, then ''Pipelining (Episode II)''.', why: Teaches the build by tiny increments on a ~$40 board with open tools; a gentler first RISC-V core than the course projects., verified: true}
+- {id: cs61c-proj3, role: practice, kind: website, title: 'CS 61C Project 3: CS61CPU (Logisim-evolution RISC-V CPU)', by: UC Berkeley CS 61C (Dan Garcia et al.), url: 'https://cs61c.org/fa26/projects/proj3/', edition_or_term: Fall 2026, access: free, use: 'Part A (ALU, register file, immediate generator) and Part B (control and a two-stage pipelined RV32I CPU) in Logisim-evolution; a schematic-level first CPU before moving to HDL.', why: 'A graphical, quick-to-debug first processor that works well between nand2tetris-style building and writing Verilog. Spec is public; starter files and autograder go through the course Git/Gradescope setup, so check availability.', verified: true}
+- {id: riscv-spec, role: reference, kind: docs, title: 'RISC-V ratified specifications (unprivileged ISA, privileged architecture)', by: RISC-V International, url: 'https://riscv.org/specifications/ratified/', edition_or_term: Ratified specifications index (checked 2026-11-18), access: free, use: 'Unprivileged ISA volume: RV32I base chapter and instruction-format tables; privileged volume only when you add CSRs/traps.', why: Authoritative definition for the cores you implement; resolves ambiguities left by course handouts., verified: true}
+considered:
+- {title: 'Patterson and Hennessy, Computer Organization and Design RISC-V Edition (2nd ed.)', url: 'https://www.elsevier.com/', reason: Standard computer-architecture text (the CMU 18-447 textbook) and likely the primary of the G4 computer-architecture prerequisite; here Harris is preferred because it contains complete HDL. Publisher page not opened.}
+- {title: Berkeley CS 152 Spring 2026, url: 'https://inst.eecs.berkeley.edu/~cs152/sp26/', reason: Public labs on Chipyard (more advanced); recordings are Google Drive links that returned 401 anonymously. Used for advanced-microarchitecture instead.}
+- {title: 'CMU 18-447 Introduction to Computer Architecture (Spring 2024, Hoe)', url: 'https://users.ece.cmu.edu/~jhoe/doku/doku.php?id=18-447_introduction_to_computer_architecture', reason: 'Verilog RISC pipeline labs, but materials/videos are not public for recent terms; Mutlu''s Spring 2015 videos are listed under advanced-microarchitecture.'}
+- {title: MIT 6.1920 / 6.5900 (Bluespec-based labs), url: 'https://csg.csail.mit.edu/6.5900/', reason: Labs are excellent but use Bluespec and a simulator; not the SystemVerilog/FPGA flow the node scope names.}
+notes: 'Prerequisites are computer-architecture (G4; ISA, pipelining at the conceptual level) and hdl-and-fpga. This node is the implementation counterpart: build a single-cycle core, then a 5-stage pipelined RV32I core with forwarding, hazard handling and a simple branch predictor, and verify it with ISA tests. Suggested route (about 70 h): Harris ch. 7 and ETH L9-L13 for concepts; implement the cores in SystemVerilog (or follow the EECS 151 CPU spec); optionally FemtoRV/learn-fpga for a board demo. Branch-prediction basics are in Harris 7.8 and ETH L15b/L17 (advanced-microarchitecture). If a board is not available, Verilator simulation suffices.'
+split_proposal: null
+prereq_changes: 'Overlap with G4 computer-architecture (pipelining/hazards concepts): keep as hard prereq, but make explicit that this node is implementation in HDL rather than a second pass over pipelining theory.'
+open_questions: [CS61C Project 3 starter files availability outside enrolment not verified., ETH lab ISA (MIPS-like) was inferred from the Lab 9 title 'The Performance of MIPS'; lecture slides not downloaded.]
+last_verified: '2026-11-18'

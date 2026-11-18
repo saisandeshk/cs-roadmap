@@ -127,7 +127,7 @@ considered:
   - {title: "Murphy, Probabilistic Machine Learning: Advanced Topics", url: "https://probml.github.io/pml-book/book2.html", reason: "Encyclopedic and free, but long; use as lookup rather than primary text."}
   - {title: "UIUC ECE 498/598 Deep Generative Models (Fall 2025)", url: "https://rrc-uiuc.notion.site/gen-models-fa25", reason: "Newer run but not reviewed in detail."}
   - {title: "Cornell Tech CS 6785 Deep Generative Models (Spring 2023 videos)", url: "https://www.youtube.com/playlist?list=PL2UML_KCiC0UPzjW9BjO-IW6dqliu9O4B", reason: "Public alternative; not evaluated."}
-notes: "UDL + CS294-158 is a coherent free pair with public assignments; CS236 provides the probabilistic rigor and EBM coverage. Autoregressive modeling for images is mostly assignment-driven here; LLM-style autoregression is in language-modeling nodes. The three chapters of UDL on diffusion (ch. 18) overlap with the next node; use them only as a bridge."
+notes: "UDL + CS294-158 is a coherent free pair with public assignments; CS236 provides the probabilistic rigor and EBM coverage. Autoregressive modeling for images is mostly assignment-driven here; LLM-style autoregression is in language-modeling nodes. UDL ch. 18 (diffusion) overlaps with the next node; use them only as a bridge."
 split_proposal: null
 prereq_changes: "No change. information-theory soft is appropriate (KL, ELBO, bits-back)."
 open_questions:

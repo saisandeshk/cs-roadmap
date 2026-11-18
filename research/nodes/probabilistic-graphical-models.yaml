@@ -1,0 +1,130 @@
+id: probabilistic-graphical-models
+title: Probabilistic Graphical Models
+group: G5
+paths: [ml-foundations]
+optional: true
+branch: probabilistic-ml
+hard: [probability, ml-fundamentals]
+soft: []
+scope: "Bayes nets, MRFs, exact and approximate inference, learning."
+
+level: advanced
+estimated_hours: 80
+resources:
+  - id: cs228-notes
+    role: primary-text
+    kind: website
+    title: "CS228 Probabilistic Graphical Models: Lecture Notes"
+    by: "Volodymyr Kuleshov, Stefano Ermon (Stanford)"
+    url: https://ermongroup.github.io/cs228-notes/
+    edition_or_term: "Online notes (GitHub repo reported updated mid-2025 by a third-party aggregator); used in Stanford CS228 through Winter 2023-24"
+    access: free
+    use: "Read in order: Introduction, Representation (Bayesian networks, Markov random fields), Inference (variable elimination, junction tree algorithm, MAP inference, sampling methods, variational inference), Learning (directed models, undirected models, learning in latent variable models, Bayesian learning, structure learning)."
+    why: "The best concise free treatment: rigorous but short, covers exactly the scope (BNs, MRFs, exact and approximate inference, learning) and is much lighter than the 1,200-page Koller-Friedman."
+    verified: true
+  - id: cmu-10708
+    role: primary-course
+    kind: course
+    title: "CMU 10-708 Probabilistic Graphical Models"
+    by: "Eric Xing (CMU), with Spring 2019 co-instructors Zhiting Hu and Hao Zhang"
+    url: https://www.cs.cmu.edu/~epxing/Class/10708-20/
+    edition_or_term: "Spring 2020 (newest page I could find); Spring 2019 site at https://sailinglab.github.io/pgm-spring-2019/"
+    access: free
+    use: "Follow the lecture schedule: introduction and directed/undirected GMs, exact inference (elimination, message passing), approximate inference (loopy BP, variational, MCMC), learning (EM, Baum-Welch, structure learning), plus deep generative models and LDA-style topics; do homework PDFs (HW1 includes a Baum-Welch exercise). Pair each module with the matching CS228 note."
+    why: "Full course with slides, scribe notes, recorded lectures and public homework; the only recent full lecture series I found for this topic."
+    verified: true
+    course:
+      latest_term: "Spring 2020 (no newer run found; Stanford CS228 latest is Winter 2023-24)"
+      latest_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/
+      videos: unknown
+      public_videos_term: "Spring 2020 and Spring 2019 pages link lecture videos on CMU Panopto (public access not confirmed); Spring 2019 site also links a YouTube channel"
+      public_videos_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/lectures.html
+      assignments: public
+      assignments_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/homework.html
+  - id: koller-friedman
+    role: reference
+    kind: book
+    title: "Probabilistic Graphical Models: Principles and Techniques"
+    by: "Daphne Koller, Nir Friedman"
+    url: https://pgm.stanford.edu/
+    edition_or_term: "MIT Press 2009 (companion site with intro chapter, figures, errata)"
+    access: paid
+    use: "Reference for Ch. 3 (Bayesian networks), Ch. 4 (undirected models), Ch. 9-11 (exact inference, message passing, particle-based), Ch. 13 (MAP), Ch. 16-20 (learning); read chapters when notes are too brief."
+    why: "The definitive encyclopedic reference; too long as a first read."
+    verified: true
+  - id: pml2-pgm
+    role: secondary
+    kind: book
+    title: "Probabilistic Machine Learning: Advanced Topics, Ch. 4, 7, 9, 10"
+    by: "Kevin P. Murphy"
+    url: https://probml.github.io/pml-book/book2.html
+    edition_or_term: "MIT Press 2023; free PDF (draft 2025-12-10)"
+    access: free
+    use: "Ch. 4 Graphical models, Ch. 7 Inference algorithms overview, Ch. 9 Message passing algorithms, Ch. 10 Variational inference, Ch. 8 Gaussian filtering and smoothing for linear-Gaussian chains; also Ch. 29 State-space models for HMMs/Kalman filters."
+    why: "Modern coverage connecting PGMs to deep generative models and state-space models, with verified chapter map."
+    verified: true
+  - id: coursera-pgm
+    role: secondary
+    kind: course
+    title: "Probabilistic Graphical Models Specialization (Coursera)"
+    by: "Daphne Koller (Stanford)"
+    url: https://www.coursera.org/specializations/probabilistic-graphical-models
+    edition_or_term: "Three courses: Representation, Inference, Learning (lectures recorded in the 2010s)"
+    access: account-required
+    use: "Watch the Representation and Inference lecture videos if you want Koller's explanations of d-separation, factor graphs and clique trees; programming assignments are in Octave/MATLAB."
+    why: "The original Koller lectures remain the clearest video treatment of the Koller-Friedman material."
+    verified: true
+    course:
+      latest_term: "Self-paced Coursera specialization (original run 2012; updated session dates not checked)"
+      latest_url: https://www.coursera.org/specializations/probabilistic-graphical-models
+      videos: unknown
+      assignments: unknown
+  - id: cs228-course
+    role: secondary
+    kind: course
+    title: "Stanford CS 228 Probabilistic Graphical Models"
+    by: "Stefano Ermon (Stanford)"
+    url: https://cs228.stanford.edu/
+    edition_or_term: "Winter 2023-24 (latest page I could open; redirects to https://ermongroup.github.io/cs228/)"
+    access: free
+    use: "Use the syllabus, slides and problem sets listed on the course page alongside the notes."
+    why: "Companion syllabus to the notes; kept as a pointer because no lecture recordings are public."
+    verified: true
+    course:
+      latest_term: "Winter 2023-24"
+      latest_url: https://ermongroup.github.io/cs228/
+      videos: none
+      assignments: unknown
+  - id: pgmpy
+    role: practice
+    kind: practice-site
+    title: "pgmpy: Python library for probabilistic graphical models"
+    by: "pgmpy developers"
+    url: https://pgmpy.org/
+    edition_or_term: "Current documentation site"
+    access: free
+    use: "Build Bayesian networks, run exact inference (variable elimination, belief propagation) and sampling, learn parameters (MLE/Bayesian) and structure (hill climbing, PC) from data; reproduce the examples from the CS228 notes."
+    why: "Lets you check hand-derived results and experiment with inference algorithms."
+    verified: true
+  - id: pgm-from-scratch
+    role: practice
+    kind: practice-site
+    title: "From-scratch inference exercises (self-directed)"
+    by: "Course homework: CMU 10-708 HW1-HW3 and CS228 problem sets"
+    url: https://www.cs.cmu.edu/~epxing/Class/10708-20/homework.html
+    edition_or_term: "Spring 2020 homework PDFs and code (e.g. baum_welch.py in HW1)"
+    access: free
+    use: "Implement variable elimination on a small Bayesian network, sum-product belief propagation on a tree and loopy BP on a grid MRF, Gibbs sampling for an Ising model, and Baum-Welch EM for an HMM; compare against pgmpy."
+    why: "Implementing the algorithms is what makes message passing and EM concrete."
+    verified: true
+considered:
+  - {title: "Pattern Recognition and Machine Learning, Ch. 8 Graphical Models (Bishop)", url: "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/", reason: "Classic, short, free chapter on graphical models; kept out as primary because it is a single chapter."}
+  - {title: "Information Theory, Inference, and Learning Algorithms (MacKay)", url: "https://www.inference.org.uk/itila/book.html", reason: "Excellent for message passing and Monte Carlo; broader than the scope."}
+  - {title: "CMU 10-708 Spring 2014 (Xing)", url: "https://www.cs.cmu.edu/~epxing/Class/10708/", reason: "Older run whose page says lecture videos are posted; superseded by 2019/2020."}
+notes: "No recent public-video PGM course exists on par with other ML courses; CMU 10-708 (videos on Panopto) is the best candidate and Koller's Coursera lectures are the video fallback. Because PGM is optional and advanced, CS228 notes serve as the compact core text. PML2 provides the bridge to modern variational/deep generative models."
+split_proposal: null
+prereq_changes: "Consider adding soft: [bayesian-inference] (MCMC and variational inference are inference methods used heavily here)."
+open_questions:
+  - "Whether CMU 10-708 Panopto lecture links are publicly viewable without a CMU login (link page loads but a viewer could not be confirmed)."
+  - "Newer 10-708 offerings (2021-2026) may exist on other hosts; not found."
+last_verified: 2026-11-18

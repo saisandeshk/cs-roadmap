@@ -1,0 +1,212 @@
+id: diffusion-and-flow-matching
+title: Diffusion & Flow Matching
+group: G6
+paths: [generative]
+hard: [generative-modeling-foundations]
+soft: [numerical-methods]
+scope: "Score matching, DDPM/DDIM, SDE/ODE view, flow matching and rectified flow, guidance."
+
+level: advanced
+estimated_hours: 55
+resources:
+  - id: mit-6s184-notes
+    role: primary-text
+    kind: book
+    title: "An Introduction to Flow Matching and Diffusion Models (MIT 6.S184 lecture notes)"
+    by: "Peter Holderrieth, Ezra Erives"
+    url: https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf
+    edition_or_term: "2026 version (arXiv 2506.02070: https://arxiv.org/abs/2506.02070)"
+    access: free
+    use: "Whole notes in course order: flow and diffusion models as ODEs/SDEs, conditional and marginal probability paths and vector fields, flow matching objective, score functions and denoising score matching, classifier-free guidance, architectures (U-Net, DiT) and latent spaces; the 2026 version adds discrete diffusion (CTMCs)."
+    why: "A self-contained, mathematically careful yet short text that derives DDPM-style diffusion as a special case of flow matching with Fokker-Planck and SDE background included; written to be the backbone of a course, so it pairs directly with the primary course and labs."
+    verified: true
+  - id: mit-6s184
+    role: primary-course
+    kind: course
+    title: "MIT 6.S184 Generative AI with Stochastic Differential Equations (Flow Matching and Diffusion Models)"
+    by: "Peter Holderrieth, Ezra Erives (MIT; advisor Tommi Jaakkola)"
+    url: https://diffusion.csail.mit.edu/2026/index.html
+    edition_or_term: "2026 (IAP, Jan 2026)"
+    access: free
+    use: "Lectures 1-5 (flow and diffusion models; flow matching; score functions and score matching; classifier-free guidance; latent spaces and architectures; discrete diffusion) with the three labs: Lab 1 Working with ODEs and SDEs, Lab 2 Flow Matching and Score Matching, Lab 3 Conditional Image Generation (labs at github.com/eje24/iap-diffusion-labs, branch 2026; Colab-runnable). 2025 version (https://diffusion.csail.mit.edu/2025/index.html) adds guest lectures on robotics and protein design."
+    why: "The cleanest public treatment of the modern unified (SDE/ODE + flow matching) view, at the right depth; YouTube recordings, public slides, notes and labs; taught by the authors of the primary text. Short (5 lectures), so budget extra time for labs and the secondary resources."
+    verified: true
+    course:
+      latest_term: "IAP 2026 (January 2026)"
+      latest_url: https://diffusion.csail.mit.edu/2026/index.html
+      videos: public
+      assignments: public
+      assignments_url: https://github.com/eje24/iap-diffusion-labs/tree/2026
+  - id: cmu-10799
+    role: secondary
+    kind: course
+    title: "CMU 10-799 Diffusion & Flow Matching"
+    by: "Yutong (Kelly) He (CMU; advisors Ruslan Salakhutdinov, Zico Kolter)"
+    url: https://kellyyutonghe.github.io/10799S26
+    edition_or_term: "Spring 2026 (Mini 3, Jan-Feb 2026)"
+    access: free
+    use: "Lectures 2 (DDPM), 4 (score-based models), 5 (flow matching), 6 (design space of diffusion models and solvers for fast sampling), 7 (guidance and controllable generation), 9 (SOTA text-to-image), 10 (distillation, consistency models, flow maps), 12-13 (discrete diffusion, discrete flow matching, Edit Flow). Homework 1 (implement DDPM) and 2 (flow matching + DDIM; choose Fidelity / Controllability / Speed path), homework PDFs plus starter code at github.com/KellyYutongHe/cmu-10799-diffusion."
+    why: "Free, 2026-fresh, with public YouTube recordings and public homework: the best implementation-oriented complement to 6.S184 and the best public treatment of solvers (EDM-style design space), distillation and flow maps. Also see its curated resources page (https://kellyyutonghe.github.io/10799S26/resources)."
+    verified: true
+    course:
+      latest_term: "Spring 2026 (7-week mini)"
+      latest_url: https://kellyyutonghe.github.io/10799S26
+      videos: public
+      assignments: public
+      assignments_url: https://kellyyutonghe.github.io/10799S26/homework
+  - id: flow-matching-guide
+    role: reference
+    kind: paper
+    title: "Flow Matching Guide and Code"
+    by: "Yaron Lipman, Marton Havasi, Peter Holderrieth, Neta Shaul, Matt Le, Brian Karrer, Ricky T. Q. Chen, David Lopez-Paz, Heli Ben-Hamu, Itai Gat"
+    url: https://arxiv.org/abs/2412.06264
+    edition_or_term: "arXiv 2412.06264 (Dec 2024); code: github.com/facebookresearch/flow_matching (CC BY-NC 4.0)"
+    access: free
+    use: "Look-up on flow-matching variants (conditional paths, optimal-transport/rectified flows, Riemannian and discrete extensions); run the repo's 2D flow-matching notebooks, then the CIFAR-10 image example."
+    why: "The official, exhaustive reference by the flow-matching authors; broader than the MIT notes (manifolds, discrete data, guidance) and includes tested code. Too dense as a first read."
+    verified: true
+  - id: principles-diffusion
+    role: reference
+    kind: book
+    title: "The Principles of Diffusion Models"
+    by: "Chieh-Hsin Lai, Yang Song, Dongjun Kim, Yuki Mitsufuji, Stefano Ermon"
+    url: https://arxiv.org/abs/2510.21890
+    edition_or_term: "arXiv 2510.21890 (Oct 2025), monograph"
+    access: free
+    use: "Use as the deep-reference alongside 6.S184 for the variational, score-based and flow-based perspectives and the sampling/distillation chapters when a derivation is unclear."
+    why: "Authoritative 2025 monograph from authors of the score-SDE line; larger and more complete than lecture notes."
+    verified: true
+  - id: luo-unified
+    role: secondary
+    kind: paper
+    title: "Understanding Diffusion Models: A Unified Perspective"
+    by: "Calvin Luo"
+    url: https://arxiv.org/abs/2208.11970
+    edition_or_term: "arXiv 2208.11970 (2022)"
+    access: free
+    use: "Read ELBO -> VAE -> hierarchical VAE -> variational diffusion (DDPM) derivations and the three equivalent parameterizations; then score-based view and guidance."
+    why: "Best bridge from the VAE/ELBO view (previous node) to DDPM; fills the variational-derivation gap that the flow-first MIT notes skip."
+    verified: true
+  - id: song-score-blog
+    role: secondary
+    kind: article
+    title: "Generative Modeling by Estimating Gradients of the Data Distribution"
+    by: "Yang Song"
+    url: https://yang-song.net/blog/2021/score/
+    edition_or_term: "May 2021"
+    access: free
+    use: "Whole post: score matching, denoising/sliced score matching, Langevin dynamics, noise-conditional score networks, the SDE generalization."
+    why: "Intuition-first explanation of the score-based view by the inventor; short and visual."
+    verified: true
+  - id: dieleman-posts
+    role: secondary
+    kind: article
+    title: "Sander Dieleman's diffusion posts: Perspectives on diffusion; Guidance; Noise schedules considered harmful; Diffusion is spectral autoregression; Learning the integral of a diffusion model"
+    by: "Sander Dieleman (Google DeepMind)"
+    url: https://sander.ai/2023/07/20/perspectives.html
+    edition_or_term: "2022-2026 posts: https://sander.ai/2022/01/31/diffusion.html (diffusion models are autoencoders), https://sander.ai/2022/05/26/guidance.html, https://sander.ai/2024/06/14/noise-schedules.html, https://sander.ai/2024/09/02/spectral-autoregression.html, https://sander.ai/2026/05/06/flow-maps.html"
+    access: free
+    use: "Read Perspectives on diffusion first, then Guidance, Noise schedules, Spectral autoregression; 'Learning the integral of a diffusion model' (May 2026) after CMU lecture 10 on flow maps."
+    why: "Hidden-gem intuition for why diffusion works (spectral view, noise-level design choices, guidance); the blog is also a running record of the 2022-2026 frontier."
+    verified: true
+  - id: weng-diffusion
+    role: reference
+    kind: article
+    title: "What are Diffusion Models? (and Diffusion Models for Video Generation)"
+    by: "Lilian Weng"
+    url: https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+    edition_or_term: "2021 (updated); video post: https://lilianweng.github.io/posts/2024-04-12-diffusion-video/"
+    access: free
+    use: "Cheat-sheet style derivations of DDPM/DDIM/score-based/conditional diffusion; the video post for video diffusion basics (used in generative-models-at-scale)."
+    why: "Handy quick reference, but less rigorous than the primary text and pre-dates flow matching."
+    verified: true
+  - id: edm
+    role: reference
+    kind: paper
+    title: "Elucidating the Design Space of Diffusion-Based Generative Models (EDM)"
+    by: "Tero Karras, Miika Aittala, Timo Aila, Samuli Laine"
+    url: https://arxiv.org/abs/2206.00364
+    edition_or_term: "NeurIPS 2022, arXiv 2206.00364"
+    access: free
+    use: "Sec. 2-3 (unified framework: noise schedule, preconditioning, sampler ODE, Heun 2nd-order sampler) and Table 1; Sec. 5 training improvements."
+    why: "Defines the practical design space (preconditioning, sigma schedules, samplers) that 10799 lecture 6 and most high-quality systems build on."
+    verified: true
+  - id: diffusion-papers
+    role: reference
+    kind: paper
+    title: "Foundational papers: DDPM, DDIM, Score SDE, Classifier-free Guidance, Flow Matching, Rectified Flow, Consistency Models"
+    by: "Ho et al.; Song et al.; Ho and Salimans; Lipman et al.; Liu et al.; Song et al."
+    url: https://arxiv.org/abs/2006.11239
+    edition_or_term: "DDPM 2006.11239, DDIM 2010.02502, Score-SDE 2011.13456, CFG 2207.12598, Flow Matching 2210.02747, Rectified Flow 2209.03003, Consistency Models 2303.01469"
+    access: free
+    use: "After the notes, read in order: DDPM, Score-SDE, DDIM, CFG, Flow Matching, Rectified Flow, Consistency Models (as the entry to distillation)."
+    why: "Primary sources for every named scope item (DDPM/DDIM, SDE/ODE view, flow matching, rectified flow, guidance)."
+    verified: true
+  - id: hf-diffusion-course
+    role: practice
+    kind: course
+    title: "Hugging Face Diffusion Models Course"
+    by: "Hugging Face"
+    url: https://huggingface.co/learn/diffusion-course/unit0/1
+    edition_or_term: "2022 (4 units, 2 notebooks each)"
+    access: free
+    use: "Unit 1 (intro to diffusers; implement a diffusion model from scratch) and Unit 2 (fine-tuning and guidance). Units 3-4 (Stable Diffusion) are used in generative-models-at-scale."
+    why: "Library-level practice with diffusers; dated (2022: DDPM-era only, no flow matching), so supplementary."
+    verified: true
+    course:
+      latest_term: "2022 (self-paced; no fixed term)"
+      latest_url: https://huggingface.co/learn/diffusion-course/unit0/1
+      videos: none
+      assignments: partial
+      assignments_url: https://huggingface.co/learn/diffusion-course/unit1/1
+  - id: cs231n-a3-ddpm
+    role: practice
+    kind: course
+    title: "CS231n Assignment 3 Q3 (Denoising Diffusion Probabilistic Models) and Berkeley CS294-158 HW4 (Diffusion)"
+    by: "Stanford CS231n staff; Berkeley CS294-158 staff"
+    url: https://cs231n.github.io/assignments2026/assignment3/
+    edition_or_term: "CS231n Spring 2026; CS294-158 Spring 2024 (HW4 in github.com/rll/deepul)"
+    access: free
+    use: "Implement DDPM on small images in the CS231n notebook (Q3), then Berkeley HW4 (diffusion) as a second implementation; compare against 6.S184 Lab 2/3 and CMU 10799 HW1-2."
+    why: "Short, tested notebook exercises that make the DDPM training/sampling loop concrete before the flow-matching labs; both are public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://cs231n.stanford.edu/
+      videos: enrolled-only
+      public_videos_term: "Spring 2025"
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16
+      assignments: public
+      assignments_url: https://cs231n.github.io/assignments2026/assignment3/
+  - id: mit-6s183
+    role: practice
+    kind: course
+    title: "MIT 6.S183 A Practical Introduction to Diffusion Models (problem sets)"
+    by: "MIT EECS (IAP organizers)"
+    url: https://www.practical-diffusion.org/assignments/
+    edition_or_term: "IAP 2026"
+    access: free
+    use: "Pset 1 and Pset 2 (Colab notebooks plus PDFs on the page): visualize diffusion sampling, create visual illusions, generate interpolations; lectures on practical conditioning, guidance and inverse problems."
+    why: "Application-oriented use of pretrained diffusion models (guidance, inverse problems, illusions) that the theory-heavy MIT 6.S184 does not do. Lecture recordings: IAP 2025 playlist https://www.youtube.com/playlist?list=PL_1TbuIu65A_G908tHHvTnyQsueR17rMh; 2026 videos linked on the lectures page."
+    verified: true
+    course:
+      latest_term: "IAP 2026"
+      latest_url: https://www.practical-diffusion.org/
+      videos: public
+      assignments: public
+      assignments_url: https://www.practical-diffusion.org/assignments/
+considered:
+  - {title: "Stanford CME296 Diffusion & Large Vision Models (Amidi twins, Spring 2026)", url: "https://cme296.stanford.edu/", reason: "Public YouTube lectures (diffusion, score matching, flow matching, latent+guidance, architectures, training, evaluation, trends) but no homework, exams only. Chosen instead as primary course of generative-models-at-scale."}
+  - {title: "Stanford CS236 Deep Generative Models (Fall 2023)", url: "https://cs236.stanford.edu/", reason: "Excellent VAE/EBM/score foundations (used in generative-modeling-foundations); its diffusion coverage predates flow matching."}
+  - {title: "KAIST CS492(C) Diffusion and Flow Models (Minhyuk Sung, Fall 2025)", url: "https://diffusion.kaist.ac.kr/", reason: "Strong 2025 course with YouTube playlist per cs-video-courses (my oembed check on that playlist returned no title, so unconfirmed) and public programming assignments; page opened but not evaluated in detail. A good second opinion."}
+  - {title: "MIT 6.8300 / 6.S978 diffusion lectures", url: "https://scenerepresentations.org/courses/2026/spring/advances-in-cv/", reason: "Diffusion 1-3 lectures in 6.8300 are good but embedded in a broad vision course."}
+  - {title: "CS 6785/NYCU/UT Austin/IIT diffusion courses listed on cs-video-courses", url: "https://www.youtube.com/playlist?list=PL8lIiiIWuabLxhJreBRZwNW-d02dJwbMb", reason: "Public playlists (e.g. UT Austin) not evaluated."}
+  - {title: "Annotated Diffusion Model (Hugging Face)", url: "https://huggingface.co/blog/annotated-diffusion", reason: "Code walkthrough of DDPM; subsumed by course labs."}
+notes: "Three layers of material are provided: (1) 6.S184 text+course+labs for the unified flow/diffusion view, (2) CMU 10799 for implementation, solvers and distillation, (3) blogs and papers for intuition and primary sources. The node is dense; 55 hours assumes 6.S184 + labs (about 25 h), CMU HW1-2 (about 15 h) and reading (15 h). Discrete diffusion (masked/absorbing) is only touched (6.S184 lecture 5, CMU lectures 12-13)."
+split_proposal: null
+prereq_changes: "6.S184 itself states prerequisites as probability theory + deep learning (+ linear algebra/real analysis), not generative-modeling-foundations. Consider hard: [deep-learning-fundamentals, probability] with generative-modeling-foundations as soft (VAEs only needed for latent diffusion). Also stochastic calculus basics (SDEs, Fokker-Planck) are taught inside the notes, so no new prereq is needed."
+open_questions:
+  - "Exact YouTube video list for 6.S184 2026 not enumerated; six youtube.com/embed ids appear on the 2026 page (5 lectures + one extra)."
+  - "MIT 6.S184 labs repo (branch 2026) notebooks not individually opened; names come from the course page."
+  - "CMU 10799 homework 4 specifics not opened."
+last_verified: 2026-11-18

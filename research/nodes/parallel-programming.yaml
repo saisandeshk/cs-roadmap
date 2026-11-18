@@ -64,7 +64,7 @@ resources:
     url: https://ppc.cs.aalto.fi/
     edition_or_term: "current course notes"
     access: free
-    use: "Chapter 1 (role of parallelism), Chapter 2 (the 'shortcut' case study: V0 to V7, from naive code to near-peak with ILP, OpenMP, cache blocking, SIMD), Chapter 3 (multithreading with OpenMP: parallel for, nowait, schedule, nested, hyper-threading, memory), plus lectures 1-6. Do the self-study exercises at ppc-exercises.cs.aalto.fi."
+    use: "Chapter 1 (role of parallelism), Chapter 2 (the 'shortcut' case study, versions V0-V7: from naive code to near-peak with ILP, OpenMP, cache blocking, SIMD), Chapter 3 (multithreading with OpenMP: parallel for, nowait, schedule, nested, hyper-threading, memory), plus lectures 1-6. Do the self-study exercises at ppc-exercises.cs.aalto.fi."
     why: "Hidden gem: an unusually practical, free course whose central case study walks one program through every optimization level, with an open auto-graded exercise site for self-study. Strong on measurement and SIMD."
     verified: true
   - id: llnl-hpc

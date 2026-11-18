@@ -146,6 +146,6 @@ prereq_changes: "Add soft: [probability] and soft: [linear-algebra] (LP duality,
 open_questions:
   - "Karger recordings for Fall 2022-2024 (6.5210): none located; only the Fall 2021 YouTube links were seen on the materials page and not individually opened."
   - "Whether Karger problem sets on nb.mit.edu are publicly accessible without MIT login."
-  - "CLRS MIT Press page 403 to bots; not opened."
+  - "CLRS MIT Press page 403 to bots; not opened, and chapter numbers are from memory of the 4th edition."
   - "Demaine 6.851 Spring 2021 video access not checked."
 last_verified: 2026-11-18

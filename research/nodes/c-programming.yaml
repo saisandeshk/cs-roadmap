@@ -38,7 +38,7 @@ resources:
     videos: enrolled-only
     public_videos_term: unknown (lecture recordings are on Canvas; older Stanford Engineering Everywhere Programming Paradigms lectures by the same instructor are public but a different course)
     assignments: partial
-    assignments_url: https://web.stanford.edu/class/archive/cs/cs107/cs107.1272/assign1/
+    assignments_url: https://cs107.stanford.edu/assign1/
 - id: beej-c
   role: secondary
   kind: book

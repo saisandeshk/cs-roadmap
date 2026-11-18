@@ -1,0 +1,130 @@
+id: performance-analysis
+title: "Performance Analysis & Observability"
+group: G4
+paths: [os-perf]
+hard: [operating-systems]
+soft: []
+scope: "Methodologies (USE), CPU/memory/disk/network analysis, perf, flame graphs, eBPF tracing."
+
+level: intermediate
+estimated_hours: 70
+resources:
+  - id: systems-performance-2e
+    role: primary-text
+    kind: book
+    title: "Systems Performance: Enterprise and the Cloud, 2nd edition"
+    by: "Brendan Gregg"
+    url: https://www.brendangregg.com/systems-performance-2nd-edition-book.html
+    edition_or_term: "2nd edition (Addison-Wesley, 2020)"
+    access: paid
+    use: "Ch. 1-4 (introduction, methodologies incl. USE and workload characterization, OS and observability tools), 6 (CPUs), 7 (memory), 8 (file systems), 9 (disks), 10 (network), 13 (perf), 14 (Ftrace), 15 (BPF); ch. 5 (applications) and 12 (benchmarking) as needed; 16 case study."
+    why: "The standard text for the node: methodology first (USE, TSA, drill-down, off-CPU analysis), then per-resource analysis with Linux tools, then perf/ftrace/BPF; written by the author of flame graphs and the USE method."
+    verified: true
+  - id: bpf-perf-tools
+    role: secondary
+    kind: book
+    title: "BPF Performance Tools"
+    by: "Brendan Gregg"
+    url: https://www.brendangregg.com/bpf-performance-tools-book.html
+    edition_or_term: "Addison-Wesley, 2019"
+    access: paid
+    use: "Ch. 1-2 (technology background), 4 (BCC), 5 (bpftrace), then the per-resource chapters (CPUs, memory, file systems, disk I/O, networking, security, languages, applications) as problems arise; appendices list one-liners."
+    why: "Covers the eBPF tracing part of the scope in depth with a tool catalog (opensnoop, biolatency, runqlat, ...) that SP2e only introduces; the practical follow-up to SP2e ch. 15."
+    verified: true
+  - id: bootlin-debugging
+    role: primary-course
+    kind: course
+    title: "Bootlin: Linux debugging, profiling, tracing and performance analysis"
+    by: "Bootlin (Thomas Petazzoni and team)"
+    url: https://bootlin.com/training/debugging/
+    edition_or_term: "current slides/labs release (rolling; checked 2026-11-18)"
+    access: free
+    use: "Slides (debugging-slides.pdf) for GDB/strace/ltrace, valgrind, perf, ftrace/trace-cmd, kernel oops and profiling, LTTng, eBPF; do the practical labs (BeaglePlay or STM32MP1 board version, or adapt to a local Linux VM). Skip embedded-board-specific parts."
+    why: "Only structured, fully public course with labs covering perf, ftrace, eBPF and tracing on Linux; slides and lab data are CC-BY-SA. Weaker on methodology (use SP2e) and aimed at embedded boards."
+    verified: true
+    course:
+      latest_term: "rolling release (page lists 2026 sessions; slide date not checked)"
+      latest_url: https://bootlin.com/training/debugging/
+      videos: none
+      assignments: public
+      assignments_url: https://bootlin.com/doc/training/debugging/debugging-beagleplay-labs.pdf
+  - id: gregg-site
+    role: reference
+    kind: website
+    title: "brendangregg.com: USE Method, Linux Performance, perf Examples, Flame Graphs, eBPF tools"
+    by: "Brendan Gregg"
+    url: https://www.brendangregg.com/linuxperf.html
+    edition_or_term: "living pages; perf examples and flame graph pages current"
+    access: free
+    use: "Linux Performance page (observability-tool, benchmarking and tuning diagrams plus talk links), usemethod.html (USE checklists per resource), perf.html (perf one-liners), flamegraphs.html (generate and read CPU, off-CPU, memory flame graphs), ebpf.html (BCC/bpftrace tool map)."
+    why: "Free, up-to-date companion to the books; the tool diagrams and checklists are the quickest reference during practice."
+    verified: true
+  - id: bpftrace-tutorial
+    role: practice
+    kind: practice-site
+    title: "bpftrace one-liner tutorial and reference guide"
+    by: "iovisor / bpftrace project (Brendan Gregg)"
+    url: https://github.com/bpftrace/bpftrace/blob/master/docs/tutorial_one_liners.md
+    edition_or_term: "current master"
+    access: free
+    use: "Do all 12 lessons: listing probes, hello world, file opens, syscall counts by process, read() byte distributions (user and kernel dynamic tracing), timing read()s, process-level events, on-CPU kernel stack profiling, scheduler tracing, block I/O tracing, kernel struct tracing; then write one tool of your own."
+    why: "A structured set of exercises that teaches bpftrace in an hour; Linux root VM required."
+    verified: true
+  - id: bcc-tutorial
+    role: practice
+    kind: practice-site
+    title: "BCC tools tutorial"
+    by: "iovisor / BCC project"
+    url: https://github.com/iovisor/bcc/blob/master/docs/tutorial.md
+    edition_or_term: "current master"
+    access: free
+    use: "Run sections 1.1-1.11 (execsnoop, opensnoop, ext4slower, biolatency, biosnoop, cachestat, tcpconnect, tcpaccept, tcpretrans, runqlat, profile) in sequence, then 2.x (trace, argdist, funccount) on a loaded VM, and interpret each against its USE metric."
+    why: "Practical guide to the standard eBPF tool set, tied to what each tool answers."
+    verified: true
+  - id: flamegraph-perf-practice
+    role: practice
+    kind: practice-site
+    title: "FlameGraph and perf-tools (Ftrace) repositories"
+    by: "Brendan Gregg"
+    url: https://github.com/brendangregg/FlameGraph
+    edition_or_term: "current master"
+    access: free
+    use: "Exercise: profile a CPU-bound program and a disk-bound program with perf record -F 99 -g, fold stacks with stackcollapse-perf.pl, render with flamegraph.pl; repeat with off-CPU profiling. Then try perf-tools (iosnoop, execsnoop, funccount) from github.com/brendangregg/perf-tools on older kernels without BPF."
+    why: "Hands-on route to the exact workflow in SP2e ch. 6 and 13."
+    verified: true
+  - id: perf-wiki
+    role: reference
+    kind: docs
+    title: "perf (Linux profiling with performance counters) wiki and man pages"
+    by: "Linux kernel perf maintainers"
+    url: https://perfwiki.github.io/main/
+    edition_or_term: "current (perf.wiki.kernel.org now redirects here)"
+    access: free
+    use: "Tutorial and examples for perf stat/record/report/top/trace; man7.org/linux/man-pages/man1/perf.1.html for command reference."
+    why: "Official reference for the main tool in the node scope."
+    verified: true
+  - id: jvns-perf-zine
+    role: secondary
+    kind: article
+    title: "Julia Evans, 'Profiling & tracing with perf' zine"
+    by: "Julia Evans"
+    url: https://wizardzines.com/zines/perf/
+    edition_or_term: "Wizard Zines (release year not confirmed)"
+    access: mixed
+    use: "Read the zine (or her free blog post 'How does perf work?') as a gentle 30-minute introduction before attacking the book's perf and BPF chapters."
+    why: "Fills the intuition gap on how sampling profilers and tracing work, in an accessible format."
+    verified: true
+considered:
+  - {title: "Learning eBPF (Liz Rice, O'Reilly 2023; free via Isovalent)", url: "https://isovalent.com/books/learning-ebpf/", reason: "Good eBPF programming (rather than tool use) book; the Isovalent link redirected to another book page when checked, so left out; revisit if the owner wants to write eBPF programs."}
+  - {title: "Linux Performance Tools / Brendan Gregg conference talks (USENIX LISA, SREcon)", url: "https://www.brendangregg.com/linuxperf.html", reason: "Talk videos are on the same site; used as reference instead of a separate resource."}
+  - {title: "Performance Ninja and Bakhvalov's book", url: "https://github.com/dendibakh/perf-ninja", reason: "Microarchitecture-level tuning; assigned to performance-engineering."}
+  - {title: "ebpf.io documentation and eBPF Summit talks", url: "https://ebpf.io/what-is-ebpf/", reason: "Official overview of the technology; use for concept clarification only."}
+  - {title: "Performance course from a university (e.g., Gregg-style methods taught in a course)", url: "https://www.brendangregg.com/usemethod.html", reason: "I found no university course with public videos for observability/performance analysis; Bootlin's training is the best structured public alternative."}
+notes: "No strong video course exists for this node. Bootlin is listed as primary-course because it has public slides and labs covering the tools named in the scope, but it is embedded-flavoured and has no videos; owner may prefer to leave primary-course empty and rely on SP2e plus Gregg's site. Systems Performance 2e remains the right primary text (a 3rd edition has not been announced on the author's site as of the check)."
+split_proposal: null
+prereq_changes: "Add soft: [linux-or-shell/command-line tools] (if such a node exists in G1); eBPF practice needs a root Linux VM."
+open_questions:
+  - "Bootlin slide date/version not confirmed; page states 3 days/24 hours format and slides/labs PDFs are linked and public."
+  - "GitHub blob URLs for bcc/bpftrace tutorials returned 403 to curl; the same files were opened via raw.githubusercontent.com (content matched)."
+  - "Learning eBPF book page (O'Reilly) is blocked from this environment."
+last_verified: 2026-11-18

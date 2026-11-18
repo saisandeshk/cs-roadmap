@@ -146,17 +146,17 @@ resources:
     access: free
     use: "Lectures on ML compiler GEMM on modern GPUs (Feb 25) and Blackwell GPU and TIRx (Mar 11), then Lab 3: write and tune an FP16 GEMM kernel with TIRx."
     why: "Most current structured GEMM assignment (Blackwell B200); needs Blackwell hardware or the course's Modal credits."
-    verified: false
+    verified: true
 considered:
   - {title: "Programming Massively Parallel Processors 5e, Ch. 23 Advanced Optimizations for Matrix Multiplication", url: "https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-443-43900-1", reason: "Adds textbook coverage of advanced matmul; chapter-level only, I could not read it. Good optional companion."}
   - {title: "Colfax GEMM series other posts (GEMM pipelining, CUTLASS tutorial on TMA)", url: "https://research.colfax-intl.com/", reason: "Linked via the WGMMA tutorial; kept as optional continuation."}
   - {title: "AI Systems Performance Engineering (Fregly)", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Covers tensor cores/CUTLASS briefly; not verified, broader than needed."}
   - {title: "GPU MODE lectures 15, 23, 36, 57, 86, 103 (CUTLASS, tensor cores, CuTe, CuTeDSL)", url: "https://github.com/gpu-mode/lectures", reason: "Good video complements to the CuTe docs; speaker-dependent quality, so kept as optional."}
   - {title: "DeepGEMM (DeepSeek) / CUTLASS examples source", url: "https://github.com/deepseek-ai/DeepGEMM", reason: "Excellent compact FP8 GEMM source to read, but not opened by me."}
-notes: "Requires access to Ampere/Hopper/Blackwell hardware for the second half (rent cloud GPUs). The cmu-15442-tirx entry is marked unverified because the assignment repo returned 403 to curl; the course schedule page was opened and lists the Blackwell/TIRx lecture and Lab 3 (the repo link comes from csdiy.wiki). Hours: ~25 h reading, ~45 h labs/kernels."
+notes: "Requires access to Ampere/Hopper/Blackwell hardware for the second half (rent cloud GPUs). The cmu-15442-tirx entry points at the opened course schedule page (lists the Blackwell/TIRx lecture and Lab 3); the lab repo name comes from csdiy.wiki and was not opened. Hours: ~25 h reading, ~45 h labs/kernels."
 split_proposal: "Consider splitting low-precision numerics (FP8/MX/NVFP4, quantized GEMM) into its own short node shared with model-compression, since it stands apart from kernel engineering."
 prereq_changes: null
 open_questions:
-  - "CMU 15-442 lab 3 repo and whether it is runnable without Blackwell GPU or Modal credits."
+  - "The schedule page (opened) lists the Blackwell/TIRx lecture and Lab 3, but the lab repo itself was not opened (github 403 to curl); repo name from csdiy.wiki. Also whether it is runnable without Blackwell GPU or Modal credits."
   - "No verification of PMPP 5e Ch. 23 content beyond the publisher table of contents."
 last_verified: 2026-11-18

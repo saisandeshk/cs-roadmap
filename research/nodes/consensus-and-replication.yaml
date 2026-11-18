@@ -59,7 +59,7 @@ resources:
     edition_or_term: "USENIX ATC 2014, extended version"
     access: free
     use: "Read in full, with Figure 2 (the complete protocol summary) open while coding Lab 3. Also open the Raft site (https://raft.github.io/) and the visualization at https://thesecretlivesofdata.com/raft/."
-    why: "Gap: the primary source MIT Lab 3 implements. The lab handout is explicit that Figure 2 is the specification."
+    why: "Gap: the primary source MIT Lab 3 implements. The lab handout says to follow Figure 2 closely and does not require membership changes (Section 6)."
     verified: true
   - id: ongaro-thesis
     role: reference
@@ -69,8 +69,8 @@ resources:
     url: https://github.com/ongardie/dissertation
     edition_or_term: "2014 (repo carries the Stanford-distributed PDF stanford.pdf, plus errata)"
     access: free
-    use: "Ch. 3-4 (basic Raft and cluster membership changes), Ch. 5 (log compaction), Ch. 6 (client interaction: linearizable semantics, exactly-once), Ch. 11 (correctness)."
-    why: "Gap: the paper omits membership changes, snapshots detail and client sessions; the thesis spells out everything needed for Lab 3D and Lab 4."
+    use: "Chapters on the basic Raft algorithm, cluster membership changes, log compaction and client interaction (linearizable semantics, exactly-once); skip the user study and evaluation chapters on a first pass."
+    why: "Gap: the paper is terse on snapshots and client sessions; the thesis spells out log compaction and exactly-once client semantics needed for Lab 3D and Lab 4, and gives the membership-change algorithm that the lab skips."
     verified: true
   - id: paxos-simple
     role: reference

@@ -154,8 +154,8 @@ resources:
     kind: practice-site
     title: "Parallelism planning exercise (paper-and-spreadsheet)"
     by: "Scaling book / Ultra-Scale Playbook"
-    url: https://jax-ml.github.io/scaling-book/training/
-    edition_or_term: "problems in Ch. 5"
+    url: https://jax-ml.github.io/scaling-book/applied-training/
+    edition_or_term: "Ch. 6 worked example plus problems in Ch. 5"
     access: free
     use: "For a 70B dense model on 1024 H100s and for an MoE model, choose DP/FSDP/TP/PP/CP/EP degrees and microbatch counts; check memory, global batch size and comm-to-compute ratios using the Playbook's three-step configuration procedure."
     why: "Multi-dimensional planning is the skill this node is about; no hardware needed."

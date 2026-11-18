@@ -1,0 +1,51 @@
+id: hdl-and-fpga
+title: HDL Design & FPGA Workflow
+group: G11
+paths: [architecture]
+hard: [digital-logic]
+soft: []
+scope: SystemVerilog/Verilog, simulation and testbenches, synthesis, FPGA flow, verification basics.
+level: intermediate
+estimated_hours: 60
+resources:
+- {id: zipcpu-tutorial, role: primary-text, kind: website, title: 'Verilog, Formal Verification and Verilator Beginner''s Tutorial', by: Dan Gisselquist (ZipCPU), url: 'https://zipcpu.com/tutorial/', edition_or_term: 'Live tutorial (ten lessons, plus an intermediate tutorial; checked 2026-11-18)', access: free, use: 'All ten beginner lessons in order: wires and combinational logic, registers and blinky, FSMs, Wishbone slave, serial-port transmitter, 2-FF synchronizers and debouncing, block RAM, serial receiver, FIFO. Run each with Verilator + GTKWave, and do the SymbiYosys formal exercises. Download the example code per lesson.', why: 'The only free text that teaches the whole workflow together (HDL, simulator, waveforms, formal checks) instead of the language alone; ends in a UART with FIFO that really runs on an FPGA. It is Verilog-centric and opinionated, so pair it with ETH/EECS 151 for SystemVerilog style.', verified: true}
+- id: eecs151-fa26
+  role: primary-course
+  kind: course
+  title: UC Berkeley EECS 151/251A Introduction to Digital Design and Integrated Circuits
+  by: UC Berkeley (Borivoje Nikolic, Sagar Karandikar)
+  url: https://eecs151.org/
+  edition_or_term: Fall 2026
+  access: free
+  use: FPGA track labs 1-5 (SystemVerilog primer, FPGA build flow, structural and behavioral adders, input conditioning and ILA, ready-valid interfaces, UART TX/RX and FIFO, memory controller verified with UVM) plus lecture slides 4-7 (HDLs, behavioral and sequential SystemVerilog, verification, testbenches/FSMs) and 12 (formal verification). Homework with solutions is posted.
+  why: Best open set of modern lab documents for the SystemVerilog + FPGA flow, with a real verification component (testbenches, UVM, formal) and a pipelined RISC-V final project that continues into processor-design. Lecture videos are not public (bCourses only); the course site, slides, labs and homework solutions are.
+  verified: true
+  course: {latest_term: Fall 2026, latest_url: 'https://eecs151.org/', videos: enrolled-only, public_videos_term: none confirmed for this course; use ETH DDCA Spring 2026 L4b-L6b for public HDL/verification lectures, public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd', assignments: public, assignments_url: 'https://eecs151.org/fpga/lab1/overview/'}
+- id: eth-ddca-ss26-hdl
+  role: secondary
+  kind: course
+  title: ETH Zurich Digital Design and Computer Architecture (227-0003-10L)
+  by: ETH Zurich (Onur Mutlu and the SAFARI group)
+  url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule
+  edition_or_term: Spring 2026 (lectures 19 Feb - 29 May 2026; problem-solving sessions to 31 Jul)
+  access: free
+  use: L4b (labs and FPGAs), L5 (HDLs and Verilog), L6/L6b (timing and verification) and Labs 2-6 (map circuit to FPGA, Verilog combinational, FSMs, ALU, testing the ALU), Lab 8 (system integration).
+  why: Public lecture videos that EECS 151 lacks; Verilog-based (not SystemVerilog) with a Basys 3 board and Vivado.
+  verified: true
+  course: {latest_term: Spring 2026, latest_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule', videos: public, public_videos_term: 'Spring 2026 (full livestream playlist, 51 videos; Spring 2025 playlist also public)', public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd', assignments: public, assignments_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs'}
+- {id: hdlbits-verilog, role: practice, kind: practice-site, title: 'HDLBits: Verilog language, Circuits, Verification', by: Henry Wong, url: 'https://hdlbits.01xz.net/wiki/Main_Page', edition_or_term: Live site (checked 2026-11-18), access: free, use: '''Verilog Language'' (basics, vectors, modules, procedures, more features), ''Circuits'' (combinational and sequential, including FSM and larger circuits), ''Verification: Reading Simulations'' and ''Verification: Writing Testbenches''. Do these before the first ETH/EECS 151 lab.', why: 'Fast, auto-graded repetition of Verilog idioms; the ''Writing Testbenches'' set is a rare free drill for non-synthesizable code.', verified: true}
+- {id: harris-ch4, role: secondary, kind: book, title: 'Digital Design and Computer Architecture, RISC-V Edition: Ch. 4 Hardware Description Languages (and App. A)', by: 'Sarah L. Harris, David Harris', url: 'https://pages.hmc.edu/harris/ddca/ddcarv.html', edition_or_term: 'RISC-V Edition (Morgan Kaufmann/Elsevier, 2021; Elsevier still lists it as the latest edition, no 2025-26 edition found)', access: paid, use: 'Ch. 4 (SystemVerilog and VHDL side by side: combinational/sequential/FSM idioms, parameterized modules, testbenches) and Appendix A (digital system implementation: FPGAs, synthesis, timing).', why: 'Authoritative, concise language reference tied to the logic-design text from digital-logic; needed because ZipCPU is Verilog-only and EECS 151 is slide/lab based.', verified: true}
+- {id: projectf, role: secondary, kind: website, title: 'Project F: FPGA Graphics, Isle FPGA Computer, RISC-V Assembler', by: Will Green (Project F), url: 'https://projectf.io/', edition_or_term: 'Active site; latest posts Isle Graphics Devices (2026-09-12), Isle RISC-V CPU (2026-01-22)', access: free, use: 'FPGA Graphics series (display signals, framebuffers, animation) after the ZipCPU lessons; ''Verilog Vectors and Arrays'', ''Numbers in Verilog'' and the Vivado Tcl build script articles; later the Isle FPGA Computer series.', why: 'Motivating, visual projects (video output, sprites, a small computer) that make timing and clock-domain issues concrete; actively maintained.', verified: true}
+- {id: learn-fpga, role: secondary, kind: website, title: 'learn-fpga: Learning FPGA, yosys, nextpnr, and RISC-V', by: Bruno Levy, url: 'https://github.com/BrunoLevy/learn-fpga', edition_or_term: 'Rolling repository (BSD-3-Clause; 1,396 commits seen)', access: free, use: 'The open-source toolchain track: build the ''Blinky'' examples on a cheap iCE40 board (IceStick/FOMU/ULX3S) with Yosys + nextpnr, then continue to the FemtoRV processor tutorial (see processor-design).', why: 'Shows the fully open Yosys/nextpnr flow on roughly $40 boards, the cheapest route to real FPGA experience, as an alternative to the Vivado-based ETH/EECS 151 flows.', verified: true}
+- {id: verilator-guide, role: reference, kind: docs, title: Verilator User's Guide, by: Verilator project, url: 'https://verilator.org/guide/latest/', edition_or_term: Verilator 5.054 documentation (checked 2026-11-18), access: free, use: 'Installation, linting (-Wall), --binary/--timing for SystemVerilog testbenches, and C++ harness examples; consult as needed.', why: 'Fast open-source simulator used by ZipCPU, Cornell ECE 4750 and Chipyard; knowing its warnings and flags saves many hours.', verified: true}
+- {id: cocotb, role: reference, kind: docs, title: 'cocotb: Python-based hardware verification', by: cocotb community, url: 'https://docs.cocotb.org/en/stable/', edition_or_term: cocotb 2.x documentation (checked 2026-11-18), access: free, use: 'Quickstart and the ''writing testbenches'' chapters; use after you can write plain SystemVerilog testbenches, to write randomized and scoreboard-style tests in Python.', why: 'Fills the ''verification basics'' part of the scope with a modern, approachable workflow (the same idea as Cornell ECE 4750''s ''RTL testing with Python'').', verified: true}
+- {id: chipverify, role: reference, kind: website, title: 'ChipVerify: SystemVerilog and verification tutorials', by: ChipVerify, url: 'https://chipverify.com/', edition_or_term: Live site (checked 2026-11-18), access: free, use: 'Look-up for SystemVerilog assertions, constrained-random stimulus, interfaces and a UVM primer.', why: 'Compact free reference for industry verification vocabulary (SVA, UVM) that the course material only touches.', verified: true}
+considered:
+- {title: MIT 6.205 Digital Systems Laboratory I (Fall 2026), url: 'https://fpga.mit.edu/6205/F26', reason: 'Strong FPGA-lab course but the site is behind MIT login (lectures page "not yet available"), so it is not usable for self-study.'}
+- {title: Cornell ECE 4750 Verilog tutorial handout (tut3), url: 'https://www.csl.cornell.edu/courses/ece4750/handouts/ece4750-tut3-verilog.pdf', reason: Good short Verilog-rules handout; kept as a reference rather than a primary because it is tied to the PyMTL-based Cornell flow.}
+- {title: 'Pong P. Chu, FPGA Prototyping by SystemVerilog Examples', url: 'https://www.wiley.com/', reason: Thorough but board-specific (Nexys) and slower to update than the open tutorials; publisher page not opened.}
+notes: 'Recommended route (about 60 h): ZipCPU lessons (20 h) for the workflow, HDLBits (5 h), Berkeley EECS 151 FPGA labs 1-5 (25 h) for SystemVerilog and verification at a more professional level, Harris ch. 4 as reference. A board is optional until the later labs: Verilator + Yosys cover simulation and open-source synthesis. EECS 151 lecture videos are enrolled-only, so ETH DDCA is the public video companion. Verification scope here is basics (testbenches, assertions, formal intro, cocotb); full UVM and formal are only touched.'
+split_proposal: null
+prereq_changes: null
+open_questions: [EECS 151 FPGA labs assume a specific board (not captured; the lab 1 setup page lists it) and Vivado., EECS 151 discussion-section videos are Google Drive links; access was not tested.]
+last_verified: '2026-11-18'
