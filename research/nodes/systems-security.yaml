@@ -1,0 +1,148 @@
+id: systems-security
+title: Systems & Hardware Security
+group: G12
+paths: [security]
+hard: [security-fundamentals, operating-systems]
+soft: [computer-architecture]
+scope: "OS isolation, sandboxing, privilege separation, side channels (Spectre-class), trusted execution."
+
+level: advanced
+estimated_hours: 130
+resources:
+  - id: mit-6566
+    role: primary-course
+    kind: course
+    title: "MIT 6.566 Computer Systems Security (formerly 6.858; listed as 6.5660)"
+    by: "MIT EECS (staff; instructors not named on the course page)"
+    url: https://css.csail.mit.edu/6.566/2026/
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures 2-8 and 10-11, 14-17: OS and VM isolation, software fault isolation (WebAssembly), trusted hardware (TPM), privilege separation (OpenSSH), data center infrastructure (Google), mobile phone security (iOS), baggy bounds, symbolic execution; Labs 1 (buffer overflows), 2 (privilege separation in zoobar), 3 (symbolic execution), 4 (browser security), 5 (HTTPS and WebAuthn). Read the paper assigned for each lecture."
+    why: "The strongest public systems-security course: paper-based, current (2026 adds AI agent security and supply chain guest lectures), videos and lab handouts are public. Covers isolation/sandboxing/privsep/TEE at the scope's level."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://css.csail.mit.edu/6.566/2026/
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLA6Ht2dJt3SId7vE9P5mppWdj65_l6hl7
+      assignments: public
+      assignments_url: https://css.csail.mit.edu/6.566/2026/labs/lab1.html
+  - id: ss3p
+    role: primary-text
+    kind: book
+    title: "Software Security: Principles, Policies, and Protection (SS3P)"
+    by: "Mathias Payer"
+    url: https://nebelwelt.net/SS3P/
+    edition_or_term: "Edition 0.37, July 2021"
+    access: free
+    use: "Software and System Security Principles; Defense Strategies chapter (isolation, sandboxing, privilege separation, CFI, memory/type safety); Case Studies (web and mobile security)."
+    why: "The best free text tying isolation, sandboxing and mitigations into one framework; the MIT papers then supply the real systems. It does not cover microarchitectural side channels or TEEs, which the secondary items below fill."
+    verified: true
+  - id: mit-6595
+    role: secondary
+    kind: course
+    title: "MIT 6.5950/6.5951 Secure Hardware Design"
+    by: "Mengjia Yan, MIT"
+    url: https://shd.mit.edu/2026
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lectures and readings on microarchitectural attacks (cache attacks, Spectre/Meltdown, Rowhammer), hardware support for software security (ASLR, enclaves, memory tagging), security assurance tools; labs: Website Fingerprinting, Cache Attacks, Spectre Attacks, Rowhammer, ASLR Bypasses, Pretty Secure Processor, CPU Fuzzing, CPU Verification. Prior terms' labs and slides are public."
+    why: "The only course that makes you actually mount side-channel attacks on real hardware; fills the Spectre-class and hardware gap."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://shd.mit.edu/2026
+      videos: enrolled-only
+      public_videos_term: "Spring 2025: lectures on Panopto linked from shd.mit.edu/2025; OCW Spring 2025 page has assignments and materials. Panopto folder access not confirmed public (login redirect)."
+      public_videos_url: https://ocw.mit.edu/courses/6-5950-secure-hardware-design-spring-2025/
+      assignments: public
+      assignments_url: https://shd.mit.edu/2026/labs.html
+  - id: canella-transient
+    role: secondary
+    kind: paper
+    title: "A Systematic Evaluation of Transient Execution Attacks and Defenses"
+    by: "Canella et al. (USENIX Security 2019)"
+    url: https://arxiv.org/abs/1811.05441
+    edition_or_term: "2018/2019"
+    access: free
+    use: "Taxonomy of Spectre/Meltdown variants and defenses (Sections 2-5); read with spectreattack.com papers for original Spectre and Meltdown."
+    why: "Organizes the Spectre class into one framework; the field map for side channels."
+    verified: true
+  - id: spectre-meltdown
+    role: reference
+    kind: paper
+    title: "Spectre Attacks / Meltdown (original papers)"
+    by: "Kocher et al.; Lipp et al."
+    url: https://spectreattack.com/
+    edition_or_term: "2018"
+    access: free
+    use: "Spectre Attacks: Exploiting Speculative Execution (variants 1 and 2) and Meltdown; both papers linked from this page."
+    why: "Primary sources for the Spectre class."
+    verified: true
+  - id: sgx-explained
+    role: secondary
+    kind: paper
+    title: "Intel SGX Explained"
+    by: "Victor Costan, Srinivas Devadas (IACR ePrint 2016/086)"
+    url: https://eprint.iacr.org/2016/086
+    edition_or_term: "2016"
+    access: free
+    use: "Sections on hardware background, SGX programming model, attestation, and the security analysis; skim x86 background if familiar."
+    why: "Best single deep source on trusted execution and its attack surface; fills TEE gap that MIT 6.566's TPM lecture only touches."
+    verified: true
+  - id: saltzer
+    role: reference
+    kind: paper
+    title: "The Protection of Information in Computer Systems"
+    by: "Saltzer, Schroeder (1975)"
+    url: https://web.mit.edu/Saltzer/www/publications/protection/
+    edition_or_term: "1975"
+    access: free
+    use: "Capabilities vs access lists, protection descriptors, design principles; the intellectual root of OS isolation."
+    why: "OS-security vocabulary and design principles at source."
+    verified: true
+  - id: pwncollege-system
+    role: practice
+    kind: practice-site
+    title: "pwn.college System Security dojo"
+    by: "pwn.college"
+    url: https://pwn.college/system-security/
+    edition_or_term: "6 modules / ~93 challenges"
+    access: free
+    use: "Modules Sandboxing (4), Race Conditions (3), Kernel Security (5), Speculative Execution/Microarchitecture Exploitation (5), System Exploitation (3), with their lectures."
+    why: "Practice breaking seccomp/chroot sandboxes, kernel modules, race conditions and cache/speculation attacks with graded challenges."
+    verified: true
+  - id: mit-6566-labs
+    role: practice
+    kind: practice-site
+    title: "MIT 6.566 Labs 2 and 5 (privilege separation; HTTPS and WebAuthn)"
+    by: "MIT 6.566 staff"
+    url: https://css.csail.mit.edu/6.566/2026/labs/lab2.html
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Lab 2: restructure zoobar into privilege-separated services under a chroot/uid sandbox; Lab 5: add TLS and WebAuthn."
+    why: "Hands-on design of a privilege-separated system, which no CTF platform teaches."
+    verified: true
+  - id: bsrs-sandbox
+    role: reference
+    kind: book
+    title: "Building Secure and Reliable Systems"
+    by: "Google"
+    url: https://google.github.io/building-secure-and-reliable-systems/raw/toc.html
+    edition_or_term: "O'Reilly 2020; free online"
+    access: free
+    use: "Ch. 5 Design for Least Privilege, 6 Design for Understandability, 8 Design for Resilience; sandboxing and isolation discussions."
+    why: "Production view of isolation and least privilege."
+    verified: true
+considered:
+  - {title: "Stanford CS 155 (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Strong projects but recordings Canvas-only and less systems/hardware depth."}
+  - {title: "Security Engineering 3e (Anderson)", url: "https://www.cl.cam.ac.uk/~rja14/book.html", reason: "Chapters on access control, OS security, side channels and hardware security are valuable but the 3e is not currently all free."}
+  - {title: "IIT Bombay CS773 Computer Architecture for Performance and Security", url: "https://www.youtube.com/playlist?list=PLw6vmiIQrilQ-KhbMAMeh9_eddYjHRjb6", reason: "Public lectures but less current and lab-less; MIT 6.5950 is stronger."}
+  - {title: "Linux kernel / seL4 / Capsicum primary papers", url: "https://css.csail.mit.edu/6.566/2026/", reason: "Covered via MIT 6.566 reading list; not listed individually."}
+notes: "MIT 6.566's course site lists Panopto recordings per lecture (a viewer page opened without login) and a Spring 2026 YouTube playlist exists, so videos are public. MIT 6.5950 2026 uses Panopto, but the folder view redirects to login, so I recorded enrolled-only for 2026. Text slot: no single good text spans OS isolation + side channels + TEEs, so SS3P plus paper bundle. OS-level readings come largely from the 6.566 syllabus."
+split_proposal: "Consider splitting hardware security (side channels, Rowhammer, TEEs) from OS isolation/sandboxing if both are wanted in depth; MIT 6.5950 is a full course by itself."
+prereq_changes: "Add soft: [computer-architecture] to hard if the hardware half is required (caches, speculation, branch prediction)."
+open_questions:
+  - "6.566 Panopto: confirmed one lecture viewer page loads without login; did not verify all 20 recordings."
+  - "6.5950 2026 videos are on a Panopto folder that requires login; confirm whether 2025 lectures are public."
+last_verified: 2026-11-18

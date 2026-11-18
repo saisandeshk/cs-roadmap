@@ -1,0 +1,139 @@
+id: fuzzing-and-vuln-discovery
+title: Fuzzing & Vulnerability Discovery
+group: G12
+paths: [security]
+hard: [security-fundamentals]
+soft: [program-analysis, binary-exploitation]
+scope: "Coverage-guided fuzzing, sanitizers, grammar/structure-aware fuzzing, symbolic execution for bug finding."
+
+level: intermediate
+estimated_hours: 60
+resources:
+  - id: fuzzing-book
+    role: primary-text
+    kind: book
+    title: "The Fuzzing Book: Tools and Techniques for Generating Software Tests"
+    by: "Andreas Zeller, Rahul Gopinath, Marcel Boehme, Gordon Fraser, Christian Holler"
+    url: https://www.fuzzingbook.org/
+    edition_or_term: "Online interactive notebooks, last update 2024-07-01"
+    access: free
+    use: "Part II Lexical Fuzzing (Fuzzing, Code Coverage, Mutation-Based, Greybox, Search-Based); Part III Syntactic Fuzzing (Grammars, Efficient Grammar Fuzzing, Parsing, Probabilistic Grammar, Greybox Fuzzing with Grammars, Reducing Failure-Inducing Inputs); Part IV Semantic Fuzzing (Concolic Fuzzing, Symbolic Fuzzing, Fuzzing with Constraints); Part VI Fuzzing in the Large and When to Stop."
+    why: "Runnable, from-scratch Python implementations of every core idea (mutation, coverage feedback, grammars, concolic/symbolic) so you understand what AFL-class tools do before using them. Free."
+    verified: true
+  - id: cispa-security-testing
+    role: secondary
+    kind: course
+    title: "CISPA Security Testing (Fuzzing) lecture, Zeller et al."
+    by: "Andreas Zeller, Valentin Huber, Alexander Liggesmeyer, Tural Mammadov (CISPA)"
+    url: https://cms.cispa.saarland/fuzzing25
+    edition_or_term: "WS 2025/26 (Oct 21 2025 - Feb 3 2026)"
+    access: account-required
+    use: "Use the weekly topic list as a syllabus over the Fuzzing Book chapters; the Dec 16 lecture slides (Fuzzing with Constraints / Fandango) are public."
+    why: "The only currently-taught university course built on the Fuzzing Book; provides the pacing and project structure. Recordings and assignments are not clearly public, so it is a syllabus aid rather than primary."
+    verified: true
+    course:
+      latest_term: "WS 2025/26"
+      latest_url: https://cms.cispa.saarland/fuzzing25
+      videos: unknown
+      assignments: restricted
+  - id: afl-docs
+    role: secondary
+    kind: docs
+    title: "AFL++ documentation (incl. Fuzzing in Depth)"
+    by: "AFLplusplus project"
+    url: https://aflplus.plus/docs/
+    edition_or_term: "Current stable"
+    access: free
+    use: "Fuzzing in depth (instrumentation modes, persistent mode, dictionaries, parallel fuzzing, QEMU/Frida modes for binaries), best practices, status screen reading."
+    why: "The reference for the industry-standard coverage-guided fuzzer; covers the closed-source/binary gap the Fuzzing Book leaves."
+    verified: true
+  - id: libfuzzer
+    role: secondary
+    kind: docs
+    title: "libFuzzer + Google fuzzing docs (Good Fuzz Target) + OSS-Fuzz"
+    by: "LLVM project; Google"
+    url: https://llvm.org/docs/LibFuzzer.html
+    edition_or_term: "Current LLVM docs"
+    access: free
+    use: "libFuzzer docs; then the 'good fuzz target' guide (raw.githubusercontent.com/google/fuzzing/master/docs/good-fuzz-target.md) and OSS-Fuzz docs (google.github.io/oss-fuzz) for the continuous-fuzzing workflow."
+    why: "In-process library fuzzing and harness writing are how most real bugs are found today; gap between textbook fuzzers and production use."
+    verified: true
+  - id: tob-testing-handbook
+    role: secondary
+    kind: website
+    title: "Trail of Bits Testing Handbook (appsec.guide): Fuzzing chapters"
+    by: "Trail of Bits"
+    url: https://appsec.guide/
+    edition_or_term: "Living; no date"
+    access: free
+    use: "Fuzzing: libFuzzer, AFL++, LibAFL, cargo-fuzz (Rust), Python/Ruby fuzzing, writing harnesses, dictionaries, AddressSanitizer, OSS-Fuzz, snapshot fuzzing; Cryptographic testing (Wycheproof); Static analysis (CodeQL, Semgrep) as a complement."
+    why: "Hidden gem: practitioner-written, language-by-language fuzzing how-tos (including Rust and Python) and harness patterns that no textbook has."
+    verified: true
+  - id: asan-docs
+    role: reference
+    kind: docs
+    title: "AddressSanitizer (Clang docs)"
+    by: "LLVM / Google"
+    url: https://clang.llvm.org/docs/AddressSanitizer.html
+    edition_or_term: "Current"
+    access: free
+    use: "Usage, flags, reading ASan reports; then UBSan, MSan, TSan pages in the same doc set."
+    why: "Sanitizers are the oracle that turns fuzzer-generated inputs into bug reports; gap: the Fuzzing Book mostly uses Python crashes."
+    verified: true
+  - id: fuzzing-survey
+    role: reference
+    kind: paper
+    title: "The Art, Science, and Engineering of Fuzzing: A Survey"
+    by: "Valentin Manes et al. (IEEE TSE)"
+    url: https://arxiv.org/abs/1812.00140
+    edition_or_term: "2018/2019"
+    access: free
+    use: "Sections on the fuzzing model (seed scheduling, mutation, input evaluation, configuration updating) and taxonomy; read after the Fuzzing Book for the research map."
+    why: "Common vocabulary and taxonomy of fuzzers; orientation for reading papers."
+    verified: true
+  - id: angr-klee
+    role: secondary
+    kind: docs
+    title: "angr documentation and KLEE tutorials (symbolic execution for bug finding)"
+    by: "angr project; KLEE project"
+    url: https://docs.angr.io/
+    edition_or_term: "Current"
+    access: free
+    use: "angr: core concepts, symbolic execution, exploration techniques, and the CTF examples; KLEE: klee-se.org/docs tutorials (testing a regular expression library, first KLEE tutorial); pair with Nightmare section 6 (Z3 and angr)."
+    why: "Fills the 'symbolic execution for bug finding' part of the scope with real tools."
+    verified: true
+  - id: fuzzing101
+    role: practice
+    kind: practice-site
+    title: "Fuzzing101"
+    by: "Antonio Morales"
+    url: https://github.com/antonio-morales/Fuzzing101
+    edition_or_term: "10 exercises; last changelog entries 2021-2022"
+    access: free
+    use: "Exercises 1-7 (Xpdf, libexif, TCPdump, LibTIFF, libxml2, GIMP, VLC) with AFL++, ASan and coverage; exercise 10 (Chrome V8 via Fuzzilli) as stretch."
+    why: "Hands-on reproduction of real CVEs with AFL++; practice for harness writing and triage. Dated tooling versions (2021), expect to adapt to current AFL++."
+    verified: true
+  - id: mit-lab3
+    role: practice
+    kind: practice-site
+    title: "MIT 6.566 Lab 3: Symbolic execution (zoobar)"
+    by: "MIT 6.566 staff"
+    url: https://css.csail.mit.edu/6.566/2026/labs/lab3.html
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Build a concolic execution engine for Python (Z3-based) and use it to find bugs in the zoobar app."
+    why: "A guided build of a symbolic-execution tool, complementing the Fuzzing Book concolic/symbolic chapters."
+    verified: true
+considered:
+  - {title: "Fuzzing: Brute Force Vulnerability Discovery / Sutton et al.", url: "https://www.fuzzingbook.org/", reason: "2007 book; superseded by the Fuzzing Book for coverage-guided methods."}
+  - {title: "Stanford/CMU-style full fuzzing course with public videos", url: "https://cms.cispa.saarland/fuzzing25", reason: "No fully public, recorded, current fuzzing course found; CISPA course is the closest."}
+  - {title: "Rust Fuzz Book (cargo-fuzz)", url: "https://rust-fuzz.github.io/book/", reason: "Good Rust-specific guide; covered by the Trail of Bits handbook in a language-agnostic path."}
+  - {title: "Practical Binary Analysis ch. 12-13 (symbolic execution, Triton)", url: "https://nostarch.com/binaryanalysis", reason: "Already in binary-exploitation; optional reading here."}
+  - {title: "Ringzer0 / DEF CON trainings (e.g. Fuzzing the Linux Kernel)", url: "https://ringzer0.training/", reason: "Paid, time-boxed live training; not a stable learning resource."}
+notes: "No primary-course: I found no currently taught fuzzing course with public recordings. The Fuzzing Book itself is the best text and the CISPA course follows it. Ground truth for learning is Fuzzing Book -> AFL++/libFuzzer docs and Trail of Bits handbook -> Fuzzing101. Static analysis is G11's node."
+split_proposal: null
+prereq_changes: "None. Soft prereq on program-analysis is correct for the symbolic execution component."
+open_questions:
+  - "CISPA recordings: the Fuzzing Book is said to offer video lectures per chapter but I did not verify a public video link."
+  - "Could not open github.com pages with curl (403); Fuzzing101 and AFL++ details come from WebFetch."
+last_verified: 2026-11-18

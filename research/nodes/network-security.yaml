@@ -1,0 +1,137 @@
+id: network-security
+title: Network Security
+group: G12
+paths: [security]
+hard: [security-fundamentals, computer-networking]
+soft: []
+scope: "TLS, network attacks and defenses, firewalls, DDoS, protocol security."
+
+level: intermediate
+estimated_hours: 60
+resources:
+  - id: cs161-network
+    role: primary-text
+    kind: book
+    title: "CS 161 textbook: Network Security part (Ch. 25-39)"
+    by: "David Wagner, Nicholas Weaver, Peyrin Kao et al."
+    url: https://textbook.cs161.org/
+    edition_or_term: "Online, maintained"
+    access: free
+    use: "Ch. 25 Introduction to Networking, 26 ARP, 27 DHCP, 28 WPA, 29 BGP, 30 TCP and UDP, 31 TLS, 32 DNS, 33 DNSSEC, 34 DoS, 35 Firewalls, 36 Intrusion Detection, 37 Abusing IDS, 38 Malware, 39 Anonymity and Tor; Ch. 13 Certificates beforehand."
+    why: "The only free, coherent, current treatment of the whole scope (low-level attacks, DNS/DNSSEC, TLS, DoS, firewalls, IDS, Tor) written by Nicholas Weaver."
+    verified: true
+  - id: cs161-network-lectures
+    role: primary-course
+    kind: course
+    title: "UC Berkeley CS 161 networking block (lectures)"
+    by: "Nicholas Weaver / Peyrin Kao, Berkeley"
+    url: https://fa26.cs161.org/
+    edition_or_term: "Fall 2026 (networking block: How the Internet works, low-level network attacks, TLS, what TLS doesn't solve, end-to-end security, network defense)"
+    access: free
+    use: "Only the networking lectures plus the exam-prep discussions on networking; Fall 2025 playlist for the full recordings."
+    why: "Weaver's networking lectures are the best free conceptual treatment of network attacks and TLS; only a slice (about 6-8 lectures) of the course."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://fa26.cs161.org/
+      videos: public
+      public_videos_term: "Fall 2025"
+      public_videos_url: https://www.youtube.com/playlist?list=PLfBkt1-_BHX8kQZhisgrCLAnuAd3-Ek5U
+      assignments: public
+      assignments_url: https://fa26.cs161.org/proj3/
+  - id: bulletproof-tls
+    role: secondary
+    kind: book
+    title: "Bulletproof TLS and PKI, 2nd edition"
+    by: "Ivan Ristic (Feisty Duck)"
+    url: https://www.feistyduck.com/books/bulletproof-tls-and-pki/
+    edition_or_term: "2nd edition, last updated January 2022"
+    access: paid
+    use: "Ch. 1-2 (SSL/TLS and cryptography, TLS 1.3), 3 (TLS 1.2), 4-5 (PKI and attacks against it), 7-8 (implementation issues, protocol attacks), 10 (HSTS, CSP, pinning), 11 (configuration guide)."
+    why: "Fills depth on TLS and PKI the CS 161 chapters only sketch (cipher suites, certificate validation failures, deployment). Paid, but the definitive practitioner text."
+    verified: true
+  - id: illustrated-tls13
+    role: secondary
+    kind: website
+    title: "The Illustrated TLS 1.3 Connection: Every Byte Explained"
+    by: "Michael Driscoll"
+    url: https://tls13.xargs.org/
+    edition_or_term: "Static; RFC 8446"
+    access: free
+    use: "Walk through the full handshake byte by byte once; then read RFC 8446 sections 2 and 4 side by side."
+    why: "Hidden gem: shows exactly what is on the wire; ties crypto to protocol."
+    verified: true
+  - id: rfc8446
+    role: reference
+    kind: docs
+    title: "RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3"
+    by: "IETF"
+    url: https://datatracker.ietf.org/doc/html/rfc8446
+    edition_or_term: "2018"
+    access: free
+    use: "Sections 2 (protocol overview), 4 (handshake), 7 (key schedule), Appendix E (security properties)."
+    why: "Canonical spec for the protocol the node centers on."
+    verified: true
+  - id: mit-6566-net
+    role: secondary
+    kind: course
+    title: "MIT 6.566 network lectures (TCP/IP, secure channels, certificates, user authentication, Tor, messaging)"
+    by: "MIT 6.566 staff"
+    url: https://css.csail.mit.edu/6.566/2026/
+    edition_or_term: "Spring 2026, lectures 12-16, 18, 20"
+    access: free
+    use: "Lectures on network security, secure channels (TLS 1.3), certificates, user authentication (WebAuthn), messaging security (Signal), anonymous communication (Tor); Lab 5 HTTPS and WebAuthn."
+    why: "Paper-based second view on the same material with protocol analysis rigor; videos public."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://css.csail.mit.edu/6.566/2026/
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLA6Ht2dJt3SId7vE9P5mppWdj65_l6hl7
+      assignments: public
+      assignments_url: https://css.csail.mit.edu/6.566/2026/labs/lab5.html
+  - id: pwncollege-intercept
+    role: practice
+    kind: practice-site
+    title: "pwn.college Intercepting Communication module"
+    by: "pwn.college"
+    url: https://pwn.college/intro-to-cybersecurity/intercepting-communication/
+    edition_or_term: "17 lessons, 29 challenges"
+    access: free
+    use: "All challenges: network sniffing, ARP/MITM, TCP hijack, packet crafting and spoofing in a hosted network."
+    why: "Hands-on packet-level attacks (ARP spoofing, TCP injection) with graded challenges."
+    verified: true
+  - id: cs155-proj3
+    role: practice
+    kind: practice-site
+    title: "Stanford CS 155 Project 3: Network Security"
+    by: "Stanford CS 155 staff"
+    url: https://cs155.stanford.edu/
+    edition_or_term: "Spring 2026 (proj3.pdf and proj3_starter.zip public)"
+    access: free
+    use: "Project 3 handout and starter code (network attack/defense exercises)."
+    why: "Course-grade project with starter code to practice; assignment contents not fully inspected."
+    verified: true
+  - id: wireshark
+    role: practice
+    kind: tool
+    title: "Wireshark"
+    by: "Wireshark Foundation"
+    url: https://www.wireshark.org/
+    edition_or_term: "Current"
+    access: free
+    use: "Capture and dissect a DNS lookup, a TCP handshake, and a TLS 1.3 handshake; compare with tls13.xargs.org."
+    why: "Core tool for seeing the protocols; pairs with the illustrated TLS page."
+    verified: true
+considered:
+  - {title: "Stanford CS 155 (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Network lectures not public; project 3 used as practice."}
+  - {title: "Real-World Cryptography (Wong), TLS/Noise/E2EE chapters", url: "https://www.manning.com/books/real-world-cryptography", reason: "Better placed in applied-cryptography."}
+  - {title: "Security Engineering 3e, network attack and defence chapter", url: "https://www.cl.cam.ac.uk/~rja14/book.html", reason: "Strong survey but 3e not fully free."}
+  - {title: "Cloudflare Learning Center (DDoS, DNS, TLS)", url: "https://www.cloudflare.com/learning/", reason: "Good plain-language intros but marketing-flavored; site returned a bot challenge to curl so not verified."}
+notes: "No standalone network-security course with public videos matches this scope better than Berkeley's networking block; MIT 6.566 adds secure-channel depth. TLS internals are in applied-cryptography as well (protocols), so some overlap: network-security focuses on attacks (ARP/DNS/BGP/DoS), PKI deployment and defenses."
+split_proposal: null
+prereq_changes: "Add soft: [applied-cryptography] (TLS crypto) or note overlap."
+open_questions:
+  - "CS155 project 3 contents not opened in detail."
+  - "BGP/RPKI and DDoS-specific resources are thin; no good standalone free source found."
+last_verified: 2026-11-18
