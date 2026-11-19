@@ -35,6 +35,7 @@ resources:
       latest_term: "Spring 2026"
       latest_url: https://cs336.stanford.edu/
       videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
       assignments: public-with-autograder
       assignments_url: https://github.com/stanford-cs336/assignment4-data
   - id: cs336-a4

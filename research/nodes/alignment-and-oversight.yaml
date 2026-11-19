@@ -12,6 +12,17 @@ scope: RLHF failure modes, reward hacking, scalable oversight, debate, weak-to-s
 level: advanced
 estimated_hours: 50
 resources:
+- id: core-reading-spine
+  role: primary-text
+  kind: paper
+  title: 'Core reading spine: Casper et al. (RLHF limits), Gao et al. (over-optimization), Burns et al. (weak-to-strong), Greenblatt et al. (AI control)'
+  by: Casper et al.; Gao, Schulman, Hilton; Burns et al.; Greenblatt et al.
+  url: https://arxiv.org/abs/2307.15217
+  edition_or_term: TMLR 2023; ICML 2023; ICML 2024; arXiv 2023
+  access: free
+  use: 'Read in order: Open Problems and Fundamental Limitations of RLHF (2307.15217; full survey: problems with feedback, reward model, policy; tractable vs fundamental limitations), Scaling Laws for Reward Model Overoptimization (https://arxiv.org/abs/2210.10760; gold vs proxy reward and KL), Weak-to-Strong Generalization (https://arxiv.org/abs/2312.09390), AI Control: Improving Safety Despite Intentional Subversion (https://arxiv.org/abs/2312.06942). Then branch into the secondary paper bundles and use the BlueDot list as a map.'
+  why: 'A stable, fixed set of four papers covering the scope (RLHF failure modes, reward hacking, weak-to-strong, AI control) in place of a cohort reading list whose contents change; the four titles were confirmed on arXiv.'
+  verified: true
 - id: bluedot-technical-ai-safety
   role: primary-text
   kind: website
@@ -59,17 +70,6 @@ resources:
     public_videos_url: https://youtube.com/playlist?list=PL_b4B2IWlal3j01Rbj5ebT663E7x4bl_W
     assignments: partial
     assignments_url: https://boazbk.github.io/mltheoryseminar/fall2025/
-- id: open-problems-rlhf
-  role: secondary
-  kind: paper
-  title: Open Problems and Fundamental Limitations of RLHF
-  by: Casper et al.
-  url: https://arxiv.org/abs/2307.15217
-  edition_or_term: TMLR 2023
-  access: free
-  use: 'Full survey: problems with feedback, reward model, policy; tractable vs fundamental limitations.'
-  why: The standard catalogue of RLHF failure modes (scope item).
-  verified: true
 - id: overopt-and-cai
   role: secondary
   kind: paper

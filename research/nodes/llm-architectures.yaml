@@ -35,8 +35,8 @@ resources:
       latest_term: "Spring 2026"
       latest_url: https://cs336.stanford.edu/
       videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
       assignments: public-with-autograder
-      assignments_url: https://github.com/stanford-cs336/assignment1-basics
   - id: llms-from-scratch-ch4-bonus
     role: practice
     kind: tool
@@ -53,8 +53,8 @@ resources:
     kind: website
     title: "LLM Architecture Gallery"
     by: "Sebastian Raschka"
-    url: https://sebastianraschka.com/blog/2026/llm-architecture-gallery.html
-    edition_or_term: "Updated 2026-03-14: 93 model cards from 42 articles/reports"
+    url: https://sebastianraschka.com/llm-architecture-gallery/
+    edition_or_term: "Live gallery: 126 models, last updated Nov 18 (page re-checked 2026-11-19); the earlier 2026-03-14 launch post (93 model cards) is https://sebastianraschka.com/blog/2026/llm-architecture-gallery.html"
     access: free
     use: "Use the side-by-side diff tool and fact sheets (attention type, layer recipe, estimated KV-cache growth per token) when comparing two models; also at llm-gallery.com."
     why: "Quick lookup/reference of architecture facts across 90+ models; complements the narrative article."
@@ -78,7 +78,7 @@ resources:
     url: https://arxiv.org/abs/2512.13961
     edition_or_term: "Olmo 3: Nov 2025 (arXiv 2512.13961); OLMo 2: arXiv 2501.00656"
     access: free
-    use: "Architecture and stability sections: post-norm, QK-norm, RoPE/long-context extension, sliding-window layers; skim data/post-training sections (covered in other nodes). OLMo 2 paper (https://arxiv.org/abs/2501.00656) sections on architecture/stability."
+    use: "Architecture and norm sections only: post-norm, QK-norm, RoPE/long-context extension, sliding-window layers; z-loss, LR schedule and mid-training are read in scaling-and-pretraining (olmo3-recipe), data/post-training in other nodes. OLMo 2 paper (https://arxiv.org/abs/2501.00656) architecture/norm sections."
     why: "A fully open 'model flow' (data, code, intermediate checkpoints) so every architecture decision is inspectable; best case study to read after the survey."
     verified: true
   - id: deepseek-v3
@@ -164,10 +164,10 @@ considered:
   - {title: "Hands-On LLMs ch. 3 'Looking Inside Transformer LLMs'", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", reason: "Basic block-level view only; does not cover GQA/MLA/MoE."}
   - {title: "Llama 3 Herd of Models / Qwen3 / Gemma 3 technical reports", url: "https://arxiv.org/abs/2407.21783", reason: "Good primary sources (Qwen3: 2505.09388, Gemma 3: 2503.19786) but already summarised in Raschka's article; read selectively."}
   - {title: "How to Scale Your Model (JAX scaling book)", url: "https://jax-ml.github.io/scaling-book/", reason: "Transformer math and sharding for TPUs; belongs to ML-systems nodes, useful for architecture FLOP/memory accounting."}
-notes: "Primary route: read Raschka's comparison alongside CS336 L3-4, then reimplement 2-3 variants from the LLMs-from-scratch bonus code (GQA, MLA, MoE, sliding window). The field moves fast: Raschka's article and gallery are updated every 1-3 months (latest edit 2026-04-02 adds Gemma 4); revisit before use. The 'numerics' scope item is covered thinly here (DeepSeek-V3 FP8, CS336 L2/L5, nanochat); mixed-precision detail is better in dl-engineering/ML-systems nodes."
+notes: "Primary route: read Raschka's comparison alongside CS336 L3-4, then reimplement 2-3 variants from the LLMs-from-scratch bonus code (GQA, MLA, MoE, sliding window). The field moves fast: Raschka's article and gallery are updated every 1-3 months (latest edit 2026-04-02 adds Gemma 4); revisit before use. Currency caveat: the article's last update is 2026-04-02, so models released after April 2026 are not covered; the refresh path is the live gallery plus the Smol Training Playbook and the models' own tech reports. The 'numerics' scope item is covered thinly here (DeepSeek-V3 FP8, CS336 L2/L5, nanochat); mixed-precision detail is better in dl-engineering/ML-systems nodes."
 split_proposal: null
 prereq_changes: "Add soft: [dl-engineering] for the numerics (bf16/fp8) material. Also suggest scaling-and-pretraining list llm-architectures as a soft prerequisite."
 open_questions:
   - "CS336 lecture_03/04 PDFs are on GitHub (not reachable by curl from sandbox); the course page lists them for Spring 2026."
-  - "Raschka's article is a Substack post updated in place; the 2026-04-02 update date was read from the page, later additions (e.g. DeepSeek V4) may exist."
+  - "Raschka's article is a Substack post updated in place; the 2026-04-02 update date was re-read from the page on 2026-11-19, later additions (e.g. DeepSeek V4) may exist."
 last_verified: 2026-11-18

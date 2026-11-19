@@ -80,7 +80,7 @@ resources:
     access: free
     use: "Perplexity definition and decoding/sampling methods (greedy, top-k/top-p, temperature) as a precise reference while implementing."
     why: "Clean mathematical statement of LM evaluation (perplexity, bits-per-byte relationship) and decoding that implementation-first sources gloss over."
-    verified: false
+    verified: true
   - id: bpe-paper
     role: reference
     kind: paper
@@ -99,10 +99,10 @@ considered:
   - {title: "Hands-On Large Language Models (Alammar, Grootendorst, O'Reilly 2024)", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", reason: "Excellent visual intuition but uses pretrained models via libraries; does not build a GPT."}
   - {title: "CMU 11-711 Advanced NLP (Spring 2026)", url: "https://cmu-l3.github.io/anlp-spring2026/", reason: "Good code-walkthrough repos for LM fundamentals/pretraining, but no public lecture recordings found for 2025-26; CS336 is more implementation-focused."}
   - {title: "Karpathy micrograd / makemore alone", url: "https://karpathy.ai/zero-to-hero.html", reason: "Included as secondary; not enough alone for tokenization and training-at-scale details."}
-notes: "Primary route: Raschka ch. 2-5 (free code) with Karpathy's GPT/tokenizer videos for intuition, then do CS336 Lectures 1-2 and Assignment 1 as the graded implementation, optionally nanochat as capstone. Prereqs 'transformers' (the architecture concept) and 'dl-engineering' (PyTorch training loops, mixed precision) are real: A1 gives no scaffolding. The 'LM evaluation basics' in scope = perplexity/bits-per-byte (SLP3 ch. 3/7, book ch. 5, nanochat base_eval); full evaluation methodology is in llm-evaluation."
+notes: "Primary route: Raschka ch. 2-5 (free code) with Karpathy's GPT/tokenizer videos for intuition, then do CS336 Lectures 1-2 and Assignment 1 as the graded implementation, optionally nanochat as capstone. CS336 A1 is the capstone, not the entry point (heavy, unscaffolded, about 5 units of work); Karpathy's Let's build GPT and Let's reproduce GPT-2 videos are the lighter free route into it. Prereqs 'transformers' (the architecture concept) and 'dl-engineering' (PyTorch training loops, mixed precision) are real: A1 gives no scaffolding. The 'LM evaluation basics' in scope = perplexity/bits-per-byte (SLP3 ch. 3/7, book ch. 5, nanochat base_eval); full evaluation methodology is in llm-evaluation."
 split_proposal: null
 prereq_changes: "None. Optional: add soft: [nlp-foundations] (n-gram LM and perplexity background)."
 open_questions:
-  - "SLP3 7.pdf URL not individually fetched (web.stanford.edu HTTPS unreachable from sandbox; chapter 7 confirmed on the index page as 'Transformers and Pretraining')."
+  - "SLP3 7.pdf: web.stanford.edu works over http:// only from the sandbox; chapter 7 is listed on the Aug 19 2026 index as 'Transformers and Pretraining' and 7.pdf returns application/pdf over http (re-checked 2026-11-19), so verified is true."
   - "Karpathy's Zero to Hero page does not list the GPT-2 reproduction lecture; verified the video separately via YouTube oEmbed."
 last_verified: 2026-11-18

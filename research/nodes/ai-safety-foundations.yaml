@@ -22,16 +22,32 @@ resources:
   use: 'Read online: chapter summaries and chapters on AI risk sources (malicious use, AI races, organizational risks, rogue AIs), technical safety (opaqueness, proxy gaming, adversarial robustness), collective action, and governance. Use the curriculum page (https://www.aisafetybook.com/curriculum) for slides and lecture videos per chapter.'
   why: The only textbook-format, free and regularly maintained survey that covers risk landscape, technical problems and governance; includes slides and an audiobook. Print edition from Taylor and Francis.
   verified: true
-- id: harvard-cs2881r
+- id: hendrycks-course
   role: primary-course
   kind: course
-  title: Harvard CS 2881R AI Safety
+  title: AI Safety, Ethics, and Society course (curriculum with chapter lectures and slides)
+  by: Dan Hendrycks (Center for AI Safety)
+  url: https://www.aisafetybook.com/curriculum
+  edition_or_term: Curriculum page (weeks 1-8 plus appendices); cohort course not currently run
+  access: free
+  use: 'Follow the eight-week curriculum alongside the textbook: Week 1 AI fundamentals, 2 catastrophic AI risks, 3 single-agent safety, 4 safety engineering, 5 complex systems, 6 beneficial AI and machine ethics, 7 collective action problems, 8 governance. Each week links a chapter, a lecture video (YouTube, Center for AI Safety) and slides.'
+  why: 'Intro-level fit for this node (no technical or proof prerequisites; the course page says no prior technical AI knowledge is assumed) and it is the textbook author''s own course, so lectures match the primary text; replaces the graduate-level Harvard course, kept as an advanced follow-up.'
+  verified: true
+  course:
+    latest_term: Self-paced curriculum page (cohort course not currently being run)
+    latest_url: https://www.aisafetybook.com/curriculum
+    videos: public
+    assignments: none
+- id: harvard-cs2881r
+  role: secondary
+  kind: course
+  title: Harvard CS 2881R AI Safety (advanced follow-up)
   by: Boaz Barak (Harvard)
   url: https://boazbk.github.io/mltheoryseminar/
   edition_or_term: Fall 2026 (current); Fall 2025 archive
   access: free
-  use: 'Fall 2025 archive lectures (https://boazbk.github.io/mltheoryseminar/fall2025/): Introduction, Modern LLM Training, Adversarial Robustness, Model Specifications, Content Policies, Recursive Self-Improvement, Capabilities vs Safety, Scheming and Deception, Interpretability, plus the lecture notes (LessWrong tag cs-2881r) and student experiments. The Fall 2026 page lists new lectures (cyber capabilities, reward hacking, frontier regulation, biosecurity).'
-  why: 'A graduate course with public YouTube lectures, blog-post notes and student experiments, taught by a theoretical computer scientist; the newest and most complete university-grade course on alignment and safety. Prerequisite: undergraduate ML level (matches deep-learning-fundamentals).'
+  use: 'After the Hendrycks course. Lectures used for this node (Fall 2025 archive https://boazbk.github.io/mltheoryseminar/fall2025/): Introduction, Modern LLM Training, Capabilities vs Safety, Content Policies, plus the lecture notes (LessWrong tag cs-2881r); Fall 2026 adds Cyber Capabilities, Frontier AI Regulation, AI Biosecurity & AI Policy. The alignment-method lectures (Model Specifications, Scheming and Deception, Recursive Self-Improvement, Interpretability; Fall 2026 Grading and Reward Hacking, Model Policies, Alignment and Recursive Self-Improvement) are assigned to alignment-and-oversight.'
+  why: 'Newest university-grade course with public YouTube lectures, blog-post notes and student experiments. Graduate level: the page requires mathematical maturity (proofs, probability, information theory) plus ML foundations at the level of CS 181 or MIT 6.036, and Fall 2026 requires in-person attendance, so it is too heavy as the intro course for this node.'
   verified: true
   course:
     latest_term: Fall 2026 (running)
@@ -94,10 +110,10 @@ resources:
   role: secondary
   kind: paper
   title: Concrete Problems in AI Safety and The Alignment Problem from a Deep Learning Perspective
-  by: Amodei et al.; Ngo, Chan, Mindermann; Shevlane et al.
+  by: Amodei et al.; Ngo, Chan, Mindermann
   url: https://arxiv.org/abs/1606.06565
   access: free
-  use: 'Concrete Problems (2016): side effects, reward hacking, scalable supervision, safe exploration, distributional shift; The Alignment Problem from a DL Perspective (https://arxiv.org/abs/2209.00626): situational awareness, misaligned goals, deceptive alignment; Model evaluation for extreme risks (https://arxiv.org/abs/2305.15324).'
+  use: 'Concrete Problems (2016): side effects, reward hacking, scalable supervision, safe exploration, distributional shift; The Alignment Problem from a DL Perspective (https://arxiv.org/abs/2209.00626): situational awareness, misaligned goals, deceptive alignment; (Model evaluation for extreme risks, 2305.15324, is assigned to evals-and-red-teaming.)'
   why: The primary-source problem statements that the textbook and courses build on.
   verified: true
 - id: spec-gaming
@@ -154,7 +170,7 @@ considered:
 - title: NIST AI Risk Management Framework
   url: https://www.nist.gov/itl/ai-risk-management-framework
   reason: Governance reference listed in owner seed; not opened here.
-notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Harvard CS 2881R is a graduate course (proof-level maturity assumed) so some learners may prefer BlueDot AGI Strategy as the first pass. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
+notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Primary course is the Hendrycks course (intro level, matches the textbook); Harvard CS 2881R is graduate level (proof-level maturity, in-person in Fall 2026) so it is a secondary follow-up, and some learners may prefer BlueDot AGI Strategy as a first pass. Hendrycks course page: per-week video links present (two checked via YouTube oEmbed), slides are Google Drive links not opened. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
 split_proposal: null
 prereq_changes: Consider making language-modeling a hard prereq only for later nodes; foundations itself is fine with deep-learning-fundamentals (as in skeleton).
 open_questions:
