@@ -32,7 +32,7 @@ resources:
     why: "Covers the eBPF tracing part of the scope in depth with a tool catalog (opensnoop, biolatency, runqlat, ...) that SP2e only introduces; the practical follow-up to SP2e ch. 15."
     verified: true
   - id: bootlin-debugging
-    role: primary-course
+    role: secondary
     kind: course
     title: "Bootlin: Linux debugging, profiling, tracing and performance analysis"
     by: "Bootlin (Thomas Petazzoni and team)"
@@ -40,7 +40,7 @@ resources:
     edition_or_term: "current slides/labs release (rolling; checked 2026-11-18)"
     access: free
     use: "Slides (debugging-slides.pdf) for GDB/strace/ltrace, valgrind, perf, ftrace/trace-cmd, kernel oops and profiling, LTTng, eBPF; do the practical labs (BeaglePlay or STM32MP1 board version, or adapt to a local Linux VM). Skip embedded-board-specific parts."
-    why: "Only structured, fully public course with labs covering perf, ftrace, eBPF and tracing on Linux; slides and lab data are CC-BY-SA. Weaker on methodology (use SP2e) and aimed at embedded boards."
+    why: "Tool tour with free slides and labs: gdb, strace, valgrind, perf, ftrace/trace-cmd, eBPF tools and kernel debugging (CC-BY-SA). Not a primary course: it is a 3-day paid embedded-Linux training whose free materials target STM32MP1/BeaglePlay boards and do not teach the USE method or disk/network analysis methodology."
     verified: true
     course:
       latest_term: "rolling release (page lists 2026 sessions; slide date not checked)"
@@ -120,7 +120,7 @@ considered:
   - {title: "Performance Ninja and Bakhvalov's book", url: "https://github.com/dendibakh/perf-ninja", reason: "Microarchitecture-level tuning; assigned to performance-engineering."}
   - {title: "ebpf.io documentation and eBPF Summit talks", url: "https://ebpf.io/what-is-ebpf/", reason: "Official overview of the technology; use for concept clarification only."}
   - {title: "Performance course from a university (e.g., Gregg-style methods taught in a course)", url: "https://www.brendangregg.com/usemethod.html", reason: "I found no university course with public videos for observability/performance analysis; Bootlin's training is the best structured public alternative."}
-notes: "No strong video course exists for this node. Bootlin is listed as primary-course because it has public slides and labs covering the tools named in the scope, but it is embedded-flavoured and has no videos; owner may prefer to leave primary-course empty and rely on SP2e plus Gregg's site. Systems Performance 2e remains the right primary text (a 3rd edition has not been announced on the author's site as of the check)."
+notes: "No primary-course: I found no course with public videos for performance analysis/observability methodology. Bootlin's debugging/profiling/tracing training was demoted to secondary after review R2 (embedded, tool-focused, no methodology). The route is Systems Performance 2e plus Gregg's site, then BPF Performance Tools and the bpftrace/BCC/FlameGraph practice. Systems Performance 2e remains the right primary text (no 3rd edition announced on the author's site as of the check)."
 split_proposal: null
 prereq_changes: "Add soft: [linux-or-shell/command-line tools] (if such a node exists in G1); eBPF practice needs a root Linux VM."
 open_questions:

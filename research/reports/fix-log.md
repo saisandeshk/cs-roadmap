@@ -15,3 +15,11 @@
 - learning-theory, computational-complexity, quantum-computing: exercise rows duplicating primary folded in; S-S&B PDF + EE531 caveat noted.
 - approximation-algorithms: practice -> Fall 2021 homeworks 0-6.
 - Declined: CS 170 videos stay `unknown` (no evidence).
+
+## G4 Machine & OS (R2)
+- operating-systems: primary course -> Toronto ECE344 Fall 2024 (all lectures public); CS 162 secondary (HW4, Project 0). OSTEP split: OS node ch.36-37, 39-40, 42; storage node ch.38, 41, 43-45.
+- storage-and-file-systems (must-fix): ETH storage URL fixed (doku.php?id=modern_ssds), added as secondary (SSD-only); duplicate MIT fs lab and VFS docs removed.
+- parallel-programming: primary course -> CMU 15-418 Fall 2026 (public videos, OpenMP/MPI); CS149 secondary; A1-A4 and 6.172 pointers fixed (L7-L8); Aalto ch.2 only in performance-engineering.
+- performance-analysis: Bootlin demoted to secondary; no primary course.
+- computer-architecture: MIPS caveat, ETH ID 227-0003-10V, Drepper moved, venus id, Lab 8/Project 4. concurrent-programming: ThreadSanitizer/loom added. linux-kernel-internals, virtualization-and-containers, performance-engineering, os-kernel-implementation, computer-systems: dedupes and small fixes.
+- Declined: distinct storage text (McKusick page 404); ETH storage as primary (SSD-only scope).

@@ -29,7 +29,7 @@ resources:
     edition_or_term: "Fall 2026"
     access: mixed
     use: "Schedule/slides for the lecture order; labs L0-L8 (C programming, data, bomb, attack, cache, malloc, shell, proxy, SFS) for practice. For self-study, watch the Fall 2015 recorded lectures and use the CS:APP self-study versions of the labs."
-    why: "The course CS:APP was written for; current term's slides and lab list are public, and the public 2015 recordings track the 3rd-edition book chapter by chapter."
+    why: "The course CS:APP was written for; current term's slides and lab list are public, and the public Fall 2015 recordings use the same 3rd-edition textbook as Fall 2026, chapter by chapter."
     verified: true
     course:
       latest_term: "Fall 2026"

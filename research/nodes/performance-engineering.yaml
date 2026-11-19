@@ -28,7 +28,7 @@ resources:
     url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
     edition_or_term: "OCW Fall 2018; MIT calendar lists 6.1060 for Spring 2026"
     access: free
-    use: "Watch lectures 1-17 in order: matrix-multiply case study, Bentley's rules, bit hacks, architecture and vectorization, C to assembly, multicore programming, races and parallelism, analysis of multithreaded algorithms (work/span), compilers, measurement and timing, storage allocation, caching and cache-oblivious algorithms, nondeterministic programming, synchronization without locks. Do HW1-HW9 and Projects 1-3 (OCW 'Assignments' and 'Projects' pages)."
+    use: "Watch lectures 1-17 in order: matrix-multiply case study, Bentley's rules, bit hacks, architecture and vectorization, C to assembly, multicore programming, races and parallelism, analysis of multithreaded algorithms (work/span), compilers, measurement and timing, storage allocation, caching and cache-oblivious algorithms, nondeterministic programming, synchronization without locks. L18-L23 (DSLs/autotuning, Leiserchess, TSP tuning, graph optimization, dynamic languages) are optional case studies. Do HW1-HW9 and Projects 1-3 (OCW 'Assignments' and 'Projects' pages)."
     why: "Only complete public course that teaches work/span, cache-efficient algorithms, vectorization, bit hacks and measurement together; the 2018 offering has all lecture videos, slides, assignments and project writeups free on OCW."
     verified: true
     course:
@@ -102,8 +102,19 @@ resources:
     url: https://www.akkadia.org/drepper/cpumemory.pdf
     edition_or_term: "2007"
     access: free
-    use: "Cache organization, prefetching, TLB, NUMA: sections 3 (CPU caches), 5 (NUMA), 6 (what programmers can do)."
-    why: "Classic mental model for cache-friendly code; complements Algorithmica's cache chapters."
+    use: "Sections 2-3 (RAM and CPU caches: associativity, write policy, coherence), 4 (virtual memory/TLB), 5 (NUMA) and 6 (what programmers can do)."
+    why: "Classic mental model for cache-friendly code; complements Algorithmica's cache chapters. Assigned only here within G4 (removed from computer-architecture)."
+    verified: true
+  - id: lemire-blog
+    role: reference
+    kind: website
+    title: "Daniel Lemire's blog"
+    by: "Daniel Lemire"
+    url: https://lemire.me/blog/
+    edition_or_term: "ongoing"
+    access: free
+    use: "Search by topic when doing vectorization and bit-hack work: SIMD parsing/UTF-8 validation, fast division and modulo, hashing, branchless code, benchmarking methodology; follow the links to the simdjson/simdutf papers."
+    why: "Hidden gem: the standard source of measured SIMD and bit-manipulation idioms with code, complementing Algorithmica's case studies."
     verified: true
   - id: computer-enhance
     role: secondary
@@ -117,7 +128,6 @@ resources:
     why: "Hidden-gem video series that builds intuition for CPU cost models from the ground up, in a different style from the university courses; some content is free, some part of a paid course (access mixed, not verified in detail)."
     verified: true
 considered:
-  - {title: "Daniel Lemire's blog and simdjson/simdutf papers", url: "https://lemire.me/blog/", reason: "Excellent source of vectorization/bit-hack idioms; articles not a curriculum, so left as optional reading."}
   - {title: "Rust Performance Book / Optimizing C++ (Agner)", url: "https://www.agner.org/optimize/", reason: "Agner kept as reference; Rust book is G1's language territory."}
   - {title: "CMU 15-418/618 performance lectures (Performance Optimization I/II, Performance Analysis/Profiling)", url: "https://www.cs.cmu.edu/~418/schedule.html", reason: "Parallel-computing flavor, assigned to parallel-programming; the same videos are useful here for parallel profiling."}
   - {title: "Computer Architecture: A Quantitative Approach, 7th ed.", url: "https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5", reason: "Reference for memory-hierarchy and DLP analysis; too heavy as a text for this node."}

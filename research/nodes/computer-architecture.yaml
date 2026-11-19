@@ -28,7 +28,7 @@ resources:
     url: https://cs61c.org/
     edition_or_term: "Fall 2026 (Dan Garcia)"
     access: mixed
-    use: "Follow the Fall 2026 calendar and labs/projects: Labs 3-4 (RISC-V, calling convention), Lab 5 (Logisim), Lab 6 (CPU, pipelining), Lab 7 (parallelism); Projects 2 (CS61Classify, RISC-V assembly) and 3 (CS61CPU, build a pipelined RISC-V CPU). Use the 2020 recordings or course notes for lecture content."
+    use: "Follow the Fall 2026 calendar and labs/projects: Labs 3-4 (RISC-V, calling convention), Lab 5 (Logisim), Lab 6 (CPU, pipelining), Lab 7 (parallelism); Projects 2 (CS61Classify, RISC-V assembly) and 3 (CS61CPU, build a pipelined RISC-V CPU); optional Lab 8/Project 4 (61kaChow) for SIMD and multithreading. Use the 2020 recordings or course notes for lecture content."
     why: "Takes a C programmer through RISC-V assembly, a CPU built in a logic simulator, caches, virtual memory and parallelism, with real labs/projects. Closest match to the scope; public notes, labs and projects every term."
     verified: true
     course:
@@ -53,32 +53,21 @@ resources:
   - id: eth-ddca
     role: secondary
     kind: course
-    title: "ETH Zurich Digital Design and Computer Architecture (Onur Mutlu)"
+    title: "ETH Zurich Digital Design and Computer Architecture (Onur Mutlu), 227-0003-10V"
     by: "ETH Zurich SAFARI group (Onur Mutlu)"
     url: https://safari.ethz.ch/digitaltechnik/spring2026/
     edition_or_term: "Spring 2026 (227-0003-10V)"
     access: free
-    use: "Use the public lecture/livestream playlists for deeper treatment of microarchitecture: ISA and assembly, processor design and pipelining, caches, and the later microarchitecture topics (see the schedule). Do the optional HWs; Verilog labs are good if the owner wants to go toward digital-logic."
+    use: "Use the public lecture/livestream playlists for deeper treatment of microarchitecture: ISA and assembly, processor design and pipelining, caches, and the later microarchitecture topics (see the schedule). Do the optional HWs. Note: the ETH labs and ISA/assembly material are MIPS-based (Labs 7-9 build and program a MIPS processor), so use it for microarchitecture concepts, not for RISC-V ISA practice; Verilog labs suit the digital-logic node."
     why: "Fills the gap of fully public, current-term video lectures (61C's 2026 recordings are enrolled-only) and goes further into microarchitecture; bottom-up from transistors so it overlaps the digital-logic node."
     verified: true
     course:
       latest_term: "Spring 2026"
-      latest_url: https://safari.ethz.ch/ddca/spring2026/doku.php?id=start
+      latest_url: https://safari.ethz.ch/digitaltechnik/spring2026/
       videos: public
       assignments: public
       assignments_url: https://safari.ethz.ch/ddca/spring2026/doku.php?id=labs
-  - id: drepper-memory
-    role: reference
-    kind: paper
-    title: "What Every Programmer Should Know About Memory"
-    by: "Ulrich Drepper"
-    url: https://www.akkadia.org/drepper/cpumemory.pdf
-    edition_or_term: "2007 (Red Hat), still the best single document on caches, TLBs and DRAM for programmers"
-    access: free
-    use: "Sections 2-3 (RAM and CPU caches: associativity, write policy, coherence) and 4 (virtual memory/TLB) after the cache chapter of the main text."
-    why: "Gives the real-hardware detail (cache associativity, coherence, prefetch, TLB) that textbook caches chapters simplify; hardware details have moved on but the model has not."
-    verified: true
-  - id: ripes-venus
+  - id: venus
     role: practice
     kind: tool
     title: "Venus RISC-V simulator (CS 61C)"
@@ -95,7 +84,7 @@ considered:
   - {title: "Computer Architecture: A Quantitative Approach, 7th ed. (Hennessy & Patterson, Elsevier, Dec 2025)", url: "https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5", reason: "Graduate-level reference (OoO, memory hierarchy design, DLP/GPU, warehouse-scale); too heavy for this node, keep for a later advanced-architecture node."}
   - {title: "ETH Computer Architecture (Mutlu) Fall 2026", url: "https://safari.ethz.ch/architecture/fall2026/", reason: "Advanced and memory-centric; public lecture playlists, but it is a graduate-level follow-on rather than the organization node."}
   - {title: "Dive into Systems, architecture chapters", url: "https://diveintosystems.org/", reason: "Already used under computer-systems; its architecture chapters are lighter than 61C."}
-notes: "Primary text and course chosen to match (RISC-V, same course Patterson co-created). CS 61C Fall 2026 recordings are published only to bCourses; the Summer 2020 YouTube playlist is the newest public set I could verify and may be partly out of date (earlier editions used different projects). Check whether cs61c.org/sp26 and fa25 are public: they redirected to CalNet login when fetched, so only fa26 pages are verified. ETH DDCA is listed as secondary because its 2026 videos are fully public."
+notes: "Drepper's memory paper moved to performance-engineering (single G4 home). Primary text and course chosen to match (RISC-V, same course Patterson co-created). CS 61C Fall 2026 recordings are published only to bCourses; the Summer 2020 YouTube playlist is the newest public set I could verify and may be partly out of date (earlier editions used different projects). Check whether cs61c.org/sp26 and fa25 are public: they redirected to CalNet login when fetched, so only fa26 pages are verified. ETH DDCA is listed as secondary because its 2026 videos are fully public."
 split_proposal: null
 prereq_changes: "Consider making digital-logic a soft prerequisite only for the ETH route; the 61C route teaches the needed gates/Logisim internally."
 open_questions:

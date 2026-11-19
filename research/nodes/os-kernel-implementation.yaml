@@ -28,7 +28,7 @@ resources:
     url: https://pdos.csail.mit.edu/6.1810/
     edition_or_term: "Fall 2026 (schedule 'under construction'; Fall 2025 labs used for lab details)"
     access: free
-    use: "Do all labs: util, syscall, pgtbl (page tables), traps, cow (copy-on-write fork), net (network driver), lock, fs (large files, symlinks), mmap. Read the lecture notes (lec/*.txt), do the short homeworks, and read the assigned papers (microkernels, system call interposition, superpages, user-level VM). Use the Fall 2020 videos for lectures."
+    use: "Do all labs: util, syscall, pgtbl (page tables), traps, cow (copy-on-write fork), net (network driver), lock (also listed as concurrency practice in concurrent-programming; do it once), fs (large files, symlinks; with lecture notes l-fs, l-crash, l-journal), mmap. Read the lecture notes (lec/*.txt), do the short homeworks, and read the assigned papers (microkernels, system call interposition, superpages, user-level VM). Use the Fall 2020 videos for lectures."
     why: "The gold-standard hands-on kernel course: every lab is a local, runnable, 'make grade' exercise in a real small Unix kernel; lecture notes, labs and homeworks are public every year."
     verified: true
     course:
@@ -47,7 +47,7 @@ resources:
     url: https://github.com/remzi-arpacidusseau/ostep-projects
     edition_or_term: "current master"
     access: free
-    use: "initial-xv6 (add a syscall), scheduling-xv6-lottery (lottery scheduler), vm-xv6-intro (null-pointer and read-only regions), concurrency-xv6-threads (clone/join kernel threads), filesystems-checker (xv6 fsck)."
+    use: "initial-xv6 (add a syscall), scheduling-xv6-lottery (lottery scheduler), vm-xv6-intro (null-pointer and read-only regions), concurrency-xv6-threads (clone/join kernel threads). The xv6 filesystems-checker project is assigned in storage-and-file-systems."
     why: "Smaller, gentler single-feature projects that make a good warm-up before the MIT labs (or a second pass), each with test scripts."
     verified: true
   - id: os-in-1000-lines

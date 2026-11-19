@@ -130,12 +130,12 @@ resources:
   - id: kernel-storage-docs
     role: reference
     kind: docs
-    title: "Linux kernel docs: VFS, ext4 data structures, block layer, Btrfs and OpenZFS docs"
+    title: "Linux kernel docs: ext4 data structures, block layer; Btrfs and OpenZFS docs"
     by: "Linux kernel community; Btrfs and OpenZFS projects"
     url: https://www.kernel.org/doc/html/latest/filesystems/ext4/index.html
     edition_or_term: "current mainline; Btrfs and OpenZFS docs current"
     access: free
-    use: "ext4 'Data Structures and Algorithms' (superblock, block groups, extents, journal); docs.kernel.org/filesystems/vfs.html (VFS objects); the Block docs (blk-mq, I/O schedulers); btrfs.readthedocs.io and openzfs.github.io/openzfs-docs for copy-on-write features (snapshots, send/receive, scrub); Thomas-Krenn Linux Storage Stack Diagram for the whole stack."
+    use: "ext4 'Data Structures and Algorithms' (superblock, block groups, extents, journal); the Block docs (blk-mq, I/O schedulers); btrfs.readthedocs.io and openzfs.github.io/openzfs-docs for copy-on-write features (snapshots, send/receive, scrub); Thomas-Krenn Linux Storage Stack Diagram for the whole stack."
     why: "Real on-disk formats and the Linux storage stack, which the book abstracts; covers the CoW and storage-stack scope items."
     verified: true
   - id: fuse-tutorial

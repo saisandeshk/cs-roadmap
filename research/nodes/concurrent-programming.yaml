@@ -59,17 +59,6 @@ resources:
     use: "Work the classic puzzles: rendezvous, barrier, reusable barrier, producer-consumer, readers-writers (no-starve), dining philosophers, cigarette smokers, H2O, sushi bar. Implement in C/Python with semaphores."
     why: "A set of graded puzzles that builds synchronization-design skill, which reading AMP does not do by itself."
     verified: true
-  - id: ostep-threads-hw
-    role: practice
-    kind: practice-site
-    title: "OSTEP concurrency homeworks"
-    by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
-    url: https://github.com/remzi-arpacidusseau/ostep-homework
-    edition_or_term: "current master"
-    access: free
-    use: "threads-intro (x86.py interleavings), threads-api (Helgrind and data races), threads-locks, then the cv/bugs/sema homework directories where present; ch. 26-34 of OSTEP as background."
-    why: "Quick drills on interleavings, race detectors and lock implementations before attempting lock-free designs."
-    verified: true
   - id: mit-lock-lab
     role: practice
     kind: practice-site
@@ -80,6 +69,17 @@ resources:
     access: free
     use: "Memory allocator (per-CPU free lists with stealing) and buffer cache (hash buckets, per-bucket locks); run 'make grade' to check for correctness and lock contention."
     why: "Concurrency design under a real contention metric in a real kernel; exercises the skills above with an autograder."
+    verified: true
+  - id: race-testing-tools
+    role: practice
+    kind: tool
+    title: "ThreadSanitizer (C/C++/Rust) and loom (Rust model checker)"
+    by: "LLVM project; Tokio project"
+    url: https://clang.llvm.org/docs/ThreadSanitizer.html
+    edition_or_term: "current Clang docs; loom current master (github.com/tokio-rs/loom)"
+    access: free
+    use: "Run every lock and lock-free exercise under -fsanitize=thread (or RUSTFLAGS=-Zsanitizer=thread); for the Rust homework, write loom tests that exhaustively explore interleavings of small lock-free structures (e.g., a Treiber stack)."
+    why: "Fills the testing gap: concurrent code needs race detection and interleaving exploration, which none of the texts provide as tooling."
     verified: true
   - id: mckenney-perfbook
     role: reference
@@ -120,7 +120,7 @@ considered:
   - {title: "Linux kernel memory-barriers.txt / LKMM", url: "https://www.kernel.org/doc/Documentation/memory-barriers.txt", reason: "Kernel-specific; useful only if heading to linux-kernel-internals."}
   - {title: "Rust nomicon: atomics", url: "https://doc.rust-lang.org/nomicon/atomics.html", reason: "Short but terse; Rust Atomics and Locks is better."}
   - {title: "Java Concurrency in Practice / Go concurrency material", url: "https://pages.cs.wisc.edu/~remzi/OSTEP/", reason: "Language-specific; not pursued since primary path is language-agnostic."}
-notes: "Chosen route: AMP 2e for theory, KAIST CS431 as the course (it assigns AMP and Rust Atomics and Locks), Rust Atomics and Locks for hands-on atomics. The node assumes basic threads/locks from computer-systems (CS:APP ch. 12) and OSTEP ch. 26-34; this node adds memory models, lock-free design and async I/O. Level is 'advanced' because the course requires Rust and proofs-style reasoning. Concern: CS431 requires Rust fluency; if the owner has not done the Rust node, use the Rust Book first (G1)."
+notes: "OSTEP threads homeworks are assigned in operating-systems (removed here to avoid duplication). The perfbook entry overlaps G11 memory-systems; left as is (cross-group). Chosen route: AMP 2e for theory, KAIST CS431 as the course (it assigns AMP and Rust Atomics and Locks), Rust Atomics and Locks for hands-on atomics. The node assumes basic threads/locks from computer-systems (CS:APP ch. 12) and OSTEP ch. 26-34; this node adds memory models, lock-free design and async I/O. Level is 'advanced' because the course requires Rust and proofs-style reasoning. Concern: CS431 requires Rust fluency; if the owner has not done the Rust node, use the Rust Book first (G1)."
 split_proposal: null
 prereq_changes: "Add soft prerequisite on rust-programming (G1) if the KAIST/Rust route is adopted; keep operating-systems soft."
 open_questions:

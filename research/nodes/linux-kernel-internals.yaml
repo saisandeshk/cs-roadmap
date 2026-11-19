@@ -73,19 +73,8 @@ resources:
     url: https://docs.kernel.org/
     edition_or_term: "current mainline"
     access: free
-    use: "Scheduler (sched-design, EEVDF), memory management (mm), VFS (filesystems/vfs), core API (locking, RCU, workqueues), driver-api, and Rust-for-Linux sections as you read the corresponding code."
+    use: "Scheduler (sched-design, EEVDF), memory management (mm), VFS (filesystems/vfs), core API (locking, RCU, workqueues), driver-api, and Rust-for-Linux sections as you read the corresponding code; for the development workflow, the process guides (HOWTO do Linux kernel development, Submitting patches) at docs.kernel.org/process."
     why: "Authoritative, current, free reference for every subsystem in scope."
-    verified: true
-  - id: kernel-process
-    role: secondary
-    kind: docs
-    title: "Kernel development process: HOWTO, Submitting patches, Kernel Hacking guides"
-    by: "Linux kernel community"
-    url: https://www.kernel.org/doc/html/latest/process/howto.html
-    edition_or_term: "current mainline"
-    access: free
-    use: "Read 'HOWTO do Linux kernel development', 'A guide to the Kernel Development Process', and 'Submitting patches'; do the KernelNewbies FirstKernelPatch tutorial and send a whitespace/doc fix to a staging driver."
-    why: "Covers the 'kernel development workflow' item (mailing lists, checkpatch, git send-email, maintainers) that no textbook explains well."
     verified: true
   - id: lwn-kernel
     role: reference
@@ -106,8 +95,8 @@ resources:
     url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
     edition_or_term: "free self-paced course"
     access: free
-    use: "Do the full free course: development process, tools, first patch."
-    why: "Official on-ramp to contributing; complements the Kernel Newbies material."
+    use: "Do the full free course: development process, tools, first patch; then send a small fix (e.g., to a staging driver) following the KernelNewbies FirstKernelPatch steps."
+    why: "Covers the node's kernel-development-workflow item (mailing lists, checkpatch, git send-email, maintainers) as a structured free course; the single home for that item (the separate process-docs entry was merged into kernel-docs)."
     verified: true
     course:
       latest_term: "self-paced"

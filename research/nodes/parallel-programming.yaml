@@ -20,8 +20,25 @@ resources:
     use: "Ch. 1-2 (why parallel; hardware/software background, speedup, Amdahl, scalability), 3 (MPI), 4 (Pthreads), 5 (OpenMP), 7 (parallel program development: n-body and tree-search case studies). Ch. 6 (GPU/CUDA) is deferred to the GPU node. Do the programming assignments at chapter ends."
     why: "A single, language-neutral textbook that covers all three mainstream CPU models (MPI, Pthreads, OpenMP) with performance analysis and exercises; closest match to the node scope. No book is perfect here because the strongest teaching is in course notes (below)."
     verified: true
-  - id: cs149
+  - id: cmu-15-418
     role: primary-course
+    kind: course
+    title: "CMU 15-418/15-618 Parallel Computer Architecture and Programming"
+    by: "CMU (Brian Railing, Dimitrios Skarlatos)"
+    url: https://www.cs.cmu.edu/~418/
+    edition_or_term: "Fall 2026"
+    access: mixed
+    use: "Follow the Fall 2026 schedule: slides for every lecture plus the linked YouTube videos (most lectures): why parallelism, ILP, multicore, programming models, GPU/CUDA, parallel programming basics, performance optimization I-II, interconnects, snooping and directory cache coherence, performance analysis/profiling, implementing synchronization, fine-grained/lock-free synchronization, transactional memory, memory consistency. Assignments: A1 Exploring parallel computing (handout PDF public), A2 GPU programming in CUDA (defer to the GPU node), A3 Parallel VLSI wire routing via OpenMP, A4 the same via MPI; A2-A4 handouts are on Autolab, so use CS149's public assignments and Aalto's exercises for self-graded practice."
+    why: "Newest run with public lecture videos (owner's rule), and its programming assignments cover OpenMP and MPI, which the node scope names and CS149 does not assign. Adds the hardware side (coherence, interconnects, consistency) behind parallel performance."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://www.cs.cmu.edu/~418/schedule.html
+      videos: public
+      assignments: partial
+      assignments_url: https://www.cs.cmu.edu/~418/assignments.html
+  - id: cs149
+    role: secondary
     kind: course
     title: "Stanford CS149 Parallel Computing"
     by: "Kayvon Fatahalian, Kunle Olukotun (Stanford)"
@@ -29,7 +46,7 @@ resources:
     edition_or_term: "Fall 2025 (newest run found)"
     access: mixed
     use: "Lectures 1-8 (why parallelism; multicore, SIMD, multithreading; ISPC; parallel programming models; data-parallel thinking; work distribution/scheduling; performance optimization), cache coherence and synchronization, transactional memory. Programming Assignments: A1 (parallel Mandelbrot with threads and ISPC/SIMD on a quad-core CPU), A2 (task-graph scheduling thread pool), A3 (CUDA renderer; GPU depth goes to the GPU node). Written assignments optional."
-    why: "The clearest teaching of how hardware parallelism (SIMD, multicore, multithreading) and programming abstractions fit together; assignments are public on GitHub and measurable on any multicore machine."
+    why: "The clearest teaching of how hardware parallelism (SIMD, multicore, multithreading) and programming abstractions fit together, with a full public 2023 lecture playlist and public GitHub assignments; secondary because Fall 2025 videos were not published and its assignments do not cover OpenMP/MPI."
     verified: true
     course:
       latest_term: "Fall 2025"
@@ -39,23 +56,6 @@ resources:
       public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
       assignments: public
       assignments_url: https://github.com/stanford-cs149
-  - id: cmu-15-418
-    role: secondary
-    kind: course
-    title: "CMU 15-418/15-618 Parallel Computer Architecture and Programming"
-    by: "CMU (Brian Railing, Dimitrios Skarlatos)"
-    url: https://www.cs.cmu.edu/~418/
-    edition_or_term: "Fall 2026"
-    access: free
-    use: "Use the schedule's slides and the embedded YouTube lecture parts for the hardware-side topics CS149 treats lightly: snooping/directory cache coherence, interconnects, implementing synchronization, fine-grained synchronization and lock-free programming, memory consistency, transactional memory. Assignments: A1 exploring parallel computing, A3 OpenMP (VLSI wire routing), plus later MPI/CUDA-style assignments."
-    why: "Fall 2026 page is public, with slides and ~30 linked lecture videos (partial coverage). Gives the cache-coherence and consistency theory behind parallel performance."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://www.cs.cmu.edu/~418/schedule.html
-      videos: public
-      assignments: partial
-      assignments_url: https://www.cs.cmu.edu/~418/assignments.html
   - id: aalto-ppc
     role: secondary
     kind: website
@@ -64,8 +64,8 @@ resources:
     url: https://ppc.cs.aalto.fi/
     edition_or_term: "current course notes"
     access: free
-    use: "Chapter 1 (role of parallelism), Chapter 2 (the 'shortcut' case study, versions V0-V7: from naive code to near-peak with ILP, OpenMP, cache blocking, SIMD), Chapter 3 (multithreading with OpenMP: parallel for, nowait, schedule, nested, hyper-threading, memory), plus lectures 1-6. Do the self-study exercises at ppc-exercises.cs.aalto.fi."
-    why: "Hidden gem: an unusually practical, free course whose central case study walks one program through every optimization level, with an open auto-graded exercise site for self-study. Strong on measurement and SIMD."
+    use: "Chapter 1 (role of parallelism) and Chapter 3 (multithreading with OpenMP: parallel for, nowait, schedule, nested, hyper-threading, memory), plus lectures 1-6. Do the self-study exercises at ppc-exercises.cs.aalto.fi. Chapter 2 (the 'shortcut' optimization case study) is assigned in performance-engineering."
+    why: "Hidden gem: an unusually practical, free course with an open auto-graded exercise site for self-study; its OpenMP chapter is the most concrete free treatment of the API with measurements."
     verified: true
   - id: llnl-hpc
     role: reference
@@ -106,13 +106,13 @@ considered:
   - {title: "UIUC ECE 408 Applied Parallel Programming / Stanford CME 213 (MPI, OpenMP, CUDA)", url: "https://www.youtube.com/playlist?list=PLAtMgFDMfGy2mysjPHN_d1cf9sR1muRkq", reason: "CME 213 (2020) has public videos and covers MPI/OpenMP/CUDA; older than CS149 and less hardware insight; kept as MPI-focused alternative. Not opened."}
   - {title: "MIT 6.172 (work/span, Cilk)", url: "https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/", reason: "Covers work/span analysis well; assigned to performance-engineering."}
   - {title: "Parallel Computing, Georgia Tech CSE 6220 (videos Sp 2025)", url: "https://cse6220.gatech.edu/sp25-oms/", reason: "Algorithmic HPC (MPI collectives, parallel algorithms); more theory than needed here."}
-notes: "No single text covers this scope as well as the combination of CS149 lectures (best intuition), Pacheco & Malensek (API breadth), and Aalto's notes (measurement and SIMD). Work/span analysis is sparse in all three: it is taught in MIT 6.172 (performance-engineering); the node scope mentions work/span so pull lectures 5 and 8 of 6.172 or the 'Analysis of Multithreaded Algorithms' lecture. GPU programming is out of scope here (G9); CS149 A3 and Aalto ch. 4 are marked as optional."
+notes: "Primary course switched from CS149 to CMU 15-418 Fall 2026 after review R2 (current public videos; OpenMP and MPI assignments); CS149 remains secondary for its 2023 videos and public assignments. No single text covers this scope as well as the combination of CS149 lectures (best intuition), Pacheco & Malensek (API breadth), and Aalto's notes (measurement and SIMD). Work/span analysis is sparse in all three: it is taught in MIT 6.172 (performance-engineering); the node scope mentions work/span so watch 6.172 (OCW Fall 2018) L7 'Races and Parallelism' and L8 'Analysis of Multithreaded Algorithms'. GPU programming is out of scope here (G9); CS149 A3 and Aalto ch. 4 are marked as optional."
 split_proposal: null
 prereq_changes: "Consider soft prerequisite on performance-engineering or place work/span explicitly; otherwise unchanged."
 open_questions:
   - "Elsevier lists a 3rd edition (new author, reordered chapters: Pthreads, OpenMP, MPI, GPU with OpenMP, CUDA) dated 2026-12-28; re-evaluate when it ships."
   - "ppc-exercises.cs.aalto.fi (self-study exercises) was unreachable from this environment; autograder access not verified."
   - "CS149 Fall 2023 YouTube playlist: page title verified (Stanford CS149 Parallel Computing 2023), per-lecture playback not tested."
-  - "CMU 15-418 Fall 2026 YouTube links (about 30) could not be played (YouTube rate-limiting); marked public because they are linked anonymously from the public schedule, partial coverage."
+  - "CMU 15-418 Fall 2026 YouTube links (35 unique on the schedule page) could not be played (YouTube rate-limiting); marked public because they are linked anonymously from the public schedule; some lectures have no video."
   - "CME 213, Georgia Tech URLs in considered were copied from cs-video-courses and not opened."
 last_verified: 2026-11-18

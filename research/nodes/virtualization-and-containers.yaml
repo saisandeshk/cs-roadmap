@@ -76,14 +76,14 @@ resources:
     why: "The minimum viable VMM; gets you from theory to running guest code on Linux/KVM in an hour."
     verified: true
   - id: jos-vm
-    role: secondary
+    role: reference
     kind: paper
     title: "Teaching Virtualization by Building a Hypervisor (JOS-based lab)"
     by: "Abhinand Palicherla, Tao Zhang, Donald E. Porter"
     url: https://www.cs.unc.edu/~porter/pubs/jos-vm.pdf
     edition_or_term: "SIGCSE-style paper describing a lab for MIT's JOS"
     access: free
-    use: "Read the lab design (build a VMM inside a JOS-style teaching kernel) and use it as a project outline if you want a kernel-level hypervisor project after xv6/JOS labs."
+    use: "Design reference only: read the lab design (a VMM built inside a JOS-style teaching kernel) as an outline for a self-directed hypervisor project after the xv6/JOS labs. The lab code itself does not appear to be public."
     why: "Shows how to structure a first hypervisor project at teaching scale; no public autograded course ships it, so this is an outline only."
     verified: true
   - id: unsw-vm-lecture
@@ -96,6 +96,17 @@ resources:
     access: free
     use: "Watch the Virtual Machines lecture and read the paired papers: Barham et al., 'Xen and the Art of Virtualization' (2003) and Waldspurger, 'Memory Resource Management in VMware ESX Server' (2002); also the 'Hardware considerations' lecture."
     why: "Fills the gap of a high-quality public lecture on VMs from a microkernel/OS-research perspective, with a reading list."
+    verified: true
+  - id: upb-virt-lecture
+    role: secondary
+    kind: website
+    title: "Linux Kernel Teaching: Virtualization lecture"
+    by: "University POLITEHNICA of Bucharest (Operating Systems 2 team)"
+    url: https://linux-kernel-labs.github.io/refs/heads/master/lectures/virt.html
+    edition_or_term: "rolling (kernel 5.10 snapshot)"
+    access: free
+    use: "Read the lecture slides: emulation and classic/software virtualization, MMU virtualization (shadow page tables), I/O emulation, paravirtualization, Intel VT-x (VMCS, VM entry/exit, EPT, VPID), I/O virtualization, QEMU/KVM, type 1 vs type 2 hypervisors, Xen."
+    why: "Free, short slide deck that summarizes hypervisor design from the Linux side; a quick companion to the primary book and the UNSW lecture."
     verified: true
   - id: firecracker-paper
     role: reference
