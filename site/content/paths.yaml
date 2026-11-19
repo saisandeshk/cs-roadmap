@@ -1,0 +1,101 @@
+# Copy for each path shown on the site. Titles come from research/skeleton.yaml.
+# code: two-letter line badge. tagline: one sentence. destination: what you can do at the end.
+# exits (optional): named ways to finish a path, each listing its last topics.
+
+families:
+  - id: foundations
+    title: Foundations
+    paths: [core, ml-foundations]
+  - id: ai
+    title: AI
+    paths: [llm, rl, vision, generative, safety]
+  - id: systems
+    title: Systems
+    paths: [mlsys, distributed, databases, os-perf, architecture]
+  - id: other
+    title: Languages, security and theory
+    paths: [plc, security, theory]
+
+paths:
+  core:
+    short: Core CS
+    code: CS
+    tagline: The shared base of computer science, from two programming languages down to the operating system.
+    destination: You can program in a high-level and a systems language, reason about the machine from bits to the OS, and design and analyse algorithms.
+  ml-foundations:
+    short: ML Foundations
+    code: ML
+    tagline: Classical machine learning, deep learning and transformers. Every AI path starts here.
+    destination: You can train, debug and honestly evaluate models, and read current papers.
+  llm:
+    short: LLMs
+    code: LM
+    tagline: Language models from tokenizer to finished assistant, with retrieval and agents on top.
+    destination: You can pretrain, post-train and evaluate a small LLM, and build reliable applications on large ones.
+  rl:
+    short: RL
+    code: RL
+    tagline: Decision making from MDPs to deep RL and reinforcement learning for language models.
+    destination: You can implement and debug deep RL algorithms and use RL in LLM post-training.
+  vision:
+    short: Vision
+    code: CV
+    tagline: Image formation, recognition, 3D geometry and vision-language models.
+    destination: You can build perception and 3D reconstruction systems and work with multimodal models.
+  generative:
+    short: Generative
+    code: GM
+    tagline: VAEs, flows, diffusion and flow matching, for any kind of data.
+    destination: You can derive, train and sample diffusion and flow models.
+  safety:
+    short: Safety
+    code: SA
+    tagline: Interpretability, evaluations, red-teaming and alignment methods for large models.
+    destination: You can do research-engineering work on interpretability and safety evaluations with open models.
+  mlsys:
+    short: ML Systems
+    code: MS
+    tagline: GPU kernels, ML compilers, and training and serving large models across many machines.
+    destination: You can write fast GPU kernels, read a profiler, and build and tune training and serving stacks.
+    exits:
+      - title: Kernels and compilers
+        text: Go deep on one accelerator. Matmuls and tensor cores, kernel languages, the compilers that generate kernels, and the hardware underneath.
+        nodes: [gemm-and-tensor-cores, kernel-dsls, ml-compilers, hardware-accelerators]
+      - title: Training and serving at scale
+        text: Go wide across machines. Parallelism strategies, inference engines, compression and running models in production.
+        nodes: [model-parallelism, llm-inference-and-serving, model-compression, mlops-and-production]
+  distributed:
+    short: Distributed
+    code: DS
+    tagline: Replication, consensus, sharding, transactions and stream processing.
+    destination: You can build fault-tolerant, data-heavy services and reason about how they fail.
+  databases:
+    short: Databases
+    code: DB
+    tagline: How database systems store, index, query and recover data.
+    destination: You can build and tune the internals of a database system.
+  os-perf:
+    short: OS & Performance
+    code: OS
+    tagline: Kernels, virtualization, storage and the craft of making software fast.
+    destination: You can work on kernels, runtimes and performance problems with evidence from profilers and tracers.
+  architecture:
+    short: Architecture
+    code: AR
+    tagline: Digital logic to processors, memory systems and ML accelerators.
+    destination: You can design a pipelined RISC-V core in an HDL and reason about accelerator designs.
+  plc:
+    short: PL & Compilers
+    code: PL
+    tagline: Interpreters, compilers, type systems, program analysis and verification.
+    destination: You can build an optimizing compiler and prove properties of programs.
+  security:
+    short: Security
+    code: SC
+    tagline: Exploitation, web, system and hardware security, and cryptography.
+    destination: You can find, exploit and fix vulnerabilities and use cryptography correctly.
+  theory:
+    short: Theory
+    code: TH
+    tagline: Advanced algorithms, complexity, randomness and learning theory.
+    destination: You can design and prove algorithms and read theory research.

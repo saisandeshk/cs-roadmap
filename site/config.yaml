@@ -1,0 +1,8 @@
+# Site settings for site/build.py.
+title: CS Roadmap
+tagline: A map of computer science where every topic names the best text and course to learn it from, and paths run through shared topics.
+repo: https://github.com/saisandeshk/cs-roadmap
+
+# Which paths the site publishes. The example publishes one path; set to `all` to publish every path.
+# Prerequisites a published path needs from other paths are always included so its route is complete.
+publish_paths: [mlsys]
