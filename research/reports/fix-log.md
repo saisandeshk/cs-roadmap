@@ -23,3 +23,14 @@
 - performance-analysis: Bootlin demoted to secondary; no primary course.
 - computer-architecture: MIPS caveat, ETH ID 227-0003-10V, Drepper moved, venus id, Lab 8/Project 4. concurrent-programming: ThreadSanitizer/loom added. linux-kernel-internals, virtualization-and-containers, performance-engineering, os-kernel-implementation, computer-systems: dedupes and small fixes.
 - Declined: distinct storage text (McKusick page 404); ETH storage as primary (SSD-only scope).
+
+## G1 Programming (R1)
+- python-programming: 61A labs/hw/projects as first practice; Exercism names 16 exercises; MIT 6.100L promoted to fallback; counts corrected.
+- python-in-depth: Hettinger/Beazley PyCon talks added; duplicate Exercism removed.
+- c-programming: SEE CS107 is an older run of the same course (added lectures 2-7 as free video companion); reading order explicit; King's C Programming as alternative.
+- cpp-programming: Algorithmica chapters for performance idioms; Tour of C++ chapters and CppCon talks named; CS106L public videos are 2019 only.
+- rust-programming: ECE 1724 numbering fixed (slide decks 1-9).
+- software-construction: duplicate 6.102 psets replaced with OCW 6.005 Sp16 (public starter code); Ousterhout page verified.
+- dev-environment: Wizard Zines limited to free zines.
+- data-structures: Java-for-Python bridge + all-Python route via MIT 6.006 Spring 2020; USF visualizer split out.
+- Declined: algorithms-node overlap (G3's); CS107 lecture count stays 13-25 (site lists 25).
