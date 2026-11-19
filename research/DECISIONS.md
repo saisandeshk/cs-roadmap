@@ -62,3 +62,6 @@ llm-inference-and-serving, model-parallelism.
 - **ml-fundamentals:** Deep-ML *An Introduction to Statistical Learning* and *Machine Learning Fundamentals*
   collections as practice (https://www.deep-ml.com/collections).
 - Site: every path published (`site/config.yaml: publish_paths: all`).
+- **ml-fundamentals / applied-ml-practice:** Pyrcz, *Applied Machine Learning in Python: A Hands-on Guide with Code*
+  (https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html, free e-book with notebooks) as a secondary
+  resource: method walkthroughs in ml-fundamentals; training, feature and model-checking chapters in applied-ml-practice.

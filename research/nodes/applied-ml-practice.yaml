@@ -115,6 +115,17 @@ resources:
   use: Frame the task, build a baseline, use time-aware splits, choose metrics, do slice-based error analysis, check calibration, and write a one-page evaluation report; the owner's ai-atlas classical-ml route uses this dataset.
   why: Evaluation skills are only learned by making and fixing mistakes on a real split-sensitive dataset.
   verified: true
+- id: pyrcz-applied-ml-workflows
+  role: secondary
+  kind: website
+  title: 'Applied Machine Learning in Python: training, feature and model-checking chapters'
+  by: Michael J. Pyrcz (The University of Texas at Austin)
+  url: https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_training_tuning.html
+  edition_or_term: 2024 e-book, updated since
+  access: free
+  use: Training and Tuning, Workflow Construction and Coding, Feature Transformations, Feature Ranking, Feature Imputation and Model Checking, each with its notebook from the MachineLearningDemos repository.
+  why: Covers the steps around the model (preparing and ranking features, imputing missing values, checking a fitted model) with runnable code and plots, complementing the scikit-learn guide's API-level view. Free.
+  verified: true
 considered:
 - title: 'Dive into Deep Learning: Environment and Distribution Shift (Sec. 4.7)'
   url: https://d2l.ai/chapter_linear-classification/environment-and-distribution-shift.html
@@ -140,4 +151,4 @@ prereq_changes: null
 open_questions:
 - Interpretable ML book page opened (200) but content not reviewed; kept only in considered.
 - Kohavi chapter numbers recalled from memory, not checked against the book's TOC (publisher/Amazon-only).
-last_verified: 2026-11-18
+last_verified: '2026-11-19'

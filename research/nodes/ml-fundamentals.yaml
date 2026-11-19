@@ -139,6 +139,17 @@ resources:
   use: 'From the An Introduction to Statistical Learning collection: Linear Regression Using Normal Equation, Implement Ridge Regression Loss Function, Implement Lasso Regression using ISTA, Elastic Net Regression via Gradient Descent and the cross-validation problems; then the Machine Learning Fundamentals collection for classification, clustering and dimensionality reduction.'
   why: Auto-checked from-scratch implementations that pair with the notes; the statistical-learning collection works through the same topics as the ISL textbook. The problems are free; premium only adds extras.
   verified: true
+- id: pyrcz-applied-ml-book
+  role: secondary
+  kind: website
+  title: 'Applied Machine Learning in Python: A Hands-on Guide with Code (e-book)'
+  by: Michael J. Pyrcz (The University of Texas at Austin)
+  url: https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html
+  edition_or_term: 2024 e-book, updated since
+  access: free
+  use: 'Read beside each method as a code-first walkthrough: Linear Regression, Ridge Regression, LASSO Regression, Polynomial Regression, Naive Bayes, k-Nearest Neighbours, Decision Trees, Bagging Tree and Random Forest, Gradient Boosting and Support Vector Machines; for unsupervised learning, Cluster Analysis, Density-based Clustering, Spectral Clustering and Principal Components Analysis. Run the matching notebooks from the MachineLearningDemos repository (https://github.com/GeostatsGuy/MachineLearningDemos) and change the hyperparameters to see their effect.'
+  why: Each chapter pairs a short explanation with a documented Python workflow and plots, built from the author's graduate machine learning course, so you see what every model and hyperparameter does. The primary text and CS229 give the derivations but little of this hands-on intuition. Examples use subsurface (geoscience) datasets; the methods are general.
+  verified: true
 considered:
 - title: MIT 6.390 Introduction to Machine Learning (Fall 2026)
   url: https://introml.mit.edu/
