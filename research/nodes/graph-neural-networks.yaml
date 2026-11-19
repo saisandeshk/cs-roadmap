@@ -29,7 +29,7 @@ resources:
     url: https://cs224w.stanford.edu/
     edition_or_term: "Fall 2026 (Tue/Thu in person); public 2021 lecture recordings"
     access: free
-    use: "Watch the 2021 lectures (traditional graph features, node embeddings/node2vec, PageRank, label propagation, GNN design space, GCN/GraphSAGE/GAT, theory of GNNs/expressivity, heterogeneous and knowledge graphs, scaling, graph generative models); use the current course site for slides and the Colab assignments; do Colabs 0-4."
+    use: "Lectures are the 2021 recordings, which predate graph transformers; graph transformers and geometric deep learning come only from the GraphGPS paper and the GDL course in this node. Watch the 2021 lectures (traditional graph features, node embeddings/node2vec, PageRank, label propagation, GNN design space, GCN/GraphSAGE/GAT, theory of GNNs/expressivity, heterogeneous and knowledge graphs, scaling, graph generative models); use the current course site for slides and the Colab assignments; do Colabs 0-4."
     why: "The standard graph ML course: complete public lecture set (2021), current slides and PyG-based Colab assignments."
     verified: true
     course:

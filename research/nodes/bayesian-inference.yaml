@@ -145,7 +145,7 @@ considered:
   - {title: "PRML chapters 10-11 (Bishop)", url: "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/", reason: "Clear derivations of VI/EM/sampling; older and less workflow-oriented."}
   - {title: "Information Theory, Inference, and Learning Algorithms (MacKay)", url: "https://www.inference.org.uk/itila/book.html", reason: "Beautiful free book with Monte Carlo and inference chapters; broader than needed."}
   - {title: "Statistical Rethinking 2023 lecture series", url: "https://www.youtube.com/playlist?list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus", reason: "Prior public run; superseded by 2026 but fully valid (listed on the 2026 repo page)."}
-notes: "Rethinking is chosen as the primary text and course because it teaches modeling judgement and causal thinking along with Bayesian computation, and its 2026 run has public videos and homework. VI and GP depth come from Murphy PML2 and the Blei review. Probabilistic programming language practice is split between PyMC and NumPyro so the learner can use Python throughout."
+notes: "Rethinking is chosen as the primary text and course because it teaches modeling judgement and causal thinking along with Bayesian computation, and its 2026 run has public videos and homework. Neither primary resource teaches variational inference or Python PPLs; VI and GP depth come from Murphy PML2 and the Blei review. Probabilistic programming language practice is split between PyMC and NumPyro so the learner can use Python throughout."
 split_proposal: null
 prereq_changes: null
 open_questions:

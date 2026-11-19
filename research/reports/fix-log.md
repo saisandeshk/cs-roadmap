@@ -54,3 +54,12 @@
 - Added: Sze/Emer NeurIPS 2019 accelerator tutorial video; Bendersky JIT series; GC Handbook chapters checked.
 - Fixes: CS143 archive.org link removed; NJU Chinese-only videos noted; type-systems no-public-video caveat; Agner Fog verified; in-group duplicates (PLAI, Crafting Interpreters, CS143, Compiler Explorer) removed.
 - Declined: CS 6120 "no video" claim (Fall 2025 page links videos for lessons 2-7 and 12; only 14 lacks one).
+
+## G5 ML foundations (R3)
+- deep-learning-fundamentals: primary course -> MIT 6.7960 (OCW Fall 2024, public videos); CS231n A1-A2 kept as practice (vision framing stated).
+- ml-fundamentals: CS229 videos -> unknown, assignments -> restricted; psets rewritten as self-implemented exercises; CS229 notes as reading spine.
+- applied-ml-practice: d2l-shift moved to considered; Inria module overlap resolved.
+- dl-engineering: Manning 2nd ed. linked (published 2026-02-18); duplicate recipe removed.
+- probabilistic-graphical-models: CMU 10-708 videos public (28 YouTube links); CS228 staleness caveat.
+- graph-neural-networks: 2021 lectures predate graph transformers (noted). intro-ai, scientific-python, bayesian-inference: small fixes.
+- Declined: deep-learning-for-vision change (G6's node); suggestions needing unverified sources.

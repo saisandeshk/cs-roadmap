@@ -89,12 +89,12 @@ resources:
   - id: sklearn-mooc-m1
     role: secondary
     kind: course
-    title: "scikit-learn MOOC (Inria), Modules 1-2: Predictive modeling pipeline"
+    title: "scikit-learn MOOC (Inria), Module 1: Predictive modeling pipeline"
     by: "Inria Learning Lab (Guillaume Lemaitre, Olivier Grisel, Loic Esteve et al.)"
     url: https://inria.github.io/scikit-learn-mooc/
     edition_or_term: "Continuously updated to current scikit-learn (1.x)"
     access: free
-    use: "Only Module 1 (tabular data exploration, first model, numerical/categorical preprocessing, Pipelines, ColumnTransformer) for the scikit-learn API; remaining modules belong to applied-ml-practice."
+    use: "Only Module 1 (tabular data exploration, first model, numerical/categorical preprocessing, Pipelines, ColumnTransformer) for the scikit-learn API; Modules 3-4 and 8 are used in applied-ml-practice."
     why: "Best structured, exercise-driven introduction to the scikit-learn API, with quizzes and solutions."
     verified: true
     course:

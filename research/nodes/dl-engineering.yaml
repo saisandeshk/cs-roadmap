@@ -42,17 +42,6 @@ resources:
     use: "Read all: starting a new project (model, optimizer, batch size), scientific approach to improving performance, determining training steps, additional guidance on training pipelines, experiment tracking."
     why: "Systematic, experiment-driven guidance on hyperparameter tuning and experiment design from Google Research; the best written source for the 'engineering of training' mindset."
     verified: true
-  - id: recipe
-    role: secondary
-    kind: article
-    title: "A Recipe for Training Neural Networks"
-    by: "Andrej Karpathy"
-    url: https://karpathy.github.io/2019/04/25/recipe/
-    edition_or_term: "Blog post (April 2019)"
-    access: free
-    use: "Debugging checklist: verify loss at init, overfit one batch, inspect inputs just before the net, visualize predictions, add complexity step by step."
-    why: "Practical debugging methodology; complements the Tuning Playbook."
-    verified: true
   - id: horace-brrr
     role: secondary
     kind: article
@@ -78,10 +67,10 @@ resources:
   - id: dlwpt
     role: reference
     kind: book
-    title: "Deep Learning with PyTorch"
-    by: "Eli Stevens, Luca Antiga, Thomas Viehmann"
-    url: https://www.manning.com/books/deep-learning-with-pytorch
-    edition_or_term: "Manning; 1st ed. 2020 (a 2nd edition has been in progress; check publisher page)"
+    title: "Deep Learning with PyTorch, Second Edition"
+    by: "Howard Huang, Eli Stevens, Luca Antiga, Thomas Viehmann"
+    url: https://www.manning.com/books/deep-learning-with-pytorch-second-edition
+    edition_or_term: "Manning 2nd ed. (publisher page schema lists datePublished 2026-02-18; adds transformers and generative AI; 1st ed. 2020 at https://www.manning.com/books/deep-learning-with-pytorch)"
     access: paid
     use: "Parts 1-2 (tensors, datasets, training loops, CT-scan project) as a long-form alternative to the tutorials."
     why: "Book-length treatment for readers who prefer a narrative project; kept as reference since the official docs are current and free."
@@ -125,10 +114,9 @@ considered:
   - {title: "Hugging Face Accelerate", url: "https://huggingface.co/docs/accelerate/index", reason: "Multi-GPU/mixed-precision wrapper; belongs to distributed-training nodes."}
   - {title: "PyTorch blog: Understanding GPU Memory", url: "https://pytorch.org/blog/understanding-gpu-memory-1/", reason: "Good for memory debugging; use as extra reading in ML systems path."}
   - {title: "Karpathy nanoGPT", url: "https://github.com/karpathy/nanoGPT", reason: "README says it is deprecated (Nov 2025) in favor of nanochat; build-nanogpt video/repo is the maintained teaching version."}
-notes: "No formal course exists for this node; the primary-course slot is a video-series (Karpathy's GPT-2 reproduction), kind video-series rather than course. The official PyTorch docs are the primary text because they cover every listed topic and are current. If a course is preferred, CS231n assignments in PyTorch serve as the structured exercises."
+notes: "No formal course exists for this node; the primary-course slot is a video-series (Karpathy's GPT-2 reproduction), kind video-series rather than course. The official PyTorch docs are the primary text because they cover every listed topic and are current. Karpathy's A Recipe for Training Neural Networks is assigned once, in deep-learning-fundamentals, and not repeated here. If a course is preferred, CS231n assignments in PyTorch serve as the structured exercises."
 split_proposal: null
 prereq_changes: null
 open_questions:
   - "Karpathy GPT-2 video verified via YouTube oEmbed (title and author), not by watching."
-  - "Deep Learning with PyTorch 2nd edition status not confirmed on Manning page."
 last_verified: 2026-11-18

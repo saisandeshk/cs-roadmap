@@ -34,10 +34,10 @@ resources:
     course:
       latest_term: "Summer 2026 (earlier 2025-26 runs: Fall 2025, Winter 2026, Spring 2026 pages archived on the site)"
       latest_url: https://cs229.stanford.edu/
-      videos: enrolled-only
+      videos: unknown
       public_videos_term: "Autumn 2018 (Andrew Ng; Stanford Online YouTube); Summer 2019 and Spring 2022 recordings also listed on CS229 syllabus pages"
       public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU
-      assignments: partial
+      assignments: restricted
       assignments_url: https://cs229.stanford.edu/syllabus-autumn2018.html
   - id: cs229-notes
     role: secondary
@@ -118,9 +118,9 @@ resources:
     title: "CS229 problem sets (implement-from-scratch parts)"
     by: "Stanford CS229 staff"
     url: https://cs229.stanford.edu/syllabus-autumn2018.html
-    edition_or_term: "Autumn 2018 syllabus page (PS0 public PDF; PS1-PS4 distributed through Piazza zips, not openly accessible)"
+    edition_or_term: "Autumn 2018 syllabus page; its problem-set links (ps0.pdf, ps1.pdf) return 404 and PS1-PS4 zips point to Piazza, so none are openly accessible"
     access: account-required
-    use: "If you can obtain them: implement logistic regression with Newton's method, GDA, naive Bayes spam filter, kernel SVM, EM for GMM, PCA. Otherwise do the same algorithms in numpy from the ISLP/Hands-On notebooks."
+    use: "Public problem sets are not available; treat this as a list of exercises to implement yourself in numpy (logistic regression with Newton's method, GDA, naive Bayes spam filter, kernel SVM, EM for GMM, PCA), using the ISLP labs and Hands-On notebooks 03-08 as scaffolding. Cornell CS 4/5780 (https://www.cs.cornell.edu/courses/cs4780/) has an Assignments tab not examined in detail."
     why: "Writing the algorithms yourself (without sklearn) is what makes the math stick."
     verified: true
 considered:
@@ -130,11 +130,11 @@ considered:
   - {title: "Probabilistic Machine Learning: Advanced Topics (Murphy)", url: "https://probml.github.io/pml-book/book2.html", reason: "Used in Bayesian/PGM/GNN nodes, too advanced here."}
   - {title: "Hands-On ML (3rd ed. Keras/TensorFlow)", url: "https://github.com/ageron/handson-ml3", reason: "Superseded for this roadmap by the Scikit-Learn and PyTorch edition."}
   - {title: "Dive into Deep Learning", url: "https://d2l.ai/", reason: "Linear/softmax regression chapters are fine but classical ML (SVM, trees, EM) is not covered."}
-notes: "Primary text Murphy PML1 (broad, modern, free) chosen over ISLP (too light on kernels/EM, statistics-flavored) and Bishop PRML (older, no trees/boosting depth). CS229 chosen as the primary course for scope match and complete public video (2018). Recent CS229 terms (Summer 2026, Spring 2026 etc.) are enrolled-only (Stanford login for documents); the course site's own materials require a Stanford account. Pair math-heavy items with ISLP/Cornell for intuition."
+notes: "Primary text Murphy PML1 (broad, modern, free) chosen over ISLP (too light on kernels/EM, statistics-flavored) and Bishop PRML (older, no trees/boosting depth). CS229 chosen as the primary course for scope match and complete public video (2018). Recent CS229 terms (Summer 2026, Spring 2026 etc.): the site says only that documents are shared with Stanford affiliates and links need a Stanford login; video status for those runs is unknown (no public playlist found). Public CS229 assignments are not reproducible (2018 ps0/ps1 links 404), so assignments are recorded as restricted. Reading spine: CS229 notes for the course route, Murphy PML1 as the depth text. Pair math-heavy items with ISLP/Cornell for intuition."
 split_proposal: null
 prereq_changes: "Consider adding soft: [scientific-python] because the practice notebooks assume NumPy/scikit-learn fluency."
 open_questions:
-  - "CS229 recent-term video status: the Summer 2026 page says all links require a Stanford login; I did not see a public playlist for 2025-26 runs."
+  - "CS229 recent-term video status: the Summer 2026 page says links require a Stanford login and does not mention video; no public playlist for 2025-26 runs found."
   - "CS229 Spring 2022 and Summer 2019 recordings are listed in CS229 syllabus pages but I did not open those individual playlists."
   - "Cornell CS 4780 latest term and whether newer lecture videos are public not determined."
 last_verified: 2026-11-18

@@ -20,25 +20,25 @@ resources:
     use: "Ch. 3 shallow networks, 4 deep networks, 5 loss functions (maximum likelihood), 6 fitting models (SGD, momentum, Adam), 7 gradients and initialization (backprop), 8 measuring performance, 9 regularization, 10 convolutional networks, 11 residual networks and normalization. Ch. 12 (transformers) goes to the transformers node; Ch. 20 'Why does deep learning work?' is optional depth. The book does not cover RNNs; use the d2l.ai chapters below."
     why: "Clearest modern conceptual treatment with excellent figures; ties loss functions to maximum likelihood, uses a consistent notation and ships notebooks and exercises; free."
     verified: true
-  - id: cs231n
+  - id: mit-6-7960
     role: primary-course
     kind: course
-    title: "Stanford CS231n: Deep Learning for Computer Vision"
-    by: "Stanford (Spring 2026 Lecture 1 by Fei-Fei Li; course staff listed on the site)"
-    url: https://cs231n.stanford.edu/
-    edition_or_term: "Spring 2026 (lectures Tue/Thu); public YouTube lectures from 2025"
+    title: "MIT 6.7960 Deep Learning"
+    by: "Phillip Isola, Sara Beery, Jeremy Bernstein (MIT)"
+    url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/
+    edition_or_term: "Fall 2024 on OCW (lecture videos, notes, problem sets, readings); Fall 2026 site at https://deeplearning6-7960.github.io with recordings via Canvas only"
     access: free
-    use: "Lectures on image classification and linear classifiers, loss functions and optimization, backprop, neural networks, CNN architectures, training dynamics (initialization, normalization, dropout, optimizers), RNNs/attention; the written course notes at https://cs231n.github.io/ (neural-networks-1/2/3, convolutional-networks, optimization). Do Assignments 1-2."
-    why: "Best-taught hands-on course on backprop, optimizers, normalization, CNNs and RNN basics; assignments force you to implement forward/backward passes from scratch."
+    use: "Watch the Fall 2024 OCW lecture videos and read the lecture notes in order (MLPs and training a neural net, backprop/autodiff, CNNs, RNNs, graph nets, transformers, generalization); do the OCW problem sets (PDFs; HW5 has solutions). Pair with the CS231n Assignments 1-2 practice item for from-scratch coding. Assumes 18.05 plus an intro ML course, so it is more theory-leaning than CS231n."
+    why: "A general (not vision-only) deep learning course with public lectures, notes and problem sets that matches this node's scope; CS231n lectures are image-framed, so it is kept for the assignments only."
     verified: true
     course:
-      latest_term: "Spring 2026"
-      latest_url: https://cs231n.stanford.edu/
+      latest_term: "Fall 2026 (course site; recordings via Canvas)"
+      latest_url: https://deeplearning6-7960.github.io
       videos: enrolled-only
-      public_videos_term: "2025 (Stanford Online, 'Stanford CS231N Deep Learning for Computer Vision I 2025')"
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16
+      public_videos_term: "Fall 2024 (MIT OCW)"
+      public_videos_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/video_galleries/lecture-videos/
       assignments: public
-      assignments_url: https://cs231n.github.io/assignments2026/assignment1/
+      assignments_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/lists/homework/
   - id: cs231n-assignments
     role: practice
     kind: practice-site
@@ -47,7 +47,7 @@ resources:
     url: https://cs231n.stanford.edu/assignments.html
     edition_or_term: "Spring 2026 handouts at https://cs231n.github.io/assignments2026/assignment1/ (2025 handouts at assignments2025)"
     access: free
-    use: "Assignment 1: kNN, softmax, two-layer net, fully-connected nets (write forward/backward by hand). Assignment 2: batch norm, dropout, convolutional nets, network visualization, image captioning with RNNs. Assignment 3 (transformers, self-supervised, diffusion) is optional and overlaps transformers/generative nodes."
+    use: "Do these as the coding practice for the course route (CS231n lectures 2-8 are vision-framed; the only public recordings are the 2025 playlist https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16, which the 2026 page says is not reflective of this offering). Assignment 1: kNN, softmax, two-layer net, fully-connected nets (write forward/backward by hand). Assignment 2: batch norm, dropout, convolutional nets, network visualization, image captioning with RNNs. Assignment 3 (transformers, self-supervised, diffusion) is optional and overlaps transformers/generative nodes."
     why: "The standard from-scratch backprop and training-dynamics exercises, Jupyter-based with local checks (no hosted autograder)."
     verified: true
   - id: zero-to-hero
@@ -106,7 +106,7 @@ resources:
     why: "Short interactive notebooks that make each chapter's figures reproducible and test your understanding."
     verified: true
 considered:
-  - {title: "MIT 6.7960 Deep Learning (Fall 2024 OCW; Fall 2026 current)", url: "https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/", reason: "Modern (Isola, Beery, Bernstein) with public OCW videos, notes and psets, but a graduate-level mix of theory and applications; strong alternative or second pass. Fall 2026 site https://deeplearning6-7960.github.io; recordings via Canvas only."}
+  - {title: "Stanford CS231n: Deep Learning for Computer Vision (Spring 2026)", url: "https://cs231n.stanford.edu/", reason: "Vision-framed course (lectures 2-8 use images); assignments A1-A2 kept as practice, 2025 lectures are the only public recordings (2026 run enrolled-only)."}
   - {title: "CMU 11-785 Introduction to Deep Learning (Fall 2026)", url: "https://deeplearning.cs.cmu.edu/", reason: "Very thorough (MLPs to transformers, large HW suite) but heavy; Spring 2025 site says lectures are on the course YouTube channel; F26/S26 pages load content dynamically so I could not confirm current video policy."}
   - {title: "Deep Learning: Foundations and Concepts (Bishop and Bishop)", url: "https://www.bishopbook.com/", reason: "Excellent, rigorous and current (Springer 2024); paid, free online preview/solutions only; UDL chosen for free access and notebooks."}
   - {title: "Dive into Deep Learning (d2l.ai)", url: "https://d2l.ai/", reason: "Best code-first text; used here as secondary for RNNs/optimization; UDL's explanations are tighter."}
@@ -114,11 +114,11 @@ considered:
   - {title: "The Little Book of Deep Learning (Fleuret)", url: "https://fleuret.org/public/lbdl.pdf", reason: "Superb 150-page phone-friendly overview; too condensed to be primary; good review. Fleuret's UNIGE course: https://fleuret.org/dlc/."}
   - {title: "Deep Learning (Goodfellow, Bengio, Courville)", url: "https://www.deeplearningbook.org/", reason: "Classic but 2016; superseded by UDL/Bishop for modern topics."}
   - {title: "Deep Learning with PyTorch (Stevens et al.)", url: "https://www.manning.com/books/deep-learning-with-pytorch", reason: "PyTorch-focused; belongs to dl-engineering."}
-notes: "Course choice: CS231n because it matches the scope (backprop, optimizers, normalization, CNNs, RNNs) with public assignments and an active 2026 run. Its lectures are vision-flavored but the notes and assignments are the best backprop practice. Recent 2026 recordings are via Canvas; 2025 public playlist is the pointer. Language-modeling-first alternative: pair UDL with Karpathy's Zero to Hero. Level is intermediate because of the matrix-calculus prerequisite."
+notes: "Course choice (revised after review): MIT 6.7960 (Fall 2024 OCW videos, notes, public psets) because CS231n is a computer-vision course whose lectures are image-framed; CS231n Assignments 1-2 are kept as the from-scratch backprop practice (matches the owner's seed list, which treats them as support practice). 6.7960 assumes 18.05 plus intro ML and is more theory-leaning. Language-modeling-first alternative: pair UDL with Karpathy's Zero to Hero. Level is intermediate because of the matrix-calculus prerequisite. Overlap with deep-learning-for-vision (G6), which also assigns CS231n lectures 5-8 and A1-A2, is left for that group to resolve."
 split_proposal: null
 prereq_changes: "Consider adding soft: [scientific-python] (NumPy fluency for the from-scratch assignments)."
 open_questions:
-  - "CS231n Spring 2026 lecture recording availability: schedule links to a Canvas page (enrolled-only); I did not find a 2026 public playlist."
+  - "6.7960 Fall 2026 recordings are via Canvas only; CS231n Spring 2026 recordings are also Canvas-only (no 2026 public playlist found)."
   - "UDL notebooks: repo exists but I could not list per-chapter notebook names from the page."
   - "CMU 11-785 F26/S26 video policy not determined."
 last_verified: 2026-11-18

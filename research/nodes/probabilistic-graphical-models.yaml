@@ -17,7 +17,7 @@ resources:
     title: "CS228 Probabilistic Graphical Models: Lecture Notes"
     by: "Volodymyr Kuleshov, Stefano Ermon (Stanford)"
     url: https://ermongroup.github.io/cs228-notes/
-    edition_or_term: "Online notes (GitHub repo reported updated mid-2025 by a third-party aggregator); used in Stanford CS228 through Winter 2023-24"
+    edition_or_term: "Online notes (substantive content last updated ~2018-2020; the mid-2025 repo update came only from a third-party aggregator; no exercises in the notes); used in Stanford CS228 through Winter 2023-24"
     access: free
     use: "Read in order: Introduction, Representation (Bayesian networks, Markov random fields), Inference (variable elimination, junction tree algorithm, MAP inference, sampling methods, variational inference), Learning (directed models, undirected models, learning in latent variable models, Bayesian learning, structure learning)."
     why: "The best concise free treatment: rigorous but short, covers exactly the scope (BNs, MRFs, exact and approximate inference, learning) and is much lighter than the 1,200-page Koller-Friedman."
@@ -28,16 +28,16 @@ resources:
     title: "CMU 10-708 Probabilistic Graphical Models"
     by: "Eric Xing (CMU), with Spring 2019 co-instructors Zhiting Hu and Hao Zhang"
     url: https://www.cs.cmu.edu/~epxing/Class/10708-20/
-    edition_or_term: "Spring 2020 (newest page I could find); Spring 2019 site at https://sailinglab.github.io/pgm-spring-2019/"
+    edition_or_term: "Spring 2020 (newest page I could find; lecture videos public on YouTube); Spring 2019 site at https://sailinglab.github.io/pgm-spring-2019/"
     access: free
     use: "Follow the lecture schedule: introduction and directed/undirected GMs, exact inference (elimination, message passing), approximate inference (loopy BP, variational, MCMC), learning (EM, Baum-Welch, structure learning), plus deep generative models and LDA-style topics; do homework PDFs (HW1 includes a Baum-Welch exercise). Pair each module with the matching CS228 note."
-    why: "Full course with slides, scribe notes, recorded lectures and public homework; the only recent full lecture series I found for this topic."
+    why: "Full course with slides, scribe notes, public YouTube lecture recordings and public homework; the only recent full lecture series I found for this topic."
     verified: true
     course:
       latest_term: "Spring 2020 (no newer run found; Stanford CS228 latest is Winter 2023-24)"
       latest_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/
-      videos: unknown
-      public_videos_term: "Spring 2020 and Spring 2019 pages link lecture videos on CMU Panopto (public access not confirmed); Spring 2019 site also links a YouTube channel"
+      videos: public
+      public_videos_term: "Spring 2020 (28 public youtu.be lecture links on the lectures page; YouTube channel CMU 10-708 PGM); Spring 2019 public playlist at https://www.youtube.com/playlist?list=PLoZgVqqHOumTY2CAQHL45tQp6kmDnDcqn"
       public_videos_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/lectures.html
       assignments: public
       assignments_url: https://www.cs.cmu.edu/~epxing/Class/10708-20/homework.html
@@ -121,10 +121,9 @@ considered:
   - {title: "Pattern Recognition and Machine Learning, Ch. 8 Graphical Models (Bishop)", url: "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/", reason: "Classic, short, free chapter on graphical models; kept out as primary because it is a single chapter."}
   - {title: "Information Theory, Inference, and Learning Algorithms (MacKay)", url: "https://www.inference.org.uk/itila/book.html", reason: "Excellent for message passing and Monte Carlo; broader than the scope."}
   - {title: "CMU 10-708 Spring 2014 (Xing)", url: "https://www.cs.cmu.edu/~epxing/Class/10708/", reason: "Older run whose page says lecture videos are posted; superseded by 2019/2020."}
-notes: "No recent public-video PGM course exists on par with other ML courses; CMU 10-708 (videos on Panopto) is the best candidate and Koller's Coursera lectures are the video fallback. Because PGM is optional and advanced, CS228 notes serve as the compact core text. PML2 provides the bridge to modern variational/deep generative models."
+notes: "No recent public-video PGM course exists on par with other ML courses; CMU 10-708 (public YouTube lectures, Spring 2020 and 2019) is the best candidate and Koller's Coursera lectures are the video fallback. Because PGM is optional and advanced, CS228 notes serve as the compact core text. PML2 provides the bridge to modern variational/deep generative models."
 split_proposal: null
 prereq_changes: "Consider adding soft: [bayesian-inference] (MCMC and variational inference are inference methods used heavily here)."
 open_questions:
-  - "Whether CMU 10-708 Panopto lecture links are publicly viewable without a CMU login (link page loads but a viewer could not be confirmed)."
   - "Newer 10-708 offerings (2021-2026) may exist on other hosts; not found."
 last_verified: 2026-11-18

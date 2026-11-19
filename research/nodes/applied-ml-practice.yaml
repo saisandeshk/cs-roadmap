@@ -28,7 +28,7 @@ resources:
     url: https://inria.github.io/scikit-learn-mooc/
     edition_or_term: "Self-paced, continuously updated; ~36 hours stated on FUN MOOC"
     access: free
-    use: "Modules 1-2 skim (pipeline basics already seen), then do Module 3 Selecting the best model (cross-validation, validation/learning curves), Module 4 Hyperparameter tuning (grid/random search, nested CV), Module 5-7 (linear models, decision trees, ensembles) selectively, Module 8 Evaluating model performance (metrics, baselines). Appendix modules (feature selection, interpretation) when finished."
+    use: "Skip Modules 1-2 (Module 1 is done in scientific-python; pipeline basics already seen), then do Module 3 Selecting the best model (cross-validation, validation/learning curves), Module 4 Hyperparameter tuning (grid/random search, nested CV), Module 5-7 (linear models, decision trees, ensembles) selectively, Module 8 Evaluating model performance (metrics, baselines). Appendix modules (feature selection, interpretation) when finished."
     why: "Best structured hands-on course on methodology: every module has exercises, quizzes and solutions and stresses what can go wrong (leakage, over-tuning)."
     verified: true
     course:
@@ -81,17 +81,6 @@ resources:
     use: "Chapters on training data, feature engineering, model development and offline evaluation (baselines, slice-based evaluation), and data distribution shifts (covariate, label, concept shift) and monitoring."
     why: "Covers distribution shift and slice-based evaluation in a practice-oriented way missing from scikit-learn docs."
     verified: true
-  - id: d2l-shift
-    role: reference
-    kind: book
-    title: "Dive into Deep Learning: Environment and Distribution Shift"
-    by: "Zhang, Lipton, Li, Smola"
-    url: https://d2l.ai/chapter_linear-classification/environment-and-distribution-shift.html
-    edition_or_term: "d2l 1.0.3"
-    access: free
-    use: "Sec. 4.7: covariate, label and concept shift, and correction by importance weighting."
-    why: "Short formal treatment of shift types with correction methods."
-    verified: true
   - id: trustworthy-experiments
     role: secondary
     kind: book
@@ -126,6 +115,7 @@ resources:
     why: "Evaluation skills are only learned by making and fixing mistakes on a real split-sensitive dataset."
     verified: true
 considered:
+  - {title: "Dive into Deep Learning: Environment and Distribution Shift (Sec. 4.7)", url: "https://d2l.ai/chapter_linear-classification/environment-and-distribution-shift.html", reason: "Formal treatment of covariate/label/concept shift, but duplicates the shift coverage in Huyen's chapters; dropped as redundant."}
   - {title: "Machine Learning Yearning (Andrew Ng)", url: "https://www.mlyearning.org/", reason: "Good error-analysis / dev-test-set advice but the site returned 504 and the book is unfinished/dated."}
   - {title: "Google Machine Learning Crash Course", url: "https://developers.google.com/machine-learning/crash-course", reason: "Free and clear (data, generalization, fairness, production ML) but too introductory beside the scikit-learn MOOC."}
   - {title: "Made With ML (Anyscale)", url: "https://madewithml.com/", reason: "MLOps-oriented; belongs in an ML systems path."}
