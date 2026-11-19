@@ -107,6 +107,33 @@ resources:
   use: Run the per-chapter notebooks for shallow/deep networks, loss functions, gradient descent/SGD/Adam, backprop, initialization, regularization, convolutions and residual networks.
   why: Short interactive notebooks that make each chapter's figures reproducible and test your understanding.
   verified: true
+- id: cs312-alchemy
+  role: secondary
+  kind: course
+  title: 'Stanford CS 312: Deep Learning Alchemy'
+  by: Tatsunori Hashimoto, Suhas Kotha (Stanford)
+  url: https://deep-learning-alchemy.github.io/
+  edition_or_term: Fall 2026
+  access: free
+  use: 'After the core lectures, work the six experiment assignments with their public starter code: A1 basics, A2 hyperparameter scaling, A3 optimization, A4 architecture, A5 capacity, A6 generalization (https://github.com/deep-learning-alchemy/assignments). Before reading each answer, attempt the matching prediction quiz (basics, hyperparameter scaling, optimization, capacity, stability) and check yourself against the answer slides. Lecture slides 1-11 accompany the units.'
+  why: 'Teaches deep learning as an experimental science: you design small, clean experiments on a compact transformer and learn to predict their outcomes before running them. The derivation-first courses do not train this skill, and the transformer setting also prepares for the LLM path.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://deep-learning-alchemy.github.io/
+    videos: unknown
+    assignments: public
+    assignments_url: https://deep-learning-alchemy.github.io/assets/assignments/a1_basics.pdf
+- id: deep-ml-dnn
+  role: practice
+  kind: practice-site
+  title: 'Deep-ML: Deep Neural Networks problems'
+  by: Deep-ML
+  url: https://www.deep-ml.com/collections
+  access: mixed
+  use: 'Implement the building blocks from scratch, in the order the course reaches them, from the Deep Neural Networks collection: Implement ReLU Activation Function, Dropout Layer, Simple Convolutional 2D Layer, Numerically Stable Softmax, Numerically Stable Cross-Entropy, Derivative of Cross-Entropy Loss w.r.t. Logits, One Adam Update Step and Implement AdamW Optimizer Step.'
+  why: Short, auto-checked implementation problems that confirm you can turn each formula into working code. The problems are free; premium only adds extras.
+  verified: true
 considered:
 - title: 'Stanford CS231n: Deep Learning for Computer Vision (Spring 2026)'
   url: https://cs231n.stanford.edu/
@@ -139,4 +166,4 @@ open_questions:
 - 6.7960 Fall 2026 recordings are via Canvas only; CS231n Spring 2026 recordings are also Canvas-only (no 2026 public playlist found).
 - 'UDL notebooks: repo exists but I could not list per-chapter notebook names from the page.'
 - CMU 11-785 F26/S26 video policy not determined.
-last_verified: 2026-11-18
+last_verified: '2026-11-19'

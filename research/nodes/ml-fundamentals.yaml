@@ -129,6 +129,16 @@ resources:
   use: Public problem sets are not available; treat this as a list of exercises to implement yourself in numpy (logistic regression with Newton's method, GDA, naive Bayes spam filter, kernel SVM, EM for GMM, PCA), using the ISLP labs and Hands-On notebooks 03-08 as scaffolding. Cornell CS 4/5780 (https://www.cs.cornell.edu/courses/cs4780/) has an Assignments tab not examined in detail.
   why: Writing the algorithms yourself (without sklearn) is what makes the math stick.
   verified: true
+- id: deep-ml-ml
+  role: practice
+  kind: practice-site
+  title: 'Deep-ML: Machine Learning Fundamentals and Statistical Learning problems'
+  by: Deep-ML
+  url: https://www.deep-ml.com/collections
+  access: mixed
+  use: 'From the An Introduction to Statistical Learning collection: Linear Regression Using Normal Equation, Implement Ridge Regression Loss Function, Implement Lasso Regression using ISTA, Elastic Net Regression via Gradient Descent and the cross-validation problems; then the Machine Learning Fundamentals collection for classification, clustering and dimensionality reduction.'
+  why: Auto-checked from-scratch implementations that pair with the notes; the statistical-learning collection works through the same topics as the ISL textbook. The problems are free; premium only adds extras.
+  verified: true
 considered:
 - title: MIT 6.390 Introduction to Machine Learning (Fall 2026)
   url: https://introml.mit.edu/
@@ -155,4 +165,4 @@ open_questions:
 - 'CS229 recent-term video status: the Summer 2026 page says links require a Stanford login and does not mention video; no public playlist for 2025-26 runs found.'
 - CS229 Spring 2022 and Summer 2019 recordings are listed in CS229 syllabus pages but I did not open those individual playlists.
 - Cornell CS 4780 latest term and whether newer lecture videos are public not determined.
-last_verified: 2026-11-18
+last_verified: '2026-11-19'

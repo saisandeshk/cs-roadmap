@@ -10,7 +10,7 @@ lectures are public, assignment access) were checked in November 2026.
   OS Internals & Performance Engineering, Computer Architecture & Hardware, Programming Languages & Compilers,
   Security & Cryptography, Theory & Advanced Algorithms.
 - Website: https://saisandeshk.github.io/cs-roadmap/
-  ML Systems & GPU Computing is published first, with every prerequisite it needs; the other paths are researched and follow.
+  All 15 paths are published, each with the prerequisites it borrows from other paths.
 
 ## Layout
 

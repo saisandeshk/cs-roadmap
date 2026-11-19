@@ -54,3 +54,11 @@ llm-inference-and-serving, model-parallelism.
 ## E. Deferred to the presentation phase
 - Anchor courses vs per-node slices (CS336 is primary in 8 nodes; Berkeley CS 285 in 4; CMU 15-445 in 4; MIT 6.S894 in 3).
 - Path ordering, how optional nodes and branches are shown, starting points.
+
+## F. Owner additions (2026-11-19)
+- **deep-learning-fundamentals:** Stanford CS 312 *Deep Learning Alchemy* (https://deep-learning-alchemy.github.io/, Fall 2026)
+  as a secondary course: six public experiment assignments and outcome-prediction quizzes with answer slides;
+  recordings announced as public, not yet posted. Deep-ML *Deep Neural Networks* collection as practice.
+- **ml-fundamentals:** Deep-ML *An Introduction to Statistical Learning* and *Machine Learning Fundamentals*
+  collections as practice (https://www.deep-ml.com/collections).
+- Site: every path published (`site/config.yaml: publish_paths: all`).

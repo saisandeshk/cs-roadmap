@@ -418,7 +418,8 @@
       overviewGraph() + '</section>';
 
     html += '<section class="section wrap"><div class="section-head"><h2>Paths</h2><p>' +
-      (D.site.preview ? 'Every path is researched. ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + (pub.length === 1 ? ' is' : ' are') + ' published first; the others follow in the same format.' : '') + '</p></div><div class="families">' +
+      (D.site.preview ? 'Every path is researched. ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + (pub.length === 1 ? ' is' : ' are') + ' published first; the others follow in the same format.'
+        : 'Pick a path to open its map, its guide and the courses it uses. Paths share topics, so progress in one shows up in the others.') + '</p></div><div class="families">' +
       D.families.map(function (f) {
         return '<div><h3 class="family-title">' + esc(f.title) + '</h3><div class="pgrid">' + f.paths.map(function (pid) {
           var p = pathOf(pid);
@@ -902,7 +903,8 @@
       '</div>' +
       '<div class="about-card"><h2>Where the data comes from</h2><p class="prose">Built from the research in the repository (<code>research/nodes</code>): ' + D.stats.topics + ' topics across ' + D.stats.paths +
       ' paths, each researched, independently reviewed and link-checked. Course facts were last checked in ' + esc(monthYear(D.site.checked)) + '. ' +
-      (D.site.preview ? 'Paths are published one at a time; the rest are researched and follow in the same format. Light or dark, map direction and other preferences are under Settings at the top of the page.' : '') +
+      (D.site.preview ? 'Paths are published one at a time; the rest are researched and follow in the same format. ' : '') +
+      'Light or dark, map direction and other preferences are under Settings at the top of the page.' +
       (D.site.repo ? ' Source: ' + ext(D.site.repo, esc(D.site.repo.replace(/^https:\/\//, ''))) + '.' : '') + '</p></div></section>';
   }
 

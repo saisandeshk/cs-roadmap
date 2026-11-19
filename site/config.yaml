@@ -3,6 +3,6 @@ title: CS Roadmap
 tagline: A map of computer science where every topic names the best text and course to learn it from, and paths run through shared topics.
 repo: https://github.com/saisandeshk/cs-roadmap
 
-# Which paths the site publishes. The example publishes one path; set to `all` to publish every path.
+# Which paths the site publishes: `all`, or a list of path ids such as [mlsys, core].
 # Prerequisites a published path needs from other paths are always included so its route is complete.
-publish_paths: [mlsys]
+publish_paths: all
