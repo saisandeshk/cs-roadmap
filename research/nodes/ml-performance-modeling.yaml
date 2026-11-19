@@ -17,7 +17,7 @@ resources:
     url: https://jax-ml.github.io/scaling-book/
     edition_or_term: "Online book, 2025 (includes GPU chapter and inference chapters)"
     access: free
-    use: "Ch. 1 All About Rooflines; Ch. 2 TPUs (read for the chip model, skim the TPU specifics); Ch. 4 All the Transformer Math You Need to Know; Ch. 5 How to Parallelize a Transformer for Training (the comm-bound analysis); Ch. 7 All About Transformer Inference; Ch. 12 How to Think About GPUs. Do the worked problems at the end of each chapter (answers are folded in the page)."
+    use: "Ch. 1 All About Rooflines; Ch. 2 TPUs (read for the chip model, skim the TPU specifics); Ch. 4 All the Transformer Math You Need to Know; Ch. 12 How to Think About GPUs. Do the worked problems at the end of Ch. 1 and 4 (answers are folded in the page). Ch. 5 (training parallelism) is read once, in distributed-training-fundamentals; Ch. 7-8 (inference) once, in llm-inference-and-serving."
     why: "The only text that treats FLOPs, bytes and communication as one quantitative framework and carries it from a single chip to a pod with exercises. Written by the people who ran PaLM/Gemini-scale systems; free."
     verified: true
   - id: cs336-perf
@@ -36,7 +36,7 @@ resources:
       latest_url: https://cs336.stanford.edu/
       videos: public
       public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
-      assignments: public
+      assignments: public-with-autograder
       assignments_url: https://github.com/stanford-cs336/assignment2-systems
   - id: horace-brrr
     role: secondary
@@ -48,17 +48,6 @@ resources:
     access: free
     use: "Whole post (30 min): compute-bound vs memory-bound vs overhead-bound, operator fusion as the main lever."
     why: "Shortest correct introduction to the three-regime mental model before the heavier scaling-book chapters; framework-overhead regime is not covered by the scaling book."
-    verified: true
-  - id: kipply-arithmetic
-    role: secondary
-    kind: article
-    title: "Transformer Inference Arithmetic"
-    by: "kipply"
-    url: https://kipp.ly/p/transformer-inference-arithmetic
-    edition_or_term: "2022"
-    access: free
-    use: "Whole post: KV cache size, per-token FLOPs, memory-bandwidth-bound decode latency, tensor-parallel communication cost, with worked A100 numbers."
-    why: "Compact, GPU-flavoured worked example of the decode performance model; complements the TPU-flavoured scaling book."
     verified: true
   - id: eleuther-math101
     role: reference
@@ -118,12 +107,12 @@ resources:
   - id: scaling-book-problems
     role: practice
     kind: practice-site
-    title: "Scaling Book worked problems (Ch. 1, 4, 5, 7)"
+    title: "Scaling Book worked problems (Ch. 1, 4)"
     by: "Google DeepMind"
     url: https://jax-ml.github.io/scaling-book/roofline/
     edition_or_term: "Online, 2025"
     access: free
-    use: "Do the numbered Worked Problems at the end of the Roofline, Transformers, Training and Inference chapters on paper before opening the answers."
+    use: "Do the numbered Worked Problems at the end of the Roofline and Transformers chapters on paper before opening the answers."
     why: "The exercises are where the roofline reasoning becomes automatic; no code or GPU needed."
     verified: true
 considered:
@@ -131,7 +120,7 @@ considered:
   - {title: "AI Systems Performance Engineering (Fregly, O'Reilly 2025)", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Large (about 1000 pp.), practitioner checklists rather than a model; O'Reilly page returns 403 to bots so I could not verify the contents; kept for gpu nodes as optional."}
   - {title: "Stas Bekman ML Engineering Open Book", url: "https://github.com/stas00/ml-engineering", reason: "Excellent field reference (hardware, network, throughput) but not organized as a modeling course; used in distributed-training nodes."}
   - {title: "Computer Architecture: A Quantitative Approach (Hennessy-Patterson)", url: "https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1", reason: "Source of roofline thinking, but already a prerequisite-side resource (computer-architecture node)."}
-notes: "Scaling book is the spine; CS336 gives the lecture + lab. TPU-heavy examples in the scaling book are acceptable because the math (bytes vs FLOPs vs bandwidth) is hardware-agnostic, and Ch. 12 and the kipply post supply GPU numbers. No dedicated 'performance modeling' course exists; this node is deliberately short (about 30 h) and is meant to be revisited by gpu-performance-optimization, distributed-training-fundamentals and llm-inference-and-serving."
+notes: "Scaling book is the spine; CS336 gives the lecture + lab. TPU-heavy examples in the scaling book are acceptable because the math (bytes vs FLOPs vs bandwidth) is hardware-agnostic, and Ch. 12 supplies GPU numbers (kipply's GPU-flavoured "Transformer Inference Arithmetic" is listed once, in llm-inference-and-serving, together with scaling-book Ch. 7-8; Ch. 5 is read in distributed-training-fundamentals). No dedicated 'performance modeling' course exists; this node is deliberately short (about 30 h) and is meant to be revisited by gpu-performance-optimization, distributed-training-fundamentals and llm-inference-and-serving."
 split_proposal: null
 prereq_changes: null
 open_questions:

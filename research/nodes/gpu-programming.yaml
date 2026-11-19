@@ -15,7 +15,7 @@ resources:
     title: "Programming Massively Parallel Processors: A Hands-on Approach, 5th edition"
     by: "Wen-mei W. Hwu, David B. Kirk, Izzat El Hajj"
     url: https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-443-43900-1
-    edition_or_term: "5th edition (Elsevier shop lists 27 Feb 2026 under the title and 3 Jun 2026 under product details; 4th edition was May 2022)"
+    edition_or_term: "5th edition, 2026 (Elsevier pages disagree on the exact date; 4th edition was May 2022)"
     access: paid
     use: "Part I (Ch. 1-6: heterogeneous computing, multidimensional grids, compute architecture and scheduling, memory architecture and locality, performance considerations); Part II patterns Ch. 7 convolution, 9 histogram, 10 reduction, 11 scan. Skip Ch. 8, 12-17 on a first pass (return to 15/16 sparse and wavefront, 18 deep learning, 19 multi-GPU later). Do the end-of-chapter exercises."
     why: "The standard GPU textbook. 5th edition adds warp-level programming, cooperative groups, atomics, multi-GPU/NCCL and an advanced matmul chapter (Ch. 23), so it now covers this node and part of the next two. Patterns (reduction, scan, histogram) are taught nowhere else this carefully."
@@ -28,7 +28,7 @@ resources:
     url: https://accelerated-computing.academy/fall25/
     edition_or_term: "Fall 2025"
     access: free
-    use: "Lectures 1-5 (PDP-11 problem, throughput processors, memory parts 1-2, overlapping compute and IO), 7 and 9 (data-parallel primitives parts 1-2). Labs 1-3 (SIMD Mandelbrot, massively-parallel Mandelbrot, wave simulation) and Lab 7 (run-length compression) for the CUDA fundamentals; Labs 4-6 and 10 belong to the GEMM node."
+    use: "Lectures 1-2 (PDP-11 problem, throughput processors), 7 and 9 (data-parallel primitives parts 1-2). Labs 1-3 (SIMD Mandelbrot, massively-parallel Mandelbrot, wave simulation) and Lab 7 (run-length compression) for the CUDA fundamentals. Lectures 3-6 and Labs 4-5 are in gpu-performance-optimization; Lecture 8 and Labs 6 and 10 are in gemm-and-tensor-cores."
     why: "Newest and best public GPU performance course: first-principles architecture (why accelerators look like this), real CUDA labs, filmed lectures. Pairs with PMPP: PMPP gives breadth, this gives depth and a performance-engineering mindset."
     verified: true
     course:
@@ -89,7 +89,7 @@ resources:
     url: https://leetgpu.com/challenges
     edition_or_term: "Hosted, multiple GPU backends"
     access: account-required
-    use: "Easy tier then Reduction, Prefix Sum, Histogram, Matrix Transpose, Softmax problems in CUDA after PMPP Ch. 10-11."
+    use: "Easy tier, then Histogram and Prefix Sum in CUDA after PMPP Ch. 9 and 11 (Reduction, Transpose and Softmax are assigned to gpu-performance-optimization; Matrix Multiplication to gemm-and-tensor-cores)."
     why: "Browser-based GPU with auto-grading, so no hardware is needed; problems map directly onto PMPP patterns. Free tier available."
     verified: true
   - id: olcf-cuda-series
@@ -116,7 +116,7 @@ considered:
   - {title: "UCSD CSE 291A/DSC 291 Deep Learning Systems (Spring 2026)", url: "https://haoailab.com/cse291-s26/", reason: "Two lectures on GPUs; broader systems course. Recording access unclear."}
   - {title: "Udacity CS344 Intro to Parallel Programming", url: "https://www.udacity.com/course/intro-to-parallel-programming--cs344", reason: "Classic but 2013-era CUDA and no longer maintained."}
   - {title: "Tensara", url: "https://tensara.org/", reason: "Practice site similar to LeetGPU; returned HTTP 522 when checked, so not listed."}
-notes: "PMPP 5th edition now exists (publisher page verified), so it replaces the 4th edition as primary-text. The MIT course lab specs and starter code are public but the Telerun remote-run service and Gradescope are for enrolled students; self-learners need their own NVIDIA GPU or a cloud/Colab GPU (the labs target compute capability 8.6 / H100). Hours assume about 40 h PMPP + 40 h labs/puzzles."
+notes: "PMPP 5th edition now exists (publisher page verified), so it replaces the 4th edition as primary-text. The MIT course lab specs and starter code are public but the Telerun remote-run service and Gradescope are for enrolled students; self-learners need their own NVIDIA GPU or a cloud/Colab GPU (the labs target compute capability 8.6 / H100). Hours assume about 40 h PMPP + 40 h labs/puzzles. 6.S894 lecture calendar lists 13 lectures but only lectures 1-10 have posted video (lecture 5 continuation pending); lectures 11-13: no video found. No 2026 term exists (spring26/fall26 pages return 404)."
 split_proposal: null
 prereq_changes: null
 open_questions:

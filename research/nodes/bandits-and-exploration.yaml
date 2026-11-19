@@ -31,7 +31,7 @@ resources:
   url: https://web.stanford.edu/class/cs234/
   edition_or_term: Winter 2026
   access: free
-  use: 'Winter 2026 Lectures 9-12 (slides lecture9-lecture12): multi-armed bandits, optimism/UCB, Thompson/Bayesian approaches, exploration in MDPs. Watch the matching Spring 2024 exploration lectures; Lecture 12 reading is Bandit Algorithms Section 7.1.'
+  use: 'Winter 2026 slides lecture9-lecture12 (PDFs opened): L9 Data Efficient RL (bandit intro, regret), L10 Fast RL (bandits, regret, UCB), L11 Fast RL (UCB, Bayesian bandits; title slide has a typo reading Lecture 13), L12 Fast RL continued (Thompson sampling, contextual bandits, PAC/exploration in MDPs). The modules page lists lecture9/10 slides under two headings (imitation/batch RL and Data Efficient RL) and attaches the Bandit Algorithms Section 7.1 reading to the L9-12 block; Lecture 13 is MCTS, so exploration is L9-12. Watch the matching Spring 2024 exploration lectures (numbers not mapped).'
   why: Best public lecture treatment that goes from bandits to exploration in full MDPs and ties directly to Lattimore-Szepesvari. No standalone bandit course with public videos and assignments was found (see considered).
   verified: true
   course:
@@ -126,5 +126,5 @@ notes: 'Marked optional in the skeleton. Honest gap: there is no standalone band
 split_proposal: null
 prereq_changes: null
 open_questions:
-- Which CS234 Spring 2024 lecture numbers map to Winter 2026 Lectures 9-12 was not checked video by video.
+- Which CS234 Spring 2024 lecture numbers map to Winter 2026 Lectures 9-12 was not checked video by video (Winter 2026 slide mapping was verified from the slide PDFs).
 last_verified: '2026-11-18'

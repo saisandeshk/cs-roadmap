@@ -17,7 +17,7 @@ resources:
     url: https://dataintensive.net/
     edition_or_term: "2nd edition (O'Reilly, March 2026, 670 pages)"
     access: paid
-    use: "Chapter 7 'Sharding' (key-range vs hash, secondary indexes, rebalancing, request routing) and Chapter 8 'Transactions' (ACID, isolation levels, snapshot isolation, serializability via 2PL/SSI/actual serial execution, distributed transactions and two-phase commit)."
+    use: "Chapter 7 'Sharding' (key-range vs hash, secondary indexes, rebalancing, request routing) and only the 'Distributed Transactions' sections of Chapter 8 'Transactions' (atomic commit, two-phase commit, its failure modes, exactly-once processing). Leave the ACID, isolation-level, snapshot-isolation and serializability material of ch. 8 to transactions-and-recovery (ddia2-txn there)."
     why: "The clearest single account of how partitioning and transactions interact and where distributed transactions break; it frames every system in the course (Spanner, Calvin, FoundationDB, Percolator) as a point in the same design space."
     verified: true
   - id: mit-6824-txn
@@ -28,7 +28,7 @@ resources:
     url: https://pdos.csail.mit.edu/6.824/schedule.html
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lecture 11 (distributed transactions, 2PC, using 6.033 chapter 9), Lecture 12 (Spanner), Lecture 14 (FaRM, optimistic concurrency control), Lecture 16 (memcached consistency at Facebook); Lab 5 sharded key/value service (https://pdos.csail.mit.edu/6.824/labs/lab-shard1.html). Use the Spring 2020 YouTube playlist for video."
+    use: "Spring 2026 Lecture 11 (distributed transactions, 2PC, using 6.033 chapter 9), Lecture 12 (Spanner), Lecture 14 (FaRM, optimistic concurrency control), Lecture 16 (memcached consistency at Facebook); Lab 5 sharded key/value service (https://pdos.csail.mit.edu/6.824/labs/lab-shard1.html). Video mapping to the Spring 2020 YouTube playlist: 2026 L11 = 2020 L12 (distributed transactions), 2026 L12 = 2020 L13 (Spanner), 2026 L14 = 2020 L14 (FaRM/OCC), 2026 L16 = 2020 L16 (memcached)."
     why: "Paper-driven lectures with the best public explanation of 2PC and Spanner's TrueTime, and a sharded-KV lab that makes you implement shard movement on top of Raft. 2026 lectures are not recorded publicly; the 2020 videos cover the same papers."
     verified: true
     course:
@@ -173,7 +173,7 @@ considered:
   - {title: "UW CSE 452 / DSLabs course", url: "https://courses.cs.washington.edu/courses/cse452/", reason: "Autumn 2026 term, lectures enrolled-only; DSLabs lab 4 used as practice."}
   - {title: "CMU 15-721 Advanced Database Systems", url: "https://15721.courses.cs.cmu.edu/", reason: "Fall 2025 page lists the paper-based syllabus (distributed OLAP and cloud lectures) but has no public videos; the Spring 2024 recordings cover distributed topics only briefly."}
   - {title: "Database Internals Part II as primary", url: "https://www.databass.dev/", reason: "Great mechanism detail, but DDIA better covers sharding and weaker isolation; kept as secondary."}
-notes: "Mostly a systems-papers node. Route: DDIA ch. 7-8 for the model, MIT Lecture 11-12 plus the Spanner paper for 2PC and TrueTime, Calvin and Percolator for alternatives, then do MIT Lab 5 or TinyKV Projects 3-4 for the practice. CMU 15-445 lectures 23-24 give the database-systems perspective. Dynamo is covered in the consensus-and-replication context via DDIA ch. 6; it is kept in considered here for the KV-store angle."
+notes: "Mostly a systems-papers node. Route: DDIA ch. 7 plus the distributed-transaction sections of ch. 8 for the model (DDIA does not cover Spanner, Calvin or distributed concurrency control; the papers listed carry those), MIT Lecture 11-12 plus the Spanner paper for 2PC and TrueTime, Calvin and Percolator for alternatives, then do MIT Lab 5 or TinyKV Projects 3-4 for the practice. CMU 15-445 lectures 23-24 give the database-systems perspective. Dynamo is covered in the consensus-and-replication context via DDIA ch. 6; it is kept in considered here for the KV-store angle."
 split_proposal: "Consider splitting into (a) Sharding and distributed KV stores (DDIA ch. 7, Dynamo, TinyKV 3, MIT Lab 5) and (b) Distributed transactions (2PC, Spanner, Calvin, Percolator, FoundationDB, TinyKV 4); each is about 40 hours."
 prereq_changes: "Make transactions-and-recovery a hard rather than soft prerequisite: DDIA ch. 8 and Percolator/Spanner assume 2PL, MVCC and snapshot isolation from the databases path."
 open_questions:

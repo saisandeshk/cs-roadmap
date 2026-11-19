@@ -17,7 +17,7 @@ resources:
     url: https://dataintensive.net/
     edition_or_term: "2nd edition (O'Reilly, March 2026, 670 pages)"
     access: paid
-    use: "Chapter 11 'Batch Processing' (Unix tools, MapReduce, dataflow engines like Spark, joins and shuffles, fault tolerance) and the following stream-processing chapters (message brokers vs logs, change data capture, event sourcing, event time and windows, stream joins, fault tolerance and exactly-once, idempotence)."
+    use: "Chapter 11 'Batch Processing' (Unix tools, MapReduce, dataflow engines like Spark, joins and shuffles, fault tolerance) Chapter 12 'Stream Processing' (message brokers vs logs, change data capture, event sourcing, event time and windows, stream joins, fault tolerance and exactly-once, idempotence) and Chapter 13 'A Philosophy of Streaming Systems' (derived data, unbundling databases, end-to-end correctness; chapter titles confirmed from O'Reilly previews)."
     why: "Covers the whole scope in one coherent argument (logs as the unifying abstraction, batch and stream as the same dataflow problem), is current to 2026, and is the best prerequisite for reading Kafka and Flink docs."
     verified: true
   - id: cs451
@@ -46,7 +46,7 @@ resources:
     edition_or_term: "O'Reilly, 2018"
     access: paid
     use: "Ch. 1-2 (event time vs processing time, windowing), Ch. 3 (watermarks), Ch. 4 (advanced windowing and triggers), Ch. 5 (exactly-once and side effects), Ch. 6 (streams and tables), later chapters on state and joins as needed."
-    why: "Gap: DDIA treats stream semantics in a few pages; this is the definitive deep treatment of event time, watermarks and triggers by the Dataflow/Beam authors. Free taster: the two Streaming 101 and 102 articles that the book expands."
+    why: "Gap: DDIA treats stream semantics in a few pages; this is the definitive deep treatment of event time, watermarks and triggers by the Dataflow/Beam authors. Free taster: the two Streaming 101 and 102 articles that the book expands. Authors' page (http only, opens): http://streamingsystems.net/."
     verified: false
   - id: streaming-101
     role: secondary
@@ -170,7 +170,7 @@ considered:
   - {title: "Apache Beam programming guide", url: "https://beam.apache.org/documentation/programming-guide/", reason: "Portable model derived from Dataflow; useful once the Dataflow paper is read, but Flink and Spark docs are enough for a first pass."}
   - {title: "Confluent blog: Exactly-once semantics are possible", url: "https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/", reason: "Good vendor explanation of idempotent producers and transactions; the Kafka docs pages cover the same."}
   - {title: "Jay Kreps, The Log (LinkedIn Engineering)", url: "https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying", reason: "Classic essay on the log abstraction; the old URL returned 404 during verification, so it is not listed as a resource."}
-notes: "No single strong public university course covers both batch and streaming: Waterloo CS 451/651 (Fall 2025) is the best public one for Spark and data-platform context, while Flink, Kafka and Streaming Systems cover streaming depth. Practice is Gossip Glomers #5 plus Confluent/Flink exercises and CS 451 assignments. Spark and Kafka docs are versioned (4.3), so re-check version numbers."
+notes: "No single strong public university course covers both batch and streaming: Waterloo CS 451/651 (Fall 2025) is the best public one for Spark and data-platform context, while Flink, Kafka and Streaming Systems cover streaming depth. Practice is Gossip Glomers #5 plus Confluent/Flink exercises and CS 451 assignments. Spark and Kafka docs are versioned (4.3), so re-check version numbers. CS 451/651 is a slides-and-assignments course (no lecture videos; two sections exist and only Section 002 material is public); the video track is the Confluent Flink 101, Flink SQL and Kafka Streams 101 courses listed under practice."
 split_proposal: null
 prereq_changes: "Add soft: [databases-intro] (SQL, joins) since Flink SQL, Spark SQL and stream-table duality assume it."
 open_questions:

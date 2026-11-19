@@ -14,10 +14,10 @@ resources:
     kind: book
     title: "Concurrent and Distributed Systems: Distributed Systems lecture notes"
     by: "Martin Kleppmann (University of Cambridge, Part IB)"
-    url: https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf
-    edition_or_term: "2021-22 version of the notes (91 pages); the course page has current-year versions"
+    url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/dist-sys-notes.pdf
+    edition_or_term: "2025-26 version of the notes (93 pages, opened); the course page publishes each year's version"
     access: free
-    use: "Ch. 1 (RPC, distributed systems vs networking), Ch. 2 (two generals, Byzantine generals, system models, fault tolerance), Ch. 3 (physical clocks, NTP, Lamport and vector clocks, happens-before), Ch. 4 (broadcast protocols and logical time). Do the numbered exercises (solutions are for supervisors, so discuss them or check against the lectures). Ch. 5-8 are reused by the consensus and distributed-transactions nodes."
+    use: "Ch. 1 (RPC, distributed systems vs networking), Ch. 2 (two generals, Byzantine generals, system models, failure detectors), Ch. 3 (physical clocks, NTP, Lamport and vector clocks, happens-before), Ch. 4 (broadcast protocols and logical time). Do the numbered exercises (solutions are for supervisors, so discuss them or check against the lectures). Ch. 5-8 (replication, replica consistency, consensus and Raft, eventual consistency and CRDTs) are reused by the consensus and distributed-transactions nodes."
     why: "The most rigorous short treatment of system models, failures, time and causality in print, written for strong second-year students; free, and the same author wrote DDIA so the two complement each other. Covers every item in the node scope except MapReduce (taken from MIT 6.5840)."
     verified: true
   - id: kleppmann-lectures
@@ -38,7 +38,7 @@ resources:
       public_videos_term: "2020 (Kleppmann, 8 lectures, YouTube)"
       public_videos_url: "https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"
       assignments: partial
-      assignments_url: https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf
+      assignments_url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/dist-sys-notes.pdf
   - id: mit-6824-start
     role: practice
     kind: course
@@ -146,11 +146,11 @@ considered:
   - {title: "Understanding Distributed Systems, 2nd edition (Vitillo)", url: "https://understandingdistributed.systems/", reason: "Readable practitioner overview; used in large-scale-system-design instead of here."}
   - {title: "Building Distributed Systems (builddistributedsystem.com)", url: "https://builddistributedsystem.com/tracks", reason: "34 tracks of Maelstrom-style tasks; has a paid tier and I could not assess depth, so Gossip Glomers remains the primary practice."}
   - {title: "MIT 6.1800 Computer Systems Engineering (Spring 2026)", url: "https://web.mit.edu/6.1800/www/", reason: "Survey with one distributed unit; too broad."}
-notes: "Course is intentionally split: Kleppmann (rigorous models, time, causality, broadcast) as primary text and primary course, MIT 6.5840 supplies the programming labs and MapReduce. Kleppmann's notes also serve the next nodes (ch. 5 replication, 6 consensus/Raft, 7 consistency and 2PC, 8 Spanner and CRDTs). Go is not a hard prerequisite because Gossip Glomers and Brown CS 1380 allow other languages, but MIT's labs assume Go (soft prerequisite)."
+notes: "Course is intentionally split: Kleppmann (rigorous models, time, causality, broadcast) as primary text and primary course, MIT 6.5840 supplies the programming labs and MapReduce. Kleppmann's notes also serve the next nodes (2025-26 numbering: ch. 5 replication, 6 replica consistency with 2PC and linearizability, 7 consensus and Raft, 8 eventual consistency and CRDTs). Go is not a hard prerequisite because Gossip Glomers and Brown CS 1380 allow other languages, but MIT's labs assume Go (soft prerequisite)."
 split_proposal: null
 prereq_changes: "Consider promoting concurrent-programming from soft to hard: the MIT labs require comfort with threads, locks and channels."
 open_questions:
-  - "DDIA 2nd edition chapter numbers: Ch. 1, 3, 4, 5, 6, 7 and 11 were confirmed from the Waterloo CS 451 syllabus; Ch. 9 for The Trouble with Distributed Systems follows the owner's seed and could not be confirmed because the O'Reilly pages return 403."
-  - "The Kleppmann lecture playlist is the 2020 recording; the notes linked are the 2021-22 version. I did not open each of the 8 videos."
+  - "DDIA 2nd edition chapter numbers: Ch. 1, 3, 4, 5, 6, 7 and 11 were confirmed from the Waterloo CS 451 syllabus; Ch. 9 for The Trouble with Distributed Systems follows the owner's seed; reviewer R4 confirmed ch. 6-8, 10 and 11 from the O'Reilly preview and judged ch. 9 almost certainly correct (not seen directly)."
+  - "The Kleppmann lecture playlist is the 2020 recording; the notes linked are now the 2025-26 version (opened; TOC checked). I did not open each of the 8 videos."
   - "Cambridge 2025-26 recordings page says to check Panopto via Moodle, so I treat the latest term as enrolled-only."
 last_verified: 2026-11-18

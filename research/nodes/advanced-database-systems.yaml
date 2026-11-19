@@ -116,16 +116,27 @@ resources:
     use: "Exercises: (1) generate TPC-H scale factor 10 with the tpch extension and run queries 1, 3, 5 and 6 with EXPLAIN ANALYZE, noting vectorized operators and pipeline breakers; (2) export the same data to Parquet and compare scan time with a row-store (SQLite or PostgreSQL); (3) write a small vectorized filter-and-aggregate kernel over Arrow arrays in C++, Rust or Python (NumPy/PyArrow) and compare with a tuple-at-a-time loop."
     why: "Gap: gives an executable testbed for the vectorized, columnar and Parquet material; DuckDB is open source and embeddable, so experiments are cheap."
     verified: true
-  - id: pavlo-2024
+  - id: ddia2-storage
+    role: secondary
+    kind: book
+    title: "Designing Data-Intensive Applications, 2nd edition: Storage and Retrieval"
+    by: "Martin Kleppmann, Chris Riccomini"
+    url: https://dataintensive.net/
+    edition_or_term: "2nd edition (O'Reilly, March 2026); Chapter 4"
+    access: paid
+    use: "Chapter 4 'Storage and Retrieval': the column-oriented storage, OLAP versus OLTP and vector-index sections, read before 15-721 lectures 2-6."
+    why: "Gap: a current (2026) textbook treatment of column storage and analytics that the 2015 Red Book lacks. Chapter 4 coverage follows reviewer R4's study-notes check; not opened directly. Overlap note: db-storage-and-indexing uses this chapter for LSM/B-tree storage, so here read only the columnar and OLAP sections."
+    verified: true
+  - id: pavlo-2025
     role: secondary
     kind: article
-    title: "Databases in 2024: A Year in Review"
+    title: "Databases in 2025: A Year in Review"
     by: "Andy Pavlo"
-    url: https://www.cs.cmu.edu/~pavlo/blog/2025/01/2024-databases-retrospective.html
-    edition_or_term: "January 2025 (an annual series on Pavlo's blog; check for later years)"
+    url: https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html
+    edition_or_term: "January 4, 2026 (annual series on Pavlo's blog; the 2024 edition is at https://www.cs.cmu.edu/~pavlo/blog/2025/01/2024-databases-retrospective.html)"
     access: free
     use: "Read for a current-state-of-the-field overview (lakehouse formats, vector databases, consolidation, cloud-native systems)."
-    why: "Gap: the Red Book stops in 2015; an annual yearly review keeps the landscape current."
+    why: "Gap: the Red Book stops in 2015; an annual review keeps the landscape current."
     verified: true
 considered:
   - {title: "The Design and Implementation of Modern Column-Oriented Database Systems (Abadi et al., FnT 2013)", url: "https://stratos.seas.harvard.edu/files/stratos/files/columnstoresfntdbs.pdf", reason: "Would have been the primary text for columnar storage and late materialization; the link returned 403 to my fetch, so I could not verify it and left it out."}
@@ -133,7 +144,7 @@ considered:
   - {title: "CMU 15-799 Query Optimization (Spring 2025)", url: "https://15799.courses.cs.cmu.edu/spring2025/", reason: "Has public videos; it deepens the optimizer part of this node and is listed in the query-processing node."}
   - {title: "Database Internals (Petrov)", url: "https://www.databass.dev/", reason: "Covers storage engines and distributed systems, not columnar or vectorized engines; used in the storage node."}
   - {title: "CMU Database Group seminar series", url: "https://db.cs.cmu.edu/seminar2025/", reason: "Public talks by system builders; good enrichment, no structured curriculum."}
-notes: "No single textbook covers this node, so the route is: Red Book chapter introductions for the big picture, then CMU 15-721 lectures with their papers (columnar formats, vectorization vs compilation, cloud-native systems), and DuckDB for practice. Fall 2025 15-721 is the latest run but publishes only paper lists and notes (a PR-based lecture notes repo), no videos found; Spring 2024 is the newest with videos. Also see the query-processing node (15-799 for optimizers) and distributed-transactions-and-storage (distributed databases)."
+notes: "No single textbook covers this node. The Red Book (2015) gives background only; the core reading is the paper set (Kersten, Lakehouse, Snowflake, Dremel and the 15-721 papers), with DDIA 2e ch. 4 as a current text. Route: Red Book chapter introductions for the big picture, then CMU 15-721 lectures with their papers (columnar formats, vectorization vs compilation, cloud-native systems), and DuckDB for practice. 15-721 is a lectures-only course with no assignments (paper reviews and a research project only), so the hands-on practice is DuckDB. Fall 2025 15-721 is the latest run but publishes only paper lists and notes (a PR-based lecture notes repo), no videos found; Spring 2024 is the newest with videos. Also see the query-processing node (15-799 for optimizers) and distributed-transactions-and-storage (distributed databases)."
 split_proposal: "Consider splitting into (a) Analytical engines: columnar formats, vectorized/compiled execution, in-memory OLTP and (b) Cloud-native data platforms: lakehouse, separated storage and compute, Snowflake/BigQuery/Aurora-style designs; the node is paper-heavy and wide."
 prereq_changes: null
 open_questions:

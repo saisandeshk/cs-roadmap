@@ -17,7 +17,7 @@ resources:
     url: https://siboehm.com/articles/22/CUDA-MMM
     edition_or_term: "2022 (still the reference worklog)"
     access: free
-    use: "Whole post: naive kernel, global-memory coalescing, shared-memory cache-blocking, occupancy calculation, 1D/2D blocktiling, vectorized loads, warptiling. Re-implement kernels 1-6 yourself, profile each with Nsight Compute, and compare with the author's numbers."
+    use: "Whole post: naive kernel, global-memory coalescing, shared-memory cache-blocking, occupancy calculation, 1D/2D blocktiling, vectorized loads, warptiling. Re-implement kernels 1-6 yourself (kernels 7-10: bank conflicts, autotuning, warptiling, are done in gemm-and-tensor-cores), profile each with Nsight Compute, and compare with the author's numbers."
     why: "The best single walk-through of the optimization loop (hypothesis, change, profile) on one problem; covers nearly every item in the scope except async copies. Free, with open-source code."
     verified: true
   - id: mit-6s894-opt
@@ -28,7 +28,7 @@ resources:
     url: https://accelerated-computing.academy/fall25/
     edition_or_term: "Fall 2025"
     access: free
-    use: "Lectures 3-6 (Memory part 1-2, Overlapping compute and IO, Energy and specialization); Lab 4 (matmul tiling and reuse) and Lab 5 (improved scheduling); Lab 8 (One Million Circles) as an open-ended optimization exercise."
+    use: "Lectures 3-6 (Memory part 1-2, Overlapping compute and IO, Energy and specialization); Lab 4 (matmul tiling and reuse) and Lab 5 (improved scheduling). Lectures 1-2 and 7-9 are in gpu-programming, Lecture 8 and Labs 6 and 10 in gemm-and-tensor-cores."
     why: "Teaches how to reason about GPU performance from first principles, then makes you optimize against a roofline; the labs are the closest public equivalent to a performance-engineering class on GPUs."
     verified: true
     course:
@@ -144,7 +144,7 @@ resources:
     url: https://leetgpu.com/challenges
     edition_or_term: "hosted"
     access: account-required
-    use: "Matrix Transpose, Reduction, Prefix Sum, Softmax and Matrix Multiplication: submit a naive version, then iterate with tiling and warp primitives, comparing runtime in the leaderboard."
+    use: "Matrix Transpose, Reduction and Softmax (Histogram and Prefix Sum are in gpu-programming, Matrix Multiplication in gemm-and-tensor-cores): submit a naive version, then iterate with tiling and warp primitives, comparing runtime in the leaderboard."
     why: "Hosted GPU with timing so you can practice without hardware; same problems as Harris/Boehm."
     verified: true
   - id: gpumode-leaderboard
