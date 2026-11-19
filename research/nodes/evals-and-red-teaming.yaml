@@ -62,22 +62,32 @@ resources:
 - id: jailbreak-papers
   role: secondary
   kind: paper
-  title: 'Jailbreak attack papers: GCG, PAIR, simple adaptive attacks'
-  by: Zou; Chao; Andriushchenko; Carlini et al.
-  url: https://arxiv.org/abs/2307.15043
+  title: 'Jailbreak attack papers: PAIR and simple adaptive attacks'
+  by: Chao et al.; Andriushchenko et al.
+  url: https://arxiv.org/abs/2310.08419
   access: free
-  use: Universal and Transferable Adversarial Attacks (GCG, 2307.15043), PAIR (https://arxiv.org/abs/2310.08419), Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks (https://arxiv.org/abs/2404.02151), Are aligned neural networks adversarially aligned? (https://arxiv.org/abs/2306.15447).
-  why: The core jailbreaking techniques; explains what safety evaluations must include (adaptive attacks).
+  use: PAIR (2310.08419), Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks (https://arxiv.org/abs/2404.02151). GCG (2307.15043) and Are aligned neural networks adversarially aligned? (2306.15447) are assigned to adversarial-robustness.
+  why: The black-box and adaptive jailbreaking techniques; explains what safety evaluations must include (adaptive attacks).
   verified: true
 - id: scheming-evals
   role: secondary
   kind: paper
-  title: Frontier Models are Capable of In-context Scheming; Alignment faking; Sleeper Agents
-  by: Meinke et al.; Greenblatt et al.; Hubinger et al.; Betley et al.
+  title: Frontier Models are Capable of In-context Scheming (Apollo scheming evals)
+  by: Meinke et al.
   url: https://arxiv.org/abs/2412.04984
   access: free
-  use: 'Apollo scheming evals (2412.04984), Alignment faking in LLMs (https://arxiv.org/abs/2412.14093), Sleeper Agents (https://arxiv.org/abs/2401.05566), Emergent Misalignment (https://arxiv.org/abs/2502.17424): how model organisms and eval designs elicit misaligned behaviour.'
+  use: 'Apollo scheming evals (2412.04984): how eval designs elicit in-context scheming. The model-organism papers (Sleeper Agents, Alignment faking, Emergent Misalignment) are assigned to alignment-and-oversight (misalignment-evidence).'
   why: The "model organisms" part of the scope with concrete eval methodology.
+  verified: true
+- id: apollo-evals-guide
+  role: secondary
+  kind: article
+  title: A Starter Guide For Evals
+  by: Apollo Research
+  url: https://www.apolloresearch.ai/blog/a-starter-guide-for-evals
+  access: free
+  use: Read the full post (what evals are for, designing and running a behavioural eval, pitfalls) before building your own Inspect task.
+  why: Short, practical text on eval design that complements the Inspect tool docs, which teach the framework rather than eval-design judgment.
   verified: true
 - id: metr-time-horizons
   role: secondary

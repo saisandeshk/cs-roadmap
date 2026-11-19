@@ -170,7 +170,7 @@ considered:
 - title: NIST AI Risk Management Framework
   url: https://www.nist.gov/itl/ai-risk-management-framework
   reason: Governance reference listed in owner seed; not opened here.
-notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Primary course is the Hendrycks course (intro level, matches the textbook); Harvard CS 2881R is graduate level (proof-level maturity, in-person in Fall 2026) so it is a secondary follow-up, and some learners may prefer BlueDot AGI Strategy as a first pass. Hendrycks course page: per-week video links present (two checked via YouTube oEmbed), slides are Google Drive links not opened. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
+notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Primary course is the Hendrycks course (intro level, matches the textbook); Harvard CS 2881R is graduate level (proof-level maturity, in-person in Fall 2026) so it is a secondary follow-up, and some learners may prefer BlueDot AGI Strategy as a first pass. Hendrycks course page has per-week video links (two checked via YouTube oEmbed) and slides are Google Drive links not opened. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
 split_proposal: null
 prereq_changes: Consider making language-modeling a hard prereq only for later nodes; foundations itself is fine with deep-learning-fundamentals (as in skeleton).
 open_questions:

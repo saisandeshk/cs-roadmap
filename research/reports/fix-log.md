@@ -97,3 +97,14 @@
 - llm-inference-and-serving: MIT 6.5940 L13/L15 and 15-442 weeks 9-10 added; per-paper gaps; Aug 2025 currency note; EAGLE-3 and MTP added.
 - model-compression: lab numbering/video fields fixed; distillation & QLoRA left to post-training.
 - Declined: reviewer's 15-442 lab split (didn't match README; used parts 1,7,8-9 vs 2-6).
+
+## G8 RL & safety (R3)
+- deep-value-based-rl (must-fix): primary text -> Plaat, Deep Reinforcement Learning (ch.2-3); Murphy ch.2 demoted to reference; distributional-RL claim corrected (Murphy §7.3 + Bellemare book).
+- bandits-and-exploration: CS234 lecture 9-12 mapping from slide PDFs (L13 = MCTS).
+- model-based-rl: mbrl-hw = CS285 Fall 2023 hw4 (confirmed). rl-foundations, multi-agent-rl: Plaat in considered.
+- rl-for-llms: CS336 lectures corrected to 15-16; Gao reward-overoptimization paper moved to alignment.
+- ai-safety-foundations: primary course -> Hendrycks AISES curriculum (per-week YouTube); Harvard CS 2881R secondary with level note.
+- alignment-and-oversight: four-paper spine (Casper, Gao, Burns, Greenblatt) as primary text; BlueDot as reference.
+- evals-and-red-teaming: one home per paper; Apollo starter guide added.
+- adversarial-robustness: NIST AI 100-2 added; classic-half caveat; ETH RTAI videos unknown (2020 playlist fallback); duplicates removed.
+- Declined: none.

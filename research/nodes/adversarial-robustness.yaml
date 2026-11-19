@@ -31,14 +31,14 @@ resources:
   edition_or_term: Fall 2025
   access: free
   use: Fall 2025 lectures on adversarial attacks and defenses, neural-network certification (Box, MILP, DeepPoly, branch and bound), certified training, randomized smoothing, LLM attacks and defenses, LLM privacy/prompt injection and security of AI agents, watermarking and evaluation; use the recordings on the ETH video portal (https://video.ethz.ch/lectures/d-infk/2025/autumn/263-2400-00L.html) and the 2020 YouTube playlist (https://www.youtube.com/playlist?list=PLWjm4hHpaNg6c-W7JjNYDEC_kJK9oSp0Y) for the classic parts.
-  why: Newest course found that covers both classical robustness and certification and current LLM attacks/prompt injection with public lecture recordings. Slides and exercises require an ETH NETHZ login (HTTP 401 for outsiders).
+  why: Newest course found that covers both classical robustness and certification and current LLM attacks/prompt injection. Fall 2025 recordings are on the ETH video portal, but public playback was not confirmed; the 2020 YouTube playlist is the confirmed-public fallback. Slides and exercises require an ETH NETHZ login (HTTP 401 for outsiders).
   verified: true
   course:
     latest_term: Fall 2025
     latest_url: https://eth-sri.github.io/teaching/rtai25
-    videos: public
-    public_videos_term: Fall 2025 (ETH video portal)
-    public_videos_url: https://video.ethz.ch/lectures/d-infk/2025/autumn/263-2400-00L.html
+    videos: unknown
+    public_videos_term: '2020 (YouTube playlist: Reliable and Interpretable Artificial Intelligence (2020))'
+    public_videos_url: https://www.youtube.com/playlist?list=PLWjm4hHpaNg6c-W7JjNYDEC_kJK9oSp0Y
     assignments: restricted
     assignments_url: https://eth-sri.github.io/teaching/rtai25
 - id: carlini-eval
@@ -66,10 +66,10 @@ resources:
   role: secondary
   kind: paper
   title: LLM adversarial attacks, prompt injection and poisoning papers
-  by: Zou; Carlini; Greshake; Debenedetti; Chen; Hubinger et al.
+  by: Zou; Carlini; Greshake; Debenedetti; Chen et al.
   url: https://arxiv.org/abs/2307.15043
   access: free
-  use: 'GCG (2307.15043), Are aligned neural networks adversarially aligned? (https://arxiv.org/abs/2306.15447), Not what you''ve signed up for: indirect prompt injection (https://arxiv.org/abs/2302.12173), AgentDojo (https://arxiv.org/abs/2406.13352), Meta SecAlign (https://arxiv.org/abs/2507.02735), Poisoning Web-Scale Training Datasets is Practical (https://arxiv.org/abs/2302.10149), Sleeper Agents (https://arxiv.org/abs/2401.05566).'
+  use: 'GCG (2307.15043), Are aligned neural networks adversarially aligned? (https://arxiv.org/abs/2306.15447), Not what you''ve signed up for: indirect prompt injection (https://arxiv.org/abs/2302.12173), AgentDojo (https://arxiv.org/abs/2406.13352), Meta SecAlign (https://arxiv.org/abs/2507.02735), Poisoning Web-Scale Training Datasets is Practical (https://arxiv.org/abs/2302.10149). (Sleeper Agents, 2401.05566, is assigned to alignment-and-oversight.)'
   why: Covers the LLM/prompt-injection/data-poisoning half of the scope, which classic robust-ML courses skip.
   verified: true
 - id: willison-prompt-injection
@@ -111,14 +111,16 @@ resources:
   use: Load a leaderboard model with the RobustBench API, run AutoAttack/PGD against it, and reproduce its reported robust accuracy; try foolbox (https://foolbox.jonasrauber.de/) or the Adversarial Robustness Toolbox (https://adversarial-robustness-toolbox.readthedocs.io/) for other threat models.
   why: Standardised evaluation, avoiding the pitfalls in Carlini's checklist.
   verified: true
-- id: gandalf-adv
-  role: practice
-  kind: practice-site
-  title: Gandalf and Tensor Trust (prompt injection practice)
-  url: https://gandalf.lakera.ai/baseline
+- id: nist-aml-taxonomy
+  role: secondary
+  kind: docs
+  title: 'Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (NIST AI 100-2 E2025)'
+  by: NIST (Vassilev et al.)
+  url: https://csrc.nist.gov/pubs/ai/100/2/e2025/final
+  edition_or_term: E2025
   access: free
-  use: Beat all Gandalf baseline levels, then play Tensor Trust (https://tensortrust.ai/) as attacker and defender.
-  why: Hands-on prompt injection practice; see evals-and-red-teaming for the full list.
+  use: 'Read the taxonomy chapters on evasion, poisoning, privacy and abuse/prompt-injection attacks with their mitigations; use as the map of the whole scope after the Kolter-Madry notes.'
+  why: 'Free, current, authoritative taxonomy covering the poisoning and prompt-injection items that the classic primary text (adversarial examples and adversarial training only) does not.'
   verified: true
 - id: owasp-llm
   role: reference
@@ -162,7 +164,7 @@ considered:
 - title: Adversarial ML Tutorial Chapter 5 (not completed)
   url: https://adversarial-ml-tutorial.org/
   reason: Chapter 5 "Beyond adversaries" listed as coming soon; certified defenses covered by RTAI/randomized smoothing instead.
-notes: 'The scope is wide (classic robust ML + LLM security). Classic part: Kolter-Madry + Carlini evaluation + RTAI lectures. LLM part: GCG/prompt-injection papers and Simon Willison. ETH RTAI is the only recent course with public lecture video found but its slides/exercises need a university login. The CAIS course provides one public week. Data poisoning is covered mostly by papers (Carlini 2023) rather than a structured course.'
+notes: 'The primary text (Kolter-Madry) covers only the classic half (adversarial examples and adversarial training); certified defenses, poisoning and prompt injection come from NIST AI 100-2, RTAI and papers. Prompt-injection practice (Gandalf, Tensor Trust, HackAPrompt) lives in evals-and-red-teaming. The scope is wide (classic robust ML + LLM security). Classic part: Kolter-Madry + Carlini evaluation + RTAI lectures. LLM part: GCG/prompt-injection papers and Simon Willison. ETH RTAI is the only recent course found covering this scope (Fall 2025 video playback unconfirmed; 2020 playlist is public) and its slides/exercises need a university login. The CAIS course provides one public week. Data poisoning is covered mostly by papers (Carlini 2023) rather than a structured course.'
 split_proposal: null
 prereq_changes: Consider adding soft prereq on security-basics or llm-evaluation for the LLM-attack half (cross-listed in security path).
 open_questions:

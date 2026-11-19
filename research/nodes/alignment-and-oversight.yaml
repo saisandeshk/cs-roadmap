@@ -24,15 +24,15 @@ resources:
   why: 'A stable, fixed set of four papers covering the scope (RLHF failure modes, reward hacking, weak-to-strong, AI control) in place of a cohort reading list whose contents change; the four titles were confirmed on arXiv.'
   verified: true
 - id: bluedot-technical-ai-safety
-  role: primary-text
+  role: reference
   kind: website
-  title: BlueDot Technical AI Safety curriculum (readings)
+  title: BlueDot Technical AI Safety curriculum (readings map)
   by: BlueDot Impact
   url: https://bluedot.org/courses/technical-ai-safety/1/1
   edition_or_term: Current (cohorts 30 Nov 2026 onward)
   access: free
   use: 'Browse the six units: (1) the technical challenge with AI, (2) safety training techniques (feeding AI good data, teaching AI right from wrong, more safety techniques), (3) detecting danger (evaluations and lab safety testing), (4) understanding AI (interpretability), (5) minimising harm (assuming harm, building defences, breaking the kill chain), (6) start contributing; read the core readings per unit.'
-  why: 'Most up-to-date curated reading path (cohorts run through early 2027) spanning safety training, evaluations, interpretability and defences in one place; free to read. Note: it is a curated reading list, not a self-contained textbook.'
+  why: 'Most up-to-date curated reading path (cohorts run through early 2027) spanning safety training, evaluations, interpretability and defences in one place; free to read. Note: it is a curated reading list, not a self-contained textbook, so it is the map rather than the primary text (the core reading spine above is the fixed set).'
   verified: true
 - id: arena-ch4
   role: primary-course
@@ -59,7 +59,7 @@ resources:
   url: https://boazbk.github.io/mltheoryseminar/
   edition_or_term: Fall 2026 (current); Fall 2025 archive
   access: free
-  use: 'Fall 2025: Model Specifications, Capabilities vs Safety, Scheming and Deception, Recursive Self-Improvement, Interpretability; Fall 2026 schedule: Grading and Reward Hacking, Model Policies, Alignment and Recursive Self-Improvement (videos posted as the term proceeds).'
+  use: 'Alignment-method lectures only (intro/risk-landscape lectures are in ai-safety-foundations). Fall 2025: Model Specifications, Capabilities vs Safety, Scheming and Deception, Recursive Self-Improvement, Interpretability; Fall 2026 schedule: Grading and Reward Hacking, Model Policies, Alignment and Recursive Self-Improvement (videos posted as the term proceeds).'
   why: University-style lectures with experiments on specs, reward hacking and scheming; complements the reading/hands-on items.
   verified: true
   course:
@@ -73,32 +73,32 @@ resources:
 - id: overopt-and-cai
   role: secondary
   kind: paper
-  title: 'Reward over-optimization and AI feedback: Gao et al., Constitutional AI'
-  by: Gao et al.; Bai et al.
-  url: https://arxiv.org/abs/2210.10760
+  title: 'AI feedback and harmlessness training: Constitutional AI, HH-RLHF'
+  by: Bai et al.
+  url: https://arxiv.org/abs/2212.08073
   access: free
-  use: 'Scaling Laws for Reward Model Overoptimization (2210.10760): gold vs proxy reward and KL; Constitutional AI (https://arxiv.org/abs/2212.08073); Training a Helpful and Harmless Assistant (https://arxiv.org/abs/2204.05862).'
-  why: Quantitative treatment of reward hacking in RLHF and the first scalable-feedback methods.
+  use: 'Constitutional AI (2212.08073); Training a Helpful and Harmless Assistant (https://arxiv.org/abs/2204.05862). (Gao et al. over-optimization is in the core reading spine.)'
+  why: The first scalable AI-feedback methods and the HH-RLHF baseline the spine papers critique.
   verified: true
 - id: scalable-oversight
   role: secondary
   kind: paper
-  title: 'Scalable oversight: debate, reward modeling agenda, measuring progress, weak-to-strong'
-  by: Irving et al.; Leike et al.; Bowman et al.; Burns et al.
+  title: 'Scalable oversight: debate, reward modeling agenda, measuring progress'
+  by: Irving et al.; Leike et al.; Bowman et al.
   url: https://arxiv.org/abs/1805.00899
   access: free
-  use: AI safety via debate (1805.00899), Scalable agent alignment via reward modeling (https://arxiv.org/abs/1811.07871), Measuring Progress on Scalable Oversight (https://arxiv.org/abs/2211.03540), Weak-to-Strong Generalization (https://arxiv.org/abs/2312.09390).
-  why: Primary papers for debate and weak-to-strong generalization named in the scope.
+  use: AI safety via debate (1805.00899), Scalable agent alignment via reward modeling (https://arxiv.org/abs/1811.07871), Measuring Progress on Scalable Oversight (https://arxiv.org/abs/2211.03540). (Weak-to-Strong Generalization is in the core reading spine.)
+  why: Primary papers for debate and the reward-modeling agenda named in the scope.
   verified: true
 - id: ai-control
   role: secondary
   kind: paper
-  title: 'AI control: Greenblatt et al. and follow-ups'
-  by: Greenblatt et al., Redwood Research and collaborators
-  url: https://arxiv.org/abs/2312.06942
+  title: 'AI control follow-ups: Ctrl-Z and safety cases'
+  by: Redwood Research and collaborators
+  url: https://arxiv.org/abs/2504.10374
   access: free
-  use: 'AI Control: Improving Safety Despite Intentional Subversion (2312.06942), Ctrl-Z: Controlling AI Agents via Resampling (https://arxiv.org/abs/2504.10374), A sketch of an AI control safety case (https://arxiv.org/abs/2501.17315); browse the Alignment Forum AI Control sequence (https://www.alignmentforum.org/s/PC3yJgdKvk8kzqZyA).'
-  why: The main reading for "AI control", a distinct approach from alignment; includes safety-case framing.
+  use: 'Ctrl-Z: Controlling AI Agents via Resampling (2504.10374), A sketch of an AI control safety case (https://arxiv.org/abs/2501.17315); browse the Alignment Forum AI Control sequence (https://www.alignmentforum.org/s/PC3yJgdKvk8kzqZyA). The original AI Control paper (2312.06942) is in the core reading spine.'
+  why: Follow-up reading for "AI control", a distinct approach from alignment; includes safety-case framing.
   verified: true
 - id: misalignment-evidence
   role: secondary
@@ -107,7 +107,7 @@ resources:
   by: Hubinger et al.; Greenblatt et al.; Betley et al.; Baker et al.; Korbak et al.
   url: https://arxiv.org/abs/2401.05566
   access: free
-  use: Sleeper Agents (2401.05566), Alignment faking (https://arxiv.org/abs/2412.14093), Emergent Misalignment (https://arxiv.org/abs/2502.17424), Monitoring Reasoning Models for Misbehavior (https://arxiv.org/abs/2503.11926), Chain of Thought Monitorability (https://arxiv.org/abs/2507.11473).
+  use: Home node for these papers across the safety nodes (evals-and-red-teaming and adversarial-robustness cross-reference them). Sleeper Agents (2401.05566), Alignment faking (https://arxiv.org/abs/2412.14093), Emergent Misalignment (https://arxiv.org/abs/2502.17424), Monitoring Reasoning Models for Misbehavior (https://arxiv.org/abs/2503.11926), Chain of Thought Monitorability (https://arxiv.org/abs/2507.11473).
   why: Demonstrations that safety training can fail and how monitoring might help.
   verified: true
 - id: anthropic-research-directions
@@ -162,7 +162,7 @@ considered:
 - title: Hendrycks AI Safety textbook technical chapters
   url: https://www.aisafetybook.com/
   reason: Used in ai-safety-foundations.
-notes: No textbook covers scalable oversight, debate, weak-to-strong and control; a curated reading list (BlueDot) plus hands-on ARENA content is the best available. This node overlaps rl-for-llms (RLHF failure modes) and evals (model organisms); the paper bundles are intentionally cross-listed. BlueDot unit contents were verified from the course page listing (six units); the readings inside each unit were not individually opened.
+notes: No textbook covers scalable oversight, debate, weak-to-strong and control; a fixed four-paper reading spine (Casper, Gao, Burns, Greenblatt), the BlueDot list as a map, plus hands-on ARENA content is the best available. This node overlaps rl-for-llms (RLHF failure modes) and evals (model organisms); each paper is assigned to one G8 node (Sleeper Agents, alignment faking and emergent misalignment live here; Gao over-optimization is here, not in rl-for-llms). BlueDot unit contents were verified from the course page listing (six units); the readings inside each unit were not individually opened.
 split_proposal: null
 prereq_changes: null
 open_questions:
