@@ -79,7 +79,9 @@
     if (settings.dir === 'LR' || settings.dir === 'TB') return settings.dir;
     return window.matchMedia('(min-width: 1000px)').matches ? 'LR' : 'TB';
   }
-  function termish(t) { return /\d{4}/.test(String(t || '')); }
+  // a usable term label ("Fall 2025"), not a sentence that happens to contain a year
+  function termish(t) { var s = shortTerm(t); return /\d{4}/.test(s) && s.length <= 28 && !/^no\b/i.test(s); }
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
 
   /* ---------------------------------------------------------------- data access */
   function node(id) { return D.nodes[id]; }
@@ -396,47 +398,47 @@
   }
 
   /* ---------------------------------------------------------------- home */
+  var HOW = [
+    ['Every topic names its picks', 'One primary text and, where a good one exists, one primary course, plus practice and resources that fill specific gaps.'],
+    ['Lines are prerequisites', 'A solid line means you need the earlier topic; a dashed one means it helps.'],
+    ['Paths share topics', 'Mark what you already know and every path shortens to the route that is left.'],
+  ];
+  function familyTitle(p) { return (D.families.filter(function (f) { return f.id === p.family; })[0] || {}).title || ''; }
+  function pathDone(pid) { return routeIds(pid, { scope: 'path' }).filter(function (id) { return statusOf(id) === 'done'; }).length; }
   function homeView() {
     var pub = D.paths.filter(function (p) { return p.published; });
-    var first = pub[0];
-    var html = '<section class="hero wrap">' +
-      '<div class="hero-main"><p class="eyebrow">' + (D.site.preview ? pub.length + ' of ' + D.stats.paths + ' paths published' : 'A personal map of computer science') + '</p>' +
-      '<h1>' + esc(D.site.title) + '</h1>' +
-      '<p class="lede">' + esc(D.site.tagline) + '</p>' +
-      '<div class="hero-actions">' + (first ? '<a class="btn btn-primary" href="#p-' + esc(first.id) + '">' + icon('map') + 'Open ' + esc(first.title) + '</a>' : '') +
-      '<a class="btn" href="#about">' + icon('info') + 'How to read it</a></div></div>' +
-      '<aside class="hero-panel" aria-label="How the roadmap works"><ul class="how">' +
-      '<li><span class="how-glyph">' + icon('book') + '</span><span><b>Every topic names its picks</b>One primary text and, where a good one exists, one primary course, plus practice and resources that fill specific gaps.</span></li>' +
-      '<li><span class="how-glyph">' + icon('map') + '</span><span><b>Lines are prerequisites</b>A solid line means you need the earlier topic; a dashed one means it helps.</span></li>' +
-      '<li><span class="how-glyph">' + icon('flag') + '</span><span><b>Paths share topics</b>Mark what you already know and every path shortens to the route that is left.</span></li>' +
-      '</ul><dl class="hero-stats"><div><dt>topics</dt><dd>' + D.stats.topics + '</dd></div><div><dt>paths</dt><dd>' + D.stats.paths + '</dd></div>' +
-      '<div><dt>resources</dt><dd>' + D.stats.resources.toLocaleString('en-US') + '</dd></div></dl>' +
-      '<p class="hero-note">Course facts checked ' + esc(monthYear(D.site.checked)) + '</p></aside></section>';
-
-    html += '<section class="section wrap"><div class="sysmap-head"><h2>System map</h2>' +
-      '<p>Each path is a line. A line runs from one path to another when topics in the second require topics in the first; thicker lines carry more prerequisites.</p></div>' +
-      overviewGraph() + '</section>';
-
-    // the line index: families split into two columns of about the same height
-    var fams = D.families.map(function (f) {
-      return '<div class="family"><h3 class="family-title">' + esc(f.title) + ' <small>' + f.paths.length + '</small></h3><div class="plist">' + f.paths.map(pathLine).join('') + '</div></div>';
-    });
-    var sizes = D.families.map(function (f) { return f.paths.length + 1; });
-    var total = sizes.reduce(function (a, b) { return a + b; }, 0), best = 1, bestGap = Infinity, run = 0;
-    sizes.forEach(function (s, i) { run += s; var gap = Math.abs(total - 2 * run); if (i < sizes.length - 1 && gap < bestGap) { bestGap = gap; best = i + 1; } });
-    html += '<section class="section wrap"><div class="section-head"><h2>Paths</h2><p>' +
-      (D.site.preview ? 'Every path is researched. ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + (pub.length === 1 ? ' is' : ' are') + ' published first; the others follow in the same format.'
-        : 'Pick a path to open its map, its guide and the courses it uses. Paths share topics, so progress in one shows up in the others.') + '</p></div>' +
-      '<div class="lines-index"><div class="lines-col">' + fams.slice(0, best).join('') + '</div><div class="lines-col">' + fams.slice(best).join('') + '</div></div></section>';
-    return html;
+    var first = pub[0], next = first ? nextUp(first.id)[0] : null;
+    var head = '<div class="side-head"><div class="side-info">' +
+      '<p class="eyebrow">' + (D.site.preview ? pub.length + ' of ' + D.stats.paths + ' paths published' : 'Computer science, mapped') + '</p>' +
+      '<h1 class="side-title">' + esc(D.site.title) + '</h1>' +
+      '<p class="side-desc">' + esc(D.site.tagline) + '</p>' +
+      '<p class="meta"><b>' + D.stats.paths + '</b> paths · <b>' + D.stats.topics + '</b> topics · <b>' + D.stats.resources.toLocaleString('en-US') + '</b> resources</p></div><div class="side-act">' +
+      (first ? '<a class="btn btn-primary btn-block btn-go" href="#p-' + esc(first.id) + '"><span class="ell">Start with ' + esc(first.title) + '</span>' + icon('arrow-right') + '</a>' : '') +
+      (next ? '<p class="meta faint">First stop: <a href="#n-' + esc(next) + '">' + esc(node(next).title) + '</a></p>' : '') + '</div></div>';
+    var list = '<nav class="outline-list" aria-label="Paths">' + D.families.map(function (f, i) {
+      return '<div class="ogroup"><div class="ohead"><span class="n">' + pad2(i + 1) + '</span><span>' + esc(f.title) + '</span><span class="c">' + f.paths.length + '</span></div>' +
+        f.paths.map(function (pid) {
+          var p = pathOf(pid), done = p.published ? pathDone(pid) : 0;
+          var inner = badge(pid) + '<span class="t">' + esc(p.title) + '</span><span class="c">' + (done ? '<b>' + done + '</b>/' : '') + p.count + '</span>';
+          return p.published
+            ? '<a class="orow orow-path" data-path="' + esc(pid) + '" href="#p-' + esc(pid) + '" title="' + esc(p.tagline) + '">' + inner + '</a>'
+            : '<span class="orow orow-path is-off" data-path="' + esc(pid) + '" title="Not published yet">' + inner + '</span>';
+        }).join('') + '</div>';
+    }).join('') + '<p class="side-foot"><a href="#about">' + icon('info') + 'How to read the roadmap</a></p></nav>';
+    ui.peek = first ? first.id : D.paths[0].id;
+    var pane = '<div class="pane pane-home">' +
+      '<div class="home-canvas" id="home-canvas"><p class="canvas-tag eyebrow">System map · ' + D.stats.paths + ' lines</p>' + overviewGraph() + '</div>' +
+      '<div class="home-strip"><div class="peek" id="peek">' + peekHtml(ui.peek) + '</div>' +
+      HOW.map(function (h, i) { return '<div class="how"><span class="n">' + pad2(i + 1) + '</span><b>' + esc(h[0]) + '</b><p>' + esc(h[1]) + '</p></div>'; }).join('') + '</div></div>';
+    return '<div class="shell"><aside class="side" id="side" data-key="home" aria-label="Paths">' + head + list + '</aside>' + pane + '</div>';
   }
-  function pathLine(pid) {
-    var p = pathOf(pid);
-    var main = badge(pid) + '<span class="pline-main"><span class="pline-title">' + esc(p.title) + '</span><span class="pline-tag">' + esc(p.tagline) + '</span></span>';
-    if (!p.published) return '<div class="pline is-off" style="--pc:var(--pc-' + esc(pid) + ')">' + main + '<span class="pline-meta"><span>' + plural(p.count, 'topic') + '</span><span>Not published yet</span></span></div>';
-    var done = routeIds(pid, { scope: 'path' }).filter(function (id) { return statusOf(id) === 'done'; }).length;
-    return '<a class="pline" href="#p-' + esc(pid) + '" style="--pc:var(--pc-' + esc(pid) + ')">' + main +
-      '<span class="pline-meta"><span>' + plural(p.count, 'topic') + '</span>' + (done ? '<b>' + done + ' done</b>' : icon('arrow-right')) + '</span></a>';
+  // the card under the system map: the path last pointed at (Core CS until then)
+  function peekHtml(pid) {
+    var p = pathOf(pid), done = p.published ? pathDone(pid) : 0;
+    return '<div class="peek-head" style="--pc:var(--pc-' + esc(pid) + ')">' + badge(pid, 'badge-lg') + '<div><p class="eyebrow">' + esc(familyTitle(p)) + ' path</p><b>' + esc(p.title) + '</b></div></div>' +
+      '<p class="peek-tag">' + esc(p.tagline) + '</p>' +
+      '<div class="peek-foot"><span class="meta">' + plural(p.count, 'topic') + (done ? ' · <b>' + done + '</b> done' : '') + '</span>' +
+      (p.published ? '<a class="btn btn-sm" href="#p-' + esc(pid) + '">Open path' + icon('arrow-right') + '</a>' : '<span class="meta">Not published yet</span>') + '</div>';
   }
 
   function monthYear(iso) {
@@ -448,78 +450,126 @@
   function overviewGraph() {
     var ids = D.paths.map(function (p) { return p.id; });
     var edges = D.pathLinks.map(function (l) { return { from: l.from, to: l.to, soft: false, weight: l.weight }; });
-    var lay = layoutGraph(ids, edges, { dir: 'TB', nodeW: 176, nodeH: 40, gapMajor: 46, gapMinor: 16, pad: 24 });
+    var LR = window.matchMedia('(min-width: 1000px)').matches;   // left to right fills a wide canvas; top to bottom suits phones
+    var lay = layoutGraph(ids, edges, LR ? { dir: 'LR', nodeW: 214, nodeH: 54, gapMajor: 120, gapMinor: 24, pad: 24 } : { dir: 'TB', nodeW: 204, nodeH: 52, gapMajor: 66, gapMinor: 18, pad: 24 });
     var maxW = D.pathLinks.reduce(function (m, l) { return Math.max(m, l.weight); }, 1);
     var svg = '<svg class="map-edges" width="' + lay.width + '" height="' + lay.height + '" viewBox="0 0 ' + lay.width + ' ' + lay.height + '">' +
       lay.lines.map(function (e) {
-        var w = 1.4 + 3.2 * Math.sqrt(e.weight / maxW);
-        return '<path class="edge" style="--line-color:var(--pc-' + esc(e.from) + ');stroke-width:' + w.toFixed(1) + 'px" d="' + e.d + '"><title>' + esc(pathOf(e.from).short + ' → ' + pathOf(e.to).short + ': ' + plural(e.weight, 'prerequisite')) + '</title></path>';
+        var w = 1.5 + 3.5 * Math.sqrt(e.weight / maxW);
+        return '<path class="edge" data-from="' + esc(e.from) + '" data-to="' + esc(e.to) + '" style="--line-color:var(--pc-' + esc(e.from) + ');stroke-width:' + w.toFixed(1) + 'px" d="' + e.d + '"><title>' + esc(pathOf(e.from).short + ' → ' + pathOf(e.to).short + ': ' + plural(e.weight, 'prerequisite')) + '</title></path>';
       }).join('') + '</svg>';
     var nodes = ids.map(function (pid) {
       var p = pathOf(pid), b = lay.boxes[pid];
-      var inner = badge(pid) + '<span>' + esc(p.short) + '</span>';
+      var inner = badge(pid) + '<span class="onode-t"><b>' + esc(p.short) + '</b><small>' + plural(p.count, 'topic') + '</small></span>';
       var style = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + b.w + 'px;height:' + b.h + 'px;--pc:var(--pc-' + esc(pid) + ')';
       return p.published
-        ? '<a class="onode" href="#p-' + esc(pid) + '" style="' + style + '">' + inner + '</a>'
-        : '<div class="onode is-off" style="' + style + '" title="Not published yet">' + inner + '</div>';
+        ? '<a class="onode" data-path="' + esc(pid) + '" href="#p-' + esc(pid) + '" style="' + style + '">' + inner + '</a>'
+        : '<div class="onode is-off" data-path="' + esc(pid) + '" style="' + style + '" title="Not published yet">' + inner + '</div>';
     }).join('');
-    return '<div class="overview"><div class="overview-sizer" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' +
+    return '<div class="overview" id="overview"><div class="overview-sizer" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' +
       '<div class="overview-canvas" data-w="' + lay.width + '" data-h="' + lay.height + '" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' + svg + nodes + '</div></div></div>';
   }
-  // scale the path overview to the column; below a readable size it scrolls sideways instead
+  // fit the system map to its pane (both ways on wide screens); on narrow screens it fits the width and may scroll sideways
   function fitOverview() {
-    var box = $('.overview'), sizer = $('.overview-sizer'), canvas = $('.overview-canvas');
+    var box = $('#home-canvas'), sizer = $('.overview-sizer'), canvas = $('.overview-canvas');
     if (!box || !sizer || !canvas) return;
     var w = +canvas.getAttribute('data-w'), h = +canvas.getAttribute('data-h');
-    var s = Math.max(0.6, Math.min(1, (box.clientWidth - 2) / w));
+    var cs = getComputedStyle(box);
+    var aw = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var ah = box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    var s = aw / w;
+    if (isWide()) s = Math.min(s, ah / h);
+    s = Math.max(isWide() ? 0.5 : 0.62, Math.min(1.12, s));
     sizer.style.width = (w * s) + 'px';
     sizer.style.height = (h * s) + 'px';
     canvas.style.transform = 'scale(' + s + ')';
   }
-
-  /* ---------------------------------------------------------------- path page */
-  function pathView(pid, view, sel) {
-    var p = pathOf(pid);
-    var all = routeIds(pid);
-    var own = all.filter(function (id) { return node(id).paths.indexOf(pid) >= 0; });
-    var extern = all.length - own.length;
-    var done = all.filter(function (id) { return statusOf(id) === 'done'; }).length;
-    var homes = {};
-    all.forEach(function (id) { var h = homeOf(node(id)); if (node(id).paths.indexOf(pid) < 0) homes[h] = true; });
-    var homeNames = Object.keys(homes).sort(function (a, b) { return ix.rank['p:' + a] - ix.rank['p:' + b]; }).map(function (h) { return pathOf(h).short; });
-    var pct = all.length ? Math.round(100 * done / all.length) : 0;
-
-    var head = '<section class="phead wrap wrap-wide is-' + view + '" style="--pc:var(--pc-' + esc(pid) + ')">' +
-      '<div><p class="eyebrow">' + badge(pid, 'badge-sm') + esc((D.families.filter(function (f) { return f.id === p.family; })[0] || {}).title || '') + ' path</p>' +
-      '<h1>' + esc(p.title) + '</h1><p class="lede">' + esc(p.tagline) + '</p>' +
-      '<p class="pfacts" style="margin-top:12px"><span><b>' + own.length + '</b> topics in this path</span>' +
-      (settings.scope === 'route' && extern ? '<span><b>' + extern + '</b> prerequisites from ' + esc(homeNames.join(', ')) + '</span>' : '') +
-      (p.optional ? '<span><b>' + p.optional + '</b> optional</span>' : '') + '</p></div>' +
-      '<div class="phead-side"><div class="dest"><span class="k">Where it leaves you</span><p>' + esc(p.destination) + '</p></div></div>' +
-      lineDiagram(all, done, pct) + '</section>';
-
-    var tabs = '<div class="wrap wrap-wide" style="--pc:var(--pc-' + esc(pid) + ')"><div class="ptabs-row"><nav class="tabs" aria-label="Views">' +
-      Object.keys(VIEWS).map(function (v) {
-        return '<a class="tab" href="#p-' + esc(pid) + '--' + v + '"' + (v === view ? ' aria-current="page"' : '') + '>' + icon(v === 'map' ? 'map' : v === 'guide' ? 'list' : 'library') + VIEWS[v] + '</a>';
-      }).join('') + '</nav>' +
-      '<button type="button" class="btn btn-sm" data-action="start" title="Set starting point">' + icon('flag') + '<span class="btn-label">Set starting point</span></button></div></div>';
-
-    var body = view === 'guide' ? guideBody(pid) : view === 'courses' ? coursesBody(pid) : mapBody(pid, sel);
-    return head + tabs + '<section class="pbody wrap wrap-wide">' + body + '</section>';
+  function overviewHighlight(pid) {
+    var ov = $('#overview'); if (!ov) return;
+    $$('.is-hl', ov).forEach(function (el) { el.classList.remove('is-hl'); });
+    if (!pid) { ov.classList.remove('has-hl'); return; }
+    ov.classList.add('has-hl');
+    function mark(id) { $$('.onode[data-path="' + id + '"]', ov).forEach(function (n) { n.classList.add('is-hl'); }); }
+    mark(pid);
+    $$('.edge', ov).forEach(function (e) {
+      var f = e.getAttribute('data-from'), t = e.getAttribute('data-to');
+      if (f === pid || t === pid) { e.classList.add('is-hl'); mark(f === pid ? t : f); }
+    });
   }
 
-  /* the path's stages as stops on its line; a stop fills in as its topics are done */
-  function lineDiagram(all, done, pct) {
-    var L = assignLayers(all, edgesAmong(all)).layer, stages = [];
-    all.forEach(function (id) { (stages[L[id]] = stages[L[id]] || []).push(id); });
-    var stops = stages.map(function (list, i) {
-      var d = list.filter(function (id) { return statusOf(id) === 'done'; }).length;
-      var cls = 'stop' + (d === list.length ? ' is-done' : d ? ' is-part' : '') + (i === stages.length - 1 ? ' is-end' : '');
-      return '<li class="' + cls + '" title="Stage ' + (i + 1) + ': ' + plural(list.length, 'topic') + (d ? ', ' + d + ' done' : '') + '"><span class="stop-dot"></span><span class="stop-n">' + (i + 1) + '</span></li>';
+  /* ---------------------------------------------------------------- path page */
+  /* The route in reading order: stages (prerequisite layers), topics numbered through the whole route. */
+  var orderCache = {};
+  function routeOrder(pid) {
+    var key = pid + '|' + settings.scope;
+    if (orderCache[key]) return orderCache[key];
+    var all = routeIds(pid);
+    var L = assignLayers(all, edgesAmong(all)).layer;
+    var byLayer = [];
+    all.forEach(function (id) { (byLayer[L[id]] = byLayer[L[id]] || []).push(id); });
+    var stages = byLayer.filter(Boolean), order = [], num = {}, stageOf = {};
+    stages.forEach(function (list, s) { list.forEach(function (id) { order.push(id); num[id] = order.length; stageOf[id] = s + 1; }); });
+    orderCache[key] = { all: all, stages: stages, order: order, num: num, stageOf: stageOf };
+    return orderCache[key];
+  }
+
+  /* Sidebar for a path (ctx: map, guide, courses or topic): what the path is, progress, the next step, and the numbered outline. */
+  function pathSide(pid, ctx, selId) {
+    var p = pathOf(pid), o = routeOrder(pid), wide = isWide();
+    var own = o.all.filter(function (id) { return node(id).paths.indexOf(pid) >= 0; }).length;
+    var extern = o.all.length - own;
+    var done = o.all.filter(function (id) { return statusOf(id) === 'done'; }).length;
+    var pct = o.all.length ? Math.round(100 * done / o.all.length) : 0;
+    function href(id) {
+      if (ctx === 'map') return wide ? '#p-' + pid + '--map--' + id : '#n-' + id;
+      if (ctx === 'guide') return '#p-' + pid + '--guide--' + id;
+      return '#n-' + id;
+    }
+    var head;
+    if (ctx === 'topic' && !wide) {
+      head = '<div class="side-mini"><a href="#p-' + esc(pid) + '">' + badge(pid) + '<span class="ell">' + esc(p.title) + '</span></a><span class="meta">' + (o.num[selId] ? pad2(o.num[selId]) + ' / ' + o.order.length : '') + '</span></div>';
+    } else {
+      var ready = nextUp(pid), next = ready[0];
+      head = '<div class="side-head"><div class="side-info">' +
+        (ctx === 'topic' ? '' : '<a class="side-back" href="#home">' + icon('arrow-left') + 'All paths</a>') +
+        '<p class="eyebrow">' + badge(pid) + esc(familyTitle(p)) + ' path</p>' +
+        '<h1 class="side-title">' + (ctx === 'topic' ? '<a href="#p-' + esc(pid) + '">' + esc(p.title) + '</a>' : esc(p.title)) + '</h1>' +
+        (ctx === 'topic' ? '' : '<p class="side-desc">' + esc(p.tagline) + '</p>') +
+        '<p class="meta">' + [plural(own, 'topic'), extern ? extern + ' borrowed' : '', plural(o.stages.length, 'stage')].filter(Boolean).join(' · ') + '</p></div>' +
+        '<div class="side-act"><div class="progress" role="img" aria-label="' + done + ' of ' + o.all.length + ' topics done"><span style="width:' + pct + '%"></span></div>' +
+        '<p class="meta"><b>' + done + '</b> / ' + o.all.length + ' done' + (pct ? ' · ' + pct + '%' : '') + '</p>' +
+        (ctx === 'topic' ? '' : next
+          ? '<a class="btn btn-primary btn-block btn-go" href="#n-' + esc(next) + '"><span class="ell">' + (statusOf(next) === 'doing' ? 'Continue: ' : 'Start: ') + esc(node(next).title) + '</span>' + icon('arrow-right') + '</a>' +
+            (ready.length > 1 ? '<p class="meta faint">Also ready: ' + ready.slice(1, 3).map(function (id) { return '<a href="#n-' + esc(id) + '">' + esc(node(id).title) + '</a>'; }).join(' · ') + '</p>' : '')
+          : '<p class="meta">Everything on this route is done.</p>') +
+        '<nav class="seg seg-block" aria-label="Views">' + Object.keys(VIEWS).map(function (v) {
+          return '<a href="#p-' + esc(pid) + '--' + v + '"' + (v === ctx ? ' aria-current="page"' : '') + '>' + icon(v === 'map' ? 'map' : v === 'guide' ? 'list' : 'library') + VIEWS[v] + '</a>';
+        }).join('') + '</nav>' +
+        (ctx === 'map' || ctx === 'guide'
+          ? '<div class="side-tools"><button type="button" class="btn btn-sm" data-action="start">' + icon('flag') + 'Starting point</button>' +
+            '<label class="switch"><input type="checkbox" data-toggle="hideDone"' + (settings.hideDone ? ' checked' : '') + '>Hide done</label></div>' : '') +
+        '</div></div>';
+    }
+    var rows = o.stages.map(function (list, s) {
+      return '<div class="ogroup"><div class="ohead"><span class="n">' + pad2(s + 1) + '</span><span>Stage ' + (s + 1) + '</span><span class="c">' + list.length + '</span></div>' +
+        list.map(function (id) {
+          var n = node(id), st = statusOf(id), isExt = n.paths.indexOf(pid) < 0, sel = id === selId;
+          return '<a class="orow is-' + st + (isExt ? ' is-ext' : '') + (n.optional ? ' is-opt' : '') + (sel ? ' is-sel' : '') + '" data-id="' + esc(id) + '" href="' + href(id) + '" style="--pc:var(--pc-' + esc(homeOf(n)) + ')"' + (sel ? ' aria-current="true"' : '') + ' title="' + esc(STATUS[st] + (isExt ? ' · from ' + pathOf(homeOf(n)).short : '')) + '">' +
+            '<span class="st"></span><span class="n">' + pad2(o.num[id]) + '</span><span class="t">' + esc(n.title) + '</span>' +
+            (isExt ? '<span class="x">' + esc(pathOf(homeOf(n)).code) + '</span>' : n.optional ? '<span class="x x-opt">opt</span>' : '') + '</a>';
+        }).join('') + '</div>';
     }).join('');
-    return '<div class="linediagram" role="img" aria-label="' + stages.length + ' stages, ' + done + ' of ' + all.length + ' topics done (' + pct + '%)">' +
-      '<span class="k">Stages</span><div class="ld-scroll"><ol class="stops">' + stops + '</ol></div>' +
-      '<span class="ld-done"><b>' + done + '</b> of ' + all.length + ' topics done</span></div>';
+    var dest = '<div class="odest"><p class="eyebrow">' + icon('flag') + 'Where it leaves you</p><p>' + esc(p.destination) + '</p></div>';
+    return head + '<details class="outline"' + (wide ? ' open' : '') + '><summary><span>Outline · ' + plural(o.all.length, 'topic') + '</span>' + icon('arrow-down') + '</summary>' +
+      '<div class="outline-body">' + rows + dest + '</div></details>';
+  }
+
+  function pathView(pid, view, sel) {
+    var pane = view === 'guide' ? '<div class="pane"><div class="doc">' + guideBody(pid, sel) + '</div></div>'
+      : view === 'courses' ? '<div class="pane"><div class="doc">' + coursesBody(pid) + '</div></div>'
+      : '<div class="pane pane-map">' + mapBody(pid, sel) + '</div>';
+    return '<div class="shell" style="--pc:var(--pc-' + esc(pid) + ')"><aside class="side" id="side" data-key="path:' + esc(pid) + '" aria-label="Path outline">' +
+      pathSide(pid, view, sel) + '</aside>' + pane + '</div>';
   }
 
   /* map */
@@ -528,26 +578,25 @@
 
   function mapBody(pid, sel) {
     var ids = mapIds(pid);
-    var tools = '<div class="maptools"><div class="legend">' +
-      '<span class="lg"><span class="lg-stn" style="--pc:var(--pc-' + esc(pid) + ')"></span>In this path</span>' +
-      (settings.scope === 'route' ? '<span class="lg"><span class="lg-stn is-ext"></span>Prerequisite from another path</span>' : '') +
+    var mac = /Mac|iPhone|iPad/.test(navigator.platform || '');
+    var legend = '<div class="map-legend">' +
+      '<span class="lg"><span class="lg-stn" style="--pc:var(--pc-' + esc(pid) + ')"></span>This path</span>' +
+      (settings.scope === 'route' ? '<span class="lg"><span class="lg-stn is-ext"></span>From another path</span>' : '') +
       '<span class="lg"><span class="lg-stn is-opt" style="--pc:var(--pc-' + esc(pid) + ')"></span>Optional</span>' +
       '<span class="lg"><span class="lg-line"></span>Required</span>' +
       (settings.lines === 'all' ? '<span class="lg"><span class="lg-line is-soft"></span>Helpful</span>' : '') +
-      '<span class="lg">' + icon('check') + 'Done</span></div>' +
-      '<div class="tools">' +
-      '<label class="switch"><input type="checkbox" data-toggle="hideDone"' + (settings.hideDone ? ' checked' : '') + '>Hide done</label>' +
-      '<div class="seg" role="group" aria-label="Lines"><button type="button" data-set="lines" data-value="required" aria-pressed="' + (settings.lines === 'required') + '">Required</button><button type="button" data-set="lines" data-value="all" aria-pressed="' + (settings.lines === 'all') + '">+ Helpful</button></div>' +
-      '<div class="seg" role="group" aria-label="Direction"><button type="button" data-set="dir" data-value="TB" aria-pressed="' + (dirNow() === 'TB') + '" title="Top to bottom">' + icon('arrow-down') + '</button><button type="button" data-set="dir" data-value="LR" aria-pressed="' + (dirNow() === 'LR') + '" title="Left to right">' + icon('arrow-right') + '</button></div>' +
-      '<div class="seg" role="group" aria-label="Zoom"><button type="button" data-action="zoom-out" title="Zoom out">' + icon('minus') + '</button><button type="button" data-action="zoom-fit" title="Fit to width">' + icon('fit') + '</button><button type="button" data-action="zoom-in" title="Zoom in">' + icon('plus') + '</button></div>' +
-      '</div></div>';
-    if (!ids.length) return tools + '<div class="empty-state">Every topic on this route is marked done. Turn off “Hide done” to see the whole map.</div>';
-    var selOk = sel && ids.indexOf(sel) >= 0 ? sel : null;
-    return tools + '<div class="mapbox' + (selOk && isWide() ? ' has-drawer' : '') + '" id="mapbox">' +
-      '<div class="map-vp" id="map-vp" tabindex="0" aria-label="Prerequisite map. Use the Guide tab for the same topics as a list.">' +
-      '<div class="map-sizer" id="map-sizer">' + mapCanvas(pid, ids) + '</div></div>' +
-      '<div class="map-hint">Drag to move · ' + (/Mac|iPhone|iPad/.test(navigator.platform || '') ? '⌘' : 'Ctrl') + ' + scroll to zoom</div>' +
-      '<aside class="drawer" id="drawer" aria-label="Topic details"' + (selOk && isWide() ? '' : ' hidden') + '>' + (selOk ? drawerHtml(selOk, pid) : '') + '</aside></div>';
+      '<span class="lg lg-hint">Drag to move · ' + (mac ? '⌘' : 'Ctrl') + ' + scroll to zoom</span></div>';
+    var tools = '<div class="map-tools">' +
+      '<div class="seg seg-soft" role="group" aria-label="Lines"><button type="button" data-set="lines" data-value="required" aria-pressed="' + (settings.lines === 'required') + '">Required</button><button type="button" data-set="lines" data-value="all" aria-pressed="' + (settings.lines === 'all') + '">+ Helpful</button></div>' +
+      '<div class="seg seg-soft seg-icons" role="group" aria-label="Direction"><button type="button" data-set="dir" data-value="TB" aria-pressed="' + (dirNow() === 'TB') + '" title="Top to bottom">' + icon('arrow-down') + '</button><button type="button" data-set="dir" data-value="LR" aria-pressed="' + (dirNow() === 'LR') + '" title="Left to right">' + icon('arrow-right') + '</button></div>' +
+      '<div class="seg seg-soft seg-icons" role="group" aria-label="Zoom"><button type="button" data-action="zoom-out" title="Zoom out">' + icon('minus') + '</button><button type="button" data-action="zoom-fit" title="Fit">' + icon('fit') + '</button><button type="button" data-action="zoom-in" title="Zoom in">' + icon('plus') + '</button></div>' +
+      '</div>';
+    if (!ids.length) return '<div class="mapbox"><div class="map-empty"><p>Every topic on this route is marked done.</p><p class="meta">Turn off “Hide done” in the sidebar to see the whole map.</p></div></div>';
+    var selOk = sel && ids.indexOf(sel) >= 0 ? sel : null, open = selOk && isWide();
+    return '<div class="mapbox' + (open ? ' has-drawer' : '') + '" id="mapbox">' +
+      '<div class="map-vp" id="map-vp" tabindex="0" aria-label="Prerequisite map. The Guide view lists the same topics.">' +
+      '<div class="map-sizer" id="map-sizer">' + mapCanvas(pid, ids) + '</div></div>' + legend + tools +
+      '<aside class="drawer" id="drawer" aria-label="Topic details"' + (open ? '' : ' hidden') + '>' + (selOk ? drawerHtml(selOk, pid) : '') + '</aside></div>';
   }
 
   function mapCanvas(pid, ids) {
@@ -567,7 +616,7 @@
       var at = lay.layerStart(l);
       labels += TB
         ? '<span class="stage-label" style="left:14px;top:' + (at + lay.layerSize / 2 - 6) + 'px">S' + (l + 1) + '</span>'
-        : '<span class="stage-label" style="top:16px;left:' + at + 'px">Stage ' + (l + 1) + '</span>';
+        : '<span class="stage-label" style="top:16px;left:' + at + 'px">Stage ' + pad2(l + 1) + '</span>';
     }
     var nodes = ids.map(function (id) {
       var n = node(id), b = lay.boxes[id], st = statusOf(id), isExt = n.paths.indexOf(pid) < 0;
@@ -603,18 +652,8 @@
     if (!ui.lay.TB) fit = Math.min(fit, (vp.clientHeight - 4) / ui.lay.height);
     return Math.max(0.3, Math.min(1, fit));
   }
-  // the map is a workspace: it takes the rest of the window below the path header (never less than a usable minimum)
-  function sizeMap() {
-    var vp = $('#map-vp'); if (!vp) return;
-    var top = vp.getBoundingClientRect().top + window.scrollY;
-    var h = window.innerHeight - top - 14;
-    if (window.innerWidth < 760) h = Math.max(h, Math.round(window.innerHeight * 0.68));   // phones: a tall map, the page scrolls to it
-    h = Math.max(420, Math.min(1400, h));
-    document.documentElement.style.setProperty('--map-h', h + 'px');
-  }
   function setupMap(pid, keepView) {
     var vp = $('#map-vp'); if (!vp) return;
-    sizeMap();
     var key = mapKey(pid);
     var prev = keepView && ui.mapKey === key ? { s: ui.scale, l: ui.scrollL, t: ui.scrollT } : null;
     ui.mapKey = key;
@@ -622,13 +661,16 @@
       ui.scale = prev.s; setScale(prev.s); vp.scrollLeft = prev.l; vp.scrollTop = prev.t;
     } else {
       // open at a readable size; the Fit button zooms out to the whole route
-      ui.scale = null; var f = Math.max(isWide() ? 0.74 : 0.62, fitScale()); ui.scale = f; setScale(f); vp.scrollLeft = 0; vp.scrollTop = 0;
-      if (ui.lay.TB) {   // top-to-bottom maps are wide: start centred on the first stage
-        var first = Object.keys(ui.lay.boxes).map(function (k) { return ui.lay.boxes[k]; }).filter(function (b) { return b.layer === 0; });
-        if (first.length) {
-          var mid = first.reduce(function (s, b) { return s + b.c; }, 0) / first.length;
-          vp.scrollLeft = Math.max(0, mid * f - vp.clientWidth / 2);
-        }
+      // left-to-right maps on wide screens open as large as the window height allows (up to full size), so labels stay readable
+      var f = Math.max(isWide() ? 0.74 : 0.62, fitScale());
+      if (isWide() && !ui.lay.TB) f = Math.max(0.74, Math.min(1, (vp.clientHeight - 8) / ui.lay.height));
+      ui.scale = null; ui.scale = f; setScale(f); vp.scrollLeft = 0; vp.scrollTop = 0;
+      // start on the first stage
+      var first = Object.keys(ui.lay.boxes).map(function (k) { return ui.lay.boxes[k]; }).filter(function (b) { return b.layer === 0; });
+      if (first.length) {
+        var mid = first.reduce(function (s, b) { return s + b.c; }, 0) / first.length;
+        if (ui.lay.TB) vp.scrollLeft = Math.max(0, mid * f - vp.clientWidth / 2);
+        else vp.scrollTop = Math.max(0, mid * f - vp.clientHeight / 2);
       }
     }
     vp.addEventListener('scroll', function () { ui.scrollL = vp.scrollLeft; ui.scrollT = vp.scrollTop; }, { passive: true });
@@ -659,12 +701,17 @@
     highlight(ui.selected);
     if (ui.selected) revealNode(ui.selected);
   }
+  // bring a station into view, centred in the part of the map the detail card does not cover
   function revealNode(id) {
     var vp = $('#map-vp'), b = ui.lay && ui.lay.boxes[id]; if (!vp || !b) return;
-    var s = ui.scale || 1;
+    var dr = $('#drawer'), cover = dr && !dr.hidden ? dr.offsetWidth + 28 : 0;
+    var vw = Math.max(240, vp.clientWidth - cover), s = ui.scale || 1;
     var x0 = b.x * s, y0 = b.y * s, x1 = (b.x + b.w) * s, y1 = (b.y + b.h) * s;
-    if (x0 < vp.scrollLeft || x1 > vp.scrollLeft + vp.clientWidth) vp.scrollLeft = Math.max(0, (x0 + x1) / 2 - vp.clientWidth / 2);
-    if (y0 < vp.scrollTop || y1 > vp.scrollTop + vp.clientHeight) vp.scrollTop = Math.max(0, (y0 + y1) / 2 - vp.clientHeight / 2);
+    var left = vp.scrollLeft, top = vp.scrollTop;
+    if (x0 < left || x1 > left + vw) left = Math.max(0, (x0 + x1) / 2 - vw / 2);
+    if (y0 < top || y1 > top + vp.clientHeight) top = Math.max(0, (y0 + y1) / 2 - vp.clientHeight / 2);
+    var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (vp.scrollTo) vp.scrollTo({ left: left, top: top, behavior: smooth ? 'smooth' : 'auto' }); else { vp.scrollLeft = left; vp.scrollTop = top; }
   }
   function highlight(id) {
     var canvas = $('#map-canvas'); if (!canvas) return;
@@ -694,18 +741,21 @@
   }
 
   function drawerHtml(id, pid) {
-    var n = node(id);
+    var n = node(id), o = routeOrder(pid);
     var t = pick(n, 'primary-text'), c = pick(n, 'primary-course');
     var practice = n.resources.filter(function (r) { return r.role === 'practice'; });
-    return '<button type="button" class="btn btn-quiet btn-sm drawer-close" data-action="close-drawer" aria-label="Close details">' + icon('close') + '</button>' +
-      '<div class="drawer-inner" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
-      '<p class="eyebrow">' + badge(homeOf(n), 'badge-sm') + esc(pathOf(homeOf(n)).short) + ' · ' + esc(LEVEL[n.level] || '') + (n.optional ? ' · optional' : '') + '</p>' +
-      '<h2>' + esc(n.title) + '</h2><p class="prose" style="color:var(--muted)">' + esc(n.scope) + '</p>' +
-      statusControl(id) +
+    var isExt = n.paths.indexOf(pid) < 0;
+    var bits = [o.stageOf[id] ? 'Stage ' + pad2(o.stageOf[id]) : '', isExt ? 'From ' + pathOf(homeOf(n)).short : '', LEVEL[n.level] || '', n.optional ? 'Optional' : ''].filter(Boolean);
+    return '<div class="drawer-inner" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
+      '<div class="drawer-top"><p class="eyebrow">' + badge(homeOf(n), 'badge-sm') + bits.map(function (x) { return esc(x); }).join(' · ') + (o.num[id] ? ' · <b>' + pad2(o.num[id]) + '</b> / ' + o.order.length : '') + '</p>' +
+      '<button type="button" class="btn btn-quiet btn-sm btn-icon" data-action="close-drawer" aria-label="Close details">' + icon('close') + '</button></div>' +
+      '<h2 class="drawer-title">' + esc(n.title) + '</h2>' +
+      '<p class="meta">' + [t ? '1 text' : '', c ? '1 course' : 'no course', practice.length ? plural(practice.length, 'practice item') : '', hard(n).length ? 'needs ' + hard(n).length : 'no prerequisites'].filter(Boolean).join(' · ') + '</p>' +
+      '<p class="drawer-scope">' + esc(n.scope) + '</p>' + statusControl(id) +
       (t ? pickCard(t, id, true) : '') + (c ? pickCard(c, id, true) : noCourse(n)) +
-      (practice.length ? '<div class="block"><div class="block-head"><h3>Practice</h3></div><div class="chips">' + practice.map(function (r) { return ext(r.url, esc(r.title), 'tlink'); }).join('') + '</div></div>' : '') +
+      (practice.length ? '<div class="drawer-block"><p class="eyebrow">Practice</p><div class="chips">' + practice.map(function (r) { return ext(r.url, esc(r.title), 'tlink'); }).join('') + '</div></div>' : '') +
       relations(id) +
-      '<a class="btn btn-primary" href="#n-' + esc(id) + '">Open the full topic ' + icon('arrow-right') + '</a></div>';
+      '<a class="btn btn-primary btn-block btn-go" href="#n-' + esc(id) + '"><span>Open the full topic</span>' + icon('arrow-right') + '</a></div>';
   }
 
   /* guide */
@@ -718,34 +768,32 @@
     ready.sort(function (a, b) { return (statusOf(b) === 'doing') - (statusOf(a) === 'doing') || L[a] - L[b] || rankSort(a, b); });
     return ready;
   }
-  function guideBody(pid) {
-    var p = pathOf(pid);
-    var ids = routeIds(pid, { hideDone: settings.hideDone });
+  function guideBody(pid, sel) {
+    var p = pathOf(pid), o = routeOrder(pid);
     var ready = nextUp(pid);
-    var html = '<div class="nextup"><span class="k">' + icon('flag') + ' Next up</span><div class="nextup-list">' +
-      (ready.length ? ready.slice(0, 8).map(function (id) { return topicLink(id); }).join('') + (ready.length > 8 ? '<span class="chip">+' + (ready.length - 8) + ' more ready</span>' : '') : '<span>Everything on this route is done.</span>') +
-      '</div></div>';
-    html += '<div class="maptools"><div class="legend"><span class="lg">' + (settings.layout === 'table' ? 'Compact table' : 'Cards') + ' · stages follow the prerequisite order</span></div><div class="tools">' +
-      '<label class="switch"><input type="checkbox" data-toggle="hideDone"' + (settings.hideDone ? ' checked' : '') + '>Hide done</label>' +
-      '<div class="seg" role="group" aria-label="Layout"><button type="button" data-set="layout" data-value="cards" aria-pressed="' + (settings.layout === 'cards') + '">Cards</button><button type="button" data-set="layout" data-value="table" aria-pressed="' + (settings.layout === 'table') + '">Table</button></div></div></div>';
+    var html = '<header class="doc-head"><p class="eyebrow">Guide · ' + plural(o.all.length, 'topic') + ' · ' + plural(o.stages.length, 'stage') + '</p>' +
+      '<h2 class="doc-title">The route, stage by stage</h2>' +
+      '<p class="lede">A stage needs only the stages before it. Each topic names the text and the course to learn it from; open a topic for the chapters, lectures and practice to use.</p>' +
+      '<div class="doc-tools"><div class="seg" role="group" aria-label="Layout"><button type="button" data-set="layout" data-value="cards" aria-pressed="' + (settings.layout === 'cards') + '">Cards</button><button type="button" data-set="layout" data-value="table" aria-pressed="' + (settings.layout === 'table') + '">Table</button></div></div></header>';
+    html += '<div class="nextup"><p class="eyebrow">' + icon('flag') + 'Next up · ready to start</p><div class="chips">' +
+      (ready.length ? ready.slice(0, 8).map(function (id) { return topicLink(id); }).join('') + (ready.length > 8 ? '<span class="chip">+' + (ready.length - 8) + ' more</span>' : '') : '<span class="meta">Everything on this route is done.</span>') + '</div></div>';
     if (p.exits && p.exits.length) {
       html += '<div class="exits">' + p.exits.map(function (ex) {
-        return '<div class="exit"><h3>' + icon('flag') + 'Finish with: ' + esc(ex.title) + '</h3><p>' + esc(ex.text) + '</p><div class="chips">' + ex.nodes.map(function (id) { return topicLink(id); }).join('') + '</div></div>';
+        return '<div class="exit"><p class="eyebrow">' + icon('flag') + 'Finish with</p><h3>' + esc(ex.title) + '</h3><p>' + esc(ex.text) + '</p><div class="chips">' + ex.nodes.map(function (id) { return topicLink(id); }).join('') + '</div></div>';
       }).join('') + '</div>';
     }
-    if (!ids.length) return html + '<div class="empty-state">Every topic here is marked done.</div>';
-    var L = assignLayers(ids, edgesAmong(ids)).layer;
-    var stages = [];
-    ids.forEach(function (id) { (stages[L[id]] = stages[L[id]] || []).push(id); });
+    var stages = o.stages.map(function (list) { return list.filter(function (id) { return !settings.hideDone || statusOf(id) !== 'done'; }); });
+    if (!stages.some(function (l) { return l.length; })) return html + '<div class="empty-state">Every topic here is marked done.</div>';
     if (settings.layout === 'table') {
       html += '<div class="tablebox"><table class="gtable"><thead><tr><th>Topic</th><th>Primary text</th><th>Primary course</th><th>Lectures</th><th>Progress</th></tr></thead><tbody>' +
-        stages.map(function (list, i) {
-          return '<tr class="is-stage"><td colspan="5">Stage ' + (i + 1) + ' · ' + plural(list.length, 'topic') + '</td></tr>' + list.map(function (id) { return guideRow(id, pid); }).join('');
+        stages.map(function (list, s) {
+          return list.length ? '<tr class="is-stage"><td colspan="5">Stage ' + pad2(s + 1) + ' · ' + plural(o.stages[s].length, 'topic') + '</td></tr>' + list.map(function (id) { return guideRow(id, pid); }).join('') : '';
         }).join('') + '</tbody></table></div>';
     } else {
-      html += stages.map(function (list, i) {
-        return '<div class="stage"><div class="stage-head"><span class="k">Stage</span><b>' + (i + 1) + '</b><small>' + plural(list.length, 'topic') + '</small></div>' +
-          '<div class="cards">' + list.map(function (id) { return guideCard(id, pid); }).join('') + '</div></div>';
+      html += stages.map(function (list, s) {
+        if (!list.length) return '';
+        return '<section class="stage"><div class="stage-head"><span class="n">' + pad2(s + 1) + '</span><b>Stage ' + (s + 1) + '</b><small>' + plural(o.stages[s].length, 'topic') + '</small></div>' +
+          '<div class="cards">' + list.map(function (id) { return guideCard(id, pid, o.num[id], id === sel); }).join('') + '</div></section>';
       }).join('');
     }
     return html;
@@ -758,20 +806,20 @@
     if (co.public_videos_url) return '<span class="lect is-public">' + icon('play') + (termish(co.public_videos_term) ? 'Public (' + esc(shortTerm(co.public_videos_term)) + ')' : 'Older public recordings') + '</span>';
     return '<span class="lect is-closed">' + icon('lock') + esc(VIDEOS[co.videos] || VIDEOS.unknown) + '</span>';
   }
-  function guideCard(id, pid) {
+  function guideCard(id, pid, num, isSel) {
     var n = node(id), t = pick(n, 'primary-text'), c = pick(n, 'primary-course'), isExt = n.paths.indexOf(pid) < 0, st = statusOf(id);
-    var count = { practice: 0, secondary: 0, reference: 0 };
+    var count = { practice: 0, secondary: 0 };
     n.resources.forEach(function (r) { if (count[r.role] != null) count[r.role]++; });
     var needs = hard(n);
-    return '<article class="gcard' + (isExt ? ' is-ext' : '') + (st === 'done' ? ' is-done' : '') + '" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
-      '<div class="gcard-head"><div><p class="eyebrow gcard-kicker"><span class="dot"></span>' + esc(isExt ? 'From ' + pathOf(homeOf(n)).short : LEVEL[n.level] || '') + (n.optional ? ' · optional' : '') + '</p>' +
-      '<a class="gcard-title" href="#n-' + esc(id) + '">' + esc(n.title) + '</a></div>' + cycleButton(id) + '</div>' +
+    return '<article class="gcard is-' + st + (isExt ? ' is-ext' : '') + (isSel ? ' is-flash' : '') + '" id="g-' + esc(id) + '" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
+      '<div class="gcard-top"><p class="eyebrow"><span class="gnum">' + pad2(num) + '</span><span class="dot"></span>' + esc(isExt ? 'From ' + pathOf(homeOf(n)).short : LEVEL[n.level] || '') + (n.optional ? ' · optional' : '') + '</p>' + cycleButton(id) + '</div>' +
+      '<a class="gcard-title" href="#n-' + esc(id) + '">' + esc(n.title) + '</a>' +
       '<p class="gcard-scope">' + esc(n.scope) + '</p>' +
-      '<dl class="picks-mini">' +
-      (t ? '<div><dt>Text</dt><dd>' + ext(t.url, esc(t.title)) + ' <span>' + esc(t.by || '') + '</span></dd></div>' : '') +
-      '<div><dt>Course</dt><dd>' + (c ? ext(c.url, esc(c.title)) + ' ' + lectureTag(n) : '<span>No course fits this topic; learn it from the text.</span>') + '</dd></div></dl>' +
+      '<dl class="gpicks">' +
+      (t ? '<div><dt>Text</dt><dd>' + ext(t.url, esc(t.title)) + '<span>' + esc(t.by || '') + '</span></dd></div>' : '') +
+      '<div><dt>Course</dt><dd>' + (c ? ext(c.url, esc(c.title)) + lectureTag(n) : '<span>No course fits; learn it from the text</span>') + '</dd></div></dl>' +
       '<div class="gcard-foot"><span>' + [count.practice ? plural(count.practice, 'practice item') : '', count.secondary ? count.secondary + ' gap-filling' : '', needs.length ? 'needs ' + needs.length : 'no prerequisites'].filter(Boolean).join(' · ') + '</span>' +
-      '<a href="#n-' + esc(id) + '">Open ' + icon('arrow-right') + '</a></div></article>';
+      '<a href="#n-' + esc(id) + '">Open' + icon('arrow-right') + '</a></div></article>';
   }
   function guideRow(id, pid) {
     var n = node(id), t = pick(n, 'primary-text'), c = pick(n, 'primary-course'), isExt = n.paths.indexOf(pid) < 0;
@@ -814,10 +862,12 @@
       return g.cat === f;
     }).sort(function (a, b) { return b.topics - a.topics || b.primary - a.primary || a.title.localeCompare(b.title); });
     var filters = [['primary', 'Primary picks'], ['courses', 'Courses'], ['texts', 'Books and papers'], ['practice', 'Practice'], ['web', 'Sites and docs'], ['all', 'Everything']];
-    var html = '<div class="cfilter"><div class="seg" role="group" aria-label="Show">' + filters.map(function (x) {
-      return '<button type="button" data-course-filter="' + x[0] + '" aria-pressed="' + (f === x[0]) + '">' + x[1] + '</button>';
-    }).join('') + '</div><span class="chip">' + plural(shown.length, 'resource') + ' · most-used first</span></div>';
-    html += '<p class="prose" style="color:var(--muted)">This view groups the route by resource instead of by topic. A course that serves several topics appears once, with the part each topic uses.</p>';
+    var html = '<header class="doc-head"><p class="eyebrow">Courses · ' + plural(shown.length, 'resource') + ' shown · most-used first</p>' +
+      '<h2 class="doc-title">Every resource on the route</h2>' +
+      '<p class="lede">Grouped by resource instead of by topic: a course that serves several topics appears once, with the part each topic uses.</p>' +
+      '<div class="doc-tools"><div class="seg seg-wrap" role="group" aria-label="Show">' + filters.map(function (x) {
+        return '<button type="button" data-course-filter="' + x[0] + '" aria-pressed="' + (f === x[0]) + '">' + x[1] + '</button>';
+      }).join('') + '</div></div></header>';
     html += '<div class="cgrid">' + shown.map(function (g) {
       var r = g.first;
       return '<article class="cgroup"><div class="cgroup-head"><div style="display:grid;gap:8px;min-width:0">' +
@@ -866,33 +916,46 @@
   }
   function topicView(id) {
     var n = node(id);
+    // the outline beside a topic is the path you came from, or the topic's home path
+    var ctx = ui.lastPath && pathOf(ui.lastPath) && pathOf(ui.lastPath).published && routeOrder(ui.lastPath).num[id] ? ui.lastPath : homeOf(n);
+    ui.lastPath = ctx;
+    var o = routeOrder(ctx), i = o.order.indexOf(id);
     var t = pick(n, 'primary-text'), c = pick(n, 'primary-course');
     var practice = n.resources.filter(function (r) { return r.role === 'practice'; });
     var gaps = n.resources.filter(function (r) { return r.role === 'secondary'; });
     var refs = n.resources.filter(function (r) { return r.role === 'reference'; });
     var open = settings.detail === 'all' ? ' open' : '';
     var paths = n.paths.map(function (p) { return pathOf(p).published ? '<a href="#p-' + esc(p) + '">' + esc(pathOf(p).short) + '</a>' : esc(pathOf(p).short); }).join(', ');
-    var html = '<article class="topic wrap" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
-      '<header class="topic-head"><p class="eyebrow">' + badge(homeOf(n), 'badge-sm') + '<span>' + paths + '</span><span>·</span><span>' + esc(LEVEL[n.level] || '') + '</span>' + (n.optional ? '<span>· optional</span>' : '') + (n.branch ? '<span>· branch: ' + esc(n.branch.replace(/-/g, ' ')) + '</span>' : '') + '</p>' +
+    var bits = [i >= 0 ? 'Stage ' + pad2(o.stageOf[id]) : '', LEVEL[n.level] || '', n.optional ? 'Optional' : '', n.branch ? 'Branch: ' + n.branch.replace(/-/g, ' ') : ''].filter(Boolean);
+    var html = '<header class="topic-head" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
+      '<p class="eyebrow">' + badge(homeOf(n), 'badge-sm') + bits.map(function (x) { return esc(x); }).join(' · ') + (i >= 0 ? ' · <b>' + pad2(i + 1) + '</b> / ' + o.order.length : '') + '</p>' +
       '<h1>' + esc(n.title) + '</h1><p class="lede">' + esc(n.scope) + '</p>' +
+      '<p class="meta">In ' + paths + '</p>' +
       '<div class="topic-bar">' + statusControl(id) + '</div>' + relations(id) + '</header>';
-    html += '<section class="block"><div class="block-head"><h2>Start here</h2><p>The text and the course this topic is learned from.</p></div><div class="picks">' +
+    html += '<section class="block"><div class="block-head"><h2>Start here</h2><p>The text and the course this topic is learned from</p></div><div class="picks">' +
       (t ? pickCard(t, id) : '') + (c ? pickCard(c, id) : noCourse(n)) + '</div></section>';
-    if (practice.length) html += '<section class="block"><div class="block-head"><h2>Practice</h2><p>Named exercises, labs and problem sets.</p></div><ul class="rlist">' + practice.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></section>';
-    if (gaps.length) html += '<details class="more"' + open + '><summary>Fills a gap<small>' + plural(gaps.length, 'resource') + '</small>' + icon('arrow-right') + '</summary><div class="more-body"><p class="by">Each covers something the primary picks leave out.</p><ul class="rlist">' + gaps.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></div></details>';
-    if (refs.length) html += '<details class="more"' + open + '><summary>Reference<small>' + plural(refs.length, 'resource') + '</small>' + icon('arrow-right') + '</summary><div class="more-body"><p class="by">For looking things up, not for reading cover to cover.</p><ul class="rlist">' + refs.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></div></details>';
-    if (n.considered && n.considered.length) html += '<details class="more"' + open + '><summary>Considered, not chosen<small>' + plural(n.considered.length, 'candidate') + '</small>' + icon('arrow-right') + '</summary><div class="more-body"><ul class="considered">' +
+    if (practice.length) html += '<section class="block"><div class="block-head"><h2>Practice</h2><p>Named exercises, labs and problem sets</p></div><ul class="rlist">' + practice.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></section>';
+    if (gaps.length) html += '<details class="more"' + open + '><summary>' + icon('arrow-right') + 'Fills a gap<small>' + plural(gaps.length, 'resource') + '</small></summary><div class="more-body"><p class="by">Each covers something the primary picks leave out.</p><ul class="rlist">' + gaps.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></div></details>';
+    if (refs.length) html += '<details class="more"' + open + '><summary>' + icon('arrow-right') + 'Reference<small>' + plural(refs.length, 'resource') + '</small></summary><div class="more-body"><p class="by">For looking things up, not for reading cover to cover.</p><ul class="rlist">' + refs.map(function (r) { return resourceItem(r, id); }).join('') + '</ul></div></details>';
+    if (n.considered && n.considered.length) html += '<details class="more"' + open + '><summary>' + icon('arrow-right') + 'Considered, not chosen<small>' + plural(n.considered.length, 'candidate') + '</small></summary><div class="more-body"><ul class="considered">' +
       n.considered.map(function (x) { return '<li>' + (x.url ? ext(x.url, esc(x.title)) : '<b>' + esc(x.title) + '</b>') + '<span class="prose" style="color:var(--muted);font-size:14px">' + rich(x.reason) + '</span></li>'; }).join('') + '</ul></div></details>';
     var oq = n.open_questions || [];
-    if (n.notes || oq.length) html += '<details class="more"' + open + '><summary>Curation notes<small>last checked ' + esc(monthYear(n.last_verified)) + '</small>' + icon('arrow-right') + '</summary><div class="more-body">' +
+    if (n.notes || oq.length) html += '<details class="more"' + open + '><summary>' + icon('arrow-right') + 'Curation notes<small>last checked ' + esc(monthYear(n.last_verified)) + '</small></summary><div class="more-body">' +
       (n.notes ? '<p class="prose">' + rich(n.notes) + '</p>' : '') +
       (oq.length ? '<div><span class="k">Open questions</span><ul class="notes-list">' + oq.map(function (q) { return '<li class="prose" style="font-size:14px">' + rich(typeof q === 'string' ? q : JSON.stringify(q)) + '</li>'; }).join('') + '</ul></div>' : '') + '</div></details>';
-    return html + '</article>';
+    if (i >= 0) {
+      var prev = o.order[i - 1], nxt = o.order[i + 1];
+      html += '<nav class="pager" aria-label="Previous and next topic on ' + esc(pathOf(ctx).short) + '">' +
+        (prev ? '<a class="pager-prev" href="#n-' + esc(prev) + '"><span class="eyebrow">' + icon('arrow-left') + 'Previous · ' + pad2(i) + '</span><b>' + esc(node(prev).title) + '</b></a>' : '') +
+        (nxt ? '<a class="pager-next" href="#n-' + esc(nxt) + '"><span class="eyebrow">Next · ' + pad2(i + 2) + icon('arrow-right') + '</span><b>' + esc(node(nxt).title) + '</b></a>' : '') + '</nav>';
+    }
+    return '<div class="shell" style="--pc:var(--pc-' + esc(ctx) + ')"><aside class="side" id="side" data-key="path:' + esc(ctx) + '" aria-label="Path outline">' + pathSide(ctx, 'topic', id) + '</aside>' +
+      '<div class="pane"><article class="doc topic">' + html + '</article></div></div>';
   }
 
   /* ---------------------------------------------------------------- about */
   function aboutView() {
-    return '<section class="about wrap"><div style="display:grid;gap:12px"><p class="eyebrow">About</p><h1>How to read the roadmap</h1>' +
+    return '<section class="doc doc-solo about"><div class="doc-head"><p class="eyebrow">About</p><h1 class="doc-title">How to read the roadmap</h1>' +
       '<p class="lede">Each topic is a stop on a prerequisite map. Its page says what to learn it from and what to practise, and keeps the alternatives that were weighed so the choice can be revisited.</p></div>' +
       '<div class="about-grid">' +
       '<div class="about-card"><h2>On a topic page</h2><dl>' +
@@ -1052,13 +1115,11 @@
   }
   function crumbs(r) {
     var parts = ['<a href="#home">Paths</a>'];
-    if (r.page === 'path' && pathOf(r.path)) {
-      parts.push('<a href="#p-' + esc(r.path) + '">' + esc(pathOf(r.path).short) + '</a>', '<span>' + esc(VIEWS[r.view]) + '</span>');
-    } else if (r.page === 'topic' && has(r.id)) {
-      var p = ui.lastPath && pathOf(ui.lastPath) && pathOf(ui.lastPath).published ? ui.lastPath : null;
-      if (p) parts.push('<a href="#p-' + esc(p) + '">' + esc(pathOf(p).short) + '</a>');
-      parts.push('<span>' + esc(node(r.id).title) + '</span>');
-    } else if (r.page === 'about') parts.push('<span>About</span>');
+    var pid = r.page === 'path' ? r.path : r.page === 'topic' ? ui.lastPath : null;
+    if (pid && pathOf(pid) && pathOf(pid).published) parts.push('<a href="#p-' + esc(pid) + '">' + esc(pathOf(pid).short) + '</a>');
+    if (r.page === 'path' && VIEWS[r.view]) parts.push('<span>' + esc(VIEWS[r.view]) + '</span>');
+    if (r.page === 'topic' && has(r.id)) parts.push('<span>' + esc(node(r.id).title) + '</span>');
+    if (r.page === 'about') parts.push('<span>About</span>');
     $('#crumbs').innerHTML = parts.join('<span class="sep">/</span>');
   }
   function footer() {
@@ -1072,6 +1133,7 @@
     if (r.page === 'keep') return;
     closeSearch();
     var main = $('#main');
+    var prevSide = $('#side'), sideKey = prevSide ? prevSide.getAttribute('data-key') : null, sideTop = prevSide ? prevSide.scrollTop : 0;
     var html;
     if (r.page === 'path') {
       if (!pathOf(r.path)) html = notFound('That path does not exist.');
@@ -1082,6 +1144,7 @@
         ui.selected = r.view === 'map' ? r.sel : null;
         if (sameMap && ui.mapKey === mapKey(r.path)) {   // only the selection changed: keep the map as it is
           updateDrawer(r.path, r.sel);
+          syncOutline(r.sel);
           crumbs(r);
           return;
         }
@@ -1094,15 +1157,38 @@
     } else if (r.page === 'about') { html = aboutView(); ui.mapPath = null; }
     else { html = homeView(); ui.mapPath = null; }
     var keepY = opts.keepScroll ? window.scrollY : 0;
-    document.body.toggleAttribute('data-wide', r.page === 'path');
+    // on wide screens the home page and the map are workspaces exactly one window tall
+    var isMap = r.page === 'path' && r.view === 'map' && pathOf(r.path) && pathOf(r.path).published;
+    document.body.toggleAttribute('data-fixed', isWide() && (r.page === 'home' || !!isMap));
+    document.body.setAttribute('data-page', r.page);
     main.innerHTML = html;
     crumbs(r);
-    if (r.page === 'path' && r.view === 'map' && pathOf(r.path) && pathOf(r.path).published) setupMap(r.path, opts.keepScroll);
+    var side = $('#side');
+    if (side && side.getAttribute('data-key') === sideKey) side.scrollTop = sideTop;
+    if (isMap) setupMap(r.path, opts.keepScroll);
     if (r.page === 'home') fitOverview();
     window.scrollTo(0, keepY);
+    if (r.page === 'path' && r.view === 'guide' && r.sel && !opts.keepScroll) {
+      var card = document.getElementById('g-' + r.sel);
+      if (card) card.scrollIntoView({ block: 'start' });
+    }
+    revealOutline();
     if (!opts.keepScroll && !opts.silent) main.focus({ preventScroll: true });
   }
-  function notFound(msg) { return '<section class="wrap empty-state"><h1>Not here</h1><p class="lede" style="margin-top:12px">' + esc(msg) + '</p><p style="margin-top:18px"><a class="btn" href="#home">Back to all paths</a></p></section>'; }
+  // keep the selected topic visible in the sidebar outline
+  function revealOutline() {
+    var side = $('#side'), row = side && $('.orow.is-sel', side);
+    if (!side || !row || !isWide()) return;
+    var sr = side.getBoundingClientRect(), rr = row.getBoundingClientRect();
+    if (rr.top < sr.top + 40 || rr.bottom > sr.bottom - 24) side.scrollTop += rr.top - sr.top - side.clientHeight / 2;
+  }
+  function syncOutline(sel) {
+    $$('#side .orow.is-sel').forEach(function (a) { a.classList.remove('is-sel'); a.removeAttribute('aria-current'); });
+    var row = sel ? $('#side .orow[data-id="' + sel + '"]') : null;
+    if (row) { row.classList.add('is-sel'); row.setAttribute('aria-current', 'true'); }
+    revealOutline();
+  }
+  function notFound(msg) { return '<section class="doc doc-solo"><div class="doc-head"><p class="eyebrow">Not found</p><h1 class="doc-title">Not here</h1><p class="lede">' + esc(msg) + '</p></div><p><a class="btn" href="#home">Back to all paths</a></p></section>'; }
 
   function updateDrawer(pid, sel) {
     var box = $('#mapbox'), drawer = $('#drawer');
@@ -1135,13 +1221,7 @@
       if (hostTheme) docEl.setAttribute('data-theme', hostTheme); else docEl.removeAttribute('data-theme');
       ownTheme = false;
     }
-    var btn = $('#btn-theme');
-    if (btn) {
-      var dark = isDarkNow();
-      btn.innerHTML = icon(dark ? 'sun' : 'moon');
-      btn.setAttribute('aria-label', dark ? 'Switch to light' : 'Switch to dark');
-      btn.setAttribute('title', dark ? 'Switch to light' : 'Switch to dark');
-    }
+    $$('#theme-seg [data-value]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-value') === settings.mode)); });
   }
   function saveSettings() { store.set(SETTINGS_KEY, settings); }
   function setSetting(key, value) {
@@ -1236,8 +1316,7 @@
     resizeTimer = setTimeout(function () {
       var w = isWide(), d = dirNow(), page = parseHash().page;
       if (page === 'home') fitOverview();
-      if (page === 'path' && $('#map-vp')) sizeMap();
-      if (wasWide !== null && (w !== wasWide || d !== wasDir) && page === 'path') render({ keepScroll: true, full: true, silent: true });
+      if (wasWide !== null && (w !== wasWide || d !== wasDir) && (page === 'path' || page === 'topic' || page === 'home')) render({ keepScroll: true, full: true, silent: true });
       wasWide = w; wasDir = d;
     }, 150);
   });
@@ -1263,6 +1342,22 @@
   document.addEventListener('focusin', function (ev) { if (ev.target.id === 'search' && ev.target.value.trim()) renderSearch(); });
   document.addEventListener('click', function (ev) { if (ev.target.closest('.sr-item')) { $('#search').value = ''; closeSearch(); } });
 
+  // pointing at a path (sidebar row or system-map station) shows it under the system map; pointing at a topic row lights it on the map
+  function hoverTarget(el) { return el && el.closest ? el.closest('.orow-path, .onode[data-path], .orow[data-id]') : null; }
+  document.addEventListener('mouseover', function (ev) {
+    var t = hoverTarget(ev.target); if (!t) return;
+    if (t.hasAttribute('data-path')) {
+      var pid = t.getAttribute('data-path');
+      if ($('#overview')) overviewHighlight(pid);
+      if ($('#peek') && ui.peek !== pid) { ui.peek = pid; $('#peek').innerHTML = peekHtml(pid); }
+    } else if ($('#map-canvas')) highlight(t.getAttribute('data-id'));
+  });
+  document.addEventListener('mouseout', function (ev) {
+    var t = hoverTarget(ev.target); if (!t || hoverTarget(ev.relatedTarget) === t) return;
+    if (t.hasAttribute('data-path')) overviewHighlight(null);
+    else if ($('#map-canvas')) highlight(ui.selected);
+  });
+
   /* ---------------------------------------------------------------- start */
   applyLook();
   fetch('data.json', { cache: 'no-cache' })
@@ -1275,7 +1370,7 @@
       render({ silent: true });
     })
     .catch(function (err) {
-      $('#main').innerHTML = '<section class="wrap empty-state"><h1>The roadmap data did not load</h1><p class="lede" style="margin-top:12px">The page needs <code>data.json</code> next to it (' + esc(err.message) + '). ' +
+      $('#main').innerHTML = '<section class="doc doc-solo"><h1 class="doc-title">The roadmap data did not load</h1><p class="lede" style="margin-top:12px">The page needs <code>data.json</code> next to it (' + esc(err.message) + '). ' +
         'To preview locally, build and serve the folder: <code>python3 site/build.py</code> then <code>python3 -m http.server --directory _site</code>.</p></section>';
     });
 })();
