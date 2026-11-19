@@ -400,41 +400,43 @@
     var pub = D.paths.filter(function (p) { return p.published; });
     var first = pub[0];
     var html = '<section class="hero wrap">' +
-      '<div><p class="eyebrow">' + (D.site.preview ? pub.length + ' of ' + D.stats.paths + ' paths published' : 'All ' + D.stats.paths + ' paths published') + '</p>' +
+      '<div class="hero-main"><p class="eyebrow">' + (D.site.preview ? pub.length + ' of ' + D.stats.paths + ' paths published' : 'A personal map of computer science') + '</p>' +
       '<h1>' + esc(D.site.title) + '</h1>' +
       '<p class="lede">' + esc(D.site.tagline) + '</p>' +
-      '<ul class="how">' +
-      '<li><span class="how-glyph">' + icon('book') + '</span><span><b>Every topic names its picks.</b> One primary text and, where a good one exists, one primary course, plus practice and resources that fill specific gaps.</span></li>' +
-      '<li><span class="how-glyph">' + icon('map') + '</span><span><b>Lines are prerequisites.</b> A solid line means you need the earlier topic; a dashed one means it helps.</span></li>' +
-      '<li><span class="how-glyph">' + icon('flag') + '</span><span><b>Paths share topics.</b> Mark what you already know and every path shortens to the route that is left.</span></li>' +
-      '</ul>' +
       '<div class="hero-actions">' + (first ? '<a class="btn btn-primary" href="#p-' + esc(first.id) + '">' + icon('map') + 'Open ' + esc(first.title) + '</a>' : '') +
-      '<a class="btn" href="#about">' + icon('info') + 'How to read it</a></div>' +
-      '<p class="hero-meta"><span><b>' + D.stats.topics + '</b> topics researched</span><span><b>' + D.stats.paths + '</b> paths</span>' +
-      '<span><b>' + D.stats.resources.toLocaleString('en-US') + '</b> resources</span><span>course facts checked <b>' + esc(monthYear(D.site.checked)) + '</b></span></p></div></section>';
+      '<a class="btn" href="#about">' + icon('info') + 'How to read it</a></div></div>' +
+      '<aside class="hero-panel" aria-label="How the roadmap works"><ul class="how">' +
+      '<li><span class="how-glyph">' + icon('book') + '</span><span><b>Every topic names its picks</b>One primary text and, where a good one exists, one primary course, plus practice and resources that fill specific gaps.</span></li>' +
+      '<li><span class="how-glyph">' + icon('map') + '</span><span><b>Lines are prerequisites</b>A solid line means you need the earlier topic; a dashed one means it helps.</span></li>' +
+      '<li><span class="how-glyph">' + icon('flag') + '</span><span><b>Paths share topics</b>Mark what you already know and every path shortens to the route that is left.</span></li>' +
+      '</ul><dl class="hero-stats"><div><dt>topics</dt><dd>' + D.stats.topics + '</dd></div><div><dt>paths</dt><dd>' + D.stats.paths + '</dd></div>' +
+      '<div><dt>resources</dt><dd>' + D.stats.resources.toLocaleString('en-US') + '</dd></div></dl>' +
+      '<p class="hero-note">Course facts checked ' + esc(monthYear(D.site.checked)) + '</p></aside></section>';
 
     html += '<section class="section wrap"><div class="sysmap-head"><h2>System map</h2>' +
       '<p>Each path is a line. A line runs from one path to another when topics in the second require topics in the first; thicker lines carry more prerequisites.</p></div>' +
       overviewGraph() + '</section>';
 
+    // the line index: families split into two columns of about the same height
+    var fams = D.families.map(function (f) {
+      return '<div class="family"><h3 class="family-title">' + esc(f.title) + ' <small>' + f.paths.length + '</small></h3><div class="plist">' + f.paths.map(pathLine).join('') + '</div></div>';
+    });
+    var sizes = D.families.map(function (f) { return f.paths.length + 1; });
+    var total = sizes.reduce(function (a, b) { return a + b; }, 0), best = 1, bestGap = Infinity, run = 0;
+    sizes.forEach(function (s, i) { run += s; var gap = Math.abs(total - 2 * run); if (i < sizes.length - 1 && gap < bestGap) { bestGap = gap; best = i + 1; } });
     html += '<section class="section wrap"><div class="section-head"><h2>Paths</h2><p>' +
       (D.site.preview ? 'Every path is researched. ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + (pub.length === 1 ? ' is' : ' are') + ' published first; the others follow in the same format.'
-        : 'Pick a path to open its map, its guide and the courses it uses. Paths share topics, so progress in one shows up in the others.') + '</p></div><div class="families">' +
-      D.families.map(function (f) {
-        return '<div><h3 class="family-title">' + esc(f.title) + '</h3><div class="pgrid">' + f.paths.map(function (pid) {
-          var p = pathOf(pid);
-          var top = '<span class="pcard-top">' + badge(pid) + '<span class="pcard-title">' + esc(p.title) + '</span></span><span class="pcard-tag">' + esc(p.tagline) + '</span>';
-          if (p.published) {
-            var ids = routeIds(pid, { scope: 'path' });
-            var done = ids.filter(function (id) { return statusOf(id) === 'done'; }).length;
-            return '<a class="pcard is-live" href="#p-' + esc(pid) + '" style="--pc:var(--pc-' + esc(pid) + ')">' + top +
-              '<span class="pcard-foot"><span>' + plural(p.count, 'topic') + (done ? ' · ' + done + ' done' : '') + '</span><b>Open ' + icon('arrow-right') + '</b></span></a>';
-          }
-          return '<div class="pcard is-off" style="--pc:var(--pc-' + esc(pid) + ')">' + top +
-            '<span class="pcard-foot"><span>' + plural(p.count, 'topic') + '</span><span>Not published yet</span></span></div>';
-        }).join('') + '</div></div>';
-      }).join('') + '</div></section>';
+        : 'Pick a path to open its map, its guide and the courses it uses. Paths share topics, so progress in one shows up in the others.') + '</p></div>' +
+      '<div class="lines-index"><div class="lines-col">' + fams.slice(0, best).join('') + '</div><div class="lines-col">' + fams.slice(best).join('') + '</div></div></section>';
     return html;
+  }
+  function pathLine(pid) {
+    var p = pathOf(pid);
+    var main = badge(pid) + '<span class="pline-main"><span class="pline-title">' + esc(p.title) + '</span><span class="pline-tag">' + esc(p.tagline) + '</span></span>';
+    if (!p.published) return '<div class="pline is-off" style="--pc:var(--pc-' + esc(pid) + ')">' + main + '<span class="pline-meta"><span>' + plural(p.count, 'topic') + '</span><span>Not published yet</span></span></div>';
+    var done = routeIds(pid, { scope: 'path' }).filter(function (id) { return statusOf(id) === 'done'; }).length;
+    return '<a class="pline" href="#p-' + esc(pid) + '" style="--pc:var(--pc-' + esc(pid) + ')">' + main +
+      '<span class="pline-meta"><span>' + plural(p.count, 'topic') + '</span>' + (done ? '<b>' + done + ' done</b>' : icon('arrow-right')) + '</span></a>';
   }
 
   function monthYear(iso) {
@@ -496,11 +498,11 @@
       '<div class="phead-side"><div class="dest"><span class="k">Where it leaves you</span><p>' + esc(p.destination) + '</p></div></div>' +
       lineDiagram(all, done, pct) + '</section>';
 
-    var tabs = '<div class="wrap wrap-wide"><div class="ptabs-row"><nav class="tabs" aria-label="Views">' +
+    var tabs = '<div class="wrap wrap-wide" style="--pc:var(--pc-' + esc(pid) + ')"><div class="ptabs-row"><nav class="tabs" aria-label="Views">' +
       Object.keys(VIEWS).map(function (v) {
         return '<a class="tab" href="#p-' + esc(pid) + '--' + v + '"' + (v === view ? ' aria-current="page"' : '') + '>' + icon(v === 'map' ? 'map' : v === 'guide' ? 'list' : 'library') + VIEWS[v] + '</a>';
       }).join('') + '</nav>' +
-      '<button type="button" class="btn btn-sm" data-action="start">' + icon('flag') + 'Set starting point</button></div></div>';
+      '<button type="button" class="btn btn-sm" data-action="start" title="Set starting point">' + icon('flag') + '<span class="btn-label">Set starting point</span></button></div></div>';
 
     var body = view === 'guide' ? guideBody(pid) : view === 'courses' ? coursesBody(pid) : mapBody(pid, sel);
     return head + tabs + '<section class="pbody wrap wrap-wide">' + body + '</section>';
@@ -601,8 +603,18 @@
     if (!ui.lay.TB) fit = Math.min(fit, (vp.clientHeight - 4) / ui.lay.height);
     return Math.max(0.3, Math.min(1, fit));
   }
+  // the map is a workspace: it takes the rest of the window below the path header (never less than a usable minimum)
+  function sizeMap() {
+    var vp = $('#map-vp'); if (!vp) return;
+    var top = vp.getBoundingClientRect().top + window.scrollY;
+    var h = window.innerHeight - top - 14;
+    if (window.innerWidth < 760) h = Math.max(h, Math.round(window.innerHeight * 0.68));   // phones: a tall map, the page scrolls to it
+    h = Math.max(420, Math.min(1400, h));
+    document.documentElement.style.setProperty('--map-h', h + 'px');
+  }
   function setupMap(pid, keepView) {
     var vp = $('#map-vp'); if (!vp) return;
+    sizeMap();
     var key = mapKey(pid);
     var prev = keepView && ui.mapKey === key ? { s: ui.scale, l: ui.scrollL, t: ui.scrollT } : null;
     ui.mapKey = key;
@@ -898,7 +910,7 @@
       '<div class="about-card"><h2>On the map</h2><dl>' +
       '<div><dt>Stages</dt><dd>Topics in the same stage have no prerequisites on each other. Earlier stages come first.</dd></div>' +
       '<div><dt>Solid and dashed lines</dt><dd>Required and helpful prerequisites. Lines implied by a longer chain are not drawn.</dd></div>' +
-      '<div><dt>Dashed boxes</dt><dd>Prerequisites that belong to another path, or optional topics.</dd></div>' +
+      '<div><dt>Station styles</dt><dd>A station in the path colour belongs to this path; a muted one is a prerequisite from another path; a dashed ring is optional.</dd></div>' +
       '<div><dt>Starting point</dt><dd>Mark what you already know; “Hide done” then shows only the route that is left. Progress stays in this browser.</dd></div></dl></div>' +
       '</div>' +
       '<div class="about-card"><h2>Where the data comes from</h2><p class="prose">Built from the research in the repository (<code>research/nodes</code>): ' + D.stats.topics + ' topics across ' + D.stats.paths +
@@ -1082,6 +1094,7 @@
     } else if (r.page === 'about') { html = aboutView(); ui.mapPath = null; }
     else { html = homeView(); ui.mapPath = null; }
     var keepY = opts.keepScroll ? window.scrollY : 0;
+    document.body.toggleAttribute('data-wide', r.page === 'path');
     main.innerHTML = html;
     crumbs(r);
     if (r.page === 'path' && r.view === 'map' && pathOf(r.path) && pathOf(r.path).published) setupMap(r.path, opts.keepScroll);
@@ -1223,6 +1236,7 @@
     resizeTimer = setTimeout(function () {
       var w = isWide(), d = dirNow(), page = parseHash().page;
       if (page === 'home') fitOverview();
+      if (page === 'path' && $('#map-vp')) sizeMap();
       if (wasWide !== null && (w !== wasWide || d !== wasDir) && page === 'path') render({ keepScroll: true, full: true, silent: true });
       wasWide = w; wasDir = d;
     }, 150);

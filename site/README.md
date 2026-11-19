@@ -32,7 +32,8 @@ browser's local storage. Nothing is sent anywhere.
 
 ## Settings
 
-The look is fixed: the Transit theme (route-map style, each path keeps its own line colour), dark by default.
+The look is fixed: a route-map style where each path keeps its own line colour, with two palettes, Night (dark,
+the default) and Paper (light). Type is Geist, with Geist Mono for map signage and numbers.
 Readers can change these under **Settings** (the sun/moon button in the top bar switches light and dark); the
 defaults live in `DEFAULTS` at the top of `src/app.js`.
 
@@ -49,7 +50,8 @@ defaults live in `DEFAULTS` at the top of `src/app.js`.
 A course that serves several topics (CS336 serves six on the ML Systems route) is shown topic by topic on the map,
 in the guide and on topic pages, and once with all its uses in the Courses view.
 
-## Colours
+## Colours and type
 
-`src/styles.css` defines a light palette (`--l-*`) and a dark palette (`--d-*`); the light/dark blocks map them onto
-the tokens components use. Each path has an identity colour (`--pcl-*` light, `--pcd-*` dark).
+`src/styles.css` defines the Paper palette (`--l-*`) and the Night palette (`--d-*`); the light/dark blocks map them onto
+the tokens components use. Primary buttons use `--ink` (white on Night, black on Paper); `--accent` is for links,
+focus and selection; map surfaces carry a faint dot grid (`--dot`). Each path has an identity colour (`--pcl-*` light, `--pcd-*` dark).
