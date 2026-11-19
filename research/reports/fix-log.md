@@ -34,3 +34,14 @@
 - dev-environment: Wizard Zines limited to free zines.
 - data-structures: Java-for-Python bridge + all-Python route via MIT 6.006 Spring 2020; USF visualizer split out.
 - Declined: algorithms-node overlap (G3's); CS107 lecture count stays 13-25 (site lists 25).
+
+## G2 Mathematics (R1)
+- discrete-math: practice = 6.1200 psets 01-10 + CS 70 hw/discussions 00-10 (solutions); NNG4 optional.
+- calculus: 18.01SC videos = Jerison Fall 2006 lectures.
+- linear-algebra: practice = 18.06 psets 1-10 paired to lectures + exams with solutions (4th-ed numbering noted).
+- probability: Stat 110 videos "2011-era (term unconfirmed)".
+- statistics: 18.650 wording softened; ISLP in considered; Rethinking 2024 reuses 2023 playlist; duplicate Seeing Theory removed.
+- optimization: EE127 lectures 26-27 added; paired by topic.
+- information-theory: MacKay range 8-11.
+- numerical-methods: primary course -> UT ALAFF (embedded videos, answers); 18.335 secondary; ODEs via FNC ch.6; duplicate practice replaced with 18.335 psets 1-4.
+- Declined: none.
