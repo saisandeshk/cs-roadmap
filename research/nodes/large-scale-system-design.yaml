@@ -17,8 +17,30 @@ resources:
     url: https://understandingdistributed.systems/
     edition_or_term: "2nd edition (2022, 344 pages)"
     access: paid
-    use: "Read front to back (about 15 hours): communication (reliable links, discovery, APIs), coordination, scalability (HTTP caching, CDNs, partitioning, load balancing, data storage, caching, microservices), resiliency (redundancy, fault isolation, downstream and upstream resiliency), and maintainability (testing, continuous delivery, monitoring, observability)."
+    use: "Read front to back (about 15 hours; chapter structure here is from memory and not confirmed against the book's contents): communication (reliable links, discovery, APIs), coordination, scalability (HTTP caching, CDNs, partitioning, load balancing, data storage, caching, microservices), resiliency (redundancy, fault isolation, downstream and upstream resiliency), and maintainability (testing, continuous delivery, monitoring, observability)."
     why: "The one concise book organized around the scope of this node (scalability patterns, load balancing, caching, resiliency, observability); written by a DynamoDB engineer and aligned with the preceding fundamentals node. Alex Xu's interview books are more example-driven but less principled."
+    verified: true
+  - id: ddia2-foundations
+    role: secondary
+    kind: book
+    title: "Designing Data-Intensive Applications, 2nd edition: Trade-offs in Data Systems Architecture; Defining Nonfunctional Requirements"
+    by: "Martin Kleppmann, Chris Riccomini"
+    url: https://dataintensive.net/
+    edition_or_term: "2nd edition (O'Reilly, March 2026); Chapters 1-2"
+    access: paid
+    use: "Chapter 1 (trade-offs in data systems architecture: operational vs analytical, cloud vs self-hosting, distributed vs single-node) and Chapter 2 (performance and response-time percentiles, reliability and fault tolerance, scalability, maintainability); read before the SRE chapters."
+    why: "Gap: the vocabulary for performance, reliability, scalability and maintainability trade-offs that the SRE and design material assumes; these two chapters are used by no other node."
+    verified: true
+  - id: sre-classroom
+    role: practice
+    kind: website
+    title: "Google SRE Classroom (NALSD and design exercises)"
+    by: "Google SRE"
+    url: https://sre.google/classroom/
+    edition_or_term: "Current"
+    access: free
+    use: "Classroom exercises listed on the page (Distributed PubSub, Distributed Image Server, The Art of SLO); do them after the NALSD workbook chapter."
+    why: "Gap: the nearest thing to a course for this node, from the same source as the SRE book and workbook: structured design and SLO exercises."
     verified: true
   - id: sre-book
     role: secondary
@@ -137,7 +159,7 @@ considered:
   - {title: "High Scalability blog", url: "https://highscalability.com/", reason: "Architecture write-ups of real companies; useful reading list, not a curriculum."}
   - {title: "Grokking the System Design Interview (Educative)", url: "https://www.educative.io/courses/grokking-the-system-design-interview", reason: "Paid interactive interview prep; overlaps Alex Xu."}
   - {title: "Cornell CS 5412 Cloud Computing", url: "https://www.cs.cornell.edu/courses/cs5412/", reason: "Course page for the cloud-scale design topics; the 2025 term page I tried returned 404 and I did not find public videos."}
-notes: "No primary course is listed: I did not find a public university course that covers large-scale design plus SRE in a way better than the books (MIT 6.1800 and Cornell CS 5412 were checked). Route: read Understanding Distributed Systems, then SRE book/workbook chapters, then Builders' Library essays, then do NALSD-style capacity exercises and two end-to-end designs. This node is also where the owner's HLD Handbook and AlgoMaster seed items would fit as practice."
+notes: "No primary course exists: no public university course covers large-scale design plus SRE better than the books (MIT 6.1800 and Cornell CS 5412 were checked; no public 6.1800 video was found). Google SRE Classroom is the closest course-like material. DDIA 2e ch. 1-2 supply the nonfunctional-requirements framing. Route: read Understanding Distributed Systems, then SRE book/workbook chapters, then Builders' Library essays, then do NALSD-style capacity exercises and two end-to-end designs. This node is also where the owner's HLD Handbook and AlgoMaster seed items would fit as practice."
 split_proposal: "Consider splitting into (a) System design and scalability patterns (caching, partitioning, load balancing, capacity planning) and (b) Reliability engineering and observability (SLOs, alerting, incident response, chaos), because the SRE material is a distinct skill set."
 prereq_changes: null
 open_questions:

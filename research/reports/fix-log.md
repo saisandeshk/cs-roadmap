@@ -75,3 +75,14 @@
 - diffusion-and-flow-matching: weaker extras moved to considered; CMU overlap with generative-models-at-scale removed.
 - generative-models-at-scale: coverage caveat; Dieleman latents post read first; overlaps removed.
 - Declined: CS231n cross-group overlap; optional merges.
+
+## G10 Data & distributed (R4)
+- consensus-and-replication (must-fix): per-lecture MIT 6.5840 Spring 2020 video mapping added; Paxos and linearizability have no MIT video (stated); notes chapters moved to new numbering.
+- distributed-transactions-and-storage: 2020 lecture numbers added; DDIA ch.8 limited to 2PC sections; Spanner/Calvin via papers.
+- distributed-systems-fundamentals: Kleppmann notes -> 2025-26 PDF; chapter map updated (6 replica consistency, 7 consensus/Raft).
+- transactions-and-recovery: owns isolation levels; R&G kept for exposition.
+- batch-and-stream-processing: DDIA ch.12-13 named; CS 451 slides+assignments only.
+- large-scale-system-design: DDIA ch.1-2 and SRE Classroom added; no course exists (stated).
+- advanced-database-systems: DDIA ch.4 added; "Databases in 2025" retrospective; Red Book background only; 15-721 no assignments.
+- db-storage-and-indexing, query-processing: BusTub agent-ban note; R&G vs DSC7 note.
+- Not done: Vitillo chapter list (marked from memory); Streaming Systems authors' page (http-only, kept O'Reilly URL).
