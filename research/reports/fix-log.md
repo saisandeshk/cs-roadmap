@@ -63,3 +63,15 @@
 - probabilistic-graphical-models: CMU 10-708 videos public (28 YouTube links); CS228 staleness caveat.
 - graph-neural-networks: 2021 lectures predate graph transformers (noted). intro-ai, scientific-python, bayesian-inference: small fixes.
 - Declined: deep-learning-for-vision change (G6's node); suggestions needing unverified sources.
+
+## G6 Vision & generative (R3)
+- vision-foundations (must-fix): Szeliski 2e chapter numbers fixed (ch.8 stitching, ch.9 motion, ch.11 SfM); coverage-gap note (features, classical recognition); CS231A PS1 only here.
+- multi-view-geometry: CS231A PS2-3 only; TUM playlist question resolved.
+- deep-learning-for-vision: CS231n lecture numbers labelled as 2026 schedule.
+- neural-3d: Foundations of CV ch.45 added as secondary; primary text NeRF-era caveat; default NeRF exercise named.
+- self-supervised-learning: cookbook stops before DINOv2/v3, V-JEPA 2, LeJEPA (noted).
+- vision-language-models: Li et al. survey in considered; smol-course question closed.
+- generative-modeling-foundations: unverified Bishop chapter numbers dropped.
+- diffusion-and-flow-matching: weaker extras moved to considered; CMU overlap with generative-models-at-scale removed.
+- generative-models-at-scale: coverage caveat; Dieleman latents post read first; overlaps removed.
+- Declined: CS231n cross-group overlap; optional merges.

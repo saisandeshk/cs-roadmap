@@ -63,7 +63,7 @@ resources:
     url: https://www.bishopbook.com/
     edition_or_term: "Springer, 2024 (free online reading version on the book site; paid print/PDF)"
     access: mixed
-    use: "Chapters on latent variables, GANs, normalizing flows, autoencoders and diffusion models (ch. 15-20 in the TOC as I recall it) as the rigorous, probabilistic counterpart to UDL; chapter 14 (sampling) for MCMC background."
+    use: "The chapters on latent variables, GANs, normalizing flows, autoencoders and diffusion models (look them up by title in the book's table of contents) as the rigorous, probabilistic counterpart to UDL; the sampling chapter for MCMC background."
     why: "Most mathematically careful modern treatment; use when UDL's derivations feel too light. Book TOC not opened in this research (page lists the free online version only)."
     verified: true
   - id: vae-intro
@@ -132,6 +132,5 @@ split_proposal: null
 prereq_changes: "No change. information-theory soft is appropriate (KL, ELBO, bits-back)."
 open_questions:
   - "UDL site is a JS app; chapter titles for 14-18 taken from the owner's atlas notes and my memory of the TOC, not from the rendered page."
-  - "Bishop chapter numbers (15-20) not verified against the rendered book."
   - "CS294-158 SP24 homework contents (hw1-hw4 folders) confirmed via GitHub repo listing only; notebooks not opened."
 last_verified: 2026-11-18

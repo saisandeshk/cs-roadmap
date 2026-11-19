@@ -73,12 +73,12 @@ resources:
   - id: cs231a-psets
     role: practice
     kind: course
-    title: "Stanford CS231A problem sets 1-3 (cameras, epipolar geometry, SfM)"
+    title: "Stanford CS231A problem sets 2-3 (epipolar geometry, SfM)"
     by: "Silvio Savarese, Jeannette Bohg (Stanford)"
     url: https://cs231a.stanford.edu/syllabus.html
     edition_or_term: "Spring 2025"
     access: free
-    use: "Problem Sets 1-3 (handout + code + LaTeX linked on the syllabus page). By syllabus timing PS1 follows camera models/calibration/single-view metrology, PS2 follows epipolar geometry and stereo, PS3 follows structure from motion; confirm the exact questions in each handout. Python/NumPy starter code is public."
+    use: "Problem Sets 2-3 (handout + code + LaTeX linked on the syllabus page); PS1 (camera models, calibration, single-view metrology) is done in vision-foundations, not here. By syllabus timing PS2 follows epipolar geometry and stereo, PS3 follows structure from motion; confirm the exact questions in each handout. Python/NumPy starter code is public."
     why: "Free, self-grading-ish (check against known outputs) implementation of the core algorithms; complements TUM's math-heavy exercises."
     verified: true
     course:
@@ -132,7 +132,6 @@ notes: "SLAM basics are covered only at the visual-odometry/BA/direct-method lev
 split_proposal: null
 prereq_changes: "optimization (currently soft) is effectively required for bundle adjustment: suggest making it hard or adding a small 'nonlinear least squares / Lie groups' note. Add soft prereq: probability (RANSAC, robust estimation)."
 open_questions:
-  - "TUM playlist link as given on the course page is youtube.com/playlist?list=PLNkLZ4QZfEDs (page title 'Lecture: 3D Computer Vision (SS26)'); the id looks short, number of videos not checked."
   - "SLAM Handbook free PDF terms not stated on the repo page; Cambridge UP 2026 print publication."
   - "H&Z chapter topics checked against the free Contents PDF; exact chapter numbers (e.g. ch. 18 n-view methods, Appendix 6) follow the 2nd edition numbering from memory."
   - "CS231A problem-set PDFs not opened; topics inferred from syllabus timing."

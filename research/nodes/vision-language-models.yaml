@@ -93,7 +93,7 @@ resources:
     title: "Hugging Face smol-course: Vision Language Models unit (fine-tune SmolVLM2)"
     by: "Hugging Face"
     url: https://huggingface.co/learn/smol-course/unit3/1
-    edition_or_term: "Current (the page I opened appears to be unit 4 of the course and references a quiz)"
+    edition_or_term: "Current (unit3/1 confirmed in R3 review as 'Introduction to Vision Language Models'; unit4/1 is Coming Soon)"
     access: free
     use: "Unit on adapting VLMs: chat templates and image formatting, SFT with Transformers/TRL, quantization/PEFT, evaluation benchmarks (OpenVLM toolkit). Fine-tune SmolVLM2-2.2B on a custom image-QA dataset."
     why: "Fills the 'instruction tuning' scope item with a runnable, low-memory recipe."
@@ -138,6 +138,7 @@ resources:
     why: "Gives historical grounding for why the connector and cross-attention designs exist; pre-dates instruction-tuned VLMs."
     verified: true
 considered:
+  - {title: "Multimodal Foundation Models: From Specialists to General-Purpose Assistants (Li et al., FnT 2024, with the CVPR 2023 tutorial)", url: "https://arxiv.org/abs/2309.10020", reason: "Longer (100+ pages) alternative to the VLM primer that also covers generation and instruction tuning; 2023 vintage."}
   - {title: "CMU 11-777 Multimodal Machine Learning (Morency, Liang; last public site Fall 2022)", url: "https://cmu-mmml.github.io/fall2022", reason: "Strong survey-style course but the latest open page is Fall 2022 and videos are not official public; MIT 2026 course is newer with YouTube."}
   - {title: "Stanford CS231n Lecture 16 Vision and Language (Spring 2026)", url: "https://cs231n.stanford.edu/schedule.html", reason: "2026 video enrolled-only; 2025 recording public. Good one-lecture overview already adjacent to CS336 L17."}
   - {title: "Sebastian Raschka: Understanding Multimodal LLMs", url: "https://magazine.sebastianraschka.com/p/understanding-multimodal-llms", reason: "Clear blog (unified embedding vs cross-attention); page loads but content not read in this research."}
@@ -148,7 +149,6 @@ notes: "No textbook exists; Bordes et al. is the closest. CLIP/SigLIP objectives
 split_proposal: null
 prereq_changes: "Add soft: self-supervised-learning (contrastive/CLIP objectives and DINO/SigLIP encoders). Optionally soft on generative-models-at-scale for any-to-any/unified models."
 open_questions:
-  - "The smol-course URL labeled unit3/1 appears to be the VLM unit (looks like Unit 4 by its quiz link); confirm the current numbering."
   - "MIT MMAI 2026 assignments: public availability not confirmed (Colab tutorials are public)."
   - "CS336 Lecture 17 content detail comes from the page's trace viewer and the owner's atlas entry; the page is a JS trace viewer that could not be summarized."
 last_verified: 2026-11-18

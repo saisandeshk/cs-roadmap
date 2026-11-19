@@ -20,6 +20,17 @@ resources:
     use: "Sec. 2-3 (what a neural field is; techniques: forward maps, hybrid representations, conditioning, differentiable rendering, sampling/regularization), Sec. 4 (rendering NeRF-style) and the applications sections as survey. Read before the NeRF and 3DGS papers."
     why: "The only structured survey that frames NeRF as one instance of 'neural fields + differentiable rendering', so volumetric, SDF and splatting methods fit one vocabulary. It predates Gaussian splatting and feed-forward models, which the secondary papers/courses supply. No single textbook exists for this fast-moving topic."
     verified: true
+  - id: foundations-ch45
+    role: secondary
+    kind: book
+    title: "Foundations of Computer Vision, ch. 45 Radiance Fields"
+    by: "Antonio Torralba, Phillip Isola, William T. Freeman"
+    url: https://visionbook.mit.edu/nerf.html
+    edition_or_term: "MIT Press, 2024 (free web version)"
+    access: free
+    use: "Ch. 45 (radiance fields, volume rendering, NeRF), read before the NeRF paper; also listed in multi-view-geometry as the preview of this node."
+    why: "Short, free, textbook-style treatment of NeRF that fills the structured-text gap left by the Neural Fields STAR; it still stops before Gaussian splatting (use survey 2401.03890 for that)."
+    verified: true
   - id: kaist-cs479
     role: primary-course
     kind: course
@@ -141,7 +152,7 @@ considered:
   - {title: "Hugging Face ML for 3D Course (Dylan Ebert)", url: "https://huggingface.co/learn/ml-for-3d-course/unit0/introduction", reason: "Beginner-friendly, generative-demo oriented; table of contents not opened (intro page only). Too light for an advanced node."}
   - {title: "KAIST CS492(C) Diffusion and Flow Models / 3D generation lectures", url: "https://diffusion.kaist.ac.kr/", reason: "Good for 3D generation via diffusion (DreamFusion lineage) but belongs to the diffusion and at-scale nodes."}
   - {title: "UCSD Machine Learning meets Geometry (Hao Su)", url: "https://haosulab.github.io/ml-meets-geometry/WI21/", reason: "Referenced by CMU; 2021 vintage."}
-notes: "Course coverage is split: KAIST (Spring 2026) has the best public lectures and NeRF/3DGS assignments; CMU 16-825 (Fall 2026) has the best reading list and the only public mini-VGGT/LVSM assignment but no confirmed video. Feed-forward reconstruction and generalizable splatting are the fastest-moving parts and are carried by papers. Differentiable rendering is taught inside KAIST/6.8300/CMU; Mitsuba 3 / PyTorch3D / nvdiffrast were not evaluated."
+notes: "Primary-text coverage: the Neural Fields STAR (2021) covers only the NeRF-era neural-field half of the scope; 3D Gaussian splatting (surveys 2401.03890, 2403.11134 in nerf-3dgs-papers) and feed-forward reconstruction come from papers and CMU 16-825, with Foundations ch. 45 as the short textbook on-ramp. Default NeRF-from-scratch exercise: KAIST CS479 assignment 2; Berkeley CS180 Project 4 and CMU 16-825 are lighter/alternative options, not all required. Course coverage is split: KAIST (Spring 2026) has the best public lectures and NeRF/3DGS assignments; CMU 16-825 (Fall 2026) has the best reading list and the only public mini-VGGT/LVSM assignment but no confirmed video. Feed-forward reconstruction and generalizable splatting are the fastest-moving parts and are carried by papers. Differentiable rendering is taught inside KAIST/6.8300/CMU; Mitsuba 3 / PyTorch3D / nvdiffrast were not evaluated."
 split_proposal: "Consider splitting into 'Neural rendering (NeRF, 3DGS, differentiable rendering)' and '3D deep learning and feed-forward reconstruction / generative 3D (point clouds, meshes, LVSM/VGGT, 3D generation)'. 50 focused hours already strains this single node."
 prereq_changes: "Add soft: diffusion-and-flow-matching (for 3D generation, DreamFusion-style score distillation and multi-view diffusion). computer-graphics basics (rasterization, rendering equation) would be a useful soft prerequisite if such a node exists elsewhere."
 open_questions:

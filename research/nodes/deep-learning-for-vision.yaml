@@ -28,7 +28,7 @@ resources:
     url: https://cs231n.stanford.edu/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lectures 5-11 of the 2025 videos (CNNs, CNN architectures, RNNs, attention/transformers, detection/segmentation/visualization, video understanding, large-scale distributed training); Assignment 1 and 2 (kNN/softmax/FC nets, batchnorm, dropout, ConvNets, network visualization) and Assignment 3 Q1 (captioning with transformers). Self-supervised, generative, 3D and VLM lectures are used in later nodes."
+    use: "Lectures 5-11 (numbering from the Spring 2026 schedule; it may be offset by a lecture or two in the Spring 2025 public playlist, so match by title) (CNNs, CNN architectures, RNNs, attention/transformers, detection/segmentation/visualization, video understanding, large-scale distributed training); Assignment 1 and 2 (kNN/softmax/FC nets, batchnorm, dropout, ConvNets, network visualization) and Assignment 3 Q1 (captioning with transformers). Self-supervised, generative, 3D and VLM lectures are used in later nodes."
     why: "The standard deep-vision course, refreshed every spring; public Colab assignments and (for 2025) public videos. 2026 schedule adds video understanding, distributed training and world models."
     verified: true
     course:

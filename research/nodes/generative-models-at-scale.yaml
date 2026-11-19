@@ -17,7 +17,7 @@ resources:
     url: https://arxiv.org/abs/2403.03206
     edition_or_term: "ICML 2024, arXiv 2403.03206"
     access: free
-    use: "Read in full as the case study: rectified-flow training with logit-normal timestep sampling (Sec. 2-3), the MM-DiT architecture with separate text/image weights (Sec. 4), scaling studies, text encoders, and the autoencoder latent-channel ablation. Read the two ancestor papers first: Latent Diffusion Models (arXiv 2112.10752) and DiT (arXiv 2212.09748)."
+    use: "Read Dieleman's 'Generative modelling in latent space' (dieleman-latents below) first as the conceptual text, then read in full as the case study: rectified-flow training with logit-normal timestep sampling (Sec. 2-3), the MM-DiT architecture with separate text/image weights (Sec. 4), scaling studies, text encoders, and the autoencoder latent-channel ablation. Read the two ancestor papers first: Latent Diffusion Models (arXiv 2112.10752) and DiT (arXiv 2212.09748)."
     why: "No textbook covers frontier-scale generative systems; this is the most complete public engineering and ablation record of a modern text-to-image model, and it unifies latent diffusion (LDM), transformer backbones (DiT) and flow matching (previous node). Pair with the CME296 lectures for the broader landscape."
     verified: true
   - id: cme296
@@ -40,12 +40,12 @@ resources:
   - id: cmu-10799-scale
     role: secondary
     kind: course
-    title: "CMU 10-799 Diffusion & Flow Matching (lectures 6-13 and homework 3-4 specialization paths)"
+    title: "CMU 10-799 Diffusion & Flow Matching (lectures 9-11 and homework 3-4 specialization paths)"
     by: "Yutong (Kelly) He (CMU)"
     url: https://kellyyutonghe.github.io/10799S26/schedule
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lecture 6 (design space and fast solvers), 7 (guidance and controllable generation), 9 (SOTA text-to-image), 10 (distillation, consistency models, flow maps), 11 (guest: Luma AI), 12-13 (discrete diffusion). Homeworks 3-4 let you pick Fidelity, Controllability or Speed on an image dataset using shared starter code."
+    use: "Lectures 9 (SOTA text-to-image), 10 (distillation, consistency models, flow maps), 11 (guest: Luma AI); lectures 2-7 and 12-13 are used in diffusion-and-flow-matching, not repeated here. Homeworks 3-4 let you pick Fidelity, Controllability or Speed on an image dataset using shared starter code."
     why: "Gives a hands-on implementation of fast sampling/distillation/controllability that CME296 does not have, with public videos and homework."
     verified: true
     course:
@@ -101,12 +101,12 @@ resources:
   - id: eval-gen
     role: secondary
     kind: paper
-    title: "Evaluating text-to-image: GenEval, ImageReward, Rethinking FID (+ clean-fid)"
-    by: "Ghosh et al.; Xu et al.; Jayasumana et al.; Parmar et al."
+    title: "Evaluating text-to-image: GenEval, ImageReward (+ clean-fid)"
+    by: "Ghosh et al.; Xu et al.; Parmar et al."
     url: https://arxiv.org/abs/2310.11513
-    edition_or_term: "GenEval 2310.11513, ImageReward 2304.05977, Rethinking FID 2401.09603; clean-fid library (MIT) https://github.com/GaParmar/clean-fid"
+    edition_or_term: "GenEval 2310.11513, ImageReward 2304.05977; clean-fid library (MIT) https://github.com/GaParmar/clean-fid"
     access: free
-    use: "GenEval (object-focused alignment benchmark), ImageReward (learned human-preference model), Rethinking FID (why FID with Inception misleads; FD-DINOv2/CMMD); compute FID with clean-fid and compare with CMMD/CLIPScore on the same samples."
+    use: "GenEval (object-focused alignment benchmark), ImageReward (learned human-preference model); Rethinking FID (2401.09603, FD-DINOv2/CMMD) is read in generative-modeling-foundations (eval-papers), not repeated here; compute FID with clean-fid and compare with CMMD/CLIPScore on the same samples."
     why: "Evaluation is a scope item and CME296 lecture 7 gives an overview only; these provide benchmark choices and a reproducible FID implementation."
     verified: true
   - id: diffusers-practice
@@ -155,7 +155,7 @@ considered:
   - {title: "Lilian Weng and Sander Dieleman blogs (general)", url: "https://sander.ai/", reason: "Used above as secondary articles."}
   - {title: "Hugging Face Open-Source AI Cookbook and diffusers docs overview", url: "https://huggingface.co/docs/diffusers/en/training/overview", reason: "Library docs; only the training guides are used."}
   - {title: "Sora technical report (OpenAI) and Veo/Seedance technical reports", url: "https://openai.com/index/video-generation-models-as-world-simulators/", reason: "Not opened or verified; open Wan and Movie Gen papers give more detail."}
-notes: "No book exists for this node; the primary text is the SD3 paper as an engineering case study, and the primary course is CME296 (no homework). Real implementation practice comes from CMU 10799 HW3-4, minRF and diffusers training guides. Audio is covered only by a short paper path; if audio generation matters, split it into a separate node (neural codecs, AudioLM/MusicGen, flow-matching TTS)."
+notes: "Coverage caveat (R3 review): the SD3 paper teaches rectified flow + MM-DiT for images only, about a third of the scope; distillation, video, audio, conditioning and evaluation come from the secondaries. The closest structured spine to the full scope is the CME296 slide decks/cheatsheet (https://cme296.stanford.edu/), which is why CME296 is primary-course and SD3 is read as its case study. No book exists for this node; the primary text is the SD3 paper as an engineering case study, and the primary course is CME296 (no homework). Real implementation practice comes from CMU 10799 HW3-4, minRF and diffusers training guides. Audio is covered only by a short paper path; if audio generation matters, split it into a separate node (neural codecs, AudioLM/MusicGen, flow-matching TTS)."
 split_proposal: "Split audio generation (neural audio codecs, AR/diffusion music and speech, TTS) into its own node, and optionally split 'video generation' from image systems; this node otherwise mixes three modalities plus distillation and evaluation in 50 hours."
 prereq_changes: "Add soft: vision-language-models (text encoders, CLIP/SigLIP conditioning, MLLM-as-judge) and self-supervised-learning (VAE/tokenizer and DINO-style evaluation). transformers hard prerequisite is correct (DiT/MMDiT)."
 open_questions:
