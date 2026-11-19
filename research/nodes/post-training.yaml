@@ -44,7 +44,7 @@ resources:
     url: https://cs336.stanford.edu/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lecture 15 'Mid/Post-training (SFT/RLHF)' (lecture_15.pdf); Assignment 5 (https://github.com/stanford-cs336/assignment5-alignment): SFT and RL for math reasoning; optional Part 2 safety alignment incl. DPO. RL parts overlap G8's rl-for-llms."
+    use: "Lecture 15 'Mid/Post-training (SFT/RLHF)' (lecture_15.pdf); Lecture 16 (RLVR) is G8 territory (rl-for-llms), not read here; Assignment 5 (https://github.com/stanford-cs336/assignment5-alignment): SFT and RL for math reasoning; optional Part 2 safety alignment incl. DPO. RL parts overlap G8's rl-for-llms."
     why: "Stanford-quality lecture plus the only public implementation assignment covering SFT and DPO from scratch with tests; recordings public."
     verified: true
     course:
@@ -70,9 +70,9 @@ resources:
     title: "Hugging Face smol course (instruction tuning, evaluation, preference alignment)"
     by: "Hugging Face"
     url: https://huggingface.co/learn/smol-course
-    edition_or_term: "Cohort-based, self-paced; units 1-4 released, RL/synthetic-data units were listed as planned"
+    edition_or_term: "Self-paced; welcome page (re-checked 2026-11-19) lists units 1-4 as released and RL / synthetic-data units as 'October' / 'November' with no year (likely a 2025 plan, no content in the sidebar)"
     access: free
-    use: "Unit 1 Instruction Tuning (SFT, chat templates), Unit 2 Evaluation (custom domain evals), Unit 3 Preference Alignment (DPO), Unit 4 VLMs (optional). Use TRL (https://huggingface.co/docs/trl/index) SFTTrainer and DPOTrainer."
+    use: "Sidebar unit order: Unit 1 Instruction Tuning (SFT, chat templates), Unit 2 Preference Alignment (DPO), Unit 3 Vision Language Models (optional), Unit 4 Model Evaluation (custom domain evals); the welcome-page syllabus table numbers evaluation as unit 2 and preference alignment as unit 3. Use TRL (https://huggingface.co/docs/trl/index) SFTTrainer and DPOTrainer."
     why: "Runs on a single modest GPU with TRL; the fastest hands-on loop for SFT + DPO that the book and lectures do not provide."
     verified: true
     course:
@@ -108,6 +108,17 @@ resources:
       latest_url: https://huggingface.co/learn/llm-course/chapter11/1
       videos: none
       assignments: none
+  - id: slp3-ch8
+    role: reference
+    kind: book
+    title: "SLP3 ch. 8: Post-training"
+    by: "Dan Jurafsky, James H. Martin"
+    url: https://web.stanford.edu/~jurafsky/slp3/8.pdf
+    edition_or_term: "Aug 19, 2026 draft (new chapter; listed on the SLP3 index; PDF returns 200 over http)"
+    access: free
+    use: "Whole chapter as a free, citation-quality overview of instruction tuning, preference tuning and post-training before or alongside the RLHF Book chapters."
+    why: "Current textbook-style overview of the node's scope in one free chapter; absent from the earlier draft."
+    verified: true
   - id: instructgpt
     role: reference
     kind: paper
@@ -177,13 +188,13 @@ resources:
   - id: distillation-papers
     role: reference
     kind: paper
-    title: "Distillation: Hinton et al., MiniLLM, On-Policy Distillation (GKD), and Thinking Machines' 'On-Policy Distillation'"
-    by: "Hinton et al.; Gu et al.; Agarwal et al.; Thinking Machines Lab"
-    url: https://arxiv.org/abs/1503.02531
-    edition_or_term: "Hinton 2015; MiniLLM https://arxiv.org/abs/2306.08543; GKD https://arxiv.org/abs/2306.13649; blog https://thinkingmachines.ai/blog/on-policy-distillation/"
+    title: "LLM distillation: MiniLLM, On-Policy Distillation (GKD), and Thinking Machines' 'On-Policy Distillation'"
+    by: "Gu et al.; Agarwal et al.; Thinking Machines Lab"
+    url: https://arxiv.org/abs/2306.08543
+    edition_or_term: "MiniLLM 2023; GKD https://arxiv.org/abs/2306.13649; blog https://thinkingmachines.ai/blog/on-policy-distillation/"
     access: free
-    use: "Hinton for soft-label KD; MiniLLM and GKD for sequence-level / on-policy KD of LLMs; the blog for a recent practical account."
-    why: "Covers the distillation scope item (off-policy vs on-policy)."
+    use: "MiniLLM and GKD for sequence-level / on-policy KD of LLMs; the blog for a recent practical account. Hinton et al. (soft-label KD) is read once, in model-compression."
+    why: "Covers the LLM distillation scope item (off-policy vs on-policy); the classic soft-label KD paper is left to model-compression to avoid duplication."
     verified: true
 considered:
   - {title: "CMU 11-711 / 11-667 (instruction tuning lectures; Fall 2024 YouTube)", url: "https://cmu-l3.github.io/anlp-fall2025/", reason: "Single lectures on instruction tuning/distillation; Lambert's course is deeper and fully public."}
@@ -197,6 +208,6 @@ split_proposal: null
 prereq_changes: "Hard prereq language-modeling is right; consider adding soft: [llm-evaluation] (judge/reward-model evaluation) and a note that rl-for-llms depends on this node."
 open_questions:
   - "Lambert course page does not list assignments; whether a graded problem set exists elsewhere is unknown."
-  - "smol-course unit status (RL/synthetic-data units 'planned for October/November') may refer to 2025; check the page for the current state."
+  - "smol-course: sidebar shows only units 0-4 (instruction tuning, preference alignment, VLMs, evaluation); the RL and synthetic-data units listed as planned for October/November have no content and the year is not stated."
   - "Whether the exact chapter numbers (e.g. ch. 8 direct alignment, ch. 11 preference data) match the print edition: URLs were opened on the web version."
 last_verified: 2026-11-18

@@ -21,6 +21,24 @@ resources:
     use: "Ch. 1 Boolean retrieval/inverted index, ch. 2 vocabulary and postings, ch. 6 scoring and tf-idf and the vector space model, ch. 8 evaluation (precision/recall, MAP, nDCG, test collections), ch. 11 probabilistic IR (BM25), ch. 12 language models for IR, ch. 13/16 only if you need classification/clustering background."
     why: "Still the clearest rigorous foundation for sparse retrieval, BM25 and IR evaluation, which every RAG system is built on; free online. Gap: 2008, so no dense retrieval, ANN or RAG; the SLP3 chapter and Pinecone/FAISS items below cover that."
     verified: true
+  - id: llm-zoomcamp
+    role: primary-course
+    kind: course
+    title: "LLM Zoomcamp 2026 (DataTalks.Club)"
+    by: "Alexey Grigorev, Will Russell, Timur Kamaliev (DataTalks.Club)"
+    url: https://github.com/DataTalksClub/llm-zoomcamp
+    edition_or_term: "2026 cohort (started 2026-06-08; homework and project deadlines closed by Sep 2026); material stays open for self-paced use"
+    access: free
+    use: "Module 1 Agentic RAG (keyword-search RAG, then function calling), Module 2 Vector Search (embeddings, minsearch, sqlitesearch, PGVector), Module 4 Evaluation (retrieval metrics and answer quality, offline and online, LLM-as-judge), Module 6 Best Practices (hybrid search, reranking). Modules 3, 5 and 7 and the capstone are used by llm-applications. Homework is self-checked; about $1-5 in API credits, no GPU. Playlist: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv"
+    why: "Only free course found that builds the whole RAG pipeline (retrieval, vector search, hybrid/rerank) and evaluates it, with public pre-recorded lectures and checkable homework. Gap: dense-retrieval theory is thin, so pair with SLP3 ch. 11 and the Lin et al. text-ranking survey."
+    verified: true
+    course:
+      latest_term: "2026 cohort (Jun-Sep 2026)"
+      latest_url: https://courses.datatalks.club/llm-zoomcamp-2026
+      videos: public
+      public_videos_url: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv
+      assignments: public
+      assignments_url: https://github.com/DataTalksClub/llm-zoomcamp
   - id: slp3-ch11
     role: secondary
     kind: book
@@ -31,7 +49,7 @@ resources:
     access: free
     use: "Read after IIR ch. 6/8 as the modern bridge: sparse tf-idf/BM25 retrieval, dense retrieval with bi-encoders (section 11.3), reranking, and RAG."
     why: "Short, current (2026) textbook treatment connecting classical IR to dense retrieval and RAG; fills IIR's post-2008 gap in one chapter."
-    verified: false
+    verified: true
   - id: pinecone-faiss
     role: secondary
     kind: website
@@ -88,7 +106,7 @@ resources:
     why: "Hidden gem: gold-standard reproducible baselines so you check your own BM25/dense pipeline against published numbers; also exposes REST and MCP interfaces."
     verified: true
   - id: ragpaper-survey
-    role: secondary
+    role: reference
     kind: paper
     title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al.) and RAG for LLMs: A Survey (Gao et al.)"
     by: "Lewis et al.; Gao et al."
@@ -200,10 +218,10 @@ considered:
   - {title: "ANN-Benchmarks", url: "https://ann-benchmarks.com/", reason: "Excellent reference for recall-throughput curves of ANN libraries; included as pointer only."}
   - {title: "Self-RAG / GraphRAG papers", url: "https://arxiv.org/abs/2310.11511", reason: "Frontier RAG variants (GraphRAG: 2404.16130); better after the basics, link from llm-agents (agentic RAG)."}
   - {title: "PoisonedRAG and indirect-prompt-injection papers", url: "https://arxiv.org/abs/2402.07867", reason: "RAG security; belongs to llm-agents/safety nodes."}
-notes: "No strong, current public university course covers IR + dense retrieval + RAG end to end, so primary-course is omitted; CS329Z's RAG lecture (Fall 2026, public videos) is the best recent video substitute. Primary route: IIR chapters for BM25/evaluation, SLP3 ch. 11 for dense/RAG, Pinecone FAISS series for ANN indexing, Sentence Transformers + Pyserini for practice, then RAG evaluation with Ragas. IIR's canonical Stanford URL was not reachable (503) from my sandbox, so I linked the Cambridge page, which I opened."
+notes: "No university course covers IR + dense retrieval + RAG end to end; the primary-course is DataTalks.Club LLM Zoomcamp 2026 (free, public video, checkable homework), with CS329Z's RAG lecture (Fall 2026, public video) as the university lecture. Other candidates: Stanford CME 295 RAG lecture (Nov 2025 edition, https://cme295.stanford.edu/syllabus/); CMU 11-766 Spring 2026 has four retrieval/RAG sessions (https://cmu-llms.org/) but no recordings found. IIR (2008) is for BM25, IR evaluation and inverted-index basics only; it predates dense retrieval, ANN and RAG. Primary route: IIR chapters for BM25/evaluation, SLP3 ch. 11 for dense/RAG, Pinecone FAISS series for ANN indexing, Sentence Transformers + Pyserini for practice, then RAG evaluation with Ragas. IIR's canonical Stanford URL was not reachable (503) from my sandbox, so I linked the Cambridge page, which I opened."
 split_proposal: null
 prereq_changes: "Consider moving 'databases-intro' to soft only for vector DB persistence (as is). Suggest adding soft: [llm-evaluation] (RAG evaluation uses judges/metrics) and make llm-applications soft-depend on this node."
 open_questions:
   - "nlp.stanford.edu/IR-book returned HTTP 503 repeatedly from the sandbox; the Cambridge URL is verified and the free-text claim comes from the CS276 page that links it."
-  - "SLP3 11.pdf not fetched (web.stanford.edu HTTPS unreachable; WebFetch 503); existence confirmed by SLP3 index page and a web search hit; section 11.3 dense-retrieval placement from the search snippet."
+  - "SLP3 11.pdf: index page lists ch. 11 'Information Retrieval and RAG' with slides and 11.pdf returns application/pdf over http (re-checked 2026-11-19); section 11.3 dense-retrieval placement not re-read."
 last_verified: 2026-11-18
