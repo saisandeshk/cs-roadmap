@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+  <!-- The cs-roadmap mark (a line between two stops), drawn a little bolder than in the top bar so it reads at 16px.
+       Dark tile on light browser chrome, light tile on dark, like the mark in the page itself. -->
+  <style>
+    .tile { fill: #09090b; }
+    .line { fill: none; stroke: #fafafa; stroke-width: 3.4; stroke-linecap: round; }
+    .stop { fill: #fafafa; }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #fafafa; }
+      .line { stroke: #09090b; }
+      .stop { fill: #09090b; }
+    }
+  </style>
+  <rect class="tile" width="28" height="28" rx="7"/>
+  <path class="line" d="M6.8 8h5.4a4.2 4.2 0 0 1 4.2 4.2v3.6a4.2 4.2 0 0 0 4.2 4.2h.6"/>
+  <circle class="stop" cx="6.8" cy="8" r="3.4"/>
+  <circle class="stop" cx="21.2" cy="20" r="3.4"/>
+</svg>

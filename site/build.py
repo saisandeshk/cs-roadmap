@@ -169,7 +169,7 @@ def write_site(data, out: pathlib.Path):
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
-    for name in ("index.html", "styles.css", "app.js"):
+    for name in ("index.html", "styles.css", "app.js", "favicon.svg", "favicon-32.png", "apple-touch-icon.png"):
         shutil.copy2(SRC / name, out / name)
     (out / "data.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":"), default=str), encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")

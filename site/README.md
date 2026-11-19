@@ -11,6 +11,8 @@ site/
   src/index.html      page shell and icon set
   src/styles.css      palettes, type and all component styles
   src/app.js          routing, map layout, views, progress, search, options
+  src/favicon.svg     tab icon (follows the browser's light/dark setting); favicon-32.png and
+                      apple-touch-icon.png are PNG copies for browsers without SVG icons and for home screens
 ```
 
 `python3 site/build.py --preview DIR` also writes a single-page version (CSS and JS inlined, plus `data.json`) for
