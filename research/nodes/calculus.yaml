@@ -35,7 +35,7 @@ resources:
       latest_term: "Fall 2010 (18.01SC OCW Scholar); newer MIT 18.01 runs are not public"
       latest_url: https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/
       videos: public
-      public_videos_term: "Fall 2010 (also Fall 2006 lectures on YouTube: https://www.youtube.com/playlist?list=PL590CCC2BC5AF3BC1)"
+      public_videos_term: "Lecture clips are Jerison's 18.01 Fall 2006 recordings (OCW clip page cites 'Lecture 1 of 18.01 Fall 2006'; full playlist https://www.youtube.com/playlist?list=PL590CCC2BC5AF3BC1); problem-solving videos are Fall 2010"
       public_videos_url: https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/
       assignments: public
       assignments_url: https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/

@@ -32,7 +32,7 @@ resources:
   url: https://iqua.ece.toronto.edu/baochun/ece1724/
   edition_or_term: Fall 2026
   access: free
-  use: Lecture videos and slides 1-7 (ownership, structs/enums, error handling, collections, generics/traits, lifetimes) plus the later lectures on smart pointers, concurrency and async; assignments grep (Search Utility), game (Reversi) and client (Web Client); the Rustrace project; sample quizzes and midterms with answer keys.
+  use: Lecture decks 1-9 (introduction, hands-on Rust, basic concepts, ownership and String, structs and enums, error handling, vectors and hash maps, generics and traits, lifetimes) with the recordings, plus the later decks on smart pointers, concurrency and async; assignments grep (Search Utility), game (Reversi) and client (Web Client); the Rustrace project; sample quizzes and midterms with answer keys.
   why: A full university course that follows the Rust Book with public lecture recordings (mp4 on the course site, dated from 2026-09-09), public assignments and sample exams, so it gives structure and deadlines to self-study.
   verified: true
   course:
@@ -170,4 +170,4 @@ prereq_changes: 'None required. soft: [c-programming] is already right; a C back
 open_questions:
 - UNSW COMP6991 pages returned 503 during checks; recordings and assignment access for 26T2 unverified.
 - ECE 1724 assignment pages are public but whether starter code/tests are public (GitHub ece1724-f26) could not be checked (GitHub unreachable).
-last_verified: '2026-11-18'
+last_verified: '2026-11-19'

@@ -28,7 +28,7 @@ resources:
   url: https://cs61a.org/fa26/
   edition_or_term: Fall 2026
   access: free
-  use: Lectures 1-25 (functions through iterators/generators/efficiency), labs 00-09, homeworks 1-7, projects Hog and Cats (then Ants if time allows). Treat the Gleam interpreter unit, SQL lab and the agentic Animator project as optional.
+  use: Lectures 1-25 (functions, environments, higher-order functions, recursion, tree recursion, sequences, containers, objects, linked lists, trees, mutation, classes, inheritance, iterators, generators, efficiency) with the matching Composing Programs sections. The Gleam functional-programming/interpreter unit (lectures 27-30), SQL and the agentic Animator project are optional. Assignments are listed in cs61a-assignments.
   why: 'The canonical SICP-descended first course: Python as vehicle for abstraction, recursion, OOP and interpreters. Assignments are public with local pytest tests, so it can be self-taught end to end.'
   verified: true
   course:
@@ -39,6 +39,23 @@ resources:
     public_videos_url: https://www.youtube.com/@JohnDeNero
     assignments: public-with-autograder
     assignments_url: https://cs61a.org/fa26/hw/hw01/
+- id: mit-6100l
+  role: secondary
+  kind: course
+  title: MIT 6.100L Introduction to CS and Programming using Python
+  by: MIT OpenCourseWare (Ana Bell)
+  url: https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/
+  edition_or_term: Fall 2022 (OCW)
+  access: free
+  use: 'Only if 61A is too fast: lecture videos 1-12 (strings, loops, functions, lists, mutability, recursion, dictionaries) with finger exercises and problem sets 1-3, then return to 61A.'
+  why: Slower public-video fallback for a learner with no programming background; 61A itself recommends a gentler course first in that case.
+  verified: true
+  course:
+    latest_term: Fall 2022 (newest OCW run; newer MIT terms not checked)
+    latest_url: https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/
+    videos: public
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/
 - id: python-tutor
   role: secondary
   kind: tool
@@ -82,6 +99,17 @@ resources:
   use: Chapters 3-9 as a syntax lookup (data structures, modules, errors, classes) while working through labs.
   why: Authoritative, always current syntax reference; avoids third-party blog drift.
   verified: true
+- id: cs61a-assignments
+  role: practice
+  kind: website
+  title: CS 61A Fall 2026 labs, homeworks and projects
+  by: UC Berkeley CS 61A
+  url: https://cs61a.org/fa26/projects/hog/
+  edition_or_term: Fall 2026
+  access: free
+  use: 'Main practice for this node: Labs 00-09 (Lab 10 is SQL, optional), Homeworks 1-8, projects Hog, Cats and Ants (Python versions; Fa26 also offers Gleam/TypeScript alternates for later work, which are optional). Download each zip and run the local tests with python3 -m pytest -k <question>.'
+  why: Public, locally testable assignments that exercise exactly the abstractions taught in lecture; do these before any extra drilling.
+  verified: true
 - id: exercism-python
   role: practice
   kind: practice-site
@@ -90,13 +118,10 @@ resources:
   url: https://exercism.org/tracks/python
   edition_or_term: Python track (Learning Mode)
   access: free
-  use: After each 61A unit, do the track concepts basics, lists, dicts, strings, loops, classes, inheritance, generators; then a handful of Practice exercises from the same concepts with mentor-free test-driven feedback.
-  why: 61A is heavy on abstraction but light on idiomatic small-program volume; Exercism supplies automated-test drilling and common-idiom practice.
+  use: 'Cap at about 16 exercises. Concept exercises: Guido''s Gorgeous Lasagna (basics), Ghost Gobble Arcade Game (bools), Meltdown Mitigation (conditionals), Little Sister''s Vocab (strings), Card Games (lists), Making the Grade (loops), Tisbury Treasure Hunt (tuples), Inventory Management (dicts), Cater Waiter (sets), Ellen''s Alien Game (classes), Plane Tickets (generators). Then five practice exercises: Word Count, Matching Brackets, Clock, Simple Linked List, Binary Search Tree.'
+  why: 'Secondary drilling after the 61A assignments: automated tests on small idiomatic programs, which 61A has fewer of.'
   verified: true
 considered:
-- title: MIT 6.100L Introduction to CS and Programming using Python (OCW Fall 2022)
-  url: https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/
-  reason: Public videos, finger exercises and psets; gentler pace and more computational-thinking, but less on abstraction/environment model. Best fallback if 61A is too fast.
 - title: CMU 15-112 Fundamentals of Programming (Fall 2026)
   url: https://www.cs.cmu.edu/~112/
   reason: Rigorous, graphics-driven Python course with open notes; video status not checked and notes live on CS Academy. Alternative to 61A.
@@ -112,10 +137,11 @@ considered:
 - title: MIT 6.100A/6.100L newer terms
   url: https://ocw.mit.edu/
   reason: Only Fall 2022 verified on OCW; newer terms not checked.
-notes: 'Primary route: Composing Programs 3e plus CS 61A (Fall 2026). IMPORTANT: Fall 2026 61A was restructured for the AI era: Scheme is replaced by Gleam in the interpreters/functional unit, macros were cut, topics duplicated in CS 61B were deferred, and a 2-week agentic-coding software-application unit was added. Core abstraction/recursion/OOP/iterator content is unchanged, so the first ~25 lectures and Python projects are still the right route. The older Scheme interpreter project is no longer on the current site (older terms are not publicly archived at a URL I could open), so SICP section 4 is the substitute. Fall 2026 homework credit requires a Preceptor/provenance flow that self-learners should ignore; run the local pytest tests instead. Exercism now points absolute beginners to a separate platform, Jiki, but the Python track is unchanged.'
+notes: 'Primary route: Composing Programs 3e plus CS 61A (Fall 2026). IMPORTANT: Fall 2026 61A was restructured for the AI era: Scheme is replaced by Gleam in the interpreters/functional unit, macros were cut, topics duplicated in CS 61B were deferred, and a 2-week agentic-coding software-application unit was added. Core abstraction/recursion/OOP/iterator content is unchanged, so the first ~25 lectures and Python projects are still the right route. The older Scheme interpreter project is no longer on the current site (older terms are not publicly archived at a URL I could open), so SICP section 4 is the substitute. Fall 2026 homework credit requires a Preceptor/provenance flow that self-learners should ignore; run the local pytest tests instead. Exercism now points absolute beginners to a separate platform, Jiki, but the Python track is unchanged. Review update (2026-11-19): Fall 2026 has HW 1-8 and Labs 00-10; earlier terms are no longer public (cs61a.org/fa25, sp25 and sp26 return 404,
+  inst.eecs.berkeley.edu archives require CalNet login), so the Fall 2026 site is the only public package. 6.100L promoted from considered to a secondary fallback.'
 split_proposal: null
 prereq_changes: null
 open_questions:
 - Exact term of the YouTube per-lecture videos linked from Fall 2026 pages not determined (they appear to be recordings from earlier terms).
 - Whether the Fall 2026 starter zips run offline with the same ok-style local tests was only partly checked (HW1 uses python3 -m pytest -k).
-last_verified: '2026-11-18'
+last_verified: '2026-11-19'

@@ -47,7 +47,7 @@ resources:
     url: https://www.eecs70.org/
     edition_or_term: "Fall 2026"
     access: free
-    use: "Course notes n0-n23 (induction, modular arithmetic/RSA, polynomials and secret sharing, error-correcting codes, countability/computability, probability through Markov chains) and the weekly discussion sheets and homework PDFs that have posted solutions."
+    use: "Course notes n0-n23 (induction, modular arithmetic/RSA, polynomials and secret sharing, error-correcting codes, countability/computability, probability through Markov chains); the homework and discussion sets are listed separately as practice (cs70-hw)."
     why: "Second source with many solved problems and applications MCS lacks (polynomials over finite fields, secret sharing, error-correcting codes, stable matching); also bridges discrete math into probability and Markov chains."
     verified: true
     course:
@@ -79,6 +79,28 @@ resources:
     use: "Chapters 1 (recurrences), 2 (sums), 5 (binomial coefficients), 7 (generating functions) after the MCS counting and sums units, for algorithm-analysis technique."
     why: "Deeper toolkit for sums, recurrences and generating functions than any intro text; the standard bridge to analysis of algorithms."
     verified: true
+  - id: mit-6-1200-psets
+    role: practice
+    kind: practice-site
+    title: "6.1200J Spring 2024 problem sets 01-10 and warm-up problems 01-07"
+    by: "MIT 6.1200J staff (Abel, Demaine, Chapman)"
+    url: https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/lists/problem-sets/
+    edition_or_term: "Spring 2024 (OCW); warm-ups at https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/lists/warm-up-problems/"
+    access: free
+    use: "Each pset states the class days it covers: PS01 (days 01-02, proofs, sets), PS02 (03-04, induction), PS03 (04-05, state machines and invariants), PS04 (06-07, sums, asymptotics, recurrences), PS05 (08-10, number theory, modular inverses), PS06 (11-12, graph coloring), PS07 (13-14, trees, connectivity), PS08 (14-15, digraphs, relations, counting graphs), PS09 (17-19, counting, double counting, probability spaces), PS10 (20-22, conditional probability, independence, random variables). Do the warm-up before each recitation day. No official solutions are posted, so check answers against the matching MCS chapter problems or the CS 70 solved sets."
+    why: "Named, graded-difficulty problem sets aligned day-by-day with the primary course; they are the actual exercise load of 6.1200 and cover logic, number theory, graphs, counting and probability."
+    verified: true
+  - id: cs70-hw
+    role: practice
+    kind: practice-site
+    title: "CS 70 Fall 2026 homework 00-10 and discussion sheets 00-10 with solutions"
+    by: "UC Berkeley CS 70 staff"
+    url: https://www.eecs70.org/assets/pdf/hw01.pdf
+    edition_or_term: "Fall 2026 (PDFs linked from https://www.eecs70.org/; solutions as hwNN-sol.pdf and disNN-sol.pdf)"
+    access: free
+    use: "For self-checking: after each 6.1200 unit, do the matching CS 70 homework/discussion problems (propositional logic and proofs, induction, stable matching, graphs, modular arithmetic and RSA, polynomials and codes, counting, discrete probability) and compare with the posted -sol PDFs."
+    why: "Fills the gap that 6.1200 OCW psets have no posted solutions: CS 70 posts solutions for homework 00-10 and discussions 00-10."
+    verified: true
   - id: nng4
     role: practice
     kind: practice-site
@@ -87,8 +109,8 @@ resources:
     url: https://adam.math.hhu.de/#/g/leanprover-community/nng4
     edition_or_term: "Lean 4 version"
     access: free
-    use: "Tutorial, Addition and Multiplication worlds: prove commutativity/associativity of addition by induction in the Lean proof assistant."
-    why: "Instant machine feedback on proof steps and induction; optional complement to paper proofs for learners who want a checker."
+    use: "Optional: Tutorial, Addition and Multiplication worlds: prove commutativity/associativity of addition by induction in the Lean proof assistant."
+    why: "Instant machine feedback on proof steps and induction; optional complement to paper proofs for learners who want a checker (touches induction only)."
     verified: true
 considered:
   - {title: "Stanford CS 103 Mathematical Foundations of Computing", url: "https://web.stanford.edu/class/cs103/", reason: "Excellent proofs/discrete-structures intro (Fall 2026 offering, lectures posted to Canvas), but half of it is automata/computability that belongs to the theory node; page not reachable from the research environment."}
@@ -96,11 +118,11 @@ considered:
   - {title: "MIT 18.200 Principles of Discrete Applied Mathematics (Spring 2024)", url: "https://ocw.mit.edu/courses/18-200-principles-of-discrete-applied-mathematics-spring-2024/", reason: "Combinatorics/discrete applied math with lecture videos, but more math-major than CS proofs foundation."}
   - {title: "Book of Proof (Hammack)", url: "https://www.people.vcu.edu/~rhammack/BookOfProof/", reason: "Good free proof-writing primer; could not open the page from this environment; Levin covers the same ground."}
   - {title: "CMU 15-251 Great Ideas in Theoretical CS", url: "https://www.cs.cmu.edu/~15251/", reason: "Public page is the Fall 2018 run and theory-heavy; belongs to the theory path."}
-notes: "MCS + 6.1200 is the one-text-one-course pair: 6.1200 is the live descendant of 6.042J and its readings page gives a lecture-by-lecture map into the free book. The latest MIT run (Spring 2026) has no public page that I could find, so Spring 2024 OCW is the freshest usable material; videos are public on OCW. CS70 is kept as a second source for solved problems and coding-theory flavored topics. The probability unit of MCS/6.1200 (Lectures 18-24) overlaps with the probability node: it is fine as the discrete-probability intro here, with Stat 110 as the full treatment."
+notes: "MCS + 6.1200 is the one-text-one-course pair: 6.1200 is the live descendant of 6.042J and its readings page gives a lecture-by-lecture map into the free book. The latest MIT run (Spring 2026) has no public page that I could find, so Spring 2024 OCW is the freshest usable material; videos are public on OCW. CS70 is kept as a second source for solved problems and coding-theory flavored topics. Review R1 fix: practice now names the 6.1200 psets 01-10 (with the class days each covers) and CS 70 homework/discussions with solutions; NNG4 kept as optional. The probability unit of MCS/6.1200 (Lectures 18-24) overlaps with the probability node: it is fine as the discrete-probability intro here, with Stat 110 as the full treatment."
 split_proposal: null
 prereq_changes: null
 open_questions:
   - "6.1200 Spring 2026 (Abel/Kelner/Natarajan): no public course site or video status found; check courses.csail.mit.edu or Canvas-linked pages."
-  - "OCW 6.1200 problem sets: could not confirm whether solutions are posted (only 'Problem Sets' and 'Warm Up Problems' are listed). The 2015/2019 solutions are community-maintained (spamegg1/Math-for-CS-solutions)."
+  - "OCW 6.1200 problem-set and warm-up lists (checked 2026-11-19) show PDFs only, no solutions. Community solutions exist for the 2015/2019 6.042 sets (spamegg1/Math-for-CS-solutions, not opened)."
   - "CS70 Fall 2026 lecture videos appear to be bCourses-only; a public YouTube playlist was not verified (a playlist listed in cs-video-courses resolved to an unrelated-looking channel title)."
 last_verified: 2026-11-18

@@ -108,13 +108,13 @@ resources:
 - id: wizard-zines
   role: secondary
   kind: website
-  title: Wizard Zines (Julia Evans)
+  title: 'Wizard Zines: free zines and question sets (Julia Evans)'
   by: Julia Evans
   url: https://wizardzines.com/
-  edition_or_term: Zines (some free, some paid)
-  access: mixed
-  use: Pick the zines on the command line, bash, debugging, containers and git; browse the free black-and-white-cover zines first.
-  why: 'Hidden gem: one-page mental models for tools that docs explain poorly; good revision aid.'
+  edition_or_term: Free black-and-white-cover zines and questions.wizardzines.com
+  access: free
+  use: 'Free zines only: Linux debugging tools you''ll love (https://wizardzines.com/zines/debugging/), Profiling & tracing with perf, Spying on your programs with strace; free question sets on bash redirects, unix permissions and signals (https://questions.wizardzines.com/bash-redirects.html).'
+  why: 'Hidden gem: one-page mental models for strace, perf and shell redirection that the docs explain poorly; the listed items are free.'
   verified: true
 - id: man-pages-shellcheck
   role: reference
@@ -164,6 +164,5 @@ notes: The Missing Semester has a 2026 refresh (IAP Jan 2026, nine lectures, You
 split_proposal: null
 prereq_changes: Consider making dev-environment a soft prerequisite of c-programming, data-structures and software-construction (git and terminal are assumed there).
 open_questions:
-- Which of the Wizard Zines titles are currently free was not checked (page lists black-and-white cover zines as free).
 - GNU make manual and Stanford CS107 pages were unreachable by curl; example-based tutorials listed instead.
-last_verified: '2026-11-18'
+last_verified: '2026-11-19'

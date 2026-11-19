@@ -18,7 +18,7 @@ resources:
   url: https://gustedt.gitlabpages.inria.fr/modern-c/
   edition_or_term: C23 edition (free PDF latest release 2024-10-15; Manning print/ebook Sept 2025)
   access: mixed
-  use: Levels 0-2 (ch. 1-12) on core language, objects, values and pointers; then Level 3 (ch. 13-15 on lifetime, storage, I/O) and the UB discussion in Level 3-4. Skip Level 4 (concurrency, atomics) and defer to G4.
+  use: 'Reading order for a Python-first learner: Dive into Systems ch. 1-2 (or Beej) first for orientation, then Modern C Levels 0-2 (ch. 1-12: core language, objects, values and pointers), then Level 3 (ch. 13-15: lifetime, storage, I/O) and the UB discussion. Skip Level 4 (concurrency, atomics) and defer to G4.'
   why: The only rigorous modern C tutorial; teaches C as specified (objects, effective types, UB) rather than as folk wisdom, covers C23, and is free as a PDF under CC BY-NC-ND (Manning edition for print).
   verified: true
 - id: cs107
@@ -36,9 +36,21 @@ resources:
     latest_term: Autumn 2026
     latest_url: https://cs107.stanford.edu/
     videos: enrolled-only
-    public_videos_term: unknown (lecture recordings are on Canvas; older Stanford Engineering Everywhere Programming Paradigms lectures by the same instructor are public but a different course)
+    public_videos_term: 'No public recordings of the current course (Canvas only). Stanford Engineering Everywhere hosts CS107 Programming Paradigms (Jerry Cain, 2008, 27 lectures, public): an older syllabus of the same course (C/C++ memory, assembly, concurrency, Scheme, Python) that assumes C++; see see-cs107.'
     assignments: partial
     assignments_url: https://cs107.stanford.edu/assign1/
+    public_videos_url: https://see.stanford.edu/Course/CS107
+- id: see-cs107
+  role: secondary
+  kind: video-series
+  title: CS107 Programming Paradigms (Stanford Engineering Everywhere)
+  by: Stanford University (Jerry Cain)
+  url: https://see.stanford.edu/Course/CS107
+  edition_or_term: 2008 recordings
+  access: free
+  use: Lectures 2-7 only (arrays, generic programming with void* and memcpy, the generic stack implementation, memory layout and the heap) as public-video companion to current CS107 lectures 8-12; skip lectures 8-27 (code generation, concurrency, Scheme, Python).
+  why: The only public lecture video of CS107 itself; the void*/generics lectures are still the canonical explanation, but the course assumes C++ background.
+  verified: true
 - id: beej-c
   role: secondary
   kind: book
@@ -117,12 +129,12 @@ resources:
   why: Free small-program drilling with automated tests; complements the bigger CS107 assignments.
   verified: true
 considered:
+- title: 'C Programming: A Modern Approach, 2nd edition (K. N. King, W. W. Norton)'
+  url: https://wwnorton.com/books/9780393979503
+  reason: The usual learner textbook and a valid co-primary alternative (gentler, C99-based, many exercises); kept second to Modern C because Modern C is current (C23), free and stricter on semantics.
 - title: CS50x 2026 weeks 1-5 (C)
   url: https://cs50.harvard.edu/x/
   reason: Public videos but covers C as a quick first language; too light on pointers and UB for this node (good teaser only).
-- title: 'C Programming: A Modern Approach, 2nd edition (K. N. King)'
-  url: https://www.informit.com/
-  reason: Still the best long-form textbook for learners and C99-based; kept out because Modern C is newer (C23), free and stricter about semantics. Could not open the author page (knking.com unreachable).
 - title: CMU 15-213 / CS:APP (Bryant and OHallaron)
   url: https://www.cs.cmu.edu/~213/
   reason: Better placed in G4 computer-systems; C is taught only as a means there.
@@ -138,11 +150,11 @@ considered:
 - title: Beej Guide to Network Programming
   url: https://beej.us/guide/bgnet/
   reason: Great but belongs to networking node (G4/G10).
-notes: Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one.
+notes: 'Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one. Review update (2026-11-19): corrected the SEE note (it is an older CS107 offering, not a different course) and added it as a public-video companion; reading order made explicit; King recorded as co-primary alternative. Kept "lectures 13-25": the Autumn 2026 site lists lectures 01-25 including two no-slide catch-up sessions
+  (20, 25).'
 split_proposal: 'Consider splitting CS107: lectures 1-12 here (C), lectures 13-25 into computer-systems (assembly and allocator).'
 prereq_changes: null
 open_questions:
 - Public lecture videos for any CS 107 run could not be confirmed; Stanford Canvas only.
 - Beej guide self-labels as beta-quality; fine for an on-ramp but should not be cited as authoritative.
-- 'knking.com and C-FAQ-style pages: author site for King book unreachable from this environment.'
-last_verified: '2026-11-18'
+last_verified: '2026-11-19'

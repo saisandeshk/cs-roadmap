@@ -99,6 +99,17 @@ resources:
   use: Parts I (domain model, repository, service layer, unit of work) and the TDD-high-gear-low-gear chapter; skip the event-driven part until needed.
   why: Shows idiomatic production Python structure (dependency inversion, testable layering) that connects python-in-depth to software-construction.
   verified: true
+- id: pycon-talks
+  role: secondary
+  kind: video-series
+  title: Raymond Hettinger and David Beazley PyCon talks
+  by: Raymond Hettinger; David Beazley
+  url: https://pyvideo.org/speaker/raymond-hettinger.html
+  edition_or_term: PyCon US 2010-2017 recordings (indexed on pyvideo.org)
+  access: free
+  use: 'Hettinger: Transforming Code into Beautiful, Idiomatic Python (PyCon 2013), Python''s Class Development Toolkit, Super considered super! (PyCon 2015), Beyond PEP 8, Modern Python Dictionaries. Beazley (https://pyvideo.org/speaker/david-beazley.html): Generators: The Final Frontier, Python Concurrency From the Ground Up: LIVE!, Understanding the Python GIL, Modules and Packages: Live and Let Die!, Python 3 Metaprogramming. Watch alongside the matching Fluent Python parts.'
+  why: 'Fills the public-video gap of this node (no course exists): the two best explainers of idiomatic Python, generators, the GIL and the import system.'
+  verified: true
 - id: practical-python
   role: practice
   kind: website
@@ -109,17 +120,6 @@ resources:
   access: free
   use: 'Sections 2 (Working with data), 3 (Program organization: functions, modules, error checking, closures) and 7 (Advanced topics: variable arguments, decorators, generators) exercises with the provided Data files.'
   why: Exercise-heavy, no fluff; practice for iterators, generators and decorators before or alongside Fluent Python.
-  verified: true
-- id: exercism-python-deep
-  role: practice
-  kind: practice-site
-  title: Exercism Python track, intermediate concepts
-  by: Exercism
-  url: https://exercism.org/tracks/python
-  edition_or_term: Python track
-  access: free
-  use: Concept exercises on decorators, generators, iterators, dataclasses, context managers, generic type hints, and mentor-style refactors of your solutions.
-  why: Free test-driven drilling after the reading; mentors comment on idiom quality.
   verified: true
 considered:
 - title: Dave Beazley Advanced Python Mastery (dabeaz-course/python-mastery)
@@ -143,10 +143,10 @@ considered:
 - title: Real Python
   url: https://realpython.com/
   reason: Large article library; useful for lookup but uneven depth and blocks bots, not opened.
-notes: 'No single university-grade course exists for idiomatic Python beyond the first course, so no primary-course is named: the closest candidate (Beazley Advanced Python Mastery) was archived in October 2026 after being broken by newer Python. Fluent Python 2e is still the primary; treat its 3.10 baseline as the floor and layer current docs for typing (PEP 695), asyncio TaskGroup, free-threaded builds (Python 3.15 is the current release) and packaging with uv. Performance Python belongs to G4 and NumPy/pandas to G5; asyncio/GIL here is conceptual only. Overlaps software-construction on testing/typing; keep pytest/Hypothesis here and spec-and-design principles there.'
+notes: 'No single university-grade course exists for idiomatic Python beyond the first course, so no primary-course is named: the closest candidate (Beazley Advanced Python Mastery) was archived in October 2026 after being broken by newer Python. Fluent Python 2e is still the primary; treat its 3.10 baseline as the floor and layer current docs for typing (PEP 695), asyncio TaskGroup, free-threaded builds (Python 3.15 is the current release) and packaging with uv. Performance Python belongs to G4 and NumPy/pandas to G5; asyncio/GIL here is conceptual only. Overlaps software-construction on testing/typing; keep pytest/Hypothesis here and spec-and-design principles there. Review update (2026-11-19): added the Hettinger/Beazley PyCon talks as the public-video component; removed the second Exercism entry because it duplicated python-programming (same track URL).'
 split_proposal: null
 prereq_changes: 'Consider adding soft: [dev-environment] because virtualenvs, git and packaging are assumed here; software-construction and python-in-depth can run in parallel.'
 open_questions:
 - 'No primary-course for this node: no 2026 university course with public videos found that covers advanced Python.'
 - Could not confirm an O Reilly or publisher page for Fluent Python 2e via curl (403); used the author companion site, and web search confirmed the 2022 2nd edition is current.
-last_verified: '2026-11-18'
+last_verified: '2026-11-19'

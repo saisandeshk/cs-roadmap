@@ -61,7 +61,7 @@ resources:
   access: paid
   use: 'Whole book (about 190 pages): deep modules, information hiding, comments as design, red flags,.'
   why: Strongest short treatment of module and interface design (complexity management); complements 6.102 specs-and-ADT view with an industry-practitioner view.
-  verified: false
+  verified: true
 - id: debugging-book
   role: secondary
   kind: book
@@ -95,16 +95,16 @@ resources:
   use: Chapters 1-4 (refactoring principles, bad smells, building tests) and the catalog entries as needed (Extract Function, Replace Conditional with Polymorphism, Encapsulate Variable).
   why: The standard catalogue for restructuring code without changing behaviour; 6.102 further reading lists it.
   verified: true
-- id: mit-6102-psets
+- id: ocw-6005-psets
   role: practice
   kind: website
-  title: MIT 6.102 problem sets (specs, ADTs, functional)
-  by: MIT EECS
-  url: https://web.mit.edu/6.102/www/sp26/psets/ps1/
-  edition_or_term: Spring 2026
+  title: MIT 6.005 Software Construction problem sets (OCW Spring 2016, Java)
+  by: MIT OpenCourseWare
+  url: https://ocw.mit.edu/ans7870/6/6.005/s16/psets/ps1/
+  edition_or_term: Spring 2016 (OCW)
   access: free
-  use: PS1 Specific Graphics (write tests for given specs), PS2 Multi-Startup Set (ADT with rep invariants and checkRep), PS3 Memely; for each, write the spec and tests first and then the implementation.
-  why: Concrete test-first and ADT-design practice; starter code is on MIT GitHub (students only), so recreate the skeleton from the problem set text.
+  use: 'Self-contained route with public starter code: PS0 Turtle Graphics, PS1 Tweet Tweet (testing and specs), PS2 Poetic Walks (graph ADT, rep invariants, abstraction functions), PS3 Expressivo (recursive data types, parsing), PS4 Multiplayer Minesweeper (concurrency, optional). Each pset page offers a ps*.zip starter (ps1.zip checked).'
+  why: The 6.102 starter code is on MIT-only GitHub; the 6.005 psets teach the same spec/test/ADT skills with downloadable starters, so they are the fully public practice set.
   verified: true
 - id: python-spec-practice
   role: practice
@@ -118,9 +118,6 @@ resources:
   why: Bridges 6.102 TypeScript examples back into the Python used in earlier nodes; property-based testing is the real power-tool for specs.
   verified: true
 considered:
-- title: MIT 6.005 Software Construction (OCW Spring 2016, Java)
-  url: https://ocw.mit.edu/ans7870/6/6.005/s16/
-  reason: Older Java edition of the same readings, stable on OCW; 6.102 is the maintained version.
 - title: UW CSE 331 Software Design and Implementation
   url: https://courses.cs.washington.edu/courses/cse331/
   reason: Strong specification and ADT course in Java; kept as an alternative if TypeScript is a barrier (term/video status not checked).
@@ -136,10 +133,10 @@ considered:
 - title: CMU 17-214 Principles of Software Construction / CMU 17-313 Foundations of Software Engineering
   url: https://www.cs.cmu.edu/
   reason: Strong design/OO-course alternatives; not opened.
-notes: 'Two-source design: 6.102 for rigour on specs/ADTs/testing, plus industry books for design taste and team practice. 6.102 uses TypeScript (Basic TypeScript and Praxis Tutor exercises are in the course), which is a short detour for a Python-first learner; python-spec-practice suggests carrying the exercises back into Python. All course materials are public but there are no videos and starter code lives on MIT GitHub, so assignments are partial. Concurrency readings overlap G4; keep them optional. Language note: the skeleton names the course "6.1020-style"; the live site calls it 6.102 and the catalogue number is 6.1020.'
+notes: 'Two-source design: 6.102 for rigour on specs/ADTs/testing, plus industry books for design taste and team practice. 6.102 uses TypeScript (Basic TypeScript and Praxis Tutor exercises are in the course), which is a short detour for a Python-first learner; python-spec-practice suggests carrying the exercises back into Python. All course materials are public but there are no videos and starter code lives on MIT GitHub, so assignments are partial. Concurrency readings overlap G4; keep them optional. Language note: the skeleton names the course "6.1020-style"; the live site calls it 6.102 and the catalogue number is 6.1020. Review update (2026-11-19): replaced the 6.102 pset practice entry (it repeated the course use) with the OCW 6.005 problem sets, which have public starter zips.'
 split_proposal: null
 prereq_changes: 'Consider adding soft: [dev-environment] (git is a required skill from reading 1-3 and Git 1-3 psets).'
 open_questions:
 - Starter code for the 6.102 psets is on github.mit.edu (MIT login), so assignments are recorded as partial.
-- 'A Philosophy of Software Design: publisher/author page web.stanford.edu/~ouster not reachable from this environment (unverified).'
-last_verified: '2026-11-18'
+- A Philosophy of Software Design author page opened over http (200, 2nd edition July 2021 confirmed); https to web.stanford.edu fails from this environment only.
+last_verified: '2026-11-19'

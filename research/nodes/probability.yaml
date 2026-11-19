@@ -35,7 +35,7 @@ resources:
       latest_term: "Fall 2025 (Harvard Statistics course listing; Stat 110 pages themselves returned HTTP 403 to automated fetches)"
       latest_url: https://stat110.hsites.harvard.edu/
       videos: unknown
-      public_videos_term: "Original Harvard recordings on YouTube (term not stated on the playlist page)"
+      public_videos_term: "2011-era Harvard recordings (term unconfirmed; not stated on the playlist page, which was re-opened 2026-11-19 and is live, titled 'Statistics 110: Probability')"
       public_videos_url: https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo
       assignments: public
       assignments_url: https://stat110.hsites.harvard.edu/strategic-practice-problems
@@ -113,7 +113,7 @@ notes: "Stat 110 plus Blitzstein-Hwang is the strongest free pairing for CS. Har
 split_proposal: null
 prereq_changes: "Calculus is hard-required for continuous distributions; discrete-math soft is right (counting, induction, expectation by indicators)."
 open_questions:
-  - "Stat 110 current-term data (Fall 2025) came from a search snippet of the Harvard statistics course listing; the course page itself was not openable. Confirm term, whether 2025 lectures are public, and the Strategic Practice URL."
+  - "MANUAL CHECK NEEDED (review R1 also got 403): a human should open stat110.hsites.harvard.edu once to confirm the current term, whether newer lectures are public, and the Strategic Practice URL. Stat 110 current-term data (Fall 2025) came from a search snippet of the Harvard statistics course listing; the course page itself was not openable. Confirm term, whether 2025 lectures are public, and the Strategic Practice URL."
   - "Recording year of the YouTube Stat 110 playlist is not shown on the playlist page."
   - "Data 140 Fall 2026 lecture videos: not found public."
 last_verified: 2026-11-18

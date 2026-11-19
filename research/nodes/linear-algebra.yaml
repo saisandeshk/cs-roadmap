@@ -28,7 +28,7 @@ resources:
     url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/
     edition_or_term: "Spring 2010 (OCW); SC version: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/; newest MIT run found: Spring 2025 (Nike Sun)"
     access: free
-    use: "All 34 lectures on the YouTube/OCW playlist with the problem sets, exams and solutions; first-pass priority: lectures 1-11 (Ax=b, four subspaces), 14-17 (orthogonality, least squares, determinants), 21-25 (eigenvalues, symmetric/positive definite), 29-31 (SVD), 33."
+    use: "All 34 lectures on the YouTube/OCW playlist (problem sets and exams are the practice item mit-18-06-psets); first-pass priority: lectures 1-11 (Ax=b, four subspaces), 14-17 (orthogonality, least squares, determinants), 21-25 (eigenvalues, symmetric/positive definite), 29-31 (SVD), 33."
     why: "The definitive public lecture series on the subject, with graded problem sets, solutions and exams; matches Strang's book chapter for chapter."
     verified: true
     course:
@@ -101,6 +101,17 @@ resources:
     access: free
     use: "Use the interactive 2D/3D demos for span, row reduction, transformations, eigenvectors and diagonalization when a picture is missing; checkpoints and exercises with solutions."
     why: "Free interactive web text with manipulable figures, a middle path between 3Blue1Brown videos and Strang's textbook."
+    verified: true
+  - id: mit-18-06-psets
+    role: practice
+    kind: practice-site
+    title: "MIT 18.06 Spring 2010 problem sets 1-10 and exams with solutions"
+    by: "Gilbert Strang (MIT OCW)"
+    url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/assignments/
+    edition_or_term: "Spring 2010; problems are numbered by section of Strang ILA 4th ed. (2009); exams with solutions at https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/exams/"
+    access: free
+    use: "Pair with lectures: PS1-PS4 (sections 1.2-3.6: elimination, inverses, LU, vector spaces, four subspaces) with lectures 1-11; PS5-PS6 (4.1-4.4 orthogonality, projections, least squares, Gram-Schmidt; 5.1 determinants) with lectures 14-18; PS7-PS9 (5.2-5.3, 6.1-6.5: determinants, eigenvalues, diagonalization, symmetric and positive definite matrices) with lectures 19-27; PS10 (6.6-6.7 similar matrices and SVD, 8.5) with lectures 28-31. Then take Exams 1-3 and the final under time and check the posted solutions."
+    why: "The node had no explicit practice item; these are the graded sets and exams of the primary course, each with posted solutions. The section numbers follow the 4th edition, so map them to the 6th edition table of contents (the chapter structure is similar but numbering can differ)."
     verified: true
 considered:
   - {title: "Mathematics for Machine Learning (Deisenroth, Faisal, Ong), Chapters 2-4", url: "https://mml-book.github.io/", reason: "Good compact ML-flavored reference, but not a course; Strang + 18.065 cover the same ground with more practice."}

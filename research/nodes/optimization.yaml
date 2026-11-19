@@ -28,8 +28,8 @@ resources:
     url: https://eecs127.github.io/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lectures 1-10 (least squares, SVD, PCA, low-rank, ridge, vector calculus), 11-15 (convexity, descent methods, SGD and variants), 16-22 (weak/strong duality, KKT, Fenchel conjugates), 23-25 (LPs, QPs, SOCPs); do the weekly discussion sheets and homework with posted solutions, and read the free course reader."
-    why: "Newest course with fully public lecture recordings (Spring 2026, Spring 2024 and Fall 2022 playlists), public homework and discussion PDFs with solutions, free course reader and a schedule that mixes linear algebra review, SGD, duality and KKT for ML-minded students."
+    use: "Lectures 1-10 (least squares, SVD, PCA, low-rank, ridge, vector calculus), 11-15 (convexity, descent methods, SGD and variants), 16-22 (weak/strong duality, KKT, Fenchel conjugates), 23-25 (LPs, QPs, SOCPs), 26-27 (L1/Lasso, Newton's method, SVM application); do the weekly discussion sheets and homework with posted solutions, and read the free course reader."
+    why: "Newest course with fully public lecture recordings (Spring 2026, Spring 2024 and Fall 2022 playlists), public homework and discussion PDFs with solutions, free course reader and a schedule that mixes linear algebra review, SGD, duality, KKT and Newton's method for ML-minded students. Pairing with Boyd-Vandenberghe is by topic, not chapter: EE127 follows its own sequence and cites Calafiore-El Ghaoui plus BV per lecture."
     verified: true
     course:
       latest_term: "Spring 2026"

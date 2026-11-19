@@ -17,7 +17,7 @@ resources:
     url: https://www.inference.org.uk/mackay/itila/book.html
     edition_or_term: "Cambridge University Press 2003 (free PDF, 4th printing 2005, on the author's page)"
     access: free
-    use: "Ch 1-2 (introduction, probability/entropy/inference), 4-6 (source coding theorem, symbol codes, stream codes: Huffman and arithmetic coding), 8-10 (joint entropy, mutual information, channel capacity), 9-11 (noisy channel coding theorem), then 20-22 and 28 (inference, clustering, maximum likelihood) and 29-30 (Monte Carlo) for ML links; do the many exercises with solutions."
+    use: "Ch 1-2 (introduction, probability/entropy/inference), 4-6 (source coding theorem, symbol codes, stream codes: Huffman and arithmetic coding), 8-11 (dependent random variables and mutual information, communication over a noisy channel, the noisy-channel coding theorem, error-correcting codes and real channels), then 20-22 and 28 (inference, clustering, maximum likelihood) and 29-30 (Monte Carlo) for ML links; do the many exercises with solutions."
     why: "Teaches entropy, coding and inference together, so KL divergence, mutual information and compression arrive with their machine-learning meaning; free, with exercises and solutions; ideal for the generative path."
     verified: true
   - id: mackay-lectures
