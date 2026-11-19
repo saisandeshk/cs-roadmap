@@ -30,7 +30,7 @@ resources:
     edition_or_term: "Fall 2026 (Aug 25 - Dec 3; Tue/Thu)"
     access: free
     use: "Lectures: What is an agent?, tool use, context management, skills and memory, planning/multi-agent coordination, coding agents, GUI agents, SFT and RL for agents (RL parts overlap G8), deep research agents, sandboxing and credential management, OpenHands, LangGraph, observability, human-agent interaction, tree search. Assignments: A1 Build an agent harness (public repo cmu-agents/assignment-1), A2 evals, A3 training (not confirmed public). Watch lectures 1-9 on YouTube now (the site JS lists 9 recordings); slides for early lectures are on the site."
-    why: "Newest agent-specific course (Neubig is an OpenHands co-author), covering harness, evals and training in one syllabus; recordings are public on Neubig's YouTube channel and a build-it-yourself harness assignment is public."
+    why: "Newest agent-specific course (Neubig is an OpenHands co-author), covering harness, evals and training in one syllabus; recordings are public on Neubig's YouTube channel and a build-it-yourself harness assignment is public. Caveats: the site is JS-only, only lectures 1-9 are public so far and the term is still running (video count to be updated after Dec 3); assignments 2-3 are unconfirmed. If 11-768 stalls, Stanford CS329Z (cs329z-agents below: public video for lectures 1-9, two autograded homeworks) is the stated fallback course."
     verified: true
     course:
       latest_term: "Fall 2026"
@@ -157,13 +157,13 @@ resources:
   - id: agent-benchmarks
     role: reference
     kind: paper
-    title: "Agent benchmarks: SWE-bench, tau-bench, AgentDojo"
-    by: "Jimenez et al.; Yao et al. (Sierra); Debenedetti et al."
-    url: https://arxiv.org/abs/2310.06770
-    edition_or_term: "SWE-bench 2023 (live leaderboards at https://www.swebench.com/); tau-bench https://arxiv.org/abs/2406.12045 (2024); AgentDojo https://arxiv.org/abs/2406.13352 (2024)"
+    title: "Agent benchmarks: tau-bench and AgentDojo (SWE-bench is read in llm-evaluation)"
+    by: "Yao et al. (Sierra); Debenedetti et al."
+    url: https://arxiv.org/abs/2406.12045
+    edition_or_term: "tau-bench 2024; AgentDojo https://arxiv.org/abs/2406.13352 (2024); SWE-bench (https://arxiv.org/abs/2310.06770, live leaderboards https://www.swebench.com/) is covered by llm-evaluation"
     access: free
-    use: "Learn the task/grader design of each; run a few SWE-bench Lite or tau-bench tasks against your harness if budget allows."
-    why: "The three benchmark families (software engineering, tool-agent-user reliability, security) that anchor agent evaluation."
+    use: "Learn the task/grader design of each; run a few tau-bench tasks against your harness if budget allows; for SWE-bench use the llm-evaluation entry."
+    why: "Tool-agent-user reliability (tau-bench) and security (AgentDojo) benchmark families that anchor agent evaluation; the software-engineering family (SWE-bench) is cited from llm-evaluation to avoid duplication."
     verified: true
   - id: prompt-injection-security
     role: secondary
@@ -197,7 +197,7 @@ considered:
   - {title: "NYU Foundations of AI Agents (Spring 2026)", url: "https://pages.stern.nyu.edu/~ilobel/Foundations_of_AI_Agents.pdf", reason: "Syllabus only; no public lectures found."}
   - {title: "Agent2Agent (A2A) protocol", url: "https://a2a-protocol.org/latest/", reason: "Multi-agent interop standard; less settled than MCP; reference-only."}
   - {title: "OWASP Top 10 for Agentic Applications 2026 / MITRE ATLAS", url: "https://genai.owasp.org/llm-top-10/", reason: "Security catalogues from the owner's prior curation; better placed in evals-and-red-teaming (G8)."}
-notes: "Primary route: Anthropic's Building effective agents + companion engineering posts; CMU 11-768 lectures (1-9 public as of site build; the course is still running, so later lectures may appear) with A1 harness practice, optionally the Hugging Face Agents Course first. Stanford CS329Z gives a second, more applied take (and is the primary course of llm-applications). The RL/training half of 11-768 (SFT, RL basics, RL systems) belongs to G8's rl-for-llms. Agent security is only touched here; see the G8 safety nodes."
+notes: "Primary route: Anthropic's Building effective agents + companion engineering posts (the 2024 article is a concept text; newer Anthropic agent engineering posts listed in `use` carry current practice); CMU 11-768 lectures (lectures 1-9 public, partly public and still running, so later lectures may appear; site is JS-only; fallback is Stanford CS329Z) with A1 harness practice, optionally the Hugging Face Agents Course first. Stanford CS329Z gives a second, more applied take (and is the primary course of llm-applications). The RL/training half of 11-768 (SFT, RL basics, RL systems) belongs to G8's rl-for-llms. Agent security is only touched here; see the G8 safety nodes."
 split_proposal: "Consider splitting 'agent-security-and-sandboxing' (prompt injection, confused deputy, sandboxing, credentials) from this node; the material (AgentDojo, design patterns, OWASP agentic list, CMU lecture 13) is distinct and could link to evals-and-red-teaming."
 prereq_changes: "Add soft: [retrieval-and-rag] (agentic RAG, memory) and soft: [llm-evaluation] (agent evaluation). Keep hard: [llm-applications]."
 open_questions:

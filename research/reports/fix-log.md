@@ -108,3 +108,13 @@
 - evals-and-red-teaming: one home per paper; Apollo starter guide added.
 - adversarial-robustness: NIST AI 100-2 added; classic-half caveat; ETH RTAI videos unknown (2020 playlist fallback); duplicates removed.
 - Declined: none.
+
+## G7 LLMs (R4)
+- llm-evaluation: primary course -> Stanford CS329Z weeks 7-8 (videos not yet posted -> unknown); CS336 L12 secondary; Evidently evaluation course as practice; contamination/HELM as reference.
+- retrieval-and-rag: primary course -> DataTalks.Club LLM Zoomcamp (free, public); slp3-ch11 verified; RAG survey as reference.
+- llm-applications: CS329Z narrowed to lecture 2 + safety lecture; Zoomcamp practice; duplicates removed.
+- llm-architectures: CS336 block fixed; gallery URL -> live page (126 models); OLMo 3 trimmed; April 2026 staleness noted.
+- scaling-and-pretraining: A3 self-study route (API is student-gated); OLMo 3 arXiv 2512.13961; Kaplan/Chinchilla dates.
+- post-training: SLP3 ch.8 added; Hinton distillation left to model-compression; smol-course units updated.
+- nlp-foundations, language-modeling, pretraining-data, llm-agents: small fact/caveat fixes.
+- Declined: CME 295, Huyen overlap, FAISS trims, cross-group items.

@@ -29,13 +29,15 @@ resources:
     url: https://cs329z.stanford.edu/
     edition_or_term: "Fall 2026 (Mon/Wed 1:30-2:50pm; tentative schedule Sep 23 - Dec 2)"
     access: free
-    use: "Weeks 1-4: foundations (compound AI systems), LLMs for builders (decoding, structured I/O and constrained decoding, context engineering), RAG, tool use/function calling and MCP, frameworks (DSPy, LangGraph) and agent design patterns; use the two homework repos (assignment1-harness, assignment2-harness) and lecture5-frameworks code. Memory/multi-agent weeks overlap llm-agents."
-    why: "Newest public course that teaches building LLM systems (pipelines, evals, tradeoffs) end to end; YouTube lectures on Stanford Online plus public MIT-licensed homework repos with pytest suites (live tests call a real model and cost money)."
+    use: "Only the application-building slices: Sep 28 'LLMs for Builders' (decoding, structured I/O and constrained decoding, context engineering; slides lecture02.pdf, video linked) and Nov 18 'Agent Safety & Guardrails' (prompt injection, red-teaming, sandboxing, output guardrails, human-in-the-loop; slides lecture17.pdf). Evaluation and LLM-as-judge (Nov 4, Nov 11) are read in llm-evaluation; RAG is in retrieval-and-rag; tool use, frameworks, design patterns, memory and multi-agent are in llm-agents. Homework 1 (assignment1-harness) is the practice item below."
+    why: "Newest public course that teaches building LLM systems (pipelines, evals, tradeoffs) end to end, though it is an agent course so only part of it matches this node's scope; as of 2026-11-19 video links exist only for lectures 1-9, so the Nov 18 safety lecture is slides-only; YouTube lectures on Stanford Online plus public MIT-licensed homework repos with pytest suites (live tests call a real model and cost money)."
     verified: true
     course:
       latest_term: "Fall 2026"
       latest_url: https://cs329z.stanford.edu/
       videos: public
+      public_videos_term: "Fall 2026 (lectures 1-9 only, through Oct 21)"
+      public_videos_url: https://cs329z.stanford.edu/
       assignments: public-with-autograder
       assignments_url: https://github.com/cs329z/assignment1-harness
   - id: cs329z-hw1
@@ -82,27 +84,27 @@ resources:
     use: "Read all three sections (about 1.5 h)."
     why: "Hidden gem: concentrated practitioner lessons on prompting, evals, RAG, guardrails and team/process that textbooks lack."
     verified: true
-  - id: hamel-evals-apps
-    role: secondary
-    kind: article
-    title: "AI Evals FAQ and Field Guide to Rapidly Improving AI Products"
-    by: "Hamel Husain"
-    url: https://hamel.dev/blog/posts/field-guide/
-    edition_or_term: "Living posts"
-    access: free
-    use: "Field guide (error analysis, custom viewers, synthetic data, LLM-as-judge validation); FAQ at https://hamel.dev/blog/posts/evals-faq/"
-    why: "Application-level evaluation workflow (look at your data first) which fills the 'application evals' scope item; complements llm-evaluation's benchmark focus."
-    verified: true
-  - id: anthropic-courses
+  - id: llm-zoomcamp-apps
     role: practice
     kind: practice-site
-    title: "Anthropic courses repo: prompt engineering interactive tutorial, real-world prompting, prompt evaluations, tool use"
+    title: "LLM Zoomcamp 2026: orchestration, monitoring and end-to-end project (DataTalks.Club)"
+    by: "DataTalks.Club (Grigorev, Russell, Kamaliev)"
+    url: https://github.com/DataTalksClub/llm-zoomcamp
+    edition_or_term: "2026 cohort (Jun-Sep 2026); self-paced use, homework self-checked"
+    access: free
+    use: "Module 3 Orchestration (Kestra), Module 5 Monitoring (user feedback, system health, live dashboards), Module 7 end-to-end project example and the capstone (ingest, retrieve, assemble prompts, evaluate, UI, monitoring). Modules 1, 2, 4 and 6 (RAG, vector search, retrieval evaluation, hybrid search/rerank) are read in retrieval-and-rag, where this course is the primary-course. About $1-5 in API credits, no GPU."
+    why: "Current, graded-style, free practice for application-level production concerns (orchestration, monitoring, feedback) that the archived Anthropic courses repo and the lecture material do not give."
+    verified: true
+  - id: anthropic-courses
+    role: reference
+    kind: practice-site
+    title: "Anthropic courses repo: prompt engineering interactive tutorial (pointer only)"
     by: "Anthropic"
     url: https://github.com/anthropics/courses
     edition_or_term: "Repo archived (read-only) on 2026-09-15; examples use Claude 3 Haiku"
     access: free
-    use: "Do the prompt-engineering interactive tutorial (with exercises), 'Prompt evaluations' (write production prompt evals) and 'Tool use' notebooks; swap in a current cheap model."
-    why: "Hands-on, exercise-driven prompting and eval practice; archived and model-dated, but the exercises remain a good low-cost drill."
+    use: "Pointer only: the prompt-engineering interactive tutorial exercises, if you want a low-cost prompting drill (swap in a current cheap model). Do not rely on it for practice; use LLM Zoomcamp and the CS329Z homework above."
+    why: "Archived and model-dated, so demoted from practice; kept because the interactive prompting exercises are still a quick drill."
     verified: true
   - id: dspy
     role: reference
@@ -161,17 +163,17 @@ resources:
     verified: true
 considered:
   - {title: "AI Engineering Handbook (handbook.academy)", url: "https://ai-eng.handbook.academy/", reason: "Free (CC BY-SA), 12 parts, 86 modules/170k words and growing, from the owner's previous curation; broad coverage of this node (APIs, prompting, eval, security, production) but anonymous authorship and still in development; revisit as a free alternative primary."}
-  - {title: "CMU 11-766 Large Language Model Applications (Spring 2026)", url: "https://cmu-llms.org/", reason: "Real course (Diaz, Ippolito) with assignments and project, but schedule/video/assignment visibility could not be established from the site (JS pages)."}
+  - {title: "CMU 11-766 Large Language Model Applications (Spring 2026)", url: "https://cmu-llms.org/", reason: "Closer scope match than CS329Z (Diaz, Ippolito); site re-checked 2026-11-19 (HTTP 200, schedule/assignments/project pages) but no public lecture recordings found, so it stays out as primary; revisit if recordings appear."}
   - {title: "CMU 17-445/645 Machine Learning in Production / AI Engineering 11-695", url: "https://mlip-cmu.github.io/s2026", reason: "Strong on ML-enabled system engineering and responsible AI; more MLOps than LLM-app specific; not examined in depth."}
   - {title: "DeepLearning.AI short courses", url: "https://www.deeplearning.ai/short-courses/", reason: "Fast tool tutorials (LangChain, RAG, evals); variable depth and quickly dated; not verified individually."}
   - {title: "Full Stack LLM Bootcamp (2023)", url: "https://fullstackdeeplearning.com/llm-bootcamp/", reason: "Landmark early course; videos still public but dated (2023)."}
   - {title: "Hugging Face LLM Course / smol-course", url: "https://huggingface.co/learn/llm-course/chapter1/1", reason: "Model-side (Transformers/fine-tuning) not application-engineering."}
   - {title: "LangChain/LangGraph/LlamaIndex docs", url: "https://docs.langchain.com/oss/python/langchain/overview", reason: "Framework docs: use as needed; frameworks churn and the course advises building the harness by hand first."}
-notes: "Primary route: Huyen's book (selected chapters) with the CS329Z Fall 2026 lectures and homework repos; use Anthropic/OpenAI docs and Applied LLMs/Hamel for practitioner depth. The primary text is paid; the free fallback is the Applied LLMs + Hamel + docs stack. The hard prerequisite python-in-depth is reasonable; an actual LLM API key and small budget are needed for practice."
+notes: "Primary route: Huyen's book (selected chapters) with the CS329Z Fall 2026 builder/safety lectures and homework 1; use Anthropic/OpenAI docs and Applied LLMs for practitioner depth; application-level evals (Hamel's FAQ and Field Guide, hamel-evals) and Huyen ch. 3-4 pair with the llm-evaluation node, where the Hamel posts are listed once. LLM Zoomcamp modules 3, 5, 7 are the practice route. The primary text is paid; the free fallback is the Applied LLMs + Hamel + docs stack. The hard prerequisite python-in-depth is reasonable; an actual LLM API key and small budget are needed for practice."
 split_proposal: "Consider splitting production operation (observability, cost/latency, caching, routing, guardrails, security) into its own 'llmops-and-guardrails' node: the owner's seed treats it as its own unit (SRE book, OpenTelemetry GenAI conventions, prompt caching docs) and no single resource here covers it well."
 prereq_changes: "Add soft: [retrieval-and-rag] (RAG is a core application pattern) and soft: [post-training] (when to fine-tune vs prompt)."
 open_questions:
   - "O'Reilly publisher page returns 403 from my sandbox; book details verified only via the author's books page."
   - "CS329Z schedule is marked tentative; one lecture video (youtu.be/DGI4vucR71w) returned 'Unauthorized' to oEmbed, others resolve."
-  - "CMU 11-766 materials could not be inspected."
+  - "CMU 11-766 recordings not found; assignments/project pages exist but their contents were not read."
 last_verified: 2026-11-18
