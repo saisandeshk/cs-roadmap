@@ -1,142 +1,156 @@
 id: formal-methods-for-systems
 title: Formal Methods for Systems (TLA+)
 group: G10
-paths: [distributed, plc]
-hard: [discrete-math]
-soft: [consensus-and-replication]
-scope: "Specification, model checking, TLA+/PlusCal, verifying protocol properties."
-
+paths:
+- distributed
+- plc
+hard:
+- discrete-math
+soft:
+- consensus-protocols
+scope: Specification, model checking, TLA+/PlusCal, verifying protocol properties.
 level: intermediate
-estimated_hours: 50
 resources:
-  - id: learntla
-    role: primary-text
-    kind: website
-    title: "Learn TLA+"
-    by: "Hillel Wayne"
-    url: https://learntla.com/
-    edition_or_term: "v2 (beta since June 2022; last 'What's New' entry August 2023; work in progress)"
-    access: free
-    use: "Conceptual Overview, then Core: Setup, Operators and Values, Writing Specifications (PlusCal), Writing an Invariant, Parameterizing Specs, Structured Data, Nondeterminism, Concurrency, Temporal Properties, Action Properties, TLA+ and Modules. Topics: Using the Toolbox, Modelling Message Queues, Optimizing Model Checking."
-    why: "The most approachable modern introduction: PlusCal first, immediate model-checking feedback, written for working programmers. Free and online, so it pairs well with Lamport's videos for the pure-TLA+ view. The Core section is complete; Topics and Examples are partly unwritten."
-    verified: true
-  - id: lamport-videos
-    role: primary-course
-    kind: course
-    title: "The TLA+ Video Course"
-    by: "Leslie Lamport"
-    url: https://lamport.azurewebsites.net/video/videos.html
-    edition_or_term: "Page last modified 23 October 2021 (10 lectures, several in two parts, each with a script)"
-    access: free
-    use: "Watch all lectures in order: Introduction, State Machines, Resources and Tools (install the Toolbox/TLC), Die Hard, Transaction Commit, Two-Phase Commit, Paxos Commit, the Alternating Bit Protocol (liveness and fairness, two parts) and Implementation with Refinement (two parts); read the scripts when a point is dense."
-    why: "Written by TLA+'s creator, this is the authoritative teaching of the mathematical way of thinking about specifications (state machines, invariants, liveness, refinement). The Transaction Commit, Two-Phase Commit and Paxos Commit lectures map directly onto the distributed-systems nodes. It is a recorded course, not a live term, and is demanding by design."
-    verified: true
-    course:
-      latest_term: "Recorded 2021 course (self-paced; page last modified Oct 2021)"
-      latest_url: https://lamport.azurewebsites.net/video/videos.html
-      videos: public
-      assignments: unknown
-      assignments_url: https://lamport.azurewebsites.net/video/videos.html
-  - id: specifying-systems
-    role: reference
-    kind: book
-    title: "Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers"
-    by: "Leslie Lamport"
-    url: https://lamport.azurewebsites.net/tla/book.html
-    edition_or_term: "Addison-Wesley 2002; free PDF from the author (page last modified Jan 2022)"
-    access: free
-    use: "First seven chapters (83 pages: simple math, clock, asynchronous interface, FIFO, caching memory) as the formal definition; Part II chapters on liveness and refinement later; exercises in the accompanying material."
-    why: "Gap: the complete language reference and the deeper theory; the free PDF is the standard citation when the video and Learn TLA+ are ambiguous."
-    verified: true
-  - id: practical-tla
-    role: secondary
-    kind: book
-    title: "Practical TLA+: Planning Driven Development"
-    by: "Hillel Wayne"
-    url: https://www.hillelwayne.com/post/practical-tla/
-    edition_or_term: "Apress, 2018"
-    access: paid
-    use: "Parts on PlusCal, concurrency, and the worked examples (wire transfer, bounded queues, a database model); optional if Learn TLA+ is enough."
-    why: "Gap: a book-form treatment with extended worked examples; Learn TLA+ is its updated, free successor for the core, so this is optional."
-    verified: true
-  - id: tlaplus-examples
-    role: practice
-    kind: tool
-    title: "TLA+ Examples repository (tlaplus/Examples)"
-    by: "TLA+ community (Lamport and contributors)"
-    url: https://github.com/tlaplus/Examples
-    edition_or_term: "Current master"
-    access: free
-    use: "Run TLC on the Paxos spec, Transaction Commit models (Lamport, Gray, Demirbas) and Ongaro's Raft spec (in the Other Examples section, which CI does not validate). Exercise: write your own two-phase-commit spec, find the blocking scenario with TLC, then compare with the repo version."
-    why: "Gap: real, community-maintained specs of the exact protocols covered in the consensus and distributed-transactions nodes; the best way to see idiomatic TLA+ for distributed algorithms."
-    verified: true
-  - id: tla-vscode
-    role: practice
-    kind: tool
-    title: "TLA+ extension for Visual Studio Code and the TLA+ Toolbox"
-    by: "TLA+ Foundation"
-    url: https://marketplace.visualstudio.com/items?itemName=tlaplus.vscode-ide
-    edition_or_term: "Current"
-    access: free
-    use: "Install the extension (bundles TLC), then specify and model-check these in order: (1) a bounded producer-consumer queue, (2) two-phase commit, (3) leader election in a ring, (4) a simplified Raft election-safety spec, with invariants and one liveness property each."
-    why: "Gap: the practice plan; the node's goal is writing and checking specs, not just reading them. Learn TLA+ and the docs wiki at https://docs.tlapl.us/ cover setup."
-    verified: true
-  - id: aws-formal-methods
-    role: secondary
-    kind: paper
-    title: "How Amazon Web Services Uses Formal Methods"
-    by: "Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff (CACM 2015)"
-    url: https://cdn.amazon.science/67/f9/92733d574c11ba1a11bd08bfb8ae/how-amazon-web-services-uses-formal-methods.pdf
-    edition_or_term: "CACM 2015"
-    access: free
-    use: "Read in full (about 10 pages) to see which protocol bugs TLA+ found at S3, DynamoDB and EBS and how engineers adopted it."
-    why: "Gap: the motivation and evidence for using TLA+ on real systems."
-    verified: true
-  - id: xmodel
-    role: secondary
-    kind: paper
-    title: "eXtreme Modelling in Practice (MongoDB)"
-    by: "A. Jesse Jiryu Davis, Max Hirschhorn, Judah Schvimer (VLDB 2020)"
-    url: https://arxiv.org/abs/2006.00915
-    edition_or_term: "VLDB 2020"
-    access: free
-    use: "Read the two case studies (TLA+ spec of MongoDB replication and trace checking test-case generation) to learn how specs are tied back to implementations."
-    why: "Gap: explains how to keep a spec and code in sync, a topic Learn TLA+ lists as unwritten."
-    verified: true
-  - id: ironfleet
-    role: secondary
-    kind: paper
-    title: "IronFleet: Proving Practical Distributed Systems Correct"
-    by: "Chris Hawblitzel et al. (SOSP 2015)"
-    url: https://pdos.csail.mit.edu/6.824/papers/ironfleet.pdf
-    edition_or_term: "SOSP 2015; MIT 6.5840 Lecture 15 reading"
-    access: free
-    use: "Read the overview and the refinement-based methodology; compare with TLA+ model checking (verification of the implementation vs. verification of the design)."
-    why: "Gap: shows the stronger end of the spectrum (proofs of implementation in Dafny) and how refinement scales to real code."
-    verified: true
-  - id: p-lang
-    role: secondary
-    kind: docs
-    title: "The P language (formal modelling and testing of distributed systems)"
-    by: "P team (originated at AWS and UC Berkeley)"
-    url: https://p-org.github.io/P/
-    edition_or_term: "Current docs"
-    access: free
-    use: "Getting Started and the Tutorials outline (two-phase commit, client-server and failure-injection examples); compare its state-machine style and systematic testing to TLC."
-    why: "Gap: an alternative, programmer-friendly modelling language used at AWS for protocols like those in S3; useful once TLA+ concepts are familiar."
-    verified: true
+- id: learntla
+  role: primary-text
+  kind: website
+  title: Learn TLA+
+  by: Hillel Wayne
+  url: https://learntla.com/
+  edition_or_term: v2 (beta since June 2022; last 'What's New' entry August 2023; work in progress)
+  access: free
+  use: 'Conceptual Overview, then Core: Setup, Operators and Values, Writing Specifications (PlusCal), Writing an Invariant, Parameterizing Specs, Structured Data, Nondeterminism, Concurrency, Temporal Properties, Action Properties, TLA+ and Modules. Topics: Using the Toolbox, Modelling Message Queues, Optimizing Model Checking.'
+  why: 'The most approachable modern introduction: PlusCal first, immediate model-checking feedback, written for working programmers. Free and online, so it pairs well with Lamport''s videos for the pure-TLA+ view. The Core section is complete; Topics and Examples are partly unwritten.'
+  verified: true
+- id: lamport-videos
+  role: primary-course
+  kind: course
+  title: The TLA+ Video Course
+  by: Leslie Lamport
+  url: https://lamport.azurewebsites.net/video/videos.html
+  edition_or_term: Page last modified 23 October 2021 (10 lectures, several in two parts, each with a script)
+  access: free
+  use: 'Watch all lectures in order: Introduction, State Machines, Resources and Tools (install the Toolbox/TLC), Die Hard, Transaction Commit, Two-Phase Commit, Paxos Commit, the Alternating Bit Protocol (liveness and fairness, two parts) and Implementation with Refinement (two parts); read the scripts when a point is dense.'
+  why: Written by TLA+'s creator, this is the authoritative teaching of the mathematical way of thinking about specifications (state machines, invariants, liveness, refinement). The Transaction Commit, Two-Phase Commit and Paxos Commit lectures map directly onto the distributed-systems nodes. It is a recorded course, not a live term, and is demanding by design.
+  verified: true
+  course:
+    latest_term: Recorded 2021 course (self-paced; page last modified Oct 2021)
+    latest_url: https://lamport.azurewebsites.net/video/videos.html
+    videos: public
+    assignments: unknown
+    assignments_url: https://lamport.azurewebsites.net/video/videos.html
+- id: specifying-systems
+  role: reference
+  kind: book
+  title: 'Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers'
+  by: Leslie Lamport
+  url: https://lamport.azurewebsites.net/tla/book.html
+  edition_or_term: Addison-Wesley 2002; free PDF from the author (page last modified Jan 2022)
+  access: free
+  use: 'First seven chapters (83 pages: simple math, clock, asynchronous interface, FIFO, caching memory) as the formal definition; Part II chapters on liveness and refinement later; exercises in the accompanying material.'
+  why: 'Gap: the complete language reference and the deeper theory; the free PDF is the standard citation when the video and Learn TLA+ are ambiguous.'
+  verified: true
+- id: practical-tla
+  role: secondary
+  kind: book
+  title: 'Practical TLA+: Planning Driven Development'
+  by: Hillel Wayne
+  url: https://www.hillelwayne.com/post/practical-tla/
+  edition_or_term: Apress, 2018
+  access: paid
+  use: Parts on PlusCal, concurrency, and the worked examples (wire transfer, bounded queues, a database model); optional if Learn TLA+ is enough.
+  why: 'Gap: a book-form treatment with extended worked examples; Learn TLA+ is its updated, free successor for the core, so this is optional.'
+  verified: true
+- id: tlaplus-examples
+  role: practice
+  kind: tool
+  title: TLA+ Examples repository (tlaplus/Examples)
+  by: TLA+ community (Lamport and contributors)
+  url: https://github.com/tlaplus/Examples
+  edition_or_term: Current master
+  access: free
+  use: 'Run TLC on the Paxos spec, Transaction Commit models (Lamport, Gray, Demirbas) and Ongaro''s Raft spec (in the Other Examples section, which CI does not validate). Exercise: write your own two-phase-commit spec, find the blocking scenario with TLC, then compare with the repo version.'
+  why: 'Gap: real, community-maintained specs of the exact protocols covered in the consensus and distributed-transactions nodes; the best way to see idiomatic TLA+ for distributed algorithms.'
+  verified: true
+- id: tla-vscode
+  role: practice
+  kind: tool
+  title: TLA+ extension for Visual Studio Code and the TLA+ Toolbox
+  by: TLA+ Foundation
+  url: https://marketplace.visualstudio.com/items?itemName=tlaplus.vscode-ide
+  edition_or_term: Current
+  access: free
+  use: 'Install the extension (bundles TLC), then specify and model-check these in order: (1) a bounded producer-consumer queue, (2) two-phase commit, (3) leader election in a ring, (4) a simplified Raft election-safety spec, with invariants and one liveness property each.'
+  why: 'Gap: the practice plan; the node''s goal is writing and checking specs, not just reading them. Learn TLA+ and the docs wiki at https://docs.tlapl.us/ cover setup.'
+  verified: true
+- id: aws-formal-methods
+  role: secondary
+  kind: paper
+  title: How Amazon Web Services Uses Formal Methods
+  by: Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff (CACM 2015)
+  url: https://cdn.amazon.science/67/f9/92733d574c11ba1a11bd08bfb8ae/how-amazon-web-services-uses-formal-methods.pdf
+  edition_or_term: CACM 2015
+  access: free
+  use: Read in full (about 10 pages) to see which protocol bugs TLA+ found at S3, DynamoDB and EBS and how engineers adopted it.
+  why: 'Gap: the motivation and evidence for using TLA+ on real systems.'
+  verified: true
+- id: xmodel
+  role: secondary
+  kind: paper
+  title: eXtreme Modelling in Practice (MongoDB)
+  by: A. Jesse Jiryu Davis, Max Hirschhorn, Judah Schvimer (VLDB 2020)
+  url: https://arxiv.org/abs/2006.00915
+  edition_or_term: VLDB 2020
+  access: free
+  use: Read the two case studies (TLA+ spec of MongoDB replication and trace checking test-case generation) to learn how specs are tied back to implementations.
+  why: 'Gap: explains how to keep a spec and code in sync, a topic Learn TLA+ lists as unwritten.'
+  verified: true
+- id: ironfleet
+  role: secondary
+  kind: paper
+  title: 'IronFleet: Proving Practical Distributed Systems Correct'
+  by: Chris Hawblitzel et al. (SOSP 2015)
+  url: https://pdos.csail.mit.edu/6.824/papers/ironfleet.pdf
+  edition_or_term: SOSP 2015; MIT 6.5840 Lecture 15 reading
+  access: free
+  use: Read the overview and the refinement-based methodology; compare with TLA+ model checking (verification of the implementation vs. verification of the design).
+  why: 'Gap: shows the stronger end of the spectrum (proofs of implementation in Dafny) and how refinement scales to real code.'
+  verified: true
+- id: p-lang
+  role: secondary
+  kind: docs
+  title: The P language (formal modelling and testing of distributed systems)
+  by: P team (originated at AWS and UC Berkeley)
+  url: https://p-org.github.io/P/
+  edition_or_term: Current docs
+  access: free
+  use: Getting Started and the Tutorials outline (two-phase commit, client-server and failure-injection examples); compare its state-machine style and systematic testing to TLC.
+  why: 'Gap: an alternative, programmer-friendly modelling language used at AWS for protocols like those in S3; useful once TLA+ concepts are familiar.'
+  verified: true
 considered:
-  - {title: "Alloy 6 (Formal Software Design with Alloy 6)", url: "https://haslab.github.io/formal-software-design/", reason: "Excellent for structural modelling and relational logic, but weaker than TLA+ for temporal behaviour of protocols."}
-  - {title: "Quint", url: "https://quint-lang.org/", reason: "Modern TypeScript-like surface syntax over TLA+ ideas; promising but younger; not needed for a first course."}
-  - {title: "FizzBee", url: "https://fizzbee.io/", reason: "Python-like model checker for distributed designs; newer, small ecosystem."}
-  - {title: "Dafny online tutorial", url: "https://dafny.org/dafny/OnlineTutorial/guide", reason: "Verification of code (IronFleet style), a different node-level topic; kept out to keep the node focused on design-level specification."}
-  - {title: "Software Foundations (Coq)", url: "https://softwarefoundations.cis.upenn.edu/", reason: "Proof-assistant route to verified software; much heavier and belongs to a programming-languages or verification node."}
-  - {title: "Using lightweight formal methods to validate a key-value storage node in Amazon S3", url: "https://www.amazon.science/publications/using-lightweight-formal-methods-to-validate-a-key-value-storage-node-in-amazon-s3", reason: "Good practitioner paper on executable models plus property testing; valuable follow-up reading but not essential."}
-notes: "Learn TLA+ and Lamport's videos are complementary: do Learn TLA+ Core (PlusCal first) for productivity, then the videos for the underlying state-machine and refinement view. Practice is writing specs for protocols from the consensus and transaction nodes (2PC, Raft election) and running TLC; the tlaplus/Examples repo is the answer key. The course has no graded component; exercises accompany Specifying Systems."
+- title: Alloy 6 (Formal Software Design with Alloy 6)
+  url: https://haslab.github.io/formal-software-design/
+  reason: Excellent for structural modelling and relational logic, but weaker than TLA+ for temporal behaviour of protocols.
+- title: Quint
+  url: https://quint-lang.org/
+  reason: Modern TypeScript-like surface syntax over TLA+ ideas; promising but younger; not needed for a first course.
+- title: FizzBee
+  url: https://fizzbee.io/
+  reason: Python-like model checker for distributed designs; newer, small ecosystem.
+- title: Dafny online tutorial
+  url: https://dafny.org/dafny/OnlineTutorial/guide
+  reason: Verification of code (IronFleet style), a different node-level topic; kept out to keep the node focused on design-level specification.
+- title: Software Foundations (Coq)
+  url: https://softwarefoundations.cis.upenn.edu/
+  reason: Proof-assistant route to verified software; much heavier and belongs to a programming-languages or verification node.
+- title: Using lightweight formal methods to validate a key-value storage node in Amazon S3
+  url: https://www.amazon.science/publications/using-lightweight-formal-methods-to-validate-a-key-value-storage-node-in-amazon-s3
+  reason: Good practitioner paper on executable models plus property testing; valuable follow-up reading but not essential.
+notes: 'Learn TLA+ and Lamport''s videos are complementary: do Learn TLA+ Core (PlusCal first) for productivity, then the videos for the underlying state-machine and refinement view. Practice is writing specs for protocols from the consensus and transaction nodes (2PC, Raft election) and running TLC; the tlaplus/Examples repo is the answer key. The course has no graded component; exercises accompany Specifying Systems.'
 split_proposal: null
-prereq_changes: "Hard: discrete-math is correct; consider also making consensus-and-replication hard if the protocol-level practice (Raft/Paxos specs) is meant to be required, since the exercises assume you know those protocols."
+prereq_changes: null
 open_questions:
-  - "Lamport's video course page lists 10 lectures; I read titles for the first and for the commit and refinement lectures but did not watch the videos; assignments (exercises) unknown."
-  - "Learn TLA+ is still labelled a work in progress; the Roadmap lists unwritten topics (refinement, keeping spec and code in sync)."
-  - "Practical TLA+ (Apress page returned a client challenge); the listed URL is the author's announcement post."
+- Lamport's video course page lists 10 lectures; I read titles for the first and for the commit and refinement lectures but did not watch the videos; assignments (exercises) unknown.
+- Learn TLA+ is still labelled a work in progress; the Roadmap lists unwritten topics (refinement, keeping spec and code in sync).
+- Practical TLA+ (Apress page returned a client challenge); the listed URL is the author's announcement post.
 last_verified: 2026-11-18

@@ -5,10 +5,10 @@ paths:
 - core
 hard:
 - python-programming
-soft: []
+soft:
+- dev-environment
 scope: Pointers, manual memory management, arrays/strings, structs, the C toolchain, undefined behavior, gdb/valgrind/sanitizers.
 level: intermediate
-estimated_hours: 90
 resources:
 - id: modern-c
   role: primary-text
@@ -150,9 +150,8 @@ considered:
 - title: Beej Guide to Network Programming
   url: https://beej.us/guide/bgnet/
   reason: Great but belongs to networking node (G4/G10).
-notes: 'Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one. Review update (2026-11-19): corrected the SEE note (it is an older CS107 offering, not a different course) and added it as a public-video companion; reading order made explicit; King recorded as co-primary alternative. Kept "lectures 13-25": the Autumn 2026 site lists lectures 01-25 including two no-slide catch-up sessions
-  (20, 25).'
-split_proposal: 'Consider splitting CS107: lectures 1-12 here (C), lectures 13-25 into computer-systems (assembly and allocator).'
+notes: 'Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one. Review update (2026-11-19): corrected the SEE note (it is an older CS107 offering, not a different course) and added it as a public-video companion; reading order made explicit; King recorded as co-primary alternative. Kept "lectures 13-25": the Autumn 2026 site lists lectures 01-25 including two no-slide catch-up sessions (20, 25).'
+split_proposal: null
 prereq_changes: null
 open_questions:
 - Public lecture videos for any CS 107 run could not be confirmed; Stanford Canvas only.

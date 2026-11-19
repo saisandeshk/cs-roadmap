@@ -1,124 +1,142 @@
 id: deep-learning-fundamentals
 title: Deep Learning Fundamentals
 group: G5
-paths: [ml-foundations]
-hard: [ml-fundamentals, matrix-calculus]
-soft: []
-scope: "MLPs, backprop, losses, SGD/Adam, initialization and normalization, regularization, CNNs, RNNs, training dynamics."
-
+paths:
+- ml-foundations
+hard:
+- ml-fundamentals
+- matrix-calculus
+soft:
+- scientific-python
+scope: MLPs, backprop, losses, SGD/Adam, initialization and normalization, regularization, CNNs, RNNs, training dynamics.
 level: intermediate
-estimated_hours: 120
 resources:
-  - id: udl
-    role: primary-text
-    kind: book
-    title: "Understanding Deep Learning"
-    by: "Simon J.D. Prince"
-    url: https://udlbook.github.io/udlbook/
-    edition_or_term: "MIT Press, Dec 2023; free PDF (site lists a full-PDF update dated 09 Feb 2026), Jupyter notebooks and figures on GitHub"
-    access: free
-    use: "Ch. 3 shallow networks, 4 deep networks, 5 loss functions (maximum likelihood), 6 fitting models (SGD, momentum, Adam), 7 gradients and initialization (backprop), 8 measuring performance, 9 regularization, 10 convolutional networks, 11 residual networks and normalization. Ch. 12 (transformers) goes to the transformers node; Ch. 20 'Why does deep learning work?' is optional depth. The book does not cover RNNs; use the d2l.ai chapters below."
-    why: "Clearest modern conceptual treatment with excellent figures; ties loss functions to maximum likelihood, uses a consistent notation and ships notebooks and exercises; free."
-    verified: true
-  - id: mit-6-7960
-    role: primary-course
-    kind: course
-    title: "MIT 6.7960 Deep Learning"
-    by: "Phillip Isola, Sara Beery, Jeremy Bernstein (MIT)"
-    url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/
-    edition_or_term: "Fall 2024 on OCW (lecture videos, notes, problem sets, readings); Fall 2026 site at https://deeplearning6-7960.github.io with recordings via Canvas only"
-    access: free
-    use: "Watch the Fall 2024 OCW lecture videos and read the lecture notes in order (MLPs and training a neural net, backprop/autodiff, CNNs, RNNs, graph nets, transformers, generalization); do the OCW problem sets (PDFs; HW5 has solutions). Pair with the CS231n Assignments 1-2 practice item for from-scratch coding. Assumes 18.05 plus an intro ML course, so it is more theory-leaning than CS231n."
-    why: "A general (not vision-only) deep learning course with public lectures, notes and problem sets that matches this node's scope; CS231n lectures are image-framed, so it is kept for the assignments only."
-    verified: true
-    course:
-      latest_term: "Fall 2026 (course site; recordings via Canvas)"
-      latest_url: https://deeplearning6-7960.github.io
-      videos: enrolled-only
-      public_videos_term: "Fall 2024 (MIT OCW)"
-      public_videos_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/video_galleries/lecture-videos/
-      assignments: public
-      assignments_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/lists/homework/
-  - id: cs231n-assignments
-    role: practice
-    kind: practice-site
-    title: "CS231n Assignments 1 and 2 (2026)"
-    by: "Stanford CS231n staff"
-    url: https://cs231n.stanford.edu/assignments.html
-    edition_or_term: "Spring 2026 handouts at https://cs231n.github.io/assignments2026/assignment1/ (2025 handouts at assignments2025)"
-    access: free
-    use: "Do these as the coding practice for the course route (CS231n lectures 2-8 are vision-framed; the only public recordings are the 2025 playlist https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16, which the 2026 page says is not reflective of this offering). Assignment 1: kNN, softmax, two-layer net, fully-connected nets (write forward/backward by hand). Assignment 2: batch norm, dropout, convolutional nets, network visualization, image captioning with RNNs. Assignment 3 (transformers, self-supervised, diffusion) is optional and overlaps transformers/generative nodes."
-    why: "The standard from-scratch backprop and training-dynamics exercises, Jupyter-based with local checks (no hosted autograder)."
-    verified: true
-  - id: zero-to-hero
-    role: secondary
-    kind: video-series
-    title: "Neural Networks: Zero to Hero (videos 1-5)"
-    by: "Andrej Karpathy"
-    url: https://karpathy.ai/zero-to-hero.html
-    edition_or_term: "YouTube playlist; micrograd, makemore parts 1-5"
-    access: free
-    use: "Watch and code along: micrograd (backprop from scratch, ~2.5h), makemore parts 1-3 (language modeling basics, MLP, activations/gradients/BatchNorm diagnostics), part 4 backprop ninja (manual tensor backprop), part 5 WaveNet. Videos 'Let's build GPT' and the tokenizer belong to transformers."
-    why: "Fills the gap between lectures and intuition: you see gradients, activation statistics, initialization and BatchNorm effects by coding them live."
-    verified: true
-  - id: d2l-rnn
-    role: secondary
-    kind: book
-    title: "Dive into Deep Learning: RNNs and optimization chapters"
-    by: "Aston Zhang, Zachary Lipton, Mu Li, Alex Smola"
-    url: https://d2l.ai/chapter_recurrent-neural-networks/index.html
-    edition_or_term: "d2l 1.0.3 (PyTorch/JAX/TF/MXNet code)"
-    access: free
-    use: "Ch. 9 Recurrent Neural Networks, Ch. 10 Modern RNNs (LSTM, GRU, bidirectional, seq2seq); Ch. 12 Optimization Algorithms (SGD, momentum, Adagrad, RMSProp, Adam, LR schedules) as depth."
-    why: "UDL skips RNNs; d2l gives implementable derivations and code for recurrent models and a thorough optimizer chapter."
-    verified: true
-  - id: recipe
-    role: secondary
-    kind: article
-    title: "A Recipe for Training Neural Networks"
-    by: "Andrej Karpathy"
-    url: https://karpathy.github.io/2019/04/25/recipe/
-    edition_or_term: "Blog post (April 2019)"
-    access: free
-    use: "Read once after your first training run, again after Assignment 2: become one with the data, overfit a single batch, add complexity one piece at a time, regularize, tune, squeeze."
-    why: "Short, high-value checklist for training dynamics and debugging that no textbook gives."
-    verified: true
-  - id: matrix-calculus
-    role: reference
-    kind: article
-    title: "The Matrix Calculus You Need For Deep Learning"
-    by: "Terence Parr, Jeremy Howard"
-    url: https://explained.ai/matrix-calculus/
-    edition_or_term: "explained.ai article"
-    access: free
-    use: "Use as a refresher when deriving backprop for a layer with vector/matrix inputs."
-    why: "Closes the gap between scalar calculus and tensor backprop; complements the matrix-calculus prerequisite node."
-    verified: true
-  - id: udl-notebooks
-    role: practice
-    kind: practice-site
-    title: "UDL companion notebooks (Chapters 3-11)"
-    by: "Simon J.D. Prince"
-    url: https://github.com/udlbook/udlbook
-    edition_or_term: "udlbook GitHub repo (Notebooks folder); also linked from the book site"
-    access: free
-    use: "Run the per-chapter notebooks for shallow/deep networks, loss functions, gradient descent/SGD/Adam, backprop, initialization, regularization, convolutions and residual networks."
-    why: "Short interactive notebooks that make each chapter's figures reproducible and test your understanding."
-    verified: true
+- id: udl
+  role: primary-text
+  kind: book
+  title: Understanding Deep Learning
+  by: Simon J.D. Prince
+  url: https://udlbook.github.io/udlbook/
+  edition_or_term: MIT Press, Dec 2023; free PDF (site lists a full-PDF update dated 09 Feb 2026), Jupyter notebooks and figures on GitHub
+  access: free
+  use: Ch. 3 shallow networks, 4 deep networks, 5 loss functions (maximum likelihood), 6 fitting models (SGD, momentum, Adam), 7 gradients and initialization (backprop), 8 measuring performance, 9 regularization, 10 convolutional networks, 11 residual networks and normalization. Ch. 12 (transformers) goes to the transformers node; Ch. 20 'Why does deep learning work?' is optional depth. The book does not cover RNNs; use the d2l.ai chapters below.
+  why: Clearest modern conceptual treatment with excellent figures; ties loss functions to maximum likelihood, uses a consistent notation and ships notebooks and exercises; free.
+  verified: true
+- id: mit-6-7960
+  role: primary-course
+  kind: course
+  title: MIT 6.7960 Deep Learning
+  by: Phillip Isola, Sara Beery, Jeremy Bernstein (MIT)
+  url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/
+  edition_or_term: Fall 2024 on OCW (lecture videos, notes, problem sets, readings); Fall 2026 site at https://deeplearning6-7960.github.io with recordings via Canvas only
+  access: free
+  use: Watch the Fall 2024 OCW lecture videos and read the lecture notes in order (MLPs and training a neural net, backprop/autodiff, CNNs, RNNs, graph nets, transformers, generalization); do the OCW problem sets (PDFs; HW5 has solutions). Pair with the CS231n Assignments 1-2 practice item for from-scratch coding. Assumes 18.05 plus an intro ML course, so it is more theory-leaning than CS231n.
+  why: A general (not vision-only) deep learning course with public lectures, notes and problem sets that matches this node's scope; CS231n lectures are image-framed, so it is kept for the assignments only.
+  verified: true
+  course:
+    latest_term: Fall 2026 (course site; recordings via Canvas)
+    latest_url: https://deeplearning6-7960.github.io
+    videos: enrolled-only
+    public_videos_term: Fall 2024 (MIT OCW)
+    public_videos_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/video_galleries/lecture-videos/
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/lists/homework/
+- id: cs231n-assignments
+  role: practice
+  kind: practice-site
+  title: CS231n Assignments 1 and 2 (2026)
+  by: Stanford CS231n staff
+  url: https://cs231n.stanford.edu/assignments.html
+  edition_or_term: Spring 2026 handouts at https://cs231n.github.io/assignments2026/assignment1/ (2025 handouts at assignments2025)
+  access: free
+  use: 'Do these as the coding practice for the course route (CS231n lectures 2-8 are vision-framed; the only public recordings are the 2025 playlist https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16, which the 2026 page says is not reflective of this offering). Assignment 1: kNN, softmax, two-layer net, fully-connected nets (write forward/backward by hand). Assignment 2: batch norm, dropout, convolutional nets, network visualization, image captioning with RNNs. Assignment 3 (transformers, self-supervised, diffusion) is optional and overlaps transformers/generative nodes.'
+  why: The standard from-scratch backprop and training-dynamics exercises, Jupyter-based with local checks (no hosted autograder).
+  verified: true
+- id: zero-to-hero
+  role: secondary
+  kind: video-series
+  title: 'Neural Networks: Zero to Hero (videos 1-5)'
+  by: Andrej Karpathy
+  url: https://karpathy.ai/zero-to-hero.html
+  edition_or_term: YouTube playlist; micrograd, makemore parts 1-5
+  access: free
+  use: 'Watch and code along: micrograd, makemore parts 1-3 (language modeling basics, MLP, activations/gradients/BatchNorm diagnostics), part 4 backprop ninja (manual tensor backprop), part 5 WaveNet. Videos ''Let''s build GPT'' and the tokenizer belong to transformers.'
+  why: 'Fills the gap between lectures and intuition: you see gradients, activation statistics, initialization and BatchNorm effects by coding them live.'
+  verified: true
+- id: d2l-rnn
+  role: secondary
+  kind: book
+  title: 'Dive into Deep Learning: RNNs and optimization chapters'
+  by: Aston Zhang, Zachary Lipton, Mu Li, Alex Smola
+  url: https://d2l.ai/chapter_recurrent-neural-networks/index.html
+  edition_or_term: d2l 1.0.3 (PyTorch/JAX/TF/MXNet code)
+  access: free
+  use: Ch. 9 Recurrent Neural Networks, Ch. 10 Modern RNNs (LSTM, GRU, bidirectional, seq2seq); Ch. 12 Optimization Algorithms (SGD, momentum, Adagrad, RMSProp, Adam, LR schedules) as depth.
+  why: UDL skips RNNs; d2l gives implementable derivations and code for recurrent models and a thorough optimizer chapter.
+  verified: true
+- id: recipe
+  role: secondary
+  kind: article
+  title: A Recipe for Training Neural Networks
+  by: Andrej Karpathy
+  url: https://karpathy.github.io/2019/04/25/recipe/
+  edition_or_term: Blog post (April 2019)
+  access: free
+  use: 'Read once after your first training run, again after Assignment 2: become one with the data, overfit a single batch, add complexity one piece at a time, regularize, tune, squeeze.'
+  why: Short, high-value checklist for training dynamics and debugging that no textbook gives.
+  verified: true
+- id: matrix-calculus
+  role: reference
+  kind: article
+  title: The Matrix Calculus You Need For Deep Learning
+  by: Terence Parr, Jeremy Howard
+  url: https://explained.ai/matrix-calculus/
+  edition_or_term: explained.ai article
+  access: free
+  use: Use as a refresher when deriving backprop for a layer with vector/matrix inputs.
+  why: Closes the gap between scalar calculus and tensor backprop; complements the matrix-calculus prerequisite node.
+  verified: true
+- id: udl-notebooks
+  role: practice
+  kind: practice-site
+  title: UDL companion notebooks (Chapters 3-11)
+  by: Simon J.D. Prince
+  url: https://github.com/udlbook/udlbook
+  edition_or_term: udlbook GitHub repo (Notebooks folder); also linked from the book site
+  access: free
+  use: Run the per-chapter notebooks for shallow/deep networks, loss functions, gradient descent/SGD/Adam, backprop, initialization, regularization, convolutions and residual networks.
+  why: Short interactive notebooks that make each chapter's figures reproducible and test your understanding.
+  verified: true
 considered:
-  - {title: "Stanford CS231n: Deep Learning for Computer Vision (Spring 2026)", url: "https://cs231n.stanford.edu/", reason: "Vision-framed course (lectures 2-8 use images); assignments A1-A2 kept as practice, 2025 lectures are the only public recordings (2026 run enrolled-only)."}
-  - {title: "CMU 11-785 Introduction to Deep Learning (Fall 2026)", url: "https://deeplearning.cs.cmu.edu/", reason: "Very thorough (MLPs to transformers, large HW suite) but heavy; Spring 2025 site says lectures are on the course YouTube channel; F26/S26 pages load content dynamically so I could not confirm current video policy."}
-  - {title: "Deep Learning: Foundations and Concepts (Bishop and Bishop)", url: "https://www.bishopbook.com/", reason: "Excellent, rigorous and current (Springer 2024); paid, free online preview/solutions only; UDL chosen for free access and notebooks."}
-  - {title: "Dive into Deep Learning (d2l.ai)", url: "https://d2l.ai/", reason: "Best code-first text; used here as secondary for RNNs/optimization; UDL's explanations are tighter."}
-  - {title: "fast.ai Practical Deep Learning for Coders", url: "https://course.fast.ai/", reason: "Top-down and practical, but 2022 part 1 vintage and less depth on backprop theory; good complement."}
-  - {title: "The Little Book of Deep Learning (Fleuret)", url: "https://fleuret.org/public/lbdl.pdf", reason: "Superb 150-page phone-friendly overview; too condensed to be primary; good review. Fleuret's UNIGE course: https://fleuret.org/dlc/."}
-  - {title: "Deep Learning (Goodfellow, Bengio, Courville)", url: "https://www.deeplearningbook.org/", reason: "Classic but 2016; superseded by UDL/Bishop for modern topics."}
-  - {title: "Deep Learning with PyTorch (Stevens et al.)", url: "https://www.manning.com/books/deep-learning-with-pytorch", reason: "PyTorch-focused; belongs to dl-engineering."}
-notes: "Course choice (revised after review): MIT 6.7960 (Fall 2024 OCW videos, notes, public psets) because CS231n is a computer-vision course whose lectures are image-framed; CS231n Assignments 1-2 are kept as the from-scratch backprop practice (matches the owner's seed list, which treats them as support practice). 6.7960 assumes 18.05 plus intro ML and is more theory-leaning. Language-modeling-first alternative: pair UDL with Karpathy's Zero to Hero. Level is intermediate because of the matrix-calculus prerequisite. Overlap with deep-learning-for-vision (G6), which also assigns CS231n lectures 5-8 and A1-A2, is left for that group to resolve."
+- title: 'Stanford CS231n: Deep Learning for Computer Vision (Spring 2026)'
+  url: https://cs231n.stanford.edu/
+  reason: Vision-framed course (lectures 2-8 use images); assignments A1-A2 kept as practice, 2025 lectures are the only public recordings (2026 run enrolled-only).
+- title: CMU 11-785 Introduction to Deep Learning (Fall 2026)
+  url: https://deeplearning.cs.cmu.edu/
+  reason: Very thorough (MLPs to transformers, large HW suite) but heavy; Spring 2025 site says lectures are on the course YouTube channel; F26/S26 pages load content dynamically so I could not confirm current video policy.
+- title: 'Deep Learning: Foundations and Concepts (Bishop and Bishop)'
+  url: https://www.bishopbook.com/
+  reason: Excellent, rigorous and current (Springer 2024); paid, free online preview/solutions only; UDL chosen for free access and notebooks.
+- title: Dive into Deep Learning (d2l.ai)
+  url: https://d2l.ai/
+  reason: Best code-first text; used here as secondary for RNNs/optimization; UDL's explanations are tighter.
+- title: fast.ai Practical Deep Learning for Coders
+  url: https://course.fast.ai/
+  reason: Top-down and practical, but 2022 part 1 vintage and less depth on backprop theory; good complement.
+- title: The Little Book of Deep Learning (Fleuret)
+  url: https://fleuret.org/public/lbdl.pdf
+  reason: 'Superb 150-page phone-friendly overview; too condensed to be primary; good review. Fleuret''s UNIGE course: https://fleuret.org/dlc/.'
+- title: Deep Learning (Goodfellow, Bengio, Courville)
+  url: https://www.deeplearningbook.org/
+  reason: Classic but 2016; superseded by UDL/Bishop for modern topics.
+- title: Deep Learning with PyTorch (Stevens et al.)
+  url: https://www.manning.com/books/deep-learning-with-pytorch
+  reason: PyTorch-focused; belongs to dl-engineering.
+notes: 'Course choice (revised after review): MIT 6.7960 (Fall 2024 OCW videos, notes, public psets) because CS231n is a computer-vision course whose lectures are image-framed; CS231n Assignments 1-2 are kept as the from-scratch backprop practice (matches the owner''s seed list, which treats them as support practice). 6.7960 assumes 18.05 plus intro ML and is more theory-leaning. Language-modeling-first alternative: pair UDL with Karpathy''s Zero to Hero. Level is intermediate because of the matrix-calculus prerequisite. Overlap with deep-learning-for-vision (G6), which also assigns CS231n lectures 5-8 and A1-A2, is left for that group to resolve.'
 split_proposal: null
-prereq_changes: "Consider adding soft: [scientific-python] (NumPy fluency for the from-scratch assignments)."
+prereq_changes: null
 open_questions:
-  - "6.7960 Fall 2026 recordings are via Canvas only; CS231n Spring 2026 recordings are also Canvas-only (no 2026 public playlist found)."
-  - "UDL notebooks: repo exists but I could not list per-chapter notebook names from the page."
-  - "CMU 11-785 F26/S26 video policy not determined."
+- 6.7960 Fall 2026 recordings are via Canvas only; CS231n Spring 2026 recordings are also Canvas-only (no 2026 public playlist found).
+- 'UDL notebooks: repo exists but I could not list per-chapter notebook names from the page.'
+- CMU 11-785 F26/S26 video policy not determined.
 last_verified: 2026-11-18

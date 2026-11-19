@@ -1,0 +1,95 @@
+id: optimization-for-ml
+title: Optimization for Machine Learning
+group: G2
+paths:
+- ml-foundations
+hard:
+- linear-algebra
+- calculus-multivariable
+soft:
+- matrix-calculus
+- probability
+- convex-optimization
+scope: Gradient descent, SGD and its variance, momentum and adaptive methods (Adam), learning-rate schedules, convergence basics, nonconvex training.
+level: intermediate
+resources:
+- id: hazan-optml
+  role: primary-text
+  kind: paper
+  title: 'Lecture Notes: Optimization for Machine Learning'
+  by: Elad Hazan
+  url: https://arxiv.org/abs/1909.03550
+  edition_or_term: arXiv 1909.03550 (2019, MLSS Buenos Aires notes)
+  access: free
+  use: Chapters on gradient descent for smooth and strongly convex functions, stochastic gradient descent, regularization, acceleration, adaptive methods; use for the convergence proofs behind SGD and Adam-style methods.
+  why: Short, ML-oriented proofs for GD/SGD/accelerated/adaptive methods that the convex-optimization course glosses; fills the optimization-for-ML gap.
+  verified: true
+- id: eecs127
+  role: primary-course
+  kind: course
+  title: UC Berkeley EECS 127/227A Optimization Models in Engineering
+  by: Gireeja Ranade (Spring 2026), Somayeh Sojoudi (Fall 2025)
+  url: https://eecs127.github.io/
+  edition_or_term: Spring 2026
+  access: free
+  use: Lectures 1-15 (least squares, SVD, PCA, low-rank, ridge, vector calculus, convexity, descent methods, SGD and variants) and 26-27 (Lasso, Newton's method); weekly discussion sheets and homework with posted solutions.
+  why: 'Newest course with fully public lecture recordings (Spring 2026, Spring 2024 and Fall 2022 playlists), public homework and discussion PDFs with solutions, free course reader and a schedule that mixes linear algebra review, SGD, duality, KKT and Newton''s method for ML-minded students. Pairing with Boyd-Vandenberghe is by topic, not chapter: EE127 follows its own sequence and cites Calafiore-El Ghaoui plus BV per lecture.'
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://eecs127.github.io/
+    videos: public
+    public_videos_term: Spring 2026
+    public_videos_url: https://www.youtube.com/playlist?list=PLnocShPlK-FvYcRd6us0okRTYKZtqe4B9
+    assignments: public
+    assignments_url: https://eecs127.github.io/
+- id: bottou-curtis-nocedal
+  role: reference
+  kind: paper
+  title: Optimization Methods for Large-Scale Machine Learning
+  by: Leon Bottou, Frank E. Curtis, Jorge Nocedal
+  url: https://arxiv.org/abs/1606.04838
+  edition_or_term: SIAM Review 2018 / arXiv 1606.04838
+  access: free
+  use: Sections 3-4 (stochastic gradient method analysis, noise reduction), 5-6 as needed; read after SGD lectures to see why SGD is the ML workhorse.
+  why: Definitive survey of stochastic optimization for ML (theory and practice), the bridge from convex theory to training neural networks.
+  verified: true
+- id: garrigos-gower
+  role: reference
+  kind: paper
+  title: Handbook of Convergence Theorems for (Stochastic) Gradient Methods
+  by: Guillaume Garrigos, Robert M. Gower
+  url: https://arxiv.org/abs/2301.11235
+  edition_or_term: arXiv 2301.11235 (2023)
+  access: free
+  use: Look-up for exact assumptions and rates of GD, SGD, momentum methods under convex, strongly convex and PL conditions.
+  why: 'Hidden gem: a single clean catalogue of convergence theorems with proofs, hard to find elsewhere.'
+  verified: true
+- id: algorithms-for-optimization
+  role: reference
+  kind: book
+  title: Algorithms for Optimization
+  by: Mykel J. Kochenderfer, Tim A. Wheeler
+  url: https://algorithmsbook.com/optimization/
+  edition_or_term: MIT Press 2019; free PDF; Julia code
+  access: free
+  use: Chapters on first-order methods, second-order methods, stochastic methods, constrained optimization and penalty/augmented Lagrangian when you want runnable implementations and visual explanations.
+  why: 'Hidden gem: broad survey (including derivative-free and population methods) with every algorithm in code, good for implementing methods yourself.'
+  verified: true
+- id: d2l-optimization
+  role: practice
+  kind: website
+  title: 'Dive into Deep Learning: Optimization Algorithms (chapter 12)'
+  by: Aston Zhang, Zachary Lipton, Mu Li, Alexander Smola
+  url: https://d2l.ai/chapter_optimization/
+  edition_or_term: d2l 1.0.3 web edition
+  access: free
+  use: Sections 12.1-12.10 (optimization and deep learning, convexity, gradient descent, SGD, minibatch SGD, momentum, Adagrad, RMSProp, Adadelta, Adam, learning rate scheduling); run the notebooks and exercises.
+  why: Code-level derivations of the optimizers used in training neural networks, with runnable PyTorch notebooks and exercises.
+  verified: true
+considered: []
+notes: Created by splitting 'optimization' (owner decision B1, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

@@ -1,129 +1,137 @@
 id: web-security
 title: Web Security
 group: G12
-paths: [security]
-hard: [security-fundamentals]
-soft: [computer-networking]
-scope: "Browser security model, XSS, CSRF, injection, authentication/sessions, SSRF, modern web attack surface."
-
+paths:
+- security
+hard:
+- security-fundamentals
+soft:
+- computer-networking
+- databases-intro
+scope: Browser security model, XSS, CSRF, injection, authentication/sessions, SSRF, modern web attack surface.
 level: intermediate
-estimated_hours: 80
 resources:
-  - id: portswigger-wsa
-    role: primary-text
-    kind: website
-    title: "Web Security Academy"
-    by: "PortSwigger (Burp Suite team)"
-    url: https://portswigger.net/web-security
-    edition_or_term: "Continuously updated; includes Web LLM attacks, API testing, request smuggling, web cache deception"
-    access: free
-    use: "Learning paths. Server-side: SQL injection, authentication, directory traversal, command injection, access control, SSRF, XXE, file upload, path traversal. Client-side: XSS, CSRF, CORS, clickjacking, DOM-based, WebSockets. Advanced: request smuggling, web cache poisoning/deception, OAuth, JWT, prototype pollution, race conditions, HTTP/2."
-    why: "The most complete, current and correct practical treatment of the modern web attack surface, written by the field's leading researchers; reading material plus ~250 labs with solutions; free."
-    verified: true
-  - id: cs253
-    role: primary-course
-    kind: course
-    title: "Stanford CS 253: Web Security"
-    by: "Feross Aboukhadijeh, Stanford"
-    url: https://web.stanford.edu/class/cs253
-    edition_or_term: "Fall 2021 (latest offering on the course site)"
-    access: free
-    use: "Lectures on the browser security model (same-origin policy, cookies), injection, XSS, CSRF, session attacks, TLS, authentication, DNS rebinding, CSP, third-party content, with the per-lecture readings on the Fall 2021 page; Assignments 0-4 (handouts public, e.g. Assignment 1 on reflected/stored XSS; Gradescope submission is enrolled-only)."
-    why: "The only complete public web-security course with video: browser model first, then attacks and defenses, which the Academy handles tool-first."
-    verified: true
-    course:
-      latest_term: "Fall 2021"
-      latest_url: https://web.stanford.edu/class/cs253
-      videos: unknown
-      public_videos_term: "Earlier offering (the public YouTube playlist Feross Aboukhadijeh published in 2020, likely Fall 2019)"
-      public_videos_url: https://www.youtube.com/playlist?list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-
-      assignments: public
-      assignments_url: https://web.stanford.edu/class/cs253/assign1
-  - id: cs161-web
-    role: secondary
-    kind: book
-    title: "CS 161 textbook: Web Security chapters (17-24)"
-    by: "David Wagner, Nicholas Weaver, Peyrin Kao et al."
-    url: https://textbook.cs161.org/
-    edition_or_term: "Online, maintained"
-    access: free
-    use: "Ch. 17 SQL Injection, 18 Intro to the Web, 19 Same-Origin Policy, 20 Cookies and Session Management, 21 CSRF, 22 XSS, 23 UI Attacks, 24 CAPTCHAs."
-    why: "Concise, rigorous conceptual treatment (SOP, cookie semantics) to read before the Academy labs; fills the mental-model gap."
-    verified: true
-  - id: owasp-wstg
-    role: reference
-    kind: docs
-    title: "OWASP Web Security Testing Guide + OWASP Top 10"
-    by: "OWASP"
-    url: https://owasp.org/www-project-web-security-testing-guide/
-    edition_or_term: "Living; Top 10 at owasp.org/Top10"
-    access: free
-    use: "Use as a checklist for authentication, session management, authorization, input validation and business-logic testing sections; consult Top 10 categories for vocabulary."
-    why: "Industry-standard coverage checklist and vocabulary; reference, not teaching."
-    verified: true
-  - id: tangled-web
-    role: reference
-    kind: book
-    title: "The Tangled Web: A Guide to Securing Modern Web Applications"
-    by: "Michal Zalewski"
-    url: https://nostarch.com/tangledweb
-    edition_or_term: "No Starch Press, 2011"
-    access: paid
-    use: "Chapters on browser security (URL/HTTP/HTML/CSS/JS semantics, content isolation, Same-Origin) for deep-dive; skip chapters on dated features."
-    why: "Unmatched depth on why the browser model is the way it is; dated (2011) so treat as a deep reference."
-    verified: true
-  - id: pwncollege-web
-    role: practice
-    kind: practice-site
-    title: "pwn.college Intro to Cybersecurity: Web Security module"
-    by: "pwn.college"
-    url: https://pwn.college/intro-to-cybersecurity/web-security/
-    edition_or_term: "39 challenges"
-    access: free
-    use: "All Web Security challenges (path traversal, command and SQL injection, XSS, CSRF, authentication bypass) in the hosted environment."
-    why: "Guided progression with a lecture/lesson per concept and automated flag checks, no Burp setup."
-    verified: true
-  - id: wsa-labs
-    role: practice
-    kind: practice-site
-    title: "Web Security Academy labs (named sets)"
-    by: "PortSwigger"
-    url: https://portswigger.net/web-security/learning-paths
-    edition_or_term: "Rolling"
-    access: free
-    use: "Do: SQL injection (all apprentice + practitioner), XSS (reflected, stored, DOM, CSP bypass), CSRF (token and SameSite bypass), access control, authentication, SSRF, CORS, JWT, OAuth, request smuggling (practitioner). Use Burp Suite Community Edition."
-    why: "Specific graded labs, free, with official solutions."
-    verified: true
-  - id: juice-shop-xss-game
-    role: practice
-    kind: practice-site
-    title: "OWASP Juice Shop and Google XSS game"
-    by: "OWASP; Google"
-    url: https://owasp.org/www-project-juice-shop/
-    edition_or_term: "Rolling"
-    access: free
-    use: "Juice Shop: complete challenges tagged Injection, XSS, Broken Authentication, Broken Access Control (difficulty 1-3 stars); Google XSS game (xss-game.appspot.com): all 6 levels."
-    why: "Full vulnerable app to attack in a realistic context; XSS game is a short drill."
-    verified: true
-  - id: cs155-proj2
-    role: practice
-    kind: practice-site
-    title: "Stanford CS 155 Project 2: Web Security"
-    by: "Stanford CS 155 staff"
-    url: https://cs155.stanford.edu/
-    edition_or_term: "Spring 2026 (handout and starter code public at hw_and_proj/proj2/)"
-    access: free
-    use: "Project 2 handout and starter code: attacks (XSS, CSRF, SQLi) and defenses on a bank-style application."
-    why: "Course-quality project with starter code; useful as a capstone after the Academy."
-    verified: true
+- id: portswigger-wsa
+  role: primary-text
+  kind: website
+  title: Web Security Academy
+  by: PortSwigger (Burp Suite team)
+  url: https://portswigger.net/web-security
+  edition_or_term: Continuously updated; includes Web LLM attacks, API testing, request smuggling, web cache deception
+  access: free
+  use: 'Learning paths. Server-side: SQL injection, authentication, directory traversal, command injection, access control, SSRF, XXE, file upload, path traversal. Client-side: XSS, CSRF, CORS, clickjacking, DOM-based, WebSockets. Advanced: request smuggling, web cache poisoning/deception, OAuth, JWT, prototype pollution, race conditions, HTTP/2.'
+  why: The most complete, current and correct practical treatment of the modern web attack surface, written by the field's leading researchers; reading material plus ~250 labs with solutions; free.
+  verified: true
+- id: cs253
+  role: primary-course
+  kind: course
+  title: 'Stanford CS 253: Web Security'
+  by: Feross Aboukhadijeh, Stanford
+  url: https://web.stanford.edu/class/cs253
+  edition_or_term: Fall 2021 (latest offering on the course site)
+  access: free
+  use: Lectures on the browser security model (same-origin policy, cookies), injection, XSS, CSRF, session attacks, TLS, authentication, DNS rebinding, CSP, third-party content, with the per-lecture readings on the Fall 2021 page; Assignments 0-4 (handouts public, e.g. Assignment 1 on reflected/stored XSS; Gradescope submission is enrolled-only).
+  why: 'The only complete public web-security course with video: browser model first, then attacks and defenses, which the Academy handles tool-first.'
+  verified: true
+  course:
+    latest_term: Fall 2021
+    latest_url: https://web.stanford.edu/class/cs253
+    videos: unknown
+    public_videos_term: Earlier offering (the public YouTube playlist Feross Aboukhadijeh published in 2020, likely Fall 2019)
+    public_videos_url: https://www.youtube.com/playlist?list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-
+    assignments: public
+    assignments_url: https://web.stanford.edu/class/cs253/assign1
+- id: cs161-web
+  role: secondary
+  kind: book
+  title: 'CS 161 textbook: Web Security chapters (17-24)'
+  by: David Wagner, Nicholas Weaver, Peyrin Kao et al.
+  url: https://textbook.cs161.org/
+  edition_or_term: Online, maintained
+  access: free
+  use: Ch. 17 SQL Injection, 18 Intro to the Web, 19 Same-Origin Policy, 20 Cookies and Session Management, 21 CSRF, 22 XSS, 23 UI Attacks, 24 CAPTCHAs.
+  why: Concise, rigorous conceptual treatment (SOP, cookie semantics) to read before the Academy labs; fills the mental-model gap.
+  verified: true
+- id: owasp-wstg
+  role: reference
+  kind: docs
+  title: OWASP Web Security Testing Guide + OWASP Top 10
+  by: OWASP
+  url: https://owasp.org/www-project-web-security-testing-guide/
+  edition_or_term: Living; Top 10 at owasp.org/Top10
+  access: free
+  use: Use as a checklist for authentication, session management, authorization, input validation and business-logic testing sections; consult Top 10 categories for vocabulary.
+  why: Industry-standard coverage checklist and vocabulary; reference, not teaching.
+  verified: true
+- id: tangled-web
+  role: reference
+  kind: book
+  title: 'The Tangled Web: A Guide to Securing Modern Web Applications'
+  by: Michal Zalewski
+  url: https://nostarch.com/tangledweb
+  edition_or_term: No Starch Press, 2011
+  access: paid
+  use: Chapters on browser security (URL/HTTP/HTML/CSS/JS semantics, content isolation, Same-Origin) for deep-dive; skip chapters on dated features.
+  why: Unmatched depth on why the browser model is the way it is; dated (2011) so treat as a deep reference.
+  verified: true
+- id: pwncollege-web
+  role: practice
+  kind: practice-site
+  title: 'pwn.college Intro to Cybersecurity: Web Security module'
+  by: pwn.college
+  url: https://pwn.college/intro-to-cybersecurity/web-security/
+  edition_or_term: 39 challenges
+  access: free
+  use: All Web Security challenges (path traversal, command and SQL injection, XSS, CSRF, authentication bypass) in the hosted environment.
+  why: Guided progression with a lecture/lesson per concept and automated flag checks, no Burp setup.
+  verified: true
+- id: wsa-labs
+  role: practice
+  kind: practice-site
+  title: Web Security Academy labs (named sets)
+  by: PortSwigger
+  url: https://portswigger.net/web-security/learning-paths
+  edition_or_term: Rolling
+  access: free
+  use: 'Do: SQL injection (all apprentice + practitioner), XSS (reflected, stored, DOM, CSP bypass), CSRF (token and SameSite bypass), access control, authentication, SSRF, CORS, JWT, OAuth, request smuggling (practitioner). Use Burp Suite Community Edition.'
+  why: Specific graded labs, free, with official solutions.
+  verified: true
+- id: juice-shop-xss-game
+  role: practice
+  kind: practice-site
+  title: OWASP Juice Shop and Google XSS game
+  by: OWASP; Google
+  url: https://owasp.org/www-project-juice-shop/
+  edition_or_term: Rolling
+  access: free
+  use: 'Juice Shop: complete challenges tagged Injection, XSS, Broken Authentication, Broken Access Control (difficulty 1-3 stars); Google XSS game (xss-game.appspot.com): all 6 levels.'
+  why: Full vulnerable app to attack in a realistic context; XSS game is a short drill.
+  verified: true
+- id: cs155-proj2
+  role: practice
+  kind: practice-site
+  title: 'Stanford CS 155 Project 2: Web Security'
+  by: Stanford CS 155 staff
+  url: https://cs155.stanford.edu/
+  edition_or_term: Spring 2026 (handout and starter code public at hw_and_proj/proj2/)
+  access: free
+  use: 'Project 2 handout and starter code: attacks (XSS, CSRF, SQLi) and defenses on a bank-style application.'
+  why: Course-quality project with starter code; useful as a capstone after the Academy.
+  verified: true
 considered:
-  - {title: "UC Berkeley CS 161 web block (Fall 2026 lectures)", url: "https://fa26.cs161.org/", reason: "Public videos and a good mental model; chosen only as secondary because a full semester is the fundamentals node, not web specialization."}
-  - {title: "The Web Application Hacker's Handbook, 2nd ed.", url: "https://portswigger.net/web-security", reason: "Authors' ideas now live (updated) in the Academy; book is 2011."}
-  - {title: "Stanford CS 155 (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Web block recordings Canvas-only; project handout used as practice."}
-notes: "Academy is primary text because it is the best maintained learning content. CS 253 is the only complete web-security video course; its latest offering is Fall 2021 (site opens over http; https timed out through the proxy). The Fall 2021 page has its YouTube links commented out in the HTML, so the public recordings are the older 2019-2020 playlist; treat them as conceptual and rely on the Academy for current attack techniques. Agentic/LLM web attacks (Web LLM attacks in the Academy) overlap G8's prompt-injection node."
+- title: UC Berkeley CS 161 web block (Fall 2026 lectures)
+  url: https://fa26.cs161.org/
+  reason: Public videos and a good mental model; chosen only as secondary because a full semester is the fundamentals node, not web specialization.
+- title: The Web Application Hacker's Handbook, 2nd ed.
+  url: https://portswigger.net/web-security
+  reason: Authors' ideas now live (updated) in the Academy; book is 2011.
+- title: Stanford CS 155 (Spring 2026)
+  url: https://cs155.stanford.edu/
+  reason: Web block recordings Canvas-only; project handout used as practice.
+notes: Academy is primary text because it is the best maintained learning content. CS 253 is the only complete web-security video course; its latest offering is Fall 2021 (site opens over http; https timed out through the proxy). The Fall 2021 page has its YouTube links commented out in the HTML, so the public recordings are the older 2019-2020 playlist; treat them as conceptual and rely on the Academy for current attack techniques. Agentic/LLM web attacks (Web LLM attacks in the Academy) overlap G8's prompt-injection node.
 split_proposal: null
-prereq_changes: "Add soft: [databases] (SQL injection) and soft: [web-development] if such a node exists."
+prereq_changes: null
 open_questions:
-  - "CS 253 Fall 2021 lecture recordings: links on the page are commented out; whether Fall 2021 videos are public is unknown."
-  - "Could not open github.com/stanford-web-security (403) so any public assignments there are unverified."
+- 'CS 253 Fall 2021 lecture recordings: links on the page are commented out; whether Fall 2021 videos are public is unknown.'
+- Could not open github.com/stanford-web-security (403) so any public assignments there are unverified.
 last_verified: 2026-11-18

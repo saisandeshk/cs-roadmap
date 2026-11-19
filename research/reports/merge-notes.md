@@ -1,7 +1,7 @@
 # Merge notes (from worker reports)
 
 ## G12 Security & cryptography — done, 0 errors
-- Splits (optional): binary-exploitation -> separate reverse-engineering/binary-analysis (~180h combined); systems-security -> separate hardware/side-channel/TEE (MIT 6.5950 is a full course).
+- Splits (optional): binary-exploitation -> separate reverse-engineering/binary-analysis; systems-security -> separate hardware/side-channel/TEE (MIT 6.5950 is a full course).
 - Overlap: network-security vs applied-cryptography on TLS.
 - Prereq suggestions: binary-exploitation soft += computer-architecture, operating-systems; web-security soft += databases-intro; network-security soft += applied-cryptography; cryptography-foundations: computational-complexity soft -> hard (MIT 6.5620 route).
 - Unverified: Stanford CS 253 current term/assignments (web.stanford.edu timeouts via proxy); Coursera Crypto I audit; CISPA recordings; Anderson 3e free chapters; Cloudflare pages (bot-blocked); MIT 6.5950 2026 Panopto (login); Katz-Lindell publisher page; Pass-Shelat/Katz-Lindell use notes generic.
@@ -79,7 +79,7 @@
 - Video gaps: EECS 151 F26 enrolled-only; MIT 6.5930 Sp26 not recorded (Cornell ECE 5545 2022 is the public-video secondary); CS143 no recent official videos (archived Aiken); CIS 5000 F26 enrolled-only; 6.512 FRAP video unknown; CMU 17-770 no recordings; program-analysis course (NJU) videos in Chinese.
 - No primary course: interpreters.
 - Prereq changes proposed: program-verification hard type-systems -> soft, hard += programming-language-concepts, discrete-math; interpreters c-programming soft -> hard (clox) or split tree-walking vs bytecode; language-runtimes soft += compiler-construction; program-analysis soft += discrete-math; memory-systems soft += concurrent-programming.
-- Splits (optional): program-verification -> proof assistants + Hoare logic / separation logic + verified systems; compiler-construction -> front end / back end (~120h).
+- Splits (optional): program-verification -> proof assistants + Hoare logic / separation logic + verified systems; compiler-construction -> front end / back end.
 - Unverified: Springer (Sze book, Primer) bot challenges; Shen & Lipasti, Agner Fog 406; Coursera audit for Grossman; CS152 recordings (401); ETH Fall 2026 playback; 15-745 term label; FRAP JS site; CS143 HTTP-only with 2021 syllabus dates; GC Handbook/TAPL chapter numbers from memory.
 
 ## G10 Data & distributed — done, 0 errors

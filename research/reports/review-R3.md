@@ -42,7 +42,7 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
 - [should-fix] `cs229` `videos: enrolled-only` for Summer 2026 is inferred, not stated: https://cs229.stanford.edu/ says only "course documents are shared
   only with Stanford affiliates"; it says nothing about video. Write `unknown (no public playlist found)`.
 - [suggestion] Primary pick agrees: Murphy PML1 is the best single modern text for this exact scope (chapter map matches the book: ch. 9 LDA/NB,
-  10 logistic, 11 linear, 12 GLM, 16 exemplar, 17 kernels, 18 trees, 20 PCA, 21 clustering). But it is ~600 pages for a 140 h node; make
+  10 logistic, 11 linear, 12 GLM, 16 exemplar, 17 kernels, 18 trees, 20 PCA, 21 clustering). make
   the CS229 notes the reading spine of the course route and Murphy the depth text, which the `use` text half-says already.
 - split/prereq: agree with `soft: [scientific-python]` (the sklearn/NumPy practice items assume it).
 
@@ -71,7 +71,7 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
   A learner doing the roadmap in order does the same assignments twice. Fix: in deep-learning-for-vision keep only L9-11 + A3 Q1 and drop A1-A2 / L5-8.
 - [suggestion] Coverage check passes: UDL Ch. 3-11 map to the scope (UDL numbering verified from memory of the TOC; the site is a JS app); RNNs via d2l and the CS231n RNN lecture, training dynamics via Karpathy's recipe and Zero to Hero. Gap: no explicit
   item on initialization/normalization beyond UDL Ch. 7/11 and Karpathy makemore part 3 (already in zero-to-hero `use`), so fine.
-- [suggestion] Omission (cheap, high-value): Karpathy's "Zero to Hero" is `secondary`; for backprop-from-scratch it is arguably the best 5 hours in the node. Consider promoting micrograd + makemore 1-3 to a named `practice` item.
+- [suggestion] Omission (cheap, high-value): Karpathy's "Zero to Hero" is `secondary`; Consider promoting micrograd + makemore 1-3 to a named `practice` item.
 - split/prereq: agree with `soft: [scientific-python]` (A1-A2 assume NumPy fluency).
 
 ## dl-engineering
@@ -85,7 +85,7 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
 
 ## transformers
 - [suggestion] Redundancy: four explainers do the same job (UDL ch. 12 primary, `illustrated-transformer`, `d2l-attention`, `formal-algorithms`). `formal-algorithms` (pseudocode) is the one that adds something; consider dropping `d2l-attention` or `illustrated-transformer`.
-- [suggestion] Effort: `cs336-a1` (BPE tokenizer + full transformer LM + AdamW + training) alone is a 30+ hour assignment; the node budget is 40 h. Mark it optional and keep the Karpathy build + `transformer-from-scratch` capstone as the core.
+- [suggestion] Mark it optional and keep the Karpathy build + `transformer-from-scratch` capstone as the core.
   (Spring 2026 syllabus confirmed: A5 "Alignment and Reasoning RL", lectures 15-17 as below; A1 handout details were not re-opened.)
 - [suggestion] The primary "course" is one YouTube lecture; that is fine, but `role: primary-course` with a single video should be noted in notes (it is).
 - split/prereq: agree with `soft: [dl-engineering]`.
@@ -143,7 +143,7 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
 - Q2 adjudication: primary-text is an arXiv paper (Cookbook of SSL, 2304.12210, verified, 24 Apr 2023). I agree it is the best available teaching text for the scope: nothing book-length treats contrastive, distillation (DINO/BYOL), masked modeling and JEPA under one framework with training recipes. Alternatives checked and found weaker:
   Foundations of CV ch. 30/33 (short, conceptual, free), Lilian Weng posts (blog, 2019/2021), CS294-158 SSL lecture (one lecture). Keep, but say in notes that it stops before DINOv2/v3, V-JEPA 2 and LeJEPA, which the paper path supplies (all five arXiv IDs verified: 2508.10104, 2506.09985, 2511.08544, 2504.01017, 2304.07193 is DINOv2).
 - Facts verified for 6.8300 (https://scenerepresentations.org/courses/2026/spring/advances-in-cv/): Spring 2026; Module 2 lectures "Introduction to Representation Learning and Generative Modeling (Tue Mar 31)", "Image Representation Learning (Apr 21)", "Video Representation Learning (Apr 23)", "Guest lecture: Mathilde Caron (Apr 28)" all exist with Recording/Slides links; psets are repos `6-8300/pset-2-2026`, `pset3-2026`; OCW Spring 2025 page lists Lecture Videos. Recordings are Panopto viewer links; the lecture viewer page loads titled "6.8300 Lecture on 4/23/2026 (Thu)" without a redirect, so "public" is plausible; I could not play one.
-  Note the course's formal prerequisite is 6.7960 Deep Learning and it is advanced graduate level; for 35 h with 4 lectures used it is fine, but a learner who has done deep-learning-for-vision may find the slides thin for SSL; the CS231n A3 practice item is the safety net.
+  Note the course's formal prerequisite is 6.7960 Deep Learning and it is advanced graduate level; the CS231n A3 practice item is the safety net.
 - [suggestion] Overlap: CLIP-style objectives sit here and in vision-language-models (the node says so). The `cs231n-a3-ssl` item (A3 Q2, Q4: verified in the 2026 A3 page, "Q2: Self-Supervised Learning for Image Classification", "Q4: CLIP and Dino") is the right practice; do not repeat OpenCLIP practice in both nodes.
 - split/prereq: agree with adding `soft: generative-modeling-foundations`.
 
@@ -159,13 +159,13 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
 - [suggestion] Szeliski 2e Ch. 14 (Image-based rendering) is, as I recall, where neural rendering/NeRF is treated in the 2nd edition; verify the section before listing.
 - Primary-course facts verified: KAIST CS479 Spring 2026 (https://3dml.kaist.ac.kr/, Minhyuk Sung; prerequisite CS371; 15 YouTube links on the page; assignments page exists); CMU 16-825 Fall 2026 page live; 6.8300 differentiable-rendering lectures (Mar 10, 12, 17, 19) confirmed.
 - [suggestion] Bloat: three NeRF-from-scratch assignments listed (KAIST A2, Berkeley CS180 P4, CMU 16-825) plus nerfstudio/gsplat. Fine as options, but name one default.
-- split/prereq: agree with the split proposal in principle (neural rendering vs 3D deep learning / feed-forward / generative 3D); at 50 h the node is overloaded. Agree with `soft: diffusion-and-flow-matching`.
+- split/prereq: agree with the split proposal in principle (neural rendering vs 3D deep learning / feed-forward / generative 3D); Agree with `soft: diffusion-and-flow-matching`.
 
 ## vision-language-models
 - Q2 adjudication: primary-text = "An Introduction to Vision-Language Modeling" (2405.17247, 27 May 2024, verified). It is the only newcomer-oriented VLM primer and I agree with it as primary. One stronger/longer alternative to record in `considered`: Li et al., "Multimodal Foundation Models: From Specialists to General-Purpose Assistants" (arXiv 2309.10020, FnT 2024, verified live) with the CVPR 2023 tutorial; it also covers generation and instruction tuning but is 2023 and 100+ pages.
 - Facts verified: MIT MMAI Spring 2026 schedule has Week 4.1 (Feb 24) "More multimodal fusion", 4.2 (Feb 26) "Multimodal alignment [slides][video]" with CLIP reading, 5.1 (Mar 3) "Large multimodal models [slides][video]"; videos are youtu.be links, so `videos: public` is right (it is a general multimodal course, not VLM-only, as the node says).
   CS336 Spring 2026 Lecture 17 is "Alignment - multimodality [Percy]" (lecture_17.py), so the claim holds. `smol-vlm-finetune` URL `.../smol-course/unit3/1` is "Introduction to Vision Language Models": the open question about unit numbering can be closed (unit4/1 is "Coming Soon").
-- [suggestion] Practice is heavy for a 40 h node: nanoVLM (about 6 h of H100 per README), SmolVLM2 fine-tune, lmms-eval, OpenCLIP. Mark nanoVLM and OpenCLIP as alternatives, not both required.
+- [suggestion] Mark nanoVLM and OpenCLIP as alternatives, not both required.
 - split/prereq: agree with `soft: self-supervised-learning`.
 
 ## generative-modeling-foundations
@@ -175,7 +175,7 @@ plus `deep-value-based-rl`, `model-based-rl`, `offline-rl-and-imitation`) and th
 - split/prereq: agree with no change.
 
 ## diffusion-and-flow-matching
-- [should-fix] Bloat. The node has 4 course items (6.S184, CMU 10799, 6.S183 psets, HF diffusion course), 3 blog-style tutorials doing the same job (`luo-unified`, `song-score-blog`, `weng-diffusion`, plus `dieleman-posts`), 3 reference papers/monographs (`flow-matching-guide`, `principles-diffusion`, `edm`), and 4 separate "implement DDPM" exercises (`cs231n-a3-ddpm` Q3, CS294-158 HW4, CMU HW1, 6.S184 Lab 2/3). For 55 h this is too much. Fix: keep 6.S184 text+course+labs and CMU 10799 HW1-2 as the implementation pair; demote `cs231n-a3-ddpm` and `weng-diffusion` to `considered`; keep one tutorial (Luo, for the ELBO bridge) and Dieleman for intuition.
+- [should-fix] Bloat. The node has 4 course items (6.S184, CMU 10799, 6.S183 psets, HF diffusion course), 3 blog-style tutorials doing the same job (`luo-unified`, `song-score-blog`, `weng-diffusion`, plus `dieleman-posts`), 3 reference papers/monographs (`flow-matching-guide`, `principles-diffusion`, `edm`), and 4 separate "implement DDPM" exercises (`cs231n-a3-ddpm` Q3, CS294-158 HW4, CMU HW1, 6.S184 Lab 2/3). Fix: keep 6.S184 text+course+labs and CMU 10799 HW1-2 as the implementation pair; demote `cs231n-a3-ddpm` and `weng-diffusion` to `considered`; keep one tutorial (Luo, for the ELBO bridge) and Dieleman for intuition.
 - Facts verified: 6.S184 2026 page (Holderrieth, Erives; Lectures table with Slides/Recording columns; notes arXiv 2506.02070); CMU 10-799 Spring 2026 Mini 3 (announcement "The recording of our first lecture is up on YouTube", Homework 1 out Jan 15); 6.S183 playlist `PL_1TbuIu65A_G908tHHvTnyQsueR17rMh` = "MIT 6.S183 A Practical Introduction to Diffusion Models, IAP 2025" (2025, as the node says).
 - [suggestion] 6.8300 also has three diffusion lectures (Diffusion 1: "Mathematical Foundations of Diffusion Models, ODE and SDE perspective, score matching and flow", Apr 2 etc.) public; node only mentions them as `considered`. Fine.
 - split/prereq: agree with changing the hard prereq (6.S184 itself asks only for probability + deep learning).

@@ -3,13 +3,13 @@ title: Multi-Agent RL & Games
 group: G8
 paths:
 - rl
+optional: true
 hard:
 - policy-gradient-methods
-soft: []
+soft:
+- probability
 scope: Game theory basics, self-play, MARL algorithms, AlphaZero-style search.
-optional: true
 level: advanced
-estimated_hours: 50
 resources:
 - id: marl-book
   role: primary-text
@@ -156,7 +156,7 @@ considered:
   reason: Useful tools but not learning material.
 notes: Marked optional in the skeleton. Game theory prerequisites are partly inside the MARL book (Ch. 3-4). MIT 6.S890 notes are public but videos are not linked. The MARL book playlist covers lectures from the authors; the course page itself was not independently scheduled by a university.
 split_proposal: null
-prereq_changes: Consider a soft prerequisite on probability and a game-theory basics resource (the MARL book Ch. 3-4 covers the minimum).
+prereq_changes: null
 open_questions:
 - '6.S890 term: page says Fall 2024; a search listing suggested Fall 2025. Check before use.'
 - 'MARL playlist: individual lecture count and chapter mapping not reviewed.'

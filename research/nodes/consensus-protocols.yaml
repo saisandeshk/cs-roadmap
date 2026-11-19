@@ -1,0 +1,117 @@
+id: consensus-protocols
+title: Consensus Protocols (Paxos & Raft)
+group: G10
+paths:
+- distributed
+hard:
+- replication-and-consistency
+soft: []
+scope: Replicated state machines, Paxos, Raft (election, log replication, persistence, snapshots), coordination services.
+level: advanced
+resources:
+- id: raft-paper
+  role: primary-text
+  kind: paper
+  title: In Search of an Understandable Consensus Algorithm (extended version)
+  by: Diego Ongaro, John Ousterhout
+  url: https://raft.github.io/raft.pdf
+  edition_or_term: USENIX ATC 2014, extended version
+  access: free
+  use: Read in full, with Figure 2 (the complete protocol summary) open while coding Lab 3. Also open the Raft site (https://raft.github.io/) and the visualization at https://thesecretlivesofdata.com/raft/.
+  why: 'Gap: the primary source MIT Lab 3 implements. The lab handout says to follow Figure 2 closely and does not require membership changes (Section 6).'
+  verified: true
+- id: mit-6824
+  role: primary-course
+  kind: course
+  title: MIT 6.5840 (6.824) Distributed Systems
+  by: MIT (Robert Morris, Frans Kaashoek)
+  url: https://pdos.csail.mit.edu/6.824/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Spring 2026 lectures 6-7 (Raft), 9 (ZooKeeper) and 4 (Paxos) with their papers and FAQs; Lab 3 Raft (3A election, 3B log, 3C persistence, 3D snapshots) and Lab 4 fault-tolerant KV on Raft (https://pdos.csail.mit.edu/6.824/labs/lab-raft1.html). Video mapping to the Spring 2020 playlist: 2026 L6-7 = 2020 L6-7; 2026 L9 (ZooKeeper) = 2020 L8. Paxos (2026 L4) has no MIT video; use Kleppmann lecture 7.'
+  why: 'The reference course for this node: the Raft lab is the standard way to actually learn consensus, tests are public and thorough (they catch real protocol bugs), and the paper-driven lectures cover linearizability, ZooKeeper and chain replication. 2026 lectures are not recorded publicly, so the 2020 videos fill in for Raft, ZooKeeper and chain replication only.'
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://pdos.csail.mit.edu/6.824/schedule.html
+    videos: none
+    public_videos_term: Spring 2020 (official MIT 6.824 YouTube playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB
+    assignments: public-with-autograder
+    assignments_url: https://pdos.csail.mit.edu/6.824/labs/lab-raft1.html
+- id: ddia2-repl
+  role: secondary
+  kind: book
+  title: 'Designing Data-Intensive Applications, 2nd edition: Replication and Consistency and Consensus'
+  by: Martin Kleppmann, Chris Riccomini
+  url: https://dataintensive.net/
+  edition_or_term: 2nd edition (O'Reilly, March 2026, 670 pages)
+  access: paid
+  use: Chapter 10 consensus sections (total order broadcast, consensus, coordination services).
+  why: Best integrated explanation of replication styles and consistency models for practitioners, honest about trade-offs (quorum edge cases, CAP misuse), and it links to the primary literature. Readable before tackling the Raft paper.
+  verified: true
+- id: kleppmann-notes-consensus
+  role: secondary
+  kind: book
+  title: Kleppmann, Distributed Systems lecture notes, Ch. 5-8
+  by: Martin Kleppmann (University of Cambridge)
+  url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/dist-sys-notes.pdf
+  edition_or_term: 2025-26 version (93 pages)
+  access: free
+  use: Lecture notes ch. 7 (consensus, Raft) with lecture 7 of the 2020 YouTube series.
+  why: 'Gap: a rigorous, compact formal treatment (state machine replication from total-order broadcast, linearizability proofs) to pair with DDIA''s informal one; includes exercises.'
+  verified: true
+- id: ongaro-thesis
+  role: reference
+  kind: paper
+  title: 'Consensus: Bridging Theory and Practice'
+  by: Diego Ongaro (Stanford PhD dissertation, 2014)
+  url: https://github.com/ongardie/dissertation
+  edition_or_term: 2014 (repo carries the Stanford-distributed PDF stanford.pdf, plus errata)
+  access: free
+  use: Chapters on the basic Raft algorithm, cluster membership changes, log compaction and client interaction (linearizable semantics, exactly-once); skip the user study and evaluation chapters on a first pass.
+  why: 'Gap: the paper is terse on snapshots and client sessions; the thesis spells out log compaction and exactly-once client semantics needed for Lab 3D and Lab 4, and gives the membership-change algorithm that the lab skips.'
+  verified: true
+- id: paxos-simple
+  role: reference
+  kind: paper
+  title: Paxos Made Simple
+  by: Leslie Lamport (2001)
+  url: https://lamport.azurewebsites.net/pubs/paxos-simple.pdf
+  edition_or_term: '2001'
+  access: free
+  use: Read after MIT Spring 2026 Lecture 4 and compare Paxos and Raft decision rules; write down why a proposer must adopt the highest-numbered accepted value.
+  why: 'Gap: Raft is easiest to learn after one pass over Paxos, and the node scope names Paxos explicitly.'
+  verified: true
+- id: dslabs
+  role: practice
+  kind: tool
+  title: 'DSLabs: Distributed Systems Labs and Framework (Labs 2 and 3)'
+  by: Ellis Michael (University of Washington)
+  url: https://github.com/emichael/dslabs
+  edition_or_term: Current repository (used by UW CSE 452)
+  access: free
+  use: Lab 2 (primary-backup replication) and Lab 3 (Paxos), including the model checker and visual debugger; optional after MIT Lab 3.
+  why: 'Hidden gem: a message-passing framework with a model checker and visualizer that finds protocol bugs exhaustively, plus a Paxos lab that MIT''s course does not have. Java based.'
+  verified: true
+considered:
+- title: UW CSE 452 Distributed Systems
+  url: https://courses.cs.washington.edu/courses/cse452/
+  reason: Autumn 2026 term with DSLabs, lectures captured but enrolled-only; DSLabs used as practice instead.
+- title: Database Internals, Part II (Petrov)
+  url: https://www.databass.dev/
+  reason: Clear chapters on failure detection, replication, consistency, consensus; used instead as primary text of the distributed-transactions node and the storage node.
+- title: Distributed Systems, 4th edition (van Steen and Tanenbaum)
+  url: https://www.distributed-systems.net/index.php/books/ds4/
+  reason: Free and broad (Ch. 7 consistency and replication, Ch. 8 fault tolerance) but less rigorous and less practical than DDIA plus Raft.
+- title: Brown CS 1380 (Spring 2026)
+  url: https://cs.brown.edu/courses/csci1380/
+  reason: Good project course but covers gossip and storage more than consensus.
+- title: 'Building Distributed Systems: The Elector and The Consensus tracks'
+  url: https://builddistributedsystem.com/tracks
+  reason: Could not assess depth or free access; MIT labs are the proven route.
+notes: Created by splitting 'consensus-and-replication' (owner decision B4, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

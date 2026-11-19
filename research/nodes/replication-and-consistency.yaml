@@ -1,0 +1,121 @@
+id: replication-and-consistency
+title: Replication & Consistency Models
+group: G10
+paths:
+- distributed
+hard:
+- distributed-systems-fundamentals
+soft: []
+scope: Primary-backup and leader/leaderless replication, quorums, replication lag, linearizability and the consistency-model hierarchy, CRDTs.
+level: advanced
+resources:
+- id: ddia2-repl
+  role: primary-text
+  kind: book
+  title: 'Designing Data-Intensive Applications, 2nd edition: Replication and Consistency and Consensus'
+  by: Martin Kleppmann, Chris Riccomini
+  url: https://dataintensive.net/
+  edition_or_term: 2nd edition (O'Reilly, March 2026, 670 pages)
+  access: paid
+  use: Chapter 6 'Replication' (single-leader, multi-leader, leaderless, quorums, replication lag, conflict resolution, CRDT and operational-transformation basics) and the linearizability and ordering/causality sections of Chapter 10; consensus is read in consensus-protocols.
+  why: Best integrated explanation of replication styles and consistency models for practitioners, honest about trade-offs (quorum edge cases, CAP misuse), and it links to the primary literature. Readable before tackling the Raft paper.
+  verified: true
+- id: kleppmann-lectures
+  role: primary-course
+  kind: course
+  title: 'Cambridge CST Part IB: Concurrent and Distributed Systems (distributed half) and Kleppmann''s 8-lecture Distributed Systems series'
+  by: Martin Kleppmann (University of Cambridge)
+  url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/
+  edition_or_term: 2025-26 delivered; 2026-27 page published
+  access: free
+  use: Lectures 5-6 and 8 of the 2020 8-lecture YouTube series (replication, quorums, linearizability, conflict resolution and CRDTs) alongside notes ch. 5, 6 and 8; lecture 7 (consensus) belongs to consensus-protocols.
+  why: Compact, public, and exactly aligned with the primary text. The 2020 YouTube recordings are the newest public ones; recordings of the current Cambridge run are on Panopto behind the student login.
+  verified: true
+  course:
+    latest_term: 2025-26 (Cambridge Part IB; 2026-27 course page already published)
+    latest_url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/
+    videos: enrolled-only
+    public_videos_term: 2020 (Kleppmann, 8 lectures, YouTube)
+    public_videos_url: https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB
+    assignments: partial
+    assignments_url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/dist-sys-notes.pdf
+- id: kleppmann-notes-consensus
+  role: secondary
+  kind: book
+  title: Kleppmann, Distributed Systems lecture notes, Ch. 5-8
+  by: Martin Kleppmann (University of Cambridge)
+  url: https://www.cl.cam.ac.uk/teaching/2526/ConcDisSys/dist-sys-notes.pdf
+  edition_or_term: 2025-26 version (93 pages)
+  access: free
+  use: Lecture notes ch. 5 (quorums, replication using broadcast), ch. 6 (linearizability) and ch. 8 (conflict resolution, CRDTs).
+  why: 'Gap: a rigorous, compact formal treatment (state machine replication from total-order broadcast, linearizability proofs) to pair with DDIA''s informal one; includes exercises.'
+  verified: true
+- id: jepsen-models
+  role: reference
+  kind: website
+  title: 'Jepsen: Consistency Models map'
+  by: Kyle Kingsbury (Jepsen)
+  url: https://jepsen.io/consistency/models
+  edition_or_term: Current
+  access: free
+  use: Read the pages for linearizable, sequential, causal, snapshot isolation and serializable, and the hierarchy diagram; skim Jepsen analyses (https://jepsen.io/analyses) for one real database.
+  why: 'Gap: precise, short definitions of consistency models with the implication graph, resolving the confusion between linearizability and serializability.'
+  verified: true
+- id: herlihy-wing
+  role: reference
+  kind: paper
+  title: 'Linearizability: A Correctness Condition for Concurrent Objects'
+  by: Maurice Herlihy, Jeannette Wing (TOPLAS 1990)
+  url: https://pdos.csail.mit.edu/6.824/papers/p463-herlihy.pdf
+  edition_or_term: '1990'
+  access: free
+  use: Sections 1-3.1 only (as assigned in MIT Spring 2026 Lecture 8, which has no public video).
+  why: 'Gap: the primary definition of linearizability, which the node scope names; read after the Jepsen page.'
+  verified: true
+- id: bailis-lin-vs-ser
+  role: secondary
+  kind: article
+  title: Linearizability versus Serializability
+  by: Peter Bailis
+  url: https://www.bailis.org/blog/linearizability-versus-serializability/
+  edition_or_term: '2014'
+  access: free
+  use: Read in full together with Kleppmann's 'Please stop calling databases CP or AP' (https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html).
+  why: 'Gap: clears up the two most commonly confused guarantees and the misuse of CAP.'
+  verified: true
+- id: crdt
+  role: secondary
+  kind: paper
+  title: Conflict-free Replicated Data Types (CRDTs) and crdt.tech
+  by: Nuno Preguica, Carlos Baquero, Marc Shapiro
+  url: https://arxiv.org/abs/1805.06358
+  edition_or_term: Encyclopedia of Big Data Technologies entry, 2018; resources at https://crdt.tech/
+  access: free
+  use: Read the 2018 overview (state-based vs operation-based CRDTs, G-Counter, PN-Counter, OR-Set, sequence CRDTs), then the crdt.tech resource list for implementations; implement a G-Counter and OR-Set.
+  why: 'Gap: the node scope includes CRDTs, which MIT''s course does not cover; this is a short, authoritative entry point.'
+  verified: true
+- id: mit-6824
+  role: secondary
+  kind: course
+  title: MIT 6.5840 (6.824) Distributed Systems
+  by: MIT (Robert Morris, Frans Kaashoek)
+  url: https://pdos.csail.mit.edu/6.824/
+  edition_or_term: Spring 2026
+  access: free
+  use: Spring 2026 lecture 13 (chain replication; video = 2020 L9 CRAQ) and lecture 8 (linearizability; no MIT video, use the Herlihy-Wing reading and Kleppmann lecture 6).
+  why: 'The reference course for this node: the Raft lab is the standard way to actually learn consensus, tests are public and thorough (they catch real protocol bugs), and the paper-driven lectures cover linearizability, ZooKeeper and chain replication. 2026 lectures are not recorded publicly, so the 2020 videos fill in for Raft, ZooKeeper and chain replication only.'
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://pdos.csail.mit.edu/6.824/schedule.html
+    videos: none
+    public_videos_term: Spring 2020 (official MIT 6.824 YouTube playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB
+    assignments: public-with-autograder
+    assignments_url: https://pdos.csail.mit.edu/6.824/labs/lab-raft1.html
+considered: []
+notes: Created by splitting 'consensus-and-replication' (owner decision B4, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

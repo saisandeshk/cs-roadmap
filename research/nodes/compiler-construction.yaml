@@ -1,14 +1,27 @@
 id: compiler-construction
 title: Compiler Construction
 group: G11
-paths: [plc]
-hard: [interpreters, computer-systems]
-soft: [theory-of-computation]
+paths:
+- plc
+hard:
+- interpreters
+- computer-systems
+soft:
+- theory-of-computation
 scope: Front end, semantic analysis, IR, code generation, register allocation, runtime support.
 level: intermediate
-estimated_hours: 120
 resources:
-- {id: eac3, role: primary-text, kind: book, title: 'Engineering a Compiler, 3rd edition', by: 'Keith D. Cooper, Linda Torczon', url: 'https://shop.elsevier.com/books/engineering-a-compiler/cooper/978-0-12-815412-0', edition_or_term: '3rd edition (Morgan Kaufmann/Elsevier, Aug 2022); latest edition', access: paid, use: 'Ch. 1-3 (overview, scanners, parsers), 4 (intermediate representations), 5 (syntax-driven translation / semantic elaboration), 6 (implementing procedures: runtime support), 7 (code shape), 11 (instruction selection) and 13 (register allocation); skim 12 (instruction scheduling). Optimization chapters 8-10 belong to compiler-optimization.', why: 'Up to date (3rd edition, 2022, adds semantic elaboration, runtime support and code shape), pedagogically organized by compiler phase and the most balanced modern text between front end, IRs and back end. Winner of a 2024 TAA Textbook Excellence award per listings.', verified: true}
+- id: eac3
+  role: primary-text
+  kind: book
+  title: Engineering a Compiler, 3rd edition
+  by: Keith D. Cooper, Linda Torczon
+  url: https://shop.elsevier.com/books/engineering-a-compiler/cooper/978-0-12-815412-0
+  edition_or_term: 3rd edition (Morgan Kaufmann/Elsevier, Aug 2022); latest edition
+  access: paid
+  use: 'Ch. 1-3 (overview, scanners, parsers), 4 (intermediate representations), 5 (syntax-driven translation / semantic elaboration), 6 (implementing procedures: runtime support), 7 (code shape), 11 (instruction selection) and 13 (register allocation); skim 12 (instruction scheduling). Optimization chapters 8-10 belong to compiler-optimization.'
+  why: Up to date (3rd edition, 2022, adds semantic elaboration, runtime support and code shape), pedagogically organized by compiler phase and the most balanced modern text between front end, IRs and back end. Winner of a 2024 TAA Textbook Excellence award per listings.
+  verified: true
 - id: stanford-cs143
   role: primary-course
   kind: course
@@ -20,10 +33,46 @@ resources:
   use: 'Course site: lecture slides (lexical analysis, parsing top-down/bottom-up, semantic analysis and type checking, runtime organization, code generation, operational semantics, optimization, register allocation, GC, JIT), the Cool Reference Manual, support code, written assignments with solutions and programming assignments PA1-PA5 (lexer, parser, semantic analyzer, code generator, optimizer).'
   why: 'The classic compiler project course: one language (COOL), a full compiler front end and MIPS code generator, with public handouts, written assignments and exam solutions. No official public videos: Stanford''s own recordings are not public; unofficial copies of Aiken''s older MOOC lectures circulate but are not linked here.'
   verified: true
-  course: {latest_term: Spring 2026 (midterm and final 2026 posted), latest_url: 'https://web.stanford.edu/class/cs143/', videos: none, public_videos_term: none official (only unofficial copies of Aiken's 2013-14 Coursera/Lagunita lectures exist), assignments: public, assignments_url: 'https://web.stanford.edu/class/cs143/'}
-- {id: sandler-wacc, role: secondary, kind: book, title: 'Writing a C Compiler: Build a Real Programming Language from Scratch', by: Nora Sandler, url: 'https://nostarch.com/writing-c-compiler', edition_or_term: 'No Starch Press, July 2024, 792 pp.; print comes with free ebook', access: paid, use: 'Work through the chapters in order (integers, unary operators, binary operators, logical/relational, local variables, if, compound statements, loops, functions, file scope, types and extra credit) writing a compiler to x64/ARM64 assembly in any language; run the book''s test suite at each stage.', why: 'The most practical incremental text on building a real compiler (to assembly, no parser-generator hand-waving), with a ready test suite; perfect companion to the theory in EaC.', verified: true}
-- {id: wacc-tests, role: practice, kind: tool, title: writing-a-c-compiler-tests, by: Nora Sandler, url: 'https://github.com/nlsandler/writing-a-c-compiler-tests', edition_or_term: 'Rolling repository (244 commits; Python 3.8+ test driver, needs gcc)', access: free, use: 'Run ''./test_compiler ~/mycc --chapter N'' after each chapter, with the optional extra-credit flags (bitwise, compound assignment, etc.).', why: Public tests with valid/invalid programs make the book self-grading; the closest thing to an autograder for a self-built compiler., verified: true}
-- {id: essentials-of-compilation, role: secondary, kind: book, title: 'Essentials of Compilation: An Incremental Approach (Racket or Python edition)', by: Jeremy G. Siek, url: 'https://github.com/IUCompilerCourse/Essentials-of-Compilation', edition_or_term: MIT Press (Racket 2021; Python 2023); LaTeX sources on GitHub, access: mixed, use: 'Chapters on compiling a language subset to x86-64 in small passes: integers and variables, register allocation (liveness, interference graphs, graph colouring), conditionals, loops, tuples with garbage collection, functions, lexical scope/closures, dynamic typing; use the public student support code for each language.', why: 'Short, nanopass-style incremental approach with register allocation and GC covered concretely; the paper copy is MIT Press, while free PDFs are claimed by the author (not verified here). Test suite is available to instructors on request.', verified: true}
+  course:
+    latest_term: Spring 2026 (midterm and final 2026 posted)
+    latest_url: https://web.stanford.edu/class/cs143/
+    videos: none
+    public_videos_term: none official (only unofficial copies of Aiken's 2013-14 Coursera/Lagunita lectures exist)
+    assignments: public
+    assignments_url: https://web.stanford.edu/class/cs143/
+- id: sandler-wacc
+  role: secondary
+  kind: book
+  title: 'Writing a C Compiler: Build a Real Programming Language from Scratch'
+  by: Nora Sandler
+  url: https://nostarch.com/writing-c-compiler
+  edition_or_term: No Starch Press, July 2024, 792 pp.; print comes with free ebook
+  access: paid
+  use: Work through the chapters in order (integers, unary operators, binary operators, logical/relational, local variables, if, compound statements, loops, functions, file scope, types and extra credit) writing a compiler to x64/ARM64 assembly in any language; run the book's test suite at each stage.
+  why: The most practical incremental text on building a real compiler (to assembly, no parser-generator hand-waving), with a ready test suite; perfect companion to the theory in EaC.
+  verified: true
+- id: wacc-tests
+  role: practice
+  kind: tool
+  title: writing-a-c-compiler-tests
+  by: Nora Sandler
+  url: https://github.com/nlsandler/writing-a-c-compiler-tests
+  edition_or_term: Rolling repository (244 commits; Python 3.8+ test driver, needs gcc)
+  access: free
+  use: Run './test_compiler ~/mycc --chapter N' after each chapter, with the optional extra-credit flags (bitwise, compound assignment, etc.).
+  why: Public tests with valid/invalid programs make the book self-grading; the closest thing to an autograder for a self-built compiler.
+  verified: true
+- id: essentials-of-compilation
+  role: secondary
+  kind: book
+  title: 'Essentials of Compilation: An Incremental Approach (Racket or Python edition)'
+  by: Jeremy G. Siek
+  url: https://github.com/IUCompilerCourse/Essentials-of-Compilation
+  edition_or_term: MIT Press (Racket 2021; Python 2023); LaTeX sources on GitHub
+  access: mixed
+  use: 'Chapters on compiling a language subset to x86-64 in small passes: integers and variables, register allocation (liveness, interference graphs, graph colouring), conditionals, loops, tuples with garbage collection, functions, lexical scope/closures, dynamic typing; use the public student support code for each language.'
+  why: Short, nanopass-style incremental approach with register allocation and GC covered concretely; the paper copy is MIT Press, while free PDFs are claimed by the author (not verified here). Test suite is available to instructors on request.
+  verified: true
 - id: cmu-15411
   role: secondary
   kind: course
@@ -35,7 +84,12 @@ resources:
   use: Schedule with lecture notes (register allocation, SSA, instruction selection, IR trees, liveness, lexing and parsing, typechecking, calling conventions, dataflow, LLVM target, dynamic semantics, optimization, alias analysis, GVN, JIT and managed runtimes), recitation solutions and the five-lab description (straight-line code, control, functions, memory, optimizations).
   why: A back-end-first course (register allocation and SSA before parsing) with extensive public lecture notes and recitation solutions; labs are the course's heart but test infrastructure (Notolab/Gradescope) is not public.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://www.cs.cmu.edu/~15411/schedule.html', videos: none, assignments: partial, assignments_url: 'https://www.cs.cmu.edu/~15411/assignments.html'}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://www.cs.cmu.edu/~15411/schedule.html
+    videos: none
+    assignments: partial
+    assignments_url: https://www.cs.cmu.edu/~15411/assignments.html
 - id: uw-cse401
   role: secondary
   kind: course
@@ -47,15 +101,33 @@ resources:
   use: 'Course site: lecture schedule and the MiniJava-to-x86 compiler project description; lecture recordings listed in cs-video-courses for older (2009) terms.'
   why: Alternate full course with a complete project (MiniJava compiler) if Cool/MIPS is unappealing. Recording status for 2026 not confirmed.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://courses.cs.washington.edu/courses/cse401/26sp/', videos: unknown, assignments: public, assignments_url: 'https://courses.cs.washington.edu/courses/cse401/26sp/'}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://courses.cs.washington.edu/courses/cse401/26sp/
+    videos: unknown
+    assignments: public
+    assignments_url: https://courses.cs.washington.edu/courses/cse401/26sp/
 considered:
-- {title: 'Compilers: Principles, Techniques, and Tools (Dragon book), 2nd ed.', url: 'https://www.pearson.com/', reason: 'Encyclopedic classic, but EaC 3e is more readable and current; publisher page not opened.'}
-- {title: Modern Compiler Implementation (Appel), url: 'https://www.cs.princeton.edu/~appel/modern/', reason: 'Project-based (Tiger language), strong on functional/ML implementation; EaC chosen for broader coverage; page not opened.'}
-- {title: UW CSE 401 / CSEP 501 lecture videos (2009), url: 'https://courses.cs.washington.edu/courses/csep501/09au/lectures/video.html', reason: Older recordings listed in cs-video-courses; not rechecked.}
-- {title: Nand2Tetris Part II (compiler projects 10-11), url: 'https://www.nand2tetris.org/course', reason: Tiny-language compiler to a VM; good introduction but too small for this node.}
-- {title: KAIST CS420 Compiler Design videos, url: 'https://www.youtube.com/playlist?list=PL5aMzERQ_OZ8RWqn-XiZLXm1IJuaQbXp0', reason: 'Public video course (Korean university, English?); not evaluated.'}
-notes: 'Route (about 120 h): EaC ch. 1-7, 11, 13 for theory with either Stanford CS 143 (Cool; PA1-PA5; uses flex/bison/C++ or Java) or Sandler''s book plus tests (C subset to real x86-64/ARM) as the build; Essentials of Compilation or CMU 15-411 notes as second angles on register allocation and SSA. Stanford CS 143 has no official public videos (the earlier archive.org link was an unofficial mirror and was removed after review R2). Crafting Interpreters Part III (the single-pass bytecode compiler) is assigned in interpreters and Compiler Explorer in compiler-optimization, so both were removed here to avoid duplication. If forced to choose one build, Sandler''s book is closer to current practice; CS 143 is closer to a classroom course with exam solutions. This node needs the interpreters node as hard prereq; compiler-optimization continues with SSA, dataflow and LLVM. Runtime support (calling conventions, GC) is partly treated in EaC ch. 6 and in language-runtimes.'
-split_proposal: Consider a split into 'compiler front end' (lexing, parsing, semantic analysis) and 'compiler back end' (IR, codegen, register allocation) because 120 h is heavy and CMU 15-411 teaches the back end first.
+- title: 'Compilers: Principles, Techniques, and Tools (Dragon book), 2nd ed.'
+  url: https://www.pearson.com/
+  reason: Encyclopedic classic, but EaC 3e is more readable and current; publisher page not opened.
+- title: Modern Compiler Implementation (Appel)
+  url: https://www.cs.princeton.edu/~appel/modern/
+  reason: Project-based (Tiger language), strong on functional/ML implementation; EaC chosen for broader coverage; page not opened.
+- title: UW CSE 401 / CSEP 501 lecture videos (2009)
+  url: https://courses.cs.washington.edu/courses/csep501/09au/lectures/video.html
+  reason: Older recordings listed in cs-video-courses; not rechecked.
+- title: Nand2Tetris Part II (compiler projects 10-11)
+  url: https://www.nand2tetris.org/course
+  reason: Tiny-language compiler to a VM; good introduction but too small for this node.
+- title: KAIST CS420 Compiler Design videos
+  url: https://www.youtube.com/playlist?list=PL5aMzERQ_OZ8RWqn-XiZLXm1IJuaQbXp0
+  reason: Public video course (Korean university, English?); not evaluated.
+notes: 'Route: EaC ch. 1-7, 11, 13 for theory with either Stanford CS 143 (Cool; PA1-PA5; uses flex/bison/C++ or Java) or Sandler''s book plus tests (C subset to real x86-64/ARM) as the build; Essentials of Compilation or CMU 15-411 notes as second angles on register allocation and SSA. Stanford CS 143 has no official public videos (the earlier archive.org link was an unofficial mirror and was removed after review R2). Crafting Interpreters Part III (the single-pass bytecode compiler) is assigned in interpreters and Compiler Explorer in compiler-optimization, so both were removed here to avoid duplication. If forced to choose one build, Sandler''s book is closer to current practice; CS 143 is closer to a classroom course with exam solutions. This node needs the interpreters node as hard prereq; compiler-optimization continues with SSA, dataflow and LLVM. Runtime support (calling conventions, GC) is partly treated in EaC ch. 6 and in language-runtimes.'
+split_proposal: null
 prereq_changes: null
-open_questions: [Essentials of Compilation free-PDF availability (author site) and the MIT Press page were not verifiable (publisher blocks scripts; GitHub repo only builds the PDF from source)., CS 143 official recording status for Spring 2026 not stated on the course site; marked none. The site was opened over plain HTTP (HTTPS fetch from this sandbox fails/503); term inferred from 'Midterm 2026' and 'Final 2026' handouts; the syllabus page still shows stale 2021 dates., UW CSE 401 Spring 2026 lecture video availability unknown.]
+open_questions:
+- Essentials of Compilation free-PDF availability (author site) and the MIT Press page were not verifiable (publisher blocks scripts; GitHub repo only builds the PDF from source).
+- CS 143 official recording status for Spring 2026 not stated on the course site; marked none. The site was opened over plain HTTP (HTTPS fetch from this sandbox fails/503); term inferred from 'Midterm 2026' and 'Final 2026' handouts; the syllabus page still shows stale 2021 dates.
+- UW CSE 401 Spring 2026 lecture video availability unknown.
 last_verified: '2026-11-18'

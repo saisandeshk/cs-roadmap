@@ -9,7 +9,6 @@ soft:
 - language-modeling
 scope: Alignment problem, risk landscape, specification gaming, misuse, governance basics.
 level: intro
-estimated_hours: 30
 resources:
 - id: hendrycks-text
   role: primary-text
@@ -31,7 +30,7 @@ resources:
   edition_or_term: Curriculum page (weeks 1-8 plus appendices); cohort course not currently run
   access: free
   use: 'Follow the eight-week curriculum alongside the textbook: Week 1 AI fundamentals, 2 catastrophic AI risks, 3 single-agent safety, 4 safety engineering, 5 complex systems, 6 beneficial AI and machine ethics, 7 collective action problems, 8 governance. Each week links a chapter, a lecture video (YouTube, Center for AI Safety) and slides.'
-  why: 'Intro-level fit for this node (no technical or proof prerequisites; the course page says no prior technical AI knowledge is assumed) and it is the textbook author''s own course, so lectures match the primary text; replaces the graduate-level Harvard course, kept as an advanced follow-up.'
+  why: Intro-level fit for this node (no technical or proof prerequisites; the course page says no prior technical AI knowledge is assumed) and it is the textbook author's own course, so lectures match the primary text; replaces the graduate-level Harvard course, kept as an advanced follow-up.
   verified: true
   course:
     latest_term: Self-paced curriculum page (cohort course not currently being run)
@@ -65,7 +64,7 @@ resources:
   url: https://bluedot.org/courses/agi-strategy
   edition_or_term: Cohorts starting Dec 2026 (applications Nov 2026)
   access: free
-  use: The cohort course (about 25-40 hours, intensive week or part-time) for the strategic overview; the page also points to a free 90-minute introductory course for newcomers. Apply for a cohort or read the posted curriculum.
+  use: The cohort course for the strategic overview; the page also points to a free short introductory course for newcomers. Apply for a cohort or read the posted curriculum.
   why: Most widely used structured on-ramp, with a facilitator and community; use when you want a cohort or the governance side.
   verified: true
   course:
@@ -172,7 +171,7 @@ considered:
   reason: Governance reference listed in owner seed; not opened here.
 notes: The scope mentions governance basics; Hendrycks covers governance but the node is mostly technical. Primary course is the Hendrycks course (intro level, matches the textbook); Harvard CS 2881R is graduate level (proof-level maturity, in-person in Fall 2026) so it is a secondary follow-up, and some learners may prefer BlueDot AGI Strategy as a first pass. Hendrycks course page has per-week video links (two checked via YouTube oEmbed) and slides are Google Drive links not opened. The Coursera course requires an account (free to audit). Coursera lecture content was not opened (page loaded, content not inspected).
 split_proposal: null
-prereq_changes: Consider making language-modeling a hard prereq only for later nodes; foundations itself is fine with deep-learning-fundamentals (as in skeleton).
+prereq_changes: null
 open_questions:
 - 'Intro to ML Safety: site shows copyright 2023 and no run dates; the recordings were not opened.'
 - 'Fall 2026 Harvard lectures: only some videos are posted so far (term in progress as of 2026-11-18).'

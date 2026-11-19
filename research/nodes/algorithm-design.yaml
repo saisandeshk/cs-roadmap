@@ -1,148 +1,161 @@
-# --- copied from research/skeleton.yaml ---
 id: algorithm-design
 title: Algorithm Design & Analysis
 group: G3
-paths: [core, theory]
-hard: [algorithms]
-soft: [probability]
-scope: "Divide and conquer, greedy proofs, DP, network flow, NP-completeness and reductions, intro randomized and approximation algorithms."
-
-# --- curation data ---
+paths:
+- core
+- theory
+hard:
+- algorithms
+soft:
+- probability
+- discrete-math
+scope: Divide and conquer, greedy proofs, DP, network flow, NP-completeness and reductions, intro randomized and approximation algorithms.
 level: intermediate
-estimated_hours: 140
 resources:
-  - id: kleinberg-tardos
-    role: primary-text
-    kind: book
-    title: "Algorithm Design"
-    by: "Jon Kleinberg, Eva Tardos"
-    url: https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003259/9780137546350
-    edition_or_term: "1st edition (Pearson, 2005; current Pearson reissue)"
-    access: paid
-    use: "Ch. 1 (stable matching), 4 (greedy: exchange arguments, interval scheduling, Dijkstra, MST, clustering), 5 (divide and conquer), 6 (DP: weighted intervals, knapsack, sequence alignment, shortest paths), 7 (network flow and applications: max-flow min-cut, bipartite matching, circulations), 8 (NP and computational intractability: reductions), 10-11 (extending limits: approximation and local search), 13 (randomized algorithms: contention resolution, min cut, hashing). Do roughly 3 exercises per chapter, including at least one 'design from scratch' problem."
-    why: "The best text on the craft of design: each chapter is organized around a technique and proofs (exchange arguments, flow reductions, NP reductions) are taught, not just stated. Its exercises are widely used as the bar for algorithm-design courses."
-    verified: true
-  - id: mit-6-046
-    role: primary-course
-    kind: course
-    title: "MIT 6.046J Design and Analysis of Algorithms (now 6.1220J / 18.410J)"
-    by: "MIT (Erik Demaine, Srini Devadas, Nancy Lynch)"
-    url: https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/
-    edition_or_term: "Spring 2015 (OCW, public videos)"
-    access: free
-    use: "Lectures 1-18 (interval scheduling, divide and conquer, amortization, randomization and hashing, advanced DP, MST, max flow and matching, LP, P/NP/NP-completeness, approximation, fixed-parameter algorithms); skim 19-24 (distributed, crypto, cache-oblivious). Do the problem sets with solutions and recitation videos."
-    why: "Newest complete public video course at this level with problem sets, solutions, recitations and exams; follows CLRS/KT order. It is lighter on exchange-argument greedy proofs and reductions than K&T, so read those K&T chapters alongside."
-    verified: true
-    course:
-      latest_term: "Spring 2026 (6.1220J / 18.410J, Kuikui Liu, Srinivasan Raghuraman, Julian Shun; per MIT TOC calendar)"
-      latest_url: https://toc.csail.mit.edu/node/1803
-      videos: unknown
-      public_videos_term: "Spring 2015"
-      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp
-      assignments: public
-      assignments_url: https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/pages/assignments/
-  - id: wayne-kt-slides
-    role: reference
-    kind: website
-    title: "Lecture slides for Algorithm Design (Kevin Wayne)"
-    by: "Kevin Wayne (Princeton)"
-    url: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/
-    edition_or_term: "Slides for K&T 1st edition"
-    access: free
-    use: "Slide sets per chapter (greedy, divide and conquer, DP, network flow, NP and reductions) as a 20-minute pre-read or review before each K&T chapter."
-    why: "Compact, well-regarded visual summaries of exactly the primary text; closes the 'dry chapter' gap and helps review reductions quickly."
-    verified: true
-  - id: erickson-flows-nph
-    role: secondary
-    kind: book
-    title: "Algorithms (Erickson): flows, NP-hardness, backtracking"
-    by: "Jeff Erickson"
-    url: https://jeffe.cs.illinois.edu/teaching/algorithms/
-    edition_or_term: "1st edition 2019; lecture notes maintained (CS 473 Fall 2024)"
-    access: free
-    use: "Ch. 10 Maximum Flows and Minimum Cuts, Ch. 11 Applications of Flows and Cuts, Ch. 12 NP-Hardness (reductions via gadgets), plus the lecture notes on approximation and randomized algorithms; read next to K&T ch. 7-8."
-    why: "Second voice on the two topics students struggle with most (flow modelling, NP-hardness reductions); free, and the homework archive provides a large set of past problems."
-    verified: true
-  - id: cs170-berkeley
-    role: secondary
-    kind: course
-    title: "UC Berkeley CS 170 Efficient Algorithms and Intractable Problems"
-    by: "UC Berkeley (Nika Haghtalab, John Wright, Fall 2026)"
-    url: https://cs170.org/
-    edition_or_term: "Fall 2026 (text: DPV, Dasgupta-Papadimitriou-Vazirani)"
-    access: free
-    use: "Discussion worksheets with solutions and homework solutions for D&C, greedy, DP, LP/flows/duality/zero-sum games, reductions and NP-completeness; lecture notes for the second half (DP, LP, flow, P vs NP, coping with NP-completeness)."
-    why: "Public, current (Fall 2026) discussion worksheets and homework solutions give a second source of solved design problems; scope almost identical to this node. Lecture recordings were not found on the page, so not chosen as the primary course."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs170.org/
-      videos: unknown
-      assignments: public
-      assignments_url: https://cs170.org/
-  - id: demaine-hardness
-    role: secondary
-    kind: course
-    title: "MIT 6.890 / 6.892 Algorithmic Lower Bounds: Fun with Hardness Proofs"
-    by: "Erik Demaine (MIT)"
-    url: https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/
-    edition_or_term: "Fall 2014 videos (OCW); Spring 2019 course site with problem sets"
-    access: free
-    use: "Fall 2014 lectures 2-3 (3-Partition I-II), 4-7 (SAT I, SAT Reductions, Circuit SAT, Planar SAT), 8 (Hamiltonicity) and 9 (Graph Problems), then the problem sets on the Spring 2019 site; use only for reduction-writing practice. Lectures 10-12 (inapproximability, gaps and PCP) belong to approximation-algorithms."
-    why: "Hidden gem: the only public course devoted to inventing NP-hardness reductions; closes the gap between 'know the textbook reductions' and 'prove a new problem hard'."
-    verified: true
-    course:
-      latest_term: "Spring 2019 (6.892 course site; Fall 2014 videos remain the public recordings)"
-      latest_url: https://courses.csail.mit.edu/6.892/spring19/
-      videos: public
-      public_videos_term: "Fall 2014"
-      public_videos_url: https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/
-      assignments: public
-      assignments_url: https://courses.csail.mit.edu/6.892/spring19/
-  - id: roughgarden-algs-youtube
-    role: secondary
-    kind: video-series
-    title: "Algorithms 2 (Roughgarden, Stanford; lectures on greedy, DP, NP-completeness)"
-    by: "Tim Roughgarden"
-    url: https://www.youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6
-    edition_or_term: "Stanford Algorithms: Design and Analysis, Part 2 (YouTube playlist; same material as Coursera Algorithms Specialization parts 3-4)"
-    access: free
-    use: "Greedy and scheduling, Huffman, MST, clustering, DP (knapsack, sequence alignment, optimal BST), NP-completeness, heuristics and local search; watch when a K&T chapter is unclear."
-    why: "Clear, well-paced lectures on the greedy-proof and DP material for learners who need explanation beyond the MIT lectures."
-    verified: true
-  - id: cses-flows-graphs
-    role: practice
-    kind: practice-site
-    title: "CSES Problem Set: Graph Algorithms (flow and matching), Dynamic Programming, Advanced Techniques"
-    by: "Antti Laaksonen (CSES)"
-    url: https://cses.fi/problemset/
-    edition_or_term: "Live problem set"
-    access: free
-    use: "Flow and matching section of Graph Algorithms: Download Speed, Police Chase, School Dance, Distinct Routes; DP: Projects, Elevator Rides, Counting Tilings, Increasing Subsequence II; Advanced Techniques for binary-search-on-answer and greedy checks. Pair with cp-algorithms.com/graph/edmonds_karp.html as the implementation reference."
-    why: "Actually coding max-flow and bipartite matching reductions (and getting them accepted on hidden tests) is the missing half of the flow chapter."
-    verified: true
-  - id: cp-algorithms-flow
-    role: reference
-    kind: website
-    title: "cp-algorithms: Maximum flow (Ford-Fulkerson and Edmonds-Karp)"
-    by: "cp-algorithms.com contributors"
-    url: https://cp-algorithms.com/graph/edmonds_karp.html
-    edition_or_term: "Live"
-    access: free
-    use: "Flow articles (Edmonds-Karp, Dinic, push-relabel, min-cost flow, bipartite matching) for working C++ implementations once the theory is clear."
-    why: "Implementation-grade reference for the flow reductions the textbook leaves abstract."
-    verified: true
+- id: kleinberg-tardos
+  role: primary-text
+  kind: book
+  title: Algorithm Design
+  by: Jon Kleinberg, Eva Tardos
+  url: https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003259/9780137546350
+  edition_or_term: 1st edition (Pearson, 2005; current Pearson reissue)
+  access: paid
+  use: 'Ch. 1 (stable matching), 4 (greedy: exchange arguments, interval scheduling, Dijkstra, MST, clustering), 5 (divide and conquer), 6 (DP: weighted intervals, knapsack, sequence alignment, shortest paths), 7 (network flow and applications: max-flow min-cut, bipartite matching, circulations), 8 (NP and computational intractability: reductions), 10-11 (extending limits: approximation and local search), 13 (randomized algorithms: contention resolution, min cut, hashing). Do roughly 3 exercises per chapter, including at least one ''design from scratch'' problem.'
+  why: 'The best text on the craft of design: each chapter is organized around a technique and proofs (exchange arguments, flow reductions, NP reductions) are taught, not just stated. Its exercises are widely used as the bar for algorithm-design courses.'
+  verified: true
+- id: mit-6-046
+  role: primary-course
+  kind: course
+  title: MIT 6.046J Design and Analysis of Algorithms (now 6.1220J / 18.410J)
+  by: MIT (Erik Demaine, Srini Devadas, Nancy Lynch)
+  url: https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/
+  edition_or_term: Spring 2015 (OCW, public videos)
+  access: free
+  use: Lectures 1-18 (interval scheduling, divide and conquer, amortization, randomization and hashing, advanced DP, MST, max flow and matching, LP, P/NP/NP-completeness, approximation, fixed-parameter algorithms); skim 19-24 (distributed, crypto, cache-oblivious). Do the problem sets with solutions and recitation videos.
+  why: Newest complete public video course at this level with problem sets, solutions, recitations and exams; follows CLRS/KT order. It is lighter on exchange-argument greedy proofs and reductions than K&T, so read those K&T chapters alongside.
+  verified: true
+  course:
+    latest_term: Spring 2026 (6.1220J / 18.410J, Kuikui Liu, Srinivasan Raghuraman, Julian Shun; per MIT TOC calendar)
+    latest_url: https://toc.csail.mit.edu/node/1803
+    videos: unknown
+    public_videos_term: Spring 2015
+    public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/pages/assignments/
+- id: wayne-kt-slides
+  role: reference
+  kind: website
+  title: Lecture slides for Algorithm Design (Kevin Wayne)
+  by: Kevin Wayne (Princeton)
+  url: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/
+  edition_or_term: Slides for K&T 1st edition
+  access: free
+  use: Slide sets per chapter (greedy, divide and conquer, DP, network flow, NP and reductions) as a pre-read or review before each K&T chapter.
+  why: Compact, well-regarded visual summaries of exactly the primary text; closes the 'dry chapter' gap and helps review reductions quickly.
+  verified: true
+- id: erickson-flows-nph
+  role: secondary
+  kind: book
+  title: 'Algorithms (Erickson): flows, NP-hardness, backtracking'
+  by: Jeff Erickson
+  url: https://jeffe.cs.illinois.edu/teaching/algorithms/
+  edition_or_term: 1st edition 2019; lecture notes maintained (CS 473 Fall 2024)
+  access: free
+  use: Ch. 10 Maximum Flows and Minimum Cuts, Ch. 11 Applications of Flows and Cuts, Ch. 12 NP-Hardness (reductions via gadgets), plus the lecture notes on approximation and randomized algorithms; read next to K&T ch. 7-8.
+  why: Second voice on the two topics students struggle with most (flow modelling, NP-hardness reductions); free, and the homework archive provides a large set of past problems.
+  verified: true
+- id: cs170-berkeley
+  role: secondary
+  kind: course
+  title: UC Berkeley CS 170 Efficient Algorithms and Intractable Problems
+  by: UC Berkeley (Nika Haghtalab, John Wright, Fall 2026)
+  url: https://cs170.org/
+  edition_or_term: 'Fall 2026 (text: DPV, Dasgupta-Papadimitriou-Vazirani)'
+  access: free
+  use: Discussion worksheets with solutions and homework solutions for D&C, greedy, DP, LP/flows/duality/zero-sum games, reductions and NP-completeness; lecture notes for the second half (DP, LP, flow, P vs NP, coping with NP-completeness).
+  why: Public, current (Fall 2026) discussion worksheets and homework solutions give a second source of solved design problems; scope almost identical to this node. Lecture recordings were not found on the page, so not chosen as the primary course.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs170.org/
+    videos: unknown
+    assignments: public
+    assignments_url: https://cs170.org/
+- id: demaine-hardness
+  role: secondary
+  kind: course
+  title: 'MIT 6.890 / 6.892 Algorithmic Lower Bounds: Fun with Hardness Proofs'
+  by: Erik Demaine (MIT)
+  url: https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/
+  edition_or_term: Fall 2014 videos (OCW); Spring 2019 course site with problem sets
+  access: free
+  use: Fall 2014 lectures 2-3 (3-Partition I-II), 4-7 (SAT I, SAT Reductions, Circuit SAT, Planar SAT), 8 (Hamiltonicity) and 9 (Graph Problems), then the problem sets on the Spring 2019 site; use only for reduction-writing practice. Lectures 10-12 (inapproximability, gaps and PCP) belong to approximation-algorithms.
+  why: 'Hidden gem: the only public course devoted to inventing NP-hardness reductions; closes the gap between ''know the textbook reductions'' and ''prove a new problem hard''.'
+  verified: true
+  course:
+    latest_term: Spring 2019 (6.892 course site; Fall 2014 videos remain the public recordings)
+    latest_url: https://courses.csail.mit.edu/6.892/spring19/
+    videos: public
+    public_videos_term: Fall 2014
+    public_videos_url: https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/
+    assignments: public
+    assignments_url: https://courses.csail.mit.edu/6.892/spring19/
+- id: roughgarden-algs-youtube
+  role: secondary
+  kind: video-series
+  title: Algorithms 2 (Roughgarden, Stanford; lectures on greedy, DP, NP-completeness)
+  by: Tim Roughgarden
+  url: https://www.youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6
+  edition_or_term: 'Stanford Algorithms: Design and Analysis, Part 2 (YouTube playlist; same material as Coursera Algorithms Specialization parts 3-4)'
+  access: free
+  use: Greedy and scheduling, Huffman, MST, clustering, DP (knapsack, sequence alignment, optimal BST), NP-completeness, heuristics and local search; watch when a K&T chapter is unclear.
+  why: Clear, well-paced lectures on the greedy-proof and DP material for learners who need explanation beyond the MIT lectures.
+  verified: true
+- id: cses-flows-graphs
+  role: practice
+  kind: practice-site
+  title: 'CSES Problem Set: Graph Algorithms (flow and matching), Dynamic Programming, Advanced Techniques'
+  by: Antti Laaksonen (CSES)
+  url: https://cses.fi/problemset/
+  edition_or_term: Live problem set
+  access: free
+  use: 'Flow and matching section of Graph Algorithms: Download Speed, Police Chase, School Dance, Distinct Routes; DP: Projects, Elevator Rides, Counting Tilings, Increasing Subsequence II; Advanced Techniques for binary-search-on-answer and greedy checks. Pair with cp-algorithms.com/graph/edmonds_karp.html as the implementation reference.'
+  why: Actually coding max-flow and bipartite matching reductions (and getting them accepted on hidden tests) is the missing half of the flow chapter.
+  verified: true
+- id: cp-algorithms-flow
+  role: reference
+  kind: website
+  title: 'cp-algorithms: Maximum flow (Ford-Fulkerson and Edmonds-Karp)'
+  by: cp-algorithms.com contributors
+  url: https://cp-algorithms.com/graph/edmonds_karp.html
+  edition_or_term: Live
+  access: free
+  use: Flow articles (Edmonds-Karp, Dinic, push-relabel, min-cost flow, bipartite matching) for working C++ implementations once the theory is clear.
+  why: Implementation-grade reference for the flow reductions the textbook leaves abstract.
+  verified: true
 considered:
-  - {title: "CLRS 4th ed. (see algorithms node)", url: "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", reason: "Excellent reference for ch. 24-25, 29, 34-35, but K&T teaches design and reductions better; CLRS serves as the proof reference."}
-  - {title: "Dasgupta, Papadimitriou, Vazirani, Algorithms (DPV)", url: "https://cs170.org/", reason: "Short, free-draft, elegant; used by CS170; chosen not as primary because proofs are terser than K&T; read via CS170 readings if wanted."}
-  - {title: "Stanford CS 161 (Winter 2026)", url: "https://stanford-cs161.github.io/winter2026/", reason: "Notes, slides, psets public; recordings Canvas-only."}
-  - {title: "CMU 15-451 Algorithm Design and Analysis (Spring 2025)", url: "https://www.cs.cmu.edu/~15451-s25/", reason: "Free combined notes PDF; fine alternative course; no public recordings found."}
-  - {title: "Algorithms Illuminated Part 3-4 / Coursera Algorithms Specialization", url: "https://www.coursera.org/specializations/algorithms", reason: "Good accessible alternative; less demanding proofs than K&T."}
-  - {title: "UW CSE 421 Introduction to Algorithms (Winter 2026)", url: "https://courses.cs.washington.edu/courses/cse421/26wi/syllabus.html", reason: "Uses K&T; syllabus live; content and recordings not checked."}
-notes: "Primary pairing K&T + MIT 6.046 (Spring 2015 videos). The newest MIT term (6.1220J Spring 2026) has no public recordings that I found, so the 2015 OCW videos are the pointer. 6.046 2015 skips deep NP-completeness and reduction practice, so Erickson ch. 12, Demaine's hardness course and CS 170 worksheets fill that gap. The 'intro randomized and approximation' part of the scope is covered at the K&T ch. 10-13 / 6.046 lecture 17 level; deeper treatment is in the randomized-algorithms and approximation-algorithms nodes."
+- title: CLRS 4th ed. (see algorithms node)
+  url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+  reason: Excellent reference for ch. 24-25, 29, 34-35, but K&T teaches design and reductions better; CLRS serves as the proof reference.
+- title: Dasgupta, Papadimitriou, Vazirani, Algorithms (DPV)
+  url: https://cs170.org/
+  reason: Short, free-draft, elegant; used by CS170; chosen not as primary because proofs are terser than K&T; read via CS170 readings if wanted.
+- title: Stanford CS 161 (Winter 2026)
+  url: https://stanford-cs161.github.io/winter2026/
+  reason: Notes, slides, psets public; recordings Canvas-only.
+- title: CMU 15-451 Algorithm Design and Analysis (Spring 2025)
+  url: https://www.cs.cmu.edu/~15451-s25/
+  reason: Free combined notes PDF; fine alternative course; no public recordings found.
+- title: Algorithms Illuminated Part 3-4 / Coursera Algorithms Specialization
+  url: https://www.coursera.org/specializations/algorithms
+  reason: Good accessible alternative; less demanding proofs than K&T.
+- title: UW CSE 421 Introduction to Algorithms (Winter 2026)
+  url: https://courses.cs.washington.edu/courses/cse421/26wi/syllabus.html
+  reason: Uses K&T; syllabus live; content and recordings not checked.
+notes: Primary pairing K&T + MIT 6.046 (Spring 2015 videos). The newest MIT term (6.1220J Spring 2026) has no public recordings that I found, so the 2015 OCW videos are the pointer. 6.046 2015 skips deep NP-completeness and reduction practice, so Erickson ch. 12, Demaine's hardness course and CS 170 worksheets fill that gap. The 'intro randomized and approximation' part of the scope is covered at the K&T ch. 10-13 / 6.046 lecture 17 level; deeper treatment is in the randomized-algorithms and approximation-algorithms nodes.
 split_proposal: null
-prereq_changes: "Consider adding soft: [discrete-math] explicitly (proof by induction/exchange arguments), though it is implied through algorithms."
+prereq_changes: null
 open_questions:
-  - "Whether MIT 6.1220J Spring 2026 or Berkeley CS 170 Fall 2026 have public lecture recordings (none located)."
-  - "CLRS reference in considered not opened (MIT Press blocks bots)."
+- Whether MIT 6.1220J Spring 2026 or Berkeley CS 170 Fall 2026 have public lecture recordings (none located).
+- CLRS reference in considered not opened (MIT Press blocks bots).
 last_verified: 2026-11-18

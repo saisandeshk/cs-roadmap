@@ -1,0 +1,83 @@
+id: hardware-security
+title: Hardware Security
+group: G12
+paths:
+- security
+hard:
+- security-fundamentals
+- computer-architecture
+soft:
+- systems-security
+- operating-systems
+scope: Cache and transient-execution side channels (Spectre-class), Rowhammer, trusted execution environments and attestation.
+level: advanced
+resources:
+- id: canella-transient
+  role: primary-text
+  kind: paper
+  title: A Systematic Evaluation of Transient Execution Attacks and Defenses
+  by: Canella et al. (USENIX Security 2019)
+  url: https://arxiv.org/abs/1811.05441
+  edition_or_term: 2018/2019
+  access: free
+  use: Taxonomy of Spectre/Meltdown variants and defenses (Sections 2-5); read with spectreattack.com papers for original Spectre and Meltdown.
+  why: Organizes the Spectre class into one framework; the field map for side channels.
+  verified: true
+- id: mit-6595
+  role: primary-course
+  kind: course
+  title: MIT 6.5950/6.5951 Secure Hardware Design
+  by: Mengjia Yan, MIT
+  url: https://shd.mit.edu/2026
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Lectures and readings on microarchitectural attacks (cache attacks, Spectre/Meltdown, Rowhammer), hardware support for software security (ASLR, enclaves, memory tagging), security assurance tools; labs: Website Fingerprinting, Cache Attacks, Spectre Attacks, Rowhammer, ASLR Bypasses, Pretty Secure Processor, CPU Fuzzing, CPU Verification. Prior terms'' labs and slides are public.'
+  why: The only course that makes you actually mount side-channel attacks on real hardware; fills the Spectre-class and hardware gap.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://shd.mit.edu/2026
+    videos: enrolled-only
+    public_videos_term: 'Spring 2025: lectures on Panopto linked from shd.mit.edu/2025; OCW Spring 2025 page has assignments and materials. Panopto folder access not confirmed public (login redirect).'
+    public_videos_url: https://ocw.mit.edu/courses/6-5950-secure-hardware-design-spring-2025/
+    assignments: public
+    assignments_url: https://shd.mit.edu/2026/labs.html
+- id: spectre-meltdown
+  role: reference
+  kind: paper
+  title: Spectre Attacks / Meltdown (original papers)
+  by: Kocher et al.; Lipp et al.
+  url: https://spectreattack.com/
+  edition_or_term: '2018'
+  access: free
+  use: 'Spectre Attacks: Exploiting Speculative Execution (variants 1 and 2) and Meltdown; both papers linked from this page.'
+  why: Primary sources for the Spectre class.
+  verified: true
+- id: sgx-explained
+  role: secondary
+  kind: paper
+  title: Intel SGX Explained
+  by: Victor Costan, Srinivas Devadas (IACR ePrint 2016/086)
+  url: https://eprint.iacr.org/2016/086
+  edition_or_term: '2016'
+  access: free
+  use: Sections on hardware background, SGX programming model, attestation, and the security analysis; skim x86 background if familiar.
+  why: Best single deep source on trusted execution and its attack surface; fills TEE gap that MIT 6.566's TPM lecture only touches.
+  verified: true
+- id: pwncollege-system
+  role: practice
+  kind: practice-site
+  title: pwn.college System Security dojo
+  by: pwn.college
+  url: https://pwn.college/system-security/
+  edition_or_term: 6 modules / ~93 challenges
+  access: free
+  use: Module Speculative Execution/Microarchitecture Exploitation, with its lectures.
+  why: Practice breaking seccomp/chroot sandboxes, kernel modules, race conditions and cache/speculation attacks with graded challenges.
+  verified: true
+considered: []
+notes: Created by splitting 'systems-security' (owner decision B10, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

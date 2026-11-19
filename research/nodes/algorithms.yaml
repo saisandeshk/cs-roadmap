@@ -1,142 +1,153 @@
-# --- copied from research/skeleton.yaml ---
 id: algorithms
 title: Algorithms I
 group: G3
-paths: [core]
-hard: [data-structures, discrete-math]
+paths:
+- core
+hard:
+- data-structures
+- discrete-math
 soft: []
-scope: "Asymptotics, sorting, searching, hashing, graph algorithms (BFS/DFS/shortest paths/MST), dynamic programming, greedy intro."
-
-# --- curation data ---
+scope: Asymptotics, sorting, searching, hashing, graph algorithms (BFS/DFS/shortest paths/MST), dynamic programming, greedy intro.
 level: intro
-estimated_hours: 130
 resources:
-  - id: clrs-4e
-    role: primary-text
-    kind: book
-    title: "Introduction to Algorithms, 4th edition (CLRS)"
-    by: "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein"
-    url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
-    edition_or_term: "4th edition (MIT Press, April 2022)"
-    access: paid
-    use: "Ch. 2-4 (analysis, divide and conquer, recurrences), 6-8 (heaps, quicksort, linear-time sorting), 11 (hash tables), 12-13 (BSTs, red-black trees, skim), 14-15 (dynamic programming, greedy), 20-23 (BFS/DFS, MST, single-source and all-pairs shortest paths). Use as the proof-level reference next to the lectures; do the starred exercises on the chapters you watch."
-    why: "The canonical rigorous text; every 6.006/6.046-style course maps onto it, it states and proves correctness for every algorithm, and the same book serves algorithm-design and advanced-algorithms later (flows, matching, LP, NP-completeness, approximation). Dense for a first pass, which is why the course and Erickson sit beside it."
-    verified: false
-  - id: mit-6-006
-    role: primary-course
-    kind: course
-    title: "MIT 6.006 Introduction to Algorithms (now 6.1210)"
-    by: "MIT (Erik Demaine, Jason Ku, Justin Solomon)"
-    url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
-    edition_or_term: "Spring 2020 (OCW, public videos)"
-    access: free
-    use: "All 21 lectures plus the problem sessions (data structures and dynamic arrays, hashing, linear sorting, AVL, heaps, BFS/DFS, Dijkstra, Bellman-Ford, Johnson, DP with the SRTBOT framework, complexity), lecture notes, problem sets with solutions, quizzes as self-tests."
-    why: "Best fully public algorithms course: video, notes, problem sets and exams with solutions all on OCW. Its SRTBOT recipe for DP and its 'reduce to a graph' habits transfer directly. Folds data-structure content in with the algorithms, so it also reinforces the data-structures prerequisite."
-    verified: true
-    course:
-      latest_term: "Spring 2026 (6.1210, Brynmor Chapman, Yael Tauman Kalai, Will Leiserson; per MIT TOC calendar)"
-      latest_url: https://toc.csail.mit.edu/node/1802
-      videos: unknown
-      public_videos_term: "Spring 2020"
-      public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY
-      assignments: public
-      assignments_url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/
-  - id: erickson-algorithms
-    role: secondary
-    kind: book
-    title: "Algorithms (free textbook and lecture notes)"
-    by: "Jeff Erickson"
-    url: https://jeffe.cs.illinois.edu/teaching/algorithms/
-    edition_or_term: "1st edition, June 2019 (CC BY 4.0); notes still maintained (CS 374 taught Fall 2023, CS 473 Fall 2024)"
-    access: free
-    use: "Ch. 1 Recursion, 2 Backtracking, 3 Dynamic Programming, 4 Greedy, 5-9 graph chapters (basic graph search, DFS, MST, shortest paths, APSP). Use the DP chapter when SRTBOT or CLRS feels mechanical; use the separate lecture notes on amortized analysis and randomized algorithms later. Pair with the 'coursework archive' homeworks for proof-writing practice."
-    why: "Fills the gap on how to derive a recurrence and prove it correct from scratch (recursion-first DP and backtracking), which CLRS states but does not teach; unusually good prose and a large free exercise bank."
-    verified: true
-  - id: princeton-algs4
-    role: secondary
-    kind: website
-    title: "Algorithms, 4th edition booksite (Sedgewick and Wayne)"
-    by: "Robert Sedgewick, Kevin Wayne"
-    url: https://algs4.cs.princeton.edu/home/
-    edition_or_term: "4th edition booksite"
-    access: free
-    use: "Sections 1.4 (analysis), 2.1-2.4 (elementary sorts, mergesort, quicksort, priority queues), 3.1-3.4 (symbol tables, BSTs, hash tables), 4.1-4.4 (graphs, MST, shortest paths). Read the Java code and run the experiments; use the lecture slides as a quick refresher."
-    why: "Gap filler for the implementation side: complete working code, empirical running-time experiments and the 'which data structure underlies which algorithm' view. Weaker on proofs than CLRS, so a complement and not a substitute."
-    verified: true
-  - id: princeton-coursera-part1
-    role: practice
-    kind: course
-    title: "Algorithms, Part I (Princeton, Coursera; Java)"
-    by: "Kevin Wayne, Robert Sedgewick"
-    url: https://www.coursera.org/learn/algorithms-part1
-    edition_or_term: "Self-paced Coursera course"
-    access: account-required
-    use: "Optional, after CSES / USACO Guide / AtCoder DP (the main practice). Java only. Programming assignments only: Percolation (union-find), Deques and Randomized Queues, Collinear Points (sorting), 8 Puzzle (priority queue and A*), Kd-Trees. Part II assignments (WordNet, Seam Carving, Baseball Elimination, Boggle, Burrows-Wheeler) cover graphs, shortest paths, flow and strings if wanted."
-    why: "Autograded, performance-scored programming assignments that check implementations meet stated time and memory bounds. Weakest practice item for a Python-first learner: assignments must be written in Java, a Coursera account is required, and free audit rights to videos and graded assignments were not checked. Percolation and Deques overlap the data-structures node."
-    verified: true
-    course:
-      latest_term: "Self-paced (no fixed term)"
-      latest_url: https://www.coursera.org/learn/algorithms-part1
-      videos: unknown
-      assignments: partial
-      assignments_url: https://algs4.cs.princeton.edu/home/
-  - id: cses
-    role: practice
-    kind: practice-site
-    title: "CSES Problem Set"
-    by: "Antti Laaksonen (CSES, University of Helsinki)"
-    url: https://cses.fi/problemset/
-    edition_or_term: "Live problem set"
-    access: free
-    use: "Sorting and Searching (Distinct Numbers, Apartments, Ferris Wheel, Movie Festival, Sum of Two Values, Maximum Subarray Sum, Traffic Lights, Factory Machines); Dynamic Programming (Dice Combinations, Minimizing Coins, Coin Combinations I/II, Grid Paths I, Book Shop, Edit Distance, Longest Common Subsequence, Increasing Subsequence); Graph Algorithms (Counting Rooms, Building Roads, Message Route, Shortest Routes I/II, Cycle Finding, Course Schedule, Road Reparation)."
-    why: "Small, well-ordered, auto-judged problems with hidden tests that force correct and efficient implementations of exactly this node's material."
-    verified: true
-  - id: usaco-guide
-    role: practice
-    kind: practice-site
-    title: "USACO Guide (Silver and Gold modules)"
-    by: "USACO Guide contributors"
-    url: https://usaco.guide/silver
-    edition_or_term: "Live"
-    access: free
-    use: "Silver: Prefix Sums, Sorting and Searching (binary search, custom comparators, greedy with sorting), Graph Traversal (flood fill, DFS). Gold: Introduction to DP, Knapsack DP, Paths on Grids, Shortest Paths (Dijkstra), Minimum Spanning Trees. Do the 'Easy' and 'Normal' graded problems after each module."
-    why: "Structured module-by-module teaching with problem lists graded by difficulty; the best free ladder when CSES feels flat. Use for ordering and extra problems, not as the primary theory."
-    verified: true
-  - id: atcoder-dp
-    role: practice
-    kind: practice-site
-    title: "AtCoder Educational DP Contest"
-    by: "AtCoder"
-    url: https://atcoder.jp/contests/dp
-    edition_or_term: "Educational DP Contest (26 problems A-Z)"
-    access: free
-    use: "Problems A-N in order (A Frog 1, B Frog 2, C Vacation, D Knapsack 1, E Knapsack 2, F LCS, G Longest Path, H Grid 1, I Coins, J Sushi, K Stones, L Deque, M Candies, N Slimes); O-Z only after the DP chapters of the course."
-    why: "A single contest that walks through every classic DP pattern in order of difficulty with editorials; fills the 'DP needs volume' gap that lectures cannot."
-    verified: true
-  - id: visualgo
-    role: reference
-    kind: tool
-    title: "VisuAlgo"
-    by: "Steven Halim et al. (NUS)"
-    url: https://visualgo.net/en
-    edition_or_term: "Live"
-    access: free
-    use: "Sorting, hash table, binary heap, BST/AVL, graph traversal, MST and SSSP visualizations; step through your own input before implementing."
-    why: "Fast way to build intuition for a data structure or graph algorithm's state evolution; no equivalent in the book or course."
-    verified: true
+- id: clrs-4e
+  role: primary-text
+  kind: book
+  title: Introduction to Algorithms, 4th edition (CLRS)
+  by: Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+  url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+  edition_or_term: 4th edition (MIT Press, April 2022)
+  access: paid
+  use: Ch. 2-4 (analysis, divide and conquer, recurrences), 6-8 (heaps, quicksort, linear-time sorting), 11 (hash tables), 12-13 (BSTs, red-black trees, skim), 14-15 (dynamic programming, greedy), 20-23 (BFS/DFS, MST, single-source and all-pairs shortest paths). Use as the proof-level reference next to the lectures; do the starred exercises on the chapters you watch.
+  why: The canonical rigorous text; every 6.006/6.046-style course maps onto it, it states and proves correctness for every algorithm, and the same book serves algorithm-design and advanced-algorithms later (flows, matching, LP, NP-completeness, approximation). Dense for a first pass, which is why the course and Erickson sit beside it.
+  verified: false
+- id: mit-6-006
+  role: primary-course
+  kind: course
+  title: MIT 6.006 Introduction to Algorithms (now 6.1210)
+  by: MIT (Erik Demaine, Jason Ku, Justin Solomon)
+  url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+  edition_or_term: Spring 2020 (OCW, public videos)
+  access: free
+  use: All 21 lectures plus the problem sessions (data structures and dynamic arrays, hashing, linear sorting, AVL, heaps, BFS/DFS, Dijkstra, Bellman-Ford, Johnson, DP with the SRTBOT framework, complexity), lecture notes, problem sets with solutions, quizzes as self-tests.
+  why: 'Best fully public algorithms course: video, notes, problem sets and exams with solutions all on OCW. Its SRTBOT recipe for DP and its ''reduce to a graph'' habits transfer directly. Folds data-structure content in with the algorithms, so it also reinforces the data-structures prerequisite.'
+  verified: true
+  course:
+    latest_term: Spring 2026 (6.1210, Brynmor Chapman, Yael Tauman Kalai, Will Leiserson; per MIT TOC calendar)
+    latest_url: https://toc.csail.mit.edu/node/1802
+    videos: unknown
+    public_videos_term: Spring 2020
+    public_videos_url: https://www.youtube.com/playlist?list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/
+- id: erickson-algorithms
+  role: secondary
+  kind: book
+  title: Algorithms (free textbook and lecture notes)
+  by: Jeff Erickson
+  url: https://jeffe.cs.illinois.edu/teaching/algorithms/
+  edition_or_term: 1st edition, June 2019 (CC BY 4.0); notes still maintained (CS 374 taught Fall 2023, CS 473 Fall 2024)
+  access: free
+  use: Ch. 1 Recursion, 2 Backtracking, 3 Dynamic Programming, 4 Greedy, 5-9 graph chapters (basic graph search, DFS, MST, shortest paths, APSP). Use the DP chapter when SRTBOT or CLRS feels mechanical; use the separate lecture notes on amortized analysis and randomized algorithms later. Pair with the 'coursework archive' homeworks for proof-writing practice.
+  why: Fills the gap on how to derive a recurrence and prove it correct from scratch (recursion-first DP and backtracking), which CLRS states but does not teach; unusually good prose and a large free exercise bank.
+  verified: true
+- id: princeton-algs4
+  role: secondary
+  kind: website
+  title: Algorithms, 4th edition booksite (Sedgewick and Wayne)
+  by: Robert Sedgewick, Kevin Wayne
+  url: https://algs4.cs.princeton.edu/home/
+  edition_or_term: 4th edition booksite
+  access: free
+  use: Sections 2.1-2.3 (elementary sorts, mergesort, quicksort) and 4.3-4.4 (MST, shortest paths); sections 1.3-1.5, 2.4, 3.1-3.5 and 4.1-4.2 are read in data-structures.
+  why: 'Gap filler for the implementation side: complete working code, empirical running-time experiments and the ''which data structure underlies which algorithm'' view. Weaker on proofs than CLRS, so a complement and not a substitute.'
+  verified: true
+- id: princeton-coursera-part1
+  role: practice
+  kind: course
+  title: Algorithms, Part I (Princeton, Coursera; Java)
+  by: Kevin Wayne, Robert Sedgewick
+  url: https://www.coursera.org/learn/algorithms-part1
+  edition_or_term: Self-paced Coursera course
+  access: account-required
+  use: 'Optional, after CSES / USACO Guide / AtCoder DP (the main practice). Java only. Programming assignments only: Percolation (union-find), Deques and Randomized Queues, Collinear Points (sorting), 8 Puzzle (priority queue and A*), Kd-Trees. Part II assignments (WordNet, Seam Carving, Baseball Elimination, Boggle, Burrows-Wheeler) cover graphs, shortest paths, flow and strings if wanted.'
+  why: 'Autograded, performance-scored programming assignments that check implementations meet stated time and memory bounds. Weakest practice item for a Python-first learner: assignments must be written in Java, a Coursera account is required, and free audit rights to videos and graded assignments were not checked. Percolation and Deques overlap the data-structures node.'
+  verified: true
+  course:
+    latest_term: Self-paced (no fixed term)
+    latest_url: https://www.coursera.org/learn/algorithms-part1
+    videos: unknown
+    assignments: partial
+    assignments_url: https://algs4.cs.princeton.edu/home/
+- id: cses
+  role: practice
+  kind: practice-site
+  title: CSES Problem Set
+  by: Antti Laaksonen (CSES, University of Helsinki)
+  url: https://cses.fi/problemset/
+  edition_or_term: Live problem set
+  access: free
+  use: Sorting and Searching (Distinct Numbers, Apartments, Ferris Wheel, Movie Festival, Sum of Two Values, Maximum Subarray Sum, Traffic Lights, Factory Machines); Dynamic Programming (Dice Combinations, Minimizing Coins, Coin Combinations I/II, Grid Paths I, Book Shop, Edit Distance, Longest Common Subsequence, Increasing Subsequence); Graph Algorithms (Counting Rooms, Building Roads, Message Route, Shortest Routes I/II, Cycle Finding, Course Schedule, Road Reparation).
+  why: Small, well-ordered, auto-judged problems with hidden tests that force correct and efficient implementations of exactly this node's material.
+  verified: true
+- id: usaco-guide
+  role: practice
+  kind: practice-site
+  title: USACO Guide (Silver and Gold modules)
+  by: USACO Guide contributors
+  url: https://usaco.guide/silver
+  edition_or_term: Live
+  access: free
+  use: 'Silver: Prefix Sums, Sorting and Searching (binary search, custom comparators, greedy with sorting), Graph Traversal (flood fill, DFS). Gold: Introduction to DP, Knapsack DP, Paths on Grids, Shortest Paths (Dijkstra), Minimum Spanning Trees. Do the ''Easy'' and ''Normal'' graded problems after each module.'
+  why: Structured module-by-module teaching with problem lists graded by difficulty; the best free ladder when CSES feels flat. Use for ordering and extra problems, not as the primary theory.
+  verified: true
+- id: atcoder-dp
+  role: practice
+  kind: practice-site
+  title: AtCoder Educational DP Contest
+  by: AtCoder
+  url: https://atcoder.jp/contests/dp
+  edition_or_term: Educational DP Contest (26 problems A-Z)
+  access: free
+  use: Problems A-N in order (A Frog 1, B Frog 2, C Vacation, D Knapsack 1, E Knapsack 2, F LCS, G Longest Path, H Grid 1, I Coins, J Sushi, K Stones, L Deque, M Candies, N Slimes); O-Z only after the DP chapters of the course.
+  why: A single contest that walks through every classic DP pattern in order of difficulty with editorials; fills the 'DP needs volume' gap that lectures cannot.
+  verified: true
+- id: visualgo
+  role: reference
+  kind: tool
+  title: VisuAlgo
+  by: Steven Halim et al. (NUS)
+  url: https://visualgo.net/en
+  edition_or_term: Live
+  access: free
+  use: Sorting, MST and SSSP visualizations; step through your own input before implementing. The data-structure visualizations are used in data-structures.
+  why: Fast way to build intuition for a data structure or graph algorithm's state evolution; no equivalent in the book or course.
+  verified: true
 considered:
-  - {title: "Algorithms Illuminated (Roughgarden), Parts 1-4 + Coursera Algorithms Specialization / YouTube", url: "https://www.algorithmsilluminated.org/", reason: "Gentlest rigorous on-ramp and good videos (Stanford CS161 style); kept out only because MIT 6.006 has public problem sets with solutions and covers data structures too. Strong alternative primary-text/course for a learner who finds CLRS too dense."}
-  - {title: "Stanford CS 161 Design and Analysis of Algorithms (Winter 2026)", url: "https://stanford-cs161.github.io/winter2026/", reason: "Fresh notes, slides, problem sets and exams public, but lecture recordings are Canvas-only (enrolled). Good for 2026 materials."}
-  - {title: "UC Berkeley CS 170 (Fall 2026) with DPV textbook", url: "https://cs170.org/", reason: "Excellent notes and discussion worksheets (DPV is free); recording status not verified; stronger fit for algorithm-design node."}
-  - {title: "Skiena, The Algorithm Design Manual (3rd ed.)", url: "https://www.algorist.com/", reason: "Superb modelling advice and catalog of problems; not a proof-based first text; kept as optional reading for 'which algorithm do I use'."}
-  - {title: "cp-algorithms.com", url: "https://cp-algorithms.com/", reason: "Great reference for implementations once the idea is understood; used in advanced node, not a teaching text."}
-  - {title: "Algorithmica (Sergey Slotin), Algorithms for Modern Hardware", url: "https://en.algorithmica.org/hpc/", reason: "Hidden gem on real performance of sorting/search/hashing, but belongs to performance-engineering; recommended after this node."}
-notes: "Primary pairing is CLRS + MIT 6.006 (Spring 2020 videos). 6.006 spends about a third on data structures, so there is overlap with the data-structures node: consider letting that node own AVL/heaps/hashing and cutting 6.006 lectures 2-8 here if the owner wants a stricter split. The 6.1210 renumbering and Spring 2026 term exist but no public recordings or OCW refresh were found. Practice sets are ordered CSES then USACO then AtCoder DP. MIT Press blocks automated fetches (403), so the CLRS URL was not opened by me."
+- title: Algorithms Illuminated (Roughgarden), Parts 1-4 + Coursera Algorithms Specialization / YouTube
+  url: https://www.algorithmsilluminated.org/
+  reason: Gentlest rigorous on-ramp and good videos (Stanford CS161 style); kept out only because MIT 6.006 has public problem sets with solutions and covers data structures too. Strong alternative primary-text/course for a learner who finds CLRS too dense.
+- title: Stanford CS 161 Design and Analysis of Algorithms (Winter 2026)
+  url: https://stanford-cs161.github.io/winter2026/
+  reason: Fresh notes, slides, problem sets and exams public, but lecture recordings are Canvas-only (enrolled). Good for 2026 materials.
+- title: UC Berkeley CS 170 (Fall 2026) with DPV textbook
+  url: https://cs170.org/
+  reason: Excellent notes and discussion worksheets (DPV is free); recording status not verified; stronger fit for algorithm-design node.
+- title: Skiena, The Algorithm Design Manual (3rd ed.)
+  url: https://www.algorist.com/
+  reason: Superb modelling advice and catalog of problems; not a proof-based first text; kept as optional reading for 'which algorithm do I use'.
+- title: cp-algorithms.com
+  url: https://cp-algorithms.com/
+  reason: Great reference for implementations once the idea is understood; used in advanced node, not a teaching text.
+- title: Algorithmica (Sergey Slotin), Algorithms for Modern Hardware
+  url: https://en.algorithmica.org/hpc/
+  reason: Hidden gem on real performance of sorting/search/hashing, but belongs to performance-engineering; recommended after this node.
+notes: 'Primary pairing is CLRS + MIT 6.006 (Spring 2020 videos). 6.006 spends about a third on data structures, so there is overlap with the data-structures node: consider letting that node own AVL/heaps/hashing and cutting 6.006 lectures 2-8 here if the owner wants a stricter split. The 6.1210 renumbering and Spring 2026 term exist but no public recordings or OCW refresh were found. Practice sets are ordered CSES then USACO then AtCoder DP. MIT Press blocks automated fetches (403), so the CLRS URL was not opened by me.'
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "CLRS MIT Press page returns 403 to bots; URL taken from a search result and not opened."
-  - "CLRS chapter numbers given from memory of the 4th edition; not checked against the table of contents."
-  - "Whether MIT 6.1210 Spring 2026 recordings or a public course site exist (none found)."
-  - "Coursera Algorithms Part I: current video access and whether graded assignments require a paid enrollment."
+- CLRS MIT Press page returns 403 to bots; URL taken from a search result and not opened.
+- CLRS chapter numbers given from memory of the 4th edition; not checked against the table of contents.
+- Whether MIT 6.1210 Spring 2026 recordings or a public course site exist (none found).
+- 'Coursera Algorithms Part I: current video access and whether graded assignments require a paid enrollment.'
 last_verified: 2026-11-18

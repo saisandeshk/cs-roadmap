@@ -1,27 +1,110 @@
 id: interpreters
 title: Building Interpreters
 group: G11
-paths: [plc]
-hard: [programming-language-concepts, data-structures]
-soft: [c-programming]
+paths:
+- plc
+hard:
+- programming-language-concepts
+- data-structures
+soft:
+- c-programming
 scope: Lexing, parsing, tree-walking and bytecode interpreters, closures, GC basics.
 level: intermediate
-estimated_hours: 60
 resources:
-- {id: crafting-interpreters, role: primary-text, kind: book, title: Crafting Interpreters, by: Robert Nystrom, url: 'https://craftinginterpreters.com/', edition_or_term: Free web edition (2021 print by Genever Benning; all 30 chapters online), access: free, use: 'Part II (ch. 4-13: scanning, representing code, parsing, evaluating, statements and state, control flow, functions, resolving and binding, classes, inheritance) to build jlox in Java; Part III (ch. 14-30: chunks of bytecode, a virtual machine, scanning on demand, Pratt-style expression compiler, values, strings, hash tables, globals/locals, jumps, calls, closures, garbage collection, classes, optimization) to build clox in C.', why: 'The standard hands-on text for exactly this scope (lexing, parsing, tree-walking and bytecode interpreters, closures, GC basics); readable, complete working code, free to read, with a public test suite. ''Design Notes'' sections add language-design wisdom.', verified: true}
-- {id: interpreter-book, role: secondary, kind: book, title: Writing An Interpreter In Go and Writing A Compiler In Go, by: Thorsten Ball, url: 'https://interpreterbook.com/', edition_or_term: 'Interpreter book 2016; Compiler book 2018 (https://compilerbook.com/)', access: paid, use: 'Optional second pass if you want Pratt parsing and a bytecode VM in a small, test-driven style; the compiler book adds a bytecode compiler and VM for the Monkey language.', why: 'Test-driven, small-step format that suits learners who like writing tests first; covers the same ground as Crafting Interpreters but in Go and with a different language, which reinforces understanding.', verified: true}
-- {id: pratt-matklad, role: reference, kind: article, title: Simple but Powerful Pratt Parsing, by: Alex Kladov (matklad), url: 'https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html', edition_or_term: 'Essay, 2020 (checked 2026-11-18)', access: free, use: Read when implementing expression parsing in Crafting Interpreters ch. 6 or ch. 17; includes a full Rust implementation., why: 'Best short explanation of Pratt parsing and binding power, a technique used by many production parsers.', verified: true}
-- {id: lsbasi, role: secondary, kind: article, title: Let's Build A Simple Interpreter (series), by: Ruslan Spivak, url: 'https://ruslanspivak.com/lsbasi-part1/', edition_or_term: Blog series (checked 2026-11-18), access: free, use: 'Parts 1-8 for a gentle start (arithmetic interpreter in Python), then parts on a Pascal subset with scopes and procedures; an easy warm-up before Crafting Interpreters if recursive-descent parsing is new.', why: 'A slower, step-by-step Python warm-up that makes the leap to jlox easier.', verified: true}
-- {id: mal, role: practice, kind: tool, title: mal - Make a Lisp, by: Joel Martin (kanaka), url: 'https://github.com/kanaka/mal', edition_or_term: 'Rolling repository (4,062 commits; implementations in 89 languages)', access: free, use: 'Implement steps 0-A in a language of your choice (REPL, eval, def/let, if/fn/do, closures with TCO, quoting, macros, try/catch, self-hosting) with the provided per-step tests; ideal as a second, tiny interpreter in a different language.', why: 'Guided, self-testing exercise ladder for building a Lisp interpreter with closures, TCO and macros; many reference implementations to compare against.', verified: true}
-- {id: codecrafters-interpreter, role: practice, kind: practice-site, title: 'CodeCrafters: Build your own Interpreter (Lox)', by: CodeCrafters, url: 'https://app.codecrafters.io/courses/interpreter/overview', edition_or_term: Live course (checked 2026-11-18), access: account-required, use: 'Do the staged tasks (scanning, parsing, evaluating, statements, functions, resolving, classes) against the hosted test suite using any language; free tier covers part of the stages.', why: Test-suite-driven path through the Lox language from Crafting Interpreters with automatic feedback via git push., verified: true}
-- {id: sicp-ch4, role: secondary, kind: book, title: SICP ch. 4 (metacircular evaluator) and ch. 5 (register machines), by: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', url: 'https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html', edition_or_term: Online book (checked 2026-11-18), access: free, use: 'Section 4.1 (metacircular evaluator), 4.2 (lazy evaluation), 4.3 (nondeterministic amb evaluator), 5.1-5.2 (register machines and the explicit-control evaluator).', why: 'Short, deep treatment of evaluator design as the semantic foundation; the explicit-control evaluator foreshadows bytecode VMs.', verified: true}
+- id: crafting-interpreters
+  role: primary-text
+  kind: book
+  title: Crafting Interpreters
+  by: Robert Nystrom
+  url: https://craftinginterpreters.com/
+  edition_or_term: Free web edition (2021 print by Genever Benning; all 30 chapters online)
+  access: free
+  use: 'Part II (ch. 4-13: scanning, representing code, parsing, evaluating, statements and state, control flow, functions, resolving and binding, classes, inheritance) to build jlox in Java; Part III (ch. 14-30: chunks of bytecode, a virtual machine, scanning on demand, Pratt-style expression compiler, values, strings, hash tables, globals/locals, jumps, calls, closures, garbage collection, classes, optimization) to build clox in C.'
+  why: The standard hands-on text for exactly this scope (lexing, parsing, tree-walking and bytecode interpreters, closures, GC basics); readable, complete working code, free to read, with a public test suite. 'Design Notes' sections add language-design wisdom.
+  verified: true
+- id: interpreter-book
+  role: secondary
+  kind: book
+  title: Writing An Interpreter In Go and Writing A Compiler In Go
+  by: Thorsten Ball
+  url: https://interpreterbook.com/
+  edition_or_term: Interpreter book 2016; Compiler book 2018 (https://compilerbook.com/)
+  access: paid
+  use: Optional second pass if you want Pratt parsing and a bytecode VM in a small, test-driven style; the compiler book adds a bytecode compiler and VM for the Monkey language.
+  why: Test-driven, small-step format that suits learners who like writing tests first; covers the same ground as Crafting Interpreters but in Go and with a different language, which reinforces understanding.
+  verified: true
+- id: pratt-matklad
+  role: reference
+  kind: article
+  title: Simple but Powerful Pratt Parsing
+  by: Alex Kladov (matklad)
+  url: https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html
+  edition_or_term: Essay, 2020 (checked 2026-11-18)
+  access: free
+  use: Read when implementing expression parsing in Crafting Interpreters ch. 6 or ch. 17; includes a full Rust implementation.
+  why: Best short explanation of Pratt parsing and binding power, a technique used by many production parsers.
+  verified: true
+- id: lsbasi
+  role: secondary
+  kind: article
+  title: Let's Build A Simple Interpreter (series)
+  by: Ruslan Spivak
+  url: https://ruslanspivak.com/lsbasi-part1/
+  edition_or_term: Blog series (checked 2026-11-18)
+  access: free
+  use: Parts 1-8 for a gentle start (arithmetic interpreter in Python), then parts on a Pascal subset with scopes and procedures; an easy warm-up before Crafting Interpreters if recursive-descent parsing is new.
+  why: A slower, step-by-step Python warm-up that makes the leap to jlox easier.
+  verified: true
+- id: mal
+  role: practice
+  kind: tool
+  title: mal - Make a Lisp
+  by: Joel Martin (kanaka)
+  url: https://github.com/kanaka/mal
+  edition_or_term: Rolling repository (4,062 commits; implementations in 89 languages)
+  access: free
+  use: Implement steps 0-A in a language of your choice (REPL, eval, def/let, if/fn/do, closures with TCO, quoting, macros, try/catch, self-hosting) with the provided per-step tests; ideal as a second, tiny interpreter in a different language.
+  why: Guided, self-testing exercise ladder for building a Lisp interpreter with closures, TCO and macros; many reference implementations to compare against.
+  verified: true
+- id: codecrafters-interpreter
+  role: practice
+  kind: practice-site
+  title: 'CodeCrafters: Build your own Interpreter (Lox)'
+  by: CodeCrafters
+  url: https://app.codecrafters.io/courses/interpreter/overview
+  edition_or_term: Live course (checked 2026-11-18)
+  access: account-required
+  use: Do the staged tasks (scanning, parsing, evaluating, statements, functions, resolving, classes) against the hosted test suite using any language; free tier covers part of the stages.
+  why: Test-suite-driven path through the Lox language from Crafting Interpreters with automatic feedback via git push.
+  verified: true
+- id: sicp-ch4
+  role: secondary
+  kind: book
+  title: SICP ch. 4 (metacircular evaluator) and ch. 5 (register machines)
+  by: Harold Abelson, Gerald Jay Sussman, Julie Sussman
+  url: https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html
+  edition_or_term: Online book (checked 2026-11-18)
+  access: free
+  use: Section 4.1 (metacircular evaluator), 4.2 (lazy evaluation), 4.3 (nondeterministic amb evaluator), 5.1-5.2 (register machines and the explicit-control evaluator).
+  why: Short, deep treatment of evaluator design as the semantic foundation; the explicit-control evaluator foreshadows bytecode VMs.
+  verified: true
 considered:
-- {title: CMU 15-411 Compiler Design lab sequence, url: 'https://www.cs.cmu.edu/~15411/', reason: Compilers rather than interpreters; used in compiler-construction.}
-- {title: UW CSE 341 homework (reference interpreters in OCaml/Racket), url: 'https://sites.google.com/cs.washington.edu/cse341fall2026/home', reason: 'Interpreters are a component, not the course; also unavailable to the public (videos).'}
-- {title: Brown CSCI 1730 (implementation thread), url: 'https://cs.brown.edu/courses/csci1730/2025/assignments.html', reason: Covered in programming-language-concepts; interpreter assignments follow PLAI.}
-- {title: Build Your Own Lisp (C), url: 'https://www.buildyourownlisp.com/', reason: Fun but less rigorous (known bugs in parsing library approach); mal and Crafting Interpreters are stronger.}
-notes: 'No primary course: Crafting Interpreters is itself a complete self-guided course (jlox then clox), and the CodeCrafters/mal exercises supply test suites; I could not find a public course with videos that covers tree-walking plus bytecode interpreters better (review R2 agrees). The public Lox test suite lives in the book repository (not opened). Route (about 60 h; learner reports range roughly 50-80 h): jlox (ch. 4-13, ~25 h), clox (ch. 14-30, ~35 h incl. GC), with the Pratt reference and mal as a side exercise. PLAI''s interpreter chapters are assigned in programming-language-concepts (removed here after review R2 to avoid duplication). Prerequisites programming-language-concepts and data-structures match; soft c-programming is needed for Part III (clox).'
+- title: CMU 15-411 Compiler Design lab sequence
+  url: https://www.cs.cmu.edu/~15411/
+  reason: Compilers rather than interpreters; used in compiler-construction.
+- title: UW CSE 341 homework (reference interpreters in OCaml/Racket)
+  url: https://sites.google.com/cs.washington.edu/cse341fall2026/home
+  reason: Interpreters are a component, not the course; also unavailable to the public (videos).
+- title: Brown CSCI 1730 (implementation thread)
+  url: https://cs.brown.edu/courses/csci1730/2025/assignments.html
+  reason: Covered in programming-language-concepts; interpreter assignments follow PLAI.
+- title: Build Your Own Lisp (C)
+  url: https://www.buildyourownlisp.com/
+  reason: Fun but less rigorous (known bugs in parsing library approach); mal and Crafting Interpreters are stronger.
+notes: 'No primary course: Crafting Interpreters is itself a complete self-guided course (jlox then clox), and the CodeCrafters/mal exercises supply test suites; I could not find a public course with videos that covers tree-walking plus bytecode interpreters better (review R2 agrees). The public Lox test suite lives in the book repository (not opened). Route: jlox, clox, with the Pratt reference and mal as a side exercise. PLAI''s interpreter chapters are assigned in programming-language-concepts (removed here after review R2 to avoid duplication). Prerequisites programming-language-concepts and data-structures match; soft c-programming is needed for Part III (clox).'
 split_proposal: null
-prereq_changes: Part III of Crafting Interpreters (clox) uses substantial C; the existing soft edge on c-programming could become hard for that half, or the node could be split into 'tree-walking interpreters' (Java/any) and 'bytecode VMs' (C) if a lighter option is wanted.
-open_questions: [The Crafting Interpreters test-suite repository (github.com/munificent/craftinginterpreters) was not opened., CodeCrafters free-tier coverage of the interpreter course not verified.]
+prereq_changes: null
+open_questions:
+- The Crafting Interpreters test-suite repository (github.com/munificent/craftinginterpreters) was not opened.
+- CodeCrafters free-tier coverage of the interpreter course not verified.
 last_verified: '2026-11-18'

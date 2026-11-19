@@ -1,116 +1,126 @@
-# --- copied from research/skeleton.yaml ---
 id: randomized-algorithms
 title: Randomized Algorithms
 group: G3
-paths: [theory]
-hard: [algorithm-design, probability]
-soft: []
-scope: "Concentration bounds, probabilistic method, hashing, Markov chains, sketching and streaming."
-
-# --- curation data ---
+paths:
+- theory
+hard:
+- algorithm-design
+- probability
+soft:
+- linear-algebra
+scope: Concentration bounds, probabilistic method, hashing, Markov chains, sketching and streaming.
 level: advanced
-estimated_hours: 140
 resources:
-  - id: mitzenmacher-upfal
-    role: primary-text
-    kind: book
-    title: "Probability and Computing: Randomization and Probabilistic Techniques in Algorithms and Data Analysis, 2nd edition"
-    by: "Michael Mitzenmacher, Eli Upfal"
-    url: https://www.cambridge.org/core/books/probability-and-computing/3A5B47DB315FC64B9256C5C8131C5EFA
-    edition_or_term: "2nd edition (Cambridge University Press, 2017)"
-    access: paid
-    use: "Ch. 3 (moments and deviations), 4 (Chernoff and Hoeffding bounds), 5 (balls, bins and random graphs), 6 (probabilistic method incl. Lovasz Local Lemma), 7 (Markov chains and random walks), 11 (Monte Carlo method), 12 (coupling of Markov chains), 13 (martingales), 14 (sample complexity, VC dimension), 15 (pairwise independence and universal hashing), 17 (balanced allocations and cuckoo hashing); ch. 1-2 as probability refresher. Exercises: do at least 5 per chapter read, favouring the application exercises at the end of ch. 3-7 and 11 (Chernoff applications, balls and bins, LLL, random walks, Monte Carlo), with full written proofs; no public solutions exist. Chapter numbers follow my recollection of the 2nd edition (review R1 says they match its recollection too); not checked against the table of contents."
-    why: "The standard single-volume text for this exact scope; clear proofs and algorithmic applications (hashing, load balancing, sampling, streaming-style sketches); the 2nd edition adds sample complexity, VC dimension and cuckoo hashing relevant to ML. Motwani-Raghavan is the other classic but is older and more terse."
-    verified: false
-  - id: mit-6-5220
-    role: primary-course
-    kind: course
-    title: "MIT 6.5220 / 6.856J / 18.416J Randomized Algorithms"
-    by: "MIT (David Karger)"
-    url: https://courses.csail.mit.edu/6.856/current/
-    edition_or_term: "Fall 2025 recordings (course page headed 'Spring 2025' but lecture dates are fall; playlist titled 'Fall 2025')"
-    access: free
-    use: "All lectures on the Fall 2025 YouTube playlist (quicksort and min-cut, Adleman's theorem, Chernoff, balls in bins and two choices, universal/perfect/cuckoo hashing, fingerprinting, Bloom filters, streaming sketches, sampling and counting, randomized min-cut, geometry, LP); lecture notes and problem sets with solutions via the course page; read M&U chapters alongside. The course page also links a Spring 2021 playlist ('MIT 6.856 Randomized Algorithms Spring 2021', https://www.youtube.com/playlist?list=PL278F9gM5aZZq8bBde-IU5W6bh4LOr-Xh) as a backup recording."
-    why: "Newest fully public recordings of a graduate randomized algorithms course by a leading expert in randomized graph algorithms, with problem sets and solutions linked; topic order tracks M&U. Problem sets are on MIT's NB, which may need a login."
-    verified: true
-    course:
-      latest_term: "Fall 2025 (playlist 'MIT 6.5220 Randomized Algorithms Fall 2025'; page still shows Spring 2025 heading)"
-      latest_url: https://courses.csail.mit.edu/6.856/current/
-      videos: public
-      public_videos_term: "Fall 2025 (also Spring 2021)"
-      public_videos_url: https://www.youtube.com/playlist?list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH
-      assignments: partial
-      assignments_url: https://courses.csail.mit.edu/6.856/current/
-  - id: quanrud-cs588
-    role: secondary
-    kind: course
-    title: "Purdue CS 588 Randomized Algorithms: free lecture notes (409 pp.) with videos and homework"
-    by: "Kent Quanrud"
-    url: https://ras24.s3.amazonaws.com/ras24.pdf
-    edition_or_term: "Spring 2024 notes; video playlists for Fall 2022 and Spring 2024"
-    access: free
-    use: "Notes ch. 0-4 (probability refresher, randomized searching and sorting, hashing and heavy hitters, linear probing, randomized min cut), 8-10 (distinct elements, dimensionality reduction, locality-sensitive hashing), 13-14 (VC dimension and PAC learning), 17-18 (Lovasz Local Lemma, DNF counting), 20-22 (random walks, mixing times, conductance). Homework: see the practice entry. Videos: YouTube 'Randomized algorithms, Spring 2024' and 'Randomized Algorithms, Fall 2022'."
-    why: "Hidden gem: a complete, modern, free text that adds the sketching/streaming (distinct elements, JL, LSH) and random-walk/mixing chapters that Karger and M&U only sketch, with videos and homework; the best free route if the book is not purchased."
-    verified: true
-    course:
-      latest_term: "Spring 2024"
-      latest_url: https://ras24.s3.amazonaws.com/ras24.pdf
-      videos: public
-      public_videos_term: "Spring 2024"
-      public_videos_url: https://www.youtube.com/playlist?list=PL0YFU3y0Z_gZxc-FeLhbOFS99ZzlWl4He
-      assignments: public
-      assignments_url: https://ras24.s3.amazonaws.com/ras24.pdf
-  - id: foundations-of-data-science-rand
-    role: secondary
-    kind: book
-    title: "Foundations of Data Science"
-    by: "Avrim Blum, John Hopcroft, Ravindran Kannan"
-    url: https://www.cs.cornell.edu/jeh/book.pdf
-    edition_or_term: "Draft of 4 January 2018 (free PDF; CUP 2020 edition)"
-    access: free
-    use: "High-dimensional space (concentration, Gaussian annulus), random walks and Markov chains (mixing, Metropolis-Hastings, conductance, electrical networks), streaming algorithms (frequency moments, count-min) chapters."
-    why: "Gap: geometric intuition for concentration in high dimension and a well-written Markov chain/MCMC chapter, plus streaming; complements M&U's algorithmic bias."
-    verified: true
-  - id: berkeley-cs271
-    role: reference
-    kind: course
-    title: "UC Berkeley CS 271 Randomness and Computation"
-    by: "Alistair Sinclair"
-    url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
-    edition_or_term: "Page headed 'Fall 2026' (announcements dated 2024 appear carried over); lecture notes, quizzes, homework with sample solutions; lectures not recorded"
-    access: free
-    use: "Lecture notes on Markov chain mixing, coupling, spectral gap, MCMC and counting (Sinclair's specialty); use for the Markov chains and sampling portion beyond M&U ch. 7 and 11."
-    why: "Gap: the best public treatment of rapidly mixing Markov chains (counting, sampling, Glauber dynamics) by the area's authority; lectures are not recorded."
-    verified: true
-    course:
-      latest_term: "Fall 2026 (page title; contents look like Fall 2024, see open_questions)"
-      latest_url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
-      videos: none
-      assignments: public
-      assignments_url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
-  - id: quanrud-homework
-    role: practice
-    kind: website
-    title: "CS 588 homework sets 0-6 and chapter exercises (in the notes PDF)"
-    by: "Kent Quanrud"
-    url: https://ras24.s3.amazonaws.com/ras24.pdf
-    edition_or_term: "Spring 2024"
-    access: free
-    use: "Homework 1 (printed from page 388 of the notes) through Homework 6, covering hashing, min-cut, concentration, rounding, sketching, LLL and random walks; plus the exercises at the end of each chapter."
-    why: "Public proof-based problem sets matched to the primary reading; M&U exercises have no public solutions, and Karger's psets sit on NB."
-    verified: true
+- id: mitzenmacher-upfal
+  role: primary-text
+  kind: book
+  title: 'Probability and Computing: Randomization and Probabilistic Techniques in Algorithms and Data Analysis, 2nd edition'
+  by: Michael Mitzenmacher, Eli Upfal
+  url: https://www.cambridge.org/core/books/probability-and-computing/3A5B47DB315FC64B9256C5C8131C5EFA
+  edition_or_term: 2nd edition (Cambridge University Press, 2017)
+  access: paid
+  use: 'Ch. 3 (moments and deviations), 4 (Chernoff and Hoeffding bounds), 5 (balls, bins and random graphs), 6 (probabilistic method incl. Lovasz Local Lemma), 7 (Markov chains and random walks), 11 (Monte Carlo method), 12 (coupling of Markov chains), 13 (martingales), 14 (sample complexity, VC dimension), 15 (pairwise independence and universal hashing), 17 (balanced allocations and cuckoo hashing); ch. 1-2 as probability refresher. Exercises: do at least 5 per chapter read, favouring the application exercises at the end of ch. 3-7 and 11 (Chernoff applications, balls and bins, LLL, random walks, Monte Carlo), with full written proofs; no public solutions exist. Chapter numbers follow my recollection of the 2nd edition (review R1 says they match its recollection too); not checked against the table of contents.'
+  why: The standard single-volume text for this exact scope; clear proofs and algorithmic applications (hashing, load balancing, sampling, streaming-style sketches); the 2nd edition adds sample complexity, VC dimension and cuckoo hashing relevant to ML. Motwani-Raghavan is the other classic but is older and more terse.
+  verified: false
+- id: mit-6-5220
+  role: primary-course
+  kind: course
+  title: MIT 6.5220 / 6.856J / 18.416J Randomized Algorithms
+  by: MIT (David Karger)
+  url: https://courses.csail.mit.edu/6.856/current/
+  edition_or_term: Fall 2025 recordings (course page headed 'Spring 2025' but lecture dates are fall; playlist titled 'Fall 2025')
+  access: free
+  use: All lectures on the Fall 2025 YouTube playlist (quicksort and min-cut, Adleman's theorem, Chernoff, balls in bins and two choices, universal/perfect/cuckoo hashing, fingerprinting, Bloom filters, streaming sketches, sampling and counting, randomized min-cut, geometry, LP); lecture notes and problem sets with solutions via the course page; read M&U chapters alongside. The course page also links a Spring 2021 playlist ('MIT 6.856 Randomized Algorithms Spring 2021', https://www.youtube.com/playlist?list=PL278F9gM5aZZq8bBde-IU5W6bh4LOr-Xh) as a backup recording.
+  why: Newest fully public recordings of a graduate randomized algorithms course by a leading expert in randomized graph algorithms, with problem sets and solutions linked; topic order tracks M&U. Problem sets are on MIT's NB, which may need a login.
+  verified: true
+  course:
+    latest_term: Fall 2025 (playlist 'MIT 6.5220 Randomized Algorithms Fall 2025'; page still shows Spring 2025 heading)
+    latest_url: https://courses.csail.mit.edu/6.856/current/
+    videos: public
+    public_videos_term: Fall 2025 (also Spring 2021)
+    public_videos_url: https://www.youtube.com/playlist?list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH
+    assignments: partial
+    assignments_url: https://courses.csail.mit.edu/6.856/current/
+- id: quanrud-cs588
+  role: secondary
+  kind: course
+  title: 'Purdue CS 588 Randomized Algorithms: free lecture notes (409 pp.) with videos and homework'
+  by: Kent Quanrud
+  url: https://ras24.s3.amazonaws.com/ras24.pdf
+  edition_or_term: Spring 2024 notes; video playlists for Fall 2022 and Spring 2024
+  access: free
+  use: 'Notes ch. 0-4 (probability refresher, randomized searching and sorting, hashing and heavy hitters, linear probing, randomized min cut), 8-10 (distinct elements, dimensionality reduction, locality-sensitive hashing), 13-14 (VC dimension and PAC learning), 17-18 (Lovasz Local Lemma, DNF counting), 20-22 (random walks, mixing times, conductance). Homework: see the practice entry. Videos: YouTube ''Randomized algorithms, Spring 2024'' and ''Randomized Algorithms, Fall 2022''.'
+  why: 'Hidden gem: a complete, modern, free text that adds the sketching/streaming (distinct elements, JL, LSH) and random-walk/mixing chapters that Karger and M&U only sketch, with videos and homework; the best free route if the book is not purchased.'
+  verified: true
+  course:
+    latest_term: Spring 2024
+    latest_url: https://ras24.s3.amazonaws.com/ras24.pdf
+    videos: public
+    public_videos_term: Spring 2024
+    public_videos_url: https://www.youtube.com/playlist?list=PL0YFU3y0Z_gZxc-FeLhbOFS99ZzlWl4He
+    assignments: public
+    assignments_url: https://ras24.s3.amazonaws.com/ras24.pdf
+- id: foundations-of-data-science-rand
+  role: secondary
+  kind: book
+  title: Foundations of Data Science
+  by: Avrim Blum, John Hopcroft, Ravindran Kannan
+  url: https://www.cs.cornell.edu/jeh/book.pdf
+  edition_or_term: Draft of 4 January 2018 (free PDF; CUP 2020 edition)
+  access: free
+  use: High-dimensional space (concentration, Gaussian annulus), random walks and Markov chains (mixing, Metropolis-Hastings, conductance, electrical networks), streaming algorithms (frequency moments, count-min) chapters.
+  why: 'Gap: geometric intuition for concentration in high dimension and a well-written Markov chain/MCMC chapter, plus streaming; complements M&U''s algorithmic bias.'
+  verified: true
+- id: berkeley-cs271
+  role: reference
+  kind: course
+  title: UC Berkeley CS 271 Randomness and Computation
+  by: Alistair Sinclair
+  url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
+  edition_or_term: Page headed 'Fall 2026' (announcements dated 2024 appear carried over); lecture notes, quizzes, homework with sample solutions; lectures not recorded
+  access: free
+  use: Lecture notes on Markov chain mixing, coupling, spectral gap, MCMC and counting (Sinclair's specialty); use for the Markov chains and sampling portion beyond M&U ch. 7 and 11.
+  why: 'Gap: the best public treatment of rapidly mixing Markov chains (counting, sampling, Glauber dynamics) by the area''s authority; lectures are not recorded.'
+  verified: true
+  course:
+    latest_term: Fall 2026 (page title; contents look like Fall 2024, see open_questions)
+    latest_url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
+    videos: none
+    assignments: public
+    assignments_url: https://people.eecs.berkeley.edu/~sinclair/cs271/f26.html
+- id: quanrud-homework
+  role: practice
+  kind: website
+  title: CS 588 homework sets 0-6 and chapter exercises (in the notes PDF)
+  by: Kent Quanrud
+  url: https://ras24.s3.amazonaws.com/ras24.pdf
+  edition_or_term: Spring 2024
+  access: free
+  use: Homework 1 (printed from page 388 of the notes) through Homework 6, covering hashing, min-cut, concentration, rounding, sketching, LLL and random walks; plus the exercises at the end of each chapter.
+  why: Public proof-based problem sets matched to the primary reading; M&U exercises have no public solutions, and Karger's psets sit on NB.
+  verified: true
 considered:
-  - {title: "Motwani and Raghavan, Randomized Algorithms", url: "https://www.cambridge.org/core/books/randomized-algorithms/", reason: "Classic (1995) but terse and dated; URL not confirmed (404 at guessed path); M&U 2e preferred."}
-  - {title: "Alon and Spencer, The Probabilistic Method (4th ed.)", url: "https://www.wiley.com/en-us/The+Probabilistic+Method%2C+4th+Edition-p-9781119061953", reason: "Definitive on the probabilistic method but more combinatorics than algorithms; reference for ch. 6 material; publisher page blocked to bots (not opened)."}
-  - {title: "NYU Randomized Algorithms (Anupam Gupta, Fall 2025)", url: "https://cs.nyu.edu/~anupamg", reason: "Mentioned on his homepage; page could not be opened (403) so content and video status unknown."}
-  - {title: "CMU 15-850 Advanced Algorithms notes ch. 9-12 (concentration, JL, streaming)", url: "https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/all.pdf", reason: "Excellent but already primary-text of advanced-algorithms; use as supplement."}
-  - {title: "UCSC CSE 290A Randomized Algorithms (Seshadhri Comandur, Spring 2020) videos", url: "https://www.youtube.com/playlist?list=PLOQjlWvnI0faRpH2oJcyW4CuM5Clt8a2n", reason: "Public video series; not opened."}
-notes: "Pairing is M&U (book) with Karger's newest recordings, plus Quanrud's free notes/videos/homework as the self-study safety net. Estimated hours assume Chernoff/balls-in-bins/hashing/Markov chains in depth and sketching/streaming at survey depth. The 'sketching and streaming' scope is covered by Quanrud chapters 8-10 and Foundations of Data Science."
+- title: Motwani and Raghavan, Randomized Algorithms
+  url: https://www.cambridge.org/core/books/randomized-algorithms/
+  reason: Classic (1995) but terse and dated; URL not confirmed (404 at guessed path); M&U 2e preferred.
+- title: Alon and Spencer, The Probabilistic Method (4th ed.)
+  url: https://www.wiley.com/en-us/The+Probabilistic+Method%2C+4th+Edition-p-9781119061953
+  reason: Definitive on the probabilistic method but more combinatorics than algorithms; reference for ch. 6 material; publisher page blocked to bots (not opened).
+- title: NYU Randomized Algorithms (Anupam Gupta, Fall 2025)
+  url: https://cs.nyu.edu/~anupamg
+  reason: Mentioned on his homepage; page could not be opened (403) so content and video status unknown.
+- title: CMU 15-850 Advanced Algorithms notes ch. 9-12 (concentration, JL, streaming)
+  url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/all.pdf
+  reason: Excellent but already primary-text of advanced-algorithms; use as supplement.
+- title: UCSC CSE 290A Randomized Algorithms (Seshadhri Comandur, Spring 2020) videos
+  url: https://www.youtube.com/playlist?list=PLOQjlWvnI0faRpH2oJcyW4CuM5Clt8a2n
+  reason: Public video series; not opened.
+notes: Pairing is M&U (book) with Karger's newest recordings, plus Quanrud's free notes/videos/homework as the self-study safety net. The 'sketching and streaming' scope is covered by Quanrud chapters 8-10 and Foundations of Data Science.
 split_proposal: null
-prereq_changes: "Add soft: [linear-algebra] (random walks, JL, spectral analysis); a measure-free probability course is sufficient."
+prereq_changes: null
 open_questions:
-  - "M&U: the Cambridge Core page opened is a live book record whose description is the 2005 first edition; the 2nd edition (2017, ISBN 9781107154889) page and its table of contents could not be opened (Cambridge returns 403/500), so chapter numbers and edition are unverified."
-  - "Berkeley CS 271 page is headed 'Fall 2026' but announcements are dated 2024; unclear which term it represents."
-  - "Karger's problem sets are hosted on NB; public access unverified."
-  - "Gupta's NYU Fall 2025 randomized algorithms course could not be opened."
+- 'M&U: the Cambridge Core page opened is a live book record whose description is the 2005 first edition; the 2nd edition (2017, ISBN 9781107154889) page and its table of contents could not be opened (Cambridge returns 403/500), so chapter numbers and edition are unverified.'
+- Berkeley CS 271 page is headed 'Fall 2026' but announcements are dated 2024; unclear which term it represents.
+- Karger's problem sets are hosted on NB; public access unverified.
+- Gupta's NYU Fall 2025 randomized algorithms course could not be opened.
 last_verified: 2026-11-18

@@ -1,142 +1,157 @@
-# --- copied from research/skeleton.yaml ---
 id: approximation-algorithms
 title: Approximation Algorithms
 group: G3
-paths: [theory]
-hard: [advanced-algorithms]
-soft: []
-scope: "LP rounding, primal-dual, SDP relaxations, hardness of approximation."
-
-# --- curation data ---
+paths:
+- theory
+hard:
+- advanced-algorithms
+soft:
+- computational-complexity
+- linear-algebra
+- convex-optimization
+scope: LP rounding, primal-dual, SDP relaxations, hardness of approximation.
 level: advanced
-estimated_hours: 130
 resources:
-  - id: williamson-shmoys
-    role: primary-text
-    kind: book
-    title: "The Design of Approximation Algorithms"
-    by: "David P. Williamson, David B. Shmoys"
-    url: https://www.designofapproxalgs.com/
-    edition_or_term: "Cambridge University Press 2011; free PDF from the authors (500 pp.)"
-    access: free
-    use: "Part I techniques: ch. 1 (intro: set cover, vertex cover), 2 (greedy and local search), 3 (rounding data and DP: knapsack PTAS/FPTAS), 4 (deterministic LP rounding), 5 (randomized rounding), 6 (SDP rounding: MAX CUT, coloring), 7 (primal-dual), 8 (cuts and metrics: multiway cut, sparsest cut, tree embeddings). Part II: ch. 16 (techniques for proving hardness of approximation: gap reductions, PCP intro) and selected 'further uses' chapters (9-15) as needed. Do the end-of-chapter exercises."
-    why: "The standard organized-by-technique text (greedy, DP, LP rounding, SDP, primal-dual, metrics, hardness) matching the scope exactly, with free PDF from the authors. Vazirani's book is the alternative; W&S has better technique unity and more exercises."
-    verified: true
-  - id: chekuri-cs583
-    role: primary-course
-    kind: course
-    title: "UIUC CS 583 Approximation Algorithms"
-    by: "Chandra Chekuri (UIUC)"
-    url: https://courses.grainger.illinois.edu/cs583/sp2026/
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "All lectures on the schedule (26+ lectures) (set cover and vertex cover by greedy/LP, knapsack PTAS/FPTAS, randomized rounding and alteration, load balancing, bin packing, unrelated machines, iterated rounding, k-center/facility location, primal-dual, local search, multiway cut, multicut, tree embeddings, sparsest cut, SDP, network design, Steiner forest); follow the chapter references into the working notes and W&S, do Homework 0-4 and the midterm."
-    why: "The most current (Spring 2026) public approximation-algorithms course: complete working notes PDF (361 pp.), Homework 0-4 and midterm posted, reading mapped to W&S and Vazirani. Lecture recordings exist only for Fall 2021 (linked from the page, media server blocks automated fetch), and hardness of approximation is only lightly covered, so add PCP material from Moshkovitz/Svensson or W&S ch. 16."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://courses.grainger.illinois.edu/cs583/sp2026/
-      videos: none
-      public_videos_term: "Fall 2021 (page link: mediaspace.illinois.edu channel 'CS 583: Fall 2021'; not openable by me)"
-      public_videos_url: https://mediaspace.illinois.edu/channel/CS+583%3A+Fall+2021/
-      assignments: public
-      assignments_url: https://courses.grainger.illinois.edu/cs583/sp2026/
-  - id: chekuri-working-notes
-    role: secondary
-    kind: book
-    title: "CS 583 working lecture notes on approximation algorithms"
-    by: "Chandra Chekuri (and students)"
-    url: https://courses.grainger.illinois.edu/cs583/sp2026/approx-algorithms-lecture-notes.pdf
-    edition_or_term: "Spring 2026 working notes (PDF, 361 pp.)"
-    access: free
-    use: "Ch. 2 (covering), 3 (knapsack), 4 (packing: randomized rounding and alteration), 5-7 (load balancing, scheduling, congestion), 9 (clustering and facility location), 12 (primal-dual), 14-19 (cuts: multiway cut, multicut, low-diameter decompositions, metric tree embeddings, sparsest cut), 20 (SDP)."
-    why: "Gap: covers newer techniques (iterated rounding, elimination graphs, tree embeddings, configuration LP) beyond W&S; read after the corresponding W&S chapter."
-    verified: true
-  - id: vazirani-approx
-    role: secondary
-    kind: book
-    title: "Approximation Algorithms"
-    by: "Vijay V. Vazirani"
-    url: https://www.ics.uci.edu/~vazirani/book.pdf
-    edition_or_term: "Springer 2001 (author's free PDF)"
-    access: free
-    use: "Ch. 1-2 (set cover, LP duality-based algorithms), 12-13 (rounding), 14-15 (LP rounding, primal-dual for covering, Steiner tree), 19 (multiway cut), 21-22 (sparsest cut, multicut), 26 (SDP), 29 (PCP and hardness; read intro only)."
-    why: "Second voice from the primal-dual originator; shorter; exercises differ from W&S. Older than W&S (no iterated rounding)."
-    verified: true
-  - id: roughgarden-cs261-approx
-    role: secondary
-    kind: video-series
-    title: "Stanford CS 261 lectures 15-20: approximation algorithms, TSP, LP and approx, randomized approx, beating brute force, MAX CUT and SDP"
-    by: "Tim Roughgarden"
-    url: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc
-    edition_or_term: "Winter 2016 (20 lectures)"
-    access: free
-    use: "Lectures 15-20 only (with notes on timroughgarden.org/w16): greedy/local-search intro, TSP (MST and Christofides), LP rounding and approx, randomized approx, MAX CUT via SDP."
-    why: "Gap: friendliest on-ramp before diving into W&S and Chekuri's notes; short and clear."
-    verified: true
-  - id: moshkovitz-pcp
-    role: secondary
-    kind: website
-    title: "Notes on Probabilistically Checkable Proofs and Hardness of Approximation"
-    by: "Dana Moshkovitz (MIT 6.895, Fall 2010; notes at UT Austin)"
-    url: https://people.csail.mit.edu/dmoshkov/courses/pcp-mit/index.html
-    edition_or_term: "Fall 2010 lecture notes"
-    access: free
-    use: "Sections 1 (approximation, hardness of approximation, PCP Theorem), 4-5 (linearity and low-degree testing, optionally), 9 (gap amplification proof), 12-13 (Fourier analysis, dictator testing, Unique Games Conjecture). Read 1 and 13 for the hardness-of-approximation view; the rest is optional."
-    why: "Gap: the 'hardness of approximation' half of the scope gets little time in course notes; these notes give a rigorous, readable route to PCP and optimal inapproximability."
-    verified: true
-  - id: svensson-approx13
-    role: reference
-    kind: course
-    title: "EPFL Approximation Algorithms and Hardness of Approximation"
-    by: "Ola Svensson"
-    url: https://theory.epfl.ch/osven/courses/Approx13/
-    edition_or_term: "Spring 2013 (23 lectures with notes; no recordings)"
-    access: free
-    use: "Lecture notes on iterative LP rounding, dual fitting, SDP (MAX CUT, coloring), PCP theorem, hardness of MAX-3SAT and the Unique Games Conjecture; use as a compact syllabus-plus-notes pairing for the hardness unit."
-    why: "Gap: only public course syllabus found that pairs LP/SDP techniques with PCP and UGC in a single course; no videos."
-    verified: true
-    course:
-      latest_term: "Spring 2013"
-      latest_url: https://theory.epfl.ch/osven/courses/Approx13/
-      videos: none
-      assignments: public
-      assignments_url: https://theory.epfl.ch/osven/courses/Approx13/
-  - id: chekuri-homework-fa21
-    role: practice
-    kind: website
-    title: "CS 583 Fall 2021 homeworks 0-6 (and Spring 2018 homeworks 1-6 on the same page)"
-    by: "Chandra Chekuri"
-    url: https://courses.grainger.illinois.edu/cs583/fa2021/
-    edition_or_term: "Fall 2021 edition page (Homework 0-6 with tex files; Spring 2018 Homework 1-6 also listed)"
-    access: free
-    use: "After the Spring 2026 Homework 0-4 and midterm assigned in the primary course, do Fall 2021 Homework 0-6 for extra volume on covering, packing, scheduling, LP rounding, primal-dual and cut problems; Spring 2018 sets as a further reserve."
-    why: "Extra public proof-style problem sets beyond the current term's, keyed to the same lectures; W&S exercises have no public solutions."
-    verified: true
-  - id: compendium-np-opt
-    role: reference
-    kind: website
-    title: "A Compendium of NP Optimization Problems"
-    by: "Pierluigi Crescenzi, Viggo Kann"
-    url: https://www.csc.kth.se/~viggo/problemlist/compendium.html
-    edition_or_term: "Online compendium"
-    access: free
-    use: "Look up best known approximation ratios and inapproximability thresholds for each problem you study (set cover, MAX-SAT, k-center, TSP variants)."
-    why: "Quick check of 'what is the right answer' for any problem; helps calibrate the hardness material."
-    verified: true
+- id: williamson-shmoys
+  role: primary-text
+  kind: book
+  title: The Design of Approximation Algorithms
+  by: David P. Williamson, David B. Shmoys
+  url: https://www.designofapproxalgs.com/
+  edition_or_term: Cambridge University Press 2011; free PDF from the authors (500 pp.)
+  access: free
+  use: 'Part I techniques: ch. 1 (intro: set cover, vertex cover), 2 (greedy and local search), 3 (rounding data and DP: knapsack PTAS/FPTAS), 4 (deterministic LP rounding), 5 (randomized rounding), 6 (SDP rounding: MAX CUT, coloring), 7 (primal-dual), 8 (cuts and metrics: multiway cut, sparsest cut, tree embeddings). Part II: ch. 16 (techniques for proving hardness of approximation: gap reductions, PCP intro) and selected ''further uses'' chapters (9-15) as needed. Do the end-of-chapter exercises.'
+  why: The standard organized-by-technique text (greedy, DP, LP rounding, SDP, primal-dual, metrics, hardness) matching the scope exactly, with free PDF from the authors. Vazirani's book is the alternative; W&S has better technique unity and more exercises.
+  verified: true
+- id: chekuri-cs583
+  role: primary-course
+  kind: course
+  title: UIUC CS 583 Approximation Algorithms
+  by: Chandra Chekuri (UIUC)
+  url: https://courses.grainger.illinois.edu/cs583/sp2026/
+  edition_or_term: Spring 2026
+  access: free
+  use: All lectures on the schedule (26+ lectures) (set cover and vertex cover by greedy/LP, knapsack PTAS/FPTAS, randomized rounding and alteration, load balancing, bin packing, unrelated machines, iterated rounding, k-center/facility location, primal-dual, local search, multiway cut, multicut, tree embeddings, sparsest cut, SDP, network design, Steiner forest); follow the chapter references into the working notes and W&S, do Homework 0-4 and the midterm.
+  why: 'The most current (Spring 2026) public approximation-algorithms course: complete working notes PDF (361 pp.), Homework 0-4 and midterm posted, reading mapped to W&S and Vazirani. Lecture recordings exist only for Fall 2021 (linked from the page, media server blocks automated fetch), and hardness of approximation is only lightly covered, so add PCP material from Moshkovitz/Svensson or W&S ch. 16.'
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://courses.grainger.illinois.edu/cs583/sp2026/
+    videos: none
+    public_videos_term: 'Fall 2021 (page link: mediaspace.illinois.edu channel ''CS 583: Fall 2021''; not openable by me)'
+    public_videos_url: https://mediaspace.illinois.edu/channel/CS+583%3A+Fall+2021/
+    assignments: public
+    assignments_url: https://courses.grainger.illinois.edu/cs583/sp2026/
+- id: chekuri-working-notes
+  role: secondary
+  kind: book
+  title: CS 583 working lecture notes on approximation algorithms
+  by: Chandra Chekuri (and students)
+  url: https://courses.grainger.illinois.edu/cs583/sp2026/approx-algorithms-lecture-notes.pdf
+  edition_or_term: Spring 2026 working notes (PDF, 361 pp.)
+  access: free
+  use: 'Ch. 2 (covering), 3 (knapsack), 4 (packing: randomized rounding and alteration), 5-7 (load balancing, scheduling, congestion), 9 (clustering and facility location), 12 (primal-dual), 14-19 (cuts: multiway cut, multicut, low-diameter decompositions, metric tree embeddings, sparsest cut), 20 (SDP).'
+  why: 'Gap: covers newer techniques (iterated rounding, elimination graphs, tree embeddings, configuration LP) beyond W&S; read after the corresponding W&S chapter.'
+  verified: true
+- id: vazirani-approx
+  role: secondary
+  kind: book
+  title: Approximation Algorithms
+  by: Vijay V. Vazirani
+  url: https://www.ics.uci.edu/~vazirani/book.pdf
+  edition_or_term: Springer 2001 (author's free PDF)
+  access: free
+  use: Ch. 1-2 (set cover, LP duality-based algorithms), 12-13 (rounding), 14-15 (LP rounding, primal-dual for covering, Steiner tree), 19 (multiway cut), 21-22 (sparsest cut, multicut), 26 (SDP), 29 (PCP and hardness; read intro only).
+  why: Second voice from the primal-dual originator; shorter; exercises differ from W&S. Older than W&S (no iterated rounding).
+  verified: true
+- id: roughgarden-cs261-approx
+  role: secondary
+  kind: video-series
+  title: 'Stanford CS 261 lectures 15-20: approximation algorithms, TSP, LP and approx, randomized approx, beating brute force, MAX CUT and SDP'
+  by: Tim Roughgarden
+  url: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc
+  edition_or_term: Winter 2016 (20 lectures)
+  access: free
+  use: 'Lectures 15-20 only (with notes on timroughgarden.org/w16): greedy/local-search intro, TSP (MST and Christofides), LP rounding and approx, randomized approx, MAX CUT via SDP.'
+  why: 'Gap: friendliest on-ramp before diving into W&S and Chekuri''s notes; short and clear.'
+  verified: true
+- id: moshkovitz-pcp
+  role: secondary
+  kind: website
+  title: Notes on Probabilistically Checkable Proofs and Hardness of Approximation
+  by: Dana Moshkovitz (MIT 6.895, Fall 2010; notes at UT Austin)
+  url: https://people.csail.mit.edu/dmoshkov/courses/pcp-mit/index.html
+  edition_or_term: Fall 2010 lecture notes
+  access: free
+  use: Sections 1 (approximation, hardness of approximation, PCP Theorem), 4-5 (linearity and low-degree testing, optionally), 9 (gap amplification proof), 12-13 (Fourier analysis, dictator testing, Unique Games Conjecture). Read 1 and 13 for the hardness-of-approximation view; the rest is optional.
+  why: 'Gap: the ''hardness of approximation'' half of the scope gets little time in course notes; these notes give a rigorous, readable route to PCP and optimal inapproximability.'
+  verified: true
+- id: svensson-approx13
+  role: reference
+  kind: course
+  title: EPFL Approximation Algorithms and Hardness of Approximation
+  by: Ola Svensson
+  url: https://theory.epfl.ch/osven/courses/Approx13/
+  edition_or_term: Spring 2013 (23 lectures with notes; no recordings)
+  access: free
+  use: Lecture notes on iterative LP rounding, dual fitting, SDP (MAX CUT, coloring), PCP theorem, hardness of MAX-3SAT and the Unique Games Conjecture; use as a compact syllabus-plus-notes pairing for the hardness unit.
+  why: 'Gap: only public course syllabus found that pairs LP/SDP techniques with PCP and UGC in a single course; no videos.'
+  verified: true
+  course:
+    latest_term: Spring 2013
+    latest_url: https://theory.epfl.ch/osven/courses/Approx13/
+    videos: none
+    assignments: public
+    assignments_url: https://theory.epfl.ch/osven/courses/Approx13/
+- id: chekuri-homework-fa21
+  role: practice
+  kind: website
+  title: CS 583 Fall 2021 homeworks 0-6 (and Spring 2018 homeworks 1-6 on the same page)
+  by: Chandra Chekuri
+  url: https://courses.grainger.illinois.edu/cs583/fa2021/
+  edition_or_term: Fall 2021 edition page (Homework 0-6 with tex files; Spring 2018 Homework 1-6 also listed)
+  access: free
+  use: After the Spring 2026 Homework 0-4 and midterm assigned in the primary course, do Fall 2021 Homework 0-6 for extra volume on covering, packing, scheduling, LP rounding, primal-dual and cut problems; Spring 2018 sets as a further reserve.
+  why: Extra public proof-style problem sets beyond the current term's, keyed to the same lectures; W&S exercises have no public solutions.
+  verified: true
+- id: compendium-np-opt
+  role: reference
+  kind: website
+  title: A Compendium of NP Optimization Problems
+  by: Pierluigi Crescenzi, Viggo Kann
+  url: https://www.csc.kth.se/~viggo/problemlist/compendium.html
+  edition_or_term: Online compendium
+  access: free
+  use: Look up best known approximation ratios and inapproximability thresholds for each problem you study (set cover, MAX-SAT, k-center, TSP variants).
+  why: Quick check of 'what is the right answer' for any problem; helps calibrate the hardness material.
+  verified: true
 considered:
-  - {title: "Anupam Gupta, Approximation Algorithms (NYU, Fall 2026)", url: "https://cs.nyu.edu/~anupamg/ApproxAlgos-F26/", reason: "Likely the freshest course by a leading instructor, but the page returned 403 to automated fetch; content and video status unknown. Worth checking manually."}
-  - {title: "Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, recordings posted)", url: "https://www.cs.cornell.edu/courses/cs6820/2025fa/lectures.html", reason: "Verified public videos for 2025 but only a few approximation lectures; better fit for advanced-algorithms."}
-  - {title: "Copenhagen Approximation Algorithms (Rasmus Pagh, Spring 2021)", url: "https://rasmuspagh.net/courses/APX21", reason: "Search result reports video lectures with primal-dual and hardness; not opened."}
-  - {title: "Cornell CS 6810 Theory of Computing (Spring 2026) final PCP and hardness lectures", url: "https://www.cs.cornell.edu/courses/cs6810/2026sp/", reason: "Public scribe notes for PCP and hardness of approximation (lecture 22-23); listed again under computational-complexity."}
-  - {title: "Lau, Ravi, Singh, Iterative Methods in Combinatorial Optimization", url: "https://www.cambridge.org/core/books/iterative-methods-in-combinatorial-optimization/4BE4389EEFCCB795BB32259F4EB85694", reason: "Specialist text on iterated rounding; referenced by Chekuri; too narrow for primary."}
-  - {title: "Hochbaum (ed.), Approximation Algorithms for NP-Hard Problems", url: "http://www.ieor.berkeley.edu/~hochbaum/html/book-aanp.html", reason: "Dated survey collection (1995)."}
-  - {title: "Traub and Vygen, Approximation Algorithms for Traveling Salesman Problems", url: "https://www.cambridge.org/core/books/approximation-algorithms-for-traveling-salesman-problems/411B739F79F414919CD81F13F5339BC6", reason: "Recent specialized book on TSP; for follow-on reading."}
-notes: "Primary pairing is W&S (free book) with Chekuri's Spring 2026 course; the course has fresh problem sets and notes but no current recordings (Fall 2021 only), and hardness of approximation needs the Moshkovitz/Svensson/W&S ch. 16 supplements. 130 hours assumes ~70% of the technique chapters plus a survey of hardness."
+- title: Anupam Gupta, Approximation Algorithms (NYU, Fall 2026)
+  url: https://cs.nyu.edu/~anupamg/ApproxAlgos-F26/
+  reason: Likely the freshest course by a leading instructor, but the page returned 403 to automated fetch; content and video status unknown. Worth checking manually.
+- title: Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, recordings posted)
+  url: https://www.cs.cornell.edu/courses/cs6820/2025fa/lectures.html
+  reason: Verified public videos for 2025 but only a few approximation lectures; better fit for advanced-algorithms.
+- title: Copenhagen Approximation Algorithms (Rasmus Pagh, Spring 2021)
+  url: https://rasmuspagh.net/courses/APX21
+  reason: Search result reports video lectures with primal-dual and hardness; not opened.
+- title: Cornell CS 6810 Theory of Computing (Spring 2026) final PCP and hardness lectures
+  url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
+  reason: Public scribe notes for PCP and hardness of approximation (lecture 22-23); listed again under computational-complexity.
+- title: Lau, Ravi, Singh, Iterative Methods in Combinatorial Optimization
+  url: https://www.cambridge.org/core/books/iterative-methods-in-combinatorial-optimization/4BE4389EEFCCB795BB32259F4EB85694
+  reason: Specialist text on iterated rounding; referenced by Chekuri; too narrow for primary.
+- title: Hochbaum (ed.), Approximation Algorithms for NP-Hard Problems
+  url: http://www.ieor.berkeley.edu/~hochbaum/html/book-aanp.html
+  reason: Dated survey collection (1995).
+- title: Traub and Vygen, Approximation Algorithms for Traveling Salesman Problems
+  url: https://www.cambridge.org/core/books/approximation-algorithms-for-traveling-salesman-problems/411B739F79F414919CD81F13F5339BC6
+  reason: Recent specialized book on TSP; for follow-on reading.
+notes: Primary pairing is W&S (free book) with Chekuri's Spring 2026 course; the course has fresh problem sets and notes but no current recordings (Fall 2021 only), and hardness of approximation needs the Moshkovitz/Svensson/W&S ch. 16 supplements.
 split_proposal: null
-prereq_changes: "Add soft: [computational-complexity] or at least P/NP and PCP vocabulary for the hardness unit; add soft: [linear-algebra, optimization] for LP/SDP duality."
+prereq_changes: null
 open_questions:
-  - "Chekuri Fall 2021 lecture recordings on mediaspace.illinois.edu returned a bot-protection 403, so availability and public access were not confirmed."
-  - "Gupta's NYU Fall 2026 approximation course page could not be opened (403)."
-  - "Chapter numbers in W&S and Vazirani given from the table of contents I read (W&S) or my recollection (Vazirani)."
+- Chekuri Fall 2021 lecture recordings on mediaspace.illinois.edu returned a bot-protection 403, so availability and public access were not confirmed.
+- Gupta's NYU Fall 2026 approximation course page could not be opened (403).
+- Chapter numbers in W&S and Vazirani given from the table of contents I read (W&S) or my recollection (Vazirani).
 last_verified: 2026-11-18

@@ -1,0 +1,86 @@
+id: linux-device-drivers
+title: Linux Device Drivers
+group: G4
+paths:
+- os-perf
+optional: true
+hard:
+- linux-kernel-internals
+soft:
+- computer-architecture
+scope: Driver model, character and block drivers, interrupts and deferred work, DMA, device tree, platform/I2C/SPI drivers.
+level: advanced
+resources:
+- id: lkp-2e
+  role: secondary
+  kind: book
+  title: Linux Kernel Programming, 2nd edition
+  by: Kaiwan N. Billimoria
+  url: https://www.packtpub.com/en-us/product/linux-kernel-programming-9781803232225
+  edition_or_term: 2nd edition (Packt, Feb 2024; based on the 6.1 LTS kernel)
+  access: paid
+  use: The LKM framework chapters as the bridge into driver work.
+  why: The only recent book that teaches kernel internals and module development against a modern LTS kernel, so code and APIs still compile; Love's classic is a decade behind. Covers the scope's architecture, scheduler, memory management and modules; weaker on VFS and device drivers (use the course and Bootlin for those).
+  verified: false
+- id: bootlin-kernel
+  role: primary-course
+  kind: course
+  title: 'Bootlin: Embedded Linux kernel and driver development training'
+  by: Bootlin
+  url: https://bootlin.com/training/kernel/
+  edition_or_term: current slides and labs (public online sessions Dec 2026)
+  access: free
+  use: Slides (linux-kernel-slides.pdf) for device model, platform drivers, I2C/SPI, interrupts, DMA, power management, device tree, and kernel debugging; labs on BeagleBone/BeaglePlay/i.MX93 boards (or adapt to QEMU).
+  why: Fills the driver-development and device-tree gap with the freshest public slide deck on mainline practice (CC-BY-SA). Board-oriented, so optional if no hardware.
+  verified: true
+  course:
+    latest_term: rolling release; public paid online sessions Nov-Dec 2026
+    latest_url: https://bootlin.com/training/kernel/
+    videos: none
+    assignments: public
+    assignments_url: https://bootlin.com/training/kernel/
+- id: linux-kernel-teaching
+  role: secondary
+  kind: course
+  title: Linux Kernel Teaching (UPB Operating Systems 2 lectures and labs)
+  by: University POLITEHNICA of Bucharest (Operating Systems 2 team)
+  url: https://linux-kernel-labs.github.io/refs/heads/master/
+  edition_or_term: kernel 5.10 snapshot; rolling master
+  access: free
+  use: Labs on character device drivers, I/O access and interrupts, deferred work, block device drivers, memory mapping and the device model.
+  why: Free, complete lecture and lab set that spans the node scope (scheduler to VFS to drivers) with QEMU-based setup and skeletons; tests are included. Written for Linux 5.10, so APIs are a few years behind current LTS.
+  verified: true
+  course:
+    latest_term: rolling (kernel 5.10.14 base; no term)
+    latest_url: https://linux-kernel-labs.github.io/refs/heads/master/
+    videos: none
+    assignments: public
+    assignments_url: https://linux-kernel-labs.github.io/refs/heads/master/labs/introduction.html
+- id: kernel-docs
+  role: primary-text
+  kind: docs
+  title: The Linux Kernel documentation (docs.kernel.org)
+  by: Linux kernel community
+  url: https://docs.kernel.org/
+  edition_or_term: current mainline
+  access: free
+  use: driver-api, the driver model and device-tree documentation; read alongside the Bootlin slides.
+  why: Authoritative, current, free reference for every subsystem in scope.
+  verified: true
+- id: lkmpg
+  role: practice
+  kind: website
+  title: The Linux Kernel Module Programming Guide
+  by: Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram, Jim Huang
+  url: https://sysprog21.github.io/lkmpg/
+  edition_or_term: updated 2026-09-07; QEMU-based dev environment
+  access: free
+  use: 'Do all examples on a QEMU/VM: hello world, module params, character device, /proc and sysfs, system-call hooking caveats, blocking processes and waitqueues, sleep/interrupt handlers, tasklets/workqueues, crypto and IO ports.'
+  why: 'Hidden gem: continuously maintained for recent kernels with a ready QEMU environment; the best free, runnable, modern module tutorial and a lighter on-ramp than the labs.'
+  verified: true
+considered: []
+notes: Created by splitting 'linux-kernel-internals' (owner decision B9, 2026-11-19); resources reused from the researched node. Primary text is the official driver-api documentation; Bootlin's free driver training is the course.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

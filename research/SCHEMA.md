@@ -2,7 +2,8 @@
 
 One YAML file per node: `research/nodes/<node-id>.yaml`. Only the owning group writes a node's file.
 This is a **data-collection** format. How the roadmap is finally organized and presented is decided later, so record everything
-that could matter for that decision (alternatives considered, effort, level, access, video availability).
+that could matter for that decision (alternatives considered, level, access, video availability).
+**No time estimates anywhere** (no hours, weeks or durations): the owner does not want fixed time attached to anything.
 
 ```yaml
 # --- copied from research/skeleton.yaml (edit only via prereq_changes / split_proposal below) ---
@@ -16,7 +17,6 @@ scope: "Processes, scheduling, virtual memory, ..."
 
 # --- curation data ---
 level: intro            # intro | intermediate | advanced
-estimated_hours: 120    # rough focused hours for the primary route incl. practice
 resources:
   - id: ostep                         # short slug, unique within this node
     role: primary-text                # primary-text | primary-course | secondary | reference | practice

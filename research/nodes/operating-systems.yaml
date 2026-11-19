@@ -1,103 +1,113 @@
 id: operating-systems
 title: Operating Systems
 group: G4
-paths: [core]
-hard: [computer-systems]
+paths:
+- core
+hard:
+- computer-systems
 soft: []
-scope: "Processes, scheduling, virtual memory, concurrency primitives, file systems, crash consistency (concepts)."
-
+scope: Processes, scheduling, virtual memory, concurrency primitives, file systems, crash consistency (concepts).
 level: intermediate
-estimated_hours: 130
 resources:
-  - id: ostep
-    role: primary-text
-    kind: book
-    title: "Operating Systems: Three Easy Pieces"
-    by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
-    url: https://pages.cs.wisc.edu/~remzi/OSTEP/
-    edition_or_term: "Version 1.10 (Nov 2023); new security chapters by Peter Reiher"
-    access: free
-    use: "Virtualization (ch. 4-24: processes, scheduling incl. MLFQ/lottery/multi-CPU, address spaces, segmentation, paging, TLBs, swapping), Concurrency (26-34: threads, locks, condition variables, semaphores, bugs, event-based concurrency), Persistence basics only (36 I/O devices, 37 hard disk drives, 39 files and directories, 40 file system implementation, 42 crash consistency/journaling); RAID, FFS, LFS, SSDs and data integrity (38, 41, 43-45) are read in storage-and-file-systems. Do the homework simulators."
-    why: "The clearest conceptual treatment of the topic: short chapters, dialogues, and a homework simulator for nearly every chapter. Free and versioned."
-    verified: true
-  - id: ece344
-    role: primary-course
-    kind: course
-    title: "University of Toronto ECE344 Operating Systems (Jon Eyolfson)"
-    by: "Jon Eyolfson, University of Toronto"
-    url: https://eyolfson.com/courses/archive/utoronto/ece344/2024-fall/
-    edition_or_term: "Fall 2024"
-    access: free
-    use: "Watch the lectures alongside OSTEP: all 35 lectures have public slides and YouTube recordings (kernels, process creation, scheduling, virtual memory, page replacement, locks, semaphores, disks/filesystems/inodes, memory allocators, virtual machines). Do the six public labs: Lab 1 Process Viewer, Lab 2 Process Manager, Lab 3 Virtual Memory, Lab 4 User Threads, Lab 5 Synchronization, Lab 6 Filesystems."
-    why: "Best fit for the owner's rule (public videos plus usable assignments): a complete, recent, official public lecture set (YouTube) aligned to OSTEP, with public slides, midterm and final and six public lab specs. No autograder was seen, so labs are self-checked."
-    verified: true
-    course:
-      latest_term: "Fall 2024"
-      latest_url: https://eyolfson.com/courses/archive/utoronto/ece344/2024-fall/
-      videos: public
-      assignments: public
-      assignments_url: https://compeng-gg.github.io/2024-fall-ece344-docs/
-  - id: cs162
-    role: secondary
-    kind: course
-    title: "UC Berkeley CS 162 Operating Systems and Systems Programming"
-    by: "Berkeley EECS (John Kubiatowicz)"
-    url: https://cs162.org/
-    edition_or_term: "Fall 2026"
-    access: mixed
-    use: "Lecture slides and discussion worksheets (public); Homeworks 0-4 (Introduction, List, Shell, HTTP, Memory) and the Pintos projects: Project 0 Pregame, Project 1 User Programs, Project 2 Threads, Project 3 File Systems (see Pintos docs). Readings in Anderson and Dahlin (OSPP) plus OSTEP as secondary."
-    why: "Kept for the Pintos kernel projects and the current (Fall 2026) syllabus, slides, worksheets and exams: more rigorous than ECE344 on synchronization, scheduling and file systems. Not primary because Fall 2026 lectures are bCourses-only and Pintos grading needs the course autograder."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs162.org/calendar/
-      videos: enrolled-only
-      public_videos_term: "none official; Fall 2026 lectures are bCourses-only. Third-party Bilibili mirrors of Fall 2020 to Spring 2022 exist per csdiy.wiki (not verified)"
-      assignments: partial
-      assignments_url: https://cs162.org/static/proj/pintos-docs/
-  - id: ostep-homework
-    role: practice
-    kind: practice-site
-    title: "OSTEP homework simulators"
-    by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
-    url: https://github.com/remzi-arpacidusseau/ostep-homework
-    edition_or_term: "current master"
-    access: free
-    use: "Do these in order with the chapters: cpu-intro (process-run.py), cpu-api (fork.py), cpu-sched, cpu-sched-mlfq, cpu-sched-lottery, vm-mechanism, vm-segmentation, vm-paging, vm-smalltables, vm-beyondphys-policy, threads-intro, threads-locks, threads-api (Helgrind), file-disks (disk.py), file-implementation (vsfs.py), file-journaling (fsck.py). The remaining file-* simulators (raid, ffs, lfs, ssd, integrity) are assigned in storage-and-file-systems."
-    why: "Generates unlimited randomized problems with solutions; the cheapest way to test whether the mechanisms were actually understood."
-    verified: true
-  - id: ostep-projects
-    role: practice
-    kind: practice-site
-    title: "OSTEP projects (Wisconsin CS 537)"
-    by: "Remzi H. Arpaci-Dusseau et al."
-    url: https://github.com/remzi-arpacidusseau/ostep-projects
-    edition_or_term: "current master"
-    access: free
-    use: "C/Linux track: initial-utilities (wcat, wgrep, wzip/wunzip), initial-reverse, processes-shell (wish), concurrency-webserver, concurrency-pzip. Tests are provided as test-*.sh scripts."
-    why: "Self-contained programming projects with local test scripts; complements CS 162's Pintos projects (which are hard to self-grade). Kernel-hacking xv6 projects are covered by os-kernel-implementation."
-    verified: true
-  - id: tlpi
-    role: reference
-    kind: book
-    title: "The Linux Programming Interface"
-    by: "Michael Kerrisk"
-    url: https://man7.org/tlpi/
-    edition_or_term: "2010 (No Starch Press)"
-    access: paid
-    use: "Reference for the system-call API when doing the projects: ch. 24-28 (process creation/exec), 44 (pipes), 49 (mmap), 29-33 (threads), 13-15 (file I/O and file systems)."
-    why: "The definitive reference for the Linux/POSIX API that the OS concepts are exercised through; far more precise than the course texts on syscall semantics."
-    verified: true
+- id: ostep
+  role: primary-text
+  kind: book
+  title: 'Operating Systems: Three Easy Pieces'
+  by: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+  url: https://pages.cs.wisc.edu/~remzi/OSTEP/
+  edition_or_term: Version 1.10 (Nov 2023); new security chapters by Peter Reiher
+  access: free
+  use: 'Virtualization (ch. 4-24: processes, scheduling incl. MLFQ/lottery/multi-CPU, address spaces, segmentation, paging, TLBs, swapping), Concurrency (26-34: threads, locks, condition variables, semaphores, bugs, event-based concurrency), Persistence basics only (36 I/O devices, 37 hard disk drives, 39 files and directories, 40 file system implementation, 42 crash consistency/journaling); RAID, FFS, LFS, SSDs and data integrity (38, 41, 43-45) are read in storage-and-file-systems. Do the homework simulators.'
+  why: 'The clearest conceptual treatment of the topic: short chapters, dialogues, and a homework simulator for nearly every chapter. Free and versioned.'
+  verified: true
+- id: ece344
+  role: primary-course
+  kind: course
+  title: University of Toronto ECE344 Operating Systems (Jon Eyolfson)
+  by: Jon Eyolfson, University of Toronto
+  url: https://eyolfson.com/courses/archive/utoronto/ece344/2024-fall/
+  edition_or_term: Fall 2024
+  access: free
+  use: 'Watch the lectures alongside OSTEP: all 35 lectures have public slides and YouTube recordings (kernels, process creation, scheduling, virtual memory, page replacement, locks, semaphores, disks/filesystems/inodes, memory allocators, virtual machines). Do the six public labs: Lab 1 Process Viewer, Lab 2 Process Manager, Lab 3 Virtual Memory, Lab 4 User Threads, Lab 5 Synchronization, Lab 6 Filesystems.'
+  why: 'Best fit for the owner''s rule (public videos plus usable assignments): a complete, recent, official public lecture set (YouTube) aligned to OSTEP, with public slides, midterm and final and six public lab specs. No autograder was seen, so labs are self-checked.'
+  verified: true
+  course:
+    latest_term: Fall 2024
+    latest_url: https://eyolfson.com/courses/archive/utoronto/ece344/2024-fall/
+    videos: public
+    assignments: public
+    assignments_url: https://compeng-gg.github.io/2024-fall-ece344-docs/
+- id: cs162
+  role: secondary
+  kind: course
+  title: UC Berkeley CS 162 Operating Systems and Systems Programming
+  by: Berkeley EECS (John Kubiatowicz)
+  url: https://cs162.org/
+  edition_or_term: Fall 2026
+  access: mixed
+  use: 'Lecture slides and discussion worksheets (public); Homeworks 0-4 (Introduction, List, Shell, HTTP, Memory) and the Pintos projects: Project 0 Pregame, Project 1 User Programs, Project 2 Threads, Project 3 File Systems (see Pintos docs). Readings in Anderson and Dahlin (OSPP) plus OSTEP as secondary.'
+  why: 'Kept for the Pintos kernel projects and the current (Fall 2026) syllabus, slides, worksheets and exams: more rigorous than ECE344 on synchronization, scheduling and file systems. Not primary because Fall 2026 lectures are bCourses-only and Pintos grading needs the course autograder.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs162.org/calendar/
+    videos: enrolled-only
+    public_videos_term: none official; Fall 2026 lectures are bCourses-only. Third-party Bilibili mirrors of Fall 2020 to Spring 2022 exist per csdiy.wiki (not verified)
+    assignments: partial
+    assignments_url: https://cs162.org/static/proj/pintos-docs/
+- id: ostep-homework
+  role: practice
+  kind: practice-site
+  title: OSTEP homework simulators
+  by: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
+  url: https://github.com/remzi-arpacidusseau/ostep-homework
+  edition_or_term: current master
+  access: free
+  use: 'Do these in order with the chapters: cpu-intro (process-run.py), cpu-api (fork.py), cpu-sched, cpu-sched-mlfq, cpu-sched-lottery, vm-mechanism, vm-segmentation, vm-paging, vm-smalltables, vm-beyondphys-policy, threads-intro, threads-locks, threads-api (Helgrind), file-disks (disk.py), file-implementation (vsfs.py), file-journaling (fsck.py). The remaining file-* simulators (raid, ffs, lfs, ssd, integrity) are assigned in storage-and-file-systems.'
+  why: Generates unlimited randomized problems with solutions; the cheapest way to test whether the mechanisms were actually understood.
+  verified: true
+- id: ostep-projects
+  role: practice
+  kind: practice-site
+  title: OSTEP projects (Wisconsin CS 537)
+  by: Remzi H. Arpaci-Dusseau et al.
+  url: https://github.com/remzi-arpacidusseau/ostep-projects
+  edition_or_term: current master
+  access: free
+  use: 'C/Linux track: initial-utilities (wcat, wgrep, wzip/wunzip), initial-reverse, processes-shell (wish), concurrency-webserver, concurrency-pzip. Tests are provided as test-*.sh scripts.'
+  why: Self-contained programming projects with local test scripts; complements CS 162's Pintos projects (which are hard to self-grade). Kernel-hacking xv6 projects are covered by os-kernel-implementation.
+  verified: true
+- id: tlpi
+  role: reference
+  kind: book
+  title: The Linux Programming Interface
+  by: Michael Kerrisk
+  url: https://man7.org/tlpi/
+  edition_or_term: 2010 (No Starch Press)
+  access: paid
+  use: 'Reference for the system-call API when doing the projects: ch. 24-28 (process creation/exec), 44 (pipes), 49 (mmap), 29-33 (threads), 13-15 (file I/O and file systems).'
+  why: The definitive reference for the Linux/POSIX API that the OS concepts are exercised through; far more precise than the course texts on syscall semantics.
+  verified: true
 considered:
-  - {title: "Operating Systems: Principles and Practice, 2nd ed. (Anderson & Dahlin)", url: "https://ospp.cs.washington.edu/", reason: "CS 162's primary text; strong on synchronization and concurrency design but overlaps OSTEP and is paid; use as a second opinion on synchronization."}
-  - {title: "Wisconsin CS 537 Introduction to Operating Systems", url: "https://pages.cs.wisc.edu/~remzi/Classes/537/", reason: "The OSTEP course itself, but its page is just an index of old terms (newest Fall 2022) and I found no public lecture recordings; the projects repo is used instead."}
-  - {title: "MIT 6.1810 Operating System Engineering", url: "https://pdos.csail.mit.edu/6.1810/", reason: "Best hands-on kernel course; kept as the primary of the os-kernel-implementation node so this node stays conceptual."}
-  - {title: "NJU Operating System Design and Implementation (Yanyan Jiang)", url: "https://github.com/pkuflyingpig/cs-self-learning/blob/master/docs/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/NJUOS.en.md", reason: "Highly regarded 'programs as state machines' approach, but lectures are in Chinese (Bilibili); link is the csdiy.wiki summary, not verified live."}
-  - {title: "Operating System Concepts (Silberschatz, Galvin, Gagne)", url: "https://www.os-book.com/", reason: "Encyclopedic; kept out because OSTEP covers the same ground more clearly."}
-notes: "OSTEP is the primary text. Toronto ECE344 Fall 2024 (Eyolfson) is the primary course because it has a complete official public lecture set (YouTube) plus six public lab specs, following the owner's public-video rule (review R2); Berkeley CS 162 (Fall 2026) is kept as secondary for its Pintos projects and current materials, since its lectures are bCourses-only and its projects need the course autograder. OSTEP persistence is split with storage-and-file-systems: this node reads ch. 36-37, 39-40 and 42; storage reads 38, 41, 43-45. OSTEP threads homeworks live here (not in concurrent-programming). MIT 6.1810 is the primary of os-kernel-implementation."
+- title: 'Operating Systems: Principles and Practice, 2nd ed. (Anderson & Dahlin)'
+  url: https://ospp.cs.washington.edu/
+  reason: CS 162's primary text; strong on synchronization and concurrency design but overlaps OSTEP and is paid; use as a second opinion on synchronization.
+- title: Wisconsin CS 537 Introduction to Operating Systems
+  url: https://pages.cs.wisc.edu/~remzi/Classes/537/
+  reason: The OSTEP course itself, but its page is just an index of old terms (newest Fall 2022) and I found no public lecture recordings; the projects repo is used instead.
+- title: MIT 6.1810 Operating System Engineering
+  url: https://pdos.csail.mit.edu/6.1810/
+  reason: Best hands-on kernel course; kept as the primary of the os-kernel-implementation node so this node stays conceptual.
+- title: NJU Operating System Design and Implementation (Yanyan Jiang)
+  url: https://github.com/pkuflyingpig/cs-self-learning/blob/master/docs/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/NJUOS.en.md
+  reason: Highly regarded 'programs as state machines' approach, but lectures are in Chinese (Bilibili); link is the csdiy.wiki summary, not verified live.
+- title: Operating System Concepts (Silberschatz, Galvin, Gagne)
+  url: https://www.os-book.com/
+  reason: Encyclopedic; kept out because OSTEP covers the same ground more clearly.
+notes: 'OSTEP is the primary text. Toronto ECE344 Fall 2024 (Eyolfson) is the primary course because it has a complete official public lecture set (YouTube) plus six public lab specs, following the owner''s public-video rule (review R2); Berkeley CS 162 (Fall 2026) is kept as secondary for its Pintos projects and current materials, since its lectures are bCourses-only and its projects need the course autograder. OSTEP persistence is split with storage-and-file-systems: this node reads ch. 36-37, 39-40 and 42; storage reads 38, 41, 43-45. OSTEP threads homeworks live here (not in concurrent-programming). MIT 6.1810 is the primary of os-kernel-implementation.'
 split_proposal: null
-prereq_changes: "Consider adding concurrent-programming (soft) as a prerequisite of operating-systems or moving OSTEP's concurrency part to concurrent-programming; today OS lists no soft prereq."
+prereq_changes: null
 open_questions:
-  - "No official public CS 162 video playlist verified; the Spring 2022 mirror is third-party (Bilibili) and was not opened."
-  - "cs162.org archive page (inst.eecs.berkeley.edu/~cs162/archives.html) requires CalNet login."
+- No official public CS 162 video playlist verified; the Spring 2022 mirror is third-party (Bilibili) and was not opened.
+- cs162.org archive page (inst.eecs.berkeley.edu/~cs162/archives.html) requires CalNet login.
 last_verified: 2026-11-18

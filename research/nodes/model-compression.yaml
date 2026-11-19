@@ -1,155 +1,171 @@
 id: model-compression
-title: "Model Compression & Efficient ML"
+title: Model Compression & Efficient ML
 group: G9
-paths: [mlsys]
-hard: [deep-learning-fundamentals]
-soft: [ml-performance-modeling]
-scope: "Quantization (PTQ/QAT), pruning, distillation, efficient architectures, on-device ML."
-
+paths:
+- mlsys
+hard:
+- deep-learning-fundamentals
+soft:
+- ml-performance-modeling
+- floating-point-and-low-precision
+scope: Quantization (PTQ/QAT), pruning, distillation, efficient architectures, on-device ML.
 level: intermediate
-estimated_hours: 55
 resources:
-  - id: mlsysbook-compression
-    role: primary-text
-    kind: book
-    title: "Introduction to Machine Learning Systems (Vol. I), Ch. 10 Model Compression"
-    by: "Vijay Janapa Reddi (Harvard) et al."
-    url: https://mlsysbook.ai/vol1/10_model_compression/10_model_compression.html
-    edition_or_term: "Vol. I, online 2026 (Harvard, MIT Press edition)"
-    access: free
-    use: "10.1 deployment budgets; 10.2 structural optimization (pruning, distillation, efficient architectures); 10.3 numerical precision (PTQ/QAT, INT8/FP8/INT4); 10.4 hardware implementation; 10.5-10.6 choosing, combining and measuring compression gains."
-    why: "A single coherent, current textbook chapter that ties compression techniques to hardware cost and measurement; free. Papers and the MIT course supply depth on each technique."
-    verified: true
-  - id: mit-6-5940
-    role: primary-course
-    kind: course
-    title: "MIT 6.5940 TinyML and Efficient AI Computing (EfficientML.ai)"
-    by: "Song Han, Shang Yang (MIT)"
-    url: https://hanlab.mit.edu/courses/2026-fall-65940
-    edition_or_term: "Fall 2026"
-    access: free
-    use: "Lectures 2-9 (pruning and sparsity I-II, quantization I-II, NAS I-II, knowledge distillation), 10-11 (MCUNet, TinyEngine), 12-15 (Transformer/LLM, LLM quantization and deployment, post-training, long context); Fall 2026 labs: Lab 2 Pruning, Lab 4 Quantization, Lab 5 LLM deployment on laptop; plus the Fall 2024 Lab 4 LLM compression (see mit-labs for both numberings)."
-    why: "The reference course on efficient ML by the authors of Deep Compression, AWQ, SmoothQuant and TinyEngine; public lecture videos and Colab labs. Fall 2026 run is in progress (lecture videos linked on the page); the Fall 2024 videos are also public."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://hanlab.mit.edu/courses/2026-fall-65940
-      videos: public
-      public_videos_term: "Fall 2024 (complete playlist; Fall 2026 videos are linked individually on the course page and lectures 19+ were still placeholders on 2026-11-18)"
-      public_videos_url: https://www.youtube.com/playlist?list=PL80kAHvQbh-qGtNc54A6KW4i4bkTPjiRF
-      assignments: public
-      assignments_url: https://hanlab.mit.edu/courses/2026-fall-65940
-  - id: grootendorst-quant
-    role: secondary
-    kind: article
-    title: "A Visual Guide to Quantization"
-    by: "Maarten Grootendorst"
-    url: https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization
-    edition_or_term: "2024"
-    access: free
-    use: "Whole post (about 1 h): number formats, symmetric/asymmetric, calibration, PTQ vs QAT, GPTQ/GGUF/BitNet in diagrams."
-    why: "Best visual intuition for quantization before reading the papers."
-    verified: true
-  - id: hf-quant-docs
-    role: reference
-    kind: docs
-    title: "Hugging Face Transformers quantization docs (concept guide and per-method pages), bitsandbytes, torchao, LLM Compressor"
-    by: "Hugging Face; PyTorch; vLLM project"
-    url: https://huggingface.co/docs/transformers/main/quantization/concept_guide
-    edition_or_term: "current docs; torchao https://docs.pytorch.org/ao/stable/index.html; LLM Compressor https://docs.vllm.ai/projects/llm-compressor/en/latest/; bitsandbytes https://huggingface.co/docs/bitsandbytes/main/en/index"
-    access: free
-    use: "Concept guide, then run one method each: bitsandbytes 8/4-bit load, torchao int8/int4 weight-only and float8 training/inference, LLM Compressor GPTQ/AWQ/FP8 for vLLM serving."
-    why: "The tools actually used to quantize models today; shows which methods are supported where."
-    verified: true
-  - id: quant-papers
-    role: secondary
-    kind: paper
-    title: "LLM quantization papers: LLM.int8(), GPTQ, SmoothQuant, AWQ"
-    by: "Dettmers et al.; Frantar et al.; Xiao et al. (MIT); Lin et al. (MIT)"
-    url: https://arxiv.org/abs/2208.07339
-    edition_or_term: "LLM.int8 2208.07339; GPTQ 2210.17323; SmoothQuant 2211.10438; AWQ 2306.00978 (QLoRA is covered in post-training)"
-    access: free
-    use: "Read in that order: outlier features, second-order PTQ, activation-weight scale migration, activation-aware weight scaling."
-    why: "Primary sources for the core LLM PTQ methods; each short and implementable."
-    verified: true
-  - id: quant-survey
-    role: reference
-    kind: paper
-    title: "A Survey of Quantization Methods for Efficient Neural Network Inference; Integer-Arithmetic-Only Inference"
-    by: "Amir Gholami et al. (Berkeley); Benoit Jacob et al. (Google)"
-    url: https://arxiv.org/abs/2103.13630
-    edition_or_term: "2021 survey; Jacob et al. CVPR 2018 arXiv 1712.05877"
-    access: free
-    use: "Survey sections on uniform/non-uniform quantization, PTQ vs QAT, granularity; Jacob et al. for the QAT recipe with fake-quant and integer matmul."
-    why: "Fundamental definitions and QAT mechanics that LLM-era papers assume."
-    verified: true
-  - id: pruning-papers
-    role: secondary
-    kind: paper
-    title: "Deep Compression; Lottery Ticket Hypothesis; SparseGPT; Wanda"
-    by: "Song Han et al.; Frankle and Carbin; Frantar and Alistarh; Sun et al."
-    url: https://arxiv.org/abs/1510.00149
-    edition_or_term: "Deep Compression 1510.00149; Lottery Ticket 1803.03635; SparseGPT 2301.00774; Wanda 2306.11695"
-    access: free
-    use: "Pruning + quantization + Huffman pipeline; iterative magnitude pruning; one-shot unstructured/2:4 pruning of LLMs; activation-aware magnitude pruning."
-    why: "Covers the pruning side from classic to LLM-scale; 2:4 sparsity ties to tensor-core support."
-    verified: true
-  - id: efficient-survey
-    role: reference
-    kind: paper
-    title: "Efficient Deep Learning: A Survey on Making Deep Learning Models Smaller, Faster, and Better"
-    by: "Gaurav Menghani (Google)"
-    url: https://arxiv.org/abs/2106.08962
-    edition_or_term: "ACM Computing Surveys 2023 (book version at https://efficientdlbook.com/)"
-    access: free
-    use: "Use as a map: compression, learning techniques, automation (NAS), efficient architectures, infrastructure."
-    why: "Broad taxonomy; the companion book site has some draft chapters and codelabs."
-    verified: true
-  - id: bitnet-streaming
-    role: reference
-    kind: paper
-    title: "BitNet b1.58 (ternary LLMs) and StreamingLLM (attention sinks, KV compression)"
-    by: "Ma et al. (Microsoft); Xiao et al. (MIT)"
-    url: https://arxiv.org/abs/2402.17764
-    edition_or_term: "2402.17764; StreamingLLM 2309.17453"
-    access: free
-    use: "Skim: training-time low-bit design and KV-cache eviction as the two newest directions beyond PTQ."
-    why: "Shows where compression research moved after weight-only PTQ."
-    verified: true
-  - id: mit-labs
-    role: practice
-    kind: practice-site
-    title: "MIT 6.5940 labs (Colab): pruning, quantization, NAS, LLM compression, LLM deployment on laptop"
-    by: "MIT HAN Lab"
-    url: https://hanlab.mit.edu/courses/2024-fall-65940
-    edition_or_term: "Fall 2024 labs 0-5 (Colab/Drive links, URL above); Fall 2026 labs listed on https://hanlab.mit.edu/courses/2026-fall-65940"
-    access: free
-    use: "Fall 2024 numbering (URL above): Lab 1 Pruning (fine-grained and channel pruning on a CNN), Lab 2 Quantization (k-means and linear quantization, QAT), Lab 4 LLM Compression (SmoothQuant/AWQ-style), Lab 5 LLM Deployment on Laptop (TinyChat/AWQ with 4-bit weights). Fall 2026 numbering (2026 page): Lab 1 GPU Basics, Lab 2 Pruning, Lab 3 NAS, Lab 4 Quantization, Lab 5 LLM Deployment on Laptop."
-    why: "Graded-style notebooks that implement the techniques from scratch; free on Colab."
-    verified: true
-  - id: llamacpp-practice
-    role: practice
-    kind: tool
-    title: "Quantize and benchmark an LLM yourself (llm-compressor / llama.cpp / bitsandbytes)"
-    by: "vLLM project; ggml community; Hugging Face"
-    url: https://docs.vllm.ai/projects/llm-compressor/en/latest/
-    edition_or_term: "current"
-    access: free
-    use: "Take a 7-8B model; produce FP8, INT8 (SmoothQuant), INT4 (GPTQ/AWQ) variants; measure perplexity on WikiText and downstream accuracy, memory, and tokens/s in vLLM; write up the accuracy-latency Pareto."
-    why: "The real-world workflow and the evidence for choosing a method; complements the lab notebooks."
-    verified: true
+- id: mlsysbook-compression
+  role: primary-text
+  kind: book
+  title: Introduction to Machine Learning Systems (Vol. I), Ch. 10 Model Compression
+  by: Vijay Janapa Reddi (Harvard) et al.
+  url: https://mlsysbook.ai/vol1/10_model_compression/10_model_compression.html
+  edition_or_term: Vol. I, online 2026 (Harvard, MIT Press edition)
+  access: free
+  use: 10.1 deployment budgets; 10.2 structural optimization (pruning, distillation, efficient architectures); 10.3 numerical precision (PTQ/QAT, INT8/FP8/INT4); 10.4 hardware implementation; 10.5-10.6 choosing, combining and measuring compression gains.
+  why: A single coherent, current textbook chapter that ties compression techniques to hardware cost and measurement; free. Papers and the MIT course supply depth on each technique.
+  verified: true
+- id: mit-6-5940
+  role: primary-course
+  kind: course
+  title: MIT 6.5940 TinyML and Efficient AI Computing (EfficientML.ai)
+  by: Song Han, Shang Yang (MIT)
+  url: https://hanlab.mit.edu/courses/2026-fall-65940
+  edition_or_term: Fall 2026
+  access: free
+  use: 'Lectures 2-9 (pruning and sparsity I-II, quantization I-II, NAS I-II, knowledge distillation), 10-11 (MCUNet, TinyEngine), 12-15 (Transformer/LLM, LLM quantization and deployment, post-training, long context); Fall 2026 labs: Lab 2 Pruning, Lab 4 Quantization, Lab 5 LLM deployment on laptop; plus the Fall 2024 Lab 4 LLM compression (see mit-labs for both numberings).'
+  why: The reference course on efficient ML by the authors of Deep Compression, AWQ, SmoothQuant and TinyEngine; public lecture videos and Colab labs. Fall 2026 run is in progress (lecture videos linked on the page); the Fall 2024 videos are also public.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://hanlab.mit.edu/courses/2026-fall-65940
+    videos: public
+    public_videos_term: Fall 2024 (complete playlist; Fall 2026 videos are linked individually on the course page and lectures 19+ were still placeholders on 2026-11-18)
+    public_videos_url: https://www.youtube.com/playlist?list=PL80kAHvQbh-qGtNc54A6KW4i4bkTPjiRF
+    assignments: public
+    assignments_url: https://hanlab.mit.edu/courses/2026-fall-65940
+- id: grootendorst-quant
+  role: secondary
+  kind: article
+  title: A Visual Guide to Quantization
+  by: Maarten Grootendorst
+  url: https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization
+  edition_or_term: '2024'
+  access: free
+  use: 'Whole post: number formats, symmetric/asymmetric, calibration, PTQ vs QAT, GPTQ/GGUF/BitNet in diagrams.'
+  why: Best visual intuition for quantization before reading the papers.
+  verified: true
+- id: hf-quant-docs
+  role: reference
+  kind: docs
+  title: Hugging Face Transformers quantization docs (concept guide and per-method pages), bitsandbytes, torchao, LLM Compressor
+  by: Hugging Face; PyTorch; vLLM project
+  url: https://huggingface.co/docs/transformers/main/quantization/concept_guide
+  edition_or_term: current docs; torchao https://docs.pytorch.org/ao/stable/index.html; LLM Compressor https://docs.vllm.ai/projects/llm-compressor/en/latest/; bitsandbytes https://huggingface.co/docs/bitsandbytes/main/en/index
+  access: free
+  use: 'Concept guide, then run one method each: bitsandbytes 8/4-bit load, torchao int8/int4 weight-only and float8 training/inference, LLM Compressor GPTQ/AWQ/FP8 for vLLM serving.'
+  why: The tools actually used to quantize models today; shows which methods are supported where.
+  verified: true
+- id: quant-papers
+  role: secondary
+  kind: paper
+  title: 'LLM quantization papers: LLM.int8(), GPTQ, SmoothQuant, AWQ'
+  by: Dettmers et al.; Frantar et al.; Xiao et al. (MIT); Lin et al. (MIT)
+  url: https://arxiv.org/abs/2208.07339
+  edition_or_term: LLM.int8 2208.07339; GPTQ 2210.17323; SmoothQuant 2211.10438; AWQ 2306.00978 (QLoRA is covered in post-training)
+  access: free
+  use: 'Read in that order: outlier features, second-order PTQ, activation-weight scale migration, activation-aware weight scaling.'
+  why: Primary sources for the core LLM PTQ methods; each short and implementable.
+  verified: true
+- id: quant-survey
+  role: reference
+  kind: paper
+  title: A Survey of Quantization Methods for Efficient Neural Network Inference; Integer-Arithmetic-Only Inference
+  by: Amir Gholami et al. (Berkeley); Benoit Jacob et al. (Google)
+  url: https://arxiv.org/abs/2103.13630
+  edition_or_term: 2021 survey; Jacob et al. CVPR 2018 arXiv 1712.05877
+  access: free
+  use: Survey sections on uniform/non-uniform quantization, PTQ vs QAT, granularity; Jacob et al. for the QAT recipe with fake-quant and integer matmul.
+  why: Fundamental definitions and QAT mechanics that LLM-era papers assume.
+  verified: true
+- id: pruning-papers
+  role: secondary
+  kind: paper
+  title: Deep Compression; Lottery Ticket Hypothesis; SparseGPT; Wanda
+  by: Song Han et al.; Frankle and Carbin; Frantar and Alistarh; Sun et al.
+  url: https://arxiv.org/abs/1510.00149
+  edition_or_term: Deep Compression 1510.00149; Lottery Ticket 1803.03635; SparseGPT 2301.00774; Wanda 2306.11695
+  access: free
+  use: Pruning + quantization + Huffman pipeline; iterative magnitude pruning; one-shot unstructured/2:4 pruning of LLMs; activation-aware magnitude pruning.
+  why: Covers the pruning side from classic to LLM-scale; 2:4 sparsity ties to tensor-core support.
+  verified: true
+- id: efficient-survey
+  role: reference
+  kind: paper
+  title: 'Efficient Deep Learning: A Survey on Making Deep Learning Models Smaller, Faster, and Better'
+  by: Gaurav Menghani (Google)
+  url: https://arxiv.org/abs/2106.08962
+  edition_or_term: ACM Computing Surveys 2023 (book version at https://efficientdlbook.com/)
+  access: free
+  use: 'Use as a map: compression, learning techniques, automation (NAS), efficient architectures, infrastructure.'
+  why: Broad taxonomy; the companion book site has some draft chapters and codelabs.
+  verified: true
+- id: bitnet-streaming
+  role: reference
+  kind: paper
+  title: BitNet b1.58 (ternary LLMs) and StreamingLLM (attention sinks, KV compression)
+  by: Ma et al. (Microsoft); Xiao et al. (MIT)
+  url: https://arxiv.org/abs/2402.17764
+  edition_or_term: 2402.17764; StreamingLLM 2309.17453
+  access: free
+  use: 'Skim: training-time low-bit design and KV-cache eviction as the two newest directions beyond PTQ.'
+  why: Shows where compression research moved after weight-only PTQ.
+  verified: true
+- id: mit-labs
+  role: practice
+  kind: practice-site
+  title: 'MIT 6.5940 labs (Colab): pruning, quantization, NAS, LLM compression, LLM deployment on laptop'
+  by: MIT HAN Lab
+  url: https://hanlab.mit.edu/courses/2024-fall-65940
+  edition_or_term: Fall 2024 labs 0-5 (Colab/Drive links, URL above); Fall 2026 labs listed on https://hanlab.mit.edu/courses/2026-fall-65940
+  access: free
+  use: 'Fall 2024 numbering (URL above): Lab 1 Pruning (fine-grained and channel pruning on a CNN), Lab 2 Quantization (k-means and linear quantization, QAT), Lab 4 LLM Compression (SmoothQuant/AWQ-style), Lab 5 LLM Deployment on Laptop (TinyChat/AWQ with 4-bit weights). Fall 2026 numbering (2026 page): Lab 1 GPU Basics, Lab 2 Pruning, Lab 3 NAS, Lab 4 Quantization, Lab 5 LLM Deployment on Laptop.'
+  why: Graded-style notebooks that implement the techniques from scratch; free on Colab.
+  verified: true
+- id: llamacpp-practice
+  role: practice
+  kind: tool
+  title: Quantize and benchmark an LLM yourself (llm-compressor / llama.cpp / bitsandbytes)
+  by: vLLM project; ggml community; Hugging Face
+  url: https://docs.vllm.ai/projects/llm-compressor/en/latest/
+  edition_or_term: current
+  access: free
+  use: Take a 7-8B model; produce FP8, INT8 (SmoothQuant), INT4 (GPTQ/AWQ) variants; measure perplexity on WikiText and downstream accuracy, memory, and tokens/s in vLLM; write up the accuracy-latency Pareto.
+  why: The real-world workflow and the evidence for choosing a method; complements the lab notebooks.
+  verified: true
 considered:
-  - {title: "Distilling the Knowledge in a Neural Network (Hinton et al.); On-Policy Distillation of Language Models (GKD)", url: "https://arxiv.org/abs/1503.02531", reason: "Distillation papers are curated in post-training (distillation-papers); here distillation is covered by mlsysbook Ch. 10.2 and MIT 6.5940 lecture 9."}
-  - {title: "Efficient Deep Learning book (Menghani and Singh)", url: "https://efficientdlbook.com/", reason: "Good scope but only draft chapter PDFs online; use the survey instead."}
-  - {title: "CMU 11-868 LLM Systems (model quantization lectures, GPTQ)", url: "https://llmsystem.github.io/llmsystem2026spring/docs/Syllabus", reason: "Two quantization lectures inside a broader course; video status unknown."}
-  - {title: "UCSD CSE 234 / 291A quantization lectures (Winter 2025, Spring 2026)", url: "https://haoailab.com/cse291-s26/", reason: "One lecture; recording access unconfirmed."}
-  - {title: "TinyML (Warden and Situnayake, O'Reilly) / Harvard TinyML", url: "https://www.oreilly.com/library/view/tinyml/9781492052036/", reason: "Microcontroller-focused hands-on book; narrower than the scope; MIT 6.5940 MCUNet lectures cover on-device ML."}
-  - {title: "A Survey of Model Compression and Acceleration for Deep Neural Networks", url: "https://arxiv.org/abs/1710.09282", reason: "Older broad survey superseded by Menghani and Gholami."}
-  - {title: "Hands-On LLM Serving and Optimization (O'Reilly, quantization chapters)", url: "https://www.oreilly.com/library/view/hands-on-llm-serving/9798341621480/", reason: "From the owner's seed; paid and not verifiable here."}
-notes: "Course is the backbone because the topic is method-heavy and the MIT HAN lab authored many of the methods. The 2026 course page lists Lab 1 GPU Basics through Lab 5 LLM deployment; the 2024 page has finer-grained lab notebooks (pruning, quantization, NAS, LLM compression). On-device ML is covered by the MCUNet/TinyEngine lectures; no separate resource added. Low-precision floating-point formats (FP8/MX/NVFP4) are in gemm-and-tensor-cores. Distillation and QLoRA are curated in post-training, not repeated here. Menghani's survey (efficient-survey) is the better single reference than the mlsysbook chapter if one is wanted."
+- title: Distilling the Knowledge in a Neural Network (Hinton et al.); On-Policy Distillation of Language Models (GKD)
+  url: https://arxiv.org/abs/1503.02531
+  reason: Distillation papers are curated in post-training (distillation-papers); here distillation is covered by mlsysbook Ch. 10.2 and MIT 6.5940 lecture 9.
+- title: Efficient Deep Learning book (Menghani and Singh)
+  url: https://efficientdlbook.com/
+  reason: Good scope but only draft chapter PDFs online; use the survey instead.
+- title: CMU 11-868 LLM Systems (model quantization lectures, GPTQ)
+  url: https://llmsystem.github.io/llmsystem2026spring/docs/Syllabus
+  reason: Two quantization lectures inside a broader course; video status unknown.
+- title: UCSD CSE 234 / 291A quantization lectures (Winter 2025, Spring 2026)
+  url: https://haoailab.com/cse291-s26/
+  reason: One lecture; recording access unconfirmed.
+- title: TinyML (Warden and Situnayake, O'Reilly) / Harvard TinyML
+  url: https://www.oreilly.com/library/view/tinyml/9781492052036/
+  reason: Microcontroller-focused hands-on book; narrower than the scope; MIT 6.5940 MCUNet lectures cover on-device ML.
+- title: A Survey of Model Compression and Acceleration for Deep Neural Networks
+  url: https://arxiv.org/abs/1710.09282
+  reason: Older broad survey superseded by Menghani and Gholami.
+- title: Hands-On LLM Serving and Optimization (O'Reilly, quantization chapters)
+  url: https://www.oreilly.com/library/view/hands-on-llm-serving/9798341621480/
+  reason: From the owner's seed; paid and not verifiable here.
+notes: Course is the backbone because the topic is method-heavy and the MIT HAN lab authored many of the methods. The 2026 course page lists Lab 1 GPU Basics through Lab 5 LLM deployment; the 2024 page has finer-grained lab notebooks (pruning, quantization, NAS, LLM compression). On-device ML is covered by the MCUNet/TinyEngine lectures; no separate resource added. Low-precision floating-point formats (FP8/MX/NVFP4) are in gemm-and-tensor-cores. Distillation and QLoRA are curated in post-training, not repeated here. Menghani's survey (efficient-survey) is the better single reference than the mlsysbook chapter if one is wanted.
 split_proposal: null
-prereq_changes: "Add soft: [llm-inference-and-serving] or reverse (quantization methods are used by serving engines); currently inference's skeleton does not link to compression."
+prereq_changes: null
 open_questions:
-  - "Fall 2026 Lab 1 GPU Basics / Lab 4 Quantization notebook specifics not opened; Colab links exist on the page."
-  - "Whether the Fall 2026 lecture videos stay public (live.efficientml.ai page redirects to the HAN Lab YouTube channel)."
+- Fall 2026 Lab 1 GPU Basics / Lab 4 Quantization notebook specifics not opened; Colab links exist on the page.
+- Whether the Fall 2026 lecture videos stay public (live.efficientml.ai page redirects to the HAN Lab YouTube channel).
 last_verified: 2026-11-18

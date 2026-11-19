@@ -1,135 +1,142 @@
 id: query-processing
 title: Query Processing & Optimization
 group: G10
-paths: [databases]
-hard: [db-storage-and-indexing]
-soft: [algorithms]
-scope: "Operators, join algorithms, execution models, cost-based optimization."
-
+paths:
+- databases
+hard:
+- db-storage-and-indexing
+soft:
+- algorithms
+scope: Operators, join algorithms, execution models, cost-based optimization.
 level: intermediate
-estimated_hours: 70
 resources:
-  - id: rg-dbms
-    role: primary-text
-    kind: book
-    title: "Database Management Systems, 3rd edition (the 'Cow Book'), Part IV Query Evaluation"
-    by: "Raghu Ramakrishnan, Johannes Gehrke"
-    url: https://pages.cs.wisc.edu/~dbbook/
-    edition_or_term: "3rd edition (McGraw-Hill, 2003); slides at https://pages.cs.wisc.edu/~dbbook/openAccess/thirdEdition/slides/slides3ed.html"
-    access: paid
-    use: "Ch. 12 (Overview of Query Evaluation: access paths, iterators, selectivity), Ch. 13 (External Sorting), Ch. 14 (Evaluation of Relational Operators: selection, projection, joins, set ops, aggregation), Ch. 15 (A Typical Relational Query Optimizer: System R-style plan enumeration, cost estimation, left-deep plans, nested queries). Use the free chapter slides for revision."
-    why: "The clearest textbook presentation of join algorithms, iterator-based evaluation and Selinger-style optimization; it is the text behind Berkeley CS 186. It predates vectorization and cloud engines, which the advanced node handles, but the classical material it teaches is exactly what the CMU course and optimizer papers assume."
-    verified: true
-  - id: cmu-15445-qp
-    role: primary-course
-    kind: course
-    title: "CMU 15-445/645 Intro to Database Systems (query processing and optimization units)"
-    by: "Andy Pavlo, Jignesh Patel (CMU)"
-    url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
-    edition_or_term: "Fall 2025 (public videos); Fall 2026 is the latest term"
-    access: free
-    use: "Lectures #11 Sorting and Aggregations, #12 Joins Algorithms, #13 and #14 Query Execution I and II (iterator/materialization/vectorized models, parallel execution), #15 and #16 Query Planning and Optimization I and II (rules, cost models, join ordering); Homework 4 (Execution and Planning) and Project 3 (query execution: access-method, aggregation, hash-join and sort/limit executors)."
-    why: "Newest public run with videos (Fall 2025) and a project where you implement real executors in BusTub; teaches the Volcano model and cost-based planning with modern systems as examples. Spring and Fall 2026 lecture videos are behind CMU logins."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://15445.courses.cs.cmu.edu/fall2026/
-      videos: enrolled-only
-      public_videos_term: "Fall 2025"
-      public_videos_url: "https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5"
-      assignments: public-with-autograder
-      assignments_url: https://15445.courses.cs.cmu.edu/fall2025/project3/
-  - id: cs186-qp
-    role: secondary
-    kind: website
-    title: "CS 186 online notes (Sorting, Hashing, Iterators and Joins, Query Optimization) and join animations"
-    by: "UC Berkeley CS 186 staff"
-    url: https://cs186berkeley.net/notes/note9/
-    edition_or_term: "Rolling notes (6 relational algebra, 7 hashing, 8 sorting, 9 iterators and joins, 10 query optimization, 15 parallel query processing)"
-    access: free
-    use: "Notes 6-10 and 15; the interactive join-algorithm animations at https://cs186berkeley.net/resources/join-animations/; optional Project 3 (join algorithms and query optimization in RookieDB, Java): https://cs186berkeley.net/projects/3/."
-    why: "Gap: free, well-illustrated notes with cost formulas worked out, and a Java alternative to BusTub's executor project."
-    verified: true
-  - id: cmu-15799
-    role: secondary
-    kind: course
-    title: "CMU 15-799 Special Topics: Query Optimization"
-    by: "Andy Pavlo (CMU)"
-    url: https://15799.courses.cs.cmu.edu/spring2025/
-    edition_or_term: "Spring 2025 (YouTube playlist public)"
-    access: free
-    use: "After the introductory course: lectures on System R, Starburst, Volcano, Cascades, rule transformations, join ordering (bottom-up and top-down), unnesting queries, statistics and cardinality estimation; skim the learned-optimizer and implementation lectures (Calcite, Orca)."
-    why: "Gap: the only public graduate-level course devoted to optimizers, with slides, readings, and a public playlist; the introductory courses cover optimization in two lectures."
-    verified: true
-    course:
-      latest_term: "Spring 2025"
-      latest_url: https://15799.courses.cs.cmu.edu/spring2025/
-      videos: public
-      assignments: unknown
-      assignments_url: https://15799.courses.cs.cmu.edu/spring2025/projects.html
-  - id: pg-explain
-    role: practice
-    kind: docs
-    title: "PostgreSQL: Using EXPLAIN (and The Internals of PostgreSQL, Ch. 3 Query Processing)"
-    by: "PostgreSQL Global Development Group; Hironobu Suzuki"
-    url: https://www.postgresql.org/docs/current/using-explain.html
-    edition_or_term: "PostgreSQL 18; interdb.jp Ch. 3 at https://www.interdb.jp/pg/pgsql03.html"
-    access: free
-    use: "Exercise: on a table with 10 million rows, write queries with one, two and three joins, run EXPLAIN (ANALYZE, BUFFERS), force different join methods with enable_nestloop/enable_hashjoin/enable_mergejoin, and explain each cost estimate using the planner-statistics page; read interdb Ch. 3 on parser, rewriter, planner and executor."
-    why: "Gap: reading real plans from a production optimizer is the best way to internalize join choice, cardinality misestimates and cost models."
-    verified: true
-  - id: howqueryengineswork
-    role: secondary
-    kind: book
-    title: "How Query Engines Work"
-    by: "Andy Grove (Apache DataFusion creator)"
-    url: https://howqueryengineswork.com/
-    edition_or_term: "Online edition (copyright 2020-2026); ebook on Leanpub"
-    access: mixed
-    use: "Read the chapters on logical plans, physical plans, expressions, the query planner and the optimizer; write a toy engine (scan, filter, projection, aggregate) alongside."
-    why: "Hidden gem: a short, implementation-first walk-through of a columnar, Arrow-based query engine; complements the row-oriented, textbook view and bridges to vectorized execution in the advanced node."
-    verified: true
-  - id: datafusion
-    role: reference
-    kind: docs
-    title: "Apache DataFusion documentation"
-    by: "Apache Software Foundation"
-    url: https://datafusion.apache.org/
-    edition_or_term: "Main documentation"
-    access: free
-    use: "Library user guide on logical plans, physical plans and optimizer rules; use as a real, readable Rust optimizer to extend with a custom rule."
-    why: "Gap: an open-source production-grade query engine whose planner and optimizer you can read and modify."
-    verified: true
-  - id: calcite
-    role: reference
-    kind: docs
-    title: "Apache Calcite documentation"
-    by: "Apache Software Foundation"
-    url: https://calcite.apache.org/docs/
-    edition_or_term: "Current docs"
-    access: free
-    use: "Read the Background, Algebra and Adapter pages to see rule-based and cost-based optimization as a reusable framework."
-    why: "Gap: Calcite's Volcano/Cascades-style planner underpins many engines (Hive, Flink SQL); useful context after the CMU lectures."
-    verified: true
-  - id: use-the-index-join
-    role: reference
-    kind: website
-    title: "Use The Index, Luke: The Join Operation and Sorting and Grouping"
-    by: "Markus Winand"
-    url: https://use-the-index-luke.com/sql/join
-    edition_or_term: "Free web edition"
-    access: free
-    use: "Nested loops, hash join and sort-merge join chapters, with index-supported variants and plan examples for several DBMSs."
-    why: "Gap: connects join algorithms to what an application developer sees in EXPLAIN and how indexes change the choice."
-    verified: true
+- id: rg-dbms
+  role: primary-text
+  kind: book
+  title: Database Management Systems, 3rd edition (the 'Cow Book'), Part IV Query Evaluation
+  by: Raghu Ramakrishnan, Johannes Gehrke
+  url: https://pages.cs.wisc.edu/~dbbook/
+  edition_or_term: 3rd edition (McGraw-Hill, 2003); slides at https://pages.cs.wisc.edu/~dbbook/openAccess/thirdEdition/slides/slides3ed.html
+  access: paid
+  use: 'Ch. 12 (Overview of Query Evaluation: access paths, iterators, selectivity), Ch. 13 (External Sorting), Ch. 14 (Evaluation of Relational Operators: selection, projection, joins, set ops, aggregation), Ch. 15 (A Typical Relational Query Optimizer: System R-style plan enumeration, cost estimation, left-deep plans, nested queries). Use the free chapter slides for revision.'
+  why: The clearest textbook presentation of join algorithms, iterator-based evaluation and Selinger-style optimization; it is the text behind Berkeley CS 186. It predates vectorization and cloud engines, which the advanced node handles, but the classical material it teaches is exactly what the CMU course and optimizer papers assume.
+  verified: true
+- id: cmu-15445-qp
+  role: primary-course
+  kind: course
+  title: CMU 15-445/645 Intro to Database Systems (query processing and optimization units)
+  by: Andy Pavlo, Jignesh Patel (CMU)
+  url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
+  edition_or_term: Fall 2025 (public videos); Fall 2026 is the latest term
+  access: free
+  use: 'Lectures #11 Sorting and Aggregations, #12 Joins Algorithms, #13 and #14 Query Execution I and II (iterator/materialization/vectorized models, parallel execution), #15 and #16 Query Planning and Optimization I and II (rules, cost models, join ordering); Homework 4 (Execution and Planning) and Project 3 (query execution: access-method, aggregation, hash-join and sort/limit executors).'
+  why: Newest public run with videos (Fall 2025) and a project where you implement real executors in BusTub; teaches the Volcano model and cost-based planning with modern systems as examples. Spring and Fall 2026 lecture videos are behind CMU logins.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://15445.courses.cs.cmu.edu/fall2026/
+    videos: enrolled-only
+    public_videos_term: Fall 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5
+    assignments: public-with-autograder
+    assignments_url: https://15445.courses.cs.cmu.edu/fall2025/project3/
+- id: cs186-qp
+  role: secondary
+  kind: website
+  title: CS 186 online notes (Sorting, Hashing, Iterators and Joins, Query Optimization) and join animations
+  by: UC Berkeley CS 186 staff
+  url: https://cs186berkeley.net/notes/note9/
+  edition_or_term: Rolling notes (6 relational algebra, 7 hashing, 8 sorting, 9 iterators and joins, 10 query optimization, 15 parallel query processing)
+  access: free
+  use: 'Notes 6-10 and 15; the interactive join-algorithm animations at https://cs186berkeley.net/resources/join-animations/; optional Project 3 (join algorithms and query optimization in RookieDB, Java): https://cs186berkeley.net/projects/3/.'
+  why: 'Gap: free, well-illustrated notes with cost formulas worked out, and a Java alternative to BusTub''s executor project.'
+  verified: true
+- id: cmu-15799
+  role: secondary
+  kind: course
+  title: 'CMU 15-799 Special Topics: Query Optimization'
+  by: Andy Pavlo (CMU)
+  url: https://15799.courses.cs.cmu.edu/spring2025/
+  edition_or_term: Spring 2025 (YouTube playlist public)
+  access: free
+  use: 'After the introductory course: lectures on System R, Starburst, Volcano, Cascades, rule transformations, join ordering (bottom-up and top-down), unnesting queries, statistics and cardinality estimation; skim the learned-optimizer and implementation lectures (Calcite, Orca).'
+  why: 'Gap: the only public graduate-level course devoted to optimizers, with slides, readings, and a public playlist; the introductory courses cover optimization in two lectures.'
+  verified: true
+  course:
+    latest_term: Spring 2025
+    latest_url: https://15799.courses.cs.cmu.edu/spring2025/
+    videos: public
+    assignments: unknown
+    assignments_url: https://15799.courses.cs.cmu.edu/spring2025/projects.html
+- id: pg-explain
+  role: practice
+  kind: docs
+  title: 'PostgreSQL: Using EXPLAIN (and The Internals of PostgreSQL, Ch. 3 Query Processing)'
+  by: PostgreSQL Global Development Group; Hironobu Suzuki
+  url: https://www.postgresql.org/docs/current/using-explain.html
+  edition_or_term: PostgreSQL 18; interdb.jp Ch. 3 at https://www.interdb.jp/pg/pgsql03.html
+  access: free
+  use: 'Exercise: on a table with 10 million rows, write queries with one, two and three joins, run EXPLAIN (ANALYZE, BUFFERS), force different join methods with enable_nestloop/enable_hashjoin/enable_mergejoin, and explain each cost estimate using the planner-statistics page; read interdb Ch. 3 on parser, rewriter, planner and executor.'
+  why: 'Gap: reading real plans from a production optimizer is the best way to internalize join choice, cardinality misestimates and cost models.'
+  verified: true
+- id: howqueryengineswork
+  role: secondary
+  kind: book
+  title: How Query Engines Work
+  by: Andy Grove (Apache DataFusion creator)
+  url: https://howqueryengineswork.com/
+  edition_or_term: Online edition (copyright 2020-2026); ebook on Leanpub
+  access: mixed
+  use: Read the chapters on logical plans, physical plans, expressions, the query planner and the optimizer; write a toy engine (scan, filter, projection, aggregate) alongside.
+  why: 'Hidden gem: a short, implementation-first walk-through of a columnar, Arrow-based query engine; complements the row-oriented, textbook view and bridges to vectorized execution in the advanced node.'
+  verified: true
+- id: datafusion
+  role: reference
+  kind: docs
+  title: Apache DataFusion documentation
+  by: Apache Software Foundation
+  url: https://datafusion.apache.org/
+  edition_or_term: Main documentation
+  access: free
+  use: Library user guide on logical plans, physical plans and optimizer rules; use as a real, readable Rust optimizer to extend with a custom rule.
+  why: 'Gap: an open-source production-grade query engine whose planner and optimizer you can read and modify.'
+  verified: true
+- id: calcite
+  role: reference
+  kind: docs
+  title: Apache Calcite documentation
+  by: Apache Software Foundation
+  url: https://calcite.apache.org/docs/
+  edition_or_term: Current docs
+  access: free
+  use: Read the Background, Algebra and Adapter pages to see rule-based and cost-based optimization as a reusable framework.
+  why: 'Gap: Calcite''s Volcano/Cascades-style planner underpins many engines (Hive, Flink SQL); useful context after the CMU lectures.'
+  verified: true
+- id: use-the-index-join
+  role: reference
+  kind: website
+  title: 'Use The Index, Luke: The Join Operation and Sorting and Grouping'
+  by: Markus Winand
+  url: https://use-the-index-luke.com/sql/join
+  edition_or_term: Free web edition
+  access: free
+  use: Nested loops, hash join and sort-merge join chapters, with index-supported variants and plan examples for several DBMSs.
+  why: 'Gap: connects join algorithms to what an application developer sees in EXPLAIN and how indexes change the choice.'
+  verified: true
 considered:
-  - {title: "Database System Concepts 7th ed., Ch. 15-16", url: "https://www.db-book.com/", reason: "Excellent and current coverage of the same topics (it is the CMU text); R and G chosen as primary because its optimizer chapter is the clearest, but DSC is the better reference for exam-style problems."}
-  - {title: "CMU 15-721 Advanced Database Systems (Spring 2024)", url: "https://15721.courses.cs.cmu.edu/spring2024/schedule.html", reason: "Lectures on execution (vectorized, compiled), hash joins, multi-way joins, optimizer implementation and cost models; used in the advanced-database-systems node."}
-  - {title: "Berkeley CS 186 (Fall 2026)", url: "https://cs186berkeley.net/", reason: "Strong query-processing content and a Java project, but newest public videos are Spring 2024; kept as secondary notes plus optional project."}
-notes: "Route: R and G chapters 12-15 and CMU lectures 11-16 in parallel, then BusTub Project 3 (executors) or RookieDB Project 3 (joins and optimizer in Java). Use EXPLAIN on PostgreSQL throughout. Graduate-level optimizer depth is CMU 15-799. In-memory and vectorized engines belong to the next-level advanced node. R and G (2003) is kept as primary for exposition clarity only; it predates vectorized and compiled execution, and the CMU lectures 11-16 follow Silberschatz DSC7 ch. 15-16 (primary of databases-intro), which advanced-database-systems and the Kersten paper extend."
+- title: Database System Concepts 7th ed., Ch. 15-16
+  url: https://www.db-book.com/
+  reason: Excellent and current coverage of the same topics (it is the CMU text); R and G chosen as primary because its optimizer chapter is the clearest, but DSC is the better reference for exam-style problems.
+- title: CMU 15-721 Advanced Database Systems (Spring 2024)
+  url: https://15721.courses.cs.cmu.edu/spring2024/schedule.html
+  reason: Lectures on execution (vectorized, compiled), hash joins, multi-way joins, optimizer implementation and cost models; used in the advanced-database-systems node.
+- title: Berkeley CS 186 (Fall 2026)
+  url: https://cs186berkeley.net/
+  reason: Strong query-processing content and a Java project, but newest public videos are Spring 2024; kept as secondary notes plus optional project.
+notes: 'Route: R and G chapters 12-15 and CMU lectures 11-16 in parallel, then BusTub Project 3 (executors) or RookieDB Project 3 (joins and optimizer in Java). Use EXPLAIN on PostgreSQL throughout. Graduate-level optimizer depth is CMU 15-799. In-memory and vectorized engines belong to the next-level advanced node. R and G (2003) is kept as primary for exposition clarity only; it predates vectorized and compiled execution, and the CMU lectures 11-16 follow Silberschatz DSC7 ch. 15-16 (primary of databases-intro), which advanced-database-systems and the Kersten paper extend.'
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "R and G chapter numbering (12-15 for query evaluation) comes from the slide index of the 3rd edition on the authors' site; I did not open the book itself."
-  - "15-799 Spring 2025 assignments (two optimizer projects on an open-source optimizer service) are listed but their public availability and tests were not examined."
+- R and G chapter numbering (12-15 for query evaluation) comes from the slide index of the 3rd edition on the authors' site; I did not open the book itself.
+- 15-799 Spring 2025 assignments (two optimizer projects on an open-source optimizer service) are listed but their public availability and tests were not examined.
 last_verified: 2026-11-18

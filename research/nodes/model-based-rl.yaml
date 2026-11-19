@@ -9,7 +9,6 @@ hard:
 soft: []
 scope: Learned dynamics, MPC, Dyna, MuZero, Dreamer, planning with learned models.
 level: advanced
-estimated_hours: 45
 resources:
 - id: moerland-mbrl-survey
   role: primary-text
@@ -165,7 +164,7 @@ considered:
   reason: Excellent on planning/POMDPs; less on learned deep models.
 notes: 'Primary text choice: no complete textbook covers learned world models; Moerland et al. is the most systematic with Murphy Ch. 4 as the updated companion. DreamerV3 / TD-MPC2 are the practical frontier. Public assignments for model-based RL are scarce; Dyna from Sutton-Barto plus reproducing a published agent is the pragmatic practice.'
 split_proposal: null
-prereq_changes: 'soft prereq: add sutton-barto Ch. 8 context via rl-foundations (already hard through policy-gradient and deep-value)'
+prereq_changes: null
 open_questions:
 - Neither CS 285 nor CS 224R Spring 2026 videos were publicly linked.
 last_verified: '2026-11-18'

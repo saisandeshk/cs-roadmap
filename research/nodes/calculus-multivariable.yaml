@@ -1,0 +1,69 @@
+id: calculus-multivariable
+title: 'Calculus II: Multivariable'
+group: G2
+paths:
+- core
+hard:
+- calculus-single-variable
+soft: []
+scope: Vectors, partial derivatives, gradients and directional derivatives, Lagrange multipliers, multiple integrals, vector calculus basics.
+level: intro
+resources:
+- id: openstax-calculus
+  role: primary-text
+  kind: book
+  title: Calculus, Volumes 1-3
+  by: OpenStax (Gilbert Strang, Edwin 'Jed' Herman, et al.)
+  url: https://openstax.org/details/books/calculus-volume-1
+  edition_or_term: 'Volumes 1, 2, 3 (current web editions); Vol 3 page: https://openstax.org/details/books/calculus-volume-3'
+  access: free
+  use: Volume 3 (vectors, partial derivatives, gradients, optimization with Lagrange multipliers, multiple integrals, vector calculus). Do the odd-numbered exercises (answers in the back).
+  why: The only free text that covers the whole scope (single variable through multiple integrals) at full textbook depth, with graded exercises and answers; pairs with the MIT lectures.
+  verified: true
+- id: mit-18-02sc
+  role: primary-course
+  kind: course
+  title: MIT 18.02SC Multivariable Calculus
+  by: Denis Auroux (MIT OCW)
+  url: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/
+  edition_or_term: Fall 2010 (OCW Scholar); lectures also in 18.02 Fall 2007
+  access: free
+  use: Unit 2 (partial derivatives, tangent approximation, chain rule, gradient, directional derivatives, Lagrange multipliers) and Unit 3 (double integrals) fully; Units 1 and 4 (vectors/matrices, line/surface integrals, Stokes) as needed. Do the problem sets with solutions.
+  why: The 18.01SC course does not cover the multivariable half of the node scope; Auroux's lectures are the clearest free treatment and the gradient/Lagrange material is the direct prerequisite for matrix calculus and optimization.
+  verified: true
+  course:
+    latest_term: Fall 2010 (18.02SC); 18.02 Fall 2007 has the full lecture set
+    latest_url: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/
+    videos: public
+    public_videos_term: Fall 2010 / Fall 2007 (https://www.youtube.com/playlist?list=PL4C4C8A7D06566F38)
+    public_videos_url: https://ocw.mit.edu/courses/18-02-multivariable-calculus-fall-2007/video_galleries/lecture-videos/
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/
+- id: strang-calculus
+  role: secondary
+  kind: book
+  title: Calculus (open textbook)
+  by: Gilbert Strang
+  url: https://ocw.mit.edu/courses/res-18-001-calculus-fall-2023/
+  edition_or_term: OCW RES.18-001, Fall 2023 posting
+  access: free
+  use: Chapter 11 (vectors and matrices) and 13 (partial derivatives) as an alternative explanation when the primary text is unclear.
+  why: Application-oriented, concise, written by the author of the linear algebra primary; useful second explanation for ODE/exponential growth and series.
+  verified: true
+- id: pauls-notes
+  role: practice
+  kind: website
+  title: 'Paul''s Online Math Notes: Calculus I, II, III'
+  by: Paul Dawkins (Lamar University)
+  url: https://tutorial.math.lamar.edu/
+  edition_or_term: Current site
+  access: free
+  use: 'Practice Problems with full solutions: Calculus III (partial derivatives, applications of partial derivatives, multiple integrals).'
+  why: Large bank of worked practice problems with solutions to drill technique after lectures; neither MIT course provides as much routine practice.
+  verified: true
+considered: []
+notes: Created by splitting 'calculus' (owner decision B3, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

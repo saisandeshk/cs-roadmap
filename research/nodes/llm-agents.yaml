@@ -1,207 +1,228 @@
 id: llm-agents
 title: LLM Agents & Tool Use
 group: G7
-paths: [llm]
+paths:
+- llm
 branch: ai-engineering
-hard: [llm-applications]
-soft: [rl-for-llms]
-scope: "Tool calling, agent loops, planning, memory, multi-agent setups, agent evaluation and security."
-
+hard:
+- llm-applications
+soft:
+- rl-for-llms
+- retrieval-and-rag
+- llm-evaluation
+scope: Tool calling, agent loops, planning, memory, multi-agent setups, agent evaluation and security.
 level: intermediate
-estimated_hours: 45
 resources:
-  - id: building-effective-agents
-    role: primary-text
-    kind: article
-    title: "Building effective agents"
-    by: "Erik Schluntz, Barry Zhang (Anthropic)"
-    url: https://www.anthropic.com/engineering/building-effective-agents
-    edition_or_term: "Published 2024-12-19 (page notes tooling has changed since and points to newer agent docs)"
-    access: free
-    use: "Whole article (~1 h): workflows vs agents, when not to use agents, five workflow patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer), agent-computer interface (appendix 2). Then the companions: Writing effective tools for agents (https://www.anthropic.com/engineering/writing-tools-for-agents), Effective context engineering (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), How we built our multi-agent research system (https://www.anthropic.com/engineering/multi-agent-research-system), Effective harnesses for long-running agents (https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)."
-    why: "The most widely cited, opinionated and short guide to agent design; no agent textbook is yet stable enough to be primary, so this plus its companion engineering posts is the spine (short; the course carries depth)."
-    verified: true
-  - id: cmu-11-768
-    role: primary-course
-    kind: course
-    title: "CMU 11-768 AI Agents"
-    by: "Graham Neubig, Daniel Fried"
-    url: https://www.cmu-agents.com/
-    edition_or_term: "Fall 2026 (Aug 25 - Dec 3; Tue/Thu)"
-    access: free
-    use: "Lectures: What is an agent?, tool use, context management, skills and memory, planning/multi-agent coordination, coding agents, GUI agents, SFT and RL for agents (RL parts overlap G8), deep research agents, sandboxing and credential management, OpenHands, LangGraph, observability, human-agent interaction, tree search. Assignments: A1 Build an agent harness (public repo cmu-agents/assignment-1), A2 evals, A3 training (not confirmed public). Watch lectures 1-9 on YouTube now (the site JS lists 9 recordings); slides for early lectures are on the site."
-    why: "Newest agent-specific course (Neubig is an OpenHands co-author), covering harness, evals and training in one syllabus; recordings are public on Neubig's YouTube channel and a build-it-yourself harness assignment is public. Caveats: the site is JS-only, only lectures 1-9 are public so far and the term is still running (video count to be updated after Dec 3); assignments 2-3 are unconfirmed. If 11-768 stalls, Stanford CS329Z (cs329z-agents below: public video for lectures 1-9, two autograded homeworks) is the stated fallback course."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://www.cmu-agents.com/
-      videos: public
-      assignments: partial
-      assignments_url: https://github.com/cmu-agents/assignment-1
-  - id: cmu-agents-a1
-    role: practice
-    kind: practice-site
-    title: "11-768 Assignment 1: Build an Agent Harness"
-    by: "Weiwei Sun, Saujas Vaduguru (CMU)"
-    url: https://github.com/cmu-agents/assignment-1
-    edition_or_term: "Fall 2026 (due Sep 14, 2026)"
-    access: free
-    use: "Starter code (src/assignment, tasks, scripts, tests, chess_app submodule); read ASSIGNMENT.md for the spec and implement the harness loop with tools, then run the task scripts."
-    why: "Only public from-scratch agent-harness assignment I found for 2026; repo has a tests directory (grading mechanism not confirmed)."
-    verified: true
-  - id: cs329z-agents
-    role: secondary
-    kind: course
-    title: "Stanford CS329Z Engineering AI Agents: tool use/MCP, frameworks, design patterns, memory and multi-agent weeks"
-    by: "Diyi Yang, Michael Ryan, John Yang"
-    url: https://cs329z.stanford.edu/
-    edition_or_term: "Fall 2026"
-    access: free
-    use: "Tool Use & Function Calling (Toolformer, Gorilla, MCP spec, BFCL/ToolBench/tau-bench), Frameworks & Orchestration (DSPy, LangGraph, harness tour: mini-SWE-agent, OpenHands, Pi), Agent Design Patterns & Scaffolds (ReAct, Reflexion, CodeAct, ReWOO; context patterns), Agent Memory Architectures, multi-agent systems; homework 2 repo https://github.com/cs329z/assignment2-harness."
-    why: "More applied/engineering-oriented complement to CMU's course with public YouTube recordings and public homework; also primary-course of llm-applications."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs329z.stanford.edu/
-      videos: public
-      assignments: public-with-autograder
-      assignments_url: https://github.com/cs329z/assignment2-harness
-  - id: berkeley-agentic-ai
-    role: secondary
-    kind: course
-    title: "Berkeley CS294/194-196 Agentic AI (RDI MOOC)"
-    by: "Dawn Song (with guest lecturers: Noam Brown, Oriol Vinyals, Yann Dubois, Clay Bavor, Peter Stone, others)"
-    url: https://rdi.berkeley.edu/agentic-ai/f25
-    edition_or_term: "Fall 2025 (no Spring/Fall 2026 offering found)"
-    access: free
-    use: "Pick guest lectures: LLM agents overview (Sep 15), agent evaluation (Oct 6), multi-agent AI (Oct 20), lessons from deploying agents (Nov 10), agentic AI safety and security (Dec 8, livestream). Recordings for Sep 15 to Dec 1 are linked; the introduction is not recorded."
-    why: "Frontier-lab practitioner perspectives and a safety/security lecture; a lecture series rather than a build-it course (no labs; project and quizzes), so secondary."
-    verified: true
-    course:
-      latest_term: "Fall 2025"
-      latest_url: https://rdi.berkeley.edu/agentic-ai/f25
-      videos: public
-      assignments: none
-  - id: hf-agents-course
-    role: practice
-    kind: course
-    title: "Hugging Face AI Agents Course"
-    by: "Hugging Face"
-    url: https://huggingface.co/learn/agents-course/unit0/introduction
-    edition_or_term: "Current (self-paced; units: fundamentals, smolagents/LangGraph/LlamaIndex, use cases, final assignment; bonus units on function-calling fine-tuning and observability)"
-    access: free
-    use: "Unit 1 agent fundamentals (tools, thoughts, actions, observations, chat templates), unit 2 frameworks (smolagents, LangGraph, LlamaIndex), bonus unit 2 (observability/evaluation), and the final assignment (build an agent for a benchmark, https://huggingface.co/learn/agents-course/unit4/introduction)."
-    why: "Free, hands-on first agent build with three frameworks and a graded-style benchmark challenge; good before CMU A1."
-    verified: true
-    course:
-      latest_term: "Rolling (self-paced)"
-      latest_url: https://huggingface.co/learn/agents-course/unit0/introduction
-      videos: none
-      assignments: public
-      assignments_url: https://huggingface.co/learn/agents-course/unit4/introduction
-  - id: mcp-spec
-    role: reference
-    kind: docs
-    title: "Model Context Protocol specification (2026-07-28) and overview"
-    by: "Model Context Protocol project"
-    url: https://modelcontextprotocol.io/specification/2026-07-28
-    edition_or_term: "Revision 2026-07-28; overview at https://modelcontextprotocol.io/"
-    access: free
-    use: "Architecture, tools/resources/prompts primitives, transports, authorization; build one MCP server exposing two tools and call it from your harness."
-    why: "The de-facto standard interface for tool integration; the spec revisions move quickly, so use the dated spec."
-    verified: true
-  - id: tool-use-docs
-    role: reference
-    kind: docs
-    title: "Provider tool-use docs (Claude tool use; OpenAI Agents SDK) and LangGraph"
-    by: "Anthropic; OpenAI; LangChain"
-    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
-    edition_or_term: "Current; OpenAI Agents SDK https://openai.github.io/openai-agents-python/ ; LangGraph https://docs.langchain.com/oss/python/langgraph/overview"
-    access: free
-    use: "Tool definitions, stop reasons/tool_use loops, parallel tool calls; Agents SDK handoffs/guardrails; LangGraph persistence and interrupts (human-in-the-loop)."
-    why: "Primary reference for the exact request/response contracts and the leading orchestration frameworks."
-    verified: true
-  - id: react-toolformer
-    role: reference
-    kind: paper
-    title: "ReAct and Toolformer"
-    by: "Yao et al.; Schick et al."
-    url: https://arxiv.org/abs/2210.03629
-    edition_or_term: "ReAct 2022; Toolformer https://arxiv.org/abs/2302.04761 (2023)"
-    access: free
-    use: "ReAct sections 2-3 (thought/action/observation loop); Toolformer section 2 (self-supervised tool-call learning). Also Tree of Thoughts (https://arxiv.org/abs/2305.10601) for search-based planning."
-    why: "Primary sources for the agent loop and learned tool use."
-    verified: true
-  - id: memory-papers
-    role: reference
-    kind: paper
-    title: "Memory and cognitive architectures: MemGPT, CoALA, Generative Agents, Reflexion"
-    by: "Packer et al.; Sumers et al.; Park et al.; Shinn et al."
-    url: https://arxiv.org/abs/2310.08560
-    edition_or_term: "MemGPT 2023; CoALA https://arxiv.org/abs/2309.02427; Generative Agents https://arxiv.org/abs/2304.03442; Reflexion https://arxiv.org/abs/2303.11366"
-    access: free
-    use: "MemGPT (tiered memory), CoALA (working/episodic/semantic/procedural taxonomy), Generative Agents (memory stream + reflection), Reflexion (verbal self-feedback)."
-    why: "Cover the memory and planning scope items; CoALA gives the vocabulary used in CS329Z's memory lecture."
-    verified: true
-  - id: agents-that-matter
-    role: secondary
-    kind: paper
-    title: "AI Agents That Matter"
-    by: "Kapoor, Stroebl, Siegel, Nadgir, Narayanan"
-    url: https://arxiv.org/abs/2407.01502
-    edition_or_term: "2024 (TMLR 2025)"
-    access: free
-    use: "Whole paper: cost-controlled agent evaluation, Pareto frontiers of accuracy vs cost, benchmark overfitting and reproducibility problems."
-    why: "Fills the agent-evaluation scope item with methodology (cost-aware, held-out) beyond leaderboards."
-    verified: true
-  - id: agent-benchmarks
-    role: reference
-    kind: paper
-    title: "Agent benchmarks: tau-bench and AgentDojo (SWE-bench is read in llm-evaluation)"
-    by: "Yao et al. (Sierra); Debenedetti et al."
-    url: https://arxiv.org/abs/2406.12045
-    edition_or_term: "tau-bench 2024; AgentDojo https://arxiv.org/abs/2406.13352 (2024); SWE-bench (https://arxiv.org/abs/2310.06770, live leaderboards https://www.swebench.com/) is covered by llm-evaluation"
-    access: free
-    use: "Learn the task/grader design of each; run a few tau-bench tasks against your harness if budget allows; for SWE-bench use the llm-evaluation entry."
-    why: "Tool-agent-user reliability (tau-bench) and security (AgentDojo) benchmark families that anchor agent evaluation; the software-engineering family (SWE-bench) is cited from llm-evaluation to avoid duplication."
-    verified: true
-  - id: prompt-injection-security
-    role: secondary
-    kind: paper
-    title: "Agent security: Design Patterns for Securing LLM Agents against Prompt Injections; Not what you've signed up for; Adaptive attacks"
-    by: "Beurer-Kellner et al.; Greshake et al.; Zhan et al."
-    url: https://arxiv.org/abs/2506.08837
-    edition_or_term: "Design patterns 2025; Greshake https://arxiv.org/abs/2302.12173 (2023); adaptive attacks https://arxiv.org/abs/2503.00061 (2025); CaMeL https://arxiv.org/abs/2503.18813; instruction hierarchy https://arxiv.org/abs/2404.13208"
-    access: free
-    use: "Design Patterns paper (plan-then-execute, dual LLM, action-selector patterns) and Greshake for the threat model; Simon Willison's 'lethal trifecta' post (https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) for the practical rule; adaptive-attacks paper for why prompt-level defences fail."
-    why: "Covers the 'agent security' scope item; points to G8's safety nodes for deeper red-teaming."
-    verified: true
-  - id: lilian-weng-agents
-    role: reference
-    kind: article
-    title: "LLM Powered Autonomous Agents"
-    by: "Lilian Weng"
-    url: https://lilianweng.github.io/posts/2023-06-23-agent/
-    edition_or_term: "2023"
-    access: free
-    use: "Planning, memory and tool-use taxonomy as a conceptual map."
-    why: "Classic overview (also assigned in CS329Z week 1); dated on practice but still the clearest taxonomy."
-    verified: true
+- id: building-effective-agents
+  role: primary-text
+  kind: article
+  title: Building effective agents
+  by: Erik Schluntz, Barry Zhang (Anthropic)
+  url: https://www.anthropic.com/engineering/building-effective-agents
+  edition_or_term: Published 2024-12-19 (page notes tooling has changed since and points to newer agent docs)
+  access: free
+  use: 'Whole article: workflows vs agents, when not to use agents, five workflow patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer), agent-computer interface (appendix 2). Then the companions: Writing effective tools for agents (https://www.anthropic.com/engineering/writing-tools-for-agents), Effective context engineering (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), How we built our multi-agent research system (https://www.anthropic.com/engineering/multi-agent-research-system), Effective harnesses for long-running agents (https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents).'
+  why: The most widely cited, opinionated and short guide to agent design; no agent textbook is yet stable enough to be primary, so this plus its companion engineering posts is the spine (short; the course carries depth).
+  verified: true
+- id: cmu-11-768
+  role: primary-course
+  kind: course
+  title: CMU 11-768 AI Agents
+  by: Graham Neubig, Daniel Fried
+  url: https://www.cmu-agents.com/
+  edition_or_term: Fall 2026 (Aug 25 - Dec 3; Tue/Thu)
+  access: free
+  use: 'Lectures: What is an agent?, tool use, context management, skills and memory, planning/multi-agent coordination, coding agents, GUI agents, SFT and RL for agents (RL parts overlap G8), deep research agents, sandboxing and credential management, OpenHands, LangGraph, observability, human-agent interaction, tree search. Assignments: A1 Build an agent harness (public repo cmu-agents/assignment-1), A2 evals, A3 training (not confirmed public). Watch lectures 1-9 on YouTube now (the site JS lists 9 recordings); slides for early lectures are on the site.'
+  why: 'Newest agent-specific course (Neubig is an OpenHands co-author), covering harness, evals and training in one syllabus; recordings are public on Neubig''s YouTube channel and a build-it-yourself harness assignment is public. Caveats: the site is JS-only, only lectures 1-9 are public so far and the term is still running (video count to be updated after Dec 3); assignments 2-3 are unconfirmed. If 11-768 stalls, Stanford CS329Z (cs329z-agents below: public video for lectures 1-9, two autograded homeworks) is the stated fallback course.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://www.cmu-agents.com/
+    videos: public
+    assignments: partial
+    assignments_url: https://github.com/cmu-agents/assignment-1
+- id: cmu-agents-a1
+  role: practice
+  kind: practice-site
+  title: '11-768 Assignment 1: Build an Agent Harness'
+  by: Weiwei Sun, Saujas Vaduguru (CMU)
+  url: https://github.com/cmu-agents/assignment-1
+  edition_or_term: Fall 2026 (due Sep 14, 2026)
+  access: free
+  use: Starter code (src/assignment, tasks, scripts, tests, chess_app submodule); read ASSIGNMENT.md for the spec and implement the harness loop with tools, then run the task scripts.
+  why: Only public from-scratch agent-harness assignment I found for 2026; repo has a tests directory (grading mechanism not confirmed).
+  verified: true
+- id: cs329z-agents
+  role: secondary
+  kind: course
+  title: 'Stanford CS329Z Engineering AI Agents: tool use/MCP, frameworks, design patterns, memory and multi-agent weeks'
+  by: Diyi Yang, Michael Ryan, John Yang
+  url: https://cs329z.stanford.edu/
+  edition_or_term: Fall 2026
+  access: free
+  use: 'Tool Use & Function Calling (Toolformer, Gorilla, MCP spec, BFCL/ToolBench/tau-bench), Frameworks & Orchestration (DSPy, LangGraph, harness tour: mini-SWE-agent, OpenHands, Pi), Agent Design Patterns & Scaffolds (ReAct, Reflexion, CodeAct, ReWOO; context patterns), Agent Memory Architectures, multi-agent systems; homework 2 repo https://github.com/cs329z/assignment2-harness.'
+  why: More applied/engineering-oriented complement to CMU's course with public YouTube recordings and public homework; also primary-course of llm-applications.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs329z.stanford.edu/
+    videos: public
+    assignments: public-with-autograder
+    assignments_url: https://github.com/cs329z/assignment2-harness
+- id: berkeley-agentic-ai
+  role: secondary
+  kind: course
+  title: Berkeley CS294/194-196 Agentic AI (RDI MOOC)
+  by: 'Dawn Song (with guest lecturers: Noam Brown, Oriol Vinyals, Yann Dubois, Clay Bavor, Peter Stone, others)'
+  url: https://rdi.berkeley.edu/agentic-ai/f25
+  edition_or_term: Fall 2025 (no Spring/Fall 2026 offering found)
+  access: free
+  use: 'Pick guest lectures: LLM agents overview (Sep 15), agent evaluation (Oct 6), multi-agent AI (Oct 20), lessons from deploying agents (Nov 10), agentic AI safety and security (Dec 8, livestream). Recordings for Sep 15 to Dec 1 are linked; the introduction is not recorded.'
+  why: Frontier-lab practitioner perspectives and a safety/security lecture; a lecture series rather than a build-it course (no labs; project and quizzes), so secondary.
+  verified: true
+  course:
+    latest_term: Fall 2025
+    latest_url: https://rdi.berkeley.edu/agentic-ai/f25
+    videos: public
+    assignments: none
+- id: hf-agents-course
+  role: practice
+  kind: course
+  title: Hugging Face AI Agents Course
+  by: Hugging Face
+  url: https://huggingface.co/learn/agents-course/unit0/introduction
+  edition_or_term: 'Current (self-paced; units: fundamentals, smolagents/LangGraph/LlamaIndex, use cases, final assignment; bonus units on function-calling fine-tuning and observability)'
+  access: free
+  use: Unit 1 agent fundamentals (tools, thoughts, actions, observations, chat templates), unit 2 frameworks (smolagents, LangGraph, LlamaIndex), bonus unit 2 (observability/evaluation), and the final assignment (build an agent for a benchmark, https://huggingface.co/learn/agents-course/unit4/introduction).
+  why: Free, hands-on first agent build with three frameworks and a graded-style benchmark challenge; good before CMU A1.
+  verified: true
+  course:
+    latest_term: Rolling (self-paced)
+    latest_url: https://huggingface.co/learn/agents-course/unit0/introduction
+    videos: none
+    assignments: public
+    assignments_url: https://huggingface.co/learn/agents-course/unit4/introduction
+- id: mcp-spec
+  role: reference
+  kind: docs
+  title: Model Context Protocol specification (2026-07-28) and overview
+  by: Model Context Protocol project
+  url: https://modelcontextprotocol.io/specification/2026-07-28
+  edition_or_term: Revision 2026-07-28; overview at https://modelcontextprotocol.io/
+  access: free
+  use: Architecture, tools/resources/prompts primitives, transports, authorization; build one MCP server exposing two tools and call it from your harness.
+  why: The de-facto standard interface for tool integration; the spec revisions move quickly, so use the dated spec.
+  verified: true
+- id: tool-use-docs
+  role: reference
+  kind: docs
+  title: Provider tool-use docs (Claude tool use; OpenAI Agents SDK) and LangGraph
+  by: Anthropic; OpenAI; LangChain
+  url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
+  edition_or_term: Current; OpenAI Agents SDK https://openai.github.io/openai-agents-python/ ; LangGraph https://docs.langchain.com/oss/python/langgraph/overview
+  access: free
+  use: Tool definitions, stop reasons/tool_use loops, parallel tool calls; Agents SDK handoffs/guardrails; LangGraph persistence and interrupts (human-in-the-loop).
+  why: Primary reference for the exact request/response contracts and the leading orchestration frameworks.
+  verified: true
+- id: react-toolformer
+  role: reference
+  kind: paper
+  title: ReAct and Toolformer
+  by: Yao et al.; Schick et al.
+  url: https://arxiv.org/abs/2210.03629
+  edition_or_term: ReAct 2022; Toolformer https://arxiv.org/abs/2302.04761 (2023)
+  access: free
+  use: ReAct sections 2-3 (thought/action/observation loop); Toolformer section 2 (self-supervised tool-call learning). Also Tree of Thoughts (https://arxiv.org/abs/2305.10601) for search-based planning.
+  why: Primary sources for the agent loop and learned tool use.
+  verified: true
+- id: memory-papers
+  role: reference
+  kind: paper
+  title: 'Memory and cognitive architectures: MemGPT, CoALA, Generative Agents, Reflexion'
+  by: Packer et al.; Sumers et al.; Park et al.; Shinn et al.
+  url: https://arxiv.org/abs/2310.08560
+  edition_or_term: MemGPT 2023; CoALA https://arxiv.org/abs/2309.02427; Generative Agents https://arxiv.org/abs/2304.03442; Reflexion https://arxiv.org/abs/2303.11366
+  access: free
+  use: MemGPT (tiered memory), CoALA (working/episodic/semantic/procedural taxonomy), Generative Agents (memory stream + reflection), Reflexion (verbal self-feedback).
+  why: Cover the memory and planning scope items; CoALA gives the vocabulary used in CS329Z's memory lecture.
+  verified: true
+- id: agents-that-matter
+  role: secondary
+  kind: paper
+  title: AI Agents That Matter
+  by: Kapoor, Stroebl, Siegel, Nadgir, Narayanan
+  url: https://arxiv.org/abs/2407.01502
+  edition_or_term: 2024 (TMLR 2025)
+  access: free
+  use: 'Whole paper: cost-controlled agent evaluation, Pareto frontiers of accuracy vs cost, benchmark overfitting and reproducibility problems.'
+  why: Fills the agent-evaluation scope item with methodology (cost-aware, held-out) beyond leaderboards.
+  verified: true
+- id: agent-benchmarks
+  role: reference
+  kind: paper
+  title: 'Agent benchmarks: tau-bench and AgentDojo (SWE-bench is read in llm-evaluation)'
+  by: Yao et al. (Sierra); Debenedetti et al.
+  url: https://arxiv.org/abs/2406.12045
+  edition_or_term: tau-bench 2024; AgentDojo https://arxiv.org/abs/2406.13352 (2024); SWE-bench (https://arxiv.org/abs/2310.06770, live leaderboards https://www.swebench.com/) is covered by llm-evaluation
+  access: free
+  use: Learn the task/grader design of each; run a few tau-bench tasks against your harness if budget allows; for SWE-bench use the llm-evaluation entry.
+  why: Tool-agent-user reliability (tau-bench) and security (AgentDojo) benchmark families that anchor agent evaluation; the software-engineering family (SWE-bench) is cited from llm-evaluation to avoid duplication.
+  verified: true
+- id: prompt-injection-security
+  role: secondary
+  kind: paper
+  title: 'Agent security: Design Patterns for Securing LLM Agents against Prompt Injections; Not what you''ve signed up for; Adaptive attacks'
+  by: Beurer-Kellner et al.; Greshake et al.; Zhan et al.
+  url: https://arxiv.org/abs/2506.08837
+  edition_or_term: Design patterns 2025; Greshake https://arxiv.org/abs/2302.12173 (2023); adaptive attacks https://arxiv.org/abs/2503.00061 (2025); CaMeL https://arxiv.org/abs/2503.18813; instruction hierarchy https://arxiv.org/abs/2404.13208
+  access: free
+  use: Design Patterns paper (plan-then-execute, dual LLM, action-selector patterns) and Greshake for the threat model; Simon Willison's 'lethal trifecta' post (https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) for the practical rule; adaptive-attacks paper for why prompt-level defences fail.
+  why: Covers the 'agent security' scope item; points to G8's safety nodes for deeper red-teaming.
+  verified: true
+- id: lilian-weng-agents
+  role: reference
+  kind: article
+  title: LLM Powered Autonomous Agents
+  by: Lilian Weng
+  url: https://lilianweng.github.io/posts/2023-06-23-agent/
+  edition_or_term: '2023'
+  access: free
+  use: Planning, memory and tool-use taxonomy as a conceptual map.
+  why: Classic overview (also assigned in CS329Z week 1); dated on practice but still the clearest taxonomy.
+  verified: true
 considered:
-  - {title: "AI Agents in Depth (Bojie Li, 10 chapters incl. context engineering, memory, tools, coding agents, evaluation, post-training, multi-agent)", url: "https://bojieli.github.io/ai-agent-book/astro/book-en/chapter1/", reason: "Free, open, recent (references 2026 models) and covers this node broadly with experiments; but individual author with no institutional vetting and I could not assess quality in depth; candidate alternative primary text."}
-  - {title: "The Hitchhiker's Guide to Agentic AI (Haggai Roitman, arXiv 2606.24937 v3, Sep 2026)", url: "https://arxiv.org/abs/2606.24937", reason: "Very broad (foundations through governance, with notebooks); single-author survey that is a reference rather than a learning path; revisit once it stabilizes."}
-  - {title: "Stanford CS329A Self-Improving AI Agents (Autumn 2025)", url: "https://cs329a.stanford.edu/", reason: "Research-oriented (verifiers, test-time compute, RL post-training); page links lecture videos but I did not verify them; closer to rl-for-llms."}
-  - {title: "Berkeley Advanced LLM Agents MOOC (Spring 2025)", url: "https://agenticai-learning.org/sp25", reason: "Earlier iteration covering reasoning + agents; superseded by Fall 2025 list."}
-  - {title: "OpenAI: A Practical Guide to Building Agents", url: "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf", reason: "Good vendor-side counterpart to Anthropic's article (PDF opened, 200); not selected to avoid duplicating the Anthropic spine."}
-  - {title: "Stanford CS146S The Modern Software Developer (Fall 2026)", url: "https://themodernsoftware.dev/", reason: "Course on working inside coding agents (MCP, skills, hooks); no public video reported."}
-  - {title: "NYU Foundations of AI Agents (Spring 2026)", url: "https://pages.stern.nyu.edu/~ilobel/Foundations_of_AI_Agents.pdf", reason: "Syllabus only; no public lectures found."}
-  - {title: "Agent2Agent (A2A) protocol", url: "https://a2a-protocol.org/latest/", reason: "Multi-agent interop standard; less settled than MCP; reference-only."}
-  - {title: "OWASP Top 10 for Agentic Applications 2026 / MITRE ATLAS", url: "https://genai.owasp.org/llm-top-10/", reason: "Security catalogues from the owner's prior curation; better placed in evals-and-red-teaming (G8)."}
-notes: "Primary route: Anthropic's Building effective agents + companion engineering posts (the 2024 article is a concept text; newer Anthropic agent engineering posts listed in `use` carry current practice); CMU 11-768 lectures (lectures 1-9 public, partly public and still running, so later lectures may appear; site is JS-only; fallback is Stanford CS329Z) with A1 harness practice, optionally the Hugging Face Agents Course first. Stanford CS329Z gives a second, more applied take (and is the primary course of llm-applications). The RL/training half of 11-768 (SFT, RL basics, RL systems) belongs to G8's rl-for-llms. Agent security is only touched here; see the G8 safety nodes."
-split_proposal: "Consider splitting 'agent-security-and-sandboxing' (prompt injection, confused deputy, sandboxing, credentials) from this node; the material (AgentDojo, design patterns, OWASP agentic list, CMU lecture 13) is distinct and could link to evals-and-red-teaming."
-prereq_changes: "Add soft: [retrieval-and-rag] (agentic RAG, memory) and soft: [llm-evaluation] (agent evaluation). Keep hard: [llm-applications]."
+- title: AI Agents in Depth (Bojie Li, 10 chapters incl. context engineering, memory, tools, coding agents, evaluation, post-training, multi-agent)
+  url: https://bojieli.github.io/ai-agent-book/astro/book-en/chapter1/
+  reason: Free, open, recent (references 2026 models) and covers this node broadly with experiments; but individual author with no institutional vetting and I could not assess quality in depth; candidate alternative primary text.
+- title: The Hitchhiker's Guide to Agentic AI (Haggai Roitman, arXiv 2606.24937 v3, Sep 2026)
+  url: https://arxiv.org/abs/2606.24937
+  reason: Very broad (foundations through governance, with notebooks); single-author survey that is a reference rather than a learning path; revisit once it stabilizes.
+- title: Stanford CS329A Self-Improving AI Agents (Autumn 2025)
+  url: https://cs329a.stanford.edu/
+  reason: Research-oriented (verifiers, test-time compute, RL post-training); page links lecture videos but I did not verify them; closer to rl-for-llms.
+- title: Berkeley Advanced LLM Agents MOOC (Spring 2025)
+  url: https://agenticai-learning.org/sp25
+  reason: Earlier iteration covering reasoning + agents; superseded by Fall 2025 list.
+- title: 'OpenAI: A Practical Guide to Building Agents'
+  url: https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf
+  reason: Good vendor-side counterpart to Anthropic's article (PDF opened, 200); not selected to avoid duplicating the Anthropic spine.
+- title: Stanford CS146S The Modern Software Developer (Fall 2026)
+  url: https://themodernsoftware.dev/
+  reason: Course on working inside coding agents (MCP, skills, hooks); no public video reported.
+- title: NYU Foundations of AI Agents (Spring 2026)
+  url: https://pages.stern.nyu.edu/~ilobel/Foundations_of_AI_Agents.pdf
+  reason: Syllabus only; no public lectures found.
+- title: Agent2Agent (A2A) protocol
+  url: https://a2a-protocol.org/latest/
+  reason: Multi-agent interop standard; less settled than MCP; reference-only.
+- title: OWASP Top 10 for Agentic Applications 2026 / MITRE ATLAS
+  url: https://genai.owasp.org/llm-top-10/
+  reason: Security catalogues from the owner's prior curation; better placed in evals-and-red-teaming (G8).
+notes: 'Primary route: Anthropic''s Building effective agents + companion engineering posts (the 2024 article is a concept text; newer Anthropic agent engineering posts listed in `use` carry current practice); CMU 11-768 lectures (lectures 1-9 public, partly public and still running, so later lectures may appear; site is JS-only; fallback is Stanford CS329Z) with A1 harness practice, optionally the Hugging Face Agents Course first. Stanford CS329Z gives a second, more applied take (and is the primary course of llm-applications). The RL/training half of 11-768 (SFT, RL basics, RL systems) belongs to G8''s rl-for-llms. Agent security is only touched here; see the G8 safety nodes.'
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "11-768 assignments 2 and 3 are not confirmed public; GitHub org pages returned 403 to my sandbox, so I relied on WebFetch for repo A1."
-  - "YouTube playlist id on the 11-768 site (PLSN0qpDfUvTM) looks truncated; individual video links resolved via oEmbed (lectures 1 and 9 checked)."
-  - "Only the first 100k characters of the AI Agents in Depth and Hitchhiker pages were read."
+- 11-768 assignments 2 and 3 are not confirmed public; GitHub org pages returned 403 to my sandbox, so I relied on WebFetch for repo A1.
+- YouTube playlist id on the 11-768 site (PLSN0qpDfUvTM) looks truncated; individual video links resolved via oEmbed (lectures 1 and 9 checked).
+- Only the first 100k characters of the AI Agents in Depth and Hitchhiker pages were read.
 last_verified: 2026-11-18

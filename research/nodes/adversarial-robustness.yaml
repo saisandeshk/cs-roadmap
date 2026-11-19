@@ -6,10 +6,11 @@ paths:
 - security
 hard:
 - deep-learning-fundamentals
-soft: []
+soft:
+- security-fundamentals
+- llm-evaluation
 scope: Adversarial examples, robust training, certified defenses, data poisoning, prompt injection.
 level: intermediate
-estimated_hours: 55
 resources:
 - id: kolter-madry
   role: primary-text
@@ -119,8 +120,8 @@ resources:
   url: https://csrc.nist.gov/pubs/ai/100/2/e2025/final
   edition_or_term: E2025
   access: free
-  use: 'Read the taxonomy chapters on evasion, poisoning, privacy and abuse/prompt-injection attacks with their mitigations; use as the map of the whole scope after the Kolter-Madry notes.'
-  why: 'Free, current, authoritative taxonomy covering the poisoning and prompt-injection items that the classic primary text (adversarial examples and adversarial training only) does not.'
+  use: Read the taxonomy chapters on evasion, poisoning, privacy and abuse/prompt-injection attacks with their mitigations; use as the map of the whole scope after the Kolter-Madry notes.
+  why: Free, current, authoritative taxonomy covering the poisoning and prompt-injection items that the classic primary text (adversarial examples and adversarial training only) does not.
   verified: true
 - id: owasp-llm
   role: reference
@@ -166,7 +167,7 @@ considered:
   reason: Chapter 5 "Beyond adversaries" listed as coming soon; certified defenses covered by RTAI/randomized smoothing instead.
 notes: 'The primary text (Kolter-Madry) covers only the classic half (adversarial examples and adversarial training); certified defenses, poisoning and prompt injection come from NIST AI 100-2, RTAI and papers. Prompt-injection practice (Gandalf, Tensor Trust, HackAPrompt) lives in evals-and-red-teaming. The scope is wide (classic robust ML + LLM security). Classic part: Kolter-Madry + Carlini evaluation + RTAI lectures. LLM part: GCG/prompt-injection papers and Simon Willison. ETH RTAI is the only recent course found covering this scope (Fall 2025 video playback unconfirmed; 2020 playlist is public) and its slides/exercises need a university login. The CAIS course provides one public week. Data poisoning is covered mostly by papers (Carlini 2023) rather than a structured course.'
 split_proposal: null
-prereq_changes: Consider adding soft prereq on security-basics or llm-evaluation for the LLM-attack half (cross-listed in security path).
+prereq_changes: null
 open_questions:
 - 'ETH video portal access: the portal page loads, but whether the Fall 2025 recordings play without login was not tested.'
 - No structured resource found for data poisoning beyond papers.

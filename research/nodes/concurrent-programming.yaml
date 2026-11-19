@@ -1,131 +1,144 @@
 id: concurrent-programming
 title: Concurrent Programming
 group: G4
-paths: [core, os-perf]
-hard: [computer-systems]
-soft: [operating-systems]
-scope: "Threads, locks, condition variables, memory models, atomics, lock-free data structures, deadlock, async I/O."
-
+paths:
+- core
+- os-perf
+hard:
+- computer-systems
+soft:
+- operating-systems
+- rust-programming
+scope: Threads, locks, condition variables, memory models, atomics, lock-free data structures, deadlock, async I/O.
 level: advanced
-estimated_hours: 110
 resources:
-  - id: amp2e
-    role: primary-text
-    kind: book
-    title: "The Art of Multiprocessor Programming, 2nd edition"
-    by: "Maurice Herlihy, Nir Shavit, Victor Luchangco, Michael Spear"
-    url: https://shop.elsevier.com/books/the-art-of-multiprocessor-programming/herlihy/978-0-12-415950-1
-    edition_or_term: "2nd edition (Morgan Kaufmann/Elsevier, Sept 2020)"
-    access: paid
-    use: "Read by topic: mutual exclusion and concurrent objects/linearizability, shared-memory foundations and consensus, spin locks and contention, monitors, concurrent lists/queues/stacks (coarse, fine-grained, optimistic, lazy, lock-free), hashing, scheduling and work stealing, barriers, manual memory management (ABA, hazard pointers, epochs), transactional programming."
-    why: "The canonical treatment of correctness conditions and lock-free design; also the reference book of the primary course. Language-agnostic proofs, Java listings."
-    verified: true
-  - id: kaist-cs431
-    role: primary-course
-    kind: course
-    title: "KAIST CS431 Concurrent Programming"
-    by: "KAIST (Jeehoon Kang)"
-    url: https://github.com/kaist-cp/cs431
-    edition_or_term: "Spring 2024 (per repository README)"
-    access: free
-    use: "Watch the lecture playlist (English subtitles) in order: Rust refresher, lock-based concurrency (API and implementations, spinlocks/queue locks), behavior-oriented concurrency, lock-free concurrency (concepts, Treiber stack, queues, hash tables), linearizability/specification, safe memory reclamation (hazard pointers, epochs). Do the Rust homework templates (docs at kaist-cp.github.io/cs431 may be Pages-only)."
-    why: "A rare public, recent course that covers memory models, lock implementations and lock-free structures with real code and proofs-lite; Rust gives compiler-checked data-race freedom and exact atomics. Course text is AMP + Rust Atomics and Locks, the same as chosen here."
-    verified: true
-    course:
-      latest_term: "Spring 2024 (as shown by the repo README; later terms unverified)"
-      latest_url: https://github.com/kaist-cp/cs431
-      videos: public
-      assignments: public
-      assignments_url: https://github.com/kaist-cp/cs431
-  - id: rust-atomics-locks
-    role: secondary
-    kind: book
-    title: "Rust Atomics and Locks: Low-Level Concurrency in Practice"
-    by: "Mara Bos"
-    url: https://mara.nl/atomics/
-    edition_or_term: "O'Reilly, Jan 2023 (free to read online)"
-    access: free
-    use: "Ch. 1 (basics), 2 (atomics), 3 (memory ordering: relaxed/acquire/release/SeqCst, fences), 4-6 (build a spinlock, channel, Arc), 7 (understanding the processor: caches, reordering, x86 vs ARM), 8 (OS primitives: futex), 9 (build mutex, condvar, RwLock)."
-    why: "The most readable modern explanation of the C++/Rust memory model and of how locks are really built (futex, parking); fills the practical gap AMP leaves. Also usable as a C++ memory-model primer since Rust adopts the same model."
-    verified: true
-  - id: little-book-semaphores
-    role: practice
-    kind: book
-    title: "The Little Book of Semaphores"
-    by: "Allen B. Downey"
-    url: https://greenteapress.com/wp/semaphores/
-    edition_or_term: "free PDF from Green Tea Press"
-    access: free
-    use: "Work the classic puzzles: rendezvous, barrier, reusable barrier, producer-consumer, readers-writers (no-starve), dining philosophers, cigarette smokers, H2O, sushi bar. Implement in C/Python with semaphores."
-    why: "A set of graded puzzles that builds synchronization-design skill, which reading AMP does not do by itself."
-    verified: true
-  - id: mit-lock-lab
-    role: practice
-    kind: practice-site
-    title: "MIT 6.1810 lock lab (per-CPU allocator and buffer cache)"
-    by: "MIT PDOS"
-    url: https://pdos.csail.mit.edu/6.1810/2025/labs/lock.html
-    edition_or_term: "Fall 2025"
-    access: free
-    use: "Memory allocator (per-CPU free lists with stealing) and buffer cache (hash buckets, per-bucket locks); run 'make grade' to check for correctness and lock contention."
-    why: "Concurrency design under a real contention metric in a real kernel; exercises the skills above with an autograder."
-    verified: true
-  - id: race-testing-tools
-    role: practice
-    kind: tool
-    title: "ThreadSanitizer (C/C++/Rust) and loom (Rust model checker)"
-    by: "LLVM project; Tokio project"
-    url: https://clang.llvm.org/docs/ThreadSanitizer.html
-    edition_or_term: "current Clang docs; loom current master (github.com/tokio-rs/loom)"
-    access: free
-    use: "Run every lock and lock-free exercise under -fsanitize=thread (or RUSTFLAGS=-Zsanitizer=thread); for the Rust homework, write loom tests that exhaustively explore interleavings of small lock-free structures (e.g., a Treiber stack)."
-    why: "Fills the testing gap: concurrent code needs race detection and interleaving exploration, which none of the texts provide as tooling."
-    verified: true
-  - id: mckenney-perfbook
-    role: reference
-    kind: book
-    title: "Is Parallel Programming Hard, And, If So, What Can You Do About It?"
-    by: "Paul E. McKenney (ed.)"
-    url: https://mirrors.edge.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html
-    edition_or_term: "v2026.06.21a (continuously updated)"
-    access: free
-    use: "Ch. 5 (counting), 6 (partitioning), 7 (locking), 8 (data ownership), 9 (deferred processing: RCU, hazard pointers), 12 (formal verification, litmus tests), 14 (advanced synchronization), and the appendix on memory barriers."
-    why: "Practitioner's view from Linux-kernel concurrency: RCU, hardware memory-model detail and verification that academic texts omit. Reference, not a first read."
-    verified: true
-  - id: preshing
-    role: secondary
-    kind: article
-    title: "Preshing on Programming: lock-free and memory-ordering series"
-    by: "Jeff Preshing"
-    url: https://preshing.com/20120612/an-introduction-to-lock-free-programming/
-    edition_or_term: "2012-2014 series, still accurate"
-    access: free
-    use: "Read 'An Introduction to Lock-Free Programming', 'Memory Barriers Are Like Source Control Operations', 'Acquire and Release Semantics', 'The Synchronizes-With Relation', and 'Weak vs. Strong Memory Models'."
-    why: "Short, diagram-heavy articles that make acquire/release and the hardware reorderings stick; best on-ramp before the formal memory-model material."
-    verified: true
-  - id: lord-of-io-uring
-    role: secondary
-    kind: website
-    title: "Lord of the io_uring (plus The C10K problem)"
-    by: "Shuveb Hussain; Dan Kegel"
-    url: https://unixism.net/loti/
-    edition_or_term: "online guide; C10K 2006 (updated)"
-    access: free
-    use: "Read the C10K page for the history (select/poll/epoll/thread-per-connection), then the io_uring guide: ring-buffer model, submission/completion queues, a cat/ls/echo-server example."
-    why: "Covers the node's async I/O item, which none of the other texts treat; io_uring is the modern Linux answer."
-    verified: true
+- id: amp2e
+  role: primary-text
+  kind: book
+  title: The Art of Multiprocessor Programming, 2nd edition
+  by: Maurice Herlihy, Nir Shavit, Victor Luchangco, Michael Spear
+  url: https://shop.elsevier.com/books/the-art-of-multiprocessor-programming/herlihy/978-0-12-415950-1
+  edition_or_term: 2nd edition (Morgan Kaufmann/Elsevier, Sept 2020)
+  access: paid
+  use: 'Read by topic: mutual exclusion and concurrent objects/linearizability, shared-memory foundations and consensus, spin locks and contention, monitors, concurrent lists/queues/stacks (coarse, fine-grained, optimistic, lazy, lock-free), hashing, scheduling and work stealing, barriers, manual memory management (ABA, hazard pointers, epochs), transactional programming.'
+  why: The canonical treatment of correctness conditions and lock-free design; also the reference book of the primary course. Language-agnostic proofs, Java listings.
+  verified: true
+- id: kaist-cs431
+  role: primary-course
+  kind: course
+  title: KAIST CS431 Concurrent Programming
+  by: KAIST (Jeehoon Kang)
+  url: https://github.com/kaist-cp/cs431
+  edition_or_term: Spring 2024 (per repository README)
+  access: free
+  use: 'Watch the lecture playlist (English subtitles) in order: Rust refresher, lock-based concurrency (API and implementations, spinlocks/queue locks), behavior-oriented concurrency, lock-free concurrency (concepts, Treiber stack, queues, hash tables), linearizability/specification, safe memory reclamation (hazard pointers, epochs). Do the Rust homework templates (docs at kaist-cp.github.io/cs431 may be Pages-only).'
+  why: A rare public, recent course that covers memory models, lock implementations and lock-free structures with real code and proofs-lite; Rust gives compiler-checked data-race freedom and exact atomics. Course text is AMP + Rust Atomics and Locks, the same as chosen here.
+  verified: true
+  course:
+    latest_term: Spring 2024 (as shown by the repo README; later terms unverified)
+    latest_url: https://github.com/kaist-cp/cs431
+    videos: public
+    assignments: public
+    assignments_url: https://github.com/kaist-cp/cs431
+- id: rust-atomics-locks
+  role: secondary
+  kind: book
+  title: 'Rust Atomics and Locks: Low-Level Concurrency in Practice'
+  by: Mara Bos
+  url: https://mara.nl/atomics/
+  edition_or_term: O'Reilly, Jan 2023 (free to read online)
+  access: free
+  use: 'Ch. 1 (basics), 2 (atomics), 3 (memory ordering: relaxed/acquire/release/SeqCst, fences), 4-6 (build a spinlock, channel, Arc), 7 (understanding the processor: caches, reordering, x86 vs ARM), 8 (OS primitives: futex), 9 (build mutex, condvar, RwLock).'
+  why: The most readable modern explanation of the C++/Rust memory model and of how locks are really built (futex, parking); fills the practical gap AMP leaves. Also usable as a C++ memory-model primer since Rust adopts the same model.
+  verified: true
+- id: little-book-semaphores
+  role: practice
+  kind: book
+  title: The Little Book of Semaphores
+  by: Allen B. Downey
+  url: https://greenteapress.com/wp/semaphores/
+  edition_or_term: free PDF from Green Tea Press
+  access: free
+  use: 'Work the classic puzzles: rendezvous, barrier, reusable barrier, producer-consumer, readers-writers (no-starve), dining philosophers, cigarette smokers, H2O, sushi bar. Implement in C/Python with semaphores.'
+  why: A set of graded puzzles that builds synchronization-design skill, which reading AMP does not do by itself.
+  verified: true
+- id: mit-lock-lab
+  role: practice
+  kind: practice-site
+  title: MIT 6.1810 lock lab (per-CPU allocator and buffer cache)
+  by: MIT PDOS
+  url: https://pdos.csail.mit.edu/6.1810/2025/labs/lock.html
+  edition_or_term: Fall 2025
+  access: free
+  use: Memory allocator (per-CPU free lists with stealing) and buffer cache (hash buckets, per-bucket locks); run 'make grade' to check for correctness and lock contention.
+  why: Concurrency design under a real contention metric in a real kernel; exercises the skills above with an autograder.
+  verified: true
+- id: race-testing-tools
+  role: practice
+  kind: tool
+  title: ThreadSanitizer (C/C++/Rust) and loom (Rust model checker)
+  by: LLVM project; Tokio project
+  url: https://clang.llvm.org/docs/ThreadSanitizer.html
+  edition_or_term: current Clang docs; loom current master (github.com/tokio-rs/loom)
+  access: free
+  use: Run every lock and lock-free exercise under -fsanitize=thread (or RUSTFLAGS=-Zsanitizer=thread); for the Rust homework, write loom tests that exhaustively explore interleavings of small lock-free structures (e.g., a Treiber stack).
+  why: 'Fills the testing gap: concurrent code needs race detection and interleaving exploration, which none of the texts provide as tooling.'
+  verified: true
+- id: mckenney-perfbook
+  role: reference
+  kind: book
+  title: Is Parallel Programming Hard, And, If So, What Can You Do About It?
+  by: Paul E. McKenney (ed.)
+  url: https://mirrors.edge.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html
+  edition_or_term: v2026.06.21a (continuously updated)
+  access: free
+  use: 'Ch. 5 (counting), 6 (partitioning), 7 (locking), 8 (data ownership), 9 (deferred processing: RCU, hazard pointers), 12 (formal verification, litmus tests), 14 (advanced synchronization), and the appendix on memory barriers.'
+  why: 'Practitioner''s view from Linux-kernel concurrency: RCU, hardware memory-model detail and verification that academic texts omit. Reference, not a first read.'
+  verified: true
+- id: preshing
+  role: secondary
+  kind: article
+  title: 'Preshing on Programming: lock-free and memory-ordering series'
+  by: Jeff Preshing
+  url: https://preshing.com/20120612/an-introduction-to-lock-free-programming/
+  edition_or_term: 2012-2014 series, still accurate
+  access: free
+  use: Read 'An Introduction to Lock-Free Programming', 'Memory Barriers Are Like Source Control Operations', 'Acquire and Release Semantics', 'The Synchronizes-With Relation', and 'Weak vs. Strong Memory Models'.
+  why: Short, diagram-heavy articles that make acquire/release and the hardware reorderings stick; best on-ramp before the formal memory-model material.
+  verified: true
+- id: lord-of-io-uring
+  role: secondary
+  kind: website
+  title: Lord of the io_uring (plus The C10K problem)
+  by: Shuveb Hussain; Dan Kegel
+  url: https://unixism.net/loti/
+  edition_or_term: online guide; C10K 2006 (updated)
+  access: free
+  use: 'Read the C10K page for the history (select/poll/epoll/thread-per-connection), then the io_uring guide: ring-buffer model, submission/completion queues, a cat/ls/echo-server example.'
+  why: Covers the node's async I/O item, which none of the other texts treat; io_uring is the modern Linux answer.
+  verified: true
 considered:
-  - {title: "C++ Concurrency in Action, 2nd ed. (Anthony Williams)", url: "https://www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition", reason: "Best C++-specific book (std::atomic, memory_order, thread pools); skip if following the Rust route, add if the owner's target language is C++ (G1 owns the language)."}
-  - {title: "Stanford CS149 / CMU 15-418 synchronization lectures", url: "https://www.cs.cmu.edu/~418/schedule.html", reason: "15-418 Fall 2026 has public videos of 'Implementing Synchronization', 'Fine-grained synchronization and lock-free programming', 'Transactional memory' and 'Memory consistency'; good hardware-side complement, left to parallel-programming."}
-  - {title: "Linux kernel memory-barriers.txt / LKMM", url: "https://www.kernel.org/doc/Documentation/memory-barriers.txt", reason: "Kernel-specific; useful only if heading to linux-kernel-internals."}
-  - {title: "Rust nomicon: atomics", url: "https://doc.rust-lang.org/nomicon/atomics.html", reason: "Short but terse; Rust Atomics and Locks is better."}
-  - {title: "Java Concurrency in Practice / Go concurrency material", url: "https://pages.cs.wisc.edu/~remzi/OSTEP/", reason: "Language-specific; not pursued since primary path is language-agnostic."}
-notes: "OSTEP threads homeworks are assigned in operating-systems (removed here to avoid duplication). The perfbook entry overlaps G11 memory-systems; left as is (cross-group). Chosen route: AMP 2e for theory, KAIST CS431 as the course (it assigns AMP and Rust Atomics and Locks), Rust Atomics and Locks for hands-on atomics. The node assumes basic threads/locks from computer-systems (CS:APP ch. 12) and OSTEP ch. 26-34; this node adds memory models, lock-free design and async I/O. Level is 'advanced' because the course requires Rust and proofs-style reasoning. Concern: CS431 requires Rust fluency; if the owner has not done the Rust node, use the Rust Book first (G1)."
+- title: C++ Concurrency in Action, 2nd ed. (Anthony Williams)
+  url: https://www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition
+  reason: Best C++-specific book (std::atomic, memory_order, thread pools); skip if following the Rust route, add if the owner's target language is C++ (G1 owns the language).
+- title: Stanford CS149 / CMU 15-418 synchronization lectures
+  url: https://www.cs.cmu.edu/~418/schedule.html
+  reason: 15-418 Fall 2026 has public videos of 'Implementing Synchronization', 'Fine-grained synchronization and lock-free programming', 'Transactional memory' and 'Memory consistency'; good hardware-side complement, left to parallel-programming.
+- title: Linux kernel memory-barriers.txt / LKMM
+  url: https://www.kernel.org/doc/Documentation/memory-barriers.txt
+  reason: Kernel-specific; useful only if heading to linux-kernel-internals.
+- title: 'Rust nomicon: atomics'
+  url: https://doc.rust-lang.org/nomicon/atomics.html
+  reason: Short but terse; Rust Atomics and Locks is better.
+- title: Java Concurrency in Practice / Go concurrency material
+  url: https://pages.cs.wisc.edu/~remzi/OSTEP/
+  reason: Language-specific; not pursued since primary path is language-agnostic.
+notes: 'OSTEP threads homeworks are assigned in operating-systems (removed here to avoid duplication). The perfbook entry overlaps G11 memory-systems; left as is (cross-group). Chosen route: AMP 2e for theory, KAIST CS431 as the course (it assigns AMP and Rust Atomics and Locks), Rust Atomics and Locks for hands-on atomics. The node assumes basic threads/locks from computer-systems (CS:APP ch. 12) and OSTEP ch. 26-34; this node adds memory models, lock-free design and async I/O. Level is ''advanced'' because the course requires Rust and proofs-style reasoning. Concern: CS431 requires Rust fluency; if the owner has not done the Rust node, use the Rust Book first (G1).'
 split_proposal: null
-prereq_changes: "Add soft prerequisite on rust-programming (G1) if the KAIST/Rust route is adopted; keep operating-systems soft."
+prereq_changes: null
 open_questions:
-  - "KAIST CS431 latest term beyond Spring 2024 unverified; YouTube playlist term not stated (title only verified)."
-  - "kaist-cp.github.io/cs431 returned 404 at the root, so the homework doc site URL is unconfirmed; assignments are in the GitHub repo."
-  - "Rust Atomics and Locks canonical URL redirects marabos.nl to mara.nl."
-  - "Note: www.1024cores.net (Dmitry Vyukov's lock-free site) now resolves to an unrelated gambling page; do not link."
+- KAIST CS431 latest term beyond Spring 2024 unverified; YouTube playlist term not stated (title only verified).
+- kaist-cp.github.io/cs431 returned 404 at the root, so the homework doc site URL is unconfirmed; assignments are in the GitHub repo.
+- Rust Atomics and Locks canonical URL redirects marabos.nl to mara.nl.
+- 'Note: www.1024cores.net (Dmitry Vyukov''s lock-free site) now resolves to an unrelated gambling page; do not link.'
 last_verified: 2026-11-18

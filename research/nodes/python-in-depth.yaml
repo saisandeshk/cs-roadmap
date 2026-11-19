@@ -6,10 +6,10 @@ paths:
 - ml-foundations
 hard:
 - python-programming
-soft: []
+soft:
+- dev-environment
 scope: Python data model, iterators/generators, decorators, typing, asyncio and the GIL, packaging, pytest; writing idiomatic production Python.
 level: intermediate
-estimated_hours: 80
 resources:
 - id: fluent-python-2e
   role: primary-text
@@ -145,7 +145,7 @@ considered:
   reason: Large article library; useful for lookup but uneven depth and blocks bots, not opened.
 notes: 'No single university-grade course exists for idiomatic Python beyond the first course, so no primary-course is named: the closest candidate (Beazley Advanced Python Mastery) was archived in October 2026 after being broken by newer Python. Fluent Python 2e is still the primary; treat its 3.10 baseline as the floor and layer current docs for typing (PEP 695), asyncio TaskGroup, free-threaded builds (Python 3.15 is the current release) and packaging with uv. Performance Python belongs to G4 and NumPy/pandas to G5; asyncio/GIL here is conceptual only. Overlaps software-construction on testing/typing; keep pytest/Hypothesis here and spec-and-design principles there. Review update (2026-11-19): added the Hettinger/Beazley PyCon talks as the public-video component; removed the second Exercism entry because it duplicated python-programming (same track URL).'
 split_proposal: null
-prereq_changes: 'Consider adding soft: [dev-environment] because virtualenvs, git and packaging are assumed here; software-construction and python-in-depth can run in parallel.'
+prereq_changes: null
 open_questions:
 - 'No primary-course for this node: no 2026 university course with public videos found that covers advanced Python.'
 - Could not confirm an O Reilly or publisher page for Fluent Python 2e via curl (403); used the author companion site, and web search confirmed the 2022 2nd edition is current.

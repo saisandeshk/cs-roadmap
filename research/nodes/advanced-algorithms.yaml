@@ -1,142 +1,115 @@
-# --- copied from research/skeleton.yaml ---
 id: advanced-algorithms
 title: Advanced Algorithms
 group: G3
-paths: [theory]
-hard: [algorithm-design]
-soft: []
-scope: "Amortized analysis, advanced data structures, flows and matchings, LP and duality, online and streaming algorithms."
-
-# --- curation data ---
+paths:
+- theory
+hard:
+- algorithm-design
+soft:
+- probability
+- linear-algebra
+scope: Flows and matchings, LP and duality, online algorithms and competitive analysis, external-memory and parallel algorithm design.
 level: advanced
-estimated_hours: 170
 resources:
-  - id: gupta-advanced-algorithms-notes
-    role: primary-text
-    kind: book
-    title: "Advanced Algorithms (lecture notes for CMU 15-850)"
-    by: "Anupam Gupta (with student scribes)"
-    url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/all.pdf
-    edition_or_term: "Fall 2020 combined notes (PDF, about 4 MB); course site also has Spring 2024 materials"
-    access: free
-    use: "Ch. 1-2 (MST history, linear-time randomized MST, matroids), 3 (dynamic connectivity, amortized), 6-8 (matchings: combinatorial, weighted, algebraic), 9-12 (concentration, JL dimension reduction, streaming, SVD), 13 (online learning with experts), 22 (competitive analysis, online algorithms); ch. 14-17 (LPs and approximate max-flow via experts, gradient and mirror descent) are optional, outside the node's scope. Read chapters selectively against the course topic of the week."
-    why: "The best free, modern graduate-level text that matches this scope: matchings and flows with LP duality, online algorithms, streaming and sketching, and continuous-optimization methods, written to be read; notes are explicitly not fully proofread, so cross-check with CLRS/K&T."
-    verified: true
-  - id: karger-6-854
-    role: primary-course
-    kind: course
-    title: "MIT 6.5210 / 18.415 Advanced Algorithms (formerly 6.854)"
-    by: "MIT (David Karger)"
-    url: https://courses.csail.mit.edu/6.854/21/course_materials.html
-    edition_or_term: "Course materials page (notes, scribe notes, 2013/2020/2021 lecture videos); latest course site found: Fall 2022"
-    access: free
-    use: "Units on data structures (Fibonacci heaps, persistent structures, splay trees, van Emde Boas, hashing and perfect hashing), network flow (max flow, strongly polynomial, blocking flows, min-cost flow), linear programming (introduction, geometry, duality, algorithms), approximation, FPT, computational geometry, online (paging, k-server), external memory, parallel, streaming. Watch the 2020/2021 lecture videos linked from the materials table and read the notes."
-    why: "Closest public match to the node's scope (amortization, advanced data structures, flows, LP duality, online) with full scribe notes and multi-year recordings. Problem sets are hosted on MIT's NB tool, so assignments are only partly accessible."
-    verified: true
-    course:
-      latest_term: "Fall 2024 (6.5210J per MIT TOC calendar; latest course site found is Fall 2022 at people.csail.mit.edu/karger/6854)"
-      latest_url: https://people.csail.mit.edu/karger/6854
-      videos: unknown
-      public_videos_term: "Fall 2021 (also 2020 and 2013 recordings linked from the materials page)"
-      public_videos_url: https://courses.csail.mit.edu/6.854/21/course_materials.html
-      assignments: partial
-      assignments_url: https://courses.csail.mit.edu/6.854/21/index.html
-  - id: roughgarden-cs261
-    role: secondary
-    kind: course
-    title: "Stanford CS 261 A Second Course in Algorithms (Winter 2016)"
-    by: "Tim Roughgarden"
-    url: https://timroughgarden.org/w16/w16.html
-    edition_or_term: "Winter 2016 (20 lectures with videos and notes, exercise sets, 4 problem sets)"
-    access: free
-    use: "Lectures 1-6 (max flow: Ford-Fulkerson, Edmonds-Karp, Dinic, push-relabel; min cut; bipartite matching and Hall; Hungarian algorithm), 7-10 (LP, duality, complementary slackness, minimax, simplex/ellipsoid), 11-14 (multiplicative weights, online algorithms). Do the weekly exercise sets and the four problem sets. Videos: YouTube playlist in the course block."
-    why: "Gap: the clearest public teaching of flows, matching and LP duality at the right level before Karger/Gupta, with problem sets and exercise sets public. Also feeds approximation-algorithms (lectures 15-18)."
-    verified: true
-    course:
-      latest_term: "Winter 2016 (later Stanford versions taught by others; no public recordings located)"
-      latest_url: https://timroughgarden.org/w16/w16.html
-      videos: public
-      public_videos_term: "Winter 2016"
-      public_videos_url: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc
-      assignments: public
-      assignments_url: https://timroughgarden.org/w16/w16.html
-  - id: demaine-6-851
-    role: secondary
-    kind: course
-    title: "MIT 6.851 Advanced Data Structures"
-    by: "Erik Demaine"
-    url: https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/
-    edition_or_term: "Spring 2012 (OCW videos); Spring 2021 course site with problem sets"
-    access: free
-    use: "Pick the sessions on persistent data structures (session 1), dynamic optimality (5-6), sorting in linear time and integer structures (14), and the hashing and dynamic-graph sessions; skip geometric and succinct material unless interested. Problem sets from the Spring 2021 site."
-    why: "Gap: Karger covers advanced data structures only in a few lectures; this is the definitive public course for persistence, integer structures, hashing and cache-oblivious structures."
-    verified: true
-    course:
-      latest_term: "Spring 2021 (course site courses.csail.mit.edu/6.851/spring21)"
-      latest_url: https://courses.csail.mit.edu/6.851/spring21/index.html
-      videos: public
-      public_videos_term: "Spring 2012 (OCW); Spring 2021 videos referenced on the course site (access not checked)"
-      public_videos_url: https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/video_galleries/lecture-videos/
-      assignments: public
-      assignments_url: https://courses.csail.mit.edu/6.851/spring21/index.html
-  - id: clrs-ref
-    role: reference
-    kind: book
-    title: "Introduction to Algorithms, 4th edition: amortized analysis, flows, matching, LP, online"
-    by: "Cormen, Leiserson, Rivest, Stein"
-    url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
-    edition_or_term: "4th edition (2022)"
-    access: paid
-    use: "Ch. 16 Amortized Analysis, 17 Augmenting Data Structures, 19 Disjoint Sets, 24 Maximum Flow, 25 Matching in Bipartite Graphs, 27 Online Algorithms, 29 Linear Programming for quick proofs and pseudocode."
-    why: "Check-your-understanding reference with careful proofs for the standard results the notes sketch."
-    verified: false
-  - id: algorithmica-ds
-    role: reference
-    kind: website
-    title: "Algorithms for Modern Hardware: Data Structures Case Studies"
-    by: "Sergey Slotin (Algorithmica)"
-    url: https://en.algorithmica.org/hpc/data-structures/
-    edition_or_term: "Live book"
-    access: free
-    use: "Binary search, S-trees/B-trees, segment trees and related structures with measured implementations; read after Karger's data-structure unit to see how asymptotic ideas behave on real caches."
-    why: "Hidden gem: bridges the theoretical advanced-data-structure unit to implementation reality (cache, SIMD), which no theory course here covers."
-    verified: true
-  - id: gupta-15850-hws
-    role: practice
-    kind: website
-    title: "CMU 15-850 homeworks and exercises (Spring 2024 site)"
-    by: "Jason Li (Spring 2024); Anupam Gupta (earlier)"
-    url: https://www.cs.cmu.edu/~15850/
-    edition_or_term: "Spring 2024 (lecture schedule with notes links, Homework 0-4 and exercise sets)"
-    access: free
-    use: "Homework 0-4 and the Exercises 0-4 linked from the schedule; do the ones that match the chapters read from Gupta's notes (MSTs, shortest paths, matchings, concentration)."
-    why: "Public graduate-level problem sets that match the primary text; Karger's problem sets live on NB (partly inaccessible)."
-    verified: true
-  - id: cses-advanced
-    role: practice
-    kind: practice-site
-    title: "CSES: Range Queries, Tree Algorithms, Advanced Techniques"
-    by: "Antti Laaksonen (CSES)"
-    url: https://cses.fi/problemset/
-    edition_or_term: "Live problem set"
-    access: free
-    use: "Range Queries (Dynamic Range Sum/Minimum Queries, Range Updates and Sums, Forest Queries), Tree Algorithms (Company Queries I/II, Path Queries, Finding a Centroid), Advanced Graph Problems (Strongly Connected Edges, MST Edge Check, Critical Cities)."
-    why: "Gap: implementing segment trees, lowest common ancestors and flow-like structures is the practical test of the data-structure unit."
-    verified: true
+- id: gupta-advanced-algorithms-notes
+  role: primary-text
+  kind: book
+  title: Advanced Algorithms (lecture notes for CMU 15-850)
+  by: Anupam Gupta (with student scribes)
+  url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/all.pdf
+  edition_or_term: Fall 2020 combined notes (PDF, about 4 MB); course site also has Spring 2024 materials
+  access: free
+  use: 'Ch. 1-2 (MST history, linear-time randomized MST, matroids), 3 (dynamic connectivity, amortized), 6-8 (matchings: combinatorial, weighted, algebraic), 13 (online learning with experts), 22 (competitive analysis, online algorithms); ch. 9-12 (concentration, JL, streaming, SVD) belong to randomized-algorithms; ch. 14-17 are optional.'
+  why: 'The best free, modern graduate-level text that matches this scope: matchings and flows with LP duality, online algorithms, streaming and sketching, and continuous-optimization methods, written to be read; notes are explicitly not fully proofread, so cross-check with CLRS/K&T.'
+  verified: true
+- id: karger-6-854
+  role: primary-course
+  kind: course
+  title: MIT 6.5210 / 18.415 Advanced Algorithms (formerly 6.854)
+  by: MIT (David Karger)
+  url: https://courses.csail.mit.edu/6.854/21/course_materials.html
+  edition_or_term: 'Course materials page (notes, scribe notes, 2013/2020/2021 lecture videos); latest course site found: Fall 2022'
+  access: free
+  use: Units on network flow (max flow, strongly polynomial, blocking flows, min-cost flow), linear programming (introduction, geometry, duality, algorithms), approximation, FPT, online (paging, k-server), external memory and parallel algorithms; the data-structures unit belongs to advanced-data-structures and streaming to randomized-algorithms. Watch the 2020/2021 lecture videos linked from the materials table and read the notes.
+  why: Closest public match to the node's scope (amortization, advanced data structures, flows, LP duality, online) with full scribe notes and multi-year recordings. Problem sets are hosted on MIT's NB tool, so assignments are only partly accessible.
+  verified: true
+  course:
+    latest_term: Fall 2024 (6.5210J per MIT TOC calendar; latest course site found is Fall 2022 at people.csail.mit.edu/karger/6854)
+    latest_url: https://people.csail.mit.edu/karger/6854
+    videos: unknown
+    public_videos_term: Fall 2021 (also 2020 and 2013 recordings linked from the materials page)
+    public_videos_url: https://courses.csail.mit.edu/6.854/21/course_materials.html
+    assignments: partial
+    assignments_url: https://courses.csail.mit.edu/6.854/21/index.html
+- id: roughgarden-cs261
+  role: secondary
+  kind: course
+  title: Stanford CS 261 A Second Course in Algorithms (Winter 2016)
+  by: Tim Roughgarden
+  url: https://timroughgarden.org/w16/w16.html
+  edition_or_term: Winter 2016 (20 lectures with videos and notes, exercise sets, 4 problem sets)
+  access: free
+  use: 'Lectures 1-6 (max flow: Ford-Fulkerson, Edmonds-Karp, Dinic, push-relabel; min cut; bipartite matching and Hall; Hungarian algorithm), 7-10 (LP, duality, complementary slackness, minimax, simplex/ellipsoid), 11-14 (multiplicative weights, online algorithms). Do the weekly exercise sets and the four problem sets. Videos: YouTube playlist in the course block.'
+  why: 'Gap: the clearest public teaching of flows, matching and LP duality at the right level before Karger/Gupta, with problem sets and exercise sets public. Also feeds approximation-algorithms (lectures 15-18).'
+  verified: true
+  course:
+    latest_term: Winter 2016 (later Stanford versions taught by others; no public recordings located)
+    latest_url: https://timroughgarden.org/w16/w16.html
+    videos: public
+    public_videos_term: Winter 2016
+    public_videos_url: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc
+    assignments: public
+    assignments_url: https://timroughgarden.org/w16/w16.html
+- id: clrs-ref
+  role: reference
+  kind: book
+  title: 'Introduction to Algorithms, 4th edition: amortized analysis, flows, matching, LP, online'
+  by: Cormen, Leiserson, Rivest, Stein
+  url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+  edition_or_term: 4th edition (2022)
+  access: paid
+  use: Ch. 24 Maximum Flow, 25 Matching in Bipartite Graphs, 27 Online Algorithms and 29 Linear Programming as the reference treatment.
+  why: Check-your-understanding reference with careful proofs for the standard results the notes sketch.
+  verified: false
+- id: gupta-15850-hws
+  role: practice
+  kind: website
+  title: CMU 15-850 homeworks and exercises (Spring 2024 site)
+  by: Jason Li (Spring 2024); Anupam Gupta (earlier)
+  url: https://www.cs.cmu.edu/~15850/
+  edition_or_term: Spring 2024 (lecture schedule with notes links, Homework 0-4 and exercise sets)
+  access: free
+  use: Homework 0-4 and the Exercises 0-4 linked from the schedule; do the ones that match the chapters read from Gupta's notes (MSTs, shortest paths, matchings, concentration).
+  why: Public graduate-level problem sets that match the primary text; Karger's problem sets live on NB (partly inaccessible).
+  verified: true
 considered:
-  - {title: "Roughgarden/Valiant, Stanford CS 168 The Modern Algorithmic Toolbox", url: "https://web.stanford.edu/class/cs168/", reason: "Great hashing/sketching/LP/spectral view but web.stanford.edu could not be reached from this environment; not verified."}
-  - {title: "MIT 6.854 Spring 2016 (Ankur Moitra) YouTube", url: "https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c", reason: "Verified live playlist titled 'MIT 6.854 (Advanced Algorithms), Spring 2016'; alternative public recording with a more modern selection (e.g. sketching); chosen Karger for fuller notes."}
-  - {title: "Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, videos posted)", url: "https://www.cs.cornell.edu/courses/cs6820/2025fa/", reason: "Newest public recordings of an advanced algorithms course (matchings, LP duality, online matching, approximation, spectral methods, random sampling); verified lecture list with Video and Notes links, but selection differs from the scope; Zoom recording links tested 2026-11-19: they return a Zoom error page without a Cornell login, so not usable as a public primary-course."}
-  - {title: "CMU 15-850 Advanced Algorithms (Spring 2023 Panopto)", url: "https://www.cs.cmu.edu/~15850/", reason: "Spring 2023 recordings are on CMU Panopto; access not verified."}
-  - {title: "Harvard CS 224 Advanced Algorithms (Fall 2014, Nelson)", url: "https://people.seas.harvard.edu/~cs224/fall14/index.html", reason: "Videos on YouTube; older and heavier on streaming; listed in cs-video-courses; not opened."}
-  - {title: "UCSC / Purdue / Marburg advanced algorithms playlists (Marburg CS 627 Summer 2025 videos)", url: "https://www.wild-inter.net/teaching/advalg/", reason: "Recent video set listed in cs-video-courses; not opened."}
-  - {title: "Mehlhorn and Sanders, Algorithms and Data Structures: The Basic Toolbox (free)", url: "https://people.mpi-inf.mpg.de/~mehlhorn/Toolbox.html", reason: "Strong on engineering of data structures; not a graduate theory text; not opened."}
-notes: "No single book covers the scope, so the primary-text is Gupta's graduate notes (free), with Karger's lecture notes and videos as the course, Roughgarden's CS261 as the clearest on-ramp for flows/LP, and Demaine's 6.851 for advanced data structures. Karger's newest recordings (Fall 2022/2024) were not found; the Fall 2021 recordings are public on YouTube via the materials page. 170 hours assumes selecting about two thirds of the material. Review R1 asked whether Cornell CS 5820/6820 Fall 2025 (newer, per-lecture recordings) should replace Karger: its Zoom recording links returned a Zoom error page when opened without a Cornell login (tested 2026-11-19), so Karger stays primary. A second streaming treatment (Foundations of Data Science, Blum-Hopcroft-Kannan) is listed in randomized-algorithms and not repeated here."
-split_proposal: "Consider splitting out 'Data Structures (Advanced)' (persistence, integer structures, hashing, cache-oblivious; Demaine 6.851) and 'Streaming and Sketching' from this node; the scope as written covers four distinct areas."
-prereq_changes: "Add soft: [probability] and soft: [linear-algebra] (LP duality, JL, SVD, concentration)."
+- title: Roughgarden/Valiant, Stanford CS 168 The Modern Algorithmic Toolbox
+  url: https://web.stanford.edu/class/cs168/
+  reason: Great hashing/sketching/LP/spectral view but web.stanford.edu could not be reached from this environment; not verified.
+- title: MIT 6.854 Spring 2016 (Ankur Moitra) YouTube
+  url: https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c
+  reason: Verified live playlist titled 'MIT 6.854 (Advanced Algorithms), Spring 2016'; alternative public recording with a more modern selection (e.g. sketching); chosen Karger for fuller notes.
+- title: Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, videos posted)
+  url: https://www.cs.cornell.edu/courses/cs6820/2025fa/
+  reason: 'Newest public recordings of an advanced algorithms course (matchings, LP duality, online matching, approximation, spectral methods, random sampling); verified lecture list with Video and Notes links, but selection differs from the scope; Zoom recording links tested 2026-11-19: they return a Zoom error page without a Cornell login, so not usable as a public primary-course.'
+- title: CMU 15-850 Advanced Algorithms (Spring 2023 Panopto)
+  url: https://www.cs.cmu.edu/~15850/
+  reason: Spring 2023 recordings are on CMU Panopto; access not verified.
+- title: Harvard CS 224 Advanced Algorithms (Fall 2014, Nelson)
+  url: https://people.seas.harvard.edu/~cs224/fall14/index.html
+  reason: Videos on YouTube; older and heavier on streaming; listed in cs-video-courses; not opened.
+- title: UCSC / Purdue / Marburg advanced algorithms playlists (Marburg CS 627 Summer 2025 videos)
+  url: https://www.wild-inter.net/teaching/advalg/
+  reason: Recent video set listed in cs-video-courses; not opened.
+- title: 'Mehlhorn and Sanders, Algorithms and Data Structures: The Basic Toolbox (free)'
+  url: https://people.mpi-inf.mpg.de/~mehlhorn/Toolbox.html
+  reason: Strong on engineering of data structures; not a graduate theory text; not opened.
+notes: 'No single book covers the scope, so the primary-text is Gupta''s graduate notes (free), with Karger''s lecture notes and videos as the course, Roughgarden''s CS261 as the clearest on-ramp for flows/LP, and Demaine''s 6.851 for advanced data structures. Karger''s newest recordings (Fall 2022/2024) were not found; the Fall 2021 recordings are public on YouTube via the materials page. Review R1 asked whether Cornell CS 5820/6820 Fall 2025 (newer, per-lecture recordings) should replace Karger: its Zoom recording links returned a Zoom error page when opened without a Cornell login (tested 2026-11-19), so Karger stays primary. A second streaming treatment (Foundations of Data Science, Blum-Hopcroft-Kannan) is listed in randomized-algorithms and not repeated here.'
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "Karger recordings for Fall 2022-2024 (6.5210): none located; only the Fall 2021 YouTube links were seen on the materials page and not individually opened."
-  - "Whether Karger problem sets on nb.mit.edu are publicly accessible without MIT login."
-  - "CLRS MIT Press page 403 to bots; not opened, and chapter numbers are from memory of the 4th edition."
-  - "Demaine 6.851 Spring 2021 video access not checked."
+- 'Karger recordings for Fall 2022-2024 (6.5210): none located; only the Fall 2021 YouTube links were seen on the materials page and not individually opened.'
+- Whether Karger problem sets on nb.mit.edu are publicly accessible without MIT login.
+- CLRS MIT Press page 403 to bots; not opened, and chapter numbers are from memory of the 4th edition.
+- Demaine 6.851 Spring 2021 video access not checked.
 last_verified: 2026-11-18

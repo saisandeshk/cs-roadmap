@@ -10,7 +10,6 @@ hard:
 soft: []
 scope: RLHF with PPO, reward modeling, GRPO, RL with verifiable rewards, reasoning models, reward hacking.
 level: advanced
-estimated_hours: 70
 resources:
 - id: rlhf-book
   role: primary-text
@@ -20,7 +19,7 @@ resources:
   url: https://rlhfbook.com/
   edition_or_term: Online edition, updated through 2026
   access: free
-  use: 'Read in order: introduction/training overview, instruction tuning, reward models (https://rlhfbook.com/c/05-reward-models.html), rejection sampling, policy gradients and regularization (https://rlhfbook.com/c/06-policy-gradients.html), reasoning and RLVR (https://rlhfbook.com/c/07-reasoning.html), direct alignment (https://rlhfbook.com/c/08-direct-alignment.html), over-optimization/reward hacking (course lecture 9, Ch. 14), synthetic data and CAI, tool use, evaluation.'
+  use: Ch. 6 (policy gradients and regularization, https://rlhfbook.com/c/06-policy-gradients.html), ch. 7 (reasoning and RLVR, https://rlhfbook.com/c/07-reasoning.html), then the tool-use and evaluation chapters. Ch. 3-5, 8, 11-12 and 14-15 are read in post-training (a prerequisite).
   why: The only book-length, regularly updated treatment of RLHF/RLVR/DPO/GRPO from the practitioner who ran Tulu/Olmo post-training; free online; print edition exists.
   verified: true
 - id: rlhf-course
@@ -31,7 +30,7 @@ resources:
   url: https://rlhfbook.com/course
   edition_or_term: '2026'
   access: free
-  use: 'Lectures 0-13 with slides: ML foundations, overview, IFT/reward models/rejection sampling, RL motivation and math (policy gradients), RL implementation, reasoning models (RLVR), DPO, synthetic data, preferences, over-optimization, regularization in RL, tool use, evaluation, character training; Q&A videos.'
+  use: Lectures 3-5 (RL motivation and math, RL implementation, reasoning models/RLVR) and 11-13 (tool use, evaluation, character training) with slides; lectures 0-2 and 6-10 are taken in post-training.
   why: Newest dedicated public video course on post-training RL (frontier-recipes conversation labeled 2026); designed to be followed alongside the book with a companion codebase.
   verified: true
   course:

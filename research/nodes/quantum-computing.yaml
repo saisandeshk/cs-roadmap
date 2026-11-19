@@ -1,140 +1,153 @@
-# --- copied from research/skeleton.yaml ---
 id: quantum-computing
 title: Quantum Computation
 group: G3
-paths: [theory]
+paths:
+- theory
 optional: true
-hard: [linear-algebra, probability]
-soft: []
-scope: "Qubits, circuits, Shor and Grover, quantum information basics. Elective."
-
-# --- curation data ---
+hard:
+- linear-algebra
+- probability
+soft:
+- theory-of-computation
+- algorithm-design
+scope: Qubits, circuits, Shor and Grover, quantum information basics. Elective.
 level: advanced
-estimated_hours: 100
 resources:
-  - id: nielsen-chuang
-    role: primary-text
-    kind: book
-    title: "Quantum Computation and Quantum Information (10th Anniversary Edition)"
-    by: "Michael A. Nielsen, Isaac L. Chuang"
-    url: https://www.cambridge.org/highereducation/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE
-    edition_or_term: "10th Anniversary Edition (Cambridge University Press, 2010; first published 2000)"
-    access: paid
-    use: "Ch. 1-2 (introduction, postulates of quantum mechanics, density operator), 4 (quantum circuits), 5 (quantum Fourier transform and phase estimation, order-finding, Shor), 6 (quantum search, Grover and its optimality), 8 (quantum noise and operations), 10 (quantum error correction: Shor code, stabilizer/CSS), 11-12 (entropy and quantum information theory, sampled). Skip ch. 7 (physical realizations) except as an overview. Do the problems and exercises at the end of ch. 4 (circuits), 5 (QFT, phase estimation, order finding), 6 (search) and 8 (operator-sum representation) as the calculation drills."
-    why: "The canonical, most complete textbook covering the whole scope (qubits, circuits, Shor, Grover, quantum information basics, error correction) with exercises; the course pages of O'Donnell and many others call it the standard reference. Dated on hardware only. For a shorter CS-first first pass see de Wolf's free notes."
-    verified: true
-  - id: watrous-ibm
-    role: primary-course
-    kind: course
-    title: "IBM Quantum Learning: Understanding Quantum Information and Computation (John Watrous)"
-    by: "John Watrous (IBM Quantum)"
-    url: https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information
-    edition_or_term: "Four-course series (Basics of quantum information; Fundamentals of quantum algorithms; General formulation of quantum information; Foundations of quantum error correction); continually updated, live in 2026"
-    access: free
-    use: "Courses 1-2 in full (vectors and matrices for single and multiple systems, measurement, circuits, teleportation, superdense coding, CHSH; query algorithms Deutsch-Jozsa, Bernstein-Vazirani, Simon; quantum Fourier transform, phase estimation, factoring, Grover); course 3 (density matrices, channels) and 4 (QEC) after N&C ch. 8 and 10. Watch Watrous's YouTube lectures for each lesson and do the quizzes and Qiskit exercises."
-    why: "Best modern, freely available, structured quantum-information course for CS/math students: rigorous but gentle, exactly the scope plus density matrices and QEC; lessons include exercises and hands-on Qiskit; a badge exam is offered. Free account needed to run code on IBM hardware."
-    verified: true
-    course:
-      latest_term: "Self-paced series (current IBM Quantum Learning edition; no term)"
-      latest_url: https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO
-      assignments: partial
-      assignments_url: https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms
-  - id: odonnell-15-859bb
-    role: secondary
-    kind: course
-    title: "CMU 15-859BB Quantum Computation and Quantum Information"
-    by: "Ryan O'Donnell (CMU)"
-    url: https://www.cs.cmu.edu/~odonnell/quantum18/
-    edition_or_term: "Fall 2018 (25 lectures with pdf notes and videos; homework only via Diderot)"
-    access: free
-    use: "All lectures, in particular Shor's algorithm and the hidden subgroup problem (16-17), Grover and quantum query complexity with the adversary method (18-20), mixed states and density matrices (21-22), quantum information theory (23), quantum complexity and supremacy (24-25). Videos are on YouTube ('Quantum Computation and Information at CMU')."
-    why: "Gap: theoretical-CS depth (query lower bounds, complexity, tomography, quantum probability) beyond the IBM series, in lecture notes and video form; homework only on the closed Diderot site (can request access by email)."
-    verified: true
-    course:
-      latest_term: "Fall 2018"
-      latest_url: https://www.cs.cmu.edu/~odonnell/quantum18/
-      videos: public
-      assignments: restricted
-  - id: de-wolf-notes
-    role: secondary
-    kind: book
-    title: "Quantum Computing: Lecture Notes"
-    by: "Ronald de Wolf"
-    url: https://arxiv.org/abs/1907.09415
-    edition_or_term: "arXiv 1907.09415, v6 (revised August 2026)"
-    access: free
-    use: "Fast first or second pass: qubits, circuits, Deutsch-Jozsa, Simon, QFT, Shor, Grover, quantum walks, Hamiltonian simulation/HHL, quantum complexity and error correction chapters; treat exercises as the problem set."
-    why: "Gap: a short, actively maintained, TCS-flavored treatment with exercises; shows modern topics (Hamiltonian simulation, quantum walks, learning) beyond N&C."
-    verified: true
-  - id: aaronson-qis
-    role: secondary
-    kind: book
-    title: "Introduction to Quantum Information Science (lecture notes)"
-    by: "Scott Aaronson"
-    url: https://www.scottaaronson.com/qclec.pdf
-    edition_or_term: "UT Austin course notes (Fall 2018 version); a sequel QIS II notes (May 2022) at scottaaronson.com/qisii.pdf"
-    access: free
-    use: "Lectures on the Extended Church-Turing Thesis, probability to quantum, interference, gates and circuits, entanglement and no-cloning, teleportation, Bell/CHSH, then algorithms and QEC; read the first chapters as a conceptual on-ramp for readers who prefer intuition first."
-    why: "Gap: best conceptual, honest explanation of what quantum speedups do and do not do, for readers who need intuition before formalism; informal and funny, free."
-    verified: true
-  - id: watrous-tqi
-    role: reference
-    kind: book
-    title: "The Theory of Quantum Information"
-    by: "John Watrous"
-    url: https://cs.uwaterloo.ca/~watrous/TQI/
-    edition_or_term: "Cambridge University Press 2018; free author draft"
-    access: free
-    use: "Look up proofs on density matrices, quantum channels, distance measures and entropy beyond what N&C ch. 8-12 provide; graduate-level reference."
-    why: "Rigorous reference for the 'quantum information basics' proofs; essential if proofs in the course are insufficient."
-    verified: true
-  - id: preskill-ph219
-    role: reference
-    kind: website
-    title: "Caltech Ph 219 / CS 219 Quantum Computation (John Preskill)"
-    by: "John Preskill"
-    url: https://www.preskill.caltech.edu/ph229/
-    edition_or_term: "Course information page and lecture notes (chapters on QEC and quantum information)"
-    access: free
-    use: "Chapter notes on quantum error correction and fault tolerance, and the physics view; use for the error-correction unit after N&C ch. 10. A YouTube playlist 'Ph/CS 219A Quantum Computation' exists."
-    why: "Gap: the physicist's treatment of error correction and fault tolerance."
-    verified: true
-  - id: quantum-country
-    role: reference
-    kind: website
-    title: "Quantum Computing for the Very Curious"
-    by: "Andy Matuschak, Michael Nielsen"
-    url: https://quantum.country/qcvc
-    edition_or_term: "Interactive essay with spaced repetition"
-    access: free
-    use: "Read before starting or in week one: the essay (qubits, gates, teleportation, Deutsch-Jozsa and the intuition of interference) with embedded spaced-repetition questions."
-    why: "Hidden gem: spaced-repetition essay that locks in the notation and core circuits at the start; free."
-    verified: true
-  - id: quirk-qiskit
-    role: practice
-    kind: tool
-    title: "Quirk quantum circuit simulator; IBM Qiskit exercises"
-    by: "Craig Gidney (Quirk); IBM Qiskit"
-    url: https://algassert.com/quirk
-    edition_or_term: "Live tool"
-    access: free
-    use: "Build in Quirk: Bell state, teleportation, superdense coding, Deutsch-Jozsa, Bernstein-Vazirani, QFT, Grover on 3 qubits; then redo teleportation, Simon and phase estimation in Qiskit using the IBM course lab exercises."
-    why: "Gap: nothing builds intuition like seeing amplitudes change as you place gates; the course exercises are mostly pencil-and-paper otherwise."
-    verified: true
+- id: nielsen-chuang
+  role: primary-text
+  kind: book
+  title: Quantum Computation and Quantum Information (10th Anniversary Edition)
+  by: Michael A. Nielsen, Isaac L. Chuang
+  url: https://www.cambridge.org/highereducation/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE
+  edition_or_term: 10th Anniversary Edition (Cambridge University Press, 2010; first published 2000)
+  access: paid
+  use: 'Ch. 1-2 (introduction, postulates of quantum mechanics, density operator), 4 (quantum circuits), 5 (quantum Fourier transform and phase estimation, order-finding, Shor), 6 (quantum search, Grover and its optimality), 8 (quantum noise and operations), 10 (quantum error correction: Shor code, stabilizer/CSS), 11-12 (entropy and quantum information theory, sampled). Skip ch. 7 (physical realizations) except as an overview. Do the problems and exercises at the end of ch. 4 (circuits), 5 (QFT, phase estimation, order finding), 6 (search) and 8 (operator-sum representation) as the calculation drills.'
+  why: The canonical, most complete textbook covering the whole scope (qubits, circuits, Shor, Grover, quantum information basics, error correction) with exercises; the course pages of O'Donnell and many others call it the standard reference. Dated on hardware only. For a shorter CS-first first pass see de Wolf's free notes.
+  verified: true
+- id: watrous-ibm
+  role: primary-course
+  kind: course
+  title: 'IBM Quantum Learning: Understanding Quantum Information and Computation (John Watrous)'
+  by: John Watrous (IBM Quantum)
+  url: https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information
+  edition_or_term: Four-course series (Basics of quantum information; Fundamentals of quantum algorithms; General formulation of quantum information; Foundations of quantum error correction); continually updated, live in 2026
+  access: free
+  use: Courses 1-2 in full (vectors and matrices for single and multiple systems, measurement, circuits, teleportation, superdense coding, CHSH; query algorithms Deutsch-Jozsa, Bernstein-Vazirani, Simon; quantum Fourier transform, phase estimation, factoring, Grover); course 3 (density matrices, channels) and 4 (QEC) after N&C ch. 8 and 10. Watch Watrous's YouTube lectures for each lesson and do the quizzes and Qiskit exercises.
+  why: 'Best modern, freely available, structured quantum-information course for CS/math students: rigorous but gentle, exactly the scope plus density matrices and QEC; lessons include exercises and hands-on Qiskit; a badge exam is offered. Free account needed to run code on IBM hardware.'
+  verified: true
+  course:
+    latest_term: Self-paced series (current IBM Quantum Learning edition; no term)
+    latest_url: https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO
+    assignments: partial
+    assignments_url: https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms
+- id: odonnell-15-859bb
+  role: secondary
+  kind: course
+  title: CMU 15-859BB Quantum Computation and Quantum Information
+  by: Ryan O'Donnell (CMU)
+  url: https://www.cs.cmu.edu/~odonnell/quantum18/
+  edition_or_term: Fall 2018 (25 lectures with pdf notes and videos; homework only via Diderot)
+  access: free
+  use: All lectures, in particular Shor's algorithm and the hidden subgroup problem (16-17), Grover and quantum query complexity with the adversary method (18-20), mixed states and density matrices (21-22), quantum information theory (23), quantum complexity and supremacy (24-25). Videos are on YouTube ('Quantum Computation and Information at CMU').
+  why: 'Gap: theoretical-CS depth (query lower bounds, complexity, tomography, quantum probability) beyond the IBM series, in lecture notes and video form; homework only on the closed Diderot site (can request access by email).'
+  verified: true
+  course:
+    latest_term: Fall 2018
+    latest_url: https://www.cs.cmu.edu/~odonnell/quantum18/
+    videos: public
+    assignments: restricted
+- id: de-wolf-notes
+  role: secondary
+  kind: book
+  title: 'Quantum Computing: Lecture Notes'
+  by: Ronald de Wolf
+  url: https://arxiv.org/abs/1907.09415
+  edition_or_term: arXiv 1907.09415, v6 (revised August 2026)
+  access: free
+  use: 'Fast first or second pass: qubits, circuits, Deutsch-Jozsa, Simon, QFT, Shor, Grover, quantum walks, Hamiltonian simulation/HHL, quantum complexity and error correction chapters; treat exercises as the problem set.'
+  why: 'Gap: a short, actively maintained, TCS-flavored treatment with exercises; shows modern topics (Hamiltonian simulation, quantum walks, learning) beyond N&C.'
+  verified: true
+- id: aaronson-qis
+  role: secondary
+  kind: book
+  title: Introduction to Quantum Information Science (lecture notes)
+  by: Scott Aaronson
+  url: https://www.scottaaronson.com/qclec.pdf
+  edition_or_term: UT Austin course notes (Fall 2018 version); a sequel QIS II notes (May 2022) at scottaaronson.com/qisii.pdf
+  access: free
+  use: Lectures on the Extended Church-Turing Thesis, probability to quantum, interference, gates and circuits, entanglement and no-cloning, teleportation, Bell/CHSH, then algorithms and QEC; read the first chapters as a conceptual on-ramp for readers who prefer intuition first.
+  why: 'Gap: best conceptual, honest explanation of what quantum speedups do and do not do, for readers who need intuition before formalism; informal and funny, free.'
+  verified: true
+- id: watrous-tqi
+  role: reference
+  kind: book
+  title: The Theory of Quantum Information
+  by: John Watrous
+  url: https://cs.uwaterloo.ca/~watrous/TQI/
+  edition_or_term: Cambridge University Press 2018; free author draft
+  access: free
+  use: Look up proofs on density matrices, quantum channels, distance measures and entropy beyond what N&C ch. 8-12 provide; graduate-level reference.
+  why: Rigorous reference for the 'quantum information basics' proofs; essential if proofs in the course are insufficient.
+  verified: true
+- id: preskill-ph219
+  role: reference
+  kind: website
+  title: Caltech Ph 219 / CS 219 Quantum Computation (John Preskill)
+  by: John Preskill
+  url: https://www.preskill.caltech.edu/ph229/
+  edition_or_term: Course information page and lecture notes (chapters on QEC and quantum information)
+  access: free
+  use: Chapter notes on quantum error correction and fault tolerance, and the physics view; use for the error-correction unit after N&C ch. 10. A YouTube playlist 'Ph/CS 219A Quantum Computation' exists.
+  why: 'Gap: the physicist''s treatment of error correction and fault tolerance.'
+  verified: true
+- id: quantum-country
+  role: reference
+  kind: website
+  title: Quantum Computing for the Very Curious
+  by: Andy Matuschak, Michael Nielsen
+  url: https://quantum.country/qcvc
+  edition_or_term: Interactive essay with spaced repetition
+  access: free
+  use: 'Read before starting or in week one: the essay (qubits, gates, teleportation, Deutsch-Jozsa and the intuition of interference) with embedded spaced-repetition questions.'
+  why: 'Hidden gem: spaced-repetition essay that locks in the notation and core circuits at the start; free.'
+  verified: true
+- id: quirk-qiskit
+  role: practice
+  kind: tool
+  title: Quirk quantum circuit simulator; IBM Qiskit exercises
+  by: Craig Gidney (Quirk); IBM Qiskit
+  url: https://algassert.com/quirk
+  edition_or_term: Live tool
+  access: free
+  use: 'Build in Quirk: Bell state, teleportation, superdense coding, Deutsch-Jozsa, Bernstein-Vazirani, QFT, Grover on 3 qubits; then redo teleportation, Simon and phase estimation in Qiskit using the IBM course lab exercises.'
+  why: 'Gap: nothing builds intuition like seeing amplitudes change as you place gates; the course exercises are mostly pencil-and-paper otherwise.'
+  verified: true
 considered:
-  - {title: "Mermin, Quantum Computer Science: An Introduction", url: "https://www.cambridge.org/9780521876582", reason: "O'Donnell calls it 'probably the textbook I like the best'; short, CS-friendly; Cambridge page blocked to bots, not opened; strong alternative primary-text."}
-  - {title: "Waterloo QIC 710 (Richard Cleve), Introduction to Quantum Information Processing (Fall 2025 / Fall 2026 pages)", url: "https://cleve.iqc.uwaterloo.ca/qic710-F24/video-lectures-F25/index.html", reason: "Verified: lecture-video page (2020 video lectures, 3 parts: primer, algorithms, information theory) and notes; excellent theory-oriented alternative; Lectures 1-4 are a good primer."}
-  - {title: "Preskill Ph 219/CS 219 lecture notes", url: "https://www.preskill.caltech.edu/ph229/", reason: "Physics-leaning; used as reference."}
-  - {title: "Vazirani, Quantum Mechanics and Quantum Computation (Berkeley/EdX CS191x videos)", url: "https://www.youtube.com/playlist?list=PL74Rel4IAsETUwZS_Se_P-fSEyEVQwni7", reason: "Verified live playlist 'Quantum Computation'; classic course; older (c. 2013) and less comprehensive than newer sets."}
-  - {title: "Aaronson, Quantum Computing since Democritus", url: "https://www.scottaaronson.com/democritus/", reason: "Wonderful philosophy-and-complexity perspective; not a technical course; the site blocked automated access (406)."}
-  - {title: "Qiskit Textbook / Qiskit Global Summer School videos", url: "https://www.youtube.com/playlist?list=PLOFEBzvs-VvrXTMy5Y2IqmSaUjfnhvBHR", reason: "Verified 'Introduction to Quantum Computing and Quantum Hardware' playlist; hardware/tooling oriented; fine supplement for implementation."}
-notes: "Route: Quantum Country essay -> Watrous/IBM courses 1-2 (with N&C ch. 1-6) -> O'Donnell lectures 16-25 for theory depth -> Watrous courses 3-4 with N&C ch. 8-12. Since this is an elective, 100 hours covers courses 1-2 and half of 3-4. Newest public lecture material: IBM Quantum Learning (2024-26 maintained) and de Wolf's notes (revised Aug 2026); O'Donnell's videos are Fall 2018."
+- title: 'Mermin, Quantum Computer Science: An Introduction'
+  url: https://www.cambridge.org/9780521876582
+  reason: O'Donnell calls it 'probably the textbook I like the best'; short, CS-friendly; Cambridge page blocked to bots, not opened; strong alternative primary-text.
+- title: Waterloo QIC 710 (Richard Cleve), Introduction to Quantum Information Processing (Fall 2025 / Fall 2026 pages)
+  url: https://cleve.iqc.uwaterloo.ca/qic710-F24/video-lectures-F25/index.html
+  reason: 'Verified: lecture-video page (2020 video lectures, 3 parts: primer, algorithms, information theory) and notes; excellent theory-oriented alternative; Lectures 1-4 are a good primer.'
+- title: Preskill Ph 219/CS 219 lecture notes
+  url: https://www.preskill.caltech.edu/ph229/
+  reason: Physics-leaning; used as reference.
+- title: Vazirani, Quantum Mechanics and Quantum Computation (Berkeley/EdX CS191x videos)
+  url: https://www.youtube.com/playlist?list=PL74Rel4IAsETUwZS_Se_P-fSEyEVQwni7
+  reason: Verified live playlist 'Quantum Computation'; classic course; older (c. 2013) and less comprehensive than newer sets.
+- title: Aaronson, Quantum Computing since Democritus
+  url: https://www.scottaaronson.com/democritus/
+  reason: Wonderful philosophy-and-complexity perspective; not a technical course; the site blocked automated access (406).
+- title: Qiskit Textbook / Qiskit Global Summer School videos
+  url: https://www.youtube.com/playlist?list=PLOFEBzvs-VvrXTMy5Y2IqmSaUjfnhvBHR
+  reason: Verified 'Introduction to Quantum Computing and Quantum Hardware' playlist; hardware/tooling oriented; fine supplement for implementation.
+notes: 'Route: Quantum Country essay -> Watrous/IBM courses 1-2 (with N&C ch. 1-6) -> O''Donnell lectures 16-25 for theory depth -> Watrous courses 3-4 with N&C ch. 8-12. Newest public lecture material: IBM Quantum Learning (2024-26 maintained) and de Wolf''s notes (revised Aug 2026); O''Donnell''s videos are Fall 2018.'
 split_proposal: null
-prereq_changes: "Add soft: [theory-of-computation] (BQP, query complexity framing) and soft: [algorithm-design]."
+prereq_changes: null
 open_questions:
-  - "IBM course exercise/badge exam access and whether Qiskit labs require an IBM account."
-  - "Mermin's book page could not be opened (Cambridge 503)."
-  - "Whether O'Donnell's 2018 homework can be obtained publicly (Diderot access by email)."
+- IBM course exercise/badge exam access and whether Qiskit labs require an IBM account.
+- Mermin's book page could not be opened (Cambridge 503).
+- Whether O'Donnell's 2018 homework can be obtained publicly (Diderot access by email).
 last_verified: 2026-11-18

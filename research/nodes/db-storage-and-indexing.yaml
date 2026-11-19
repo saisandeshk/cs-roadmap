@@ -1,152 +1,161 @@
 id: db-storage-and-indexing
 title: Database Storage & Indexing
 group: G10
-paths: [databases]
-hard: [databases-intro, computer-systems]
+paths:
+- databases
+hard:
+- databases-intro
+- computer-systems
 soft: []
-scope: "Disk-oriented storage, buffer pools, page layouts, B+trees, hash indexes, LSM trees."
-
+scope: Disk-oriented storage, buffer pools, page layouts, B+trees, hash indexes, LSM trees.
 level: intermediate
-estimated_hours: 70
 resources:
-  - id: db-internals-1
-    role: primary-text
-    kind: book
-    title: "Database Internals: A Deep-Dive into How Distributed Data Systems Work (Part I: Storage Engines)"
-    by: "Alex Petrov"
-    url: https://www.databass.dev/
-    edition_or_term: "O'Reilly, 2019 (first edition)"
-    access: paid
-    use: "Part I: Ch. 1 (introduction and overview of storage engines), Ch. 2 (B-tree basics), Ch. 3 (file formats: pages, slotted layout, variable-size data), Ch. 4 (implementing B-trees: splits, merges, buffer management, page cache eviction, recovery), Ch. 5 (transaction processing and recovery, read for context), Ch. 6 (B-tree variants: copy-on-write, lazy, FD-tree, Bw-tree), Ch. 7 (log-structured storage: LSM trees, compaction, read/write/space amplification)."
-    why: "The best single text on how storage engines are actually built, covering B-trees and LSM trees side by side with the real trade-offs (write amplification, page layout, concurrency). It is paired well with CMU's lectures, which are lighter on LSM internals."
-    verified: true
-  - id: cmu-15445
-    role: primary-course
-    kind: course
-    title: "CMU 15-445/645 Intro to Database Systems (storage, buffer pool, hash tables, indexes)"
-    by: "Andy Pavlo, Jignesh Patel (CMU)"
-    url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
-    edition_or_term: "Fall 2025 (public); Fall 2026 is the latest term"
-    access: free
-    use: "Lectures #3 Database Storage I, #4 Memory Management (buffer pool), #5 Database Storage II, #6 Storage Models and Compression, #7 Hash Tables, #8 and #9 Indexes and Filters I and II, #10 Index Concurrency Control; Homeworks 2 (Storage) and 3 (Indexes and Filters); Project 1 (buffer pool manager: ARC replacer, disk scheduler, buffer pool) and Project 2 (B+tree index)."
-    why: "The reference course for database internals: public lecture videos, notes and slides, and BusTub projects whose public autograder (Gradescope entry code on the FAQ) opens to outsiders after CMU deadlines. Newest public videos are Fall 2025; Spring 2026 and Fall 2026 lectures sit behind CMU logins."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://15445.courses.cs.cmu.edu/fall2026/
-      videos: enrolled-only
-      public_videos_term: "Fall 2025"
-      public_videos_url: "https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5"
-      assignments: public-with-autograder
-      assignments_url: https://15445.courses.cs.cmu.edu/fall2025/assignments.html
-  - id: bustub
-    role: practice
-    kind: tool
-    title: "BusTub: CMU's educational DBMS (Projects 1 and 2)"
-    by: "CMU Database Group"
-    url: https://github.com/cmu-db/bustub
-    edition_or_term: "Current repository (Fall 2025 project specs)"
-    access: free
-    use: "Do Project 1 (https://15445.courses.cs.cmu.edu/fall2025/project1/) and Project 2 (https://15445.courses.cs.cmu.edu/fall2025/project2/): buffer pool manager with a replacement policy and disk scheduler, then a thread-safe B+tree with iterator. Local tests are in the repo; the Gradescope autograder is open to non-CMU students after CMU due dates; keep solutions private."
-    why: "Gap: implementing a buffer pool and a B+tree with latch crabbing is the single most effective way to learn this material. The repo is public MIT-licensed C++ and needs a Linux environment (WSL is not supported)."
-    verified: true
-  - id: cs186-notes-storage
-    role: secondary
-    kind: website
-    title: "CS 186 online notes: Disks and Files, B+Trees, Buffer Management, Hashing"
-    by: "UC Berkeley CS 186 staff"
-    url: https://cs186berkeley.net/notes/note3/
-    edition_or_term: "Rolling (notes 3, 4, 5, 7)"
-    access: free
-    use: "Notes 3 (Disks and Files), 4 (B+Trees), 5 (Buffer Management), 7 (Hashing); then CS 186 Project 2 (B+ trees in RookieDB, Java): https://cs186berkeley.net/projects/2/."
-    why: "Gap: a second, free written explanation with exercises and a Java alternative to BusTub's C++ project, useful if you prefer Java or want a gentler introduction."
-    verified: true
-  - id: use-the-index-luke
-    role: secondary
-    kind: website
-    title: "Use The Index, Luke"
-    by: "Markus Winand"
-    url: https://use-the-index-luke.com/sql/anatomy
-    edition_or_term: "Free web edition of SQL Performance Explained"
-    access: free
-    use: "Anatomy of an Index (the leaf nodes and the search tree), then The Where Clause (concatenated, functional and partial indexes), Sorting and Grouping, and Partial Results chapters."
-    why: "Gap: shows what B-tree structure means for query performance from the user's side; short and precise."
-    verified: true
-  - id: ddia2-storage
-    role: secondary
-    kind: book
-    title: "Designing Data-Intensive Applications, 2nd edition: Storage and Retrieval"
-    by: "Martin Kleppmann, Chris Riccomini"
-    url: https://dataintensive.net/
-    edition_or_term: "2nd edition (O'Reilly, March 2026); Chapter 4"
-    access: paid
-    use: "Chapter 4 'Storage and Retrieval': log-structured vs update-in-place storage, SSTables and LSM-trees, B-trees, comparing them, OLTP vs analytic storage (column storage appears in the advanced node)."
-    why: "Gap: a 40-page overview to read first as a map of the design space before Petrov's depth."
-    verified: true
-  - id: mini-lsm
-    role: practice
-    kind: tool
-    title: "Mini-LSM: build an LSM-tree storage engine in Rust"
-    by: "Alex Chi Z (skyzh)"
-    url: https://skyzh.github.io/mini-lsm/
-    edition_or_term: "Current (three-week course, with an optional coding-agent track)"
-    access: free
-    use: "Week 1 (memtable, SST format, block cache, merge iterators, compaction basics) is enough for this node; weeks 2-3 (durability, compaction strategies, MVCC, transactions) can be reused in the transactions node."
-    why: "Hidden gem: a polished step-by-step course whose result is a working LSM engine, complementing BusTub's B+tree-centred projects. Requires Rust."
-    verified: true
-  - id: db-tutorial
-    role: practice
-    kind: tool
-    title: "Let's Build a Simple Database (SQLite clone in C)"
-    by: "Connor Stack"
-    url: https://cstack.github.io/db_tutorial/
-    edition_or_term: "Tutorial, parts 1-13"
-    access: free
-    use: "Parts 1-13: REPL, in-memory table, persistence to a file with pages and a pager, cursor abstraction, B-tree leaf and internal node formats, splitting."
-    why: "Gap: a small, quick C walkthrough of pages, a pager and a B-tree on disk if BusTub's C++ or Mini-LSM's Rust is too heavy; it stops before concurrency and deletion."
-    verified: true
-  - id: interdb-bufmgr
-    role: reference
-    kind: website
-    title: "The Internals of PostgreSQL: Database Cluster and Heap Tables; Buffer Manager"
-    by: "Hironobu Suzuki"
-    url: https://www.interdb.jp/pg/pgsql08.html
-    edition_or_term: "Current online edition (PostgreSQL 14-18 era)"
-    access: free
-    use: "Ch. 1 (heap table file layout and tuple format), Ch. 8 (buffer manager: structure, replacement by clock sweep, ring buffers); Ch. 9 on WAL belongs to the recovery node."
-    why: "Gap: shows how a real production engine lays out pages and manages its buffer pool, to compare with the textbook designs."
-    verified: true
-  - id: dsc7-storage
-    role: reference
-    kind: book
-    title: "Database System Concepts, 7th edition: Chapters 12-14"
-    by: "Abraham Silberschatz, Henry F. Korth, S. Sudarshan"
-    url: https://www.db-book.com/
-    edition_or_term: "7th edition (2019)"
-    access: paid
-    use: "Ch. 12 (physical storage systems), Ch. 13 (data storage structures: file organization, buffer manager, column stores), Ch. 14 (indexing: ordered indices, B+-trees, hashing, bitmaps). These are the readings assigned in CMU's lectures."
-    why: "Gap: the textbook reference assigned to the CMU course and the closest to a standard curriculum; Petrov was chosen as primary for its modern, implementation-level treatment including LSM trees."
-    verified: true
-  - id: sqlite-format
-    role: reference
-    kind: docs
-    title: "SQLite database file format"
-    by: "SQLite Consortium"
-    url: https://sqlite.org/fileformat2.html
-    edition_or_term: "Current"
-    access: free
-    use: "Read the sections on pages, the B-tree page layout, cells, and freelist after finishing the B+tree project."
-    why: "Gap: a complete, real-world specification of an on-disk B-tree format in a few pages."
-    verified: true
+- id: db-internals-1
+  role: primary-text
+  kind: book
+  title: 'Database Internals: A Deep-Dive into How Distributed Data Systems Work (Part I: Storage Engines)'
+  by: Alex Petrov
+  url: https://www.databass.dev/
+  edition_or_term: O'Reilly, 2019 (first edition)
+  access: paid
+  use: 'Part I: Ch. 1 (introduction and overview of storage engines), Ch. 2 (B-tree basics), Ch. 3 (file formats: pages, slotted layout, variable-size data), Ch. 4 (implementing B-trees: splits, merges, buffer management, page cache eviction, recovery), Ch. 5 (transaction processing and recovery, read for context), Ch. 6 (B-tree variants: copy-on-write, lazy, FD-tree, Bw-tree), Ch. 7 (log-structured storage: LSM trees, compaction, read/write/space amplification).'
+  why: The best single text on how storage engines are actually built, covering B-trees and LSM trees side by side with the real trade-offs (write amplification, page layout, concurrency). It is paired well with CMU's lectures, which are lighter on LSM internals.
+  verified: true
+- id: cmu-15445
+  role: primary-course
+  kind: course
+  title: CMU 15-445/645 Intro to Database Systems (storage, buffer pool, hash tables, indexes)
+  by: Andy Pavlo, Jignesh Patel (CMU)
+  url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
+  edition_or_term: Fall 2025 (public); Fall 2026 is the latest term
+  access: free
+  use: 'Lectures #3 Database Storage I, #4 Memory Management (buffer pool), #5 Database Storage II, #6 Storage Models and Compression, #7 Hash Tables, #8 and #9 Indexes and Filters I and II, #10 Index Concurrency Control; Homeworks 2 (Storage) and 3 (Indexes and Filters); Project 1 (buffer pool manager: ARC replacer, disk scheduler, buffer pool) and Project 2 (B+tree index).'
+  why: 'The reference course for database internals: public lecture videos, notes and slides, and BusTub projects whose public autograder (Gradescope entry code on the FAQ) opens to outsiders after CMU deadlines. Newest public videos are Fall 2025; Spring 2026 and Fall 2026 lectures sit behind CMU logins.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://15445.courses.cs.cmu.edu/fall2026/
+    videos: enrolled-only
+    public_videos_term: Fall 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5
+    assignments: public-with-autograder
+    assignments_url: https://15445.courses.cs.cmu.edu/fall2025/assignments.html
+- id: bustub
+  role: practice
+  kind: tool
+  title: 'BusTub: CMU''s educational DBMS (Projects 1 and 2)'
+  by: CMU Database Group
+  url: https://github.com/cmu-db/bustub
+  edition_or_term: Current repository (Fall 2025 project specs)
+  access: free
+  use: 'Do Project 1 (https://15445.courses.cs.cmu.edu/fall2025/project1/) and Project 2 (https://15445.courses.cs.cmu.edu/fall2025/project2/): buffer pool manager with a replacement policy and disk scheduler, then a thread-safe B+tree with iterator. Local tests are in the repo; the Gradescope autograder is open to non-CMU students after CMU due dates; keep solutions private.'
+  why: 'Gap: implementing a buffer pool and a B+tree with latch crabbing is the single most effective way to learn this material. The repo is public MIT-licensed C++ and needs a Linux environment (WSL is not supported).'
+  verified: true
+- id: cs186-notes-storage
+  role: secondary
+  kind: website
+  title: 'CS 186 online notes: Disks and Files, B+Trees, Buffer Management, Hashing'
+  by: UC Berkeley CS 186 staff
+  url: https://cs186berkeley.net/notes/note3/
+  edition_or_term: Rolling (notes 3, 4, 5, 7)
+  access: free
+  use: 'Notes 3 (Disks and Files), 4 (B+Trees), 5 (Buffer Management), 7 (Hashing); then CS 186 Project 2 (B+ trees in RookieDB, Java): https://cs186berkeley.net/projects/2/.'
+  why: 'Gap: a second, free written explanation with exercises and a Java alternative to BusTub''s C++ project, useful if you prefer Java or want a gentler introduction.'
+  verified: true
+- id: use-the-index-luke
+  role: secondary
+  kind: website
+  title: Use The Index, Luke
+  by: Markus Winand
+  url: https://use-the-index-luke.com/sql/anatomy
+  edition_or_term: Free web edition of SQL Performance Explained
+  access: free
+  use: Anatomy of an Index (the leaf nodes and the search tree), then The Where Clause (concatenated, functional and partial indexes), Sorting and Grouping, and Partial Results chapters.
+  why: 'Gap: shows what B-tree structure means for query performance from the user''s side; short and precise.'
+  verified: true
+- id: ddia2-storage
+  role: secondary
+  kind: book
+  title: 'Designing Data-Intensive Applications, 2nd edition: Storage and Retrieval'
+  by: Martin Kleppmann, Chris Riccomini
+  url: https://dataintensive.net/
+  edition_or_term: 2nd edition (O'Reilly, March 2026); Chapter 4
+  access: paid
+  use: 'Chapter 4 ''Storage and Retrieval'': log-structured vs update-in-place storage, SSTables and LSM-trees, B-trees, comparing them, OLTP vs analytic storage (column storage appears in the advanced node).'
+  why: 'Gap: a 40-page overview to read first as a map of the design space before Petrov''s depth.'
+  verified: true
+- id: mini-lsm
+  role: practice
+  kind: tool
+  title: 'Mini-LSM: build an LSM-tree storage engine in Rust'
+  by: Alex Chi Z (skyzh)
+  url: https://skyzh.github.io/mini-lsm/
+  edition_or_term: Current (three-week course, with an optional coding-agent track)
+  access: free
+  use: Week 1 (memtable, SST format, block cache, merge iterators, compaction basics) is enough for this node; weeks 2-3 (durability, compaction strategies, MVCC, transactions) can be reused in the transactions node.
+  why: 'Hidden gem: a polished step-by-step course whose result is a working LSM engine, complementing BusTub''s B+tree-centred projects. Requires Rust.'
+  verified: true
+- id: db-tutorial
+  role: practice
+  kind: tool
+  title: Let's Build a Simple Database (SQLite clone in C)
+  by: Connor Stack
+  url: https://cstack.github.io/db_tutorial/
+  edition_or_term: Tutorial, parts 1-13
+  access: free
+  use: 'Parts 1-13: REPL, in-memory table, persistence to a file with pages and a pager, cursor abstraction, B-tree leaf and internal node formats, splitting.'
+  why: 'Gap: a small, quick C walkthrough of pages, a pager and a B-tree on disk if BusTub''s C++ or Mini-LSM''s Rust is too heavy; it stops before concurrency and deletion.'
+  verified: true
+- id: interdb-bufmgr
+  role: reference
+  kind: website
+  title: 'The Internals of PostgreSQL: Database Cluster and Heap Tables; Buffer Manager'
+  by: Hironobu Suzuki
+  url: https://www.interdb.jp/pg/pgsql08.html
+  edition_or_term: Current online edition (PostgreSQL 14-18 era)
+  access: free
+  use: 'Ch. 1 (heap table file layout and tuple format), Ch. 8 (buffer manager: structure, replacement by clock sweep, ring buffers); Ch. 9 on WAL belongs to the recovery node.'
+  why: 'Gap: shows how a real production engine lays out pages and manages its buffer pool, to compare with the textbook designs.'
+  verified: true
+- id: dsc7-storage
+  role: reference
+  kind: book
+  title: 'Database System Concepts, 7th edition: Chapters 12-14'
+  by: Abraham Silberschatz, Henry F. Korth, S. Sudarshan
+  url: https://www.db-book.com/
+  edition_or_term: 7th edition (2019)
+  access: paid
+  use: 'Ch. 12 (physical storage systems), Ch. 13 (data storage structures: file organization, buffer manager, column stores), Ch. 14 (indexing: ordered indices, B+-trees, hashing, bitmaps). These are the readings assigned in CMU''s lectures.'
+  why: 'Gap: the textbook reference assigned to the CMU course and the closest to a standard curriculum; Petrov was chosen as primary for its modern, implementation-level treatment including LSM trees.'
+  verified: true
+- id: sqlite-format
+  role: reference
+  kind: docs
+  title: SQLite database file format
+  by: SQLite Consortium
+  url: https://sqlite.org/fileformat2.html
+  edition_or_term: Current
+  access: free
+  use: Read the sections on pages, the B-tree page layout, cells, and freelist after finishing the B+tree project.
+  why: 'Gap: a complete, real-world specification of an on-disk B-tree format in a few pages.'
+  verified: true
 considered:
-  - {title: "Build Your Own Database From Scratch in Go", url: "https://build-your-own.org/database/", reason: "Covers B-tree, KV store, relational layer and concurrency in Go; appears to be a paid book with a free preview, and I could not verify its extent."}
-  - {title: "Berkeley CS 186 as the primary course", url: "https://cs186berkeley.net/", reason: "Good and has public notes and a Java skeleton, but newest public videos are Spring 2024 and storage coverage is lighter than CMU's."}
-  - {title: "MIT 6.5830 Database Systems (Spring 2026, GoDB labs)", url: "https://dsg.csail.mit.edu/6.5830/", reason: "Paper-driven with Go labs; slides public; recordings on Panopto, access unverified."}
-  - {title: "Readings in Database Systems (Red Book), Ch. 2 Traditional RDBMS Systems", url: "http://www.redbook.io/ch2-importantdbms.html", reason: "Includes the classic Architecture of a Database System; used in the advanced-database-systems node instead."}
-notes: "CMU 15-445 is the center: watch lectures 3-10, do BusTub Projects 1-2, and read Petrov Part I as the textbook; Mini-LSM supplies the LSM side that CMU covers only briefly. If C++ is a barrier, use the CS 186 B+tree project in Java, or Let's Build a Simple Database in C. Hash indexes (hash tables on disk and in memory) are in lecture #7. BusTub policy: the Fall 2026 course bans coding agents for Projects 1-2, so self-learners should use the Fall 2025 specs."
+- title: Build Your Own Database From Scratch in Go
+  url: https://build-your-own.org/database/
+  reason: Covers B-tree, KV store, relational layer and concurrency in Go; appears to be a paid book with a free preview, and I could not verify its extent.
+- title: Berkeley CS 186 as the primary course
+  url: https://cs186berkeley.net/
+  reason: Good and has public notes and a Java skeleton, but newest public videos are Spring 2024 and storage coverage is lighter than CMU's.
+- title: MIT 6.5830 Database Systems (Spring 2026, GoDB labs)
+  url: https://dsg.csail.mit.edu/6.5830/
+  reason: Paper-driven with Go labs; slides public; recordings on Panopto, access unverified.
+- title: Readings in Database Systems (Red Book), Ch. 2 Traditional RDBMS Systems
+  url: http://www.redbook.io/ch2-importantdbms.html
+  reason: Includes the classic Architecture of a Database System; used in the advanced-database-systems node instead.
+notes: 'CMU 15-445 is the center: watch lectures 3-10, do BusTub Projects 1-2, and read Petrov Part I as the textbook; Mini-LSM supplies the LSM side that CMU covers only briefly. If C++ is a barrier, use the CS 186 B+tree project in Java, or Let''s Build a Simple Database in C. Hash indexes (hash tables on disk and in memory) are in lecture #7. BusTub policy: the Fall 2026 course bans coding agents for Projects 1-2, so self-learners should use the Fall 2025 specs.'
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "Petrov's book: I confirmed the site and the publisher listing but did not verify the exact chapter-by-chapter contents beyond the book's own structure."
-  - "BusTub project specs change each term; the Fall 2025 specs were read, Fall 2026 specs may differ (the Fall 2026 policy bans coding agents for P1-P2)."
+- 'Petrov''s book: I confirmed the site and the publisher listing but did not verify the exact chapter-by-chapter contents beyond the book''s own structure.'
+- BusTub project specs change each term; the Fall 2025 specs were read, Fall 2026 specs may differ (the Fall 2026 policy bans coding agents for P1-P2).
 last_verified: 2026-11-18

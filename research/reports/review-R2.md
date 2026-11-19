@@ -199,14 +199,14 @@ Things I could not check: YouTube playback (rate limits), O'Reilly/Packt/Springe
 ## interpreters
 - [should-fix] Same resource, same job as programming-language-concepts: `plai-interp` repeats PLAI's evaluation/desugaring/laziness chapters assigned there. Keep in one node (programming-language-concepts); here keep only the cross-reference.
 - [suggestion] Many parallel resources for "write a small interpreter" (lsbasi, interpreter-book/compiler-book in Go, mal, CodeCrafters). Keep Crafting Interpreters, mal and one of lsbasi/Ball.
-- [suggestion] 50 h for all 30 chapters of Crafting Interpreters (jlox and clox with GC) looks low; common reports are 60-80 h. State the range.
+- [suggestion] State the range.
 - Agree no primary course (Adjudication 3).
 - split/prereq: split agree as optional (tree-walk vs bytecode VM); make c-programming hard only for Part III, as the node proposes.
 
 ## compiler-construction
 - [should-fix] `stanford-cs143` `public_videos_url` is an archive.org mirror of an academictorrents dump. Replace with the official Stanford Online/Lagunita listing or say "no official public video". Verified (over http): CS 143 page lists Final 2026, Midterm 2026, PA1-PA5, Cool manual, lectures including Automatic Memory Management and JIT; term inferred from those files.
 - [suggestion] Facts fine: EaC 3e (2022), Sandler book (No Starch, 2024) and test suite, CMU 15-411 and UW CSE 401 Spring 2026.
-- split/prereq: split disagree for now (front end vs back end), 120 h with two builds as options is workable. Prereq none.
+- Prereq none.
 
 ## compiler-optimization
 - [should-fix] CS 6120 video claim is overstated. On the Fall 2025 lessons page only lessons 1, 8, 9, 10, 11 and 13 show "video" links; lessons 2-7 (local analysis, data flow, global analysis, SSA, LLVM) and 12 (dynamic compilers) show discussion/tasks only. The
@@ -248,7 +248,7 @@ Things I could not check: YouTube playback (rate limits), O'Reilly/Packt/Springe
 ## binary-exploitation
 - Primary course pwn.college Program Security and primary text Nightmare are sound; module counts verified on the module page (Reverse Engineering 36, ROP 30, Dynamic Allocator Misuse 40, Program Exploitation 14; 159 total). `mbe` (RPISEC Spring 2015) is old but correctly labelled.
 - [suggestion] Nightmare has no stated update date; note that it targets older glibc (use how2heap per glibc version, which the node does).
-- split/prereq: split agree (reverse engineering is half the work at ~180 h); prereq agree (soft computer-architecture and operating-systems).
+- split/prereq: split agree; prereq agree (soft computer-architecture and operating-systems).
 
 ## fuzzing-and-vuln-discovery
 - Agree no primary course. Fuzzing Book "Last change 2024-07-01" verified.

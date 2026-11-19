@@ -1,0 +1,191 @@
+id: distributed-transactions
+title: Distributed Transactions
+group: G10
+paths:
+- distributed
+- databases
+hard:
+- sharding-and-distributed-kv
+- consensus-protocols
+- transactions-and-recovery
+soft: []
+scope: Atomic commit and 2PC, distributed concurrency control, Spanner, Calvin, Percolator, FoundationDB, sagas.
+level: advanced
+resources:
+- id: ddia2-shard-txn
+  role: primary-text
+  kind: book
+  title: 'Designing Data-Intensive Applications, 2nd edition: Sharding and Transactions'
+  by: Martin Kleppmann, Chris Riccomini
+  url: https://dataintensive.net/
+  edition_or_term: 2nd edition (O'Reilly, March 2026, 670 pages)
+  access: paid
+  use: Only the 'Distributed Transactions' sections of Chapter 8 (atomic commit, two-phase commit, its failure modes, exactly-once processing). ACID and isolation levels are read in transactions-and-recovery.
+  why: The clearest single account of how partitioning and transactions interact and where distributed transactions break; it frames every system in the course (Spanner, Calvin, FoundationDB, Percolator) as a point in the same design space.
+  verified: true
+- id: mit-6824-txn
+  role: primary-course
+  kind: course
+  title: 'MIT 6.5840 (6.824) Distributed Systems: transactions and sharding'
+  by: MIT (Robert Morris, Frans Kaashoek)
+  url: https://pdos.csail.mit.edu/6.824/schedule.html
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Spring 2026 Lecture 11 (distributed transactions, 2PC), Lecture 12 (Spanner), Lecture 14 (FaRM, optimistic concurrency control). Video mapping to the Spring 2020 playlist: 2026 L11 = 2020 L12, 2026 L12 = 2020 L13, 2026 L14 = 2020 L14.'
+  why: Paper-driven lectures with the best public explanation of 2PC and Spanner's TrueTime, and a sharded-KV lab that makes you implement shard movement on top of Raft. 2026 lectures are not recorded publicly; the 2020 videos cover the same papers.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://pdos.csail.mit.edu/6.824/schedule.html
+    videos: none
+    public_videos_term: Spring 2020 (official MIT 6.824 YouTube playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB
+    assignments: public-with-autograder
+    assignments_url: https://pdos.csail.mit.edu/6.824/labs/lab-shard1.html
+- id: tinykv
+  role: practice
+  kind: tool
+  title: 'TinyKV (PingCAP talent-plan): build a distributed key-value store on the TiKV model'
+  by: PingCAP talent-plan
+  url: https://github.com/talent-plan/tinykv
+  edition_or_term: Current course branch (Go)
+  access: free
+  use: 'Project 4 (transactions: MVCC layer, KvGet, KvPrewrite, KvCommit in the Percolator style).'
+  why: 'Hidden gem: the only public course that takes you from Raft to sharding (regions) to Percolator-style distributed transactions in one codebase; the README says autograding for the original course moved to GitHub Classroom. Its last commit date was not visible, so check issues before starting.'
+  verified: true
+- id: dslabs-4
+  role: practice
+  kind: tool
+  title: 'DSLabs Lab 4: sharded store with Paxos groups and two-phase commit'
+  by: Ellis Michael (University of Washington)
+  url: https://github.com/emichael/dslabs
+  edition_or_term: Current repository
+  access: free
+  use: Lab 4 (sharded key/value store with Paxos-replicated groups and 2PC for multi-key updates), using the bundled model checker.
+  why: 'Gap: the alternative to MIT Lab 5 that includes multi-key transactions via 2PC and exhaustive model checking for protocol bugs; Java based.'
+  verified: true
+- id: gossip-txn
+  role: practice
+  kind: practice-site
+  title: 'Gossip Glomers: Challenge 6 Totally-Available Transactions'
+  by: Fly.io and Kyle Kingsbury (Jepsen)
+  url: https://fly.io/dist-sys/6a/
+  edition_or_term: Current
+  access: free
+  use: 'Challenges #6a (single-node), #6b (multi-node, read uncommitted) and #6c (read committed) with Maelstrom''s checker.'
+  why: 'Gap: a quick way to feel isolation-level trade-offs under partitions, in any language, before the heavy labs.'
+  verified: true
+- id: cmu-15445-dist
+  role: secondary
+  kind: course
+  title: 'CMU 15-445/645: Distributed Database Systems I and II'
+  by: Andy Pavlo (CMU)
+  url: https://15445.courses.cs.cmu.edu/fall2025/schedule.html
+  edition_or_term: Fall 2025 (public YouTube); Spring and Fall 2026 enrolled-only
+  access: free
+  use: 'Lectures #23 and #24 (distributed database architectures, partitioning, shared-nothing vs shared-disk, distributed concurrency control and atomic commit, replication) with the slides and notes.'
+  why: 'Gap: the database-engine view of the same material (shared-disk vs shared-nothing, cloud-native systems), complementing the OS/systems view in MIT 6.5840.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://15445.courses.cs.cmu.edu/fall2026/
+    videos: enrolled-only
+    public_videos_term: Fall 2025
+    public_videos_url: https://www.youtube.com/playlist?list=PLSE8ODhjZXjYMAgsGH-GtY5rJYZ6zjsd5
+    assignments: public-with-autograder
+    assignments_url: https://15445.courses.cs.cmu.edu/fall2025/assignments.html
+- id: db-internals-2
+  role: secondary
+  kind: book
+  title: 'Database Internals: A Deep-Dive into How Distributed Data Systems Work (Part II and Ch. 13)'
+  by: Alex Petrov
+  url: https://www.databass.dev/
+  edition_or_term: O'Reilly, 2019
+  access: paid
+  use: 'Chapter 13 (Distributed Transactions: 2PC, 3PC, Calvin, Spanner, Percolator).'
+  why: 'Gap: more mechanism-level detail on Calvin, Spanner and Percolator than DDIA, in a few clear pages per system.'
+  verified: true
+- id: spanner
+  role: reference
+  kind: paper
+  title: 'Spanner: Google''s Globally-Distributed Database'
+  by: James C. Corbett et al. (OSDI 2012)
+  url: https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf
+  edition_or_term: OSDI 2012
+  access: free
+  use: 'Sections 2-4 (architecture, directories, TrueTime, concurrency control: read-write, read-only and snapshot transactions).'
+  why: 'Gap: the scope names Spanner-style systems; this is the primary source.'
+  verified: true
+- id: calvin
+  role: reference
+  kind: paper
+  title: 'Calvin: Fast Distributed Transactions for Partitioned Database Systems'
+  by: Alexander Thomson et al. (SIGMOD 2012)
+  url: https://www.cs.umd.edu/~abadi/papers/calvin-sigmod12.pdf
+  edition_or_term: SIGMOD 2012
+  access: free
+  use: Read in full (8 pages) and contrast the deterministic, sequenced approach with Spanner's 2PC over Paxos groups.
+  why: 'Gap: the scope names Calvin; it is the main alternative design (determinism instead of distributed commit).'
+  verified: true
+- id: percolator
+  role: reference
+  kind: paper
+  title: Large-scale Incremental Processing Using Distributed Transactions and Notifications (Percolator)
+  by: Daniel Peng, Frank Dabek (OSDI 2010)
+  url: https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Peng.pdf
+  edition_or_term: OSDI 2010
+  access: free
+  use: Read Sections 2.1-2.5 (snapshot isolation with a timestamp oracle, two-phase commit with primary and secondary locks) before TinyKV Project 4.
+  why: 'Gap: the model behind TiKV and TinyKV transactions; short and implementable.'
+  verified: true
+- id: fdb
+  role: reference
+  kind: paper
+  title: 'FoundationDB: A Distributed Unbundled Transactional Key Value Store'
+  by: Jingyu Zhou et al. (SIGMOD 2021)
+  url: https://www.foundationdb.org/files/fdb-paper.pdf
+  edition_or_term: SIGMOD 2021
+  access: free
+  use: Sections on the unbundled architecture (separating transaction, log and storage systems), strict serializability with optimistic concurrency control, and deterministic simulation testing.
+  why: 'Gap: the modern industrial counterpart to Spanner, famous for simulation testing; shows a very different design point.'
+  verified: true
+- id: crdb-arch
+  role: secondary
+  kind: docs
+  title: CockroachDB architecture overview (SQL, transaction, distribution and replication layers)
+  by: Cockroach Labs
+  url: https://www.cockroachlabs.com/docs/stable/architecture/overview
+  edition_or_term: Current stable docs
+  access: free
+  use: Read the Transaction Layer page, then pick one Jepsen analysis (https://jepsen.io/analyses) of a distributed SQL database.
+  why: 'Gap: a readable production system that combines ranges, Raft groups, hybrid logical clocks and serializable transactions; bridges the papers to a real implementation.'
+  verified: true
+- id: sagas
+  role: reference
+  kind: paper
+  title: Sagas
+  by: Hector Garcia-Molina, Kenneth Salem (SIGMOD 1987)
+  url: https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf
+  edition_or_term: '1987'
+  access: free
+  use: Read for the compensating-transaction idea behind microservice workflow engines.
+  why: 'Gap: the main alternative to atomic commit when distributed transactions are too costly.'
+  verified: true
+considered:
+- title: 'Dynamo: Amazon''s Highly Available Key-value Store'
+  url: https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
+  reason: Core leaderless-KV paper (consistent hashing, sloppy quorums, vector clocks); better placed with replication but listed here as the AP counterpoint for distributed KV stores.
+- title: UW CSE 452 / DSLabs course
+  url: https://courses.cs.washington.edu/courses/cse452/
+  reason: Autumn 2026 term, lectures enrolled-only; DSLabs lab 4 used as practice.
+- title: CMU 15-721 Advanced Database Systems
+  url: https://15721.courses.cs.cmu.edu/
+  reason: Fall 2025 page lists the paper-based syllabus (distributed OLAP and cloud lectures) but has no public videos; the Spring 2024 recordings cover distributed topics only briefly.
+- title: Database Internals Part II as primary
+  url: https://www.databass.dev/
+  reason: Great mechanism detail, but DDIA better covers sharding and weaker isolation; kept as secondary.
+notes: Created by splitting 'distributed-transactions-and-storage' (owner decision B5, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

@@ -1,137 +1,132 @@
 id: scientific-python
 title: Scientific Python & Data Tooling
 group: G5
-paths: [ml-foundations]
-hard: [python-programming]
+paths:
+- ml-foundations
+hard:
+- python-programming
 soft: []
-scope: "NumPy, pandas, matplotlib, Jupyter, scikit-learn API basics."
-
+scope: NumPy, pandas, matplotlib, Jupyter, scikit-learn API basics.
 level: intro
-estimated_hours: 40
 resources:
-  - id: pda3e
-    role: primary-text
-    kind: book
-    title: "Python for Data Analysis, 3rd edition (open edition)"
-    by: "Wes McKinney"
-    url: https://wesmckinney.com/book/
-    edition_or_term: "3rd edition (pandas 2.0 / NumPy era); free online by the author, print from O'Reilly"
-    access: free
-    use: "NumPy Basics (ch. 4), pandas basics (ch. 5), data loading (ch. 6), cleaning and preparation (ch. 7), wrangling/joins/reshape (ch. 8), plotting with matplotlib/seaborn (ch. 9), groupby/aggregation (ch. 10); also ch. 2 (IPython and Jupyter notebooks), skim time series (ch. 11) and ch. 12 (modeling libraries: patsy, statsmodels, scikit-learn intro), and Appendix A (Advanced NumPy)."
-    why: "Written by pandas' creator, current with pandas 2, freely readable, and the most complete single text for the NumPy + pandas + plotting workflow ML practitioners actually use."
-    verified: true
-  - id: numpy-docs
-    role: reference
-    kind: docs
-    title: "NumPy: the absolute basics for beginners, plus Quickstart"
-    by: "NumPy project"
-    url: https://numpy.org/doc/stable/user/absolute_beginners.html
-    edition_or_term: "NumPy 2.5 docs (stable)"
-    access: free
-    use: "Read 'absolute basics' and the Quickstart, then the Broadcasting and Indexing pages of the user guide."
-    why: "Authoritative, always current for the NumPy 2.x API; fills gaps where the book lags (new dtypes, random Generator API)."
-    verified: true
-  - id: from-python-to-numpy
-    role: secondary
-    kind: book
-    title: "From Python to NumPy"
-    by: "Nicolas P. Rougier"
-    url: https://www.labri.fr/perso/nrougier/from-python-to-numpy/
-    edition_or_term: "Free online book (author site)"
-    access: free
-    use: "Anatomy of an array, code vectorization, problem vectorization, custom vectorization chapters; skip the later case studies on first pass."
-    why: "Hidden gem: teaches how to think in vectorized/broadcast form and views-vs-copies, which most intros skip and which matters for fast ML code."
-    verified: true
-  - id: pandas-docs
-    role: reference
-    kind: docs
-    title: "pandas User Guide and 'Getting started' tutorials"
-    by: "pandas project"
-    url: https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html
-    edition_or_term: "pandas 3.1 docs"
-    access: free
-    use: "Work through the Getting started tutorials, then User Guide pages on indexing, groupby, merging, and missing data as needed."
-    why: "Pandas 3.x changed defaults (copy-on-write, string dtype) since many books were written; the official docs are the correct reference."
-    verified: true
-  - id: matplotlib-seaborn
-    role: reference
-    kind: docs
-    title: "Matplotlib Quick start guide and seaborn tutorial"
-    by: "Matplotlib and seaborn projects"
-    url: https://matplotlib.org/stable/users/explain/quick_start.html
-    edition_or_term: "Matplotlib 3.11 docs; seaborn 0.13 tutorial at https://seaborn.pydata.org/tutorial.html"
-    access: free
-    use: "Quick start (Figure/Axes object model, subplots, styling); seaborn tutorial sections on distributions, relational and categorical plots."
-    why: "The Axes-based (object-oriented) matplotlib API is what all ML plotting code uses; the quick start covers it in one sitting."
-    verified: true
-  - id: pdsh
-    role: secondary
-    kind: book
-    title: "Python Data Science Handbook (1st edition, online)"
-    by: "Jake VanderPlas"
-    url: https://jakevdp.github.io/PythonDataScienceHandbook/
-    edition_or_term: "1st edition (2016), free online notebooks; code predates pandas 2 / NumPy 2"
-    access: free
-    use: "Ch. 1 (IPython/Jupyter productivity: magics, timing, profiling), Ch. 4 (Matplotlib visualization), and Ch. 5 intro to machine learning with the scikit-learn Estimator API (5.02 Introducing Scikit-Learn, 5.03 Hyperparameters and Model Validation)."
-    why: "Still the clearest short intro to the scikit-learn fit/predict/transform API and Jupyter workflow; use only for those parts because its pandas/NumPy code is dated."
-    verified: true
-  - id: scipy-lectures
-    role: secondary
-    kind: book
-    title: "Scientific Python Lecture Notes (scipy-lectures)"
-    by: "Scipy Lecture Notes contributors"
-    url: https://scipy-lectures.org/
-    edition_or_term: "Community-maintained, free HTML/PDF"
-    access: free
-    use: "Python language refresher (intro/language), NumPy chapter incl. advanced array operations, Matplotlib chapter, Scipy chapter (optimize, linalg, stats), and the scikit-learn statistics chapter."
-    why: "Fills the SciPy gap (optimization, integration, sparse, linalg) that the pandas-centric book does not cover."
-    verified: true
-  - id: sklearn-mooc-m1
-    role: secondary
-    kind: course
-    title: "scikit-learn MOOC (Inria), Module 1: Predictive modeling pipeline"
-    by: "Inria Learning Lab (Guillaume Lemaitre, Olivier Grisel, Loic Esteve et al.)"
-    url: https://inria.github.io/scikit-learn-mooc/
-    edition_or_term: "Continuously updated to current scikit-learn (1.x)"
-    access: free
-    use: "Only Module 1 (tabular data exploration, first model, numerical/categorical preprocessing, Pipelines, ColumnTransformer) for the scikit-learn API; Modules 3-4 and 8 are used in applied-ml-practice."
-    why: "Best structured, exercise-driven introduction to the scikit-learn API, with quizzes and solutions."
-    verified: true
-    course:
-      latest_term: "Self-paced, continuously updated (FUN MOOC reference 41026)"
-      latest_url: https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/
-      videos: public
-      assignments: public
-      assignments_url: https://inria.github.io/scikit-learn-mooc/toc.html
-  - id: numpy-100
-    role: practice
-    kind: practice-site
-    title: "100 NumPy Exercises"
-    by: "Nicolas P. Rougier"
-    url: https://github.com/rougier/numpy-100
-    edition_or_term: "Repo README with solutions"
-    access: free
-    use: "Do the exercises in order with the solutions hidden (the list is difficulty-tagged); skip the bit-twiddling oddities."
-    why: "Fast drilling of indexing, broadcasting and array idioms."
-    verified: true
-  - id: kaggle-pandas
-    role: practice
-    kind: practice-site
-    title: "Kaggle Learn: Pandas and Data Visualization"
-    by: "Kaggle"
-    url: https://www.kaggle.com/learn/pandas
-    edition_or_term: "Self-paced micro-courses (Pandas, 6 lessons; Data Visualization at https://www.kaggle.com/learn/data-visualization)"
-    access: free
-    use: "Complete all Pandas exercises (creating/reading, indexing, summary functions, grouping/sorting, data types/missing values, renaming/combining) and the Data Visualization exercises."
-    why: "Short autograded notebooks in a hosted Jupyter environment; zero setup friction."
-    verified: true
+- id: pda3e
+  role: primary-text
+  kind: book
+  title: Python for Data Analysis, 3rd edition (open edition)
+  by: Wes McKinney
+  url: https://wesmckinney.com/book/
+  edition_or_term: 3rd edition (pandas 2.0 / NumPy era); free online by the author, print from O'Reilly
+  access: free
+  use: 'NumPy Basics (ch. 4), pandas basics (ch. 5), data loading (ch. 6), cleaning and preparation (ch. 7), wrangling/joins/reshape (ch. 8), plotting with matplotlib/seaborn (ch. 9), groupby/aggregation (ch. 10); also ch. 2 (IPython and Jupyter notebooks), skim time series (ch. 11) and ch. 12 (modeling libraries: patsy, statsmodels, scikit-learn intro), and Appendix A (Advanced NumPy).'
+  why: Written by pandas' creator, current with pandas 2, freely readable, and the most complete single text for the NumPy + pandas + plotting workflow ML practitioners actually use.
+  verified: true
+- id: numpy-docs
+  role: reference
+  kind: docs
+  title: 'NumPy: the absolute basics for beginners, plus Quickstart'
+  by: NumPy project
+  url: https://numpy.org/doc/stable/user/absolute_beginners.html
+  edition_or_term: NumPy 2.5 docs (stable)
+  access: free
+  use: Read 'absolute basics' and the Quickstart, then the Broadcasting and Indexing pages of the user guide.
+  why: Authoritative, always current for the NumPy 2.x API; fills gaps where the book lags (new dtypes, random Generator API).
+  verified: true
+- id: pandas-docs
+  role: reference
+  kind: docs
+  title: pandas User Guide and 'Getting started' tutorials
+  by: pandas project
+  url: https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html
+  edition_or_term: pandas 3.1 docs
+  access: free
+  use: Work through the Getting started tutorials, then User Guide pages on indexing, groupby, merging, and missing data as needed.
+  why: Pandas 3.x changed defaults (copy-on-write, string dtype) since many books were written; the official docs are the correct reference.
+  verified: true
+- id: matplotlib-seaborn
+  role: reference
+  kind: docs
+  title: Matplotlib Quick start guide and seaborn tutorial
+  by: Matplotlib and seaborn projects
+  url: https://matplotlib.org/stable/users/explain/quick_start.html
+  edition_or_term: Matplotlib 3.11 docs; seaborn 0.13 tutorial at https://seaborn.pydata.org/tutorial.html
+  access: free
+  use: Quick start (Figure/Axes object model, subplots, styling); seaborn tutorial sections on distributions, relational and categorical plots.
+  why: The Axes-based (object-oriented) matplotlib API is what all ML plotting code uses; the quick start covers it in one sitting.
+  verified: true
+- id: pdsh
+  role: secondary
+  kind: book
+  title: Python Data Science Handbook (1st edition, online)
+  by: Jake VanderPlas
+  url: https://jakevdp.github.io/PythonDataScienceHandbook/
+  edition_or_term: 1st edition (2016), free online notebooks; code predates pandas 2 / NumPy 2
+  access: free
+  use: 'Ch. 1 (IPython/Jupyter productivity: magics, timing, profiling), Ch. 4 (Matplotlib visualization), and Ch. 5 intro to machine learning with the scikit-learn Estimator API (5.02 Introducing Scikit-Learn, 5.03 Hyperparameters and Model Validation).'
+  why: Still the clearest short intro to the scikit-learn fit/predict/transform API and Jupyter workflow; use only for those parts because its pandas/NumPy code is dated.
+  verified: true
+- id: scipy-lectures
+  role: secondary
+  kind: book
+  title: Scientific Python Lecture Notes (scipy-lectures)
+  by: Scipy Lecture Notes contributors
+  url: https://scipy-lectures.org/
+  edition_or_term: Community-maintained, free HTML/PDF
+  access: free
+  use: Python language refresher (intro/language), NumPy chapter incl. advanced array operations, Matplotlib chapter, Scipy chapter (optimize, linalg, stats), and the scikit-learn statistics chapter.
+  why: Fills the SciPy gap (optimization, integration, sparse, linalg) that the pandas-centric book does not cover.
+  verified: true
+- id: sklearn-mooc-m1
+  role: secondary
+  kind: course
+  title: 'scikit-learn MOOC (Inria), Module 1: Predictive modeling pipeline'
+  by: Inria Learning Lab (Guillaume Lemaitre, Olivier Grisel, Loic Esteve et al.)
+  url: https://inria.github.io/scikit-learn-mooc/
+  edition_or_term: Continuously updated to current scikit-learn (1.x)
+  access: free
+  use: Only Module 1 (tabular data exploration, first model, numerical/categorical preprocessing, Pipelines, ColumnTransformer) for the scikit-learn API; Modules 3-4 and 8 are used in applied-ml-practice.
+  why: Best structured, exercise-driven introduction to the scikit-learn API, with quizzes and solutions.
+  verified: true
+  course:
+    latest_term: Self-paced, continuously updated (FUN MOOC reference 41026)
+    latest_url: https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/
+    videos: public
+    assignments: public
+    assignments_url: https://inria.github.io/scikit-learn-mooc/toc.html
+- id: numpy-100
+  role: practice
+  kind: practice-site
+  title: 100 NumPy Exercises
+  by: Nicolas P. Rougier
+  url: https://github.com/rougier/numpy-100
+  edition_or_term: Repo README with solutions
+  access: free
+  use: Do the exercises in order with the solutions hidden (the list is difficulty-tagged); skip the bit-twiddling oddities.
+  why: Fast drilling of indexing, broadcasting and array idioms.
+  verified: true
+- id: kaggle-pandas
+  role: practice
+  kind: practice-site
+  title: 'Kaggle Learn: Pandas and Data Visualization'
+  by: Kaggle
+  url: https://www.kaggle.com/learn/pandas
+  edition_or_term: Self-paced micro-courses (Pandas, 6 lessons; Data Visualization at https://www.kaggle.com/learn/data-visualization)
+  access: free
+  use: Complete all Pandas exercises (creating/reading, indexing, summary functions, grouping/sorting, data types/missing values, renaming/combining) and the Data Visualization exercises.
+  why: Short autograded notebooks in a hosted Jupyter environment; zero setup friction.
+  verified: true
 considered:
-  - {title: "Polars user guide", url: "https://docs.pola.rs/", reason: "Increasingly popular fast DataFrame library; optional second library once pandas is solid."}
-  - {title: "Kaggle Learn: Python / Intro to ML / Intermediate ML / Data Cleaning / Feature Engineering", url: "https://www.kaggle.com/learn", reason: "Good micro-courses; Intro/Intermediate ML and Feature Engineering are referenced in applied-ml-practice instead."}
-  - {title: "Jupyter project docs", url: "https://jupyter.org/", reason: "Tool onboarding is covered adequately by PDSH ch.1 and Kaggle notebooks; no dedicated learning resource needed."}
-notes: "No primary-course: no university course teaches NumPy/pandas well on video; the Inria scikit-learn MOOC (Module 1) plus Kaggle micro-courses serve as the guided route. Python Data Science Handbook was the owner-listed candidate; it is kept as a secondary because its 2016 code predates pandas 2 and NumPy 2, whereas Python for Data Analysis 3E is current."
+- title: Polars user guide
+  url: https://docs.pola.rs/
+  reason: Increasingly popular fast DataFrame library; optional second library once pandas is solid.
+- title: 'Kaggle Learn: Python / Intro to ML / Intermediate ML / Data Cleaning / Feature Engineering'
+  url: https://www.kaggle.com/learn
+  reason: Good micro-courses; Intro/Intermediate ML and Feature Engineering are referenced in applied-ml-practice instead.
+- title: Jupyter project docs
+  url: https://jupyter.org/
+  reason: Tool onboarding is covered adequately by PDSH ch.1 and Kaggle notebooks; no dedicated learning resource needed.
+notes: 'No primary-course: no university course teaches NumPy/pandas well on video; the Inria scikit-learn MOOC (Module 1) plus Kaggle micro-courses serve as the guided route. Python Data Science Handbook was the owner-listed candidate; it is kept as a secondary because its 2016 code predates pandas 2 and NumPy 2, whereas Python for Data Analysis 3E is current.'
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "Whether a 2nd edition of the Python Data Science Handbook is planned (not found)."
+- Whether a 2nd edition of the Python Data Science Handbook is planned (not found).
 last_verified: 2026-11-18

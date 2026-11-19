@@ -11,7 +11,6 @@ soft:
 - c-programming
 scope: Ownership and borrowing, traits, error handling, fearless concurrency, unsafe Rust, systems programming in Rust.
 level: intermediate
-estimated_hours: 75
 resources:
 - id: rust-book
   role: primary-text
@@ -166,7 +165,7 @@ considered:
   reason: Fine practice with mentoring; Rustlings and 100 Exercises are better aligned to the Book.
 notes: 'Optional node. Primary route: the Rust Book (3rd edition, edition 2024, Rust 1.98) plus ECE 1724 Fall 2026 lectures and assignments, with Rustlings and 100 Exercises in parallel; then Rustonomicon/Comprehensive Rust for the systems and unsafe scope. ECE 1724 is a good find: public mp4 recordings in the 2026 term with public assignments, which is unusual. Concurrency in depth (atomics, memory ordering) is G4: Rust Atomics and Locks is listed only as a pointer. The Rustlings GitHub repo moved to the rustlings organisation, but the official site is the stable entry.'
 split_proposal: null
-prereq_changes: 'None required. soft: [c-programming] is already right; a C background makes ownership easier to motivate.'
+prereq_changes: null
 open_questions:
 - UNSW COMP6991 pages returned 503 during checks; recordings and assignment access for 26T2 unverified.
 - ECE 1724 assignment pages are public but whether starter code/tests are public (GitHub ece1724-f26) could not be checked (GitHub unreachable).

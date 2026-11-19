@@ -1,170 +1,184 @@
 id: mlops-and-production
-title: "ML in Production (MLOps)"
+title: ML in Production (MLOps)
 group: G9
-paths: [mlsys]
-hard: [applied-ml-practice]
-soft: [large-scale-system-design]
-scope: "Data and feature pipelines, deployment, monitoring and drift, ML platform design."
-
+paths:
+- mlsys
+optional: true
+hard:
+- applied-ml-practice
+soft:
+- large-scale-system-design
+scope: Data and feature pipelines, deployment, monitoring and drift, ML platform design.
 level: intermediate
-estimated_hours: 50
 resources:
-  - id: dmls
-    role: primary-text
-    kind: book
-    title: "Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications"
-    by: "Chip Huyen"
-    url: https://huyenchip.com/books/
-    edition_or_term: "O'Reilly, May 2022 (1st edition; publisher date listings vary May-June 2022)"
-    access: paid
-    use: "Ch. 1-2 (framing, system design), 3-5 (data engineering, training data, feature engineering), 6-7 (model development, deployment), 8 (data distribution shifts and monitoring), 9 (continual learning and test in production), 10 (infrastructure and tooling for MLOps), 11 (human side). Skip the heavy tooling lists as they date."
-    why: "The best single book on production ML: system-level, tool-agnostic, built from Stanford CS 329S. Pre-dates LLM-ops but the data, deployment and monitoring chapters are still the correct frame."
-    verified: true
-  - id: mlops-zoomcamp
-    role: primary-course
-    kind: course
-    title: "MLOps Zoomcamp"
-    by: "DataTalks.Club (Alexey Grigorev et al.)"
-    url: https://github.com/DataTalksClub/mlops-zoomcamp
-    edition_or_term: "2025 cohort was the latest live run; page states no live cohort planned in 2026; self-paced"
-    access: free
-    use: "Module 1 Introduction, 2 Experiment tracking and model management (MLflow), 3 Orchestration and ML pipelines, 4 Model deployment (batch, web service, streaming), 5 Model monitoring (Evidently), 6 Best practices (testing, CI/CD, IaC); then the end-to-end capstone project."
-    why: "Free, hands-on, tool-based path through the full lifecycle with recorded videos and a capstone; complements the conceptual book. Tools are standard (MLflow, Docker, Prefect/Airflow-style orchestration, Evidently)."
-    verified: true
-    course:
-      latest_term: "2025 cohort (self-paced afterwards)"
-      latest_url: https://github.com/DataTalksClub/mlops-zoomcamp
-      videos: public
-      assignments: public
-      assignments_url: https://github.com/DataTalksClub/mlops-zoomcamp
-  - id: cs329s
-    role: secondary
-    kind: course
-    title: "Stanford CS 329S Machine Learning Systems Design"
-    by: "Chip Huyen (Stanford)"
-    url: https://stanford-cs329s.github.io/syllabus.html
-    edition_or_term: "Winter 2022"
-    access: free
-    use: "Lecture notes and slides for: Understanding ML production; Training data; Feature engineering; Deployment; Diagnosis of ML system failures, data distribution shifts and monitoring; ML infrastructure and platform. Guest-lecture tutorials (MLOps tool evaluation, Ray Serve, WhyLogs/Evidently monitoring)."
-    why: "Free public notes/slides that are the seed of the book; use if you do not buy it or want the case-study guest lectures. Lecture videos were not released (only demo day recordings)."
-    verified: true
-    course:
-      latest_term: "Winter 2022"
-      latest_url: https://stanford-cs329s.github.io/
-      videos: none
-      assignments: partial
-      assignments_url: https://stanford-cs329s.github.io/syllabus.html
-  - id: hidden-debt
-    role: reference
-    kind: paper
-    title: "Hidden Technical Debt in Machine Learning Systems; The ML Test Score"
-    by: "D. Sculley et al. (Google); Eric Breck et al. (Google)"
-    url: https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
-    edition_or_term: "NeurIPS 2015; ML Test Score: https://research.google/pubs/the-ml-test-score-a-rubric-for-ml-production-readiness-and-technical-debt-reduction/"
-    access: free
-    use: "Whole Hidden Technical Debt paper (glue code, pipeline jungles, feedback loops); ML Test Score rubric (28 tests for data, model, infra, monitoring) as a production-readiness checklist."
-    why: "Foundational framing of why ML systems fail in production; the rubric is a practical checklist."
-    verified: true
-  - id: rules-of-ml
-    role: reference
-    kind: article
-    title: "Rules of Machine Learning: Best Practices for ML Engineering"
-    by: "Martin Zinkevich (Google)"
-    url: https://developers.google.com/machine-learning/guides/rules-of-ml
-    edition_or_term: "Google developer guide"
-    access: free
-    use: "Phase I (your first pipeline) and Phase II (feature engineering and monitoring) rules; skim Phase III."
-    why: "Concise rules from industry practice; good checklist after the book."
-    verified: true
-  - id: mlsysbook-mlops
-    role: secondary
-    kind: book
-    title: "Introduction to ML Systems (Vol. I), Ch. 14 ML Operations; Scaling ML Systems (Vol. II), Ch. 12 Operations at Scale"
-    by: "Vijay Janapa Reddi (Harvard) et al."
-    url: https://mlsysbook.ai/vol1/14_ml_ops/14_ml_ops.html
-    edition_or_term: "online 2026"
-    access: free
-    use: "Vol. I Ch. 14 (technical debt, development infrastructure, releases, monitoring, retraining decisions, incident response); Vol. II Ch. 12 (https://mlsysbook.ai/vol2/12_ops_scale/12_ops_scale.html) for platform and fleet-level operations."
-    why: "Free, current textbook treatment that also covers platform design and incident response, which the 2022 book does not."
-    verified: true
-  - id: made-with-ml
-    role: practice
-    kind: practice-site
-    title: "Made With ML (MLOps course)"
-    by: "Goku Mohandas (Anyscale)"
-    url: https://madewithml.com/
-    edition_or_term: "current site (Anyscale)"
-    access: free
-    use: "Lessons: Testing (code, data, models), Reproducibility (versioning), Production (Jobs and services, CI/CD workflows, monitoring) and Design/Systems; build the repository end to end."
-    why: "Concise, code-first lessons on engineering practices (tests, CI/CD) that Zoomcamp treats lightly."
-    verified: true
-  - id: evidently-course
-    role: secondary
-    kind: course
-    title: "ML observability course (Evidently AI)"
-    by: "Evidently AI (Emeli Dral et al.)"
-    url: https://www.evidentlyai.com/ml-observability-course
-    edition_or_term: "free open-source course, 40+ on-demand videos"
-    access: free
-    use: "Modules on evaluation and monitoring strategy, data quality tests, data/prediction drift detection and interpretation, debugging performance decay, NLP/LLM monitoring; run the code examples."
-    why: "Fills the monitoring and drift gap in depth (the scope's weakest area elsewhere); free videos with code."
-    verified: true
-    course:
-      latest_term: "self-paced open course (current)"
-      latest_url: https://www.evidentlyai.com/ml-observability-course
-      videos: public
-      assignments: public
-      assignments_url: https://www.evidentlyai.com/ml-observability-course
-  - id: ml-system-design-db
-    role: reference
-    kind: website
-    title: "ML and LLM system design: 800 case studies"
-    by: "Evidently AI"
-    url: https://www.evidentlyai.com/ml-system-design
-    edition_or_term: "living database"
-    access: free
-    use: "Read 10-15 case studies from different companies on feature stores, serving, monitoring and platform design; extract common architecture patterns."
-    why: "Hidden gem: curated primary-source engineering blog posts; the best data on how real ML platforms are structured."
-    verified: true
-  - id: google-mlops-whitepaper
-    role: reference
-    kind: docs
-    title: "MLOps: Continuous delivery and automation pipelines in machine learning"
-    by: "Google Cloud Architecture Center"
-    url: https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
-    edition_or_term: "Google Cloud architecture guide"
-    access: free
-    use: "MLOps maturity levels 0-2 and the CI/CD/CT pipeline diagrams."
-    why: "Widely used vocabulary for maturity levels; vendor-flavoured but concise."
-    verified: true
-  - id: fsdl
-    role: secondary
-    kind: course
-    title: "Full Stack Deep Learning 2022"
-    by: "Sergey Karayev, Josh Tobin, Pieter Abbeel et al."
-    url: https://fullstackdeeplearning.com/course/2022/
-    edition_or_term: "2022 (videos on site); LLM Bootcamp 2023 also available"
-    access: free
-    use: "Lectures 2 (development infrastructure and tooling), 3 (troubleshooting and testing), 4 (data management), 5 (deployment), 6 (continual learning), with labs 4-8 (experiment management, data annotation, web deployment, model monitoring)."
-    why: "Public lecture videos and labs for the deep-learning side of the lifecycle; useful alternative to Zoomcamp if you prefer a lecture format. Tools partly dated."
-    verified: true
-    course:
-      latest_term: "2022 (LLM Bootcamp Spring 2023)"
-      latest_url: https://fullstackdeeplearning.com/course/2022/
-      videos: public
-      assignments: public
-      assignments_url: https://fullstackdeeplearning.com/course/2022/
+- id: dmls
+  role: primary-text
+  kind: book
+  title: 'Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications'
+  by: Chip Huyen
+  url: https://huyenchip.com/books/
+  edition_or_term: O'Reilly, May 2022 (1st edition; publisher date listings vary May-June 2022)
+  access: paid
+  use: Ch. 1-2 (framing, system design), 3-5 (data engineering, training data, feature engineering), 6-7 (model development, deployment), 8 (data distribution shifts and monitoring), 9 (continual learning and test in production), 10 (infrastructure and tooling for MLOps), 11 (human side). Skip the heavy tooling lists as they date.
+  why: 'The best single book on production ML: system-level, tool-agnostic, built from Stanford CS 329S. Pre-dates LLM-ops but the data, deployment and monitoring chapters are still the correct frame.'
+  verified: true
+- id: mlops-zoomcamp
+  role: primary-course
+  kind: course
+  title: MLOps Zoomcamp
+  by: DataTalks.Club (Alexey Grigorev et al.)
+  url: https://github.com/DataTalksClub/mlops-zoomcamp
+  edition_or_term: 2025 cohort was the latest live run; page states no live cohort planned in 2026; self-paced
+  access: free
+  use: Module 1 Introduction, 2 Experiment tracking and model management (MLflow), 3 Orchestration and ML pipelines, 4 Model deployment (batch, web service, streaming), 5 Model monitoring (Evidently), 6 Best practices (testing, CI/CD, IaC); then the end-to-end capstone project.
+  why: Free, hands-on, tool-based path through the full lifecycle with recorded videos and a capstone; complements the conceptual book. Tools are standard (MLflow, Docker, Prefect/Airflow-style orchestration, Evidently).
+  verified: true
+  course:
+    latest_term: 2025 cohort (self-paced afterwards)
+    latest_url: https://github.com/DataTalksClub/mlops-zoomcamp
+    videos: public
+    assignments: public
+    assignments_url: https://github.com/DataTalksClub/mlops-zoomcamp
+- id: cs329s
+  role: secondary
+  kind: course
+  title: Stanford CS 329S Machine Learning Systems Design
+  by: Chip Huyen (Stanford)
+  url: https://stanford-cs329s.github.io/syllabus.html
+  edition_or_term: Winter 2022
+  access: free
+  use: 'Lecture notes and slides for: Understanding ML production; Training data; Feature engineering; Deployment; Diagnosis of ML system failures, data distribution shifts and monitoring; ML infrastructure and platform. Guest-lecture tutorials (MLOps tool evaluation, Ray Serve, WhyLogs/Evidently monitoring).'
+  why: Free public notes/slides that are the seed of the book; use if you do not buy it or want the case-study guest lectures. Lecture videos were not released (only demo day recordings).
+  verified: true
+  course:
+    latest_term: Winter 2022
+    latest_url: https://stanford-cs329s.github.io/
+    videos: none
+    assignments: partial
+    assignments_url: https://stanford-cs329s.github.io/syllabus.html
+- id: hidden-debt
+  role: reference
+  kind: paper
+  title: Hidden Technical Debt in Machine Learning Systems; The ML Test Score
+  by: D. Sculley et al. (Google); Eric Breck et al. (Google)
+  url: https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
+  edition_or_term: 'NeurIPS 2015; ML Test Score: https://research.google/pubs/the-ml-test-score-a-rubric-for-ml-production-readiness-and-technical-debt-reduction/'
+  access: free
+  use: Whole Hidden Technical Debt paper (glue code, pipeline jungles, feedback loops); ML Test Score rubric (28 tests for data, model, infra, monitoring) as a production-readiness checklist.
+  why: Foundational framing of why ML systems fail in production; the rubric is a practical checklist.
+  verified: true
+- id: rules-of-ml
+  role: reference
+  kind: article
+  title: 'Rules of Machine Learning: Best Practices for ML Engineering'
+  by: Martin Zinkevich (Google)
+  url: https://developers.google.com/machine-learning/guides/rules-of-ml
+  edition_or_term: Google developer guide
+  access: free
+  use: Phase I (your first pipeline) and Phase II (feature engineering and monitoring) rules; skim Phase III.
+  why: Concise rules from industry practice; good checklist after the book.
+  verified: true
+- id: mlsysbook-mlops
+  role: secondary
+  kind: book
+  title: Introduction to ML Systems (Vol. I), Ch. 14 ML Operations; Scaling ML Systems (Vol. II), Ch. 12 Operations at Scale
+  by: Vijay Janapa Reddi (Harvard) et al.
+  url: https://mlsysbook.ai/vol1/14_ml_ops/14_ml_ops.html
+  edition_or_term: online 2026
+  access: free
+  use: Vol. I Ch. 14 (technical debt, development infrastructure, releases, monitoring, retraining decisions, incident response); Vol. II Ch. 12 (https://mlsysbook.ai/vol2/12_ops_scale/12_ops_scale.html) for platform and fleet-level operations.
+  why: Free, current textbook treatment that also covers platform design and incident response, which the 2022 book does not.
+  verified: true
+- id: made-with-ml
+  role: practice
+  kind: practice-site
+  title: Made With ML (MLOps course)
+  by: Goku Mohandas (Anyscale)
+  url: https://madewithml.com/
+  edition_or_term: current site (Anyscale)
+  access: free
+  use: 'Lessons: Testing (code, data, models), Reproducibility (versioning), Production (Jobs and services, CI/CD workflows, monitoring) and Design/Systems; build the repository end to end.'
+  why: Concise, code-first lessons on engineering practices (tests, CI/CD) that Zoomcamp treats lightly.
+  verified: true
+- id: evidently-course
+  role: secondary
+  kind: course
+  title: ML observability course (Evidently AI)
+  by: Evidently AI (Emeli Dral et al.)
+  url: https://www.evidentlyai.com/ml-observability-course
+  edition_or_term: free open-source course, 40+ on-demand videos
+  access: free
+  use: Modules on evaluation and monitoring strategy, data quality tests, data/prediction drift detection and interpretation, debugging performance decay, NLP/LLM monitoring; run the code examples.
+  why: Fills the monitoring and drift gap in depth (the scope's weakest area elsewhere); free videos with code.
+  verified: true
+  course:
+    latest_term: self-paced open course (current)
+    latest_url: https://www.evidentlyai.com/ml-observability-course
+    videos: public
+    assignments: public
+    assignments_url: https://www.evidentlyai.com/ml-observability-course
+- id: ml-system-design-db
+  role: reference
+  kind: website
+  title: 'ML and LLM system design: 800 case studies'
+  by: Evidently AI
+  url: https://www.evidentlyai.com/ml-system-design
+  edition_or_term: living database
+  access: free
+  use: Read 10-15 case studies from different companies on feature stores, serving, monitoring and platform design; extract common architecture patterns.
+  why: 'Hidden gem: curated primary-source engineering blog posts; the best data on how real ML platforms are structured.'
+  verified: true
+- id: google-mlops-whitepaper
+  role: reference
+  kind: docs
+  title: 'MLOps: Continuous delivery and automation pipelines in machine learning'
+  by: Google Cloud Architecture Center
+  url: https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
+  edition_or_term: Google Cloud architecture guide
+  access: free
+  use: MLOps maturity levels 0-2 and the CI/CD/CT pipeline diagrams.
+  why: Widely used vocabulary for maturity levels; vendor-flavoured but concise.
+  verified: true
+- id: fsdl
+  role: secondary
+  kind: course
+  title: Full Stack Deep Learning 2022
+  by: Sergey Karayev, Josh Tobin, Pieter Abbeel et al.
+  url: https://fullstackdeeplearning.com/course/2022/
+  edition_or_term: 2022 (videos on site); LLM Bootcamp 2023 also available
+  access: free
+  use: Lectures 2 (development infrastructure and tooling), 3 (troubleshooting and testing), 4 (data management), 5 (deployment), 6 (continual learning), with labs 4-8 (experiment management, data annotation, web deployment, model monitoring).
+  why: Public lecture videos and labs for the deep-learning side of the lifecycle; useful alternative to Zoomcamp if you prefer a lecture format. Tools partly dated.
+  verified: true
+  course:
+    latest_term: 2022 (LLM Bootcamp Spring 2023)
+    latest_url: https://fullstackdeeplearning.com/course/2022/
+    videos: public
+    assignments: public
+    assignments_url: https://fullstackdeeplearning.com/course/2022/
 considered:
-  - {title: "ml-ops.org (INNOQ MLOps principles)", url: "https://ml-ops.org/", reason: "Good overview of MLOps phases and tools; superseded in rigor by the book and CS 329S."}
-  - {title: "Machine Learning Engineering Open Book (Stas Bekman)", url: "https://github.com/stas00/ml-engineering", reason: "LLM training/inference infrastructure rather than MLOps lifecycle; used in distributed nodes."}
-  - {title: "Chip Huyen, AI Engineering (O'Reilly 2025)", url: "https://huyenchip.com/books/", reason: "About building applications on foundation models; belongs to the LLM application / AI-engineering nodes of another group."}
-  - {title: "Google ML Crash Course: Production ML systems", url: "https://developers.google.com/machine-learning/crash-course/production-ml-systems", reason: "Short, beginner-level; too shallow for primary."}
-  - {title: "MLflow documentation", url: "https://mlflow.org/docs/latest/", reason: "Tool docs used inside Zoomcamp; add if specific tool depth is needed."}
-  - {title: "Eugene Yan writing (system design and ML patterns)", url: "https://eugeneyan.com/writing/", reason: "High-quality practitioner essays, but unstructured; keep as reading list."}
-notes: "Node is marked optional in the skeleton. Primary book is paid (publisher O'Reilly page blocks bots, so I linked the author's books page and confirmed the book there via search results). Tooling in the Zoomcamp changes yearly; the concepts in the book and CS 329S are stable. Dated parts: the book (2022) and the CS 329S and FSDL 2022 secondaries are four years old, so their tool lists and LLM-free framing are dated while the data, deployment and monitoring concepts hold. LLM-specific ops (evals, guardrails, observability for agents) are out of scope here and belong to the LLM application nodes."
+- title: ml-ops.org (INNOQ MLOps principles)
+  url: https://ml-ops.org/
+  reason: Good overview of MLOps phases and tools; superseded in rigor by the book and CS 329S.
+- title: Machine Learning Engineering Open Book (Stas Bekman)
+  url: https://github.com/stas00/ml-engineering
+  reason: LLM training/inference infrastructure rather than MLOps lifecycle; used in distributed nodes.
+- title: Chip Huyen, AI Engineering (O'Reilly 2025)
+  url: https://huyenchip.com/books/
+  reason: About building applications on foundation models; belongs to the LLM application / AI-engineering nodes of another group.
+- title: 'Google ML Crash Course: Production ML systems'
+  url: https://developers.google.com/machine-learning/crash-course/production-ml-systems
+  reason: Short, beginner-level; too shallow for primary.
+- title: MLflow documentation
+  url: https://mlflow.org/docs/latest/
+  reason: Tool docs used inside Zoomcamp; add if specific tool depth is needed.
+- title: Eugene Yan writing (system design and ML patterns)
+  url: https://eugeneyan.com/writing/
+  reason: High-quality practitioner essays, but unstructured; keep as reading list.
+notes: 'Node is marked optional in the skeleton. Primary book is paid (publisher O''Reilly page blocks bots, so I linked the author''s books page and confirmed the book there via search results). Tooling in the Zoomcamp changes yearly; the concepts in the book and CS 329S are stable. Dated parts: the book (2022) and the CS 329S and FSDL 2022 secondaries are four years old, so their tool lists and LLM-free framing are dated while the data, deployment and monitoring concepts hold. LLM-specific ops (evals, guardrails, observability for agents) are out of scope here and belong to the LLM application nodes.'
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "O'Reilly page for Designing Machine Learning Systems returned 403, so edition and date were taken from search results and the author's page (listing it as O'Reilly 2022)."
-  - "MLOps Zoomcamp homework checking: homework is submitted by form in live cohorts; self-paced autograding not confirmed."
+- O'Reilly page for Designing Machine Learning Systems returned 403, so edition and date were taken from search results and the author's page (listing it as O'Reilly 2022).
+- 'MLOps Zoomcamp homework checking: homework is submitted by form in live cohorts; self-paced autograding not confirmed.'
 last_verified: 2026-11-18

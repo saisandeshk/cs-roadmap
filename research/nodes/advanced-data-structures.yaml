@@ -1,0 +1,88 @@
+id: advanced-data-structures
+title: Advanced Data Structures
+group: G3
+paths:
+- theory
+hard:
+- algorithm-design
+soft: []
+scope: Amortized and persistent structures, splay trees and dynamic optimality, integer structures (van Emde Boas, fusion), hashing, cache-oblivious structures.
+level: advanced
+resources:
+- id: demaine-6-851
+  role: primary-course
+  kind: course
+  title: MIT 6.851 Advanced Data Structures
+  by: Erik Demaine
+  url: https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/
+  edition_or_term: Spring 2012 (OCW videos); Spring 2021 course site with problem sets
+  access: free
+  use: Sessions on persistent data structures (1), dynamic optimality (5-6), integer structures and sorting in linear time (14), hashing and dynamic graphs; problem sets from the Spring 2021 site.
+  why: 'Gap: Karger covers advanced data structures only in a few lectures; this is the definitive public course for persistence, integer structures, hashing and cache-oblivious structures.'
+  verified: true
+  course:
+    latest_term: Spring 2021 (course site courses.csail.mit.edu/6.851/spring21)
+    latest_url: https://courses.csail.mit.edu/6.851/spring21/index.html
+    videos: public
+    public_videos_term: Spring 2012 (OCW); Spring 2021 videos referenced on the course site (access not checked)
+    public_videos_url: https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/video_galleries/lecture-videos/
+    assignments: public
+    assignments_url: https://courses.csail.mit.edu/6.851/spring21/index.html
+- id: karger-6-854
+  role: secondary
+  kind: course
+  title: MIT 6.5210 / 18.415 Advanced Algorithms (formerly 6.854)
+  by: MIT (David Karger)
+  url: https://courses.csail.mit.edu/6.854/21/course_materials.html
+  edition_or_term: 'Course materials page (notes, scribe notes, 2013/2020/2021 lecture videos); latest course site found: Fall 2022'
+  access: free
+  use: 'Data-structures unit only: Fibonacci heaps, persistent structures, splay trees, van Emde Boas, hashing and perfect hashing.'
+  why: Closest public match to the node's scope (amortization, advanced data structures, flows, LP duality, online) with full scribe notes and multi-year recordings. Problem sets are hosted on MIT's NB tool, so assignments are only partly accessible.
+  verified: true
+  course:
+    latest_term: Fall 2024 (6.5210J per MIT TOC calendar; latest course site found is Fall 2022 at people.csail.mit.edu/karger/6854)
+    latest_url: https://people.csail.mit.edu/karger/6854
+    videos: unknown
+    public_videos_term: Fall 2021 (also 2020 and 2013 recordings linked from the materials page)
+    public_videos_url: https://courses.csail.mit.edu/6.854/21/course_materials.html
+    assignments: partial
+    assignments_url: https://courses.csail.mit.edu/6.854/21/index.html
+- id: clrs-ref
+  role: primary-text
+  kind: book
+  title: 'Introduction to Algorithms, 4th edition: amortized analysis, flows, matching, LP, online'
+  by: Cormen, Leiserson, Rivest, Stein
+  url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+  edition_or_term: 4th edition (2022)
+  access: paid
+  use: Ch. 16 (amortized analysis), 17 (augmenting data structures), 19 (disjoint sets); then the 6.851 scribe notes for persistence, dynamic optimality and integer structures.
+  why: Check-your-understanding reference with careful proofs for the standard results the notes sketch.
+  verified: false
+- id: algorithmica-ds
+  role: reference
+  kind: website
+  title: 'Algorithms for Modern Hardware: Data Structures Case Studies'
+  by: Sergey Slotin (Algorithmica)
+  url: https://en.algorithmica.org/hpc/data-structures/
+  edition_or_term: Live book
+  access: free
+  use: Binary search, S-trees/B-trees, segment trees and related structures with measured implementations; read after Karger's data-structure unit to see how asymptotic ideas behave on real caches.
+  why: 'Hidden gem: bridges the theoretical advanced-data-structure unit to implementation reality (cache, SIMD), which no theory course here covers.'
+  verified: true
+- id: cses-advanced
+  role: practice
+  kind: practice-site
+  title: 'CSES: Range Queries, Tree Algorithms, Advanced Techniques'
+  by: Antti Laaksonen (CSES)
+  url: https://cses.fi/problemset/
+  edition_or_term: Live problem set
+  access: free
+  use: Range Queries (Dynamic Range Sum/Minimum Queries, Range Updates and Sums, Forest Queries), Tree Algorithms (Company Queries I/II, Path Queries, Finding a Centroid), Advanced Graph Problems (Strongly Connected Edges, MST Edge Check, Critical Cities).
+  why: 'Gap: implementing segment trees, lowest common ancestors and flow-like structures is the practical test of the data-structure unit.'
+  verified: true
+considered: []
+notes: Created by splitting 'advanced-algorithms' (owner decision B6, 2026-11-19); resources reused from the researched node. Primary text is CLRS for the classical structures; MIT 6.851 scribe notes carry the advanced material.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

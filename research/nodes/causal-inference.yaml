@@ -1,132 +1,143 @@
 id: causal-inference
 title: Causal Inference
 group: G5
-paths: [ml-foundations]
+paths:
+- ml-foundations
 optional: true
 branch: probabilistic-ml
-hard: [statistics]
-soft: [probabilistic-graphical-models]
-scope: "Potential outcomes, causal DAGs, identification, confounding, IV, diff-in-diff, experiments."
-
+hard:
+- statistics
+soft:
+- probabilistic-graphical-models
+scope: Potential outcomes, causal DAGs, identification, confounding, IV, diff-in-diff, experiments.
 level: intermediate
-estimated_hours: 70
 resources:
-  - id: what-if
-    role: primary-text
-    kind: book
-    title: "Causal Inference: What If"
-    by: "Miguel A. Hernan, James M. Robins"
-    url: https://miguelhernan.org/whatifbook
-    edition_or_term: "Chapman & Hall/CRC 2020; free PDF, author notes the online text may be silently revised (use latest)"
-    access: free
-    use: "Part I Causal inference without models (ch. 1-9: definition of causal effect, randomized experiments, observational studies, effect modification, interaction, graphs, confounding, selection bias, measurement bias); Part II with models (ch. 10-15: why model, IP weighting, standardization, outcome regression, instrumental variables ch. 16, causal survival analysis) as needed; Part III is longitudinal/g-methods (optional)."
-    why: "The most careful treatment of identification: potential outcomes, DAGs, confounding and selection bias, with free code in R/Stata/Python; it is the canonical text across epidemiology, statistics and ML."
-    verified: true
-  - id: neal-course
-    role: primary-course
-    kind: course
-    title: "Introduction to Causal Inference (course)"
-    by: "Brady Neal"
-    url: https://www.bradyneal.com/causal-inference-course
-    edition_or_term: "Fall 2020 (online, from the ML perspective); draft textbook 'Introduction to Causal Inference'"
-    access: free
-    use: "Watch the lectures in schedule order (motivation, potential outcomes, graphs and the flow of association and causation, backdoor adjustment and structural causal models, then identification/estimation, unobserved confounding and later weeks; see the course page schedule for the full list). Read the matching chapters of the draft book."
-    why: "The only full video course on the potential-outcomes + DAG + modern ML-estimation sequence that matches this node's scope; slides and the book draft are free."
-    verified: true
-    course:
-      latest_term: "Fall 2020 (course site; no newer offering found)"
-      latest_url: https://www.bradyneal.com/causal-inference-course
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PLoazKTcS0Rzb6bb9L508cyJ1z-U9iWkA0
-      assignments: none
-  - id: mixtape
-    role: secondary
-    kind: book
-    title: "Causal Inference: The Mixtape (second edition, 'The Remix')"
-    by: "Scott Cunningham"
-    url: https://mixtape.scunning.com/
-    edition_or_term: "Online version of the second edition (work in progress; do not mix with the 2021 first edition)"
-    access: free
-    use: "Potential outcomes, DAGs, regression discontinuity, instrumental variables, difference-in-differences, synthetic control; code in R/Stata/Python (check which languages each chapter ships, second edition is mid-revision)."
-    why: "Fills the econometrics gap in Hernan-Robins: diff-in-diff, RD, IV and synthetic control with worked code."
-    verified: true
-  - id: effect-book
-    role: secondary
-    kind: book
-    title: "The Effect: An Introduction to Research Design and Causality"
-    by: "Nick Huntington-Klein"
-    url: https://theeffectbook.net/
-    edition_or_term: "CRC Press 2021; free online (R, Stata, Python code)"
-    access: free
-    use: "Chapters on causal diagrams, research design, closing back doors, fixed effects, event studies, difference-in-differences, instrumental variables, regression discontinuity."
-    why: "More intuitive on-ramp than the Mixtape; strong on research design thinking."
-    verified: true
-  - id: causalml-book
-    role: secondary
-    kind: book
-    title: "Applied Causal Inference Powered by ML and AI"
-    by: "Victor Chernozhukov, Christian Hansen, Nathan Kallus, Martin Spindler, Vasilis Syrgkanis"
-    url: https://causalml-book.org/
-    edition_or_term: "Open online book (version/date not checked on the page)"
-    access: free
-    use: "Chapters on predictive inference with linear/high-dimensional models, causal inference via DAGs and potential outcomes, double/debiased ML for treatment effects, heterogeneous effects, and sensitivity."
-    why: "Hidden gem: the modern double machine learning treatment with code, bridging ML and econometrics."
-    verified: true
-  - id: athey-wager
-    role: secondary
-    kind: video-series
-    title: "Machine Learning & Causal Inference: A Short Course"
-    by: "Susan Athey, Stefan Wager and Stanford GSB Golub Capital Social Impact Lab"
-    url: https://www.gsb.stanford.edu/faculty-research/centers-initiatives/sil/research/methods/ai-machine-learning/short-course
-    edition_or_term: "Video series with accompanying R tutorial (https://bookdown.org/stanfordgsbsilab/ml-ci-tutorial/)"
-    access: free
-    use: "Videos on ML vs econometrics, estimating average and heterogeneous treatment effects, policy learning, and the tutorial chapters for code (R)."
-    why: "Fills heterogeneous treatment effects, causal forests and policy learning from leading researchers."
-    verified: true
-  - id: pearl-primer
-    role: reference
-    kind: book
-    title: "Causal Inference in Statistics: A Primer"
-    by: "Judea Pearl, Madelyn Glymour, Nicholas P. Jewell"
-    url: https://bayes.cs.ucla.edu/PRIMER/
-    edition_or_term: "Wiley 2016; companion site with study questions"
-    access: paid
-    use: "Ch. 1-4 (graphical models, d-separation, intervention/do-calculus, counterfactuals) as a short structural-causal-model complement."
-    why: "Shortest text for the SCM/do-calculus viewpoint that Hernan-Robins treats less formally."
-    verified: true
-  - id: facure
-    role: practice
-    kind: practice-site
-    title: "Causal Inference for the Brave and True"
-    by: "Matheus Facure"
-    url: https://matheusfacure.github.io/python-causality-handbook/landing-page.html
-    edition_or_term: "Online Python notebooks (Part I core; Part II CATE/industry WIP)"
-    access: free
-    use: "Part I notebooks on randomized experiments, graphical causal models, linear regression and bias, instrumental variables, difference-in-differences, synthetic control; Part II on meta-learners and heterogeneous effects. Run every notebook and change the data-generating process."
-    why: "Python-native, runnable code for every method in the scope."
-    verified: true
-  - id: dowhy
-    role: practice
-    kind: docs
-    title: "DoWhy and EconML documentation"
-    by: "PyWhy community / Microsoft"
-    url: https://www.pywhy.org/dowhy/
-    edition_or_term: "DoWhy docs (pywhy.org); EconML 0.16 docs at https://econml.azurewebsites.net/"
-    access: free
-    use: "DoWhy: model, identify, estimate, refute workflow on a simulated dataset; EconML: double ML and causal forest examples; reproduce a Hernan-Robins IP-weighting analysis in Python."
-    why: "Library practice for end-to-end identification-estimation-refutation."
-    verified: true
+- id: what-if
+  role: primary-text
+  kind: book
+  title: 'Causal Inference: What If'
+  by: Miguel A. Hernan, James M. Robins
+  url: https://miguelhernan.org/whatifbook
+  edition_or_term: Chapman & Hall/CRC 2020; free PDF, author notes the online text may be silently revised (use latest)
+  access: free
+  use: 'Part I Causal inference without models (ch. 1-9: definition of causal effect, randomized experiments, observational studies, effect modification, interaction, graphs, confounding, selection bias, measurement bias); Part II with models (ch. 10-15: why model, IP weighting, standardization, outcome regression, instrumental variables ch. 16, causal survival analysis) as needed; Part III is longitudinal/g-methods (optional).'
+  why: 'The most careful treatment of identification: potential outcomes, DAGs, confounding and selection bias, with free code in R/Stata/Python; it is the canonical text across epidemiology, statistics and ML.'
+  verified: true
+- id: neal-course
+  role: primary-course
+  kind: course
+  title: Introduction to Causal Inference (course)
+  by: Brady Neal
+  url: https://www.bradyneal.com/causal-inference-course
+  edition_or_term: Fall 2020 (online, from the ML perspective); draft textbook 'Introduction to Causal Inference'
+  access: free
+  use: Watch the lectures in schedule order (motivation, potential outcomes, graphs and the flow of association and causation, backdoor adjustment and structural causal models, then identification/estimation, unobserved confounding and later weeks; see the course page schedule for the full list). Read the matching chapters of the draft book.
+  why: The only full video course on the potential-outcomes + DAG + modern ML-estimation sequence that matches this node's scope; slides and the book draft are free.
+  verified: true
+  course:
+    latest_term: Fall 2020 (course site; no newer offering found)
+    latest_url: https://www.bradyneal.com/causal-inference-course
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLoazKTcS0Rzb6bb9L508cyJ1z-U9iWkA0
+    assignments: none
+- id: mixtape
+  role: secondary
+  kind: book
+  title: 'Causal Inference: The Mixtape (second edition, ''The Remix'')'
+  by: Scott Cunningham
+  url: https://mixtape.scunning.com/
+  edition_or_term: Online version of the second edition (work in progress; do not mix with the 2021 first edition)
+  access: free
+  use: Potential outcomes, DAGs, regression discontinuity, instrumental variables, difference-in-differences, synthetic control; code in R/Stata/Python (check which languages each chapter ships, second edition is mid-revision).
+  why: 'Fills the econometrics gap in Hernan-Robins: diff-in-diff, RD, IV and synthetic control with worked code.'
+  verified: true
+- id: effect-book
+  role: secondary
+  kind: book
+  title: 'The Effect: An Introduction to Research Design and Causality'
+  by: Nick Huntington-Klein
+  url: https://theeffectbook.net/
+  edition_or_term: CRC Press 2021; free online (R, Stata, Python code)
+  access: free
+  use: Chapters on causal diagrams, research design, closing back doors, fixed effects, event studies, difference-in-differences, instrumental variables, regression discontinuity.
+  why: More intuitive on-ramp than the Mixtape; strong on research design thinking.
+  verified: true
+- id: causalml-book
+  role: secondary
+  kind: book
+  title: Applied Causal Inference Powered by ML and AI
+  by: Victor Chernozhukov, Christian Hansen, Nathan Kallus, Martin Spindler, Vasilis Syrgkanis
+  url: https://causalml-book.org/
+  edition_or_term: Open online book (version/date not checked on the page)
+  access: free
+  use: Chapters on predictive inference with linear/high-dimensional models, causal inference via DAGs and potential outcomes, double/debiased ML for treatment effects, heterogeneous effects, and sensitivity.
+  why: 'Hidden gem: the modern double machine learning treatment with code, bridging ML and econometrics.'
+  verified: true
+- id: athey-wager
+  role: secondary
+  kind: video-series
+  title: 'Machine Learning & Causal Inference: A Short Course'
+  by: Susan Athey, Stefan Wager and Stanford GSB Golub Capital Social Impact Lab
+  url: https://www.gsb.stanford.edu/faculty-research/centers-initiatives/sil/research/methods/ai-machine-learning/short-course
+  edition_or_term: Video series with accompanying R tutorial (https://bookdown.org/stanfordgsbsilab/ml-ci-tutorial/)
+  access: free
+  use: Videos on ML vs econometrics, estimating average and heterogeneous treatment effects, policy learning, and the tutorial chapters for code (R).
+  why: Fills heterogeneous treatment effects, causal forests and policy learning from leading researchers.
+  verified: true
+- id: pearl-primer
+  role: reference
+  kind: book
+  title: 'Causal Inference in Statistics: A Primer'
+  by: Judea Pearl, Madelyn Glymour, Nicholas P. Jewell
+  url: https://bayes.cs.ucla.edu/PRIMER/
+  edition_or_term: Wiley 2016; companion site with study questions
+  access: paid
+  use: Ch. 1-4 (graphical models, d-separation, intervention/do-calculus, counterfactuals) as a short structural-causal-model complement.
+  why: Shortest text for the SCM/do-calculus viewpoint that Hernan-Robins treats less formally.
+  verified: true
+- id: facure
+  role: practice
+  kind: practice-site
+  title: Causal Inference for the Brave and True
+  by: Matheus Facure
+  url: https://matheusfacure.github.io/python-causality-handbook/landing-page.html
+  edition_or_term: Online Python notebooks (Part I core; Part II CATE/industry WIP)
+  access: free
+  use: Part I notebooks on randomized experiments, graphical causal models, linear regression and bias, instrumental variables, difference-in-differences, synthetic control; Part II on meta-learners and heterogeneous effects. Run every notebook and change the data-generating process.
+  why: Python-native, runnable code for every method in the scope.
+  verified: true
+- id: dowhy
+  role: practice
+  kind: docs
+  title: DoWhy and EconML documentation
+  by: PyWhy community / Microsoft
+  url: https://www.pywhy.org/dowhy/
+  edition_or_term: DoWhy docs (pywhy.org); EconML 0.16 docs at https://econml.azurewebsites.net/
+  access: free
+  use: 'DoWhy: model, identify, estimate, refute workflow on a simulated dataset; EconML: double ML and causal forest examples; reproduce a Hernan-Robins IP-weighting analysis in Python.'
+  why: Library practice for end-to-end identification-estimation-refutation.
+  verified: true
 considered:
-  - {title: "Causal Inference for Statistics, Social, and Biomedical Sciences (Imbens, Rubin)", url: "https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB", reason: "Authoritative potential-outcomes text but dense and paid; Hernan-Robins and Mixtape cover similar ground more accessibly."}
-  - {title: "Probabilistic Machine Learning: Advanced Topics, Ch. 36 Causality (Murphy)", url: "https://probml.github.io/pml-book/book2.html", reason: "Compact ML-oriented overview; good secondary reading but not a full text."}
-  - {title: "NBER Summer Institute Methods Lectures", url: "https://www.nber.org/lecture/2025-summer-institute-methods-lectures", reason: "Advanced econometrics (DiD, synthetic control, etc.) lecture videos; for after the basics; not reviewed in detail."}
-  - {title: "MIT 14.310x Data Analysis for Social Scientists", url: "https://ocw.mit.edu/courses/14-310x-data-analysis-for-social-scientists-spring-2023/", reason: "In the owner's ai-atlas for applied science; useful for statistics prerequisite, belongs to the statistics node."}
-  - {title: "Trustworthy Online Controlled Experiments (Kohavi et al.)", url: "https://experimentguide.com/", reason: "Covers the 'experiments' scope in tech settings; placed in applied-ml-practice."}
-notes: "What If is the best single text for identification and avoids the narrowness of econometrics-only or DAG-only books; Mixtape and The Effect add quasi-experimental designs (DiD, RD, IV) that What If barely covers. Brady Neal's course is the only complete public-video course matching the ML audience (Fall 2020, so no 2026 run). Stanford stats/econ causal inference courses (e.g. STATS 361) could not be opened."
+- title: Causal Inference for Statistics, Social, and Biomedical Sciences (Imbens, Rubin)
+  url: https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB
+  reason: Authoritative potential-outcomes text but dense and paid; Hernan-Robins and Mixtape cover similar ground more accessibly.
+- title: 'Probabilistic Machine Learning: Advanced Topics, Ch. 36 Causality (Murphy)'
+  url: https://probml.github.io/pml-book/book2.html
+  reason: Compact ML-oriented overview; good secondary reading but not a full text.
+- title: NBER Summer Institute Methods Lectures
+  url: https://www.nber.org/lecture/2025-summer-institute-methods-lectures
+  reason: Advanced econometrics (DiD, synthetic control, etc.) lecture videos; for after the basics; not reviewed in detail.
+- title: MIT 14.310x Data Analysis for Social Scientists
+  url: https://ocw.mit.edu/courses/14-310x-data-analysis-for-social-scientists-spring-2023/
+  reason: In the owner's ai-atlas for applied science; useful for statistics prerequisite, belongs to the statistics node.
+- title: Trustworthy Online Controlled Experiments (Kohavi et al.)
+  url: https://experimentguide.com/
+  reason: Covers the 'experiments' scope in tech settings; placed in applied-ml-practice.
+notes: What If is the best single text for identification and avoids the narrowness of econometrics-only or DAG-only books; Mixtape and The Effect add quasi-experimental designs (DiD, RD, IV) that What If barely covers. Brady Neal's course is the only complete public-video course matching the ML audience (Fall 2020, so no 2026 run). Stanford stats/econ causal inference courses (e.g. STATS 361) could not be opened.
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "Newer causal inference course runs with public videos (e.g. Stanford STATS 361, Harvard/Berkeley courses) were not found; stats361 pages timed out."
-  - "Hernan-Robins book chapter numbers recalled from the book's structure; verify against the current PDF."
-  - "Mixtape second edition is still marked work in progress."
+- Newer causal inference course runs with public videos (e.g. Stanford STATS 361, Harvard/Berkeley courses) were not found; stats361 pages timed out.
+- Hernan-Robins book chapter numbers recalled from the book's structure; verify against the current PDF.
+- Mixtape second edition is still marked work in progress.
 last_verified: 2026-11-18

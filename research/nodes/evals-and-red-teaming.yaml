@@ -9,7 +9,6 @@ soft:
 - ai-safety-foundations
 scope: Dangerous-capability evals, red-teaming, jailbreaks, eval frameworks (e.g. Inspect), model organisms.
 level: intermediate
-estimated_hours: 50
 resources:
 - id: inspect-docs
   role: primary-text

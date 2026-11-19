@@ -1,129 +1,137 @@
 id: applied-cryptography
 title: Applied Cryptography
 group: G12
-paths: [security]
-hard: [discrete-math, probability]
-soft: [security-fundamentals]
-scope: "Symmetric/asymmetric primitives, AEAD, key exchange, signatures, real protocols (TLS, Signal), implementation pitfalls."
-
+paths:
+- security
+hard:
+- discrete-math
+- probability
+soft:
+- security-fundamentals
+scope: Symmetric/asymmetric primitives, AEAD, key exchange, signatures, real protocols (TLS, Signal), implementation pitfalls.
 level: intermediate
-estimated_hours: 100
 resources:
-  - id: serious-crypto-2e
-    role: primary-text
-    kind: book
-    title: "Serious Cryptography: A Practical Introduction to Modern Encryption, 2nd edition"
-    by: "Jean-Philippe Aumasson"
-    url: https://nostarch.com/serious-cryptography-2nd-edition
-    edition_or_term: "2nd edition, No Starch Press, August 2024 (376 pp.)"
-    access: paid
-    use: "Part I-III (Encryption, Randomness, Cryptographic Security; block/stream ciphers, hashes, keyed hashing, AEAD; hard problems, RSA, Diffie-Hellman, elliptic curves) and Part IV TLS, post-quantum, cryptocurrency chapters."
-    why: "Best practitioner text: explains how real primitives are used and misused, AEAD, curves, TLS, post-quantum, with minimal math. Written by a designer of BLAKE2/SipHash/BLAKE3."
-    verified: true
-  - id: boneh-cs255
-    role: primary-course
-    kind: course
-    title: "Stanford CS 255 Introduction to Cryptography / Boneh's Online Cryptography course"
-    by: "Dan Boneh, Stanford"
-    url: https://cs255.stanford.edu/
-    edition_or_term: "Winter 2026"
-    access: free
-    use: "Watch the Online Cryptography lectures (stream ciphers, block ciphers and modes, MACs, collision-resistant hashing, authenticated encryption, key exchange, public-key encryption and signatures); do the problem sets and the two projects (password manager; encrypted chat client) from the CS 255 site."
-    why: "The reference applied-crypto course: rigorous definitions without heavy proofs, directly tied to implementation pitfalls (padding oracles, nonce reuse). Lectures free (Stanford page lists them via Coursera); CS 255 Winter 2026 homework (HW1-4) and both projects (password manager, chat client) with instructions and starter code are public on cs255.stanford.edu."
-    verified: true
-    course:
-      latest_term: "Winter 2026"
-      latest_url: https://cs255.stanford.edu/
-      videos: enrolled-only
-      public_videos_term: "Boneh's free Online Cryptography course: every lecture listed on the Stanford page (Coursera-hosted video links plus public slides); CS 255 Winter 2026 itself points to this set ('cs255 online')"
-      public_videos_url: https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/
-      assignments: public
-      assignments_url: https://cs255.stanford.edu/
-  - id: boneh-shoup
-    role: reference
-    kind: book
-    title: "A Graduate Course in Applied Cryptography"
-    by: "Dan Boneh, Victor Shoup"
-    url: https://toc.cryptobook.us/
-    edition_or_term: "Version 0.6, January 2023"
-    access: free
-    use: "Part I Secret key (Ch. 2-9: encryption, stream/block ciphers, CPA, integrity, AEAD), Part II Public key (Ch. 10-13, 15 elliptic curves), Ch. 21 Authenticated key exchange; appendices A-D. Sigma protocols, zero knowledge, threshold crypto and MPC (Ch. 19-20, 22-23) are assigned in cryptography-foundations. Use as proofs/reference alongside Serious Cryptography."
-    why: "The rigorous companion: precise definitions and proofs, free; the course's optional text. Heavier than needed for first pass."
-    verified: true
-  - id: real-world-crypto
-    role: secondary
-    kind: book
-    title: "Real-World Cryptography"
-    by: "David Wong"
-    url: https://www.manning.com/books/real-world-cryptography
-    edition_or_term: "Manning, 2021"
-    access: paid
-    use: "Chapters on secure transport (TLS), end-to-end encryption (Signal, Noise), user authentication, key management, HSMs, and post-quantum; read the protocols chapters after Serious Cryptography."
-    why: "Fills the 'real protocols' gap (TLS, Noise, Signal-style E2EE, HSMs) with a modern, engineer-oriented treatment."
-    verified: true
-  - id: crypto101
-    role: reference
-    kind: book
-    title: "Crypto 101"
-    by: "Laurens Van Houtven (lvh)"
-    url: https://www.crypto101.io/
-    edition_or_term: "Free ebook"
-    access: free
-    use: "Quick-start for padding oracle, CBC bit-flipping, RSA pitfalls, and AES modes; read first if you want a free gentle intro before Serious Cryptography."
-    why: "Free, short, attack-oriented introduction; hidden gem for beginners."
-    verified: true
-  - id: signal-docs
-    role: reference
-    kind: docs
-    title: "Signal protocol specifications (X3DH, Double Ratchet)"
-    by: "Signal Foundation"
-    url: https://signal.org/docs/
-    edition_or_term: "Current specs"
-    access: free
-    use: "X3DH key agreement and Double Ratchet specs; pair with Joy of Cryptography ch. 17 (ratcheting) in cryptography-foundations."
-    why: "Primary source for the real messaging protocol named in the scope."
-    verified: true
-  - id: latacora
-    role: reference
-    kind: article
-    title: "Cryptographic Right Answers"
-    by: "Latacora"
-    url: https://www.latacora.com/blog/2018/04/03/cryptographic-right-answers/
-    edition_or_term: "2018 (site has since moved/updated)"
-    access: free
-    use: "Use as a decision checklist: which AEAD, KDF, signature scheme, password hash, key exchange to pick; re-read after finishing the course."
-    why: "Practitioner cheat-sheet that prevents the most common implementation mistakes; short."
-    verified: true
-  - id: cryptopals
-    role: practice
-    kind: practice-site
-    title: "The Cryptopals Crypto Challenges"
-    by: "Matasano Security (Thomas Ptacek et al.)"
-    url: https://cryptopals.com/
-    edition_or_term: "8 sets, 64 challenges"
-    access: free
-    use: "Sets 1-4 (basics, block crypto: ECB/CBC attacks, padding oracle, block and stream crypto: CTR, MT19937, hash/MAC length extension) are the core; Set 5 (DH, RSA), Set 6 (RSA/DSA) next; Sets 7-8 are stretch."
-    why: "Specific, graded-by-doing exercises that teach why implementations break; the canonical crypto-attack training."
-    verified: true
-  - id: cryptohack
-    role: practice
-    kind: practice-site
-    title: "CryptoHack"
-    by: "CryptoHack team"
-    url: https://cryptohack.org/courses/
-    edition_or_term: "Rolling; courses Introduction, Modular Arithmetic, Symmetric Cryptography, Public-Key Cryptography, Elliptic Curves"
-    access: free
-    use: "Courses: Introduction, Modular Arithmetic, Symmetric Cryptography (AES), Public-Key Cryptography (RSA, Diffie-Hellman), Elliptic Curves; challenge categories General, Symmetric Ciphers, RSA, Diffie-Hellman, Hash Functions, Crypto on the Web."
-    why: "Guided lessons plus an auto-checked challenge for each concept; math-heavier complement to Cryptopals; lattices and ZK categories continue into foundations."
-    verified: true
+- id: serious-crypto-2e
+  role: primary-text
+  kind: book
+  title: 'Serious Cryptography: A Practical Introduction to Modern Encryption, 2nd edition'
+  by: Jean-Philippe Aumasson
+  url: https://nostarch.com/serious-cryptography-2nd-edition
+  edition_or_term: 2nd edition, No Starch Press, August 2024 (376 pp.)
+  access: paid
+  use: Part I-III (Encryption, Randomness, Cryptographic Security; block/stream ciphers, hashes, keyed hashing, AEAD; hard problems, RSA, Diffie-Hellman, elliptic curves) and Part IV TLS, post-quantum, cryptocurrency chapters.
+  why: 'Best practitioner text: explains how real primitives are used and misused, AEAD, curves, TLS, post-quantum, with minimal math. Written by a designer of BLAKE2/SipHash/BLAKE3.'
+  verified: true
+- id: boneh-cs255
+  role: primary-course
+  kind: course
+  title: Stanford CS 255 Introduction to Cryptography / Boneh's Online Cryptography course
+  by: Dan Boneh, Stanford
+  url: https://cs255.stanford.edu/
+  edition_or_term: Winter 2026
+  access: free
+  use: Watch the Online Cryptography lectures (stream ciphers, block ciphers and modes, MACs, collision-resistant hashing, authenticated encryption, key exchange, public-key encryption and signatures); do the problem sets and the two projects (password manager; encrypted chat client) from the CS 255 site.
+  why: 'The reference applied-crypto course: rigorous definitions without heavy proofs, directly tied to implementation pitfalls (padding oracles, nonce reuse). Lectures free (Stanford page lists them via Coursera); CS 255 Winter 2026 homework (HW1-4) and both projects (password manager, chat client) with instructions and starter code are public on cs255.stanford.edu.'
+  verified: true
+  course:
+    latest_term: Winter 2026
+    latest_url: https://cs255.stanford.edu/
+    videos: enrolled-only
+    public_videos_term: 'Boneh''s free Online Cryptography course: every lecture listed on the Stanford page (Coursera-hosted video links plus public slides); CS 255 Winter 2026 itself points to this set (''cs255 online'')'
+    public_videos_url: https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/
+    assignments: public
+    assignments_url: https://cs255.stanford.edu/
+- id: boneh-shoup
+  role: reference
+  kind: book
+  title: A Graduate Course in Applied Cryptography
+  by: Dan Boneh, Victor Shoup
+  url: https://toc.cryptobook.us/
+  edition_or_term: Version 0.6, January 2023
+  access: free
+  use: 'Part I Secret key (Ch. 2-9: encryption, stream/block ciphers, CPA, integrity, AEAD), Part II Public key (Ch. 10-13, 15 elliptic curves), Ch. 21 Authenticated key exchange; appendices A-D. Sigma protocols, zero knowledge, threshold crypto and MPC (Ch. 19-20, 22-23) are assigned in cryptography-foundations. Use as proofs/reference alongside Serious Cryptography.'
+  why: 'The rigorous companion: precise definitions and proofs, free; the course''s optional text. Heavier than needed for first pass.'
+  verified: true
+- id: real-world-crypto
+  role: secondary
+  kind: book
+  title: Real-World Cryptography
+  by: David Wong
+  url: https://www.manning.com/books/real-world-cryptography
+  edition_or_term: Manning, 2021
+  access: paid
+  use: Chapters on secure transport (TLS), end-to-end encryption (Signal, Noise), user authentication, key management, HSMs, and post-quantum; read the protocols chapters after Serious Cryptography.
+  why: Fills the 'real protocols' gap (TLS, Noise, Signal-style E2EE, HSMs) with a modern, engineer-oriented treatment.
+  verified: true
+- id: crypto101
+  role: reference
+  kind: book
+  title: Crypto 101
+  by: Laurens Van Houtven (lvh)
+  url: https://www.crypto101.io/
+  edition_or_term: Free ebook
+  access: free
+  use: Quick-start for padding oracle, CBC bit-flipping, RSA pitfalls, and AES modes; read first if you want a free gentle intro before Serious Cryptography.
+  why: Free, short, attack-oriented introduction; hidden gem for beginners.
+  verified: true
+- id: signal-docs
+  role: reference
+  kind: docs
+  title: Signal protocol specifications (X3DH, Double Ratchet)
+  by: Signal Foundation
+  url: https://signal.org/docs/
+  edition_or_term: Current specs
+  access: free
+  use: X3DH key agreement and Double Ratchet specs; pair with Joy of Cryptography ch. 17 (ratcheting) in cryptography-foundations.
+  why: Primary source for the real messaging protocol named in the scope.
+  verified: true
+- id: latacora
+  role: reference
+  kind: article
+  title: Cryptographic Right Answers
+  by: Latacora
+  url: https://www.latacora.com/blog/2018/04/03/cryptographic-right-answers/
+  edition_or_term: 2018 (site has since moved/updated)
+  access: free
+  use: 'Use as a decision checklist: which AEAD, KDF, signature scheme, password hash, key exchange to pick; re-read after finishing the course.'
+  why: Practitioner cheat-sheet that prevents the most common implementation mistakes; short.
+  verified: true
+- id: cryptopals
+  role: practice
+  kind: practice-site
+  title: The Cryptopals Crypto Challenges
+  by: Matasano Security (Thomas Ptacek et al.)
+  url: https://cryptopals.com/
+  edition_or_term: 8 sets, 64 challenges
+  access: free
+  use: 'Sets 1-4 (basics, block crypto: ECB/CBC attacks, padding oracle, block and stream crypto: CTR, MT19937, hash/MAC length extension) are the core; Set 5 (DH, RSA), Set 6 (RSA/DSA) next; Sets 7-8 are stretch.'
+  why: Specific, graded-by-doing exercises that teach why implementations break; the canonical crypto-attack training.
+  verified: true
+- id: cryptohack
+  role: practice
+  kind: practice-site
+  title: CryptoHack
+  by: CryptoHack team
+  url: https://cryptohack.org/courses/
+  edition_or_term: Rolling; courses Introduction, Modular Arithmetic, Symmetric Cryptography, Public-Key Cryptography, Elliptic Curves
+  access: free
+  use: 'Courses: Introduction, Modular Arithmetic, Symmetric Cryptography (AES), Public-Key Cryptography (RSA, Diffie-Hellman), Elliptic Curves; challenge categories General, Symmetric Ciphers, RSA, Diffie-Hellman, Hash Functions, Crypto on the Web.'
+  why: Guided lessons plus an auto-checked challenge for each concept; math-heavier complement to Cryptopals; lattices and ZK categories continue into foundations.
+  verified: true
 considered:
-  - {title: "Katz & Lindell, Introduction to Modern Cryptography, 3rd ed.", url: "https://www.cs.umd.edu/~jkatz/imc.html", reason: "Better as the provable-security text; placed in cryptography-foundations."}
-  - {title: "Christof Paar: Introduction to Cryptography (YouTube)", url: "https://www.youtube.com/playlist?list=PLwJWuZfL_Ga2KJrTf9hOIgAQWkSpn9RNm", reason: "Fully public lecture series with accompanying Understanding Cryptography book; less implementation-pitfall focused and older recordings."}
-  - {title: "Trail of Bits Testing Handbook: Wycheproof and constant-time sections", url: "https://appsec.guide/", reason: "Useful implementation-testing material; mention in fuzzing node."}
-notes: "Boneh's course lectures: the Online Cryptography page says it contains all lectures of the free course, each linked to Coursera, with slides; CS 255 Winter 2026 class recordings are on Canvas (enrolled-only) and its site points to that online set. Serious Cryptography is paid but Boneh-Shoup is free as the rigorous alternative; if the owner wants all-free, make Boneh-Shoup the primary-text. Pick of Serious Cryptography over Boneh-Shoup: this node is applied and Boneh-Shoup's proofs belong with cryptography-foundations."
+- title: Katz & Lindell, Introduction to Modern Cryptography, 3rd ed.
+  url: https://www.cs.umd.edu/~jkatz/imc.html
+  reason: Better as the provable-security text; placed in cryptography-foundations.
+- title: 'Christof Paar: Introduction to Cryptography (YouTube)'
+  url: https://www.youtube.com/playlist?list=PLwJWuZfL_Ga2KJrTf9hOIgAQWkSpn9RNm
+  reason: Fully public lecture series with accompanying Understanding Cryptography book; less implementation-pitfall focused and older recordings.
+- title: 'Trail of Bits Testing Handbook: Wycheproof and constant-time sections'
+  url: https://appsec.guide/
+  reason: Useful implementation-testing material; mention in fuzzing node.
+notes: 'Boneh''s course lectures: the Online Cryptography page says it contains all lectures of the free course, each linked to Coursera, with slides; CS 255 Winter 2026 class recordings are on Canvas (enrolled-only) and its site points to that online set. Serious Cryptography is paid but Boneh-Shoup is free as the rigorous alternative; if the owner wants all-free, make Boneh-Shoup the primary-text. Pick of Serious Cryptography over Boneh-Shoup: this node is applied and Boneh-Shoup''s proofs belong with cryptography-foundations.'
 split_proposal: null
-prereq_changes: "None. Hard prereqs discrete-math and probability are right for Boneh/Shoup; Serious Cryptography needs less."
+prereq_changes: null
 open_questions:
-  - "Is Coursera 'Cryptography I' still free to audit? Not verified (page opens but access terms not checked)."
-  - "Latacora URL redirected to a new path (latacora.com/blog/cryptographic-right-answers/); content may have been updated since 2018."
+- Is Coursera 'Cryptography I' still free to audit? Not verified (page opens but access terms not checked).
+- Latacora URL redirected to a new path (latacora.com/blog/cryptographic-right-answers/); content may have been updated since 2018.
 last_verified: 2026-11-18

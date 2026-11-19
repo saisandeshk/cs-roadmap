@@ -5,11 +5,11 @@ paths:
 - mlsys
 - os-perf
 hard:
+- python-programming
+soft:
 - c-programming
-soft: []
 scope: RAII, templates, STL, move semantics, smart pointers, C++17/20/23 features, performance idioms.
 level: intermediate
-estimated_hours: 110
 resources:
 - id: learncpp
   role: primary-text
@@ -31,7 +31,7 @@ resources:
   edition_or_term: Fall 2026 (covers modern patterns up through C++26)
   access: free
   use: 'Fall 2026 lecture slides 1-16: types/structs, initialization and references, streams, containers, iterators/pointers, classes, class and function templates, lambdas/functors, operator overloading, special member functions (rule of 5), move semantics, std::optional and type safety, RAII/smart pointers and building C++ projects; do the in-class activities and the midterm (iSpell) and final projects.'
-  why: 'The one university course aimed exactly at modern C++ (RAII, move semantics, templates, STL) for people who already program; compact (about 25 hours) and current to C++26 with an in-browser activity site. Caveat: the only public lecture videos are Fall 2019 (pre-C++20), so follow the Fall 2026 slides and activities and use the named CppCon talks for video.'
+  why: 'The one university course aimed exactly at modern C++ (RAII, move semantics, templates, STL) for people who already program; compact and current to C++26 with an in-browser activity site. Caveat: the only public lecture videos are Fall 2019 (pre-C++20), so follow the Fall 2026 slides and activities and use the named CppCon talks for video.'
   verified: true
   course:
     latest_term: Fall 2026
@@ -167,7 +167,7 @@ considered:
   reason: Best resources for performance-oriented C++; owned by G4 performance nodes.
 notes: 'Plan: learncpp (carefully ch. 11-17, 20-28) plus CS106L slides/projects, with Tour of C++ 3e as the dense second pass and Core Guidelines/cppreference as always-open references. CS106L is a 1-unit course designed for students with CS106B; the Fall 2026 site has slides and an in-browser activity platform (106l.com) but no lecture videos that I could find (the old public YouTube playlist is from Fall 2019), hence videos=unknown; CppCon Back to Basics fills that gap. Hard prerequisite on C is arguably too strong: learncpp starts from zero. Performance idioms (cache layout, SIMD, benchmarking) are intentionally left to G4/G9 resources (Algorithmica, Performance Ninja); concurrency/atomics also G4. Review update (2026-11-19): performance idioms now covered by named Algorithmica chapters; Tour chapters for concepts/ranges named; CppCon talks named; CS106L video caveat stated in why.'
 split_proposal: null
-prereq_changes: 'Downgrade hard: [c-programming] to soft: [c-programming] (learncpp assumes no prior programming) while keeping python-programming as the true prerequisite; keep C first for pointers/UB intuition.'
+prereq_changes: null
 open_questions:
 - cppreference.com returned 403 to automated fetches (bot protection); treated as live but not verified.
 - Whether Fall 2026 or Spring 2026 CS106L lecture videos exist publicly (Stanford sites flaky from this environment).

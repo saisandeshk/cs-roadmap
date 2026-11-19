@@ -9,7 +9,6 @@ hard:
 soft: []
 scope: DQN and extensions, replay, target networks, stability, distributional RL.
 level: intermediate
-estimated_hours: 40
 resources:
 - id: plaat-drl
   role: primary-text
@@ -20,7 +19,7 @@ resources:
   edition_or_term: Springer 2022; free arXiv preprint v5 (Apr 2023); course site https://deep-reinforcement-learning.net/
   access: free
   use: 'Ch. 2 (tabular value-based RL, as a refresher) and Ch. 3 (Deep Value-based Reinforcement Learning: DQN, replay, target networks, stability, extensions) with its worked examples; read alongside Sutton-Barto Ch. 9-11 for the function-approximation theory. Later chapters (policy-based, model-based, two-agent self-play, multi-agent) also serve the sibling RL nodes.'
-  why: 'A real teaching text (graduate textbook behind a Leiden course; free preprint) that builds DQN and its extensions with examples, in place of a terse survey. Predates 2023-25 agents, so use Murphy Ch. 2 for current notation.'
+  why: A real teaching text (graduate textbook behind a Leiden course; free preprint) that builds DQN and its extensions with examples, in place of a terse survey. Predates 2023-25 agents, so use Murphy Ch. 2 for current notation.
   verified: true
 - id: cs285
   role: primary-course
@@ -162,7 +161,7 @@ considered:
   reason: Pre-deep-RL; useful theory refresher only.
 notes: Primary text is Plaat Ch. 3 (arXiv preprint of the Springer book; TOC confirmed on deep-reinforcement-learning.net); Murphy Ch. 2 is the current-notation reference and does not cover distributional RL (that is Murphy Sec. 7.3 plus the Bellemare book). Mnih et al. Nature paper (2015) is not linked because nature.com returned HTTP 429 to the sandbox; the arXiv 2013 paper is the free substitute. Spring 2026 CS 285 lectures are described as streamed and recorded but archive links were not posted at check time.
 split_proposal: null
-prereq_changes: Consider adding soft prereq on pytorch/deep learning practice (already hard on deep-learning-fundamentals).
+prereq_changes: null
 open_questions:
 - 'CS285 Spring 2026 recordings: will a public YouTube playlist appear? Not linked on 2026-11-18.'
 - Exact mapping of Fall 2023 lecture numbers for value-function lectures was not opened video by video.

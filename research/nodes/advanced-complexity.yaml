@@ -1,0 +1,95 @@
+id: advanced-complexity
+title: 'Advanced Complexity: Proofs & Pseudorandomness'
+group: G3
+paths:
+- theory
+optional: true
+hard:
+- computational-complexity
+soft: []
+scope: Interactive proofs (IP = PSPACE), PCP theorem, circuit lower bounds, derandomization and hardness vs randomness.
+level: advanced
+resources:
+- id: arora-barak
+  role: primary-text
+  kind: book
+  title: 'Computational Complexity: A Modern Approach'
+  by: Sanjeev Arora, Boaz Barak
+  url: https://theory.cs.princeton.edu/complexity/
+  edition_or_term: Cambridge University Press 2009; free author draft (489 pp.) at the book site
+  access: free
+  use: Chapters on interactive proofs, complexity of counting, circuit lower bounds, derandomization (hardness vs randomness) and the PCP theorem; do the exercises with full proofs.
+  why: The standard graduate text, broad and correct, with free author drafts and teaching plans; matches the scope (hierarchy, PH, randomized classes, circuits, IP, PCP). The 'conceptual' alternative by Goldreich is more philosophical; Arora-Barak is the one lectures and problem sets assume.
+  verified: true
+- id: odonnell-15-855
+  role: primary-course
+  kind: course
+  title: CMU 15-855 Graduate Computational Complexity Theory
+  by: Ryan O'Donnell (CMU)
+  url: https://www.cs.cmu.edu/~odonnell/complexity17/
+  edition_or_term: Fall 2017 (YouTube playlist 'Graduate Complexity Theory at CMU')
+  access: free
+  use: 'Later lectures: Merlin-Arthur, IP = PSPACE, AC0 lower bounds and switching lemma, Razborov-Smolensky, hardness vs randomness, hardness amplification.'
+  why: Best fully recorded graduate course aimed at the book's exact scope by a gifted lecturer; syllabus maps each lecture to Arora-Barak sections; homework and notes public. Oldest of the options (2017), but complexity content moves slowly. The newer public notes (Cornell Spring 2026, below) cover the same ground without video.
+  verified: true
+  course:
+    latest_term: Fall 2017
+    latest_url: https://www.cs.cmu.edu/~odonnell/complexity17/
+    videos: public
+    assignments: public
+    assignments_url: https://www.cs.cmu.edu/~odonnell/complexity17/
+- id: cornell-cs6810
+  role: secondary
+  kind: course
+  title: Cornell CS 6810 Theory of Computing (graduate complexity)
+  by: Eshan Chattopadhyay (Cornell)
+  url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
+  edition_or_term: Spring 2026 (scribe notes posted per lecture; no recordings)
+  access: free
+  use: Notes on Nisan-Wigderson, interactive proofs (GNI in AM, coNP in IP, sum-check), PCP intro with linearity testing and hardness of approximation.
+  why: Newest public term (Spring 2026) with posted notes and a clean syllabus; use it to check or update against O'Donnell's 2017 videos, particularly for the IP and PCP lectures. Resources page mirrors Arora-Barak, Goldreich and Wigderson.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
+    videos: none
+    assignments: unknown
+- id: goldreich-cc
+  role: secondary
+  kind: book
+  title: 'Computational Complexity: A Conceptual Perspective'
+  by: Oded Goldreich
+  url: https://www.wisdom.weizmann.ac.il/~oded/cc-drafts.html
+  edition_or_term: Cambridge University Press 2008; free drafts on author's site
+  access: free
+  use: PCP and probabilistic-proof chapters as a rigorous alternative proof of PCP.
+  why: 'Gap: careful definitions and proofs of the proof-systems and pseudorandomness material where Arora-Barak is terse; the ''conceptual'' viewpoint helps in synthesizing across topics.'
+  verified: true
+- id: thaler-pazk
+  role: secondary
+  kind: book
+  title: Proofs, Arguments, and Zero-Knowledge
+  by: Justin Thaler
+  url: https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.html
+  edition_or_term: Free manuscript (technical content stable as of mid-April 2022); supplementary videos
+  access: free
+  use: Chapters 2-4 (interactive proofs, sum-check, GKR; his two videos Interactive Proofs Part I and II cover these) as the modern, concrete treatment of the interactive-proof part; PCP chapters if needed.
+  why: 'Gap: the interactive-proofs/PCP unit of the scope is best learned with concrete protocols; this gives cryptographic-era perspective with videos.'
+  verified: true
+- id: complexity-zoo
+  role: reference
+  kind: website
+  title: Complexity Zoo
+  by: Scott Aaronson et al.
+  url: https://complexityzoo.net/Complexity_Zoo
+  edition_or_term: Live wiki
+  access: free
+  use: Look up a complexity class and its known relations whenever one appears in reading; do not read linearly.
+  why: Fast definitions and containment diagrams for the many classes in the course.
+  verified: true
+considered: []
+notes: Created by splitting 'computational-complexity' (owner decision B7, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

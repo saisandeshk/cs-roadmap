@@ -74,8 +74,8 @@ def check_node(path, skel_nodes):
         warns.append("node not in skeleton (new/split node?)")
     if d.get("level") not in LEVELS:
         errs.append(f"level must be one of {sorted(LEVELS)}")
-    if not isinstance(d.get("estimated_hours"), (int, float)):
-        errs.append("estimated_hours missing or not a number")
+    if "estimated_hours" in d:
+        errs.append("estimated_hours is not allowed (no time estimates)")
     res = d.get("resources") or []
     if not res:
         errs.append("no resources")

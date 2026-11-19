@@ -1,224 +1,238 @@
 id: llm-evaluation
 title: LLM Evaluation
 group: G7
-paths: [llm, safety]
-hard: [language-modeling]
-soft: [statistics]
-scope: "Benchmarks, contamination, evaluation methodology, LLM-as-judge, statistical rigor."
-
+paths:
+- llm
+- safety
+hard:
+- language-modeling
+soft:
+- statistics
+scope: Benchmarks, contamination, evaluation methodology, LLM-as-judge, statistical rigor.
 level: intermediate
-estimated_hours: 30
 resources:
-  - id: hf-evaluation-guidebook
-    role: primary-text
-    kind: book
-    title: "LLM Evaluation Guidebook"
-    by: "Clementine Fourrier and the Hugging Face OpenEvals team"
-    url: https://huggingface.co/spaces/OpenEvals/evaluation-guidebook
-    edition_or_term: "Maintained Space (GitHub copy archived; latest as of Dec 2025 per repo notice); includes yearly reviews 2023-2025"
-    access: free
-    use: "Automatic benchmarks (basics, designing automatic evaluations, example datasets, tips), Human evaluation, LLM-as-a-judge (choosing a judge, designing prompts, evaluating the evaluator, reward models), Troubleshooting (inference, reproducibility), General knowledge (tokenization, model inference), and the yearly dives."
-    why: "Best single practitioner text from the team that ran the Open LLM Leaderboard and lighteval; covers methodology, judge pitfalls and reproducibility issues in one place; free and maintained. (Space renders client-side; contents confirmed from the repository README.)"
-    verified: true
-  - id: cs329z-eval
-    role: primary-course
-    kind: course
-    title: "Stanford CS329Z Fall 2026, evaluation lectures: Evaluation for Agentic Systems (Nov 4) and LLM-as-Judge & Evaluation Infrastructure (Nov 11)"
-    by: "Diyi Yang, Michael Ryan, John Yang (Stanford)"
-    url: https://cs329z.stanford.edu/
-    edition_or_term: "Fall 2026 (lectures of Nov 4 and Nov 11; slides lecture13.pdf and lecture15.pdf)"
-    access: free
-    use: "Nov 4: why evals are hard, the 4-tuple framework (request, environment, stopping criteria, scorer), benchmark design and reliability (reading: Zhu et al. on rigorous agentic benchmarks; optional tinyBenchmarks). Nov 11: the three grader types, judge-prompt design, known biases, pairwise vs pointwise, pass@k vs pass^k, harness design (readings: Anthropic 'Demystifying Evals for AI Agents', Zheng et al. MT-Bench). Slides: https://web.stanford.edu/class/cs329z/slides/lecture13.pdf and lecture15.pdf. Optional: the Oct 26 Terminal-Bench and Nov 16 SWE-bench guest lectures (slides only on the page). Agent-safety lecture (Nov 18) is used by llm-applications."
-    why: "Newest university lectures dedicated to evaluation methodology and LLM-as-judge, with public slides and readings, replacing the earlier CS336-L12 + CS224N-A4 composite. Gap: as of 2026-11-19 the schedule page links videos only for lectures 1-9 (through Oct 21); the evaluation lectures are slides-only for now, so watch CS336 Lecture 12 (below) for recorded benchmark coverage."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs329z.stanford.edu/
-      videos: unknown
-      public_videos_term: "Fall 2026 (lectures 1-9 only, through Oct 21; evaluation lectures not yet linked)"
-      public_videos_url: https://cs329z.stanford.edu/
-      assignments: public-with-autograder
-      assignments_url: https://github.com/cs329z/assignment1-harness
-  - id: cs336-eval
-    role: secondary
-    kind: course
-    title: "Stanford CS336, Lecture 12 (Evaluation)"
-    by: "Percy Liang (CS336)"
-    url: https://cs336.stanford.edu/
-    edition_or_term: "Spring 2026 (Lecture 12; CS224N Winter 2026 A4 optional)"
-    access: free
-    use: "CS336 Lecture 12 'Evaluation' (lecture_12.py executable trace; the course page gives only the title, so check the trace for exact coverage) as the recorded benchmarks lecture. Optional exercise: CS224N Winter 2026 A4 handout (assignments_w26/a4.pdf, a4.zip) 'Large language model benchmarking and evaluation'."
-    why: "Recorded public lecture on benchmarks and evaluation from the same course used across the LLM nodes; fills the video gap while the CS329Z evaluation lectures have no posted recordings."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://cs336.stanford.edu/
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
-      assignments: partial
-      assignments_url: https://web.stanford.edu/class/cs224n/#coursework
-  - id: evidently-llm-eval
-    role: practice
-    kind: course
-    title: "LLM evaluation for AI builders: applied course (Evidently AI)"
-    by: "Evidently AI"
-    url: https://www.evidentlyai.com/llm-evaluation-course-practice
-    edition_or_term: "Current web version (3-week video course, 10 code tutorials)"
-    access: account-required
-    use: "The 10 Python tutorials on test datasets, prompt/model comparison, tracing, custom LLM judges aligned to human labels, RAG evaluation (retrieval and generation) and adversarial testing."
-    why: "Free, hands-on workflow practice for judges and application-level evals that complements the lecture-only primary course; page shows an email sign-up form."
-    verified: true
-    course:
-      latest_term: "Rolling (self-paced)"
-      latest_url: https://www.evidentlyai.com/llm-evaluation-course-practice
-      videos: unknown
-      assignments: public
-      assignments_url: https://www.evidentlyai.com/llm-evaluation-course-practice
-  - id: lm-eval-harness
-    role: practice
-    kind: tool
-    title: "EleutherAI lm-evaluation-harness"
-    by: "EleutherAI"
-    url: https://github.com/EleutherAI/lm-evaluation-harness
-    edition_or_term: "Current main; plugin system news dated 2026-09; Releases tab empty on page"
-    access: free
-    use: "Exercise 1: run `lm_eval --model hf` on a small model for hellaswag/arc/mmlu and compare log-likelihood-based vs generative scoring; Exercise 2: write a new task YAML following docs/new_task_guide.md; Exercise 3: run the same task via vLLM and an OpenAI-compatible endpoint and compare scores (docs/interface.md, docs/API_guide.md)."
-    why: "The de-facto standard open evaluation backend (60+ benchmarks, many backends); doing the three exercises exposes the prompt-format and tokenization effects the Guidebook warns about."
-    verified: true
-  - id: inspect
-    role: practice
-    kind: docs
-    title: "Inspect (UK AISI) and inspect_evals"
-    by: "UK AI Security Institute, Meridian Labs"
-    url: https://inspect.aisi.org.uk/
-    edition_or_term: "Current docs; inspect_evals lists 200+ ready-to-run benchmarks"
-    access: free
-    use: "Tasks (dataset + solver + scorer), Scorers (exact match, model-graded, custom), Eval Sets (limits, parallelism, retries) and Sandboxing for agentic tasks. Exercise: implement a 20-question task with a model-graded scorer, then calibrate the grader against hand labels. Benchmarks: https://ukgovernmentbeis.github.io/inspect_evals/"
-    why: "Modern, well-documented framework for writing custom evals and agent evals; also the bridge into the safety evals node."
-    verified: true
-  - id: error-bars
-    role: secondary
-    kind: paper
-    title: "Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations"
-    by: "Evan Miller (Anthropic)"
-    url: https://arxiv.org/abs/2411.00640
-    edition_or_term: "2024"
-    access: free
-    use: "Whole paper (short): standard errors, clustered standard errors, paired comparisons, power analysis for evals."
-    why: "Fills the 'statistical rigor' scope item directly; easiest correct treatment of confidence intervals on benchmark scores."
-    verified: true
-  - id: lessons-trenches
-    role: secondary
-    kind: paper
-    title: "Lessons from the Trenches on Reproducible Evaluation of Language Models"
-    by: "Biderman et al. (EleutherAI)"
-    url: https://arxiv.org/abs/2405.14782
-    edition_or_term: "2024"
-    access: free
-    use: "Sections on implementation differences, prompt sensitivity, and the lm-eval-harness design for reproducibility."
-    why: "Explains why published numbers differ and how the harness addresses it."
-    verified: true
-  - id: llm-judge
-    role: secondary
-    kind: paper
-    title: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"
-    by: "Zheng et al."
-    url: https://arxiv.org/abs/2306.05685
-    edition_or_term: "NeurIPS 2023"
-    access: free
-    use: "Judge biases (position, verbosity, self-enhancement), agreement with humans; pair with 'Large Language Models are not Fair Evaluators' (https://arxiv.org/abs/2305.17926) and Length-Controlled AlpacaEval (https://arxiv.org/abs/2404.04475)."
-    why: "Foundational study of LLM-as-judge and its biases; the follow-ups show mitigations."
-    verified: true
-  - id: helm
-    role: reference
-    kind: paper
-    title: "Holistic Evaluation of Language Models (HELM)"
-    by: "Liang et al. (Stanford CRFM)"
-    url: https://arxiv.org/abs/2211.09110
-    edition_or_term: "2022 paper; living leaderboards at https://crfm.stanford.edu/helm/"
-    access: free
-    use: "Sections on the scenario x metric taxonomy and the multi-metric reporting (accuracy, calibration, robustness, fairness, efficiency); explore the live site's current leaderboards."
-    why: "The reference framework for what to measure beyond accuracy; the site continues to evolve."
-    verified: true
-  - id: arena
-    role: secondary
-    kind: paper
-    title: "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference"
-    by: "Chiang et al."
-    url: https://arxiv.org/abs/2403.04132
-    edition_or_term: "2024"
-    access: free
-    use: "Bradley-Terry/Elo modelling of pairwise votes, sampling and confidence intervals, style-control caveats."
-    why: "Canonical example of human-preference evaluation and its statistics."
-    verified: true
-  - id: contamination
-    role: reference
-    kind: paper
-    title: "Proving Test Set Contamination in Black Box Language Models"
-    by: "Oren et al."
-    url: https://arxiv.org/abs/2310.17623
-    edition_or_term: "2023"
-    access: free
-    use: "Exchangeability test for canonical ordering of test examples; pair with Sclar et al. prompt-format sensitivity (https://arxiv.org/abs/2310.11324) and decontamination sections of Tulu 3 (https://arxiv.org/abs/2411.15124) / Dolma."
-    why: "Covers the contamination scope item with a statistically grounded detection method; the companion papers show prompt-sensitivity and practical decontamination."
-    verified: true
-  - id: benchmarks-mmlu-pro-gpqa
-    role: reference
-    kind: paper
-    title: "Benchmark papers: MMLU, MMLU-Pro, GPQA, SWE-bench"
-    by: "Hendrycks et al.; Wang et al.; Rein et al.; Jimenez et al."
-    url: https://arxiv.org/abs/2406.01574
-    edition_or_term: "MMLU https://arxiv.org/abs/2009.03300; GPQA https://arxiv.org/abs/2311.12022; SWE-bench https://arxiv.org/abs/2310.06770"
-    access: free
-    use: "Read the construction/annotation sections to learn how benchmarks are built and where they saturate or leak; MMLU-Pro as the answer to MMLU saturation."
-    why: "Concrete anchors for the benchmark landscape discussed in the guidebook."
-    verified: true
-  - id: hamel-evals
-    role: secondary
-    kind: article
-    title: "AI Evals: Everything You Need to Know (Evals FAQ) and A Field Guide to Rapidly Improving AI Products"
-    by: "Hamel Husain (with Shreya Shankar)"
-    url: https://hamel.dev/blog/posts/evals-faq/
-    edition_or_term: "Living FAQ"
-    access: free
-    use: "Error analysis from traces, binary pass/fail judges, validating judges against human labels, when to use code-based checks; Field Guide: https://hamel.dev/blog/posts/field-guide/"
-    why: "Application-level evaluation practice (trace-driven error analysis) that benchmark-oriented sources skip; owned by this node and referenced from llm-applications by id (hamel-evals), not duplicated there."
-    verified: true
-  - id: anthropic-agent-evals
-    role: secondary
-    kind: article
-    title: "Demystifying evals for AI agents"
-    by: "Anthropic Engineering"
-    url: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
-    edition_or_term: "2026 per the CS329Z Nov 11 reading list (Grace et al., Anthropic 2026); exact publication date not read"
-    access: free
-    use: "Read for how to structure graders, tasks and transcripts for agentic evals; cross-link to llm-agents."
-    why: "Fills the agent-evaluation gap in benchmark-centric material."
-    verified: true
-  - id: lighteval-docs
-    role: reference
-    kind: docs
-    title: "Lighteval documentation"
-    by: "Hugging Face"
-    url: https://huggingface.co/docs/lighteval/index
-    edition_or_term: "Current"
-    access: free
-    use: "Use as alternative harness to compare scores with lm-eval-harness; custom tasks section."
-    why: "Second open harness (the one the Guidebook was written around); useful for cross-checking numbers."
-    verified: true
+- id: hf-evaluation-guidebook
+  role: primary-text
+  kind: book
+  title: LLM Evaluation Guidebook
+  by: Clementine Fourrier and the Hugging Face OpenEvals team
+  url: https://huggingface.co/spaces/OpenEvals/evaluation-guidebook
+  edition_or_term: Maintained Space (GitHub copy archived; latest as of Dec 2025 per repo notice); includes yearly reviews 2023-2025
+  access: free
+  use: Automatic benchmarks (basics, designing automatic evaluations, example datasets, tips), Human evaluation, LLM-as-a-judge (choosing a judge, designing prompts, evaluating the evaluator, reward models), Troubleshooting (inference, reproducibility), General knowledge (tokenization, model inference), and the yearly dives.
+  why: Best single practitioner text from the team that ran the Open LLM Leaderboard and lighteval; covers methodology, judge pitfalls and reproducibility issues in one place; free and maintained. (Space renders client-side; contents confirmed from the repository README.)
+  verified: true
+- id: cs329z-eval
+  role: primary-course
+  kind: course
+  title: 'Stanford CS329Z Fall 2026, evaluation lectures: Evaluation for Agentic Systems (Nov 4) and LLM-as-Judge & Evaluation Infrastructure (Nov 11)'
+  by: Diyi Yang, Michael Ryan, John Yang (Stanford)
+  url: https://cs329z.stanford.edu/
+  edition_or_term: Fall 2026 (lectures of Nov 4 and Nov 11; slides lecture13.pdf and lecture15.pdf)
+  access: free
+  use: 'Nov 4: why evals are hard, the 4-tuple framework (request, environment, stopping criteria, scorer), benchmark design and reliability (reading: Zhu et al. on rigorous agentic benchmarks; optional tinyBenchmarks). Nov 11: the three grader types, judge-prompt design, known biases, pairwise vs pointwise, pass@k vs pass^k, harness design (readings: Anthropic ''Demystifying Evals for AI Agents'', Zheng et al. MT-Bench). Slides: https://web.stanford.edu/class/cs329z/slides/lecture13.pdf and lecture15.pdf. Optional: the Oct 26 Terminal-Bench and Nov 16 SWE-bench guest lectures (slides only on the page). Agent-safety lecture (Nov 18) is used by llm-applications.'
+  why: 'Newest university lectures dedicated to evaluation methodology and LLM-as-judge, with public slides and readings, replacing the earlier CS336-L12 + CS224N-A4 composite. Gap: as of 2026-11-19 the schedule page links videos only for lectures 1-9 (through Oct 21); the evaluation lectures are slides-only for now, so watch CS336 Lecture 12 (below) for recorded benchmark coverage.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs329z.stanford.edu/
+    videos: unknown
+    public_videos_term: Fall 2026 (lectures 1-9 only, through Oct 21; evaluation lectures not yet linked)
+    public_videos_url: https://cs329z.stanford.edu/
+    assignments: public-with-autograder
+    assignments_url: https://github.com/cs329z/assignment1-harness
+- id: cs336-eval
+  role: secondary
+  kind: course
+  title: Stanford CS336, Lecture 12 (Evaluation)
+  by: Percy Liang (CS336)
+  url: https://cs336.stanford.edu/
+  edition_or_term: Spring 2026 (Lecture 12; CS224N Winter 2026 A4 optional)
+  access: free
+  use: 'CS336 Lecture 12 ''Evaluation'' (lecture_12.py executable trace; the course page gives only the title, so check the trace for exact coverage) as the recorded benchmarks lecture. Optional exercise: CS224N Winter 2026 A4 handout (assignments_w26/a4.pdf, a4.zip) ''Large language model benchmarking and evaluation''.'
+  why: Recorded public lecture on benchmarks and evaluation from the same course used across the LLM nodes; fills the video gap while the CS329Z evaluation lectures have no posted recordings.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs336.stanford.edu/
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+    assignments: partial
+    assignments_url: https://web.stanford.edu/class/cs224n/#coursework
+- id: evidently-llm-eval
+  role: practice
+  kind: course
+  title: 'LLM evaluation for AI builders: applied course (Evidently AI)'
+  by: Evidently AI
+  url: https://www.evidentlyai.com/llm-evaluation-course-practice
+  edition_or_term: Current web version (3-week video course, 10 code tutorials)
+  access: account-required
+  use: The 10 Python tutorials on test datasets, prompt/model comparison, tracing, custom LLM judges aligned to human labels, RAG evaluation (retrieval and generation) and adversarial testing.
+  why: Free, hands-on workflow practice for judges and application-level evals that complements the lecture-only primary course; page shows an email sign-up form.
+  verified: true
+  course:
+    latest_term: Rolling (self-paced)
+    latest_url: https://www.evidentlyai.com/llm-evaluation-course-practice
+    videos: unknown
+    assignments: public
+    assignments_url: https://www.evidentlyai.com/llm-evaluation-course-practice
+- id: lm-eval-harness
+  role: practice
+  kind: tool
+  title: EleutherAI lm-evaluation-harness
+  by: EleutherAI
+  url: https://github.com/EleutherAI/lm-evaluation-harness
+  edition_or_term: Current main; plugin system news dated 2026-09; Releases tab empty on page
+  access: free
+  use: 'Exercise 1: run `lm_eval --model hf` on a small model for hellaswag/arc/mmlu and compare log-likelihood-based vs generative scoring; Exercise 2: write a new task YAML following docs/new_task_guide.md; Exercise 3: run the same task via vLLM and an OpenAI-compatible endpoint and compare scores (docs/interface.md, docs/API_guide.md).'
+  why: The de-facto standard open evaluation backend (60+ benchmarks, many backends); doing the three exercises exposes the prompt-format and tokenization effects the Guidebook warns about.
+  verified: true
+- id: inspect
+  role: practice
+  kind: docs
+  title: Inspect (UK AISI) and inspect_evals
+  by: UK AI Security Institute, Meridian Labs
+  url: https://inspect.aisi.org.uk/
+  edition_or_term: Current docs; inspect_evals lists 200+ ready-to-run benchmarks
+  access: free
+  use: 'Tasks (dataset + solver + scorer), Scorers (exact match, model-graded, custom), Eval Sets (limits, parallelism, retries) and Sandboxing for agentic tasks. Exercise: implement a 20-question task with a model-graded scorer, then calibrate the grader against hand labels. Benchmarks: https://ukgovernmentbeis.github.io/inspect_evals/'
+  why: Modern, well-documented framework for writing custom evals and agent evals; also the bridge into the safety evals node.
+  verified: true
+- id: error-bars
+  role: secondary
+  kind: paper
+  title: 'Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations'
+  by: Evan Miller (Anthropic)
+  url: https://arxiv.org/abs/2411.00640
+  edition_or_term: '2024'
+  access: free
+  use: 'Whole paper (short): standard errors, clustered standard errors, paired comparisons, power analysis for evals.'
+  why: Fills the 'statistical rigor' scope item directly; easiest correct treatment of confidence intervals on benchmark scores.
+  verified: true
+- id: lessons-trenches
+  role: secondary
+  kind: paper
+  title: Lessons from the Trenches on Reproducible Evaluation of Language Models
+  by: Biderman et al. (EleutherAI)
+  url: https://arxiv.org/abs/2405.14782
+  edition_or_term: '2024'
+  access: free
+  use: Sections on implementation differences, prompt sensitivity, and the lm-eval-harness design for reproducibility.
+  why: Explains why published numbers differ and how the harness addresses it.
+  verified: true
+- id: llm-judge
+  role: secondary
+  kind: paper
+  title: Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena
+  by: Zheng et al.
+  url: https://arxiv.org/abs/2306.05685
+  edition_or_term: NeurIPS 2023
+  access: free
+  use: Judge biases (position, verbosity, self-enhancement), agreement with humans; pair with 'Large Language Models are not Fair Evaluators' (https://arxiv.org/abs/2305.17926) and Length-Controlled AlpacaEval (https://arxiv.org/abs/2404.04475).
+  why: Foundational study of LLM-as-judge and its biases; the follow-ups show mitigations.
+  verified: true
+- id: helm
+  role: reference
+  kind: paper
+  title: Holistic Evaluation of Language Models (HELM)
+  by: Liang et al. (Stanford CRFM)
+  url: https://arxiv.org/abs/2211.09110
+  edition_or_term: 2022 paper; living leaderboards at https://crfm.stanford.edu/helm/
+  access: free
+  use: Sections on the scenario x metric taxonomy and the multi-metric reporting (accuracy, calibration, robustness, fairness, efficiency); explore the live site's current leaderboards.
+  why: The reference framework for what to measure beyond accuracy; the site continues to evolve.
+  verified: true
+- id: arena
+  role: secondary
+  kind: paper
+  title: 'Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference'
+  by: Chiang et al.
+  url: https://arxiv.org/abs/2403.04132
+  edition_or_term: '2024'
+  access: free
+  use: Bradley-Terry/Elo modelling of pairwise votes, sampling and confidence intervals, style-control caveats.
+  why: Canonical example of human-preference evaluation and its statistics.
+  verified: true
+- id: contamination
+  role: reference
+  kind: paper
+  title: Proving Test Set Contamination in Black Box Language Models
+  by: Oren et al.
+  url: https://arxiv.org/abs/2310.17623
+  edition_or_term: '2023'
+  access: free
+  use: Exchangeability test for canonical ordering of test examples; pair with Sclar et al. prompt-format sensitivity (https://arxiv.org/abs/2310.11324) and decontamination sections of Tulu 3 (https://arxiv.org/abs/2411.15124) / Dolma.
+  why: Covers the contamination scope item with a statistically grounded detection method; the companion papers show prompt-sensitivity and practical decontamination.
+  verified: true
+- id: benchmarks-mmlu-pro-gpqa
+  role: reference
+  kind: paper
+  title: 'Benchmark papers: MMLU, MMLU-Pro, GPQA, SWE-bench'
+  by: Hendrycks et al.; Wang et al.; Rein et al.; Jimenez et al.
+  url: https://arxiv.org/abs/2406.01574
+  edition_or_term: MMLU https://arxiv.org/abs/2009.03300; GPQA https://arxiv.org/abs/2311.12022; SWE-bench https://arxiv.org/abs/2310.06770
+  access: free
+  use: Read the construction/annotation sections to learn how benchmarks are built and where they saturate or leak; MMLU-Pro as the answer to MMLU saturation.
+  why: Concrete anchors for the benchmark landscape discussed in the guidebook.
+  verified: true
+- id: hamel-evals
+  role: secondary
+  kind: article
+  title: 'AI Evals: Everything You Need to Know (Evals FAQ) and A Field Guide to Rapidly Improving AI Products'
+  by: Hamel Husain (with Shreya Shankar)
+  url: https://hamel.dev/blog/posts/evals-faq/
+  edition_or_term: Living FAQ
+  access: free
+  use: 'Error analysis from traces, binary pass/fail judges, validating judges against human labels, when to use code-based checks; Field Guide: https://hamel.dev/blog/posts/field-guide/'
+  why: Application-level evaluation practice (trace-driven error analysis) that benchmark-oriented sources skip; owned by this node and referenced from llm-applications by id (hamel-evals), not duplicated there.
+  verified: true
+- id: anthropic-agent-evals
+  role: secondary
+  kind: article
+  title: Demystifying evals for AI agents
+  by: Anthropic Engineering
+  url: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+  edition_or_term: 2026 per the CS329Z Nov 11 reading list (Grace et al., Anthropic 2026); exact publication date not read
+  access: free
+  use: Read for how to structure graders, tasks and transcripts for agentic evals; cross-link to llm-agents.
+  why: Fills the agent-evaluation gap in benchmark-centric material.
+  verified: true
+- id: lighteval-docs
+  role: reference
+  kind: docs
+  title: Lighteval documentation
+  by: Hugging Face
+  url: https://huggingface.co/docs/lighteval/index
+  edition_or_term: Current
+  access: free
+  use: Use as alternative harness to compare scores with lm-eval-harness; custom tasks section.
+  why: Second open harness (the one the Guidebook was written around); useful for cross-checking numbers.
+  verified: true
 considered:
-  - {title: "ARENA 3.x LLM Evaluations (intro to evals, dataset generation, Inspect, agents, AI control)", url: "https://learn.arena.education/chapter3_llm_evals/", reason: "Good free exercise-based course but safety-evals oriented (threat models, control); better for evals-and-red-teaming (G8)."}
-  - {title: "Chip Huyen, AI Engineering ch. 3-4 (Evaluation Methodology / Evaluate AI Systems)", url: "https://huyenchip.com/books/", reason: "Strong, current textbook treatment of eval methodology (paid); used as primary for llm-applications instead."}
-  - {title: "Stanford HELM codebase", url: "https://crfm.stanford.edu/helm/", reason: "Heavy to run locally; kept as methodology reference."}
-  - {title: "Build a Reasoning Model (From Scratch), ch. 3 and appendix F", url: "https://www.manning.com/books/build-a-reasoning-model-from-scratch", reason: "Hands-on verifiers (MATH-500), MMLU, LLM-as-judge from scratch (paid book); good if you want to implement evaluators yourself."}
-  - {title: "AI Evals for Engineers and PMs (Hamel Husain, Shreya Shankar; paid cohort course)", url: "https://hamel.dev/", reason: "Probably strong but paid/cohort-based; the free FAQ captures much of it; not opened or verified."}
-  - {title: "Open LLM Leaderboard / lm-eval docs (HF)", url: "https://huggingface.co/docs/leaderboards/en/index", reason: "Leaderboard retired per the docs page; historical value only."}
-notes: "Primary-course is now CS329Z Fall 2026 weeks 7-8 (evaluation, LLM-as-judge); videos for those lectures are not yet posted (slides and readings only), so CS336 Lecture 12 stays as the recorded benchmarks lecture. Alternative once posted: Stanford CME 295 Autumn 2026 lecture 7 'LLM evaluation' (judge, biases, agent evals, benchmarks; schedule says Nov 13, video 'coming soon' on 2026-11-19; the series has public video, https://cme295.stanford.edu/syllabus/). The Guidebook is still the real spine. Practice is Evidently's course + Inspect + lm-eval-harness tasks plus checking error bars on your own results. Hamel's FAQ/Field Guide live here only; llm-applications points to them. SWE-bench is covered here (benchmarks-mmlu-pro-gpqa) and cited from llm-agents."
+- title: ARENA 3.x LLM Evaluations (intro to evals, dataset generation, Inspect, agents, AI control)
+  url: https://learn.arena.education/chapter3_llm_evals/
+  reason: Good free exercise-based course but safety-evals oriented (threat models, control); better for evals-and-red-teaming (G8).
+- title: Chip Huyen, AI Engineering ch. 3-4 (Evaluation Methodology / Evaluate AI Systems)
+  url: https://huyenchip.com/books/
+  reason: Strong, current textbook treatment of eval methodology (paid); used as primary for llm-applications instead.
+- title: Stanford HELM codebase
+  url: https://crfm.stanford.edu/helm/
+  reason: Heavy to run locally; kept as methodology reference.
+- title: Build a Reasoning Model (From Scratch), ch. 3 and appendix F
+  url: https://www.manning.com/books/build-a-reasoning-model-from-scratch
+  reason: Hands-on verifiers (MATH-500), MMLU, LLM-as-judge from scratch (paid book); good if you want to implement evaluators yourself.
+- title: AI Evals for Engineers and PMs (Hamel Husain, Shreya Shankar; paid cohort course)
+  url: https://hamel.dev/
+  reason: Probably strong but paid/cohort-based; the free FAQ captures much of it; not opened or verified.
+- title: Open LLM Leaderboard / lm-eval docs (HF)
+  url: https://huggingface.co/docs/leaderboards/en/index
+  reason: Leaderboard retired per the docs page; historical value only.
+notes: 'Primary-course is now CS329Z Fall 2026 weeks 7-8 (evaluation, LLM-as-judge); videos for those lectures are not yet posted (slides and readings only), so CS336 Lecture 12 stays as the recorded benchmarks lecture. Alternative once posted: Stanford CME 295 Autumn 2026 lecture 7 ''LLM evaluation'' (judge, biases, agent evals, benchmarks; schedule says Nov 13, video ''coming soon'' on 2026-11-19; the series has public video, https://cme295.stanford.edu/syllabus/). The Guidebook is still the real spine. Practice is Evidently''s course + Inspect + lm-eval-harness tasks plus checking error bars on your own results. Hamel''s FAQ/Field Guide live here only; llm-applications points to them. SWE-bench is covered here (benchmarks-mmlu-pro-gpqa) and cited from llm-agents.'
 split_proposal: null
-prereq_changes: "llm-evaluation is a hard prereq for G8's evals-and-red-teaming; fine. Consider soft: [post-training] (reward models/judges) and soft: [llm-applications] (application-level evals)."
+prereq_changes: null
 open_questions:
-  - "CS336 Lecture 12 content beyond its title was not inspected."
-  - "CS329Z evaluation lectures (Nov 4, Nov 11) had no video link on 2026-11-19; recheck whether recordings are posted. CME 295 lecture 7 video also pending."
-  - "Exact date of the Anthropic 'Demystifying evals for AI agents' post not read (year 2026 from CS329Z reading list)."
-  - "Guidebook Space renders client-side; contents taken from repo README and Space title."
+- CS336 Lecture 12 content beyond its title was not inspected.
+- CS329Z evaluation lectures (Nov 4, Nov 11) had no video link on 2026-11-19; recheck whether recordings are posted. CME 295 lecture 7 video also pending.
+- Exact date of the Anthropic 'Demystifying evals for AI agents' post not read (year 2026 from CS329Z reading list).
+- Guidebook Space renders client-side; contents taken from repo README and Space title.
 last_verified: 2026-11-18

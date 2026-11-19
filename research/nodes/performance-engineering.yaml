@@ -1,142 +1,154 @@
 id: performance-engineering
 title: Performance Engineering
 group: G4
-paths: [os-perf, mlsys]
-hard: [computer-systems, algorithms]
-soft: [parallel-programming]
-scope: "Work/span, cache-efficient algorithms, vectorization, bit hacks, profiling-driven optimization of software."
-
+paths:
+- os-perf
+- mlsys
+hard:
+- computer-systems
+- algorithms
+soft:
+- parallel-programming
+- computer-architecture
+scope: Work/span, cache-efficient algorithms, vectorization, bit hacks, profiling-driven optimization of software.
 level: advanced
-estimated_hours: 140
 resources:
-  - id: algorithmica-hpc
-    role: primary-text
-    kind: website
-    title: "Algorithms for Modern Hardware (Algorithmica HPC)"
-    by: "Sergey Slotin (Algorithmica)"
-    url: https://en.algorithmica.org/hpc/
-    edition_or_term: "online book in progress (Part I Performance Engineering is the most complete)"
-    access: free
-    use: "Read in order: Complexity Models; Computer Architecture (ISA, ILP, pipeline hazards, branchless programming); Compilation; Profiling and Benchmarking; Arithmetic (floats, integer division); External Memory and Cache-Oblivious Algorithms; RAM and CPU Caches (bandwidth, latency, cache lines, prefetching, alignment, AoS/SoA, associativity); SIMD Parallelism; Case Studies (binary GCD, argmin/prefix-sum with SIMD, matrix multiplication, binary search, static B-trees)."
-    why: "Best free, current treatment of making code fast on real CPUs, with measured case studies that start from textbook algorithms and end near hardware limits; the case studies are the closest thing to a set of worked examples for the node scope (cache-efficient algorithms, vectorization, bit hacks)."
-    verified: true
-  - id: mit-6-172
-    role: primary-course
-    kind: course
-    title: "MIT 6.172 Performance Engineering of Software Systems (now 6.1060 Software Performance Engineering)"
-    by: "MIT (Charles E. Leiserson, Julian Shun, Saman Amarasinghe; later Leiserson and Nir Shavit)"
-    url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
-    edition_or_term: "OCW Fall 2018; MIT calendar lists 6.1060 for Spring 2026"
-    access: free
-    use: "Watch lectures 1-17 in order: matrix-multiply case study, Bentley's rules, bit hacks, architecture and vectorization, C to assembly, multicore programming, races and parallelism, analysis of multithreaded algorithms (work/span), compilers, measurement and timing, storage allocation, caching and cache-oblivious algorithms, nondeterministic programming, synchronization without locks. L18-L23 (DSLs/autotuning, Leiserchess, TSP tuning, graph optimization, dynamic languages) are optional case studies. Do HW1-HW9 and Projects 1-3 (OCW 'Assignments' and 'Projects' pages)."
-    why: "Only complete public course that teaches work/span, cache-efficient algorithms, vectorization, bit hacks and measurement together; the 2018 offering has all lecture videos, slides, assignments and project writeups free on OCW."
-    verified: true
-    course:
-      latest_term: "Spring 2026 (6.1060, MIT catalog/calendar; no public course site found)"
-      latest_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
-      videos: public
-      public_videos_term: "Fall 2018 (OCW; also Fall 2010 on OCW)"
-      public_videos_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/video_galleries/lecture-videos/
-      assignments: public
-      assignments_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/pages/assignments/
-  - id: perf-ninja
-    role: practice
-    kind: practice-site
-    title: "Performance Ninja Class (lab assignments + videos)"
-    by: "Denis Bakhvalov"
-    url: https://github.com/dendibakh/perf-ninja
-    edition_or_term: "current main (CI on Intel Alder Lake, AMD Zen3, Apple M1)"
-    access: free
-    use: "Labs in this order: misc/warmup, core_bound/vectorization_1-2, function_inlining_1, dep_chains_1-2, compiler_intrinsics_1-4; memory_bound/data_packing, loop_interchange_1-2, loop_tiling_1, swmem_prefetch_1, false_sharing_1, huge_pages_1, mem_alignment_1; bad_speculation/branches_to_cmov_1, lookup_tables_1, virtual_call_mispredict; misc/lto, pgo, io_opt1. Needs C++; watch the welcome/warmup YouTube videos."
-    why: "Hidden gem: bite-size, benchmark-verified labs (30 min-4 h) that each isolate one micro-architectural bottleneck; the 'practice' half that textbooks lack."
-    verified: true
-  - id: perf-book
-    role: secondary
-    kind: book
-    title: "Performance Analysis and Tuning on Modern CPUs (2nd edition)"
-    by: "Denis Bakhvalov"
-    url: https://github.com/dendibakh/perf-book
-    edition_or_term: "2nd edition (referenced as 'perf-book-2' by the Performance Ninja README); free PDF/pay-what-you-want at easyperf.net"
-    access: mixed
-    use: "Part 1 (performance analysis: benchmarking and noise, CPU microarchitecture, performance-monitoring counters, top-down analysis, sampling, Intel PT/LBR) and Part 2 (source-code tuning: core-bound, memory-bound, bad-speculation and front-end optimizations). Read alongside the Ninja labs."
-    why: "Fills the gap between algorithmic performance (Algorithmica, 6.172) and CPU counters/top-down methodology that tell you what to fix. Authoritative on TMA and hardware-counter workflow."
-    verified: true
-  - id: aalto-ppc-ch2
-    role: secondary
-    kind: website
-    title: "Programming Parallel Computers, chapter 2 (the shortcut case study)"
-    by: "Jukka Suomela et al., Aalto University"
-    url: https://ppc.cs.aalto.fi/ch2/
-    edition_or_term: "current"
-    access: free
-    use: "Follow the case study from the baseline (V0) through assembly inspection, OpenMP, instruction-level parallelism, cache-friendly access patterns, SIMD, register blocking and cache tiling (versions V1-V7)."
-    why: "A single, extremely well-explained optimization story with measured speedups at each step; use as a worked example before attempting Algorithmica's matmul or Project 1 of 6.172."
-    verified: true
-  - id: agner-fog
-    role: reference
-    kind: docs
-    title: "Agner Fog's optimization manuals"
-    by: "Agner Fog"
-    url: https://www.agner.org/optimize/optimizing_cpp.pdf
-    edition_or_term: "Optimizing software in C++ plus 'The microarchitecture of Intel, AMD and VIA CPUs' and 'Instruction tables'"
-    access: free
-    use: "Look up optimizing_cpp.pdf for C++-level advice; microarchitecture.pdf for pipeline/latency details per CPU generation; instruction_tables.pdf for latency/throughput numbers (also uops.info for current CPUs)."
-    why: "The reference every low-level optimizer ends up using; precise measured instruction costs and microarchitecture descriptions."
-    verified: true
-  - id: uops-info
-    role: reference
-    kind: tool
-    title: "uops.info instruction latency/throughput tables and Compiler Explorer"
-    by: "Abel and Reineke; Matt Godbolt"
-    url: https://uops.info/
-    edition_or_term: "live"
-    access: free
-    use: "Check latency, throughput and port usage of an instruction on a given microarchitecture; pair with godbolt.org's llvm-mca output when analyzing a loop."
-    why: "Current-CPU instruction data that Agner's static PDFs cannot keep up with."
-    verified: true
-  - id: drepper-memory
-    role: reference
-    kind: paper
-    title: "What Every Programmer Should Know About Memory"
-    by: "Ulrich Drepper"
-    url: https://www.akkadia.org/drepper/cpumemory.pdf
-    edition_or_term: "2007"
-    access: free
-    use: "Sections 2-3 (RAM and CPU caches: associativity, write policy, coherence), 4 (virtual memory/TLB), 5 (NUMA) and 6 (what programmers can do)."
-    why: "Classic mental model for cache-friendly code; complements Algorithmica's cache chapters. Assigned only here within G4 (removed from computer-architecture)."
-    verified: true
-  - id: lemire-blog
-    role: reference
-    kind: website
-    title: "Daniel Lemire's blog"
-    by: "Daniel Lemire"
-    url: https://lemire.me/blog/
-    edition_or_term: "ongoing"
-    access: free
-    use: "Search by topic when doing vectorization and bit-hack work: SIMD parsing/UTF-8 validation, fast division and modulo, hashing, branchless code, benchmarking methodology; follow the links to the simdjson/simdutf papers."
-    why: "Hidden gem: the standard source of measured SIMD and bit-manipulation idioms with code, complementing Algorithmica's case studies."
-    verified: true
-  - id: computer-enhance
-    role: secondary
-    kind: video-series
-    title: "Computer, Enhance! Performance-Aware Programming series"
-    by: "Casey Muratori"
-    url: https://www.computerenhance.com/
-    edition_or_term: "2023-ongoing"
-    access: mixed
-    use: "Use the first parts (8086 decoding, then 'repetition testing', page faults, cache and ALU-bound loops) if the owner wants a bottom-up assembly-level path; skip the 8086 decoder homework if short on time."
-    why: "Hidden-gem video series that builds intuition for CPU cost models from the ground up, in a different style from the university courses; some content is free, some part of a paid course (access mixed, not verified in detail)."
-    verified: true
+- id: algorithmica-hpc
+  role: primary-text
+  kind: website
+  title: Algorithms for Modern Hardware (Algorithmica HPC)
+  by: Sergey Slotin (Algorithmica)
+  url: https://en.algorithmica.org/hpc/
+  edition_or_term: online book in progress (Part I Performance Engineering is the most complete)
+  access: free
+  use: 'Read in order: Complexity Models; Computer Architecture (ISA, ILP, pipeline hazards, branchless programming); Compilation; Profiling and Benchmarking; Arithmetic (floats, integer division); External Memory and Cache-Oblivious Algorithms; RAM and CPU Caches (bandwidth, latency, cache lines, prefetching, alignment, AoS/SoA, associativity); SIMD Parallelism; Case Studies (binary GCD, argmin/prefix-sum with SIMD, matrix multiplication, binary search, static B-trees).'
+  why: Best free, current treatment of making code fast on real CPUs, with measured case studies that start from textbook algorithms and end near hardware limits; the case studies are the closest thing to a set of worked examples for the node scope (cache-efficient algorithms, vectorization, bit hacks).
+  verified: true
+- id: mit-6-172
+  role: primary-course
+  kind: course
+  title: MIT 6.172 Performance Engineering of Software Systems (now 6.1060 Software Performance Engineering)
+  by: MIT (Charles E. Leiserson, Julian Shun, Saman Amarasinghe; later Leiserson and Nir Shavit)
+  url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
+  edition_or_term: OCW Fall 2018; MIT calendar lists 6.1060 for Spring 2026
+  access: free
+  use: 'Watch lectures 1-17 in order: matrix-multiply case study, Bentley''s rules, bit hacks, architecture and vectorization, C to assembly, multicore programming, races and parallelism, analysis of multithreaded algorithms (work/span), compilers, measurement and timing, storage allocation, caching and cache-oblivious algorithms, nondeterministic programming, synchronization without locks. L18-L23 (DSLs/autotuning, Leiserchess, TSP tuning, graph optimization, dynamic languages) are optional case studies. Do HW1-HW9 and Projects 1-3 (OCW ''Assignments'' and ''Projects'' pages).'
+  why: Only complete public course that teaches work/span, cache-efficient algorithms, vectorization, bit hacks and measurement together; the 2018 offering has all lecture videos, slides, assignments and project writeups free on OCW.
+  verified: true
+  course:
+    latest_term: Spring 2026 (6.1060, MIT catalog/calendar; no public course site found)
+    latest_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
+    videos: public
+    public_videos_term: Fall 2018 (OCW; also Fall 2010 on OCW)
+    public_videos_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/video_galleries/lecture-videos/
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/pages/assignments/
+- id: perf-ninja
+  role: practice
+  kind: practice-site
+  title: Performance Ninja Class (lab assignments + videos)
+  by: Denis Bakhvalov
+  url: https://github.com/dendibakh/perf-ninja
+  edition_or_term: current main (CI on Intel Alder Lake, AMD Zen3, Apple M1)
+  access: free
+  use: 'Labs in this order: misc/warmup, core_bound/vectorization_1-2, function_inlining_1, dep_chains_1-2, compiler_intrinsics_1-4; memory_bound/data_packing, loop_interchange_1-2, loop_tiling_1, swmem_prefetch_1, false_sharing_1, huge_pages_1, mem_alignment_1; bad_speculation/branches_to_cmov_1, lookup_tables_1, virtual_call_mispredict; misc/lto, pgo, io_opt1. Needs C++; watch the welcome/warmup YouTube videos.'
+  why: 'Hidden gem: bite-size, benchmark-verified labs that each isolate one micro-architectural bottleneck; the ''practice'' half that textbooks lack.'
+  verified: true
+- id: perf-book
+  role: secondary
+  kind: book
+  title: Performance Analysis and Tuning on Modern CPUs (2nd edition)
+  by: Denis Bakhvalov
+  url: https://github.com/dendibakh/perf-book
+  edition_or_term: 2nd edition (referenced as 'perf-book-2' by the Performance Ninja README); free PDF/pay-what-you-want at easyperf.net
+  access: mixed
+  use: 'Part 1 (performance analysis: benchmarking and noise, CPU microarchitecture, performance-monitoring counters, top-down analysis, sampling, Intel PT/LBR) and Part 2 (source-code tuning: core-bound, memory-bound, bad-speculation and front-end optimizations). Read alongside the Ninja labs.'
+  why: Fills the gap between algorithmic performance (Algorithmica, 6.172) and CPU counters/top-down methodology that tell you what to fix. Authoritative on TMA and hardware-counter workflow.
+  verified: true
+- id: aalto-ppc-ch2
+  role: secondary
+  kind: website
+  title: Programming Parallel Computers, chapter 2 (the shortcut case study)
+  by: Jukka Suomela et al., Aalto University
+  url: https://ppc.cs.aalto.fi/ch2/
+  edition_or_term: current
+  access: free
+  use: Follow the case study from the baseline (V0) through assembly inspection, OpenMP, instruction-level parallelism, cache-friendly access patterns, SIMD, register blocking and cache tiling (versions V1-V7).
+  why: A single, extremely well-explained optimization story with measured speedups at each step; use as a worked example before attempting Algorithmica's matmul or Project 1 of 6.172.
+  verified: true
+- id: agner-fog
+  role: reference
+  kind: docs
+  title: Agner Fog's optimization manuals
+  by: Agner Fog
+  url: https://www.agner.org/optimize/optimizing_cpp.pdf
+  edition_or_term: Optimizing software in C++ plus 'The microarchitecture of Intel, AMD and VIA CPUs' and 'Instruction tables'
+  access: free
+  use: Look up optimizing_cpp.pdf for C++-level advice; microarchitecture.pdf for pipeline/latency details per CPU generation; instruction_tables.pdf for latency/throughput numbers (also uops.info for current CPUs).
+  why: The reference every low-level optimizer ends up using; precise measured instruction costs and microarchitecture descriptions.
+  verified: true
+- id: uops-info
+  role: reference
+  kind: tool
+  title: uops.info instruction latency/throughput tables and Compiler Explorer
+  by: Abel and Reineke; Matt Godbolt
+  url: https://uops.info/
+  edition_or_term: live
+  access: free
+  use: Check latency, throughput and port usage of an instruction on a given microarchitecture; pair with godbolt.org's llvm-mca output when analyzing a loop.
+  why: Current-CPU instruction data that Agner's static PDFs cannot keep up with.
+  verified: true
+- id: drepper-memory
+  role: reference
+  kind: paper
+  title: What Every Programmer Should Know About Memory
+  by: Ulrich Drepper
+  url: https://www.akkadia.org/drepper/cpumemory.pdf
+  edition_or_term: '2007'
+  access: free
+  use: Section 6 (what programmers can do) as the software-side checklist; sections 2-5 (DRAM, caches, TLB, NUMA) are read in memory-systems.
+  why: Classic mental model for cache-friendly code; complements Algorithmica's cache chapters. Assigned only here within G4 (removed from computer-architecture).
+  verified: true
+- id: lemire-blog
+  role: reference
+  kind: website
+  title: Daniel Lemire's blog
+  by: Daniel Lemire
+  url: https://lemire.me/blog/
+  edition_or_term: ongoing
+  access: free
+  use: 'Search by topic when doing vectorization and bit-hack work: SIMD parsing/UTF-8 validation, fast division and modulo, hashing, branchless code, benchmarking methodology; follow the links to the simdjson/simdutf papers.'
+  why: 'Hidden gem: the standard source of measured SIMD and bit-manipulation idioms with code, complementing Algorithmica''s case studies.'
+  verified: true
+- id: computer-enhance
+  role: secondary
+  kind: video-series
+  title: Computer, Enhance! Performance-Aware Programming series
+  by: Casey Muratori
+  url: https://www.computerenhance.com/
+  edition_or_term: 2023-ongoing
+  access: mixed
+  use: Use the first parts (8086 decoding, then 'repetition testing', page faults, cache and ALU-bound loops) if the owner wants a bottom-up assembly-level path; skip the 8086 decoder homework if short on time.
+  why: Hidden-gem video series that builds intuition for CPU cost models from the ground up, in a different style from the university courses; some content is free, some part of a paid course (access mixed, not verified in detail).
+  verified: true
 considered:
-  - {title: "Rust Performance Book / Optimizing C++ (Agner)", url: "https://www.agner.org/optimize/", reason: "Agner kept as reference; Rust book is G1's language territory."}
-  - {title: "CMU 15-418/618 performance lectures (Performance Optimization I/II, Performance Analysis/Profiling)", url: "https://www.cs.cmu.edu/~418/schedule.html", reason: "Parallel-computing flavor, assigned to parallel-programming; the same videos are useful here for parallel profiling."}
-  - {title: "Computer Architecture: A Quantitative Approach, 7th ed.", url: "https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5", reason: "Reference for memory-hierarchy and DLP analysis; too heavy as a text for this node."}
-  - {title: "Brendan Gregg, Systems Performance 2e", url: "https://www.brendangregg.com/systems-performance-2nd-edition-book.html", reason: "System-level observability, placed in performance-analysis."}
-notes: "Primary text is a free, evolving book (Algorithmica) rather than a printed one; the alternative is Bakhvalov's book as primary-text, which I kept as secondary because the node scope is algorithm/data-structure-level optimization (cache-efficient algorithms, SIMD, bit hacks, work/span) rather than purely PMU-driven tuning. MIT 6.172's official site no longer exists in public form for the current 6.1060; OCW Fall 2018 is the newest public run with videos. Cilk (OpenCilk) is used for parallelism in 6.172; Project 1-3 use Linux machines with perf/Cachegrind. If forced to choose one practice resource, use Performance Ninja."
-split_proposal: "Possible split: 'cpu-microarchitecture-tuning' (Bakhvalov, Ninja, Agner, top-down analysis) vs 'algorithms-for-hardware' (Algorithmica, 6.172, cache-oblivious). Probably better kept as one node with an optional branch."
-prereq_changes: "Add soft: [computer-architecture] (pipeline hazards/caches are assumed)."
+- title: Rust Performance Book / Optimizing C++ (Agner)
+  url: https://www.agner.org/optimize/
+  reason: Agner kept as reference; Rust book is G1's language territory.
+- title: CMU 15-418/618 performance lectures (Performance Optimization I/II, Performance Analysis/Profiling)
+  url: https://www.cs.cmu.edu/~418/schedule.html
+  reason: Parallel-computing flavor, assigned to parallel-programming; the same videos are useful here for parallel profiling.
+- title: 'Computer Architecture: A Quantitative Approach, 7th ed.'
+  url: https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5
+  reason: Reference for memory-hierarchy and DLP analysis; too heavy as a text for this node.
+- title: Brendan Gregg, Systems Performance 2e
+  url: https://www.brendangregg.com/systems-performance-2nd-edition-book.html
+  reason: System-level observability, placed in performance-analysis.
+notes: Primary text is a free, evolving book (Algorithmica) rather than a printed one; the alternative is Bakhvalov's book as primary-text, which I kept as secondary because the node scope is algorithm/data-structure-level optimization (cache-efficient algorithms, SIMD, bit hacks, work/span) rather than purely PMU-driven tuning. MIT 6.172's official site no longer exists in public form for the current 6.1060; OCW Fall 2018 is the newest public run with videos. Cilk (OpenCilk) is used for parallelism in 6.172; Project 1-3 use Linux machines with perf/Cachegrind. If forced to choose one practice resource, use Performance Ninja.
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "easyperf.net book purchase page (products.easyperf.net/perf-book-2) and perf-ninja.com were unreachable from this environment; edition year/price of Bakhvalov's 2nd edition not confirmed; GitHub repo and README were opened."
-  - "No public 6.1060 site found for Fall 2025/Spring 2026; confirm whether newer lecture videos exist."
-  - "computerenhance.com access/pricing not examined in detail; verified only that the site loads."
+- easyperf.net book purchase page (products.easyperf.net/perf-book-2) and perf-ninja.com were unreachable from this environment; edition year/price of Bakhvalov's 2nd edition not confirmed; GitHub repo and README were opened.
+- No public 6.1060 site found for Fall 2025/Spring 2026; confirm whether newer lecture videos exist.
+- computerenhance.com access/pricing not examined in detail; verified only that the site loads.
 last_verified: 2026-11-18

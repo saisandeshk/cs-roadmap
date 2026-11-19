@@ -1,0 +1,72 @@
+id: floating-point-and-low-precision
+title: Floating Point & Low-Precision Formats
+group: G9
+paths:
+- mlsys
+hard:
+- computer-systems
+soft: []
+scope: IEEE 754, rounding and error, conditioning basics, mixed precision, bf16/fp16/FP8/MX/NVFP4 formats, scaling and quantized-GEMM numerics.
+level: intermediate
+resources:
+- id: goldberg-fp
+  role: primary-text
+  kind: article
+  title: What Every Computer Scientist Should Know About Floating-Point Arithmetic
+  by: David Goldberg
+  url: https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+  edition_or_term: ACM Computing Surveys 1991 (Oracle-hosted version with Sun appendix)
+  access: free
+  use: Sections 1-2 (rounding error, IEEE 754 formats, guard digits, cancellation) and the section on the IEEE standard.
+  why: The canonical short paper on floating-point behaviour that every systems and ML programmer meets (rounding, cancellation, ulps).
+  verified: true
+- id: fnc-python
+  role: secondary
+  kind: book
+  title: Fundamentals of Numerical Computation (Python edition)
+  by: Tobin A. Driscoll, Richard J. Braun
+  url: https://fncbook.com/python/
+  edition_or_term: SIAM textbook, free online with Julia, MATLAB and Python editions (https://fncbook.com/); Python edition opened
+  access: free
+  use: Chapter 1 only (floating-point numbers, conditioning, stability of algorithms); run the code and do the exercises.
+  why: Only free text that covers the whole scope (floating point, conditioning, numerical linear algebra, iterative/Krylov methods, ODE solvers) with runnable code in Python and exercises.
+  verified: true
+- id: higham-asna
+  role: reference
+  kind: book
+  title: Accuracy and Stability of Numerical Algorithms, 2nd edition
+  by: Nicholas J. Higham
+  url: https://www.maths.manchester.ac.uk/~higham/asna/
+  edition_or_term: SIAM 2002
+  access: paid
+  use: Chapters on floating-point arithmetic and summation (rounding-error analysis, compensated summation) when a mixed-precision result looks wrong.
+  why: The reference for rigorous rounding-error analysis; too heavy as a course text, essential as a lookup.
+  verified: true
+- id: floating-point-gui
+  role: reference
+  kind: website
+  title: The Floating-Point Guide
+  by: Floating-Point Guide authors
+  url: https://floating-point-gui.de/
+  edition_or_term: Current site
+  access: free
+  use: Quick lookups for comparing floats, rounding, language-specific pitfalls and formats.
+  why: Pragmatic cheat sheet for floating-point surprises before the formal treatment.
+  verified: true
+- id: low-precision-formats
+  role: secondary
+  kind: paper
+  title: FP8 Formats for Deep Learning; Microscaling Data Formats (MX); Pretraining LLMs with NVFP4
+  by: Micikevicius et al. (NVIDIA/Arm/Intel); Rouhani et al. (OCP); NVIDIA
+  url: https://arxiv.org/abs/2209.05433
+  edition_or_term: arXiv 2209.05433 (FP8), 2310.10537 (MX), 2509.25149 (NVFP4)
+  access: free
+  use: FP8 E4M3/E5M2 definitions and recipes; MX block-scaled formats (MXFP8/6/4); NVFP4 training recipe (scaling, rounding, Hadamard).
+  why: Primary sources for the FP8/FP4 part of the scope; short, and the block-scaling idea is what modern tensor cores implement in hardware.
+  verified: true
+considered: []
+notes: Created by splitting 'numerical-methods and gemm-and-tensor-cores' (owner decision B2, 2026-11-19); resources reused from the researched node. No course covers IEEE 754 through FP8/MX/NVFP4 in one place, so this node is text-first.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

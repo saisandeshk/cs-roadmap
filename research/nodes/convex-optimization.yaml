@@ -1,0 +1,117 @@
+id: convex-optimization
+title: Convex Optimization
+group: G2
+paths:
+- theory
+hard:
+- linear-algebra
+- calculus-multivariable
+soft:
+- matrix-calculus
+scope: Convex sets and functions, LP/QP/SOCP/SDP modeling, duality and KKT, unconstrained and constrained minimization, interior-point methods.
+level: intermediate
+resources:
+- id: bv-cvxbook
+  role: primary-text
+  kind: book
+  title: Convex Optimization
+  by: Stephen Boyd, Lieven Vandenberghe
+  url: https://web.stanford.edu/~boyd/cvxbook/
+  edition_or_term: Cambridge University Press 2004 (many printings); free PDF on the author page
+  access: free
+  use: Chapters 2-5 (convex sets, convex functions, convex problems, duality/KKT) in full; Chapter 9 (unconstrained minimization, gradient and Newton methods); Chapter 10 only for equality-constrained Newton; Chapter 11 (interior point) as a later pass. Do the exercises plus the book's additional-exercises set.
+  why: The standard text on convex optimization; clear modelling-first treatment (recognise and formulate convex problems) and the book all other courses reference.
+  verified: false
+- id: ee364a
+  role: primary-course
+  kind: course
+  title: Stanford EE364A Convex Optimization I
+  by: Stephen Boyd (with Babak Ayazifar in Winter 2025-26 per Stanford)
+  url: https://web.stanford.edu/class/ee364a/
+  edition_or_term: 'Winter 2025-26 (CGOE enrolled-only per course page via search); public lectures: 2023 YouTube playlist'
+  access: free
+  use: Boyd's lectures matching book chapters 2-5 and 9-11 (convex sets/functions, problems, duality, algorithms); homework and slides from the course page; use after or alongside EE127 when you want the original treatment and more modelling examples.
+  why: The canonical convex optimization lecture series by the book's author; kept secondary only because the newest run is enrolled-only and the pages could not be opened from the research environment.
+  verified: false
+  course:
+    latest_term: Winter 2025-26 (Stanford course page seen via search; says lectures on CGOE for enrolled students)
+    latest_url: https://web.stanford.edu/class/ee364a/
+    videos: enrolled-only
+    public_videos_term: 2023 (Stanford Online YouTube, Stephen Boyd)
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMJqxxviPa4AmDClvcbHi6h
+    assignments: public
+    assignments_url: https://web.stanford.edu/class/ee364a/
+- id: eecs127
+  role: secondary
+  kind: course
+  title: UC Berkeley EECS 127/227A Optimization Models in Engineering
+  by: Gireeja Ranade (Spring 2026), Somayeh Sojoudi (Fall 2025)
+  url: https://eecs127.github.io/
+  edition_or_term: Spring 2026
+  access: free
+  use: Lectures 16-22 (weak/strong duality, KKT, Fenchel conjugates) and 23-25 (LPs, QPs, SOCPs) as a fresher public alternative to the EE364a recordings; homework with posted solutions and the free course reader.
+  why: 'Newest course with fully public lecture recordings (Spring 2026, Spring 2024 and Fall 2022 playlists), public homework and discussion PDFs with solutions, free course reader and a schedule that mixes linear algebra review, SGD, duality, KKT and Newton''s method for ML-minded students. Pairing with Boyd-Vandenberghe is by topic, not chapter: EE127 follows its own sequence and cites Calafiore-El Ghaoui plus BV per lecture.'
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://eecs127.github.io/
+    videos: public
+    public_videos_term: Spring 2026
+    public_videos_url: https://www.youtube.com/playlist?list=PLnocShPlK-FvYcRd6us0okRTYKZtqe4B9
+    assignments: public
+    assignments_url: https://eecs127.github.io/
+- id: bubeck
+  role: reference
+  kind: book
+  title: 'Convex Optimization: Algorithms and Complexity'
+  by: Sebastien Bubeck
+  url: https://arxiv.org/abs/1405.4980
+  edition_or_term: Foundations and Trends in ML 2015 / arXiv 1405.4980
+  access: free
+  use: 'Chapter 3 (dimension-free convex optimization: gradient descent, acceleration, lower bounds), 4 (mirror descent) and 6 (convex optimization and randomness, SGD) for the theory path.'
+  why: Compact rigorous treatment of oracle complexity and first-order method rates; the theory-path complement to Boyd's modelling-first book.
+  verified: true
+- id: cvxpy
+  role: practice
+  kind: docs
+  title: 'CVXPY documentation: DCP tutorial and examples'
+  by: CVXPY developers (Stanford/Berkeley et al.)
+  url: https://www.cvxpy.org/examples/index.html
+  edition_or_term: Current docs; tutorial https://www.cvxpy.org/tutorial/dcp/index.html
+  access: free
+  use: Work the Disciplined Convex Programming tutorial, then the Basic examples (least squares, linear program, quadratic program, SOCP, SDP) and the Machine learning section (regression, SVM, logistic regression); derive each problem's KKT conditions by hand first and compare.
+  why: 'Hands-on modelling practice: lets you check hand-derived duals/KKT conditions against a solver.'
+  verified: true
+considered:
+- title: CMU 10-725 Convex Optimization (Ryan Tibshirani)
+  url: https://www.stat.cmu.edu/~ryantibs/convexopt/
+  reason: Excellent notes and slides (Fall 2019 page is the newest found; Fall 2018 also available), proximal and first-order emphasis; no verified public video here; EE127 + EE364a cover the same ground.
+- title: Nocedal & Wright, Numerical Optimization
+  url: https://link.springer.com/book/10.1007/978-0-387-40065-5
+  reason: Standard text for smooth unconstrained/constrained methods; heavier numerical-analysis detail than needed; URL returned HTTP 429 and was not opened.
+- title: CMU 10-801 Advanced Optimization (Suvrit Sra)
+  url: https://www.cs.cmu.edu/~suvrit/teach/aopt.html
+  reason: Advanced nonsmooth/nonconvex topics; later reading for theory path.
+- title: UW-Madison CS/ECE/ISyE 524 Introduction to Optimization (Laurent Lessard)
+  url: https://laurentlessard.com/teaching/524-intro-to-optimization/
+  reason: Julia/JuMP-based modelling course with public materials; more OR-flavored (LP/IP) than ML.
+- title: Princeton ELE522 Large-Scale Optimization for Data Science (Yuxin Chen)
+  url: https://yuxinchen2020.github.io/ele522_optimization/
+  reason: Strong theory notes on first-order and proximal methods for data science; advanced.
+- title: UC Berkeley EE227C Convex Optimization and Approximation (Spring 2018)
+  url: https://ee227c.github.io/
+  reason: Theory-leaning companion course site (Berkeley, Spring 2018); advanced.
+- title: MIT 15.084J Nonlinear Programming (Spring 2004)
+  url: https://ocw.mit.edu/courses/15-084j-nonlinear-programming-spring-2004/
+  reason: Older OR-oriented course; superseded by EE127/EE364a for ML audiences.
+- title: MIT 6.079 Introduction to Convex Optimization (Fall 2009)
+  url: https://ocw.mit.edu/courses/6-079-introduction-to-convex-optimization-fall-2009/
+  reason: OCW run of the Boyd-style course; EE364a/EE127 are newer or have more public material.
+- title: Stanford EE364B Convex Optimization II
+  url: https://see.stanford.edu/Course/EE364B
+  reason: Follow-up on advanced algorithms (subgradient, ADMM); beyond this node.
+notes: Created by splitting 'optimization' (owner decision B1, 2026-11-19); resources reused from the researched node. Primary course is EE364a (2023 public videos) because it matches the convex-theory scope; EECS 127 Spring 2026 is the public-video alternative.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

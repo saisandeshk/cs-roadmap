@@ -1,120 +1,132 @@
 id: security-fundamentals
 title: Computer Security Fundamentals
 group: G12
-paths: [core, security]
-hard: [computer-systems]
-soft: [computer-networking]
-scope: "Threat models, memory-safety vulnerabilities, crypto usage basics, web and network security basics."
-
+paths:
+- core
+- security
+hard:
+- computer-systems
+soft:
+- computer-networking
+scope: Threat models, memory-safety vulnerabilities, crypto usage basics, web and network security basics.
 level: intro
-estimated_hours: 110
 resources:
-  - id: cs161-textbook
-    role: primary-text
-    kind: book
-    title: "Computer Security (the CS 161 textbook)"
-    by: "David Wagner, Nicholas Weaver, Peyrin Kao, Fuzail Shakir, Andrew Law, Nicholas Ngai"
-    url: https://textbook.cs161.org/
-    edition_or_term: "Online, actively maintained (changelog on GitHub); PDF regenerated after corrections"
-    access: free
-    use: "Ch. 1 Security Principles; Ch. 2-4 memory safety (x86 and call stack, vulnerabilities, mitigations); Ch. 5-16 crypto usage (symmetric, hashes, MACs, DH, public-key, signatures, certificates, passwords); as an overview of web and network security read only Ch. 19-22 (SOP, cookies, CSRF, XSS) and Ch. 30-31 (TCP/UDP, TLS). The full web (Ch. 17-24) and network (Ch. 25-39) parts are assigned in web-security and network-security."
-    why: "The best single survey text: written for exactly this node's scope, current (TLS, Signal, Bitcoin case studies), free, and paired with a public course and public projects. Breadth-first; depth lives in the downstream nodes."
-    verified: true
-  - id: cs161-fa26
-    role: primary-course
-    kind: course
-    title: "UC Berkeley CS 161: Computer Security"
-    by: "David Wagner, Peyrin Kao (Fall 2026); Nicholas Weaver for the networking block in other terms"
-    url: https://cs161.org/
-    edition_or_term: "Fall 2026"
-    access: free
-    use: "Watch the lecture recordings for security principles, memory safety, crypto, web, and isolation/hardware/AI security; from the networking block watch only How the Internet Works and TLS (the rest of that block is assigned in network-security); do Project 1 (memory safety, seven questions Remus..Rigel), Project 3 (web; flags) and the exam-prep discussion worksheets with solutions. Project 2 (design a secure file-sharing system, a crypto-usage exercise) is the best capstone."
-    why: "The standard intro-security course. Lectures are public on YouTube, projects/homeworks/discussions with solutions are public. Matches the textbook chapter by chapter."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://fa26.cs161.org/
-      videos: public
-      public_videos_term: "Fall 2025 (full YouTube playlist); Fall 2023 playlist also public. Fall 2026 lecture pages also link YouTube recordings."
-      public_videos_url: https://www.youtube.com/playlist?list=PLfBkt1-_BHX8kQZhisgrCLAnuAd3-Ek5U
-      assignments: public
-      assignments_url: https://fa26.cs161.org/proj1/
-  - id: bsrs
-    role: secondary
-    kind: book
-    title: "Building Secure and Reliable Systems"
-    by: "Heather Adkins, Betsy Beyer, Paul Blankinship, Piotr Lewandowski, Ana Oprea, Adam Stubblefield (Google)"
-    url: https://google.github.io/building-secure-and-reliable-systems/raw/toc.html
-    edition_or_term: "O'Reilly 2020; free online"
-    access: free
-    use: "Ch. 1-2 (adversaries, understanding threats), 4 (design tradeoffs), 5-6 (least privilege, understandability), 8 (resilience), 13-14 (code review, deployment)."
-    why: "Fills the gap CS 161 leaves: how security is designed, reviewed and operated in a real organization (threat modeling, least privilege at scale, incident response). Also the owner's ai-atlas systems-stage pick."
-    verified: true
-  - id: owasp-threat-modeling
-    role: reference
-    kind: docs
-    title: "OWASP Threat Modeling Cheat Sheet"
-    by: "OWASP Cheat Sheet Series"
-    url: https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html
-    edition_or_term: "Living document"
-    access: free
-    use: "The four questions, trust boundaries, data-flow diagrams, STRIDE; apply it to Project 2 (secure file sharing) and to one system you built."
-    why: "CS 161 teaches principles but little explicit threat-modeling method; this is a short, concrete procedure. Also in the owner's ai-atlas security section."
-    verified: true
-  - id: saltzer-schroeder
-    role: reference
-    kind: paper
-    title: "The Protection of Information in Computer Systems"
-    by: "Jerome Saltzer, Michael Schroeder (Proc. IEEE, 1975)"
-    url: https://web.mit.edu/Saltzer/www/publications/protection/
-    edition_or_term: "1975"
-    access: free
-    use: "Section I.A.3 design principles (least privilege, fail-safe defaults, economy of mechanism, complete mediation, open design, separation of privilege, least common mechanism, psychological acceptability)."
-    why: "Primary source for the security principles every course cites; 20 minutes."
-    verified: true
-  - id: anderson-se3
-    role: reference
-    kind: book
-    title: "Security Engineering: A Guide to Building Dependable Distributed Systems, 3rd edition"
-    by: "Ross Anderson"
-    url: https://www.cl.cam.ac.uk/~rja14/book.html
-    edition_or_term: "3rd edition (Wiley, 2020)"
-    access: mixed
-    use: "Ch. 1-3 (what is security engineering, protocols, psychology and usability) and Ch. 7-8 (economics, policy) as the human/economic layer; consult other chapters on demand (banking, biometrics, side channels)."
-    why: "Covers the socio-technical and economic side (incentives, usability, failure case studies) that the technical texts skip. Author page: 2nd/1st editions fully free; 3rd edition has sample chapters, the author states chapters were taken down at the publisher's request and will return free after a delay (page not fully clear on current status)."
-    verified: true
-  - id: pwncollege-intro
-    role: practice
-    kind: practice-site
-    title: "pwn.college: Intro to Cybersecurity dojo (+ Linux Luminarium, Computing 101 as ramp)"
-    by: "Yan Shoshitaishvili et al., Arizona State University"
-    url: https://pwn.college/intro-to-cybersecurity/
-    edition_or_term: "Rolling, 7 modules / ~183 challenges"
-    access: free
-    use: "Modules Cryptography, Access Control and Integrated Security as the hands-on companion to CS 161; Reverse Engineering and Binary Exploitation modules are the bridge into binary-exploitation (the Web Security and Intercepting Communication modules are assigned in web-security and network-security). Do Linux Luminarium first if the command line is shaky."
-    why: "Hands-on, auto-graded environment with browser-hosted VM; far more practice volume than CS 161's three projects."
-    verified: true
-  - id: overthewire-bandit
-    role: practice
-    kind: practice-site
-    title: "OverTheWire: Bandit and Natas wargames"
-    by: "OverTheWire community"
-    url: https://overthewire.org/wargames/bandit/
-    edition_or_term: "Rolling"
-    access: free
-    use: "Bandit levels 0-20 (Unix and shell security habits), then Natas levels 0-15 (web basics)."
-    why: "Lightweight, zero-setup warm-up for shell and web basics before pwn.college or CS 161 projects."
-    verified: true
+- id: cs161-textbook
+  role: primary-text
+  kind: book
+  title: Computer Security (the CS 161 textbook)
+  by: David Wagner, Nicholas Weaver, Peyrin Kao, Fuzail Shakir, Andrew Law, Nicholas Ngai
+  url: https://textbook.cs161.org/
+  edition_or_term: Online, actively maintained (changelog on GitHub); PDF regenerated after corrections
+  access: free
+  use: Ch. 1 Security Principles; Ch. 2-4 memory safety (x86 and call stack, vulnerabilities, mitigations); Ch. 5-16 crypto usage (symmetric, hashes, MACs, DH, public-key, signatures, certificates, passwords); as an overview of web and network security read only Ch. 19-22 (SOP, cookies, CSRF, XSS) and Ch. 30-31 (TCP/UDP, TLS). The full web (Ch. 17-24) and network (Ch. 25-39) parts are assigned in web-security and network-security.
+  why: 'The best single survey text: written for exactly this node''s scope, current (TLS, Signal, Bitcoin case studies), free, and paired with a public course and public projects. Breadth-first; depth lives in the downstream nodes.'
+  verified: true
+- id: cs161-fa26
+  role: primary-course
+  kind: course
+  title: 'UC Berkeley CS 161: Computer Security'
+  by: David Wagner, Peyrin Kao (Fall 2026); Nicholas Weaver for the networking block in other terms
+  url: https://cs161.org/
+  edition_or_term: Fall 2026
+  access: free
+  use: Watch the lecture recordings for security principles, memory safety, crypto, web, and isolation/hardware/AI security; from the networking block watch only How the Internet Works and TLS (the rest of that block is assigned in network-security); do Project 1 (memory safety, seven questions Remus..Rigel), Project 3 (web; flags) and the exam-prep discussion worksheets with solutions. Project 2 (design a secure file-sharing system, a crypto-usage exercise) is the best capstone.
+  why: The standard intro-security course. Lectures are public on YouTube, projects/homeworks/discussions with solutions are public. Matches the textbook chapter by chapter.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://fa26.cs161.org/
+    videos: public
+    public_videos_term: Fall 2025 (full YouTube playlist); Fall 2023 playlist also public. Fall 2026 lecture pages also link YouTube recordings.
+    public_videos_url: https://www.youtube.com/playlist?list=PLfBkt1-_BHX8kQZhisgrCLAnuAd3-Ek5U
+    assignments: public
+    assignments_url: https://fa26.cs161.org/proj1/
+- id: bsrs
+  role: secondary
+  kind: book
+  title: Building Secure and Reliable Systems
+  by: Heather Adkins, Betsy Beyer, Paul Blankinship, Piotr Lewandowski, Ana Oprea, Adam Stubblefield (Google)
+  url: https://google.github.io/building-secure-and-reliable-systems/raw/toc.html
+  edition_or_term: O'Reilly 2020; free online
+  access: free
+  use: Ch. 1-2 (adversaries, understanding threats), 4 (design tradeoffs), 5-6 (least privilege, understandability), 8 (resilience), 13-14 (code review, deployment).
+  why: 'Fills the gap CS 161 leaves: how security is designed, reviewed and operated in a real organization (threat modeling, least privilege at scale, incident response). Also the owner''s ai-atlas systems-stage pick.'
+  verified: true
+- id: owasp-threat-modeling
+  role: reference
+  kind: docs
+  title: OWASP Threat Modeling Cheat Sheet
+  by: OWASP Cheat Sheet Series
+  url: https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html
+  edition_or_term: Living document
+  access: free
+  use: The four questions, trust boundaries, data-flow diagrams, STRIDE; apply it to Project 2 (secure file sharing) and to one system you built.
+  why: CS 161 teaches principles but little explicit threat-modeling method; this is a short, concrete procedure. Also in the owner's ai-atlas security section.
+  verified: true
+- id: saltzer-schroeder
+  role: reference
+  kind: paper
+  title: The Protection of Information in Computer Systems
+  by: Jerome Saltzer, Michael Schroeder (Proc. IEEE, 1975)
+  url: https://web.mit.edu/Saltzer/www/publications/protection/
+  edition_or_term: '1975'
+  access: free
+  use: Section I.A.3 design principles (least privilege, fail-safe defaults, economy of mechanism, complete mediation, open design, separation of privilege, least common mechanism, psychological acceptability).
+  why: Primary source for the security principles every course cites.
+  verified: true
+- id: anderson-se3
+  role: reference
+  kind: book
+  title: 'Security Engineering: A Guide to Building Dependable Distributed Systems, 3rd edition'
+  by: Ross Anderson
+  url: https://www.cl.cam.ac.uk/~rja14/book.html
+  edition_or_term: 3rd edition (Wiley, 2020)
+  access: mixed
+  use: Ch. 1-3 (what is security engineering, protocols, psychology and usability) and Ch. 7-8 (economics, policy) as the human/economic layer; consult other chapters on demand (banking, biometrics, side channels).
+  why: 'Covers the socio-technical and economic side (incentives, usability, failure case studies) that the technical texts skip. Author page: 2nd/1st editions fully free; 3rd edition has sample chapters, the author states chapters were taken down at the publisher''s request and will return free after a delay (page not fully clear on current status).'
+  verified: true
+- id: pwncollege-intro
+  role: practice
+  kind: practice-site
+  title: 'pwn.college: Intro to Cybersecurity dojo (+ Linux Luminarium, Computing 101 as ramp)'
+  by: Yan Shoshitaishvili et al., Arizona State University
+  url: https://pwn.college/intro-to-cybersecurity/
+  edition_or_term: Rolling, 7 modules / ~183 challenges
+  access: free
+  use: Modules Cryptography, Access Control and Integrated Security as the hands-on companion to CS 161; Reverse Engineering and Binary Exploitation modules are the bridge into binary-exploitation (the Web Security and Intercepting Communication modules are assigned in web-security and network-security). Do Linux Luminarium first if the command line is shaky.
+  why: Hands-on, auto-graded environment with browser-hosted VM; far more practice volume than CS 161's three projects.
+  verified: true
+- id: overthewire-bandit
+  role: practice
+  kind: practice-site
+  title: 'OverTheWire: Bandit and Natas wargames'
+  by: OverTheWire community
+  url: https://overthewire.org/wargames/bandit/
+  edition_or_term: Rolling
+  access: free
+  use: 'Natas levels 0-15 (web basics: https://overthewire.org/wargames/natas/). Bandit levels 0-20 are done in dev-environment.'
+  why: Lightweight, zero-setup warm-up for shell and web basics before pwn.college or CS 161 projects.
+  verified: true
 considered:
-  - {title: "Stanford CS 155 Computer and Network Security (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Excellent project handouts (control hijacking, web, network) are public, but lecture recordings are Canvas-only; CS 161 has public videos and a free textbook."}
-  - {title: "MIT 6.566 Computer Systems Security (Spring 2026)", url: "https://css.csail.mit.edu/6.566/2026/", reason: "Public videos and labs, but paper-based and aimed at seniors/grads; used as primary course for systems-security instead."}
-  - {title: "MIT 6.1600 Foundations of Computer Security (Fall 2023)", url: "https://61600.csail.mit.edu/2023/", reason: "Good, more formal alternative; less hands-on than CS 161."}
-  - {title: "SEED Labs (Wenliang Du)", url: "https://seedsecuritylabs.org/", reason: "Large set of VM-based labs with a companion textbook; its network labs are used as practice in network-security; for this node CS 161 projects plus pwn.college suffice."}
-  - {title: "picoCTF / CMU CyLab Security Academy", url: "https://picoctf.org/", reason: "Friendly beginner CTF; site recently rebranded as CyLab Security Academy; good optional warm-up, overlaps pwn.college."}
-notes: "CS 161 (textbook + course + projects) is the clear primary: it is the only intro security course with public lectures, a free maintained textbook and public projects. The Fall 2026 term is in progress (project 3 due Nov 20 2026) and its lectures link YouTube recordings; I verified the Fall 2025 and Fall 2023 playlists exist. Berkeley's autograder is not public, so projects are self-checked (hand-in not available); starter code and specs are public."
+- title: Stanford CS 155 Computer and Network Security (Spring 2026)
+  url: https://cs155.stanford.edu/
+  reason: Excellent project handouts (control hijacking, web, network) are public, but lecture recordings are Canvas-only; CS 161 has public videos and a free textbook.
+- title: MIT 6.566 Computer Systems Security (Spring 2026)
+  url: https://css.csail.mit.edu/6.566/2026/
+  reason: Public videos and labs, but paper-based and aimed at seniors/grads; used as primary course for systems-security instead.
+- title: MIT 6.1600 Foundations of Computer Security (Fall 2023)
+  url: https://61600.csail.mit.edu/2023/
+  reason: Good, more formal alternative; less hands-on than CS 161.
+- title: SEED Labs (Wenliang Du)
+  url: https://seedsecuritylabs.org/
+  reason: Large set of VM-based labs with a companion textbook; its network labs are used as practice in network-security; for this node CS 161 projects plus pwn.college suffice.
+- title: picoCTF / CMU CyLab Security Academy
+  url: https://picoctf.org/
+  reason: Friendly beginner CTF; site recently rebranded as CyLab Security Academy; good optional warm-up, overlaps pwn.college.
+notes: 'CS 161 (textbook + course + projects) is the clear primary: it is the only intro security course with public lectures, a free maintained textbook and public projects. The Fall 2026 term is in progress (project 3 due Nov 20 2026) and its lectures link YouTube recordings; I verified the Fall 2025 and Fall 2023 playlists exist. Berkeley''s autograder is not public, so projects are self-checked (hand-in not available); starter code and specs are public.'
 split_proposal: null
-prereq_changes: "None required. Consider adding soft: [discrete-math] only for the crypto block; the crypto usage taught here needs no number theory."
+prereq_changes: null
 open_questions:
-  - "CS 161 Fall 2026 YouTube playlist URL in the page source appeared truncated (PLJTQO2r98KU8); individual recording links work. The Fall 2025 playlist is the verified full public playlist."
-  - "Anderson 3e: could not confirm which chapters are currently free online."
+- CS 161 Fall 2026 YouTube playlist URL in the page source appeared truncated (PLJTQO2r98KU8); individual recording links work. The Fall 2025 playlist is the verified full public playlist.
+- 'Anderson 3e: could not confirm which chapters are currently free online.'
 last_verified: 2026-11-18

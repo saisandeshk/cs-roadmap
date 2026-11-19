@@ -1,0 +1,70 @@
+id: deep-learning-theory
+title: Theory of Deep Learning
+group: G3
+paths:
+- theory
+optional: true
+hard:
+- learning-theory
+- deep-learning-fundamentals
+soft: []
+scope: Approximation, optimization and generalization of overparameterized networks, NTK, implicit bias, double descent.
+level: advanced
+resources:
+- id: telgarsky-dlt
+  role: primary-text
+  kind: website
+  title: Deep learning theory lecture notes
+  by: Matus Telgarsky
+  url: https://mjt.cs.illinois.edu/dlt/
+  edition_or_term: Alpha version v0.0 (2021-10-27); site live
+  access: free
+  use: Approximation (universal approximation, Barron norm, benefits of depth), optimization (convex optimization, NTK proofs, nonsmoothness), and generalization chapters (Rademacher and covering bounds for networks).
+  why: 'Gap: the generalization-for-deep-learning unit needs a theorem-proof treatment of what neural nets can represent, optimize and generalize; these notes provide clean, focused proofs.'
+  verified: true
+- id: cs229m
+  role: primary-course
+  kind: course
+  title: Stanford STATS214 / CS229M Machine Learning Theory
+  by: Stanford (Tengyu Ma 2021; Percy Liang earlier; Tselil Schramm Fall 2024)
+  url: https://tselilschramm.org/mltheory/stats214-fall24.html
+  edition_or_term: Fall 2024 page (instructor Schramm); public lecture videos are Fall 2021 (Tengyu Ma)
+  access: free
+  use: 'The deep-learning parts of the Fall 2021 lectures and notes: implicit regularization, NTK, double descent and generalization of overparameterized networks.'
+  why: Only public graduate course that goes from classical uniform convergence to modern deep-learning generalization, with lecture videos and typed notes. The recent term (Fall 2024) lists no public recordings or problem sets, so the 2021 videos plus the notes carry the load.
+  verified: true
+  course:
+    latest_term: Fall 2024 (Schramm); newer Stanford offerings not located
+    latest_url: https://tselilschramm.org/mltheory/stats214-fall24.html
+    videos: none
+    public_videos_term: Fall 2021 (Tengyu Ma)
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rP8nAmISxFINlGKSK4rbLKh
+    assignments: unknown
+- id: bach-ltfp
+  role: secondary
+  kind: book
+  title: Learning Theory from First Principles
+  by: Francis Bach
+  url: https://www.di.ens.fr/~fbach/ltfp_book.pdf
+  edition_or_term: MIT Press 2024; free author PDF (version dated May 26, 2025, about 470 pp.)
+  access: free
+  use: 'Ch. 9 (neural networks) and 12 (overparameterized models: implicit bias, double descent, lazy regime/NTK).'
+  why: 'Gap: modern, unified treatment including overparameterized models, double descent and bandits missing in S-S&B; rigorous and self-contained; free PDF from the author.'
+  verified: true
+- id: bmr-statistical-viewpoint
+  role: reference
+  kind: paper
+  title: 'Deep learning: a statistical viewpoint'
+  by: Peter L. Bartlett, Andrea Montanari, Alexander Rakhlin
+  url: https://arxiv.org/abs/2103.09177
+  edition_or_term: Acta Numerica 2021 (arXiv 2103.09177)
+  access: free
+  use: Read the sections on benign overfitting, implicit regularization and interpolation to see how the classical bounds are rethought for overparameterized models.
+  why: 'Gap: the 30-page survey that connects classical bounds to modern phenomena; a good capstone reading.'
+  verified: true
+considered: []
+notes: Created by splitting 'learning-theory' (owner decision B8, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

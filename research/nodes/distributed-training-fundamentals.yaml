@@ -1,175 +1,190 @@
 id: distributed-training-fundamentals
-title: "Distributed Training I: Collectives, DP & Sharding"
+title: 'Distributed Training I: Collectives, DP & Sharding'
 group: G9
-paths: [mlsys]
-hard: [dl-engineering, ml-performance-modeling]
-soft: [computer-networking, distributed-systems-fundamentals]
-scope: "Collectives, NCCL, data parallelism, ZeRO/FSDP, compute-communication overlap, mixed precision at scale."
-
+paths:
+- mlsys
+hard:
+- dl-engineering
+- ml-performance-modeling
+soft:
+- computer-networking
+- distributed-systems-fundamentals
+scope: Collectives, NCCL, data parallelism, ZeRO/FSDP, compute-communication overlap, mixed precision at scale.
 level: advanced
-estimated_hours: 55
 resources:
-  - id: ultrascale-playbook
-    role: primary-text
-    kind: book
-    title: "The Ultra-Scale Playbook: Training LLMs on GPU Clusters"
-    by: "Nouamane Tazi, Ferdinand Mom, Haojun Zhao, Phuc Nguyen, Mohamed Mekkouri, Leandro Werra, Thomas Wolf (Hugging Face)"
-    url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
-    edition_or_term: "Feb 2025 (interactive book; PDF available; companion repo picotron)"
-    access: free
-    use: "High-Level Overview; First Steps: Training on One GPU (memory usage, activation recomputation, gradient accumulation); Data Parallelism (including ZeRO-1/2/3); Appendix A0 Parallel Programming Crash Course (collectives), A1 Distributed Training Profiling, A3 Math for Compute/Communication Overlap. Leave TP/PP/CP/EP and Finding the Best Training Configuration for the next node."
-    why: "Best single narrative from one GPU to thousands, with measured benchmarks (4,000+ runs up to 512 GPUs) and a collectives primer; free and written for practitioners."
-    verified: true
-  - id: cs336-ddp
-    role: primary-course
-    kind: course
-    title: "Stanford CS336 Language Modeling from Scratch (parallelism lectures + Assignment 2 distributed training)"
-    by: "Percy Liang, Tatsunori Hashimoto (Stanford)"
-    url: https://cs336.stanford.edu/
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Lectures 7 and 8 (Parallelism); Assignment 2: distributed data parallel (naive, then flat/bucketed with overlap) and optimizer-state sharding, plus the written communication-cost analysis."
-    why: "Graded, test-backed implementation of DDP with overlap and sharded optimizer on a real Transformer; videos are public."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://cs336.stanford.edu/
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
-      assignments: public-with-autograder
-      assignments_url: https://github.com/stanford-cs336/assignment2-systems
-  - id: scaling-book-sharding
-    role: secondary
-    kind: book
-    title: "How to Scale Your Model, Ch. 3 Sharded Matrices and Ch. 5 Training Parallelism, plus GPU chapter (Ch. 5 is read only here)"
-    by: "Google DeepMind (Austin et al.)"
-    url: https://jax-ml.github.io/scaling-book/sharding/
-    edition_or_term: "2025"
-    access: free
-    use: "Ch. 3 (sharding notation, AllGather/ReduceScatter/AllReduce/AllToAll costs), Ch. 5 (https://jax-ml.github.io/scaling-book/training/) for data/FSDP/tensor/pipeline strategy selection by communication cost, Ch. 12 (https://jax-ml.github.io/scaling-book/gpus/) for GPU collective bandwidth."
-    why: "The quantitative treatment of collectives and when each strategy becomes communication-bound; gives the formulas the Playbook only states."
-    verified: true
-  - id: mlsysbook-vol2-collectives
-    role: secondary
-    kind: book
-    title: "Scaling Machine Learning Systems (Vol. II), Ch. 5 Collective Communication and Ch. 6 Distributed Training"
-    by: "Vijay Janapa Reddi (Harvard) et al."
-    url: https://mlsysbook.ai/vol2/05_collective_communication/05_collective_communication.html
-    edition_or_term: "Vol. II, online 2026"
-    access: free
-    use: "Ch. 5 (ring/tree algorithms, alpha-beta cost models, NCCL-style topologies) and Ch. 6 (https://mlsysbook.ai/vol2/06_distributed_training/06_distributed_training.html: data parallelism, ZeRO/FSDP, overlap)."
-    why: "Textbook-style derivations of collective algorithms and cost models; useful if the Playbook feels too empirical."
-    verified: true
-  - id: zero-paper
-    role: reference
-    kind: paper
-    title: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models"
-    by: "Samyam Rajbhandari et al. (Microsoft)"
-    url: https://arxiv.org/abs/1910.02054
-    edition_or_term: "SC 2020"
-    access: free
-    use: "Sections 3-5: memory model, ZeRO-DP stages 1-3, communication volume analysis."
-    why: "Primary source for sharding of optimizer state, gradients, parameters."
-    verified: true
-  - id: pytorch-ddp-fsdp-papers
-    role: reference
-    kind: paper
-    title: "PyTorch Distributed: Experiences on Accelerating Data Parallel Training; PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel"
-    by: "Shen Li et al. (Meta); Yanli Zhao et al. (Meta)"
-    url: https://arxiv.org/abs/2006.15704
-    edition_or_term: "VLDB 2020 (DDP); VLDB 2023 (FSDP, arXiv 2304.11277)"
-    access: free
-    use: "DDP paper: gradient bucketing and overlap; FSDP paper: sharding units, prefetching, rate limiting."
-    why: "How the production framework implements the ideas, including pitfalls found at Meta scale."
-    verified: true
-  - id: fsdp2-docs
-    role: reference
-    kind: docs
-    title: "PyTorch FSDP2 (fully_shard) tutorial and API"
-    by: "PyTorch"
-    url: https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html
-    edition_or_term: "PyTorch 2.15 docs"
-    access: free
-    use: "Getting Started with FSDP2 tutorial; fully_shard API (https://docs.pytorch.org/docs/stable/distributed.fsdp.fully_shard.html) including mixed precision policies and per-parameter sharding; also the DDP tutorial (https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html)."
-    why: "The current supported API for sharded training in PyTorch."
-    verified: true
-  - id: nccl-docs
-    role: reference
-    kind: docs
-    title: "NCCL documentation (Overview, Collective Operations, environment variables, troubleshooting)"
-    by: "NVIDIA"
-    url: https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html
-    edition_or_term: "NCCL 2.32.3 docs"
-    access: free
-    use: "Overview, Collective Operations (https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html), and tuning/debug env vars (NCCL_DEBUG, topology) when diagnosing slow or hung jobs."
-    why: "Authoritative semantics and algorithms for the library every GPU job uses."
-    verified: true
-  - id: mixed-precision
-    role: reference
-    kind: paper
-    title: "Mixed Precision Training (and PyTorch AMP notes)"
-    by: "Paulius Micikevicius et al. (NVIDIA, Baidu)"
-    url: https://arxiv.org/abs/1710.03740
-    edition_or_term: "ICLR 2018; PyTorch AMP docs https://docs.pytorch.org/docs/stable/notes/amp_examples.html"
-    access: free
-    use: "FP32 master weights and loss scaling; then BF16 AMP usage in the PyTorch notes; FP8 recipes are in gemm-and-tensor-cores."
-    why: "Covers the mixed-precision part of the scope with the original rationale."
-    verified: true
-  - id: stas-ml-engineering
-    role: secondary
-    kind: book
-    title: "Machine Learning Engineering Open Book"
-    by: "Stas Bekman"
-    url: https://github.com/stas00/ml-engineering
-    edition_or_term: "living document, active 2026"
-    access: free
-    use: "Network and Orchestration chapters (inter-node bandwidth, benchmarking collectives with all_reduce_bench), Training chapters (debugging hangs, performance), SLURM."
-    why: "Hidden gem of hard-won practitioner knowledge from BLOOM/IDEFICS training: benchmarks, failure diagnosis, cluster setup; the practical side that the papers omit."
-    verified: true
-  - id: cmu-15442-distributed
-    role: practice
-    kind: practice-site
-    title: "CMU 15-442 Assignment: Distributed training with MPI and NumPy (data parallel, tensor parallel, ZeRO-3)"
-    by: "Zhihao Jia et al. (CMU)"
-    url: https://github.com/mlsyscourse/assignment-distributed-training
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Parts 1 (split_train), 7 (DP gradient all-reduce) and 8-9 (ZeRO Stage 3 FC layer and ZeroDPAdam) with the provided pytest + mpirun tests (no GPU needed). Parts 2-6 (tensor-parallel layer init and forward/backward communication) are in model-parallelism."
-    why: "Fully runnable on a laptop with MPI; forces you to write the collective choreography of ZeRO-3 yourself. Autograder is Autolab but local tests are included."
-    verified: true
-  - id: lambda-guide
-    role: practice
-    kind: practice-site
-    title: "Lambda Labs Distributed Training Guide"
-    by: "Lambda Labs ML team"
-    url: https://github.com/LambdaLabsML/distributed-training-guide
-    edition_or_term: "active repo (MIT)"
-    access: free
-    use: "Chapters 1-4 (single-GPU script, DDP multi-GPU/multi-node, launching on clusters, FSDP) and 9 (diagnosing errors); run on 2+ GPUs or CPU gloo."
-    why: "Minimal, runnable scripts that evolve a single-GPU trainer into DDP then FSDP; best on-ramp to real multi-node runs."
-    verified: true
-  - id: picotron-dp
-    role: practice
-    kind: practice-site
-    title: "Picotron (data parallel and process group files) and the Hugging Face playbook companion"
-    by: "Hugging Face"
-    url: https://github.com/huggingface/picotron
-    edition_or_term: "active repo; tutorial playlist and picotron_tutorial repo linked from README"
-    access: free
-    use: "Read process_group_manager.py and data_parallel.py (each under 300 lines); follow the tutorial video for DP and run with torchrun on 2 GPUs."
-    why: "Tiny reference implementation matching the Playbook, so each concept in the text can be located in code."
-    verified: true
+- id: ultrascale-playbook
+  role: primary-text
+  kind: book
+  title: 'The Ultra-Scale Playbook: Training LLMs on GPU Clusters'
+  by: Nouamane Tazi, Ferdinand Mom, Haojun Zhao, Phuc Nguyen, Mohamed Mekkouri, Leandro Werra, Thomas Wolf (Hugging Face)
+  url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
+  edition_or_term: Feb 2025 (interactive book; PDF available; companion repo picotron)
+  access: free
+  use: 'High-Level Overview; First Steps: Training on One GPU (memory usage, activation recomputation, gradient accumulation); Data Parallelism (including ZeRO-1/2/3); Appendix A0 Parallel Programming Crash Course (collectives), A1 Distributed Training Profiling, A3 Math for Compute/Communication Overlap. Leave TP/PP/CP/EP and Finding the Best Training Configuration for the next node.'
+  why: Best single narrative from one GPU to thousands, with measured benchmarks (4,000+ runs up to 512 GPUs) and a collectives primer; free and written for practitioners.
+  verified: true
+- id: cs336-ddp
+  role: primary-course
+  kind: course
+  title: Stanford CS336 Language Modeling from Scratch (parallelism lectures + Assignment 2 distributed training)
+  by: Percy Liang, Tatsunori Hashimoto (Stanford)
+  url: https://cs336.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Lectures 7 and 8 (Parallelism); Assignment 2: distributed data parallel (naive, then flat/bucketed with overlap) and optimizer-state sharding, plus the written communication-cost analysis.'
+  why: Graded, test-backed implementation of DDP with overlap and sharded optimizer on a real Transformer; videos are public.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs336.stanford.edu/
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+    assignments: public-with-autograder
+    assignments_url: https://github.com/stanford-cs336/assignment2-systems
+- id: scaling-book-sharding
+  role: secondary
+  kind: book
+  title: How to Scale Your Model, Ch. 3 Sharded Matrices and Ch. 5 Training Parallelism, plus GPU chapter (Ch. 5 is read only here)
+  by: Google DeepMind (Austin et al.)
+  url: https://jax-ml.github.io/scaling-book/sharding/
+  edition_or_term: '2025'
+  access: free
+  use: Ch. 3 (sharding notation, AllGather/ReduceScatter/AllReduce/AllToAll costs), Ch. 5 (https://jax-ml.github.io/scaling-book/training/) for data/FSDP/tensor/pipeline strategy selection by communication cost, Ch. 12 (https://jax-ml.github.io/scaling-book/gpus/) for GPU collective bandwidth.
+  why: The quantitative treatment of collectives and when each strategy becomes communication-bound; gives the formulas the Playbook only states.
+  verified: true
+- id: mlsysbook-vol2-collectives
+  role: secondary
+  kind: book
+  title: Scaling Machine Learning Systems (Vol. II), Ch. 5 Collective Communication and Ch. 6 Distributed Training
+  by: Vijay Janapa Reddi (Harvard) et al.
+  url: https://mlsysbook.ai/vol2/05_collective_communication/05_collective_communication.html
+  edition_or_term: Vol. II, online 2026
+  access: free
+  use: 'Ch. 5 (ring/tree algorithms, alpha-beta cost models, NCCL-style topologies) and Ch. 6 (https://mlsysbook.ai/vol2/06_distributed_training/06_distributed_training.html: data parallelism, ZeRO/FSDP, overlap).'
+  why: Textbook-style derivations of collective algorithms and cost models; useful if the Playbook feels too empirical.
+  verified: true
+- id: zero-paper
+  role: reference
+  kind: paper
+  title: 'ZeRO: Memory Optimizations Toward Training Trillion Parameter Models'
+  by: Samyam Rajbhandari et al. (Microsoft)
+  url: https://arxiv.org/abs/1910.02054
+  edition_or_term: SC 2020
+  access: free
+  use: 'Sections 3-5: memory model, ZeRO-DP stages 1-3, communication volume analysis.'
+  why: Primary source for sharding of optimizer state, gradients, parameters.
+  verified: true
+- id: pytorch-ddp-fsdp-papers
+  role: reference
+  kind: paper
+  title: 'PyTorch Distributed: Experiences on Accelerating Data Parallel Training; PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel'
+  by: Shen Li et al. (Meta); Yanli Zhao et al. (Meta)
+  url: https://arxiv.org/abs/2006.15704
+  edition_or_term: VLDB 2020 (DDP); VLDB 2023 (FSDP, arXiv 2304.11277)
+  access: free
+  use: 'DDP paper: gradient bucketing and overlap; FSDP paper: sharding units, prefetching, rate limiting.'
+  why: How the production framework implements the ideas, including pitfalls found at Meta scale.
+  verified: true
+- id: fsdp2-docs
+  role: reference
+  kind: docs
+  title: PyTorch FSDP2 (fully_shard) tutorial and API
+  by: PyTorch
+  url: https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html
+  edition_or_term: PyTorch 2.15 docs
+  access: free
+  use: Getting Started with FSDP2 tutorial; fully_shard API (https://docs.pytorch.org/docs/stable/distributed.fsdp.fully_shard.html) including mixed precision policies and per-parameter sharding; also the DDP tutorial (https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html).
+  why: The current supported API for sharded training in PyTorch.
+  verified: true
+- id: nccl-docs
+  role: reference
+  kind: docs
+  title: NCCL documentation (Overview, Collective Operations, environment variables, troubleshooting)
+  by: NVIDIA
+  url: https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html
+  edition_or_term: NCCL 2.32.3 docs
+  access: free
+  use: Overview, Collective Operations (https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html), and tuning/debug env vars (NCCL_DEBUG, topology) when diagnosing slow or hung jobs.
+  why: Authoritative semantics and algorithms for the library every GPU job uses.
+  verified: true
+- id: mixed-precision
+  role: reference
+  kind: paper
+  title: Mixed Precision Training (and PyTorch AMP notes)
+  by: Paulius Micikevicius et al. (NVIDIA, Baidu)
+  url: https://arxiv.org/abs/1710.03740
+  edition_or_term: ICLR 2018; PyTorch AMP docs https://docs.pytorch.org/docs/stable/notes/amp_examples.html
+  access: free
+  use: FP32 master weights and loss scaling; then BF16 AMP usage in the PyTorch notes; FP8 recipes are in gemm-and-tensor-cores.
+  why: Covers the mixed-precision part of the scope with the original rationale.
+  verified: true
+- id: stas-ml-engineering
+  role: secondary
+  kind: book
+  title: Machine Learning Engineering Open Book
+  by: Stas Bekman
+  url: https://github.com/stas00/ml-engineering
+  edition_or_term: living document, active 2026
+  access: free
+  use: Network and Orchestration chapters (inter-node bandwidth, benchmarking collectives with all_reduce_bench), Training chapters (debugging hangs, performance), SLURM.
+  why: 'Hidden gem of hard-won practitioner knowledge from BLOOM/IDEFICS training: benchmarks, failure diagnosis, cluster setup; the practical side that the papers omit.'
+  verified: true
+- id: cmu-15442-distributed
+  role: practice
+  kind: practice-site
+  title: 'CMU 15-442 Assignment: Distributed training with MPI and NumPy (data parallel, tensor parallel, ZeRO-3)'
+  by: Zhihao Jia et al. (CMU)
+  url: https://github.com/mlsyscourse/assignment-distributed-training
+  edition_or_term: Spring 2026
+  access: free
+  use: Parts 1 (split_train), 7 (DP gradient all-reduce) and 8-9 (ZeRO Stage 3 FC layer and ZeroDPAdam) with the provided pytest + mpirun tests (no GPU needed). Parts 2-6 (tensor-parallel layer init and forward/backward communication) are in model-parallelism.
+  why: Fully runnable on a laptop with MPI; forces you to write the collective choreography of ZeRO-3 yourself. Autograder is Autolab but local tests are included.
+  verified: true
+- id: lambda-guide
+  role: practice
+  kind: practice-site
+  title: Lambda Labs Distributed Training Guide
+  by: Lambda Labs ML team
+  url: https://github.com/LambdaLabsML/distributed-training-guide
+  edition_or_term: active repo (MIT)
+  access: free
+  use: Chapters 1-4 (single-GPU script, DDP multi-GPU/multi-node, launching on clusters, FSDP) and 9 (diagnosing errors); run on 2+ GPUs or CPU gloo.
+  why: Minimal, runnable scripts that evolve a single-GPU trainer into DDP then FSDP; best on-ramp to real multi-node runs.
+  verified: true
+- id: picotron-dp
+  role: practice
+  kind: practice-site
+  title: Picotron (data parallel and process group files) and the Hugging Face playbook companion
+  by: Hugging Face
+  url: https://github.com/huggingface/picotron
+  edition_or_term: active repo; tutorial playlist and picotron_tutorial repo linked from README
+  access: free
+  use: Read process_group_manager.py and data_parallel.py (each under 300 lines); follow the tutorial video for DP and run with torchrun on 2 GPUs.
+  why: Tiny reference implementation matching the Playbook, so each concept in the text can be located in code.
+  verified: true
 considered:
-  - {title: "UCSD CSE 234 Data Systems for ML (Winter 2025, Hao Zhang), parallelization lectures 11-14", url: "https://haoailab.com/cse234-w25/", reason: "Strong lectures (Megatron, GPipe, Alpa, collectives) with recordings on UCSD podcast; access to those recordings unconfirmed. Newer 2026 run (CSE 291A/DSC 291) exists."}
-  - {title: "MIT 6.5940 Fall 2026 lectures 19-20 Distributed Training", url: "https://hanlab.mit.edu/courses/2026-fall-65940", reason: "Public videos but about 3 h total; useful intro, not deep enough to be primary."}
-  - {title: "CMU 15-442 Spring 2026 (ML parallelization, ZeRO lectures)", url: "https://mlsyscourse.org/schedule", reason: "Good slides and the assignment above is used; videos not confirmed public."}
-  - {title: "Hugging Face Smol Training Playbook", url: "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook", reason: "Excellent end-to-end pretraining narrative including infrastructure; broader than distributed systems."}
-  - {title: "AI Systems Performance Engineering (Fregly)", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Covers NCCL and distributed training in later chapters, publisher page not openable for verification."}
-  - {title: "TorchTitan paper (PyTorch-native LLM pre-training)", url: "https://arxiv.org/abs/2410.06511", reason: "Good reference implementation of composable parallelism with FSDP2; optional reading for model-parallelism node."}
-notes: "Playbook is the spine; CS336 gives lecture + graded DDP; CMU 15-442 assignment gives ZeRO-3 choreography without GPUs. A multi-GPU machine (2-8 GPUs) makes the Lambda/Picotron practice meaningful; CPU gloo works for correctness. The primary-text Playbook also covers model parallelism and is used again in model-parallelism with a different slice."
+- title: UCSD CSE 234 Data Systems for ML (Winter 2025, Hao Zhang), parallelization lectures 11-14
+  url: https://haoailab.com/cse234-w25/
+  reason: Strong lectures (Megatron, GPipe, Alpa, collectives) with recordings on UCSD podcast; access to those recordings unconfirmed. Newer 2026 run (CSE 291A/DSC 291) exists.
+- title: MIT 6.5940 Fall 2026 lectures 19-20 Distributed Training
+  url: https://hanlab.mit.edu/courses/2026-fall-65940
+  reason: useful intro, not deep enough to be primary.
+- title: CMU 15-442 Spring 2026 (ML parallelization, ZeRO lectures)
+  url: https://mlsyscourse.org/schedule
+  reason: Good slides and the assignment above is used; videos not confirmed public.
+- title: Hugging Face Smol Training Playbook
+  url: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook
+  reason: Excellent end-to-end pretraining narrative including infrastructure; broader than distributed systems.
+- title: AI Systems Performance Engineering (Fregly)
+  url: https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/
+  reason: Covers NCCL and distributed training in later chapters, publisher page not openable for verification.
+- title: TorchTitan paper (PyTorch-native LLM pre-training)
+  url: https://arxiv.org/abs/2410.06511
+  reason: Good reference implementation of composable parallelism with FSDP2; optional reading for model-parallelism node.
+notes: Playbook is the spine; CS336 gives lecture + graded DDP; CMU 15-442 assignment gives ZeRO-3 choreography without GPUs. A multi-GPU machine (2-8 GPUs) makes the Lambda/Picotron practice meaningful; CPU gloo works for correctness. The primary-text Playbook also covers model parallelism and is used again in model-parallelism with a different slice.
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "CS336 Spring 2026 A2 section numbering was not read directly from the handout PDF (GitHub blob fetch failed); sections described from the course page and README."
-  - "stas00/ml-engineering folder names (network, orchestration, training) taken from the README section list."
+- CS336 Spring 2026 A2 section numbering was not read directly from the handout PDF (GitHub blob fetch failed); sections described from the course page and README.
+- stas00/ml-engineering folder names (network, orchestration, training) taken from the README section list.
 last_verified: 2026-11-18

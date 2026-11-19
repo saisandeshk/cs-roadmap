@@ -3,14 +3,13 @@ title: Bandits & Exploration
 group: G8
 paths:
 - rl
+optional: true
 hard:
 - probability
 soft:
 - rl-foundations
 scope: Multi-armed bandits, UCB, Thompson sampling, contextual bandits, regret.
-optional: true
 level: intermediate
-estimated_hours: 30
 resources:
 - id: lattimore-szepesvari
   role: primary-text

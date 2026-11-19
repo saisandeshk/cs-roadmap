@@ -9,7 +9,6 @@ hard:
 soft: []
 scope: Transformer circuits, probing, activation patching, sparse autoencoders/transcoders, attribution graphs.
 level: advanced
-estimated_hours: 80
 resources:
 - id: transformer-circuits
   role: primary-text
@@ -153,7 +152,7 @@ considered:
   reason: Not individually reviewed.
 notes: 'There is no university course with public lectures that matches; ARENA ch.1 + Transformer Circuits + Nanda''s guide is the de-facto curriculum. ARENA covers probes, steering, SAEs, attribution via IOI/SAE circuits and OthelloGPT; attribution graphs/transcoders are best covered by the circuit-tracing and Biology papers plus circuit-tracer. Also useful for deep-learning-oriented readers: Harvard CS 2881R includes an interpretability lecture (Fall 2025).'
 split_proposal: null
-prereq_changes: Consider soft prereq on a hands-on PyTorch/transformer implementation (transformers hard prereq already covers).
+prereq_changes: null
 open_questions:
 - Should activation oracles / natural-language-autoencoder style tools (2026 Transformer Circuits items) be added once stable?
 last_verified: '2026-11-18'

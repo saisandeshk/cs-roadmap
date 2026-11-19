@@ -8,7 +8,8 @@ A graph: **nodes are topics** (e.g. Operating Systems), **edges are prerequisite
 **paths are specializations** (Core CS, ML Systems, LLMs, ...) that route through shared nodes. Each node gets a small,
 deliberate set of resources: one primary text, one primary course, and secondary / reference / practice items only where they fill a
 real gap. This phase is **data collection only**. How the roadmap is finally organized and presented will be decided later
-by the owner, so record everything that could inform that decision (alternatives considered, effort, level, access, video status).
+by the owner, so record everything that could inform that decision (alternatives considered, level, access, video status).
+Never write time estimates (hours, weeks, durations) anywhere.
 
 ## Your job
 1. Read `research/SCHEMA.md` (file format + rules) and your group's nodes in `research/skeleton.yaml`.

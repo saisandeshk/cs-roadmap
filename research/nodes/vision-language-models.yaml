@@ -1,154 +1,173 @@
 id: vision-language-models
 title: Vision-Language & Multimodal Models
 group: G6
-paths: [vision, llm]
-hard: [transformers, deep-learning-for-vision]
-soft: [language-modeling]
-scope: "CLIP, VLM architectures, multimodal pretraining and instruction tuning, VLM evaluation."
-
+paths:
+- vision
+- llm
+hard:
+- transformers
+- deep-learning-for-vision
+soft:
+- language-modeling
+- self-supervised-learning
+scope: CLIP, VLM architectures, multimodal pretraining and instruction tuning, VLM evaluation.
 level: advanced
-estimated_hours: 40
 resources:
-  - id: intro-to-vlm
-    role: primary-text
-    kind: paper
-    title: "An Introduction to Vision-Language Modeling"
-    by: "Florian Bordes, Richard Yuanzhe Pang, ... Vikas Chandra (Meta FAIR and collaborators)"
-    url: https://arxiv.org/abs/2405.17247
-    edition_or_term: "arXiv 2405.17247 v1, 27 May 2024"
-    access: free
-    use: "Whole primer: families of VLMs (contrastive CLIP-style, masking, generative, pretrained-backbone/LLaVA-style), how to train them (data, compute, grounding, alignment), evaluation (benchmarks, hallucination, bias), and extension to video."
-    why: "The only coherent, book-style primer on VLM construction and evaluation; written for newcomers by a large Meta team. It is from mid-2024, so Qwen2.5-VL/Qwen3-style, Idefics3, Cambrian-1 and SigLIP 2 are covered by the paper list."
-    verified: true
-  - id: mit-mmai
-    role: primary-course
-    kind: course
-    title: "MIT MAS.S60 / 6.S985 Modeling: Multimodal AI (How to AI Almost Anything)"
-    by: "Paul Liang (MIT Media Lab), with D. Bertsimas, J. Zhao, S.-G. Kim"
-    url: https://mit-mi.github.io/mmai-course/spring2026/
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Weeks 4.1-4.2 (multimodal fusion, alignment, contrastive/CLIP and the Platonic representation readings), 5.1-5.2 (large multimodal models; multimodal LLMs tutorial: fine-tuning, instruction tuning), 6.1-6.2 (multimodal generation, modern generative AI), 9.1 (multimodal reasoning). Videos are YouTube links on the schedule page; skim the early foundation weeks."
-    why: "The only 2026 university course with public lecture videos that treats multimodal LLMs, alignment (CLIP) and instruction tuning with a reading list; slides and tutorials are public. It is a broad multimodal course (fusion, interaction, ethics), not VLM-only, so only the listed weeks are used."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://mit-mi.github.io/mmai-course/spring2026/
-      videos: public
-      assignments: partial
-      assignments_url: https://mit-mi.github.io/mmai-course/spring2026/schedule/
-  - id: cs336-l17
-    role: secondary
-    kind: course
-    title: "Stanford CS336 Language Modeling from Scratch, Lecture 17 (multimodal models)"
-    by: "Tatsunori Hashimoto, Percy Liang (Stanford)"
-    url: https://cs336.stanford.edu/lectures/?trace=lecture_17
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Lecture 17 trace: CLIP, SigLIP, LLaVA, LLaVA-OneVision, Qwen-VL / Qwen2-VL and successors (as listed in the lecture's trace). Watch the 2026 YouTube lecture and step through the code trace."
-    why: "A compact, code-level pass through the exact VLM stack (vision encoder, projector, LLM, dynamic resolution) that follows the same lectures on LLM training; best single-lecture summary of how current open VLMs are assembled."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://cs336.stanford.edu/
-      videos: public
-      assignments: public
-      assignments_url: https://cs336.stanford.edu/
-  - id: vlm-papers
-    role: secondary
-    kind: paper
-    title: "VLM paper path: CLIP, SigLIP/SigLIP 2, Flamingo, LLaVA/LLaVA-1.5, Qwen2-VL/Qwen2.5-VL, Idefics3, Cambrian-1, MM1"
-    by: "Radford et al.; Zhai et al.; Tschannen et al.; Alayrac et al.; Liu et al.; Wang et al.; Bai et al.; Laurencon et al.; Tong et al.; McKinzie et al."
-    url: https://arxiv.org/abs/2103.00020
-    edition_or_term: "CLIP 2103.00020, SigLIP 2303.15343, SigLIP 2 2502.14786, Flamingo 2204.14198, LLaVA 2304.08485, LLaVA-1.5 2310.03744, Qwen2-VL 2409.12191, Qwen2.5-VL 2502.13923, Idefics3 2408.12637, Cambrian-1 2406.16860, MM1 2403.09611"
-    access: free
-    use: "In order: CLIP (contrastive objective, zero-shot), SigLIP/SigLIP 2 (sigmoid loss, localization), Flamingo (cross-attention fusion), LLaVA and LLaVA-1.5 (projector + visual instruction tuning), Qwen2-VL/Qwen2.5-VL (dynamic resolution, M-RoPE), Idefics3 ('building and better understanding VLMs': design ablations), Cambrian-1 (vision-centric evaluation of encoders) and MM1 (pretraining data/recipe ablations)."
-    why: "The design space of a modern VLM (encoder, connector, data mix, resolution) is documented in these papers, not in any textbook."
-    verified: true
-  - id: hf-vlm-blogs
-    role: secondary
-    kind: article
-    title: "Hugging Face: Vision Language Models Explained / Vision Language Models (Better, faster, stronger)"
-    by: "Merve Noyan, Sergio Paniego, Aritra Roy Gosthipaty, Pedro Cuenca, Andres Marafioti (Hugging Face)"
-    url: https://huggingface.co/blog/vlms-2025
-    edition_or_term: "2025 post May 12, 2025 (original explainer: https://huggingface.co/blog/vlms)"
-    access: free
-    use: "Skim for the landscape: any-to-any models, reasoning VLMs, small VLMs, MoE decoders, VLA, multimodal RAG and agents, video LMs, DPO alignment with TRL, benchmarks (MMT-Bench, MMMU-Pro). Read the original explainer first for the basics."
-    why: "Practical, current map of the ecosystem and tooling that the 2024 primer lacks; it is thin on architectures and evaluation methodology, hence only secondary."
-    verified: true
-  - id: nanovlm
-    role: practice
-    kind: tool
-    title: "nanoVLM: the simplest, fastest repository for training and fine-tuning small VLMs"
-    by: "Hugging Face (nanoVLM contributors)"
-    url: https://github.com/huggingface/nanoVLM
-    edition_or_term: "Sept 2025 update (image splitting, multi-node); Apache-2.0"
-    access: free
-    use: "Read the roughly 750 lines of PyTorch (vision backbone, language decoder, modality projection, VLM, train.py); train the default SigLIP-B/16 + SmolLM2-135M model (about 6 h on one H100 per the README) or a shorter run, then evaluate with lmms-eval."
-    why: "The best from-scratch exercise for the connector-based VLM design: you implement and train the whole LLaVA-style pipeline on a small budget."
-    verified: true
-  - id: smol-vlm-finetune
-    role: practice
-    kind: course
-    title: "Hugging Face smol-course: Vision Language Models unit (fine-tune SmolVLM2)"
-    by: "Hugging Face"
-    url: https://huggingface.co/learn/smol-course/unit3/1
-    edition_or_term: "Current (unit3/1 confirmed in R3 review as 'Introduction to Vision Language Models'; unit4/1 is Coming Soon)"
-    access: free
-    use: "Unit on adapting VLMs: chat templates and image formatting, SFT with Transformers/TRL, quantization/PEFT, evaluation benchmarks (OpenVLM toolkit). Fine-tune SmolVLM2-2.2B on a custom image-QA dataset."
-    why: "Fills the 'instruction tuning' scope item with a runnable, low-memory recipe."
-    verified: true
-    course:
-      latest_term: "Living course"
-      latest_url: https://huggingface.co/learn/smol-course/unit3/1
-      videos: none
-      assignments: partial
-      assignments_url: https://huggingface.co/learn/smol-course/unit3/1
-  - id: lmms-eval-pope
-    role: practice
-    kind: tool
-    title: "lmms-eval (VLM evaluation harness) with POPE hallucination benchmark"
-    by: "EvolvingLMMs Lab (LMMs-Lab)"
-    url: https://github.com/EvolvingLMMs-Lab/lmms-eval
-    edition_or_term: "v0.7 (Feb 2026); POPE paper arXiv 2305.10355"
-    access: free
-    use: "Run POPE and one general benchmark (MMStar or MMMU) on your nanoVLM/SmolVLM2 model; read the POPE paper (object hallucination, polling-based protocol) first."
-    why: "VLM evaluation is a named scope item; the harness lets you measure instead of reading leaderboard numbers. POPE shows how benchmark protocol choices change conclusions."
-    verified: true
-  - id: openclip
-    role: practice
-    kind: tool
-    title: "OpenCLIP: open-source CLIP training and evaluation"
-    by: "Ilharco, Wortsman, Carlini, Schmidt et al. (LAION / mlfoundations)"
-    url: https://github.com/mlfoundations/open_clip
-    edition_or_term: "4.x release line"
-    access: free
-    use: "Read the contrastive loss implementation, reproduce zero-shot ImageNet-subset or CIFAR evaluation with a pretrained checkpoint, then train a tiny CLIP on a small image-caption subset (e.g. COCO captions)."
-    why: "Reference implementation for the CLIP-style objective (also SigLIP loss); pairs with CS231n A3 Q4 (CLIP and DINO) from self-supervised-learning."
-    verified: true
-  - id: weng-vlm
-    role: reference
-    kind: article
-    title: "Generalized Visual Language Models"
-    by: "Lilian Weng"
-    url: https://lilianweng.github.io/posts/2022-06-09-vlm/
-    edition_or_term: "June 2022"
-    access: free
-    use: "Pre-LLaVA taxonomy: jointly training with image-text, frozen language models (Frozen, Flamingo-style), and prefix/cross-attention approaches."
-    why: "Gives historical grounding for why the connector and cross-attention designs exist; pre-dates instruction-tuned VLMs."
-    verified: true
+- id: intro-to-vlm
+  role: primary-text
+  kind: paper
+  title: An Introduction to Vision-Language Modeling
+  by: Florian Bordes, Richard Yuanzhe Pang,... Vikas Chandra (Meta FAIR and collaborators)
+  url: https://arxiv.org/abs/2405.17247
+  edition_or_term: arXiv 2405.17247 v1, 27 May 2024
+  access: free
+  use: 'Whole primer: families of VLMs (contrastive CLIP-style, masking, generative, pretrained-backbone/LLaVA-style), how to train them (data, compute, grounding, alignment), evaluation (benchmarks, hallucination, bias), and extension to video.'
+  why: The only coherent, book-style primer on VLM construction and evaluation; written for newcomers by a large Meta team. It is from mid-2024, so Qwen2.5-VL/Qwen3-style, Idefics3, Cambrian-1 and SigLIP 2 are covered by the paper list.
+  verified: true
+- id: mit-mmai
+  role: primary-course
+  kind: course
+  title: 'MIT MAS.S60 / 6.S985 Modeling: Multimodal AI (How to AI Almost Anything)'
+  by: Paul Liang (MIT Media Lab), with D. Bertsimas, J. Zhao, S.-G. Kim
+  url: https://mit-mi.github.io/mmai-course/spring2026/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Weeks 4.1-4.2 (multimodal fusion, alignment, contrastive/CLIP and the Platonic representation readings), 5.1-5.2 (large multimodal models; multimodal LLMs tutorial: fine-tuning, instruction tuning), 6.1-6.2 (multimodal generation, modern generative AI), 9.1 (multimodal reasoning). Videos are YouTube links on the schedule page; skim the early foundation weeks.'
+  why: The only 2026 university course with public lecture videos that treats multimodal LLMs, alignment (CLIP) and instruction tuning with a reading list; slides and tutorials are public. It is a broad multimodal course (fusion, interaction, ethics), not VLM-only, so only the listed weeks are used.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://mit-mi.github.io/mmai-course/spring2026/
+    videos: public
+    assignments: partial
+    assignments_url: https://mit-mi.github.io/mmai-course/spring2026/schedule/
+- id: cs336-l17
+  role: secondary
+  kind: course
+  title: Stanford CS336 Language Modeling from Scratch, Lecture 17 (multimodal models)
+  by: Tatsunori Hashimoto, Percy Liang (Stanford)
+  url: https://cs336.stanford.edu/lectures/?trace=lecture_17
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Lecture 17 trace: CLIP, SigLIP, LLaVA, LLaVA-OneVision, Qwen-VL / Qwen2-VL and successors (as listed in the lecture''s trace). Watch the 2026 YouTube lecture and step through the code trace.'
+  why: A compact, code-level pass through the exact VLM stack (vision encoder, projector, LLM, dynamic resolution) that follows the same lectures on LLM training; best single-lecture summary of how current open VLMs are assembled.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs336.stanford.edu/
+    videos: public
+    assignments: public
+    assignments_url: https://cs336.stanford.edu/
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+- id: vlm-papers
+  role: secondary
+  kind: paper
+  title: 'VLM paper path: CLIP, SigLIP/SigLIP 2, Flamingo, LLaVA/LLaVA-1.5, Qwen2-VL/Qwen2.5-VL, Idefics3, Cambrian-1, MM1'
+  by: Radford et al.; Zhai et al.; Tschannen et al.; Alayrac et al.; Liu et al.; Wang et al.; Bai et al.; Laurencon et al.; Tong et al.; McKinzie et al.
+  url: https://arxiv.org/abs/2103.00020
+  edition_or_term: CLIP 2103.00020, SigLIP 2303.15343, SigLIP 2 2502.14786, Flamingo 2204.14198, LLaVA 2304.08485, LLaVA-1.5 2310.03744, Qwen2-VL 2409.12191, Qwen2.5-VL 2502.13923, Idefics3 2408.12637, Cambrian-1 2406.16860, MM1 2403.09611
+  access: free
+  use: 'In order: CLIP (contrastive objective, zero-shot), SigLIP/SigLIP 2 (sigmoid loss, localization), Flamingo (cross-attention fusion), LLaVA and LLaVA-1.5 (projector + visual instruction tuning), Qwen2-VL/Qwen2.5-VL (dynamic resolution, M-RoPE), Idefics3 (''building and better understanding VLMs'': design ablations), Cambrian-1 (vision-centric evaluation of encoders) and MM1 (pretraining data/recipe ablations).'
+  why: The design space of a modern VLM (encoder, connector, data mix, resolution) is documented in these papers, not in any textbook.
+  verified: true
+- id: hf-vlm-blogs
+  role: secondary
+  kind: article
+  title: 'Hugging Face: Vision Language Models Explained / Vision Language Models (Better, faster, stronger)'
+  by: Merve Noyan, Sergio Paniego, Aritra Roy Gosthipaty, Pedro Cuenca, Andres Marafioti (Hugging Face)
+  url: https://huggingface.co/blog/vlms-2025
+  edition_or_term: '2025 post May 12, 2025 (original explainer: https://huggingface.co/blog/vlms)'
+  access: free
+  use: 'Skim for the landscape: any-to-any models, reasoning VLMs, small VLMs, MoE decoders, VLA, multimodal RAG and agents, video LMs, DPO alignment with TRL, benchmarks (MMT-Bench, MMMU-Pro). Read the original explainer first for the basics.'
+  why: Practical, current map of the ecosystem and tooling that the 2024 primer lacks; it is thin on architectures and evaluation methodology, hence only secondary.
+  verified: true
+- id: nanovlm
+  role: practice
+  kind: tool
+  title: 'nanoVLM: the simplest, fastest repository for training and fine-tuning small VLMs'
+  by: Hugging Face (nanoVLM contributors)
+  url: https://github.com/huggingface/nanoVLM
+  edition_or_term: Sept 2025 update (image splitting, multi-node); Apache-2.0
+  access: free
+  use: Read the roughly 750 lines of PyTorch (vision backbone, language decoder, modality projection, VLM, train.py); train the default SigLIP-B/16 + SmolLM2-135M model or a shorter run, then evaluate with lmms-eval.
+  why: 'The best from-scratch exercise for the connector-based VLM design: you implement and train the whole LLaVA-style pipeline on a small budget.'
+  verified: true
+- id: smol-vlm-finetune
+  role: practice
+  kind: course
+  title: 'Hugging Face smol-course: Vision Language Models unit (fine-tune SmolVLM2)'
+  by: Hugging Face
+  url: https://huggingface.co/learn/smol-course/unit3/1
+  edition_or_term: Current (unit3/1 confirmed in R3 review as 'Introduction to Vision Language Models'; unit4/1 is Coming Soon)
+  access: free
+  use: 'Unit on adapting VLMs: chat templates and image formatting, SFT with Transformers/TRL, quantization/PEFT, evaluation benchmarks (OpenVLM toolkit). Fine-tune SmolVLM2-2.2B on a custom image-QA dataset.'
+  why: Fills the 'instruction tuning' scope item with a runnable, low-memory recipe.
+  verified: true
+  course:
+    latest_term: Living course
+    latest_url: https://huggingface.co/learn/smol-course/unit3/1
+    videos: none
+    assignments: partial
+    assignments_url: https://huggingface.co/learn/smol-course/unit3/1
+- id: lmms-eval-pope
+  role: practice
+  kind: tool
+  title: lmms-eval (VLM evaluation harness) with POPE hallucination benchmark
+  by: EvolvingLMMs Lab (LMMs-Lab)
+  url: https://github.com/EvolvingLMMs-Lab/lmms-eval
+  edition_or_term: v0.7 (Feb 2026); POPE paper arXiv 2305.10355
+  access: free
+  use: Run POPE and one general benchmark (MMStar or MMMU) on your nanoVLM/SmolVLM2 model; read the POPE paper (object hallucination, polling-based protocol) first.
+  why: VLM evaluation is a named scope item; the harness lets you measure instead of reading leaderboard numbers. POPE shows how benchmark protocol choices change conclusions.
+  verified: true
+- id: openclip
+  role: practice
+  kind: tool
+  title: 'OpenCLIP: open-source CLIP training and evaluation'
+  by: Ilharco, Wortsman, Carlini, Schmidt et al. (LAION / mlfoundations)
+  url: https://github.com/mlfoundations/open_clip
+  edition_or_term: 4.x release line
+  access: free
+  use: Read the contrastive loss implementation, reproduce zero-shot ImageNet-subset or CIFAR evaluation with a pretrained checkpoint, then train a tiny CLIP on a small image-caption subset (e.g. COCO captions).
+  why: Reference implementation for the CLIP-style objective (also SigLIP loss); pairs with CS231n A3 Q4 (CLIP and DINO) from self-supervised-learning.
+  verified: true
+- id: weng-vlm
+  role: reference
+  kind: article
+  title: Generalized Visual Language Models
+  by: Lilian Weng
+  url: https://lilianweng.github.io/posts/2022-06-09-vlm/
+  edition_or_term: June 2022
+  access: free
+  use: 'Pre-LLaVA taxonomy: jointly training with image-text, frozen language models (Frozen, Flamingo-style), and prefix/cross-attention approaches.'
+  why: Gives historical grounding for why the connector and cross-attention designs exist; pre-dates instruction-tuned VLMs.
+  verified: true
 considered:
-  - {title: "Multimodal Foundation Models: From Specialists to General-Purpose Assistants (Li et al., FnT 2024, with the CVPR 2023 tutorial)", url: "https://arxiv.org/abs/2309.10020", reason: "Longer (100+ pages) alternative to the VLM primer that also covers generation and instruction tuning; 2023 vintage."}
-  - {title: "CMU 11-777 Multimodal Machine Learning (Morency, Liang; last public site Fall 2022)", url: "https://cmu-mmml.github.io/fall2022", reason: "Strong survey-style course but the latest open page is Fall 2022 and videos are not official public; MIT 2026 course is newer with YouTube."}
-  - {title: "Stanford CS231n Lecture 16 Vision and Language (Spring 2026)", url: "https://cs231n.stanford.edu/schedule.html", reason: "2026 video enrolled-only; 2025 recording public. Good one-lecture overview already adjacent to CS336 L17."}
-  - {title: "Sebastian Raschka: Understanding Multimodal LLMs", url: "https://magazine.sebastianraschka.com/p/understanding-multimodal-llms", reason: "Clear blog (unified embedding vs cross-attention); page loads but content not read in this research."}
-  - {title: "Foundations of Computer Vision ch. 51 (Vision and Language)", url: "https://visionbook.mit.edu/", reason: "Short conceptual chapter; useful companion only."}
-  - {title: "Hugging Face Community Computer Vision Course Unit 4 (Multimodal Models)", url: "https://huggingface.co/learn/computer-vision-course/unit4/multimodal-models/pre-intro", reason: "Gentle intro to CLIP/BLIP-style models; community quality uneven; page loads."}
-  - {title: "UMD CMSC 498K Fall 2025 and other multimodal courses", url: "https://www.cs.umd.edu/class/fall2025/cmsc498k/", reason: "Appeared in search; not evaluated."}
-notes: "No textbook exists; Bordes et al. is the closest. CLIP/SigLIP objectives overlap with self-supervised-learning (this node uses CLIP as a system and for VLM encoders; SSL teaches the objective). Evaluation coverage is thin in primary materials; lmms-eval/POPE practice item addresses it. This area changes quarterly; paper list should be refreshed (Qwen3-VL, InternVL3, Gemma 3 vision, Molmo, etc.)."
+- title: 'Multimodal Foundation Models: From Specialists to General-Purpose Assistants (Li et al., FnT 2024, with the CVPR 2023 tutorial)'
+  url: https://arxiv.org/abs/2309.10020
+  reason: Longer (100+ pages) alternative to the VLM primer that also covers generation and instruction tuning; 2023 vintage.
+- title: CMU 11-777 Multimodal Machine Learning (Morency, Liang; last public site Fall 2022)
+  url: https://cmu-mmml.github.io/fall2022
+  reason: Strong survey-style course but the latest open page is Fall 2022 and videos are not official public; MIT 2026 course is newer with YouTube.
+- title: Stanford CS231n Lecture 16 Vision and Language (Spring 2026)
+  url: https://cs231n.stanford.edu/schedule.html
+  reason: 2026 video enrolled-only; 2025 recording public. Good one-lecture overview already adjacent to CS336 L17.
+- title: 'Sebastian Raschka: Understanding Multimodal LLMs'
+  url: https://magazine.sebastianraschka.com/p/understanding-multimodal-llms
+  reason: Clear blog (unified embedding vs cross-attention); page loads but content not read in this research.
+- title: Foundations of Computer Vision ch. 51 (Vision and Language)
+  url: https://visionbook.mit.edu/
+  reason: Short conceptual chapter; useful companion only.
+- title: Hugging Face Community Computer Vision Course Unit 4 (Multimodal Models)
+  url: https://huggingface.co/learn/computer-vision-course/unit4/multimodal-models/pre-intro
+  reason: Gentle intro to CLIP/BLIP-style models; community quality uneven; page loads.
+- title: UMD CMSC 498K Fall 2025 and other multimodal courses
+  url: https://www.cs.umd.edu/class/fall2025/cmsc498k/
+  reason: Appeared in search; not evaluated.
+notes: No textbook exists; Bordes et al. is the closest. CLIP/SigLIP objectives overlap with self-supervised-learning (this node uses CLIP as a system and for VLM encoders; SSL teaches the objective). Evaluation coverage is thin in primary materials; lmms-eval/POPE practice item addresses it. This area changes quarterly; paper list should be refreshed (Qwen3-VL, InternVL3, Gemma 3 vision, Molmo, etc.).
 split_proposal: null
-prereq_changes: "Add soft: self-supervised-learning (contrastive/CLIP objectives and DINO/SigLIP encoders). Optionally soft on generative-models-at-scale for any-to-any/unified models."
+prereq_changes: null
 open_questions:
-  - "MIT MMAI 2026 assignments: public availability not confirmed (Colab tutorials are public)."
-  - "CS336 Lecture 17 content detail comes from the page's trace viewer and the owner's atlas entry; the page is a JS trace viewer that could not be summarized."
+- 'MIT MMAI 2026 assignments: public availability not confirmed (Colab tutorials are public).'
+- CS336 Lecture 17 content detail comes from the page's trace viewer and the owner's atlas entry; the page is a JS trace viewer that could not be summarized.
 last_verified: 2026-11-18

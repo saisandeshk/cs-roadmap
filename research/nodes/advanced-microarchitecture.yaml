@@ -1,14 +1,25 @@
 id: advanced-microarchitecture
 title: Advanced Microarchitecture
 group: G11
-paths: [architecture]
-hard: [processor-design]
+paths:
+- architecture
+hard:
+- processor-design
 soft: []
 scope: Superscalar and out-of-order execution, register renaming, speculation, advanced branch prediction, SMT.
 level: advanced
-estimated_hours: 60
 resources:
-- {id: caqa7-ilp, role: primary-text, kind: book, title: 'Computer Architecture: A Quantitative Approach, Ch. 3 Instruction-Level Parallelism and Its Exploitation (plus App. C)', by: 'John L. Hennessy, David A. Patterson, Christos Kozyrakis', url: 'https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5', edition_or_term: '7th edition (Morgan Kaufmann/Elsevier, Dec 2025; Hennessy, Patterson, Kozyrakis); 7e table of contents checked on the Elsevier page (Ch. 3 Instruction-Level Parallelism and Its Exploitation; App. C Pipelining)', access: paid, use: 'Ch. 3 (dynamic scheduling with scoreboarding and Tomasulo, reorder buffer and speculation, register renaming, multiple issue/superscalar, branch prediction from 2-bit to tournament/TAGE-style, SMT) with Appendix C (pipelining) as review; do the chapter case studies/exercises.', why: 'The current-edition standard reference; 7th edition appeared Dec 2025 with Kozyrakis added. Dense but correct and up to date on predictors and modern cores. Use Shen and Lipasti (below) for slower, more detailed treatment.', verified: true}
+- id: caqa7-ilp
+  role: primary-text
+  kind: book
+  title: 'Computer Architecture: A Quantitative Approach, Ch. 3 Instruction-Level Parallelism and Its Exploitation (plus App. C)'
+  by: John L. Hennessy, David A. Patterson, Christos Kozyrakis
+  url: https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5
+  edition_or_term: 7th edition (Morgan Kaufmann/Elsevier, Dec 2025; Hennessy, Patterson, Kozyrakis); 7e table of contents checked on the Elsevier page (Ch. 3 Instruction-Level Parallelism and Its Exploitation; App. C Pipelining)
+  access: paid
+  use: Ch. 3 (dynamic scheduling with scoreboarding and Tomasulo, reorder buffer and speculation, register renaming, multiple issue/superscalar, branch prediction from 2-bit to tournament/TAGE-style, SMT) with Appendix C (pipelining) as review; do the chapter case studies/exercises.
+  why: The current-edition standard reference; 7th edition appeared Dec 2025 with Kozyrakis added. Dense but correct and up to date on predictors and modern cores. Use Shen and Lipasti (below) for slower, more detailed treatment.
+  verified: true
 - id: eth-ddca
   role: primary-course
   kind: course
@@ -20,8 +31,25 @@ resources:
   use: L14 (out-of-order execution), L15a-b (dataflow and superscalar; branch prediction), L16a-b (OoO continued; load-store handling in OoO), L17 (branch prediction), L18a-b (VLIW; systolic arrays), L19 (SIMD, decoupled access-execute). Also Computer Architecture Fall 2025 L31 'Speculation'.
   why: Newest public videos (51-video Spring 2026 playlist) with a full OoO/branch-prediction sequence including load-store handling; slides are downloadable. Pair with the ECE 4750 notes for worked problems.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule', videos: public, public_videos_term: Spring 2026 (livestream playlist), public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd', assignments: public, assignments_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs'}
-- {id: shen-lipasti, role: secondary, kind: book, title: 'Modern Processor Design: Fundamentals of Superscalar Processors', by: 'John Paul Shen, Mikko H. Lipasti', url: 'https://www.waveland.com/', edition_or_term: Waveland Press reissue (print ISBN 9781478607830); McGraw-Hill original 2005, access: paid, use: 'Ch. 3-5 (superscalar organization, instruction flow incl. branch prediction, register data flow/renaming), Ch. 6-7 (the PowerPC 620 and Intel P6 case studies). Read after CAQA Ch. 3 for depth.', why: Still the most detailed single book on superscalar and out-of-order design with end-to-end case studies of real cores; older than CAQA 7e so predictors and SMT are lighter. Publisher page could not be opened (site blocks scripted access)., verified: false}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule
+    videos: public
+    public_videos_term: Spring 2026 (livestream playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd
+    assignments: public
+    assignments_url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs
+- id: shen-lipasti
+  role: secondary
+  kind: book
+  title: 'Modern Processor Design: Fundamentals of Superscalar Processors'
+  by: John Paul Shen, Mikko H. Lipasti
+  url: https://www.waveland.com/
+  edition_or_term: Waveland Press reissue (print ISBN 9781478607830); McGraw-Hill original 2005
+  access: paid
+  use: Ch. 3-5 (superscalar organization, instruction flow incl. branch prediction, register data flow/renaming), Ch. 6-7 (the PowerPC 620 and Intel P6 case studies). Read after CAQA Ch. 3 for depth.
+  why: Still the most detailed single book on superscalar and out-of-order design with end-to-end case studies of real cores; older than CAQA 7e so predictors and SMT are lighter. Publisher page could not be opened (site blocks scripted access).
+  verified: false
 - id: berkeley-cs152
   role: secondary
   kind: course
@@ -33,19 +61,76 @@ resources:
   use: Lectures 12-14 (OoO 1-3), 15 (branch prediction), discussion 6-7 (OoO; physical register files and branch prediction) with worksheets and solutions, and Labs 1-6 on Chipyard (public lab pages with directed and open-ended questions) for hands-on exploration of real cores such as BOOM.
   why: Newest term with public slides, worksheets/solutions and lab write-ups built on Chipyard; the lab-based, measure-a-real-core approach complements ETH's lectures.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://inst.eecs.berkeley.edu/~cs152/sp26/', videos: unknown, assignments: public, assignments_url: 'https://inst.eecs.berkeley.edu/~cs152/sp26/lab/'}
-- {id: danluu-branch, role: secondary, kind: article, title: Branch prediction, by: Dan Luu, url: 'https://danluu.com/branch-prediction/', edition_or_term: Essay (checked 2026-11-18), access: free, use: 'Read once after CAQA''s branch-predictor section: a readable tour from static schemes to history-based predictors with a simple accuracy model.', why: 'Short, intuitive explanation that fills the gap between lecture bullet points and the Seznec/TAGE papers.', verified: true}
-- {id: chipsandcheese, role: reference, kind: website, title: Chips and Cheese (microarchitecture analysis articles), by: Chips and Cheese, url: 'https://chipsandcheese.com/', edition_or_term: Active Substack (checked 2026-11-18), access: free, use: 'Pick teardown articles on current cores (e.g. predictor, ROB/scheduler and cache sizing studies) and compare measured structure sizes with CAQA''s textbook designs.', why: 'Real measured parameters of shipping cores, which textbooks never give; good for sanity-checking intuition.', verified: true}
-- {id: boom-docs, role: practice, kind: docs, title: RISC-V BOOM (Berkeley Out-of-Order Machine) documentation and Chipyard, by: UC Berkeley Architecture Research, url: 'https://docs.boom-core.org/en/latest/', edition_or_term: BOOM docs (checked 2026-11-18); Chipyard 1.15.0 docs, access: free, use: 'Read the BOOM pipeline description (fetch, rename, dispatch, issue, ROB, load-store unit, branch predictors) and run it under Verilator through Chipyard (https://chipyard.readthedocs.io/en/stable/); change a parameter (ROB entries, issue width, predictor) and measure IPC on a benchmark, as in CS 152 labs.', why: A readable open-source OoO core with parametrized structures lets you test the mechanisms you studied; verifies understanding in a way pencil-and-paper cannot., verified: true}
-- {id: agner-fog, role: reference, kind: docs, title: Agner Fog's microarchitecture manual (x86 CPUs), by: Agner Fog, url: 'https://www.agner.org/optimize/', edition_or_term: 'Manuals updated continually; ''The microarchitecture of Intel, AMD and VIA CPUs'' last modified 2026-05-23', access: free, use: 'The ''The microarchitecture of Intel, AMD and VIA CPUs'' manual: predictor behaviour, renaming and execution-port descriptions per generation.', why: Empirically derived description of real predictor/pipeline behavior; also a Cornell ECE 4750 recommended resource., verified: true}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://inst.eecs.berkeley.edu/~cs152/sp26/
+    videos: unknown
+    assignments: public
+    assignments_url: https://inst.eecs.berkeley.edu/~cs152/sp26/lab/
+- id: danluu-branch
+  role: secondary
+  kind: article
+  title: Branch prediction
+  by: Dan Luu
+  url: https://danluu.com/branch-prediction/
+  edition_or_term: Essay (checked 2026-11-18)
+  access: free
+  use: 'Read once after CAQA''s branch-predictor section: a readable tour from static schemes to history-based predictors with a simple accuracy model.'
+  why: Short, intuitive explanation that fills the gap between lecture bullet points and the Seznec/TAGE papers.
+  verified: true
+- id: chipsandcheese
+  role: reference
+  kind: website
+  title: Chips and Cheese (microarchitecture analysis articles)
+  by: Chips and Cheese
+  url: https://chipsandcheese.com/
+  edition_or_term: Active Substack (checked 2026-11-18)
+  access: free
+  use: Pick teardown articles on current cores (e.g. predictor, ROB/scheduler and cache sizing studies) and compare measured structure sizes with CAQA's textbook designs.
+  why: Real measured parameters of shipping cores, which textbooks never give; good for sanity-checking intuition.
+  verified: true
+- id: boom-docs
+  role: practice
+  kind: docs
+  title: RISC-V BOOM (Berkeley Out-of-Order Machine) documentation and Chipyard
+  by: UC Berkeley Architecture Research
+  url: https://docs.boom-core.org/en/latest/
+  edition_or_term: BOOM docs (checked 2026-11-18); Chipyard 1.15.0 docs
+  access: free
+  use: Read the BOOM pipeline description (fetch, rename, dispatch, issue, ROB, load-store unit, branch predictors) and run it under Verilator through Chipyard (https://chipyard.readthedocs.io/en/stable/); change a parameter (ROB entries, issue width, predictor) and measure IPC on a benchmark, as in CS 152 labs.
+  why: A readable open-source OoO core with parametrized structures lets you test the mechanisms you studied; verifies understanding in a way pencil-and-paper cannot.
+  verified: true
+- id: agner-fog
+  role: reference
+  kind: docs
+  title: Agner Fog's microarchitecture manual (x86 CPUs)
+  by: Agner Fog
+  url: https://www.agner.org/optimize/
+  edition_or_term: Manuals updated continually; 'The microarchitecture of Intel, AMD and VIA CPUs' last modified 2026-05-23
+  access: free
+  use: 'The ''The microarchitecture of Intel, AMD and VIA CPUs'' manual: predictor behaviour, renaming and execution-port descriptions per generation.'
+  why: Empirically derived description of real predictor/pipeline behavior; also a Cornell ECE 4750 recommended resource.
+  verified: true
 considered:
-- {title: 'MIT 6.5900 (6.823) Computer System Architecture, Fall 2026', url: 'https://csg.csail.mit.edu/6.5900/', reason: 'Syllabus public (L06 complex pipelining, L07 OoO and renaming, L08 branch prediction, L09 speculative execution and recovery, coherence, consistency); recordings and lecture-note availability not confirmed and labs use Bluespec/simulators.'}
-- {title: Princeton ELE 475 / Georgia Tech HPCA (Coursera/Udacity), url: 'https://www.edx.org/learn/computer-architecture', reason: Older MOOC offerings with videos; not re-verified and superseded by recent ETH/CS152 material.}
-- {title: UT Austin CS 395T Prediction Mechanisms in Computer Architecture, url: 'https://www.cs.utexas.edu/~lin/cs395t/', reason: Specialist graduate seminar on branch/value/prefetch prediction; useful reading list but too narrow for the main route.}
-- {title: 'Cornell ECE 4750 handouts T06-T10 (superscalar, OoO, register renaming, memory disambiguation, branch prediction)', url: 'https://www.csl.cornell.edu/courses/ece4750/handouts/', reason: 'Trimmed after review R2 (four overlapping OoO lecture/handout sources): good open notes with problem PDFs (T06-T10) but no video; Fall 2026 handouts at the same URL.'}
-- {title: CMU 18-447 Computer Architecture lectures (Spring 2015), url: 'https://www.youtube.com/playlist?list=PL5PHm2jkkXmi5CxxI7b3JCL1TWybTDtKq', reason: 'Trimmed after review R2: older, more exhaustive Mutlu lectures (YouTube playlist); ETH DDCA Spring 2026 is the newer condensed form.'}
-notes: 'Route (about 60 h): CAQA Ch. 3 + ETH L14-L19 (about 20 h), CS 152 discussion worksheets 6-7 for problems (5 h), then a lab with BOOM/Chipyard or the CS 152 labs (25 h), plus Dan Luu / Chips and Cheese reading. SMT is covered in CAQA Ch. 3/5 and CS 152 lecture 19. Prefer Shen and Lipasti if you want one book that explains why each mechanism exists, step by step. The ETH Computer Architecture course (Fall 2025/2026) has moved to a memory-centric syllabus, so the OoO lectures to watch are in DDCA Spring 2026. After review R2, Cornell ECE 4750 T06-T10 and the CMU 18-447 Spring 2015 playlist moved to considered.'
+- title: MIT 6.5900 (6.823) Computer System Architecture, Fall 2026
+  url: https://csg.csail.mit.edu/6.5900/
+  reason: Syllabus public (L06 complex pipelining, L07 OoO and renaming, L08 branch prediction, L09 speculative execution and recovery, coherence, consistency); recordings and lecture-note availability not confirmed and labs use Bluespec/simulators.
+- title: Princeton ELE 475 / Georgia Tech HPCA (Coursera/Udacity)
+  url: https://www.edx.org/learn/computer-architecture
+  reason: Older MOOC offerings with videos; not re-verified and superseded by recent ETH/CS152 material.
+- title: UT Austin CS 395T Prediction Mechanisms in Computer Architecture
+  url: https://www.cs.utexas.edu/~lin/cs395t/
+  reason: Specialist graduate seminar on branch/value/prefetch prediction; useful reading list but too narrow for the main route.
+- title: Cornell ECE 4750 handouts T06-T10 (superscalar, OoO, register renaming, memory disambiguation, branch prediction)
+  url: https://www.csl.cornell.edu/courses/ece4750/handouts/
+  reason: 'Trimmed after review R2 (four overlapping OoO lecture/handout sources): good open notes with problem PDFs (T06-T10) but no video; Fall 2026 handouts at the same URL.'
+- title: CMU 18-447 Computer Architecture lectures (Spring 2015)
+  url: https://www.youtube.com/playlist?list=PL5PHm2jkkXmi5CxxI7b3JCL1TWybTDtKq
+  reason: 'Trimmed after review R2: older, more exhaustive Mutlu lectures (YouTube playlist); ETH DDCA Spring 2026 is the newer condensed form.'
+notes: 'Route: CAQA Ch. 3 + ETH L14-L19, CS 152 discussion worksheets 6-7 for problems, then a lab with BOOM/Chipyard or the CS 152 labs, plus Dan Luu / Chips and Cheese reading. SMT is covered in CAQA Ch. 3/5 and CS 152 lecture 19. Prefer Shen and Lipasti if you want one book that explains why each mechanism exists, step by step. The ETH Computer Architecture course (Fall 2025/2026) has moved to a memory-centric syllabus, so the OoO lectures to watch are in DDCA Spring 2026. After review R2, Cornell ECE 4750 T06-T10 and the CMU 18-447 Spring 2015 playlist moved to considered.'
 split_proposal: null
 prereq_changes: null
-open_questions: [Berkeley CS 152 Spring 2026 lecture recordings are Google Drive links that returned HTTP 401 without a login; video status marked unknown., Shen and Lipasti publisher page returns 406 to scripted fetches; listed unverified. A 2025-26 reprint/new edition was not found.]
+open_questions:
+- Berkeley CS 152 Spring 2026 lecture recordings are Google Drive links that returned HTTP 401 without a login; video status marked unknown.
+- Shen and Lipasti publisher page returns 406 to scripted fetches; listed unverified. A 2025-26 reprint/new edition was not found.
 last_verified: '2026-11-18'

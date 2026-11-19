@@ -30,7 +30,7 @@ Verified correct (no action): CS336 Spring 2026 (public YouTube playlist PLoROMv
 - [should-fix] CS336 A3: the Spring 2026 README requires an 8-digit Stanford student ID (`A3_API_KEY`) for the hosted training API, so self-study is not possible as written. `assignments: partial` is correct, but `use` should state that the practical route is Marin or the Smol Playbook ablations. Also, the CS336 course page text for Spring 2026 A3 now includes initialisation and weight/activation dynamics ("Study and understand model initializations..."). Fix: re-read the A3 handout PDF and update the `use` description.
 - [suggestion] `olmo3-recipe` points at the OLMo 2 arXiv ID (2501.00656) while the title says Olmo 3 (2512.13961 is in the edition field). Fix: make the primary URL 2512.13961 and cite OLMo 2 as secondary.
 - [suggestion] Kaplan and Chinchilla share one entry, and both are referenced again in the Porian entry. This is fine, but `kaplan-chinchilla` should state the 2020 and 2022 dates in `edition_or_term`.
-- split/prereq: disagree with the split (45h, and the A3 and recipe halves share the same readings). Agree on adding soft `llm-architectures` and `pretraining-data`.
+- split/prereq: disagree with the split. Agree on adding soft `llm-architectures` and `pretraining-data`.
 
 ## llm-evaluation
 - [should-fix] The primary-course is a composite of CS336 lecture 12 and CS224N Winter 2026 A4. These are two different courses and terms, one lecture plus one assignment with `assignments: partial`, and `use` says "check the trace for exact coverage", so the worker never inspected the lecture. Better public material exists and is missing from the node:
@@ -40,7 +40,7 @@ Verified correct (no action): CS336 Spring 2026 (public YouTube playlist PLoROMv
   Fix: make CS329Z weeks 7-8 (or CME 295 lecture 7) the primary-course, keep CS336 L12 as the benchmarks lecture, and add the Evidently course as practice. Drop the CS224N A4 pairing, or keep it only as an optional exercise.
 - [should-fix] `hamel-evals` (FAQ and Field Guide) is also assigned, with the same `use`, in llm-applications (`hamel-evals-apps`), and SWE-bench is covered here and in llm-agents `agent-benchmarks`. Fix: keep the Hamel posts here, where the content is evaluation-specific, and reference them from llm-applications by id without a second entry.
 - [suggestion] `anthropic-agent-evals`: the publication date was not read. Fix: record it, or call it "undated" in `edition_or_term`.
-- [suggestion] Eleven secondary and reference papers is a long list for 30h. Fix: demote `contamination` and `helm` to `reference`.
+- [suggestion] Fix: demote `contamination` and `helm` to `reference`.
 - split/prereq: agree on soft `post-training` and soft `llm-applications`.
 
 ## post-training
@@ -74,7 +74,7 @@ Verified correct (no action): CS336 Spring 2026 (public YouTube playlist PLoROMv
 - [should-fix] CMU 11-768 (Fall 2026) is the primary-course, but its site is JS-only (I could not read its schedule) and the worker's own open questions say assignments 2-3 are unconfirmed and the YouTube playlist ID is truncated. The `videos: public` claim covers only lectures 1-9. CS329Z (Fall 2026) offers two autograded homeworks (A2 agent harness is linked in this node) and public video links. Fix: record in `notes` that 11-768 lectures are partly public and still running, and make CS329Z the stated fallback. Update the video count after the term ends.
 - [suggestion] `agent-benchmarks` bundles SWE-bench (also in llm-evaluation), tau-bench and AgentDojo. Fix: keep tau-bench and AgentDojo here, and cite SWE-bench from llm-evaluation.
 - [suggestion] Primary text "Building effective agents" is a Dec 2024 article and the page itself warns the tooling has changed. It is still the right concept text, but add the current Anthropic agent engineering posts (already named in `use`) with dates.
-- split/prereq: disagree with splitting `agent-security-and-sandboxing`. The material is about 8-10h and fits as a section here with a cross-link to evals-and-red-teaming. Agree with the soft prereqs.
+- split/prereq: disagree with splitting `agent-security-and-sandboxing`. Agree with the soft prereqs.
 
 ## ml-performance-modeling
 - [should-fix] Duplicate jobs across nodes: scaling-book Ch. 5 is read here (as primary), in distributed-training-fundamentals (`scaling-book-sharding`) and in model-parallelism (`scaling-book-training`); Ch. 7 (inference) is read here and in llm-inference-and-serving (`scaling-book-inference`); and kipply "Transformer Inference Arithmetic" appears here and in llm-inference-and-serving (`kipply-weng`). Fix: read Ch. 1, 4 and the roofline problems here; Ch. 3 and 5 once, in distributed-training-fundamentals; Ch. 7-8 once, in llm-inference-and-serving; and list kipply once.
@@ -124,14 +124,14 @@ Verified correct (no action): CS336 Spring 2026 (public YouTube playlist PLoROMv
 - [should-fix] The primary-course is CMU 15-442 Spring 2026 with `videos: unknown`. A primary-course whose lectures are slides-only is weaker than CS336 lectures 7-8, which the node's own `considered` calls "public and good" and which are already primary in the previous node. The `course` block also puts a CS336 note in `public_videos_term`. Fix: state in `notes` that 15-442 is slides plus a public lab, and consider UCSD CSE 234 (Winter 2025, recordings per the other node) if recordings are confirmed.
 - [should-fix] Primary text duplicates the Playbook, with the "Finding the Best Training Configuration" section also in the previous node (see above).
 - [suggestion] The slide references are inconsistent: `use` names 15-442 "Week 6", "Week 11" and "Week 5". I confirmed Week 5 (DP/ZeRO), Week 6 (model/pipeline parallelism and rematerialization) and Week 11 (MoE, Mar 25); all correct.
-- split/prereq: disagree with splitting fault tolerance. It is under 8h of reading and shares material with mlops-and-production.
+- split/prereq: disagree with splitting fault tolerance.
 
 ## llm-inference-and-serving
 - [should-fix] The primary-course is one CS336 lecture (L10, 1h25), and the worker says so. Slides-plus-video options: CMU 15-442 weeks 9-10 (slides public, confirmed on the schedule: continuous batching, PagedAttention, RadixAttention, speculative decoding), MIT 6.5940 Fall 2026 lectures 13 (LLM quantization and deployment), 15 (long context) and the Nov 24 "Efficient Inference in Production" guest lecture (public video, confirmed on the course page), and CME 295 lecture 5 (KV cache, speculative decoding, FlashAttention). Fix: use CS336 L10 plus MIT 6.5940 L13/L15 as the video track and CMU 15-442 weeks 9-10 as the slides. CMU 11-868 Spring 2026 (Lei Li) has a public site but no confirmed recordings in my search.
 - [should-fix] Duplicates: scaling-book Ch. 7 and kipply (see ml-performance-modeling). `serving-papers` bundles five papers and `speculative-papers` three, which is a reading list rather than a gap statement. Fix: mark Orca, Sarathi, DistServe, SGLang and Mooncake with one-line gaps.
 - [should-fix] Currency: the primary text is Gordic's "Inside vLLM", based on the vLLM V1 engine at commit 42172ad (Aug 2025), which is 15 months old. In a field where vLLM, SGLang, Dynamo and llm-d change monthly, state that engine details are as of Aug 2025. Also add EAGLE-3 and multi-token prediction (DeepSeek-V3) next to EAGLE.
 - [suggestion] `llm-inference-scratch` (Tushar Amrit) is marked unvetted by the worker. Fix: drop it unless a quality check is recorded; `hf-continuous-batching` covers the same ground.
-- split/prereq: disagree with splitting (55h fits one node). Agree that compression and inference should link (see model-compression).
+- split/prereq: disagree with splitting. Agree that compression and inference should link (see model-compression).
 
 ## model-compression
 - [should-fix] `mit-labs` mixes numbering from two terms: its URL is the Fall 2024 page and `use` says "Lab 1 Pruning, Lab 2 Quantization, Lab 4 LLM Compression, Lab 5 LLM Deployment". The Fall 2026 page lists Lab 1 GPU Basics, Lab 2 Pruning, Lab 3 NAS, Lab 4 Quantization and Lab 5 LLM deployment on a laptop. Fix: state both term numberings explicitly, or use only the Fall 2026 labs.
@@ -165,14 +165,13 @@ Verified correct (no action): CS336 Spring 2026 (public YouTube playlist PLoROMv
 ## consensus-and-replication
 - [must-fix] The `use` for MIT 6.5840 cites "Lectures 4 (Paxos), 6-7 (Raft), 8 (consistency and linearizability), 9 (ZooKeeper), 13 (chain replication)" (Spring 2026 numbering, which I confirmed) and then says to "use the Spring 2020 YouTube playlist for video". The 2020 playlist (confirmed from the playlist page) has no Paxos lecture and no standalone linearizability lecture: its L4 is Primary-Backup Replication, L8 is Zookeeper, L9 is CRAQ (the 2026 L13 equivalent), L6-7 are Raft, L5 is Go/Threads/Raft. So lectures 4 and 8 have no public video, and the others have different numbers. Fix: give a per-lecture mapping (2026 L6-7 = 2020 L6-7; L9 ZooKeeper = 2020 L8; L13 chain replication = 2020 L9), and say that Paxos and linearizability have no MIT video; point to Kleppmann lectures 5-8 (already listed) for those.
 - [suggestion] CS336-style duplicate: DDIA ch. 9 "fencing" is cited both in distributed-systems-fundamentals and here (ch. 10). Fine, but keep the `use` lists disjoint.
-- [suggestion] 90 hours is the largest estimate in my set, and MIT Raft labs alone are 40+ hours.
 - split/prereq: agree with the split into replication/consistency models and consensus protocols.
 
 ## distributed-transactions-and-storage
 - [should-fix] Same video-mapping problem: `use` cites "Lecture 11 (distributed transactions), Lecture 12 (Spanner), Lecture 14 (FaRM), Lecture 16 (memcached)" (2026 numbers, correct) plus the 2020 playlist, where these are L12, L13, L14 and L16. Only L14 and L16 coincide. Fix: write the 2020 numbers beside the 2026 ones.
 - [should-fix] DDIA ch. 8 (Transactions) is this node's primary text and also `ddia2-txn` in transactions-and-recovery, and distributed transactions are only a soft prerequisite of that node. Fix: here use only the "distributed transactions and 2PC" sections of ch. 8 and ch. 7, and leave the isolation-level material to transactions-and-recovery.
 - [suggestion] The primary-text DDIA ch. 7-8 covers sharding and 2PC but not Spanner, Calvin or distributed concurrency control; the papers in the reference list carry that. This is acceptable but `notes` should say it.
-- split/prereq: agree with the split (80h, two distinct topics) and agree that `transactions-and-recovery` should be hard.
+- split/prereq: agree with the split and agree that `transactions-and-recovery` should be hard.
 
 ## batch-and-stream-processing
 - [should-fix] The primary-course (Waterloo CS 451/651 Fall 2025, Section 002 only) has `videos: none`, and the page says two sections exist, so the public material is slides and assignments only. The worker found no better course. Fix: record in `notes` that this is a slides-and-assignments course, and add Confluent's free Flink and Kafka Streams courses (already listed as practice) as the video track.

@@ -1,14 +1,27 @@
 id: memory-systems
 title: Memory Systems & Multiprocessors
 group: G11
-paths: [architecture]
-hard: [computer-architecture]
-soft: [advanced-microarchitecture]
+paths:
+- architecture
+hard:
+- computer-architecture
+soft:
+- advanced-microarchitecture
+- concurrent-programming
 scope: Cache design, prefetching, DRAM, coherence protocols, memory consistency models, interconnects.
 level: advanced
-estimated_hours: 70
 resources:
-- {id: caqa7-mem, role: primary-text, kind: book, title: 'Computer Architecture: A Quantitative Approach, Ch. 2 Memory Hierarchy Design, Ch. 5 Thread-Level Parallelism (and App. B)', by: 'John L. Hennessy, David A. Patterson, Christos Kozyrakis', url: 'https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5', edition_or_term: '7th edition (Morgan Kaufmann/Elsevier, Dec 2025; Hennessy, Patterson, Kozyrakis)', access: paid, use: 'App. B (cache review), Ch. 2 (ten cache optimizations, prefetching, DRAM and DRAM organization, virtual memory/protection, memory-hierarchy case studies), Ch. 5 (symmetric and distributed shared-memory coherence, directory protocols, synchronization, consistency overview, interconnects).', why: 'Broadest single treatment of every item in the scope (cache design, prefetching, DRAM, coherence, consistency, interconnect) at consistent quality and now updated for 2025; the specialist references below add depth where it is thin (consistency and DRAM).', verified: true}
+- id: caqa7-mem
+  role: primary-text
+  kind: book
+  title: 'Computer Architecture: A Quantitative Approach, Ch. 2 Memory Hierarchy Design, Ch. 5 Thread-Level Parallelism (and App. B)'
+  by: John L. Hennessy, David A. Patterson, Christos Kozyrakis
+  url: https://shop.elsevier.com/books/computer-architecture/hennessy/978-0-443-15406-5
+  edition_or_term: 7th edition (Morgan Kaufmann/Elsevier, Dec 2025; Hennessy, Patterson, Kozyrakis)
+  access: paid
+  use: App. B (cache review), Ch. 2 (ten cache optimizations, prefetching, DRAM and DRAM organization, virtual memory/protection, memory-hierarchy case studies), Ch. 5 (symmetric and distributed shared-memory coherence, directory protocols, synchronization, consistency overview, interconnects).
+  why: Broadest single treatment of every item in the scope (cache design, prefetching, DRAM, coherence, consistency, interconnect) at consistent quality and now updated for 2025; the specialist references below add depth where it is thin (consistency and DRAM).
+  verified: true
 - id: eth-comparch
   role: primary-course
   kind: course
@@ -20,8 +33,25 @@ resources:
   use: 'Fall 2025 run (all 31 lectures, public): L2-L3 memory systems challenges, L4-L6 memory-centric computing/processing-in-memory, L7-L14 data retention, latency, controllers and scheduling, RowHammer/robustness, L15-L17 emerging memories and flash/SSDs, L18-L20 simulation and prefetching I-III, L20b-L22 multiprocessors, memory ordering, cache coherence and virtual memory, L23-L24 interconnects and on-chip networks. Labs 1-7: cache behavior simulation, memory hierarchy, programming a real PiM system, hardware prefetcher design, memory request scheduling, advanced virtual memory, multicore and cache coherence (handouts and code zips public). The Fall 2026 run (latest_url) is ordered differently: through L18 (as of 2026-11-17) it has covered memory-centric computing, robustness, retention, latency, controllers, L13 interconnects, L14 on-chip networks, L15 bottleneck acceleration, L16 simulation, L17 prefetching and L18 virtual memory, with no multiprocessor/coherence lectures yet, so follow the Fall 2025 list.'
   why: Only recent course whose whole syllabus is memory systems, with public lectures every year and real labs (prefetcher design, memory scheduling, coherence). The Fall 2026 run is already past L18 on the site, with the same lab structure. Coherence and consistency get only about three lectures (Fall 2025 L20b-L21c), so CAQA Ch. 5, the Primer and CS 152 carry that part of the scope.
   verified: true
-  course: {latest_term: Fall 2026 (in progress; lecture list differs from Fall 2025), latest_url: 'https://safari.ethz.ch/architecture/fall2026/doku.php?id=schedule', videos: public, public_videos_term: 'Fall 2025 (complete, 36-video livestream playlist)', public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi8tTLVb-9CUHcfKXLWESjOD', assignments: public, assignments_url: 'https://safari.ethz.ch/architecture/fall2025/doku.php?id=labs'}
-- {id: primer-consistency-coherence, role: secondary, kind: book, title: 'A Primer on Memory Consistency and Cache Coherence, Second Edition', by: 'Vijay Nagarajan, Daniel J. Sorin, Mark D. Hill, David A. Wood', url: 'https://link.springer.com/book/10.1007/978-3-031-01764-3', edition_or_term: 'Second edition (Synthesis Lectures on Computer Architecture, Morgan and Claypool, 2020); open access', access: free, use: 'Consistency chapters (SC, TSO/x86, relaxed models, litmus tests), then coherence (snooping and directory protocols with state tables), then the new chapters on GPU/accelerator consistency and on formal tools. Read after CAQA Ch. 5 and ETH L20-L21.', why: 'The authoritative short treatment of the two hardest parts of the scope; the second edition is open access. The Springer page returned a bot challenge, so the access status comes from the publisher listing and library records (OAPEN).', verified: false}
+  course:
+    latest_term: Fall 2026 (in progress; lecture list differs from Fall 2025)
+    latest_url: https://safari.ethz.ch/architecture/fall2026/doku.php?id=schedule
+    videos: public
+    public_videos_term: Fall 2025 (complete, 36-video livestream playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PL5Q2soXY2Zi8tTLVb-9CUHcfKXLWESjOD
+    assignments: public
+    assignments_url: https://safari.ethz.ch/architecture/fall2025/doku.php?id=labs
+- id: primer-consistency-coherence
+  role: secondary
+  kind: book
+  title: A Primer on Memory Consistency and Cache Coherence, Second Edition
+  by: Vijay Nagarajan, Daniel J. Sorin, Mark D. Hill, David A. Wood
+  url: https://link.springer.com/book/10.1007/978-3-031-01764-3
+  edition_or_term: Second edition (Synthesis Lectures on Computer Architecture, Morgan and Claypool, 2020); open access
+  access: free
+  use: Consistency chapters (SC, TSO/x86, relaxed models, litmus tests), then coherence (snooping and directory protocols with state tables), then the new chapters on GPU/accelerator consistency and on formal tools. Read after CAQA Ch. 5 and ETH L20-L21.
+  why: The authoritative short treatment of the two hardest parts of the scope; the second edition is open access. The Springer page returned a bot challenge, so the access status comes from the publisher listing and library records (OAPEN).
+  verified: false
 - id: berkeley-cs152
   role: secondary
   kind: course
@@ -33,19 +63,92 @@ resources:
   use: Lecture 21 (cache coherence), 24 (synchronization) and 25 (memory consistency) slides with the discussion 10 (cache coherency) and 11 (memory consistency) worksheets; lectures 5-7 and 9 (memory 1-3) and 10-11 (address translation, virtual/physical caches) as a cache-design refresher.
   why: Fills the coherence/consistency gap of the ETH course with compact undergraduate-level slides and worksheets. Recordings are Google Drive links that returned HTTP 401 without a login.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://inst.eecs.berkeley.edu/~cs152/sp26/', videos: unknown, assignments: public, assignments_url: 'https://inst.eecs.berkeley.edu/~cs152/sp26/lab/'}
-- {id: drepper-memory, role: secondary, kind: article, title: What Every Programmer Should Know About Memory, by: Ulrich Drepper, url: 'https://www.akkadia.org/drepper/cpumemory.pdf', edition_or_term: 'PDF, 2007', access: free, use: 'Sections 2-3 (DRAM, caches, associativity, coherence cost) and 6 (what programmers can do); read for the hardware-to-software performance link.', why: 'Still the best practitioner explanation of caches, DRAM and NUMA; dated on prefetchers and new DRAM standards, so treat numbers as illustrative.', verified: true}
-- {id: perfbook-memory-ordering, role: secondary, kind: book, title: 'Is Parallel Programming Hard, And, If So, What Can You Do About It? (memory ordering chapters)', by: Paul E. McKenney, url: 'https://www.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html', edition_or_term: Latest release at kernel.org (checked 2026-11-18), access: free, use: 'The ''Advanced Synchronization: Memory Ordering'' chapter and the ''Why Memory Barriers?'' appendix, which explain store buffers, invalidation queues and memory barriers from the hardware up.', why: 'Connects hardware consistency models to the C/C++ and Linux kernel memory models, a view the architecture texts omit.', verified: true}
-- {id: jacob-memory-systems, role: reference, kind: book, title: 'Memory Systems: Cache, DRAM, Disk', by: 'Bruce Jacob, Spencer Ng, David Wang', url: 'https://shop.elsevier.com/books/memory-systems/jacob/978-0-12-379751-3', edition_or_term: '1st edition (Morgan Kaufmann, 2008)', access: paid, use: 'Reference chapters on DRAM architecture, timing and controllers when ETH''s lectures or Ramulator output are unclear.', why: 'Deepest textbook treatment of DRAM device and controller behavior, though predating DDR4/5, HBM and RowHammer.', verified: true}
-- {id: ramulator2, role: practice, kind: tool, title: 'Ramulator 2.0: cycle-accurate DRAM simulator', by: SAFARI Research Group (CMU/ETH), url: 'https://github.com/CMU-SAFARI/ramulator2', edition_or_term: Rolling repository (MIT license), access: free, use: 'Build it, run the provided DDR4/DDR5 configs with the simple trace frontend, then change the scheduler, address mapping or refresh policy and compare latency/bandwidth; use ETH Fall 2025 Lab 5 (memory request scheduling) as the guided version.', why: 'The open DRAM simulator used in current research; gives hands-on feel for row-buffer locality, scheduling and RowHammer mitigations.', verified: true}
-- {id: herd7-litmus, role: practice, kind: tool, title: herd7 and the diy litmus-test tools (memory model simulator), by: 'Luc Maranget, Jade Alglave et al. (INRIA)', url: 'https://diy.inria.fr/www/', edition_or_term: diy release seven; web interface (checked 2026-11-18), access: free, use: 'Run the classic litmus tests (store buffering SB, message passing MP, load buffering LB, IRIW) under SC, x86-TSO, ARM and Power models in the online herd7 interface and predict outcomes first, following the Primer''s litmus tables.', why: 'Turns consistency models from abstract rules into executable checks, and shows which weakly-ordered outcomes appear on which architecture.', verified: true}
-- {id: learning-gem5, role: practice, kind: docs, title: Learning gem5, by: gem5 project, url: 'https://www.gem5.org/documentation/learning_gem5/introduction/', edition_or_term: Rolling documentation (checked 2026-11-18), access: free, use: 'Tutorial parts on configuring simple systems, cache hierarchies and Ruby coherence protocols (e.g., MSI) as a complement to ETH Lab 1/2/7.', why: 'The standard open full-system architecture simulator, appropriate for experiments on cache and coherence design beyond the single-purpose lab tools.', verified: true}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://inst.eecs.berkeley.edu/~cs152/sp26/
+    videos: unknown
+    assignments: public
+    assignments_url: https://inst.eecs.berkeley.edu/~cs152/sp26/lab/
+- id: drepper-memory
+  role: secondary
+  kind: article
+  title: What Every Programmer Should Know About Memory
+  by: Ulrich Drepper
+  url: https://www.akkadia.org/drepper/cpumemory.pdf
+  edition_or_term: PDF, 2007
+  access: free
+  use: Sections 2-3 (DRAM, caches, associativity, coherence cost) and 6 (what programmers can do); read for the hardware-to-software performance link.
+  why: Still the best practitioner explanation of caches, DRAM and NUMA; dated on prefetchers and new DRAM standards, so treat numbers as illustrative.
+  verified: true
+- id: perfbook-memory-ordering
+  role: secondary
+  kind: book
+  title: Is Parallel Programming Hard, And, If So, What Can You Do About It? (memory ordering chapters)
+  by: Paul E. McKenney
+  url: https://www.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html
+  edition_or_term: Latest release at kernel.org (checked 2026-11-18)
+  access: free
+  use: 'The ''Advanced Synchronization: Memory Ordering'' chapter and the ''Why Memory Barriers?'' appendix, which explain store buffers, invalidation queues and memory barriers from the hardware up.'
+  why: Connects hardware consistency models to the C/C++ and Linux kernel memory models, a view the architecture texts omit.
+  verified: true
+- id: jacob-memory-systems
+  role: reference
+  kind: book
+  title: 'Memory Systems: Cache, DRAM, Disk'
+  by: Bruce Jacob, Spencer Ng, David Wang
+  url: https://shop.elsevier.com/books/memory-systems/jacob/978-0-12-379751-3
+  edition_or_term: 1st edition (Morgan Kaufmann, 2008)
+  access: paid
+  use: Reference chapters on DRAM architecture, timing and controllers when ETH's lectures or Ramulator output are unclear.
+  why: Deepest textbook treatment of DRAM device and controller behavior, though predating DDR4/5, HBM and RowHammer.
+  verified: true
+- id: ramulator2
+  role: practice
+  kind: tool
+  title: 'Ramulator 2.0: cycle-accurate DRAM simulator'
+  by: SAFARI Research Group (CMU/ETH)
+  url: https://github.com/CMU-SAFARI/ramulator2
+  edition_or_term: Rolling repository (MIT license)
+  access: free
+  use: Build it, run the provided DDR4/DDR5 configs with the simple trace frontend, then change the scheduler, address mapping or refresh policy and compare latency/bandwidth; use ETH Fall 2025 Lab 5 (memory request scheduling) as the guided version.
+  why: The open DRAM simulator used in current research; gives hands-on feel for row-buffer locality, scheduling and RowHammer mitigations.
+  verified: true
+- id: herd7-litmus
+  role: practice
+  kind: tool
+  title: herd7 and the diy litmus-test tools (memory model simulator)
+  by: Luc Maranget, Jade Alglave et al. (INRIA)
+  url: https://diy.inria.fr/www/
+  edition_or_term: diy release seven; web interface (checked 2026-11-18)
+  access: free
+  use: Run the classic litmus tests (store buffering SB, message passing MP, load buffering LB, IRIW) under SC, x86-TSO, ARM and Power models in the online herd7 interface and predict outcomes first, following the Primer's litmus tables.
+  why: Turns consistency models from abstract rules into executable checks, and shows which weakly-ordered outcomes appear on which architecture.
+  verified: true
+- id: learning-gem5
+  role: practice
+  kind: docs
+  title: Learning gem5
+  by: gem5 project
+  url: https://www.gem5.org/documentation/learning_gem5/introduction/
+  edition_or_term: Rolling documentation (checked 2026-11-18)
+  access: free
+  use: Tutorial parts on configuring simple systems, cache hierarchies and Ruby coherence protocols (e.g., MSI) as a complement to ETH Lab 1/2/7.
+  why: The standard open full-system architecture simulator, appropriate for experiments on cache and coherence design beyond the single-purpose lab tools.
+  verified: true
 considered:
-- {title: 'MIT 6.5900 Fall 2026 (cache coherence L12-L13, consistency L14, on-chip networks L15-L16)', url: 'https://csg.csail.mit.edu/6.5900/', reason: Public syllabus; coverage of coherence/consistency/networks matches the scope but materials/videos not confirmed.}
-- {title: Cornell ECE 4750 handouts T03-T04 (memory concepts and microarchitecture), url: 'https://www.csl.cornell.edu/courses/ece4750/handouts/', reason: Good worked problems on caches and cache microarchitecture; videos not public; useful as supplementary notes.}
-- {title: 'Sorin, Hill, Wood Primer 1st edition (2011)', url: 'https://www.cs.wisc.edu/~markhill/', reason: Superseded by the free second edition.}
-notes: 'Route (about 70 h): CAQA App. B and Ch. 2/5 for the baseline, then the ETH Computer Architecture Fall 2025 lecture playlist (memory latency, controllers, prefetching, multiprocessors, coherence, virtual memory, interconnects) with its labs, CS 152 lectures 21/24/25 for coherence, synchronization and consistency, and the Primer for depth. The ETH course is strongly slanted to DRAM/processing-in-memory research (Mutlu''s group) and gives coherence and consistency only about three lectures; the scope''s ''coherence protocols, memory consistency models'' therefore rest on CAQA Ch. 5, the Primer and CS 152 (added after review R2). The resource URL points at Fall 2025 because the lecture numbers in `use` are Fall 2025''s; Fall 2026 is recorded as latest_term. Soft prerequisite advanced-microarchitecture helps with out-of-order memory ops (load/store queues) but is not required.'
+- title: MIT 6.5900 Fall 2026 (cache coherence L12-L13, consistency L14, on-chip networks L15-L16)
+  url: https://csg.csail.mit.edu/6.5900/
+  reason: Public syllabus; coverage of coherence/consistency/networks matches the scope but materials/videos not confirmed.
+- title: Cornell ECE 4750 handouts T03-T04 (memory concepts and microarchitecture)
+  url: https://www.csl.cornell.edu/courses/ece4750/handouts/
+  reason: Good worked problems on caches and cache microarchitecture; videos not public; useful as supplementary notes.
+- title: Sorin, Hill, Wood Primer 1st edition (2011)
+  url: https://www.cs.wisc.edu/~markhill/
+  reason: Superseded by the free second edition.
+notes: 'Route: CAQA App. B and Ch. 2/5 for the baseline, then the ETH Computer Architecture Fall 2025 lecture playlist (memory latency, controllers, prefetching, multiprocessors, coherence, virtual memory, interconnects) with its labs, CS 152 lectures 21/24/25 for coherence, synchronization and consistency, and the Primer for depth. The ETH course is strongly slanted to DRAM/processing-in-memory research (Mutlu''s group) and gives coherence and consistency only about three lectures; the scope''s ''coherence protocols, memory consistency models'' therefore rest on CAQA Ch. 5, the Primer and CS 152 (added after review R2). The resource URL points at Fall 2025 because the lecture numbers in `use` are Fall 2025''s; Fall 2026 is recorded as latest_term. Soft prerequisite advanced-microarchitecture helps with out-of-order memory ops (load/store queues) but is not required.'
 split_proposal: null
-prereq_changes: Consider soft prereq concurrent-programming (G4) for the memory-model material, since language-level memory models (C/C++ atomics) are the software side of the consistency chapters.
-open_questions: ['ETH Fall 2026 lecture videos are linked from the schedule as YouTube watch URLs; playback could not be tested (HTTP 429 from YouTube), so assumed public like earlier terms.', Springer/Primer page not openable by script (bot challenge); open-access status taken from search results and the OAPEN record.]
+prereq_changes: null
+open_questions:
+- ETH Fall 2026 lecture videos are linked from the schedule as YouTube watch URLs; playback could not be tested (HTTP 429 from YouTube), so assumed public like earlier terms.
+- Springer/Primer page not openable by script (bot challenge); open-access status taken from search results and the OAPEN record.
 last_verified: '2026-11-18'

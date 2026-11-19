@@ -1,160 +1,173 @@
 id: dl-framework-internals
-title: "DL Framework Internals"
+title: DL Framework Internals
 group: G9
-paths: [mlsys]
-hard: [deep-learning-fundamentals, python-in-depth]
-soft: [cpp-programming, gpu-programming]
-scope: "Tensors, autodiff engines, computation graphs, operator dispatch; building a mini framework."
-
+paths:
+- mlsys
+hard:
+- deep-learning-fundamentals
+- python-in-depth
+soft:
+- cpp-programming
+- gpu-programming
+scope: Tensors, autodiff engines, computation graphs, operator dispatch; building a mini framework.
 level: intermediate
-estimated_hours: 70
 resources:
-  - id: ezyang-internals
-    role: primary-text
-    kind: article
-    title: "PyTorch internals (and Let's talk about the PyTorch dispatcher)"
-    by: "Edward Z. Yang"
-    url: https://blog.ezyang.com/2019/05/pytorch-internals/
-    edition_or_term: "2019; dispatcher post Sept 2020"
-    access: free
-    use: "Read the internals post (tensor = storage + strides + metadata, dispatch, autograd, kernels, codegen) and the dispatcher post (https://blog.ezyang.com/2020/09/lets-talk-about-the-pytorch-dispatcher/) in full; then run a small op through torch.autograd.Function and torch.library to see the layers."
-    why: "Still the best written map of how a real framework is put together by a PyTorch core maintainer. Dated in details (functorch/dynamo are newer) but the architecture it describes is intact."
-    verified: true
-  - id: cmu-10-414
-    role: primary-course
-    kind: course
-    title: "CMU 10-414/714 Deep Learning Systems: Algorithms and Implementation"
-    by: "Tianqi Chen, Tim Dettmers (CMU)"
-    url: https://dlsyscourse.org/
-    edition_or_term: "Fall 2026"
-    access: free
-    use: "Lectures 3-5 (manual NNs, automatic differentiation, AD implementation), 7-9 (NN library abstractions and implementation), 10-13 (hardware acceleration, NDArray, CUDA backend); homeworks HW0-HW4 build the Needle library (autodiff, modules/optimizers, NDArray with CPU/CUDA backends, convolutions/RNNs); HW4 extra is for the graduate section."
-    why: "The canonical build-a-framework-from-scratch course: autodiff, NDArray, CPU/GPU backends, and training of real models, ending with a working PyTorch-like library."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://dlsyscourse.org/
-      videos: enrolled-only
-      public_videos_term: "2022 online public course (same lecture content, earlier Needle version)"
-      public_videos_url: https://www.youtube.com/@deeplearningsystemscourse1116/videos
-      assignments: public
-      assignments_url: https://dlsyscourse.org/assignments
-  - id: micrograd
-    role: practice
-    kind: video-series
-    title: "Neural Networks: Zero to Hero, Lecture 1: building micrograd"
-    by: "Andrej Karpathy"
-    url: https://karpathy.ai/zero-to-hero.html
-    edition_or_term: "2022 (video + repo)"
-    access: free
-    use: "Lecture 1 (about 2.5 h): write a scalar autograd engine and tiny MLP; do it before HW1 of the CMU course."
-    why: "Fastest way to internalize reverse-mode AD on a computation graph; sets up the tensor version in Needle."
-    verified: true
-  - id: minitorch
-    role: secondary
-    kind: course
-    title: "MiniTorch: a DIY teaching library for ML engineers"
-    by: "Sasha Rush (Cornell Tech)"
-    url: https://minitorch.github.io/
-    edition_or_term: "ongoing (Cornell Tech Machine Learning Engineering course)"
-    access: free
-    use: "Modules 0-4: Fundamentals, Autodiff (scalar), Tensors (broadcasting, strides), Efficiency (parallel ops, fusing, GPU programming), Networks. Use as an alternative or lighter sequel to Needle."
-    why: "Hidden gem: Python-first build of a framework with test-driven modules and a GPU/CUDA-via-Numba module; smaller than Needle and works well for self-study."
-    verified: true
-    course:
-      latest_term: "ongoing (Cornell Tech MLE course)"
-      latest_url: https://minitorch.github.io/
-      videos: none
-      assignments: public-with-autograder
-      assignments_url: https://minitorch.github.io/
-  - id: autodidax
-    role: secondary
-    kind: docs
-    title: "Autodidax: JAX core from scratch"
-    by: "JAX team (Dougal Maclaurin, Matthew Johnson et al.)"
-    url: https://docs.jax.dev/en/latest/autodidax.html
-    edition_or_term: "current docs"
-    access: free
-    use: "Whole tutorial: build jit, grad, vmap by implementing the primitives, tracing and interpreters."
-    why: "Hidden gem: the functional-transformation alternative to PyTorch's tape model; essential for understanding JAX and jaxprs before ml-compilers."
-    verified: true
-  - id: tinygrad
-    role: secondary
-    kind: website
-    title: "tinygrad documentation and tinygrad-notes"
-    by: "George Hotz / tiny corp; mesozoic-egg (notes)"
-    url: https://docs.tinygrad.org/
-    edition_or_term: "pre-1.0, active; notes at https://mesozoic-egg.github.io/tinygrad-notes/"
-    access: free
-    use: "Docs: Tensor, UOp, runtime overview; notes: the tutorials on how the lazy graph, scheduler and UOps lower to GPU code."
-    why: "A full framework with a compiler in a few thousand lines; reading it shows what a minimal complete stack (lazy tensor to kernel codegen) looks like."
-    verified: true
-  - id: pytorch-paper
-    role: reference
-    kind: paper
-    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
-    by: "Adam Paszke et al."
-    url: https://arxiv.org/abs/1912.01703
-    edition_or_term: "NeurIPS 2019"
-    access: free
-    use: "Sections 3-5 (design principles, autograd, memory management, async execution)."
-    why: "Authoritative statement of PyTorch's design choices; companion to the ezyang post."
-    verified: true
-  - id: pytorch-autograd-docs
-    role: reference
-    kind: docs
-    title: "PyTorch Autograd mechanics and Extending PyTorch"
-    by: "PyTorch"
-    url: https://docs.pytorch.org/docs/stable/notes/autograd.html
-    edition_or_term: "current docs"
-    access: free
-    use: "Autograd mechanics (graph, saved tensors, in-place correctness, hooks) and notes/extending (custom Functions, __torch_function__)."
-    why: "Precise semantics to check your own engine against."
-    verified: true
-  - id: ad-survey
-    role: reference
-    kind: paper
-    title: "Automatic differentiation in machine learning: a survey"
-    by: "Baydin, Pearlmutter, Radul, Siskind"
-    url: https://arxiv.org/abs/1502.05767
-    edition_or_term: "JMLR 2018"
-    access: free
-    use: "Sections 2-4 (forward vs reverse mode, implementation approaches)."
-    why: "Reference for AD theory behind the implementation work."
-    verified: true
-  - id: mlsysbook-frameworks
-    role: secondary
-    kind: book
-    title: "Introduction to Machine Learning Systems (Vol. I), Ch. 7 AI Frameworks"
-    by: "Vijay Janapa Reddi (Harvard) et al."
-    url: https://mlsysbook.ai/vol1/07_frameworks/07_frameworks.html
-    edition_or_term: "Vol. I, online 2026"
-    access: free
-    use: "7.2-7.7: graph execution models, differentiation, tensor/device abstraction, modules, anatomy of a training step; 7.8 for TensorFlow vs PyTorch vs JAX."
-    why: "Textbook-style framing and comparison across frameworks that the blog posts and course assume."
-    verified: true
-  - id: needle-hw
-    role: practice
-    kind: practice-site
-    title: "Needle homeworks HW0-HW4 (dlsyscourse GitHub)"
-    by: "CMU DLSys staff"
-    url: https://dlsyscourse.org/assignments
-    edition_or_term: "Fall 2026 (HW0 released 8/27/26, HW4 due 11/19/26)"
-    access: free
-    use: "HW1 (autograd engine), HW2 (nn modules, optimizers, data loading), HW3 (NDArray library with CPU and CUDA backends) are the core; HW4 for conv/RNN/transformer."
-    why: "Public Colab notebooks plus GitHub starter repos with tests; the graded tasks via mugrade are described as for enrolled students, but local pytest tests are in each repo."
-    verified: true
+- id: ezyang-internals
+  role: primary-text
+  kind: article
+  title: PyTorch internals (and Let's talk about the PyTorch dispatcher)
+  by: Edward Z. Yang
+  url: https://blog.ezyang.com/2019/05/pytorch-internals/
+  edition_or_term: 2019; dispatcher post Sept 2020
+  access: free
+  use: Read the internals post (tensor = storage + strides + metadata, dispatch, autograd, kernels, codegen) and the dispatcher post (https://blog.ezyang.com/2020/09/lets-talk-about-the-pytorch-dispatcher/) in full; then run a small op through torch.autograd.Function and torch.library to see the layers.
+  why: Still the best written map of how a real framework is put together by a PyTorch core maintainer. Dated in details (functorch/dynamo are newer) but the architecture it describes is intact.
+  verified: true
+- id: cmu-10-414
+  role: primary-course
+  kind: course
+  title: 'CMU 10-414/714 Deep Learning Systems: Algorithms and Implementation'
+  by: Tianqi Chen, Tim Dettmers (CMU)
+  url: https://dlsyscourse.org/
+  edition_or_term: Fall 2026
+  access: free
+  use: Lectures 3-5 (manual NNs, automatic differentiation, AD implementation), 7-9 (NN library abstractions and implementation), 10-13 (hardware acceleration, NDArray, CUDA backend); homeworks HW0-HW4 build the Needle library (autodiff, modules/optimizers, NDArray with CPU/CUDA backends, convolutions/RNNs); HW4 extra is for the graduate section.
+  why: 'The canonical build-a-framework-from-scratch course: autodiff, NDArray, CPU/GPU backends, and training of real models, ending with a working PyTorch-like library.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://dlsyscourse.org/
+    videos: enrolled-only
+    public_videos_term: 2022 online public course (same lecture content, earlier Needle version)
+    public_videos_url: https://www.youtube.com/@deeplearningsystemscourse1116/videos
+    assignments: public
+    assignments_url: https://dlsyscourse.org/assignments
+- id: micrograd
+  role: practice
+  kind: video-series
+  title: 'Neural Networks: Zero to Hero, Lecture 1: building micrograd'
+  by: Andrej Karpathy
+  url: https://karpathy.ai/zero-to-hero.html
+  edition_or_term: 2022 (video + repo)
+  access: free
+  use: 'Lecture 1: write a scalar autograd engine and tiny MLP; do it before HW1 of the CMU course.'
+  why: Fastest way to internalize reverse-mode AD on a computation graph; sets up the tensor version in Needle.
+  verified: true
+- id: minitorch
+  role: secondary
+  kind: course
+  title: 'MiniTorch: a DIY teaching library for ML engineers'
+  by: Sasha Rush (Cornell Tech)
+  url: https://minitorch.github.io/
+  edition_or_term: ongoing (Cornell Tech Machine Learning Engineering course)
+  access: free
+  use: 'Modules 0-4: Fundamentals, Autodiff (scalar), Tensors (broadcasting, strides), Efficiency (parallel ops, fusing, GPU programming), Networks. Use as an alternative or lighter sequel to Needle.'
+  why: 'Hidden gem: Python-first build of a framework with test-driven modules and a GPU/CUDA-via-Numba module; smaller than Needle and works well for self-study.'
+  verified: true
+  course:
+    latest_term: ongoing (Cornell Tech MLE course)
+    latest_url: https://minitorch.github.io/
+    videos: none
+    assignments: public-with-autograder
+    assignments_url: https://minitorch.github.io/
+- id: autodidax
+  role: secondary
+  kind: docs
+  title: 'Autodidax: JAX core from scratch'
+  by: JAX team (Dougal Maclaurin, Matthew Johnson et al.)
+  url: https://docs.jax.dev/en/latest/autodidax.html
+  edition_or_term: current docs
+  access: free
+  use: 'Whole tutorial: build jit, grad, vmap by implementing the primitives, tracing and interpreters.'
+  why: 'Hidden gem: the functional-transformation alternative to PyTorch''s tape model; essential for understanding JAX and jaxprs before ml-compilers.'
+  verified: true
+- id: tinygrad
+  role: secondary
+  kind: website
+  title: tinygrad documentation and tinygrad-notes
+  by: George Hotz / tiny corp; mesozoic-egg (notes)
+  url: https://docs.tinygrad.org/
+  edition_or_term: pre-1.0, active; notes at https://mesozoic-egg.github.io/tinygrad-notes/
+  access: free
+  use: 'Docs: Tensor, UOp, runtime overview; notes: the tutorials on how the lazy graph, scheduler and UOps lower to GPU code.'
+  why: A full framework with a compiler in a few thousand lines; reading it shows what a minimal complete stack (lazy tensor to kernel codegen) looks like.
+  verified: true
+- id: pytorch-paper
+  role: reference
+  kind: paper
+  title: 'PyTorch: An Imperative Style, High-Performance Deep Learning Library'
+  by: Adam Paszke et al.
+  url: https://arxiv.org/abs/1912.01703
+  edition_or_term: NeurIPS 2019
+  access: free
+  use: Sections 3-5 (design principles, autograd, memory management, async execution).
+  why: Authoritative statement of PyTorch's design choices; companion to the ezyang post.
+  verified: true
+- id: pytorch-autograd-docs
+  role: reference
+  kind: docs
+  title: PyTorch Autograd mechanics and Extending PyTorch
+  by: PyTorch
+  url: https://docs.pytorch.org/docs/stable/notes/autograd.html
+  edition_or_term: current docs
+  access: free
+  use: Autograd mechanics (graph, saved tensors, in-place correctness, hooks) and notes/extending (custom Functions, __torch_function__).
+  why: Precise semantics to check your own engine against.
+  verified: true
+- id: ad-survey
+  role: reference
+  kind: paper
+  title: 'Automatic differentiation in machine learning: a survey'
+  by: Baydin, Pearlmutter, Radul, Siskind
+  url: https://arxiv.org/abs/1502.05767
+  edition_or_term: JMLR 2018
+  access: free
+  use: Sections 2-4 (forward vs reverse mode, implementation approaches).
+  why: Reference for AD theory behind the implementation work.
+  verified: true
+- id: mlsysbook-frameworks
+  role: secondary
+  kind: book
+  title: Introduction to Machine Learning Systems (Vol. I), Ch. 7 AI Frameworks
+  by: Vijay Janapa Reddi (Harvard) et al.
+  url: https://mlsysbook.ai/vol1/07_frameworks/07_frameworks.html
+  edition_or_term: Vol. I, online 2026
+  access: free
+  use: '7.2-7.7: graph execution models, differentiation, tensor/device abstraction, modules, anatomy of a training step; 7.8 for TensorFlow vs PyTorch vs JAX.'
+  why: Textbook-style framing and comparison across frameworks that the blog posts and course assume.
+  verified: true
+- id: needle-hw
+  role: practice
+  kind: practice-site
+  title: Needle homeworks HW0-HW4 (dlsyscourse GitHub)
+  by: CMU DLSys staff
+  url: https://dlsyscourse.org/assignments
+  edition_or_term: Fall 2026 (HW0 released 8/27/26, HW4 due 11/19/26)
+  access: free
+  use: HW1 (autograd engine), HW2 (nn modules, optimizers, data loading), HW3 (NDArray library with CPU and CUDA backends) are the core; HW4 for conv/RNN/transformer.
+  why: Public Colab notebooks plus GitHub starter repos with tests; the graded tasks via mugrade are described as for enrolled students, but local pytest tests are in each repo.
+  verified: true
 considered:
-  - {title: "10-414/714 2022 public online course videos", url: "https://www.youtube.com/@deeplearningsystemscourse1116/videos", reason: "Linked above as the newest public recordings; the Fall 2026 lectures page still shows 2022 videos as supplementary."}
-  - {title: "UCSD CSE 291A DSC 291 Deep Learning Systems (Spring 2026) PA1 autodiff + transformers", url: "https://haoailab.com/cse291-s26/", reason: "Similar content but shorter; recordings on UCSD podcast (access unclear)."}
-  - {title: "CMU 15-442 Machine Learning Systems (Spring 2026) Lab 1 autodiff", url: "https://mlsyscourse.org/", reason: "Newer course by the same authors, adds GPU/LLM systems; slides public, videos unconfirmed."}
-  - {title: "tinygrad / micrograd source", url: "https://github.com/tinygrad/tinygrad", reason: "Included via docs and notes; GitHub repo pages not directly opened."}
-  - {title: "Dive into Deep Learning", url: "https://d2l.ai/", reason: "Framework usage, not internals; belongs to deep-learning-fundamentals."}
-notes: "Primary-text is deliberately a pair of blog posts by a core maintainer (2019 and 2020) because no book covers PyTorch's real architecture; the posts cover eager mode, autograd and the dispatcher only and predate PyTorch 2 (Dynamo/Inductor, DTensor), which are in ml-compilers and model-parallelism; mlsysbook Ch. 7 supplies the textbook framing. The Fall 2026 CMU term is running now (lectures through Dec 2026); the new-term lectures are recorded for enrolled students and the lectures page says public-course videos will be posted when available (none seen yet), while the 2022 public recordings and the assignment repos stay open. The homework autograder (mugrade) is stated for enrolled students; I treated assignments as public because notebooks/repos with tests are public."
+- title: 10-414/714 2022 public online course videos
+  url: https://www.youtube.com/@deeplearningsystemscourse1116/videos
+  reason: Linked above as the newest public recordings; the Fall 2026 lectures page still shows 2022 videos as supplementary.
+- title: UCSD CSE 291A DSC 291 Deep Learning Systems (Spring 2026) PA1 autodiff + transformers
+  url: https://haoailab.com/cse291-s26/
+  reason: Similar content but shorter; recordings on UCSD podcast (access unclear).
+- title: CMU 15-442 Machine Learning Systems (Spring 2026) Lab 1 autodiff
+  url: https://mlsyscourse.org/
+  reason: Newer course by the same authors, adds GPU/LLM systems; slides public, videos unconfirmed.
+- title: tinygrad / micrograd source
+  url: https://github.com/tinygrad/tinygrad
+  reason: Included via docs and notes; GitHub repo pages not directly opened.
+- title: Dive into Deep Learning
+  url: https://d2l.ai/
+  reason: Framework usage, not internals; belongs to deep-learning-fundamentals.
+notes: Primary-text is deliberately a pair of blog posts by a core maintainer (2019 and 2020) because no book covers PyTorch's real architecture; the posts cover eager mode, autograd and the dispatcher only and predate PyTorch 2 (Dynamo/Inductor, DTensor), which are in ml-compilers and model-parallelism; mlsysbook Ch. 7 supplies the textbook framing. The Fall 2026 CMU term is running now (lectures through Dec 2026); the new-term lectures are recorded for enrolled students and the lectures page says public-course videos will be posted when available (none seen yet), while the 2022 public recordings and the assignment repos stay open. The homework autograder (mugrade) is stated for enrolled students; I treated assignments as public because notebooks/repos with tests are public.
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "Whether Fall 2026 lecture recordings are posted publicly (page says all lectures recorded; public ones appear to be the 2022 version)."
-  - "Whether mugrade accepts public-course users in 2026."
-  - "micrograd GitHub and Tensor-Puzzles repos returned 403 to curl; the Zero to Hero page was used instead."
+- Whether Fall 2026 lecture recordings are posted publicly (page says all lectures recorded; public ones appear to be the 2022 version).
+- Whether mugrade accepts public-course users in 2026.
+- micrograd GitHub and Tensor-Puzzles repos returned 403 to curl; the Zero to Hero page was used instead.
 last_verified: 2026-11-18

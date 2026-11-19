@@ -1,0 +1,82 @@
+id: sharding-and-distributed-kv
+title: Sharding & Distributed Key-Value Stores
+group: G10
+paths:
+- distributed
+- databases
+hard:
+- replication-and-consistency
+soft:
+- consensus-protocols
+scope: Partitioning schemes, rebalancing, request routing, consistent hashing, Dynamo-style and Raft-group-based KV stores.
+level: advanced
+resources:
+- id: ddia2-shard-txn
+  role: primary-text
+  kind: book
+  title: 'Designing Data-Intensive Applications, 2nd edition: Sharding and Transactions'
+  by: Martin Kleppmann, Chris Riccomini
+  url: https://dataintensive.net/
+  edition_or_term: 2nd edition (O'Reilly, March 2026, 670 pages)
+  access: paid
+  use: Chapter 7 'Sharding' (key-range vs hash, secondary indexes, rebalancing, request routing).
+  why: The clearest single account of how partitioning and transactions interact and where distributed transactions break; it frames every system in the course (Spanner, Calvin, FoundationDB, Percolator) as a point in the same design space.
+  verified: true
+- id: mit-6824-txn
+  role: primary-course
+  kind: course
+  title: 'MIT 6.5840 (6.824) Distributed Systems: transactions and sharding'
+  by: MIT (Robert Morris, Frans Kaashoek)
+  url: https://pdos.csail.mit.edu/6.824/schedule.html
+  edition_or_term: Spring 2026
+  access: free
+  use: Lab 5 sharded key/value service (https://pdos.csail.mit.edu/6.824/labs/lab-shard1.html) and Spring 2026 lecture 16 (memcached consistency at Facebook; video = 2020 L16).
+  why: Paper-driven lectures with the best public explanation of 2PC and Spanner's TrueTime, and a sharded-KV lab that makes you implement shard movement on top of Raft. 2026 lectures are not recorded publicly; the 2020 videos cover the same papers.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://pdos.csail.mit.edu/6.824/schedule.html
+    videos: none
+    public_videos_term: Spring 2020 (official MIT 6.824 YouTube playlist)
+    public_videos_url: https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB
+    assignments: public-with-autograder
+    assignments_url: https://pdos.csail.mit.edu/6.824/labs/lab-shard1.html
+- id: tinykv
+  role: practice
+  kind: tool
+  title: 'TinyKV (PingCAP talent-plan): build a distributed key-value store on the TiKV model'
+  by: PingCAP talent-plan
+  url: https://github.com/talent-plan/tinykv
+  edition_or_term: Current course branch (Go)
+  access: free
+  use: 'Project 3 (multi-Raft KV: membership change, region split, scheduler). Projects 1-2 overlap MIT Labs 3-4 and can be skipped if those are done.'
+  why: 'Hidden gem: the only public course that takes you from Raft to sharding (regions) to Percolator-style distributed transactions in one codebase; the README says autograding for the original course moved to GitHub Classroom. Its last commit date was not visible, so check issues before starting.'
+  verified: true
+- id: db-internals-2
+  role: secondary
+  kind: book
+  title: 'Database Internals: A Deep-Dive into How Distributed Data Systems Work (Part II and Ch. 13)'
+  by: Alex Petrov
+  url: https://www.databass.dev/
+  edition_or_term: O'Reilly, 2019
+  access: paid
+  use: Consistent hashing and partitioning sections, and Ch. 11-12 (replication, anti-entropy) as needed.
+  why: 'Gap: more mechanism-level detail on Calvin, Spanner and Percolator than DDIA, in a few clear pages per system.'
+  verified: true
+- id: crdb-arch
+  role: secondary
+  kind: docs
+  title: CockroachDB architecture overview (SQL, transaction, distribution and replication layers)
+  by: Cockroach Labs
+  url: https://www.cockroachlabs.com/docs/stable/architecture/overview
+  edition_or_term: Current stable docs
+  access: free
+  use: Read the Overview, Distribution and Replication Layer pages.
+  why: 'Gap: a readable production system that combines ranges, Raft groups, hybrid logical clocks and serializable transactions; bridges the papers to a real implementation.'
+  verified: true
+considered: []
+notes: Created by splitting 'distributed-transactions-and-storage' (owner decision B5, 2026-11-19); resources reused from the researched node.
+split_proposal: null
+prereq_changes: null
+open_questions: []
+last_verified: 2026-11-18

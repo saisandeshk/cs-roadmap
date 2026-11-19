@@ -1,196 +1,212 @@
 id: scaling-and-pretraining
 title: Scaling Laws & Pretraining
 group: G7
-paths: [llm]
-hard: [language-modeling]
-soft: [distributed-training-fundamentals]
-scope: "Scaling laws, compute-optimal training, hyperparameter transfer (muP), training stability, pretraining recipes."
-
+paths:
+- llm
+hard:
+- language-modeling
+soft:
+- distributed-training-fundamentals
+- llm-architectures
+- pretraining-data
+scope: Scaling laws, compute-optimal training, hyperparameter transfer (muP), training stability, pretraining recipes.
 level: advanced
-estimated_hours: 45
 resources:
-  - id: smol-training-playbook
-    role: primary-text
-    kind: article
-    title: "The Smol Training Playbook: The Secrets to Building World-Class LLMs"
-    by: "Loubna Ben Allal, Lewis Tunstall, Nouamane Tazi, Elie Bakouch, Ed Beeching, Carlos Miguel Patino, Clementine Fourrier, Thibaud Frere, Anton Lozhkov, Colin Raffel, Leandro von Werra, Thomas Wolf (Hugging Face)"
-    url: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook
-    edition_or_term: "Published 2025-10-30 (SmolLM3: 3B, 11T tokens)"
-    access: free
-    use: "Training Compass (why/what/how), 'Every Big Model Starts with a Small Ablation' (baseline, derisking, evaluation design, cost), the pretraining part (architecture/data/hyperparameters/the training marathon incl. loss spikes and restarts) and, if wanted, post-training and infrastructure parts. The static host https://huggingfacetb-smol-training-playbook.hf.space/ renders the text."
-    why: "The most candid public account of running a real pretraining project (ablation discipline, 161k GPU-hours on ablations, debugging a TP bug, restarting after 1T tokens). Caveat: formal scaling-law analysis and muP are barely covered (the visible text only cites Chinchilla token counts), so the scaling-law papers and CS336 lectures below carry that part."
-    verified: true
-  - id: cs336-scaling
-    role: primary-course
-    kind: course
-    title: "Stanford CS336, Lectures 9 and 11 (Scaling laws) with Lecture 3 (hyperparameters) and Assignment 3"
-    by: "Tatsunori Hashimoto"
-    url: https://cs336.stanford.edu/
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Lectures 9 and 11 (both titled 'Scaling laws'; slides lecture_09.pdf and lecture_11.pdf), Lecture 3 (Architectures, hyperparameters); Assignment 3: fit a scaling law from a training-run API and choose a compute-optimal configuration."
-    why: "Current (Spring 2026) university treatment of scaling laws paired with a fitting assignment; recordings are public. (Lecture-level contents beyond titles were not read; check the slides.)"
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://cs336.stanford.edu/
-      videos: public
-      assignments: partial
-      assignments_url: https://github.com/stanford-cs336/assignment3-scaling
-  - id: cs336-a3
-    role: practice
-    kind: practice-site
-    title: "CS336 Assignment 3: Scaling (handout + client/server code)"
-    by: "Stanford CS336 staff"
-    url: https://github.com/stanford-cs336/assignment3-scaling
-    edition_or_term: "Spring 2026 (handout cs336_assignment3_scaling.pdf)"
-    access: free
-    use: "Per the Spring 2026 handout: Problem chinchilla_isoflops (5 pts) fits N_opt and D_opt power laws to the public synthetic data/isoflops_curves.json and extrapolates to 1e23/1e24 FLOPs, which self-studiers can do fully; Problem scaling_laws (50 pts) queries Stanford's hosted training API (12 B200-hour query cap) to pick the best model for a 48 B200-hour run. The API needs an 8-digit Stanford student ID as A3_API_KEY (hyperturing.stanford.edu:8000), so it is not usable for self-study. Practical self-study route: do the isoflops problem, then replace the API with Marin tutorials/Delphi scaling reports or ablations in the Smol Training Playbook; non-student README route (`uv sync --extra server`, Modal data script, cs336_scaling/training/run.py, own API + dispatcher with Postgres) is possible but heavy. The course page's A3 blurb also mentions model initialization and weight/activation dynamics; the handout PDF itself only cites muP (Yang et al.) in its bibliography."
-    why: "Only structured practice for fitting scaling laws; marked partial because the leaderboard half needs the hosted API, which is student-ID-gated."
-    verified: true
-  - id: kaplan-chinchilla
-    role: secondary
-    kind: paper
-    title: "Scaling Laws for Neural Language Models (Kaplan) and Training Compute-Optimal Large Language Models (Chinchilla)"
-    by: "Kaplan et al.; Hoffmann et al."
-    url: https://arxiv.org/abs/2203.15556
-    edition_or_term: "Chinchilla 2022 (arXiv 2203.15556); Kaplan 2020 (https://arxiv.org/abs/2001.08361)"
-    access: free
-    use: "Kaplan sections 1-4 (power laws in N, D, C); Chinchilla sections 3 (three estimation approaches) and 5; then the discrepancy resolutions below."
-    why: "The two founding papers; essential background before the replication papers."
-    verified: true
-  - id: porian-discrepancies
-    role: secondary
-    kind: paper
-    title: "Resolving Discrepancies in Compute-Optimal Scaling of Language Models; Chinchilla Scaling: A Replication Attempt"
-    by: "Porian et al.; Besiroglu et al."
-    url: https://arxiv.org/abs/2406.19146
-    edition_or_term: "2024; replication https://arxiv.org/abs/2404.10102"
-    access: free
-    use: "Why Kaplan and Chinchilla disagree (last-layer FLOPs, warmup, scale-dependent tuning) and errors in Chinchilla's approach 3 fit."
-    why: "Teaches the methodology pitfalls of scaling-law fitting; the current consensus view."
-    verified: true
-  - id: hagele-wsd
-    role: secondary
-    kind: paper
-    title: "Scaling Laws and Compute-Optimal Training Beyond Fixed Training Durations"
-    by: "Hagele et al."
-    url: https://arxiv.org/abs/2405.18392
-    edition_or_term: "2024"
-    access: free
-    use: "Constant LR + cooldown / WSD schedules and SWA that let one run produce many compute-optimal points cheaply; compare MiniCPM's WSD."
-    why: "The practical bridge from scaling-law theory to how teams actually schedule long runs."
-    verified: true
-  - id: data-constrained
-    role: secondary
-    kind: paper
-    title: "Scaling Data-Constrained Language Models"
-    by: "Muennighoff et al."
-    url: https://arxiv.org/abs/2305.16264
-    edition_or_term: "NeurIPS 2023"
-    access: free
-    use: "Repeated-data scaling (up to about 4 epochs nearly free; diminishing returns beyond), code/filtering as compensation."
-    why: "Fills the 'what if you run out of unique tokens' gap that Chinchilla assumes away."
-    verified: true
-  - id: mup
-    role: secondary
-    kind: paper
-    title: "Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer (muP)"
-    by: "Yang et al."
-    url: https://arxiv.org/abs/2203.03466
-    edition_or_term: "2022"
-    access: free
-    use: "Abstract, section 1-3 (parametrisation table, what transfers across width); read the empirical sections for the GPT-3 experiments, skip the Tensor Programs theory."
-    why: "Primary source for hyperparameter transfer; use with CS336 lecture 9/11 for the practitioner view (muP vs alternatives)."
-    verified: true
-  - id: wortsman-stability
-    role: secondary
-    kind: paper
-    title: "Small-scale proxies for large-scale Transformer training instabilities"
-    by: "Wortsman et al."
-    url: https://arxiv.org/abs/2309.14322
-    edition_or_term: "2023"
-    access: free
-    use: "Attention-logit growth and output-logit divergence, QK-layernorm and z-loss fixes, reproducing instabilities at small scale."
-    why: "Best primary source on diagnosing and preventing loss spikes (the stability part of this node's scope)."
-    verified: true
-  - id: olmo3-recipe
-    role: secondary
-    kind: paper
-    title: "Olmo 3 and 2 OLMo 2 Furious (full open pretraining recipes)"
-    by: "Ai2"
-    url: https://arxiv.org/abs/2512.13961
-    edition_or_term: "Olmo 3: Nov 2025 (arXiv 2512.13961); secondary: OLMo 2, Dec 2024/Jan 2025 (https://arxiv.org/abs/2501.00656)"
-    access: free
-    use: "OLMo 2 sections on initialization, stability (z-loss, QK-norm, reordered norm), LR schedule and mid-training (annealing) recipe; Olmo 3: three-stage pretraining (pretrain, mid-train, long-context extension). Code: OLMo-core."
-    why: "Fully open runs with intermediate checkpoints and code; the best 'real recipe' reading beside the Playbook."
-    verified: true
-  - id: llama3-herd
-    role: reference
-    kind: paper
-    title: "The Llama 3 Herd of Models"
-    by: "Meta"
-    url: https://arxiv.org/abs/2407.21783
-    edition_or_term: "2024"
-    access: free
-    use: "Sections 3.1-3.4 (data, model, scaling-law-guided compute allocation, infrastructure, training recipe and failure statistics for 16k GPUs)."
-    why: "Frontier-scale recipe including the IsoFLOP-to-flagship extrapolation and stability/infrastructure incident data."
-    verified: true
-  - id: deepseek-llm
-    role: reference
-    kind: paper
-    title: "DeepSeek LLM: Scaling Open-Source Language Models with Longtermism"
-    by: "DeepSeek-AI"
-    url: https://arxiv.org/abs/2401.02954
-    edition_or_term: "2024"
-    access: free
-    use: "Section 3 (scaling laws for hyperparameters and data/model allocation, effect of data quality on optimal split)."
-    why: "Shows an independent scaling-law methodology and that the optimal split depends on data quality."
-    verified: true
-  - id: marin
-    role: practice
-    kind: website
-    title: "Marin: open lab for foundation models (docs, tutorials, experiment reports)"
-    by: "Marin community (Stanford CRFM and collaborators)"
-    url: https://marin.readthedocs.io/en/latest/
-    edition_or_term: "Current docs (reports include 8B and 32B retrospectives, Delphi scaling suite)"
-    access: free
-    use: "Tutorials: first experiment (train a tiny LM), local GPU setup, DCLM 1B/1x run; Experiment Reports: the 8B and 32B retrospectives (including failed runs); Technical reference for the Delphi scaling recipe mapping compute budgets to model configs."
-    why: "Hidden gem: a public lab notebook of real pretraining runs, failures included, with a runnable framework; closest thing to an open playbook for scaling decisions."
-    verified: true
-  - id: tuning-playbook
-    role: reference
-    kind: website
-    title: "Deep Learning Tuning Playbook"
-    by: "Godbole, Dahl, Gilmer, Shallue, Nado (Google Research)"
-    url: https://github.com/google-research/tuning_playbook
-    edition_or_term: "Living document (2023)"
-    access: free
-    use: "Sections: starting a new project, scientific approach to improving performance (exploration vs exploitation), determining steps per run, training-pipeline guidance."
-    why: "Methodological base for hyperparameter search discipline that LLM-specific sources assume."
-    verified: true
-  - id: large-batch
-    role: reference
-    kind: paper
-    title: "An Empirical Model of Large-Batch Training"
-    by: "McCandlish et al."
-    url: https://arxiv.org/abs/1812.06162
-    edition_or_term: "2018"
-    access: free
-    use: "Gradient noise scale and critical batch size (sections 2-3)."
-    why: "Underpins the batch-size-scaling claims in Kaplan and CS336 lectures."
-    verified: true
+- id: smol-training-playbook
+  role: primary-text
+  kind: article
+  title: 'The Smol Training Playbook: The Secrets to Building World-Class LLMs'
+  by: Loubna Ben Allal, Lewis Tunstall, Nouamane Tazi, Elie Bakouch, Ed Beeching, Carlos Miguel Patino, Clementine Fourrier, Thibaud Frere, Anton Lozhkov, Colin Raffel, Leandro von Werra, Thomas Wolf (Hugging Face)
+  url: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook
+  edition_or_term: 'Published 2025-10-30 (SmolLM3: 3B, 11T tokens)'
+  access: free
+  use: Training Compass (why/what/how), 'Every Big Model Starts with a Small Ablation' (baseline, derisking, evaluation design, cost), the pretraining part (architecture/data/hyperparameters/the training marathon incl. loss spikes and restarts) and, if wanted, post-training and infrastructure parts. The static host https://huggingfacetb-smol-training-playbook.hf.space/ renders the text.
+  why: 'The most candid public account of running a real pretraining project (ablation discipline, 161k GPU-hours on ablations, debugging a TP bug, restarting after 1T tokens). Caveat: formal scaling-law analysis and muP are barely covered (the visible text only cites Chinchilla token counts), so the scaling-law papers and CS336 lectures below carry that part.'
+  verified: true
+- id: cs336-scaling
+  role: primary-course
+  kind: course
+  title: Stanford CS336, Lectures 9 and 11 (Scaling laws) with Lecture 3 (hyperparameters) and Assignment 3
+  by: Tatsunori Hashimoto
+  url: https://cs336.stanford.edu/
+  edition_or_term: Spring 2026
+  access: free
+  use: 'Lectures 9 and 11 (both titled ''Scaling laws''; slides lecture_09.pdf and lecture_11.pdf), Lecture 3 (Architectures, hyperparameters); Assignment 3: fit a scaling law from a training-run API and choose a compute-optimal configuration.'
+  why: Current (Spring 2026) university treatment of scaling laws paired with a fitting assignment; recordings are public. (Lecture-level contents beyond titles were not read; check the slides.)
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://cs336.stanford.edu/
+    videos: public
+    assignments: partial
+    assignments_url: https://github.com/stanford-cs336/assignment3-scaling
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+- id: cs336-a3
+  role: practice
+  kind: practice-site
+  title: 'CS336 Assignment 3: Scaling (handout + client/server code)'
+  by: Stanford CS336 staff
+  url: https://github.com/stanford-cs336/assignment3-scaling
+  edition_or_term: Spring 2026 (handout cs336_assignment3_scaling.pdf)
+  access: free
+  use: 'Per the Spring 2026 handout: Problem chinchilla_isoflops (5 pts) fits N_opt and D_opt power laws to the public synthetic data/isoflops_curves.json and extrapolates to 1e23/1e24 FLOPs, which self-studiers can do fully; Problem scaling_laws (50 pts) queries Stanford''s hosted training API (12 B200-hour query cap) to pick the best model for a 48 B200-hour run. The API needs an 8-digit Stanford student ID as A3_API_KEY (hyperturing.stanford.edu:8000), so it is not usable for self-study. Practical self-study route: do the isoflops problem, then replace the API with Marin tutorials/Delphi scaling reports or ablations in the Smol Training Playbook; non-student README route (`uv sync --extra server`, Modal data script, cs336_scaling/training/run.py, own API + dispatcher with Postgres) is possible but heavy. The course page''s A3 blurb also mentions model initialization and weight/activation dynamics; the handout PDF itself only cites muP (Yang et al.) in its bibliography.'
+  why: Only structured practice for fitting scaling laws; marked partial because the leaderboard half needs the hosted API, which is student-ID-gated.
+  verified: true
+- id: kaplan-chinchilla
+  role: secondary
+  kind: paper
+  title: Scaling Laws for Neural Language Models (Kaplan) and Training Compute-Optimal Large Language Models (Chinchilla)
+  by: Kaplan et al.; Hoffmann et al.
+  url: https://arxiv.org/abs/2203.15556
+  edition_or_term: Chinchilla 2022 (arXiv 2203.15556); Kaplan 2020 (https://arxiv.org/abs/2001.08361)
+  access: free
+  use: Kaplan sections 1-4 (power laws in N, D, C); Chinchilla sections 3 (three estimation approaches) and 5; then the discrepancy resolutions below.
+  why: The two founding papers; essential background before the replication papers.
+  verified: true
+- id: porian-discrepancies
+  role: secondary
+  kind: paper
+  title: 'Resolving Discrepancies in Compute-Optimal Scaling of Language Models; Chinchilla Scaling: A Replication Attempt'
+  by: Porian et al.; Besiroglu et al.
+  url: https://arxiv.org/abs/2406.19146
+  edition_or_term: 2024; replication https://arxiv.org/abs/2404.10102
+  access: free
+  use: Why Kaplan and Chinchilla disagree (last-layer FLOPs, warmup, scale-dependent tuning) and errors in Chinchilla's approach 3 fit.
+  why: Teaches the methodology pitfalls of scaling-law fitting; the current consensus view.
+  verified: true
+- id: hagele-wsd
+  role: secondary
+  kind: paper
+  title: Scaling Laws and Compute-Optimal Training Beyond Fixed Training Durations
+  by: Hagele et al.
+  url: https://arxiv.org/abs/2405.18392
+  edition_or_term: '2024'
+  access: free
+  use: Constant LR + cooldown / WSD schedules and SWA that let one run produce many compute-optimal points cheaply; compare MiniCPM's WSD.
+  why: The practical bridge from scaling-law theory to how teams actually schedule long runs.
+  verified: true
+- id: data-constrained
+  role: secondary
+  kind: paper
+  title: Scaling Data-Constrained Language Models
+  by: Muennighoff et al.
+  url: https://arxiv.org/abs/2305.16264
+  edition_or_term: NeurIPS 2023
+  access: free
+  use: Repeated-data scaling (up to about 4 epochs nearly free; diminishing returns beyond), code/filtering as compensation.
+  why: Fills the 'what if you run out of unique tokens' gap that Chinchilla assumes away.
+  verified: true
+- id: mup
+  role: secondary
+  kind: paper
+  title: 'Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer (muP)'
+  by: Yang et al.
+  url: https://arxiv.org/abs/2203.03466
+  edition_or_term: '2022'
+  access: free
+  use: Abstract, section 1-3 (parametrisation table, what transfers across width); read the empirical sections for the GPT-3 experiments, skip the Tensor Programs theory.
+  why: Primary source for hyperparameter transfer; use with CS336 lecture 9/11 for the practitioner view (muP vs alternatives).
+  verified: true
+- id: wortsman-stability
+  role: secondary
+  kind: paper
+  title: Small-scale proxies for large-scale Transformer training instabilities
+  by: Wortsman et al.
+  url: https://arxiv.org/abs/2309.14322
+  edition_or_term: '2023'
+  access: free
+  use: Attention-logit growth and output-logit divergence, QK-layernorm and z-loss fixes, reproducing instabilities at small scale.
+  why: Best primary source on diagnosing and preventing loss spikes (the stability part of this node's scope).
+  verified: true
+- id: olmo3-recipe
+  role: secondary
+  kind: paper
+  title: Olmo 3 and 2 OLMo 2 Furious (full open pretraining recipes)
+  by: Ai2
+  url: https://arxiv.org/abs/2512.13961
+  edition_or_term: 'Olmo 3: Nov 2025 (arXiv 2512.13961); secondary: OLMo 2, Dec 2024/Jan 2025 (https://arxiv.org/abs/2501.00656)'
+  access: free
+  use: 'OLMo 2 sections on initialization, stability (z-loss, QK-norm, reordered norm), LR schedule and mid-training (annealing) recipe; Olmo 3: three-stage pretraining (pretrain, mid-train, long-context extension). Code: OLMo-core.'
+  why: Fully open runs with intermediate checkpoints and code; the best 'real recipe' reading beside the Playbook.
+  verified: true
+- id: llama3-herd
+  role: reference
+  kind: paper
+  title: The Llama 3 Herd of Models
+  by: Meta
+  url: https://arxiv.org/abs/2407.21783
+  edition_or_term: '2024'
+  access: free
+  use: Sections 3.1-3.4 (data, model, scaling-law-guided compute allocation, infrastructure, training recipe and failure statistics for 16k GPUs).
+  why: Frontier-scale recipe including the IsoFLOP-to-flagship extrapolation and stability/infrastructure incident data.
+  verified: true
+- id: deepseek-llm
+  role: reference
+  kind: paper
+  title: 'DeepSeek LLM: Scaling Open-Source Language Models with Longtermism'
+  by: DeepSeek-AI
+  url: https://arxiv.org/abs/2401.02954
+  edition_or_term: '2024'
+  access: free
+  use: Section 3 (scaling laws for hyperparameters and data/model allocation, effect of data quality on optimal split).
+  why: Shows an independent scaling-law methodology and that the optimal split depends on data quality.
+  verified: true
+- id: marin
+  role: practice
+  kind: website
+  title: 'Marin: open lab for foundation models (docs, tutorials, experiment reports)'
+  by: Marin community (Stanford CRFM and collaborators)
+  url: https://marin.readthedocs.io/en/latest/
+  edition_or_term: Current docs (reports include 8B and 32B retrospectives, Delphi scaling suite)
+  access: free
+  use: 'Tutorials: first experiment (train a tiny LM), local GPU setup, DCLM 1B/1x run; Experiment Reports: the 8B and 32B retrospectives (including failed runs); Technical reference for the Delphi scaling recipe mapping compute budgets to model configs.'
+  why: 'Hidden gem: a public lab notebook of real pretraining runs, failures included, with a runnable framework; closest thing to an open playbook for scaling decisions.'
+  verified: true
+- id: tuning-playbook
+  role: reference
+  kind: website
+  title: Deep Learning Tuning Playbook
+  by: Godbole, Dahl, Gilmer, Shallue, Nado (Google Research)
+  url: https://github.com/google-research/tuning_playbook
+  edition_or_term: Living document (2023)
+  access: free
+  use: 'Sections: starting a new project, scientific approach to improving performance (exploration vs exploitation), determining steps per run, training-pipeline guidance.'
+  why: Methodological base for hyperparameter search discipline that LLM-specific sources assume.
+  verified: true
+- id: large-batch
+  role: reference
+  kind: paper
+  title: An Empirical Model of Large-Batch Training
+  by: McCandlish et al.
+  url: https://arxiv.org/abs/1812.06162
+  edition_or_term: '2018'
+  access: free
+  use: Gradient noise scale and critical batch size (sections 2-3).
+  why: Underpins the batch-size-scaling claims in Kaplan and CS336 lectures.
+  verified: true
 considered:
-  - {title: "How to Scale Your Model (JAX/TPU scaling book)", url: "https://jax-ml.github.io/scaling-book/", reason: "Superb for parallelism and roofline accounting but about systems, owned by ML-systems nodes (distributed-training-fundamentals); link as soft prerequisite material."}
-  - {title: "Hugging Face Ultra-Scale Playbook", url: "https://huggingface.co/spaces/nanotron/ultrascale-playbook", reason: "Parallelism cookbook (3D/4D parallelism) overlapping distributed-training nodes."}
-  - {title: "karpathy/nanoGPT scaling_laws.ipynb and transformer_sizing.ipynb", url: "https://github.com/karpathy/nanoGPT", reason: "Small, good notebooks on parameter/FLOP accounting, but the repo is deprecated; superseded by CS336 L2/A3."}
-  - {title: "Beyond Chinchilla-Optimal (Sardana et al., 2024)", url: "https://arxiv.org/abs/2401.00448", reason: "Inference-aware scaling (train past Chinchilla when serving matters); strong but secondary; not individually re-opened."}
-  - {title: "Data Mixing Laws (Ye et al.) / DoReMi", url: "https://arxiv.org/abs/2403.16952", reason: "Mixture optimization at scale (DoReMi: 2305.10429); pointer for pretraining-data."}
-  - {title: "Stas Bekman, Machine Learning Engineering Open Book", url: "https://github.com/stas00/ml-engineering", reason: "Great on instabilities, checkpoints and debugging on clusters, but infrastructure-heavy and GitHub unreachable from sandbox; in owner's seed list."}
-notes: "Choosing a single primary text was hard: no one text covers scaling laws, muP, stability and recipes. Primary route: Smol Playbook (recipe + ablations) with CS336 L9/L11 (+A3) for scaling-law methods and the Porian/Hagele/Wortsman papers; Marin and Olmo 3 for real runs. Practice is limited by compute: A3 needs the hosted API or self-hosted training; Marin tutorials can run tiny experiments."
-split_proposal: "Possible split into 'scaling-laws' (Kaplan/Chinchilla/muP/fits, A3) and 'pretraining-recipes-and-stability' (Playbook, Olmo/Llama recipes, loss spikes) if the owner wants practice to be more granular."
-prereq_changes: "Add soft: [llm-architectures, pretraining-data] (recipes combine both)."
+- title: How to Scale Your Model (JAX/TPU scaling book)
+  url: https://jax-ml.github.io/scaling-book/
+  reason: Superb for parallelism and roofline accounting but about systems, owned by ML-systems nodes (distributed-training-fundamentals); link as soft prerequisite material.
+- title: Hugging Face Ultra-Scale Playbook
+  url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
+  reason: Parallelism cookbook (3D/4D parallelism) overlapping distributed-training nodes.
+- title: karpathy/nanoGPT scaling_laws.ipynb and transformer_sizing.ipynb
+  url: https://github.com/karpathy/nanoGPT
+  reason: Small, good notebooks on parameter/FLOP accounting, but the repo is deprecated; superseded by CS336 L2/A3.
+- title: Beyond Chinchilla-Optimal (Sardana et al., 2024)
+  url: https://arxiv.org/abs/2401.00448
+  reason: Inference-aware scaling (train past Chinchilla when serving matters); strong but secondary; not individually re-opened.
+- title: Data Mixing Laws (Ye et al.) / DoReMi
+  url: https://arxiv.org/abs/2403.16952
+  reason: 'Mixture optimization at scale (DoReMi: 2305.10429); pointer for pretraining-data.'
+- title: Stas Bekman, Machine Learning Engineering Open Book
+  url: https://github.com/stas00/ml-engineering
+  reason: Great on instabilities, checkpoints and debugging on clusters, but infrastructure-heavy and GitHub unreachable from sandbox; in owner's seed list.
+notes: 'Choosing a single primary text was hard: no one text covers scaling laws, muP, stability and recipes. Primary route: Smol Playbook (recipe + ablations) with CS336 L9/L11 (+A3) for scaling-law methods and the Porian/Hagele/Wortsman papers; Marin and Olmo 3 for real runs. Practice is limited by compute: A3 needs the hosted API or self-hosted training; Marin tutorials can run tiny experiments.'
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "Smol Playbook text beyond the first ~100k characters was not read; section names are from the contents I read and the intro's four-part outline."
-  - "Stanford's CS336 A3 hosted API is gated by an 8-digit student ID per the Spring 2026 README (confirmed 2026-11-19); the non-student route needs your own server."
+- Smol Playbook text beyond the first ~100k characters was not read; section names are from the contents I read and the intro's four-part outline.
+- Stanford's CS336 A3 hosted API is gated by an 8-digit student ID per the Spring 2026 README (confirmed 2026-11-19); the non-student route needs your own server.
 last_verified: 2026-11-18

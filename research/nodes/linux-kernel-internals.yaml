@@ -1,120 +1,104 @@
 id: linux-kernel-internals
 title: Linux Kernel Internals
 group: G4
-paths: [os-perf]
-hard: [os-kernel-implementation]
-soft: []
-scope: "Kernel architecture, scheduler, memory management, VFS, device drivers, modules, kernel development workflow."
-
+paths:
+- os-perf
+hard:
+- os-kernel-implementation
+soft:
+- concurrent-programming
+- computer-architecture
+scope: Kernel architecture, scheduler, memory management, VFS, synchronization (locks, RCU), modules and the kernel development workflow.
 level: advanced
-estimated_hours: 130
 resources:
-  - id: lkp-2e
-    role: primary-text
-    kind: book
-    title: "Linux Kernel Programming, 2nd edition"
-    by: "Kaiwan N. Billimoria"
-    url: https://www.packtpub.com/en-us/product/linux-kernel-programming-9781803232225
-    edition_or_term: "2nd edition (Packt, Feb 2024; based on the 6.1 LTS kernel)"
-    access: paid
-    use: "Read by topic (chapter numbers not checked): building the kernel from source, kernel architecture and LKM framework, kernel memory allocation (page allocator, slab, vmalloc), process/thread internals, CPU scheduling (incl. cgroups v2), and kernel synchronization/locking (spinlocks, mutexes, RCU, lockdep). Run the book's code in a VM; pair with the companion repo."
-    why: "The only recent book that teaches kernel internals and module development against a modern LTS kernel, so code and APIs still compile; Love's classic is a decade behind. Covers the scope's architecture, scheduler, memory management and modules; weaker on VFS and device drivers (use the course and Bootlin for those)."
-    verified: false
-  - id: linux-kernel-teaching
-    role: primary-course
-    kind: course
-    title: "Linux Kernel Teaching (UPB Operating Systems 2 lectures and labs)"
-    by: "University POLITEHNICA of Bucharest (Operating Systems 2 team)"
-    url: https://linux-kernel-labs.github.io/refs/heads/master/
-    edition_or_term: "kernel 5.10 snapshot; rolling master"
-    access: free
-    use: "Lectures: system calls, processes, interrupts, SMP, address space, memory management, filesystem management, debugging, networking, architecture layer, virtualization. Labs in order: infrastructure, introduction, kernel modules, kernel API, character device drivers, I/O access and interrupts, deferred work, block device drivers, file system drivers (parts 1-2), networking, memory mapping, device model, kernel profiling."
-    why: "Free, complete lecture and lab set that spans the node scope (scheduler to VFS to drivers) with QEMU-based setup and skeletons; tests are included. Written for Linux 5.10, so APIs are a few years behind current LTS."
-    verified: true
-    course:
-      latest_term: "rolling (kernel 5.10.14 base; no term)"
-      latest_url: https://linux-kernel-labs.github.io/refs/heads/master/
-      videos: none
-      assignments: public
-      assignments_url: https://linux-kernel-labs.github.io/refs/heads/master/labs/introduction.html
-  - id: bootlin-kernel
-    role: secondary
-    kind: course
-    title: "Bootlin: Embedded Linux kernel and driver development training"
-    by: "Bootlin"
-    url: https://bootlin.com/training/kernel/
-    edition_or_term: "current slides and labs (public online sessions Dec 2026)"
-    access: free
-    use: "Slides (linux-kernel-slides.pdf) for device model, platform drivers, I2C/SPI, interrupts, DMA, power management, device tree, and kernel debugging; labs on BeagleBone/BeaglePlay/i.MX93 boards (or adapt to QEMU)."
-    why: "Fills the driver-development and device-tree gap with the freshest public slide deck on mainline practice (CC-BY-SA). Board-oriented, so optional if no hardware."
-    verified: true
-    course:
-      latest_term: "rolling release; public paid online sessions Nov-Dec 2026"
-      latest_url: https://bootlin.com/training/kernel/
-      videos: none
-      assignments: public
-      assignments_url: https://bootlin.com/training/kernel/
-  - id: lkmpg
-    role: practice
-    kind: website
-    title: "The Linux Kernel Module Programming Guide"
-    by: "Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram, Jim Huang"
-    url: https://sysprog21.github.io/lkmpg/
-    edition_or_term: "updated 2026-09-07; QEMU-based dev environment"
-    access: free
-    use: "Do all examples on a QEMU/VM: hello world, module params, character device, /proc and sysfs, system-call hooking caveats, blocking processes and waitqueues, sleep/interrupt handlers, tasklets/workqueues, crypto and IO ports."
-    why: "Hidden gem: continuously maintained for recent kernels with a ready QEMU environment; the best free, runnable, modern module tutorial and a lighter on-ramp than the labs."
-    verified: true
-  - id: kernel-docs
-    role: reference
-    kind: docs
-    title: "The Linux Kernel documentation (docs.kernel.org)"
-    by: "Linux kernel community"
-    url: https://docs.kernel.org/
-    edition_or_term: "current mainline"
-    access: free
-    use: "Scheduler (sched-design, EEVDF), memory management (mm), VFS (filesystems/vfs), core API (locking, RCU, workqueues), driver-api, and Rust-for-Linux sections as you read the corresponding code; for the development workflow, the process guides (HOWTO do Linux kernel development, Submitting patches) at docs.kernel.org/process."
-    why: "Authoritative, current, free reference for every subsystem in scope."
-    verified: true
-  - id: lwn-kernel
-    role: reference
-    kind: website
-    title: "LWN.net Kernel index and Kernel Development series"
-    by: "Jonathan Corbet and LWN authors"
-    url: https://lwn.net/Kernel/Index/
-    edition_or_term: "ongoing; some paywalled for 2 weeks"
-    access: mixed
-    use: "Use the subject index to read in-depth articles on RCU, the memory-management rewrites (folios, maple tree), the scheduler (EEVDF), io_uring, BPF and sched_ext; read 'LDD3' pages at lwn.net/Kernel/LDD3/ only for concepts."
-    why: "Best source for how and why subsystems changed; keeps the 2024 book and the 2021 labs current."
-    verified: true
-  - id: lfd103
-    role: secondary
-    kind: course
-    title: "A Beginner's Guide to Linux Kernel Development (LFD103)"
-    by: "Linux Foundation (Shuah Khan et al.)"
-    url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
-    edition_or_term: "free self-paced course"
-    access: free
-    use: "Do the full free course: development process, tools, first patch; then send a small fix (e.g., to a staging driver) following the KernelNewbies FirstKernelPatch steps."
-    why: "Covers the node's kernel-development-workflow item (mailing lists, checkpatch, git send-email, maintainers) as a structured free course; the single home for that item (the separate process-docs entry was merged into kernel-docs)."
-    verified: true
-    course:
-      latest_term: "self-paced"
-      latest_url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
-      videos: public
-      assignments: partial
-      assignments_url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
+- id: lkp-2e
+  role: primary-text
+  kind: book
+  title: Linux Kernel Programming, 2nd edition
+  by: Kaiwan N. Billimoria
+  url: https://www.packtpub.com/en-us/product/linux-kernel-programming-9781803232225
+  edition_or_term: 2nd edition (Packt, Feb 2024; based on the 6.1 LTS kernel)
+  access: paid
+  use: 'Read by topic (chapter numbers not checked): building the kernel from source, kernel architecture and LKM framework, kernel memory allocation (page allocator, slab, vmalloc), process/thread internals, CPU scheduling (incl. cgroups v2), and kernel synchronization/locking (spinlocks, mutexes, RCU, lockdep). Run the book''s code in a VM; pair with the companion repo.'
+  why: The only recent book that teaches kernel internals and module development against a modern LTS kernel, so code and APIs still compile; Love's classic is a decade behind. Covers the scope's architecture, scheduler, memory management and modules; weaker on VFS and device drivers (use the course and Bootlin for those).
+  verified: false
+- id: linux-kernel-teaching
+  role: primary-course
+  kind: course
+  title: Linux Kernel Teaching (UPB Operating Systems 2 lectures and labs)
+  by: University POLITEHNICA of Bucharest (Operating Systems 2 team)
+  url: https://linux-kernel-labs.github.io/refs/heads/master/
+  edition_or_term: kernel 5.10 snapshot; rolling master
+  access: free
+  use: 'Lectures: system calls, processes, interrupts, SMP, address space, memory management, filesystem management, debugging, architecture layer. Labs: infrastructure, introduction, kernel modules, kernel API, file system drivers (parts 1-2), kernel profiling; the driver labs belong to linux-device-drivers.'
+  why: Free, complete lecture and lab set that spans the node scope (scheduler to VFS to drivers) with QEMU-based setup and skeletons; tests are included. Written for Linux 5.10, so APIs are a few years behind current LTS.
+  verified: true
+  course:
+    latest_term: rolling (kernel 5.10.14 base; no term)
+    latest_url: https://linux-kernel-labs.github.io/refs/heads/master/
+    videos: none
+    assignments: public
+    assignments_url: https://linux-kernel-labs.github.io/refs/heads/master/labs/introduction.html
+- id: kernel-docs
+  role: reference
+  kind: docs
+  title: The Linux Kernel documentation (docs.kernel.org)
+  by: Linux kernel community
+  url: https://docs.kernel.org/
+  edition_or_term: current mainline
+  access: free
+  use: Scheduler (sched-design, EEVDF), memory management (mm), VFS (filesystems/vfs), core API (locking, RCU, workqueues) and Rust-for-Linux sections; driver-api is read in linux-device-drivers.
+  why: Authoritative, current, free reference for every subsystem in scope.
+  verified: true
+- id: lwn-kernel
+  role: reference
+  kind: website
+  title: LWN.net Kernel index and Kernel Development series
+  by: Jonathan Corbet and LWN authors
+  url: https://lwn.net/Kernel/Index/
+  edition_or_term: ongoing; some paywalled for
+  access: mixed
+  use: Use the subject index to read in-depth articles on RCU, the memory-management rewrites (folios, maple tree), the scheduler (EEVDF), io_uring, BPF and sched_ext; read 'LDD3' pages at lwn.net/Kernel/LDD3/ only for concepts.
+  why: Best source for how and why subsystems changed; keeps the 2024 book and the 2021 labs current.
+  verified: true
+- id: lfd103
+  role: secondary
+  kind: course
+  title: A Beginner's Guide to Linux Kernel Development (LFD103)
+  by: Linux Foundation (Shuah Khan et al.)
+  url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
+  edition_or_term: free self-paced course
+  access: free
+  use: 'Do the full free course: development process, tools, first patch; then send a small fix (e.g., to a staging driver) following the KernelNewbies FirstKernelPatch steps.'
+  why: Covers the node's kernel-development-workflow item (mailing lists, checkpatch, git send-email, maintainers) as a structured free course; the single home for that item (the separate process-docs entry was merged into kernel-docs).
+  verified: true
+  course:
+    latest_term: self-paced
+    latest_url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
+    videos: public
+    assignments: partial
+    assignments_url: https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/
 considered:
-  - {title: "Linux Kernel Development, 3rd ed. (Robert Love)", url: "https://www.oreilly.com/library/view/linux-kernel-development/9780768696974/", reason: "Clear overview but covers 2.6.34 (2010); used as a CS 162 reading; fine for concepts, wrong for APIs. Not opened (O'Reilly blocks bots)."}
-  - {title: "Linux Device Drivers, 3rd ed. (LDD3)", url: "https://lwn.net/Kernel/LDD3/", reason: "Free but 2.6.10; use LKMPG and the kernel's driver-api docs instead."}
-  - {title: "Linux Inside (0xAX)", url: "https://0xax.gitbooks.io/linux-insides/content/", reason: "Fascinating x86_64 boot/interrupt/memory walkthrough but a snapshot of an older kernel; good optional reading for boot, not a primary."}
-  - {title: "Understanding the Linux Kernel (Bovet & Cesati) / Understanding the Linux Virtual Memory Manager", url: "https://lwn.net/Kernel/Index/", reason: "Detailed but 2.6-era; out of date for scheduler and mm."}
-  - {title: "Bootlin Elixir cross-referencer", url: "https://elixir.bootlin.com/linux/latest/source", reason: "Essential for reading source online but showed a bot-check page to curl; use in a browser."}
-notes: "Book choice is a compromise: no modern free book covers the whole scope. Linux Kernel Programming 2e (6.1 LTS) is preferred because it is current and teaches by running code. The primary course is the UPB Linux Kernel Teaching set (rolling, 5.10-based) because its lecture/lab coverage matches the node scope; Bootlin adds modern driver/device-tree content. VFS and block layer coverage is mainly in the UPB labs and kernel docs; the scope's 'device drivers' item is best served by UPB labs + LKMPG + Bootlin."
-split_proposal: "Possibly split into 'linux-kernel-core' (scheduler, mm, synchronization, VFS) and 'linux-device-drivers' (module/driver model, device tree, interrupts, DMA)."
-prereq_changes: "Add soft: [c-programming advanced, concurrent-programming] (RCU/spinlocks) and [computer-architecture] (interrupts/MMU)."
+- title: Linux Kernel Development, 3rd ed. (Robert Love)
+  url: https://www.oreilly.com/library/view/linux-kernel-development/9780768696974/
+  reason: Clear overview but covers 2.6.34 (2010); used as a CS 162 reading; fine for concepts, wrong for APIs. Not opened (O'Reilly blocks bots).
+- title: Linux Device Drivers, 3rd ed. (LDD3)
+  url: https://lwn.net/Kernel/LDD3/
+  reason: Free but 2.6.10; use LKMPG and the kernel's driver-api docs instead.
+- title: Linux Inside (0xAX)
+  url: https://0xax.gitbooks.io/linux-insides/content/
+  reason: Fascinating x86_64 boot/interrupt/memory walkthrough but a snapshot of an older kernel; good optional reading for boot, not a primary.
+- title: Understanding the Linux Kernel (Bovet & Cesati) / Understanding the Linux Virtual Memory Manager
+  url: https://lwn.net/Kernel/Index/
+  reason: Detailed but 2.6-era; out of date for scheduler and mm.
+- title: Bootlin Elixir cross-referencer
+  url: https://elixir.bootlin.com/linux/latest/source
+  reason: Essential for reading source online but showed a bot-check page to curl; use in a browser.
+notes: 'Book choice is a compromise: no modern free book covers the whole scope. Linux Kernel Programming 2e (6.1 LTS) is preferred because it is current and teaches by running code. The primary course is the UPB Linux Kernel Teaching set (rolling, 5.10-based) because its lecture/lab coverage matches the node scope; Bootlin adds modern driver/device-tree content. VFS and block layer coverage is mainly in the UPB labs and kernel docs; the scope''s ''device drivers'' item is best served by UPB labs + LKMPG + Bootlin.'
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "Packt page for LKP 2e returned a Cloudflare challenge; edition/date confirmed from a web search snippet (Packt listing: Feb 29, 2024, ISBN 9781803232225, kernel 6.1 LTS), not by opening the page."
-  - "The UPB labs are for kernel 5.10; confirm that exercises still build on 6.x (some APIs changed)."
-  - "Bootlin lab PDF for BeagleBone/BeaglePlay not opened individually; page lists them."
+- 'Packt page for LKP 2e returned a Cloudflare challenge; edition/date confirmed from a web search snippet (Packt listing: Feb 29, 2024, ISBN 9781803232225, kernel 6.1 LTS), not by opening the page.'
+- The UPB labs are for kernel 5.10; confirm that exercises still build on 6.x (some APIs changed).
+- Bootlin lab PDF for BeagleBone/BeaglePlay not opened individually; page lists them.
 last_verified: 2026-11-18

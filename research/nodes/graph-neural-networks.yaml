@@ -1,159 +1,167 @@
 id: graph-neural-networks
 title: Graph ML & GNNs
 group: G5
-paths: [ml-foundations]
+paths:
+- ml-foundations
 optional: true
-hard: [deep-learning-fundamentals]
+hard:
+- deep-learning-fundamentals
 soft: []
-scope: "Node embeddings, message passing GNNs, graph transformers, geometric deep learning."
-
+scope: Node embeddings, message passing GNNs, graph transformers, geometric deep learning.
 level: advanced
-estimated_hours: 50
 resources:
-  - id: grl-book
-    role: primary-text
-    kind: book
-    title: "Graph Representation Learning"
-    by: "William L. Hamilton"
-    url: https://www.cs.mcgill.ca/~wlh/grl_book/
-    edition_or_term: "Morgan & Claypool 2020; free pre-publication PDF (chapter drafts updated Sept 2020)"
-    access: free
-    use: "Ch. 1-2 (background, traditional graph methods), Part I Ch. 3-4 (node embeddings: neighborhood reconstruction, multi-relational/knowledge graphs), Part II Ch. 5-7 (the GNN model, GNNs in practice, theoretical motivations), Part III deep generative models of graphs (Ch. 8-9) optional."
-    why: "Short, coherent, math-first treatment of embeddings and message-passing GNNs by a leading researcher; free. Its limitation: 2020, so no graph transformers or recent expressivity work (see secondary items)."
-    verified: true
-  - id: cs224w
-    role: primary-course
-    kind: course
-    title: "Stanford CS224W: Machine Learning with Graphs"
-    by: "Jure Leskovec (Stanford); Fall 2026 guest instructor Charilaos Kanatsoulis"
-    url: https://cs224w.stanford.edu/
-    edition_or_term: "Fall 2026 (Tue/Thu in person); public 2021 lecture recordings"
-    access: free
-    use: "Lectures are the 2021 recordings, which predate graph transformers; graph transformers and geometric deep learning come only from the GraphGPS paper and the GDL course in this node. Watch the 2021 lectures (traditional graph features, node embeddings/node2vec, PageRank, label propagation, GNN design space, GCN/GraphSAGE/GAT, theory of GNNs/expressivity, heterogeneous and knowledge graphs, scaling, graph generative models); use the current course site for slides and the Colab assignments; do Colabs 0-4."
-    why: "The standard graph ML course: complete public lecture set (2021), current slides and PyG-based Colab assignments."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs224w.stanford.edu/
-      videos: enrolled-only
-      public_videos_term: "2021 (YouTube playlist linked from Jure Leskovec's teaching page)"
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPLKxIpqhjhPgdQy7imNkDn
-      assignments: partial
-      assignments_url: https://cs224w.stanford.edu/
-  - id: gdl-course
-    role: secondary
-    kind: course
-    title: "AMMI Geometric Deep Learning Course (Grids, Groups, Graphs, Geodesics, Gauges)"
-    by: "Michael Bronstein, Joan Bruna, Taco Cohen, Petar Velickovic"
-    url: https://geometricdeeplearning.com/lectures/
-    edition_or_term: "Second edition, 2022 (AIMS/AMMI); 2021 edition also posted"
-    access: free
-    use: "Lectures 1-6 (introduction, high-dimensional learning, geometric priors I-II, graphs and sets I-II) plus the equivariance/gauge lectures if interested; slides and recordings on the site; read the proto-book (arXiv 2104.13478) alongside."
-    why: "Fills the geometric deep learning gap: symmetry/equivariance, why GNNs are the natural architecture for sets and graphs, and connections to transformers."
-    verified: true
-    course:
-      latest_term: "2022 (second edition); site also lists 2021"
-      latest_url: https://geometricdeeplearning.com/lectures/
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PLn2-dEmQeTfSLXW8yXP4q_Ii58wFdxb3C
-      assignments: partial
-  - id: gdl-book
-    role: secondary
-    kind: book
-    title: "Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges"
-    by: "Michael M. Bronstein, Joan Bruna, Taco Cohen, Petar Velickovic"
-    url: https://arxiv.org/abs/2104.13478
-    edition_or_term: "arXiv proto-book (2021); companion site https://geometricdeeplearning.com/"
-    access: free
-    use: "Ch. 1-3 (the blueprint, geometric priors), Ch. 5 (Geometric Deep Learning Models: CNNs, GNNs, DeepSets, transformers as attention on complete graphs, LSTMs), Ch. 6 (problems and applications)."
-    why: "The unifying view that places CNNs, GNNs and transformers in one framework, which is the 'geometric deep learning' item of the scope."
-    verified: true
-  - id: gnnbook
-    role: reference
-    kind: book
-    title: "Graph Neural Networks: Foundations, Frontiers, and Applications (GNNBook@2023)"
-    by: "Lingfei Wu, Peng Cui, Jian Pei, Liang Zhao (eds.)"
-    url: https://graph-neural-networks.github.io/
-    edition_or_term: "Springer 2022; chapters freely downloadable online"
-    access: free
-    use: "Chapters on spectral GNNs, expressive power of GNNs, graph transformers-era topics, scalability, robustness, and applications; consult by topic."
-    why: "Broad, more recent survey-style coverage than Hamilton (expressiveness, scalability, self-supervision, graph transformers)."
-    verified: true
-  - id: udl-ch13
-    role: secondary
-    kind: book
-    title: "Understanding Deep Learning, Chapter 13: Graph Neural Networks"
-    by: "Simon J.D. Prince"
-    url: https://udlbook.github.io/udlbook/
-    edition_or_term: "MIT Press 2023; free PDF (update 09 Feb 2026)"
-    access: free
-    use: "Ch. 13: graph representation, GNN layers, node/edge/graph tasks, graph convolutional and graph attention networks, batching, inductive vs transductive, with notebook."
-    why: "Quick, notation-consistent first pass in the same book as the DL prerequisite."
-    verified: true
-  - id: graph-transformers
-    role: secondary
-    kind: paper
-    title: "Graph transformers: Dwivedi and Bresson (2020), GraphGPS (2022)"
-    by: "Vijay Prakash Dwivedi, Xavier Bresson; Ladislav Rampasek et al."
-    url: https://arxiv.org/abs/2205.12454
-    edition_or_term: "GraphGPS: 'Recipe for a General, Powerful, Scalable Graph Transformer' arXiv 2205.12454; also https://arxiv.org/abs/2012.09699 (graph transformer generalization)"
-    access: free
-    use: "Read both: positional/structural encodings (Laplacian eigenvectors), local message passing plus global attention (GraphGPS); then 'How Attentive are GATs?' (https://arxiv.org/abs/2105.14491) and 'How Powerful are GNNs?' (https://arxiv.org/abs/1810.00826) for expressivity."
-    why: "Fills the graph transformer and expressivity gap in the 2020 Hamilton book."
-    verified: true
-  - id: foundational-papers
-    role: reference
-    kind: paper
-    title: "Foundational GNN papers: GCN, GraphSAGE, GAT"
-    by: "Kipf and Welling; Hamilton, Ying, Leskovec"
-    url: https://arxiv.org/abs/1609.02907
-    edition_or_term: "GCN arXiv 1609.02907; GraphSAGE arXiv 1706.02216; Kipf's blog https://tkipf.github.io/graph-convolutional-networks/"
-    access: free
-    use: "Read GCN and GraphSAGE after Hamilton ch. 5; read Kipf's GCN blog post for intuition; GAT is covered in UDL ch. 13 and CS224W."
-    why: "Primary sources for the three canonical message-passing layers."
-    verified: true
-  - id: distill-gnn
-    role: secondary
-    kind: article
-    title: "A Gentle Introduction to Graph Neural Networks (Distill) and Understanding Convolutions on Graphs"
-    by: "Sanchez-Lengeling, Reif, Pearce, Wiltschko; Daigavane, Ravindran, Aggarwal"
-    url: https://distill.pub/2021/gnn-intro/
-    edition_or_term: "Distill 2021; companion https://distill.pub/2021/understanding-gnns/"
-    access: free
-    use: "Interactive first pass before the book: graphs as data, message passing, pooling, and the connection to spectral convolutions."
-    why: "Interactive visuals build intuition quickly."
-    verified: true
-  - id: pyg-tutorials
-    role: practice
-    kind: practice-site
-    title: "PyTorch Geometric: Introduction by Example, Creating Message Passing Networks, and Colab notebooks"
-    by: "PyG team"
-    url: https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
-    edition_or_term: "PyG docs (latest); intro at https://pytorch-geometric.readthedocs.io/en/latest/get_started/introduction.html and message passing at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/create_gnn.html"
-    access: free
-    use: "Colab notebooks: Introduction (hands-on GNNs), Node Classification, Graph Classification, Scaling GNNs, Customizing Aggregations within Message Passing, Link Prediction; then implement GCN and GAT layers yourself with MessagePassing."
-    why: "The de-facto library tutorials; each is a runnable Colab on real graph tasks."
-    verified: true
-  - id: ogb
-    role: practice
-    kind: practice-site
-    title: "Open Graph Benchmark (OGB)"
-    by: "Stanford SNAP group"
-    url: https://ogb.stanford.edu/docs/home/
-    edition_or_term: "OGB docs and leaderboards"
-    access: free
-    use: "Pick one node-property task (ogbn-arxiv), one link-property task (ogbl-collab) and one graph-property task (ogbg-molhiv); train a GCN/GraphSAGE baseline and compare against the leaderboard."
-    why: "Standardized datasets/evaluators force honest evaluation and show scaling issues beyond Cora-sized toys."
-    verified: true
+- id: grl-book
+  role: primary-text
+  kind: book
+  title: Graph Representation Learning
+  by: William L. Hamilton
+  url: https://www.cs.mcgill.ca/~wlh/grl_book/
+  edition_or_term: Morgan & Claypool 2020; free pre-publication PDF (chapter drafts updated Sept 2020)
+  access: free
+  use: 'Ch. 1-2 (background, traditional graph methods), Part I Ch. 3-4 (node embeddings: neighborhood reconstruction, multi-relational/knowledge graphs), Part II Ch. 5-7 (the GNN model, GNNs in practice, theoretical motivations), Part III deep generative models of graphs (Ch. 8-9) optional.'
+  why: 'Short, coherent, math-first treatment of embeddings and message-passing GNNs by a leading researcher; free. Its limitation: 2020, so no graph transformers or recent expressivity work (see secondary items).'
+  verified: true
+- id: cs224w
+  role: primary-course
+  kind: course
+  title: 'Stanford CS224W: Machine Learning with Graphs'
+  by: Jure Leskovec (Stanford); Fall 2026 guest instructor Charilaos Kanatsoulis
+  url: https://cs224w.stanford.edu/
+  edition_or_term: Fall 2026 (Tue/Thu in person); public 2021 lecture recordings
+  access: free
+  use: Lectures are the 2021 recordings, which predate graph transformers; graph transformers and geometric deep learning come only from the GraphGPS paper and the GDL course in this node. Watch the 2021 lectures (traditional graph features, node embeddings/node2vec, PageRank, label propagation, GNN design space, GCN/GraphSAGE/GAT, theory of GNNs/expressivity, heterogeneous and knowledge graphs, scaling, graph generative models); use the current course site for slides and the Colab assignments; do Colabs 0-4.
+  why: 'The standard graph ML course: complete public lecture set (2021), current slides and PyG-based Colab assignments.'
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs224w.stanford.edu/
+    videos: enrolled-only
+    public_videos_term: 2021 (YouTube playlist linked from Jure Leskovec's teaching page)
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPLKxIpqhjhPgdQy7imNkDn
+    assignments: partial
+    assignments_url: https://cs224w.stanford.edu/
+- id: gdl-course
+  role: secondary
+  kind: course
+  title: AMMI Geometric Deep Learning Course (Grids, Groups, Graphs, Geodesics, Gauges)
+  by: Michael Bronstein, Joan Bruna, Taco Cohen, Petar Velickovic
+  url: https://geometricdeeplearning.com/lectures/
+  edition_or_term: Second edition, 2022 (AIMS/AMMI); 2021 edition also posted
+  access: free
+  use: Lectures 1-6 (introduction, high-dimensional learning, geometric priors I-II, graphs and sets I-II) plus the equivariance/gauge lectures if interested; slides and recordings on the site; read the proto-book (arXiv 2104.13478) alongside.
+  why: 'Fills the geometric deep learning gap: symmetry/equivariance, why GNNs are the natural architecture for sets and graphs, and connections to transformers.'
+  verified: true
+  course:
+    latest_term: 2022 (second edition); site also lists 2021
+    latest_url: https://geometricdeeplearning.com/lectures/
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PLn2-dEmQeTfSLXW8yXP4q_Ii58wFdxb3C
+    assignments: partial
+- id: gdl-book
+  role: secondary
+  kind: book
+  title: 'Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges'
+  by: Michael M. Bronstein, Joan Bruna, Taco Cohen, Petar Velickovic
+  url: https://arxiv.org/abs/2104.13478
+  edition_or_term: arXiv proto-book (2021); companion site https://geometricdeeplearning.com/
+  access: free
+  use: 'Ch. 1-3 (the blueprint, geometric priors), Ch. 5 (Geometric Deep Learning Models: CNNs, GNNs, DeepSets, transformers as attention on complete graphs, LSTMs), Ch. 6 (problems and applications).'
+  why: The unifying view that places CNNs, GNNs and transformers in one framework, which is the 'geometric deep learning' item of the scope.
+  verified: true
+- id: gnnbook
+  role: reference
+  kind: book
+  title: 'Graph Neural Networks: Foundations, Frontiers, and Applications (GNNBook@2023)'
+  by: Lingfei Wu, Peng Cui, Jian Pei, Liang Zhao (eds.)
+  url: https://graph-neural-networks.github.io/
+  edition_or_term: Springer 2022; chapters freely downloadable online
+  access: free
+  use: Chapters on spectral GNNs, expressive power of GNNs, graph transformers-era topics, scalability, robustness, and applications; consult by topic.
+  why: Broad, more recent survey-style coverage than Hamilton (expressiveness, scalability, self-supervision, graph transformers).
+  verified: true
+- id: udl-ch13
+  role: secondary
+  kind: book
+  title: 'Understanding Deep Learning, Chapter 13: Graph Neural Networks'
+  by: Simon J.D. Prince
+  url: https://udlbook.github.io/udlbook/
+  edition_or_term: MIT Press 2023; free PDF (update 09 Feb 2026)
+  access: free
+  use: 'Ch. 13: graph representation, GNN layers, node/edge/graph tasks, graph convolutional and graph attention networks, batching, inductive vs transductive, with notebook.'
+  why: Quick, notation-consistent first pass in the same book as the DL prerequisite.
+  verified: true
+- id: graph-transformers
+  role: secondary
+  kind: paper
+  title: 'Graph transformers: Dwivedi and Bresson (2020), GraphGPS (2022)'
+  by: Vijay Prakash Dwivedi, Xavier Bresson; Ladislav Rampasek et al.
+  url: https://arxiv.org/abs/2205.12454
+  edition_or_term: 'GraphGPS: ''Recipe for a General, Powerful, Scalable Graph Transformer'' arXiv 2205.12454; also https://arxiv.org/abs/2012.09699 (graph transformer generalization)'
+  access: free
+  use: 'Read both: positional/structural encodings (Laplacian eigenvectors), local message passing plus global attention (GraphGPS); then ''How Attentive are GATs?'' (https://arxiv.org/abs/2105.14491) and ''How Powerful are GNNs?'' (https://arxiv.org/abs/1810.00826) for expressivity.'
+  why: Fills the graph transformer and expressivity gap in the 2020 Hamilton book.
+  verified: true
+- id: foundational-papers
+  role: reference
+  kind: paper
+  title: 'Foundational GNN papers: GCN, GraphSAGE, GAT'
+  by: Kipf and Welling; Hamilton, Ying, Leskovec
+  url: https://arxiv.org/abs/1609.02907
+  edition_or_term: GCN arXiv 1609.02907; GraphSAGE arXiv 1706.02216; Kipf's blog https://tkipf.github.io/graph-convolutional-networks/
+  access: free
+  use: Read GCN and GraphSAGE after Hamilton ch. 5; read Kipf's GCN blog post for intuition; GAT is covered in UDL ch. 13 and CS224W.
+  why: Primary sources for the three canonical message-passing layers.
+  verified: true
+- id: distill-gnn
+  role: secondary
+  kind: article
+  title: A Gentle Introduction to Graph Neural Networks (Distill) and Understanding Convolutions on Graphs
+  by: Sanchez-Lengeling, Reif, Pearce, Wiltschko; Daigavane, Ravindran, Aggarwal
+  url: https://distill.pub/2021/gnn-intro/
+  edition_or_term: Distill 2021; companion https://distill.pub/2021/understanding-gnns/
+  access: free
+  use: 'Interactive first pass before the book: graphs as data, message passing, pooling, and the connection to spectral convolutions.'
+  why: Interactive visuals build intuition quickly.
+  verified: true
+- id: pyg-tutorials
+  role: practice
+  kind: practice-site
+  title: 'PyTorch Geometric: Introduction by Example, Creating Message Passing Networks, and Colab notebooks'
+  by: PyG team
+  url: https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
+  edition_or_term: PyG docs (latest); intro at https://pytorch-geometric.readthedocs.io/en/latest/get_started/introduction.html and message passing at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/create_gnn.html
+  access: free
+  use: 'Colab notebooks: Introduction (hands-on GNNs), Node Classification, Graph Classification, Scaling GNNs, Customizing Aggregations within Message Passing, Link Prediction; then implement GCN and GAT layers yourself with MessagePassing.'
+  why: The de-facto library tutorials; each is a runnable Colab on real graph tasks.
+  verified: true
+- id: ogb
+  role: practice
+  kind: practice-site
+  title: Open Graph Benchmark (OGB)
+  by: Stanford SNAP group
+  url: https://ogb.stanford.edu/docs/home/
+  edition_or_term: OGB docs and leaderboards
+  access: free
+  use: Pick one node-property task (ogbn-arxiv), one link-property task (ogbl-collab) and one graph-property task (ogbg-molhiv); train a GCN/GraphSAGE baseline and compare against the leaderboard.
+  why: Standardized datasets/evaluators force honest evaluation and show scaling issues beyond Cora-sized toys.
+  verified: true
 considered:
-  - {title: "DGL (Deep Graph Library)", url: "https://www.dgl.ai/", reason: "Alternative framework; PyG has more tutorials and is more widely used in courses."}
-  - {title: "CS224W Fall 2023 / other recent public recordings", url: "https://snap.stanford.edu/class/cs224w-2023/", reason: "Site now redirects to the current Fall 2026 page; recent run videos are Canvas-only."}
-  - {title: "Neural Sheaf Diffusion (Bodnar et al.)", url: "https://arxiv.org/abs/2202.04579", reason: "Advanced topology-based GNN work; research reading rather than a core resource."}
-  - {title: "Geometric Deep Learning and Equivariant Neural Networks", url: "https://arxiv.org/abs/2105.13926", reason: "Mathematical survey on equivariance; deeper than needed here."}
-notes: "CS224W has a Fall 2026 run, but lecture videos are for enrolled students; the 2021 playlist (officially linked) is the best complete public recording but predates graph transformers, so supplement with GraphGPS and the GDL course. Hamilton's book is old (2020) but remains the best compact primary text; pair with GNNBook and GDL book for newer topics."
+- title: DGL (Deep Graph Library)
+  url: https://www.dgl.ai/
+  reason: Alternative framework; PyG has more tutorials and is more widely used in courses.
+- title: CS224W Fall 2023 / other recent public recordings
+  url: https://snap.stanford.edu/class/cs224w-2023/
+  reason: Site now redirects to the current Fall 2026 page; recent run videos are Canvas-only.
+- title: Neural Sheaf Diffusion (Bodnar et al.)
+  url: https://arxiv.org/abs/2202.04579
+  reason: Advanced topology-based GNN work; research reading rather than a core resource.
+- title: Geometric Deep Learning and Equivariant Neural Networks
+  url: https://arxiv.org/abs/2105.13926
+  reason: Mathematical survey on equivariance; deeper than needed here.
+notes: CS224W has a Fall 2026 run, but lecture videos are for enrolled students; the 2021 playlist (officially linked) is the best complete public recording but predates graph transformers, so supplement with GraphGPS and the GDL course. Hamilton's book is old (2020) but remains the best compact primary text; pair with GNNBook and GDL book for newer topics.
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "CS224W assignment/Colab availability for Fall 2026: page says slides and assignments will be posted as the course progresses; I found only one Colab link."
-  - "Exact chapter numbers in the GDL proto-book and Hamilton ch. 8-9 not re-checked against PDFs."
+- 'CS224W assignment/Colab availability for Fall 2026: page says slides and assignments will be posted as the course progresses; I found only one Colab link.'
+- Exact chapter numbers in the GDL proto-book and Hamilton ch. 8-9 not re-checked against PDFs.
 last_verified: 2026-11-18

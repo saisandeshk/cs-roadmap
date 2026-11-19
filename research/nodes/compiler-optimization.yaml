@@ -1,14 +1,25 @@
 id: compiler-optimization
 title: Compiler Optimization & LLVM
 group: G11
-paths: [plc]
-hard: [compiler-construction]
+paths:
+- plc
+hard:
+- compiler-construction
 soft: []
 scope: SSA, dataflow analysis, loop optimizations, writing LLVM passes, JIT basics.
 level: advanced
-estimated_hours: 70
 resources:
-- {id: eac3-opt, role: primary-text, kind: book, title: 'Engineering a Compiler, 3rd edition: Ch. 8-10 (optimization, data-flow analysis, scalar optimization) and Ch. 14 (runtime optimization)', by: 'Keith D. Cooper, Linda Torczon', url: 'https://shop.elsevier.com/books/engineering-a-compiler/cooper/978-0-12-815412-0', edition_or_term: '3rd edition (Morgan Kaufmann/Elsevier, Aug 2022); latest edition', access: paid, use: 'Ch. 8 (intro to optimization), 9 (data-flow analysis: iterative framework, liveness, available expressions, SSA construction), 10 (scalar optimizations: redundancy elimination, value numbering, loop-invariant code motion, strength reduction, inlining), 14 (runtime optimization/JIT basics); ch. 12 (instruction scheduling) as extension.', why: 'Authors known for their work on value numbering, dominators and register allocation; coherent treatment of dataflow and SSA, and the same book as compiler-construction, so one purchase serves both.', verified: true}
+- id: eac3-opt
+  role: primary-text
+  kind: book
+  title: 'Engineering a Compiler, 3rd edition: Ch. 8-10 (optimization, data-flow analysis, scalar optimization) and Ch. 14 (runtime optimization)'
+  by: Keith D. Cooper, Linda Torczon
+  url: https://shop.elsevier.com/books/engineering-a-compiler/cooper/978-0-12-815412-0
+  edition_or_term: 3rd edition (Morgan Kaufmann/Elsevier, Aug 2022); latest edition
+  access: paid
+  use: 'Ch. 8 (intro to optimization), 9 (data-flow analysis: iterative framework, liveness, available expressions, SSA construction), 10 (scalar optimizations: redundancy elimination, value numbering, loop-invariant code motion, strength reduction, inlining), 14 (runtime optimization/JIT basics); ch. 12 (instruction scheduling) as extension.'
+  why: Authors known for their work on value numbering, dominators and register allocation; coherent treatment of dataflow and SSA, and the same book as compiler-construction, so one purchase serves both.
+  verified: true
 - id: cornell-cs6120
   role: primary-course
   kind: course
@@ -20,7 +31,14 @@ resources:
   use: 'Lessons 1-10, 13 and 14 with their implementation tasks: welcome, representing programs and Bril, local analysis and value numbering, data flow and its implementation task, global analysis, SSA, LLVM (intro and ''writing an LLVM pass''), loop optimization, interprocedural analysis, alias analysis, concurrency and parallelism, fast compilers. Lessons 11-12 (memory management, dynamic compilers) are assigned in language-runtimes. The self-guided page lists the full curriculum and paper readings.'
   why: 'Best hands-on public course for this exact scope: short video per lesson, notes, open-ended implementation tasks in an educational IR (Bril) and LLVM, and a paper reading list. Videos are hosted on Cornell''s Kaltura VOD pages embedded in the lesson pages; the 2020 self-guided version has the same format.'
   verified: true
-  course: {latest_term: Fall 2025 (CS 6120 site at /2025fa/), latest_url: 'https://www.cs.cornell.edu/courses/cs6120/2025fa/', videos: public, public_videos_term: Fall 2025 and the 2020 self-guided version (vod.video.cornell.edu embeds), public_videos_url: 'https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/', assignments: public, assignments_url: 'https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/'}
+  course:
+    latest_term: Fall 2025 (CS 6120 site at /2025fa/)
+    latest_url: https://www.cs.cornell.edu/courses/cs6120/2025fa/
+    videos: public
+    public_videos_term: Fall 2025 and the 2020 self-guided version (vod.video.cornell.edu embeds)
+    public_videos_url: https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/
+    assignments: public
+    assignments_url: https://www.cs.cornell.edu/courses/cs6120/2025fa/lesson/
 - id: cmu-15745
   role: secondary
   kind: course
@@ -32,19 +50,85 @@ resources:
   use: 'Lecture notes 4-up/1-up PDFs: overview, local optimizations, LLVM, dataflow analysis and foundations, GCSE, SSA, LICM, induction variables, partial redundancy elimination and lazy code motion, region-based analysis, pointer analysis, dynamic code optimization, register allocation (coloring, coalescing), memory hierarchy, list scheduling, software pipelining, prefetching, dependence analysis, thread-level speculation.'
   why: Deeper and broader optimization notes (PRE, LCM, software pipelining, dependence analysis) than CS 6120; excellent as the theory companion. Lecture videos and assignments are not public.
   verified: true
-  course: {latest_term: '"Spring 2027" header with Fall 2026 dates (ambiguous)', latest_url: 'https://www.cs.cmu.edu/~15745/', videos: none, assignments: restricted, assignments_url: 'https://www.cs.cmu.edu/~15745/'}
-- {id: cam-optcomp, role: secondary, kind: video-series, title: 'Cambridge Part II Optimising Compilers (Tim Jones), 2023-24 YouTube lectures', by: University of Cambridge, url: 'https://www.cl.cam.ac.uk/teaching/2324/OptComp/youtube/', edition_or_term: '2023-24 (18 lectures, about 10 hours)', access: free, use: 'Lectures 2-8 (unreachable code, live variables, available expressions, clash graphs and register allocation, redundancy elimination, SSA and strength reduction) and 15-16 (instruction scheduling); lectures 9-14 (abstract interpretation through alias/points-to analysis) are assigned in program-analysis.', why: Compact 18-lecture video series on classical optimization and analysis with a formal bent; the lecture notes on the course page are short and rigorous., verified: true}
-- {id: llvm-passes, role: practice, kind: docs, title: 'LLVM docs: Writing an LLVM Pass (new pass manager) and the LLVM tutorial', by: LLVM project, url: 'https://llvm.org/docs/WritingAnLLVMNewPMPass.html', edition_or_term: 'Current docs (checked 2026-11-18); tutorial at https://llvm.org/docs/tutorial/', access: free, use: 'Write a simple function pass (e.g. count instructions or dead-store/constant folding), register it with the new pass manager, run with opt; then do Kaleidoscope chapters 1-8 (https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html) to add optimization passes and a JIT to a toy language.', why: 'Official, current and task-oriented; the Kaleidoscope tutorial also covers JIT basics (the node''s last scope item).', verified: true}
-- {id: llvm-grad-students, role: secondary, kind: article, title: LLVM for Grad Students, by: Adrian Sampson, url: 'https://www.cs.cornell.edu/~asampson/blog/llvm.html', edition_or_term: Blog post (checked 2026-11-18), access: free, use: 'Read before the first LLVM task: how to build LLVM out-of-tree, write a pass and use opt, with the project skeleton from CS 6120.', why: Practical setup guide that avoids most of the build/API pain beginners hit with LLVM., verified: true}
-- {id: ssa-book, role: reference, kind: book, title: SSA-based Compiler Design (SSA Book), by: 'Fabrice Rastello, Florent Bouchez Tichadou (eds.)', url: 'https://pfalcon.github.io/ssabook/latest/', edition_or_term: Free draft/online version (checked 2026-11-18), access: free, use: 'Introduction and SSA construction/destruction chapters, plus the chapters on SSA-based register allocation and on analyses over SSA.', why: Authoritative graduate-level reference when EaC's SSA treatment is not detailed enough., verified: true}
-- {id: godbolt-opt, role: practice, kind: tool, title: Compiler Explorer (Opt Pipeline viewer), by: Matt Godbolt, url: 'https://godbolt.org/', edition_or_term: Live site, access: free, use: 'Use the ''Opt Pipeline'' view to inspect LLVM IR after each pass for small C/C++/Rust functions and see where inlining, mem2reg, LICM and vectorization happen.', why: Makes pass effects visible in seconds; ideal for forming hypotheses before writing your own pass., verified: true}
+  course:
+    latest_term: '"Spring 2027" header with Fall 2026 dates (ambiguous)'
+    latest_url: https://www.cs.cmu.edu/~15745/
+    videos: none
+    assignments: restricted
+    assignments_url: https://www.cs.cmu.edu/~15745/
+- id: cam-optcomp
+  role: secondary
+  kind: video-series
+  title: Cambridge Part II Optimising Compilers (Tim Jones), 2023-24 YouTube lectures
+  by: University of Cambridge
+  url: https://www.cl.cam.ac.uk/teaching/2324/OptComp/youtube/
+  edition_or_term: 2023-24
+  access: free
+  use: Lectures 2-8 (unreachable code, live variables, available expressions, clash graphs and register allocation, redundancy elimination, SSA and strength reduction) and 15-16 (instruction scheduling); lectures 9-14 (abstract interpretation through alias/points-to analysis) are assigned in program-analysis.
+  why: Compact 18-lecture video series on classical optimization and analysis with a formal bent; the lecture notes on the course page are short and rigorous.
+  verified: true
+- id: llvm-passes
+  role: practice
+  kind: docs
+  title: 'LLVM docs: Writing an LLVM Pass (new pass manager) and the LLVM tutorial'
+  by: LLVM project
+  url: https://llvm.org/docs/WritingAnLLVMNewPMPass.html
+  edition_or_term: Current docs (checked 2026-11-18); tutorial at https://llvm.org/docs/tutorial/
+  access: free
+  use: Write a simple function pass (e.g. count instructions or dead-store/constant folding), register it with the new pass manager, run with opt; then do Kaleidoscope chapters 1-8 (https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html) to add optimization passes and a JIT to a toy language.
+  why: Official, current and task-oriented; the Kaleidoscope tutorial also covers JIT basics (the node's last scope item).
+  verified: true
+- id: llvm-grad-students
+  role: secondary
+  kind: article
+  title: LLVM for Grad Students
+  by: Adrian Sampson
+  url: https://www.cs.cornell.edu/~asampson/blog/llvm.html
+  edition_or_term: Blog post (checked 2026-11-18)
+  access: free
+  use: 'Read before the first LLVM task: how to build LLVM out-of-tree, write a pass and use opt, with the project skeleton from CS 6120.'
+  why: Practical setup guide that avoids most of the build/API pain beginners hit with LLVM.
+  verified: true
+- id: ssa-book
+  role: reference
+  kind: book
+  title: SSA-based Compiler Design (SSA Book)
+  by: Fabrice Rastello, Florent Bouchez Tichadou (eds.)
+  url: https://pfalcon.github.io/ssabook/latest/
+  edition_or_term: Free draft/online version (checked 2026-11-18)
+  access: free
+  use: Introduction and SSA construction/destruction chapters, plus the chapters on SSA-based register allocation and on analyses over SSA.
+  why: Authoritative graduate-level reference when EaC's SSA treatment is not detailed enough.
+  verified: true
+- id: godbolt-opt
+  role: practice
+  kind: tool
+  title: Compiler Explorer (Opt Pipeline viewer)
+  by: Matt Godbolt
+  url: https://godbolt.org/
+  edition_or_term: Live site
+  access: free
+  use: Use the 'Opt Pipeline' view to inspect LLVM IR after each pass for small C/C++/Rust functions and see where inlining, mem2reg, LICM and vectorization happen.
+  why: Makes pass effects visible in seconds; ideal for forming hypotheses before writing your own pass.
+  verified: true
 considered:
-- {title: 'Muchnick, Advanced Compiler Design and Implementation', url: 'https://www.elsevier.com/', reason: 'Encyclopedic but 1997; still the best algorithm reference, not used as primary because EaC and the courses cover the core; publisher page not opened.'}
-- {title: 'Allen and Kennedy, Optimizing Compilers for Modern Architectures', url: 'https://www.elsevier.com/', reason: Dependence analysis and loop transformations in depth; too specialized for the main route; page not opened.}
-- {title: CMU 15-745 Spring 2019 site, url: 'https://www.cs.cmu.edu/afs/cs/academic/class/15745-s19/www/', reason: Older archived site with assignments (LLVM passes); open alternative to the current notes.}
-- {title: UW CSE 401 / Stanford CS 243 Program Analysis and Optimizations, url: 'https://suif.stanford.edu/', reason: Alternative formal dataflow-heavy courses; not evaluated in this pass.}
-notes: 'Route (about 70 h): EaC ch. 8-10 + CS 6120 lessons 1-8 (dataflow, SSA, LLVM pass, loop optimization) with the implementation tasks (Bril optimizations: DCE, local value numbering, dataflow framework, SSA conversion, LICM), then an LLVM pass using the new-pass-manager docs. JIT basics: the Kaleidoscope JIT chapters; CS 6120 lesson 12 (dynamic compilers) and deeper JIT material are in language-runtimes. ML compilers are covered by G9''s ml-compilers node (soft-depends on this one). Program-analysis shares dataflow content, so avoid double-doing it. Declined review R2''s CS 6120 video caveat: on the Fall 2025 lessons page, lessons 2-7 and 12 do link vod.video.cornell.edu videos, labelled by topic rather than ''video'' (e.g. lesson 2 ''representing programs'', ''getting started with Bril''; lesson 6 ''static single assignment''); only lesson 14 has no video.'
+- title: Muchnick, Advanced Compiler Design and Implementation
+  url: https://www.elsevier.com/
+  reason: Encyclopedic but 1997; still the best algorithm reference, not used as primary because EaC and the courses cover the core; publisher page not opened.
+- title: Allen and Kennedy, Optimizing Compilers for Modern Architectures
+  url: https://www.elsevier.com/
+  reason: Dependence analysis and loop transformations in depth; too specialized for the main route; page not opened.
+- title: CMU 15-745 Spring 2019 site
+  url: https://www.cs.cmu.edu/afs/cs/academic/class/15745-s19/www/
+  reason: Older archived site with assignments (LLVM passes); open alternative to the current notes.
+- title: UW CSE 401 / Stanford CS 243 Program Analysis and Optimizations
+  url: https://suif.stanford.edu/
+  reason: Alternative formal dataflow-heavy courses; not evaluated in this pass.
+notes: 'Route: EaC ch. 8-10 + CS 6120 lessons 1-8 (dataflow, SSA, LLVM pass, loop optimization) with the implementation tasks (Bril optimizations: DCE, local value numbering, dataflow framework, SSA conversion, LICM), then an LLVM pass using the new-pass-manager docs. JIT basics: the Kaleidoscope JIT chapters; CS 6120 lesson 12 (dynamic compilers) and deeper JIT material are in language-runtimes. ML compilers are covered by G9''s ml-compilers node (soft-depends on this one). Program-analysis shares dataflow content, so avoid double-doing it. Declined review R2''s CS 6120 video caveat: on the Fall 2025 lessons page, lessons 2-7 and 12 do link vod.video.cornell.edu videos, labelled by topic rather than ''video'' (e.g. lesson 2 ''representing programs'', ''getting started with Bril''; lesson 6 ''static single assignment''); only lesson 14 has no video.'
 split_proposal: null
 prereq_changes: null
-open_questions: [CS 6120 Fall 2026 offering/URL not found (2026sp returned 404); latest found is Fall 2025., CMU 15-745 lecture-notes page is titled 'Spring 2027' but lists lecture dates from Aug 26 to Oct 30 which matches Fall 2026; term label unclear., Kaltura playback of CS 6120 videos not tested (links embedded in public pages).]
+open_questions:
+- CS 6120 Fall 2026 offering/URL not found (2026sp returned 404); latest found is Fall 2025.
+- CMU 15-745 lecture-notes page is titled 'Spring 2027' but lists lecture dates from Aug 26 to Oct 30 which matches Fall 2026; term label unclear.
+- Kaltura playback of CS 6120 videos not tested (links embedded in public pages).
 last_verified: '2026-11-18'

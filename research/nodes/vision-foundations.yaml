@@ -1,110 +1,121 @@
 id: vision-foundations
 title: Vision Foundations
 group: G6
-paths: [vision]
-hard: [linear-algebra, calculus]
-soft: [deep-learning-fundamentals]
-scope: "Image formation, cameras, filtering, features, optical flow, classical recognition."
-
+paths:
+- vision
+hard:
+- linear-algebra
+- calculus-multivariable
+soft: []
+scope: Image formation, cameras, filtering, features, optical flow, classical recognition.
 level: intro
-estimated_hours: 70
 resources:
-  - id: foundations-of-cv
-    role: primary-text
-    kind: book
-    title: "Foundations of Computer Vision"
-    by: "Antonio Torralba, Phillip Isola, William T. Freeman"
-    url: https://visionbook.mit.edu/
-    edition_or_term: "MIT Press, 2024 (free web version, CC BY-NC-ND; print also sold)"
-    access: free
-    use: "Ch. 2 (simple vision system), 5-8 (imaging, lenses, cameras as linear systems, color), 15-23 (linear filtering, Fourier, blur/derivative filters, aliasing, filter banks, pyramids), 27-28 (image statistics, textures), 31 (perceptual grouping), 46-49 (motion estimation, optical flow), 50 (object recognition). Skip ch. 38-45 here; they belong to multi-view-geometry."
-    why: "The most current and pedagogically coherent modern text: classical image formation and signal processing taught as the foundation that deep vision builds on, with the learning chapters kept in a separate part. Free, figure-rich, and written by the MIT vision group."
-    verified: true
-  - id: fpcv
-    role: primary-course
-    kind: video-series
-    title: "First Principles of Computer Vision (lecture series)"
-    by: "Shree K. Nayar (Columbia University, CAVE Lab)"
-    url: https://fpcv.cs.columbia.edu/
-    edition_or_term: "Self-paced lecture series; monographs dated 2022"
-    access: free
-    use: "Imaging, Image Sensing, Binary Images, Image Processing I and II, Edge Detection, Boundary Detection, SIFT Detector, Image Stitching, Face Detection (Haar/integral image), Camera Calibration, Uncalibrated Stereo, Optical Flow, Structure from Motion, Object Tracking, Image Segmentation, Appearance Matching. Radiometry/photometric stereo/shape-from-shading modules are optional depth. Read the matching PDF monographs (https://fpcv.cs.columbia.edu/Monographs)."
-    why: "Free, no-prerequisite, 100+ short modules that map almost one-to-one onto this node's scope (image formation, filtering, features, optical flow, classical recognition) and onto Foundations of Computer Vision; no equivalent university course has fully public video AND matches the scope this cleanly. It has no graded assignments, so pair with the practice items."
-    verified: true
-  - id: szeliski-2e
-    role: reference
-    kind: book
-    title: "Computer Vision: Algorithms and Applications, 2nd edition"
-    by: "Richard Szeliski"
-    url: https://szeliski.org/Book/
-    edition_or_term: "2nd edition, 2022 (Springer; free personal-use PDF from the author)"
-    access: free
-    use: "Look-up reference (2nd-ed. numbering): Ch. 3 (image processing), 7 (feature detection and matching), 8 (image alignment and stitching), 9 (motion estimation, incl. optical flow), 6 (recognition background); SfM is Ch. 11 (used in multi-view-geometry). Read the section on the algorithm you are implementing, not front to back."
-    why: "The encyclopedic classical-vision reference with extensive bibliography; fills the gap of method detail, history and pointers that the two primary resources deliberately skip."
-    verified: true
-  - id: cs180-fa25
-    role: practice
-    kind: course
-    title: "UC Berkeley CS180/280A: Intro to Computer Vision and Computational Photography (project sequence)"
-    by: "Angjoo Kanazawa, Alexei A. Efros (UC Berkeley)"
-    url: https://cal-cs180.github.io/fa25
-    edition_or_term: "Fall 2025"
-    access: free
-    use: "Do Project 0 (camera/pinhole), Project 1 (Prokudin-Gorskii colorization = alignment), Project 2 (filters and frequencies, pyramids, blending), Project 3 (auto-stitching and mosaics: Harris, descriptors, RANSAC homography). Weekly discussion worksheets and solutions (image formation, filtering/frequencies, warping, homography, correspondence) are public. Projects 4-5 (NeRF, diffusion) are used in later nodes."
-    why: "The best-designed public from-scratch project sequence for exactly this material (each project implements a method from this node), with solutions to discussion sheets. Complements FPCV (no assignments). Lecture videos for the 2025 run were not found public, so it is a practice source not the primary course."
-    verified: true
-    course:
-      latest_term: "Fall 2025"
-      latest_url: https://cal-cs180.github.io/fa25
-      videos: unknown
-      assignments: public
-      assignments_url: https://cal-cs180.github.io/fa25
-  - id: cs231a-sp25-psets
-    role: practice
-    kind: course
-    title: "Stanford CS231A: Computer Vision, From 3D Perception to 3D Reconstruction and beyond (problem sets)"
-    by: "Silvio Savarese, Jeannette Bohg (Stanford)"
-    url: https://cs231a.stanford.edu/
-    edition_or_term: "Spring 2025"
-    access: free
-    use: "Problem Set 0-1 (Python/NumPy, camera models, calibration, single-view metrology, vanishing points) and the course notes (course_notes.html) on cameras, filtering, edges and features. Later problem sets (epipolar, SfM) are used in multi-view-geometry."
-    why: "Public problem sets with starter code and public LaTeX templates for the geometry-flavoured half of classical vision; lecture videos are Canvas-only, so only slides, notes and psets are used."
-    verified: true
-    course:
-      latest_term: "Spring 2025"
-      latest_url: https://cs231a.stanford.edu/
-      videos: enrolled-only
-      assignments: public
-      assignments_url: https://cs231a.stanford.edu/syllabus.html
-  - id: mit-6s058
-    role: secondary
-    kind: course
-    title: "MIT 6.S058 Introduction to Computer Vision (course built on Foundations of Computer Vision)"
-    by: "Bill Freeman, Kaiming He, Vincent Sitzmann and guests (MIT)"
-    url: https://introtocv.github.io/
-    edition_or_term: "Spring 2026"
-    access: free
-    use: "Schedule page gives a reading-to-lecture map onto the book chapters (use it as a syllabus for the primary text); slides and problem sets per lecture; last year's midterm and solutions are linked from the home page."
-    why: "Shows how the authors themselves sequence the book into a semester. Not chosen as primary course because recordings are not confirmed public and course notes/psets live on Canvas."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://introtocv.github.io/
-      videos: unknown
-      assignments: partial
-      assignments_url: https://introtocv.github.io/schedule.html
+- id: foundations-of-cv
+  role: primary-text
+  kind: book
+  title: Foundations of Computer Vision
+  by: Antonio Torralba, Phillip Isola, William T. Freeman
+  url: https://visionbook.mit.edu/
+  edition_or_term: MIT Press, 2024 (free web version, CC BY-NC-ND; print also sold)
+  access: free
+  use: Ch. 2 (simple vision system), 5-8 (imaging, lenses, cameras as linear systems, color), 15-23 (linear filtering, Fourier, blur/derivative filters, aliasing, filter banks, pyramids), 27-28 (image statistics, textures), 31 (perceptual grouping), 46-49 (motion estimation, optical flow), 50 (object recognition). Skip ch. 38-45 here; they belong to multi-view-geometry.
+  why: 'The most current and pedagogically coherent modern text: classical image formation and signal processing taught as the foundation that deep vision builds on, with the learning chapters kept in a separate part. Free, figure-rich, and written by the MIT vision group.'
+  verified: true
+- id: fpcv
+  role: primary-course
+  kind: video-series
+  title: First Principles of Computer Vision (lecture series)
+  by: Shree K. Nayar (Columbia University, CAVE Lab)
+  url: https://fpcv.cs.columbia.edu/
+  edition_or_term: Self-paced lecture series; monographs dated 2022
+  access: free
+  use: Imaging, Image Sensing, Binary Images, Image Processing I and II, Edge Detection, Boundary Detection, SIFT Detector, Image Stitching, Face Detection (Haar/integral image), Camera Calibration, Uncalibrated Stereo, Optical Flow, Structure from Motion, Object Tracking, Image Segmentation, Appearance Matching. Radiometry/photometric stereo/shape-from-shading modules are optional depth. Read the matching PDF monographs (https://fpcv.cs.columbia.edu/Monographs).
+  why: Free, no-prerequisite, 100+ short modules that map almost one-to-one onto this node's scope (image formation, filtering, features, optical flow, classical recognition) and onto Foundations of Computer Vision; no equivalent university course has fully public video AND matches the scope this cleanly. It has no graded assignments, so pair with the practice items.
+  verified: true
+- id: szeliski-2e
+  role: reference
+  kind: book
+  title: 'Computer Vision: Algorithms and Applications, 2nd edition'
+  by: Richard Szeliski
+  url: https://szeliski.org/Book/
+  edition_or_term: 2nd edition, 2022 (Springer; free personal-use PDF from the author)
+  access: free
+  use: 'Look-up reference (2nd-ed. numbering): Ch. 3 (image processing), 7 (feature detection and matching), 8 (image alignment and stitching), 9 (motion estimation, incl. optical flow), 6 (recognition background); SfM is Ch. 11 (used in multi-view-geometry). Read the section on the algorithm you are implementing, not front to back.'
+  why: The encyclopedic classical-vision reference with extensive bibliography; fills the gap of method detail, history and pointers that the two primary resources deliberately skip.
+  verified: true
+- id: cs180-fa25
+  role: practice
+  kind: course
+  title: 'UC Berkeley CS180/280A: Intro to Computer Vision and Computational Photography (project sequence)'
+  by: Angjoo Kanazawa, Alexei A. Efros (UC Berkeley)
+  url: https://cal-cs180.github.io/fa25
+  edition_or_term: Fall 2025
+  access: free
+  use: 'Do Project 0 (camera/pinhole), Project 1 (Prokudin-Gorskii colorization = alignment), Project 2 (filters and frequencies, pyramids, blending), Project 3 (auto-stitching and mosaics: Harris, descriptors, RANSAC homography). Weekly discussion worksheets and solutions (image formation, filtering/frequencies, warping, homography, correspondence) are public. Projects 4-5 (NeRF, diffusion) are used in later nodes.'
+  why: The best-designed public from-scratch project sequence for exactly this material (each project implements a method from this node), with solutions to discussion sheets. Complements FPCV (no assignments). Lecture videos for the 2025 run were not found public, so it is a practice source not the primary course.
+  verified: true
+  course:
+    latest_term: Fall 2025
+    latest_url: https://cal-cs180.github.io/fa25
+    videos: unknown
+    assignments: public
+    assignments_url: https://cal-cs180.github.io/fa25
+- id: cs231a-sp25-psets
+  role: practice
+  kind: course
+  title: 'Stanford CS231A: Computer Vision, From 3D Perception to 3D Reconstruction and beyond (problem sets)'
+  by: Silvio Savarese, Jeannette Bohg (Stanford)
+  url: https://cs231a.stanford.edu/
+  edition_or_term: Spring 2025
+  access: free
+  use: Problem Set 0-1 (Python/NumPy, camera models, calibration, single-view metrology, vanishing points) and the course notes (course_notes.html) on cameras, filtering, edges and features. Later problem sets (epipolar, SfM) are used in multi-view-geometry.
+  why: Public problem sets with starter code and public LaTeX templates for the geometry-flavoured half of classical vision; lecture videos are Canvas-only, so only slides, notes and psets are used.
+  verified: true
+  course:
+    latest_term: Spring 2025
+    latest_url: https://cs231a.stanford.edu/
+    videos: enrolled-only
+    assignments: public
+    assignments_url: https://cs231a.stanford.edu/syllabus.html
+- id: mit-6s058
+  role: secondary
+  kind: course
+  title: MIT 6.S058 Introduction to Computer Vision (course built on Foundations of Computer Vision)
+  by: Bill Freeman, Kaiming He, Vincent Sitzmann and guests (MIT)
+  url: https://introtocv.github.io/
+  edition_or_term: Spring 2026
+  access: free
+  use: Schedule page gives a reading-to-lecture map onto the book chapters (use it as a syllabus for the primary text); slides and problem sets per lecture; last year's midterm and solutions are linked from the home page.
+  why: Shows how the authors themselves sequence the book into a semester. Not chosen as primary course because recordings are not confirmed public and course notes/psets live on Canvas.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://introtocv.github.io/
+    videos: unknown
+    assignments: partial
+    assignments_url: https://introtocv.github.io/schedule.html
 considered:
-  - {title: "Michigan EECS 442 Computer Vision (Johnson/Fouhey, Winter 2021 videos on Google Drive)", url: "https://cs.nyu.edu/~fouhey/teaching/EECS442_W23/", reason: "Strong classical + learning course, but videos are Drive/Zoom only and the Johnson-hosted pages returned 404 during this research; Fouhey's archived W23 page is live."}
-  - {title: "CMU 16-385 Computer Vision (Gkioulekas)", url: "https://www.cs.cmu.edu/~16385/", reason: "Live and well structured (Spring 2020 page, Matlab-based), but stale and Matlab; FPCV + CS180 cover the same ground."}
-  - {title: "Cornell CS5670 Introduction to Computer Vision (Snavely)", url: "https://www.cs.cornell.edu/courses/cs5670/2025sp/", reason: "Excellent project-based course (Spring 2025, GitHub Classroom); public status of videos/projects not confirmed, and CS180 projects are fully public."}
-  - {title: "Stachniss Photogrammetry I (Bonn 2020 pages + 2021 YouTube)", url: "https://www.ipb.uni-bonn.de/photo1-2020/", reason: "Public exercises ZIP and videos; strong on keypoints, homographies, DLT, calibration; kept as a secondary geometry source in multi-view-geometry instead."}
-  - {title: "UW The Ancient Secrets of Computer Vision (Redmon)", url: "https://pjreddie.com/courses/computer-vision/", reason: "Fun from-scratch C course with public videos, but dated (2018) and a lower-level programming detour."}
-notes: "The scope is classical vision, and the best free resources are an MIT book plus Nayar's video series rather than a single university course. Coverage gap: Foundations of CV has no local-feature chapter (Harris/SIFT/RANSAC matching) and its ch. 50 is deep-era recognition, so the primary text does not carry the scope items 'features' and 'classical recognition'; those come from FPCV (SIFT Detector, Face Detection modules), Szeliski Ch. 7 and CS180 Project 3. Szeliski chapter numbers were corrected to the 2nd edition (15 chapters; Ch. 8 stitching, Ch. 9 motion) per the publisher TOC. CS231A PS1 is assigned here only (multi-view-geometry uses PS2-3). Optical flow is covered by FPCV (Lucas-Kanade, coarse-to-fine), Foundations ch. 46-49 and 6.8300 (RAFT). Deep-learning recognition is deliberately deferred to deep-learning-for-vision. Geometry (calibration, stereo, SfM) is introduced here at the camera-model level and deepened in multi-view-geometry; the overlap is intentional (Foundations ch. 38-45, FPCV Reconstruction II)."
+- title: Michigan EECS 442 Computer Vision (Johnson/Fouhey, Winter 2021 videos on Google Drive)
+  url: https://cs.nyu.edu/~fouhey/teaching/EECS442_W23/
+  reason: Strong classical + learning course, but videos are Drive/Zoom only and the Johnson-hosted pages returned 404 during this research; Fouhey's archived W23 page is live.
+- title: CMU 16-385 Computer Vision (Gkioulekas)
+  url: https://www.cs.cmu.edu/~16385/
+  reason: Live and well structured (Spring 2020 page, Matlab-based), but stale and Matlab; FPCV + CS180 cover the same ground.
+- title: Cornell CS5670 Introduction to Computer Vision (Snavely)
+  url: https://www.cs.cornell.edu/courses/cs5670/2025sp/
+  reason: Excellent project-based course (Spring 2025, GitHub Classroom); public status of videos/projects not confirmed, and CS180 projects are fully public.
+- title: Stachniss Photogrammetry I (Bonn 2020 pages + 2021 YouTube)
+  url: https://www.ipb.uni-bonn.de/photo1-2020/
+  reason: Public exercises ZIP and videos; strong on keypoints, homographies, DLT, calibration; kept as a secondary geometry source in multi-view-geometry instead.
+- title: UW The Ancient Secrets of Computer Vision (Redmon)
+  url: https://pjreddie.com/courses/computer-vision/
+  reason: Fun from-scratch C course with public videos, but dated (2018) and a lower-level programming detour.
+notes: 'The scope is classical vision, and the best free resources are an MIT book plus Nayar''s video series rather than a single university course. Coverage gap: Foundations of CV has no local-feature chapter (Harris/SIFT/RANSAC matching) and its ch. 50 is deep-era recognition, so the primary text does not carry the scope items ''features'' and ''classical recognition''; those come from FPCV (SIFT Detector, Face Detection modules), Szeliski Ch. 7 and CS180 Project 3. Szeliski chapter numbers were corrected to the 2nd edition (15 chapters; Ch. 8 stitching, Ch. 9 motion) per the publisher TOC. CS231A PS1 is assigned here only (multi-view-geometry uses PS2-3). Optical flow is covered by FPCV (Lucas-Kanade, coarse-to-fine), Foundations ch. 46-49 and 6.8300 (RAFT). Deep-learning recognition is deliberately deferred to deep-learning-for-vision. Geometry (calibration, stereo, SfM) is introduced here at the camera-model level and deepened in multi-view-geometry; the overlap is intentional (Foundations ch. 38-45, FPCV Reconstruction II).'
 split_proposal: null
-prereq_changes: "No change needed. Consider making deep-learning-fundamentals not even soft: the primary resources teach the needed learning basics themselves (Foundations Part III, FPCV Neural Networks)."
+prereq_changes: null
 open_questions:
-  - "Michigan EECS 442/498 Johnson-hosted pages (web.eecs.umich.edu/~justincj/...) returned 404 during this research although search results list them; re-check before relying on them."
-  - "FPCV lecture dates / current recording year not stated on the site; treated as a self-paced series."
-  - "CS231A canonical host web.stanford.edu/class/cs231a over https returned 503/connection errors; the https alias cs231a.stanford.edu redirects to the http page and was verified live (Spring 2025 page; no Spring 2026 page found)."
-  - "Berkeley CS180 lecture videos and MIT 6.S058 recordings: public status not confirmed."
+- Michigan EECS 442/498 Johnson-hosted pages (web.eecs.umich.edu/~justincj/...) returned 404 during this research although search results list them; re-check before relying on them.
+- FPCV lecture dates / current recording year not stated on the site; treated as a self-paced series.
+- CS231A canonical host web.stanford.edu/class/cs231a over https returned 503/connection errors; the https alias cs231a.stanford.edu redirects to the http page and was verified live (Spring 2025 page; no Spring 2026 page found).
+- 'Berkeley CS180 lecture videos and MIT 6.S058 recordings: public status not confirmed.'
 last_verified: 2026-11-18

@@ -1,136 +1,148 @@
 id: generative-modeling-foundations
 title: Deep Generative Models
 group: G6
-paths: [generative]
-hard: [deep-learning-fundamentals, probability]
-soft: [information-theory]
-scope: "Latent-variable models, VAEs, autoregressive models, normalizing flows, GANs, EBMs, evaluation."
-
+paths:
+- generative
+hard:
+- deep-learning-fundamentals
+- probability
+soft:
+- information-theory
+scope: Latent-variable models, VAEs, autoregressive models, normalizing flows, GANs, EBMs, evaluation.
 level: intermediate
-estimated_hours: 55
 resources:
-  - id: udl
-    role: primary-text
-    kind: book
-    title: "Understanding Deep Learning"
-    by: "Simon J.D. Prince"
-    url: https://udlbook.github.io/udlbook/
-    edition_or_term: "MIT Press, Dec 2023 (free PDF and notebooks from the book site; the site is a JS app, so chapter numbers below follow the table of contents the owner's atlas also cites)"
-    access: free
-    use: "Ch. 14 (unsupervised learning: taxonomy of generative models and evaluation), 15 (GANs), 16 (normalizing flows), 17 (VAEs, ELBO, reparameterization), 18 (diffusion; previewed here, completed in diffusion-and-flow-matching). Autoregressive models via ch. 12 (decoder transformers) and 14. Do the end-of-chapter problems and the chapter notebooks."
-    why: "Best intuition-first, derivation-complete and free treatment of the four model families in one coherent notation, with visuals and notebooks. Weak on energy-based models and on sample-quality evaluation details, which the secondary resources supply."
-    verified: true
-  - id: cs294-158-sp24
-    role: primary-course
-    kind: course
-    title: "UC Berkeley CS294-158 Deep Unsupervised Learning"
-    by: "Pieter Abbeel, Wilson Yan, Kevin Frans, Philipp Wu (UC Berkeley)"
-    url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
-    edition_or_term: "Spring 2024"
-    access: free
-    use: "Lectures on autoregressive models, latent variable models (VAE), GANs/implicit models, diffusion (HW4 used in the next node), self-supervised learning. Do HW1 (autoregressive models), HW2 (latent variable models), HW3 (GANs / implicit models); HW4 (diffusion) belongs to diffusion-and-flow-matching. Lecture videos are linked on the home page (YouTube)."
-    why: "Public YouTube lectures AND public, notebook-style homeworks (github.com/rll/deepul) with a single course framework for AR, latent-variable, GAN and diffusion models; the best open pairing of lectures with coding labs. 2024 is the newest public run found."
-    verified: true
-    course:
-      latest_term: "Spring 2024"
-      latest_url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
-      videos: public
-      assignments: public
-      assignments_url: https://github.com/rll/deepul
-  - id: cs236
-    role: secondary
-    kind: course
-    title: "Stanford CS236 Deep Generative Models (lectures and notes)"
-    by: "Stefano Ermon, Aditya Grover (Stanford)"
-    url: https://cs236.stanford.edu/
-    edition_or_term: "Fall 2023"
-    access: free
-    use: "2023 YouTube lectures (https://www.youtube.com/playlist?list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8) on ELBO/VAEs, normalizing flows, GANs, energy-based models, score-based models; read the self-contained course notes (https://deepgenerativemodels.github.io/notes/: introduction, autoregressive, VAE, flows, GAN chapters)."
-    why: "Most rigorous probabilistic treatment (ELBO, f-divergences, EBMs, score matching) and the only public lecture series covering EBMs. Homework handouts were not found public, hence not the primary course."
-    verified: true
-    course:
-      latest_term: "Fall 2023"
-      latest_url: https://cs236.stanford.edu/
-      videos: public
-      public_videos_term: "Fall 2023"
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8
-      assignments: restricted
-  - id: bishop
-    role: reference
-    kind: book
-    title: "Deep Learning: Foundations and Concepts"
-    by: "Christopher M. Bishop, Hugh Bishop"
-    url: https://www.bishopbook.com/
-    edition_or_term: "Springer, 2024 (free online reading version on the book site; paid print/PDF)"
-    access: mixed
-    use: "The chapters on latent variables, GANs, normalizing flows, autoencoders and diffusion models (look them up by title in the book's table of contents) as the rigorous, probabilistic counterpart to UDL; the sampling chapter for MCMC background."
-    why: "Most mathematically careful modern treatment; use when UDL's derivations feel too light. Book TOC not opened in this research (page lists the free online version only)."
-    verified: true
-  - id: vae-intro
-    role: secondary
-    kind: paper
-    title: "An Introduction to Variational Autoencoders"
-    by: "Diederik P. Kingma, Max Welling"
-    url: https://arxiv.org/abs/1906.02691
-    edition_or_term: "Foundations and Trends in ML, 2019 (arXiv 1906.02691)"
-    access: free
-    use: "Sec. 2 (VAE derivation, reparameterization trick, ELBO), Sec. 3 (beyond Gaussian, hierarchical latents), Sec. 4 (flows and IAF as posteriors)."
-    why: "Canonical, short derivation of VAEs by the inventors; use after the UDL chapter to nail the math."
-    verified: true
-  - id: weng-vae-flows
-    role: secondary
-    kind: article
-    title: "From Autoencoder to Beta-VAE, and Flow-based Deep Generative Models"
-    by: "Lilian Weng"
-    url: https://lilianweng.github.io/posts/2018-08-12-vae/
-    edition_or_term: "2018 (companion post on flow-based models linked from the site)"
-    access: free
-    use: "Autoencoder-to-VAE-to-beta-VAE-to-VQ-VAE derivation as a compact companion."
-    why: "Concise blog derivations and pointers to VQ-VAE/IAF-style models that UDL and CS294 touch lightly."
-    verified: true
-  - id: eval-papers
-    role: secondary
-    kind: paper
-    title: "Evaluation of generative models: Theis et al.; FID (TTUR); Rethinking FID; Precision-Recall; Are GANs Created Equal?"
-    by: "Theis, van den Oord, Bethge; Heusel et al.; Jayasumana et al.; Kynkaanniemi et al.; Lucic et al."
-    url: https://arxiv.org/abs/1511.01844
-    edition_or_term: "1511.01844 (A note on the evaluation of generative models), 1706.08500 (FID/TTUR), 2401.09603 (Rethinking FID: FD-DINOv2/CMMD), 1904.06991 (precision and recall), 1711.10337 (Are GANs created equal?)"
-    access: free
-    use: "Read Theis first (likelihood vs sample quality vs usefulness can disagree), then FID, then Rethinking FID for its critique, then precision/recall (fidelity vs diversity) and the large-scale GAN comparison for how to benchmark fairly."
-    why: "Evaluation is an explicit scope item and is covered thinly by books; these papers are the standard references."
-    verified: true
-  - id: ar-gan-flow-papers
-    role: reference
-    kind: paper
-    title: "Landmark papers: PixelRNN, VQ-VAE, WGAN, StyleGAN, BigGAN, Glow, Normalizing Flows"
-    by: "van den Oord et al.; Arjovsky et al.; Karras et al.; Brock et al.; Kingma and Dhariwal; Rezende and Mohamed"
-    url: https://arxiv.org/abs/1601.06759
-    edition_or_term: "PixelRNN 1601.06759, VQ-VAE 1711.00937, WGAN 1701.07875, StyleGAN 1812.04948, BigGAN 1809.11096, Glow 1807.03039, Variational Inference with Normalizing Flows 1505.05770, Auto-Encoding Variational Bayes 1312.6114"
-    access: free
-    use: "Read VAE (1312.6114) and PixelRNN first, then VQ-VAE (discrete latents are the tokenizer idea behind modern image/video generators), WGAN, one of StyleGAN/BigGAN, and Glow."
-    why: "Primary sources for each family; VQ-VAE and the flow papers connect directly to diffusion and large-scale generative nodes."
-    verified: true
-  - id: goodfellow-ch20
-    role: reference
-    kind: book
-    title: "Deep Learning (Goodfellow, Bengio, Courville), chapter 20 Deep Generative Models"
-    by: "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
-    url: https://www.deeplearningbook.org/
-    edition_or_term: "MIT Press, 2016 (free HTML)"
-    access: free
-    use: "Ch. 20 only for Boltzmann machines/EBM background and the early generative landscape; recommended textbook of CS236."
-    why: "Fills the energy-based-model gap in UDL; otherwise dated for diffusion/flows."
-    verified: true
+- id: udl
+  role: primary-text
+  kind: book
+  title: Understanding Deep Learning
+  by: Simon J.D. Prince
+  url: https://udlbook.github.io/udlbook/
+  edition_or_term: MIT Press, Dec 2023 (free PDF and notebooks from the book site; the site is a JS app, so chapter numbers below follow the table of contents the owner's atlas also cites)
+  access: free
+  use: 'Ch. 14 (unsupervised learning: taxonomy of generative models and evaluation), 15 (GANs), 16 (normalizing flows), 17 (VAEs, ELBO, reparameterization), 18 (diffusion; previewed here, completed in diffusion-and-flow-matching). Autoregressive models via ch. 12 (decoder transformers) and 14. Do the end-of-chapter problems and the chapter notebooks.'
+  why: Best intuition-first, derivation-complete and free treatment of the four model families in one coherent notation, with visuals and notebooks. Weak on energy-based models and on sample-quality evaluation details, which the secondary resources supply.
+  verified: true
+- id: cs294-158-sp24
+  role: primary-course
+  kind: course
+  title: UC Berkeley CS294-158 Deep Unsupervised Learning
+  by: Pieter Abbeel, Wilson Yan, Kevin Frans, Philipp Wu (UC Berkeley)
+  url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
+  edition_or_term: Spring 2024
+  access: free
+  use: Lectures on autoregressive models, latent variable models (VAE), GANs/implicit models, diffusion (HW4 used in the next node), self-supervised learning. Do HW1 (autoregressive models), HW2 (latent variable models), HW3 (GANs / implicit models); HW4 (diffusion) belongs to diffusion-and-flow-matching. Lecture videos are linked on the home page (YouTube).
+  why: Public YouTube lectures AND public, notebook-style homeworks (github.com/rll/deepul) with a single course framework for AR, latent-variable, GAN and diffusion models; the best open pairing of lectures with coding labs. 2024 is the newest public run found.
+  verified: true
+  course:
+    latest_term: Spring 2024
+    latest_url: https://sites.google.com/view/berkeley-cs294-158-sp24/home
+    videos: public
+    assignments: public
+    assignments_url: https://github.com/rll/deepul
+- id: cs236
+  role: secondary
+  kind: course
+  title: Stanford CS236 Deep Generative Models (lectures and notes)
+  by: Stefano Ermon, Aditya Grover (Stanford)
+  url: https://cs236.stanford.edu/
+  edition_or_term: Fall 2023
+  access: free
+  use: '2023 YouTube lectures (https://www.youtube.com/playlist?list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8) on ELBO/VAEs, normalizing flows, GANs, energy-based models, score-based models; read the self-contained course notes (https://deepgenerativemodels.github.io/notes/: introduction, autoregressive, VAE, flows, GAN chapters).'
+  why: Most rigorous probabilistic treatment (ELBO, f-divergences, EBMs, score matching) and the only public lecture series covering EBMs. Homework handouts were not found public, hence not the primary course.
+  verified: true
+  course:
+    latest_term: Fall 2023
+    latest_url: https://cs236.stanford.edu/
+    videos: public
+    public_videos_term: Fall 2023
+    public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8
+    assignments: restricted
+- id: bishop
+  role: reference
+  kind: book
+  title: 'Deep Learning: Foundations and Concepts'
+  by: Christopher M. Bishop, Hugh Bishop
+  url: https://www.bishopbook.com/
+  edition_or_term: Springer, 2024 (free online reading version on the book site; paid print/PDF)
+  access: mixed
+  use: The chapters on latent variables, GANs, normalizing flows, autoencoders and diffusion models (look them up by title in the book's table of contents) as the rigorous, probabilistic counterpart to UDL; the sampling chapter for MCMC background.
+  why: Most mathematically careful modern treatment; use when UDL's derivations feel too light. Book TOC not opened in this research (page lists the free online version only).
+  verified: true
+- id: vae-intro
+  role: secondary
+  kind: paper
+  title: An Introduction to Variational Autoencoders
+  by: Diederik P. Kingma, Max Welling
+  url: https://arxiv.org/abs/1906.02691
+  edition_or_term: Foundations and Trends in ML, 2019 (arXiv 1906.02691)
+  access: free
+  use: Sec. 2 (VAE derivation, reparameterization trick, ELBO), Sec. 3 (beyond Gaussian, hierarchical latents), Sec. 4 (flows and IAF as posteriors).
+  why: Canonical, short derivation of VAEs by the inventors; use after the UDL chapter to nail the math.
+  verified: true
+- id: weng-vae-flows
+  role: secondary
+  kind: article
+  title: From Autoencoder to Beta-VAE, and Flow-based Deep Generative Models
+  by: Lilian Weng
+  url: https://lilianweng.github.io/posts/2018-08-12-vae/
+  edition_or_term: 2018 (companion post on flow-based models linked from the site)
+  access: free
+  use: Autoencoder-to-VAE-to-beta-VAE-to-VQ-VAE derivation as a compact companion.
+  why: Concise blog derivations and pointers to VQ-VAE/IAF-style models that UDL and CS294 touch lightly.
+  verified: true
+- id: eval-papers
+  role: secondary
+  kind: paper
+  title: 'Evaluation of generative models: Theis et al.; FID (TTUR); Rethinking FID; Precision-Recall; Are GANs Created Equal?'
+  by: Theis, van den Oord, Bethge; Heusel et al.; Jayasumana et al.; Kynkaanniemi et al.; Lucic et al.
+  url: https://arxiv.org/abs/1511.01844
+  edition_or_term: '1511.01844 (A note on the evaluation of generative models), 1706.08500 (FID/TTUR), 2401.09603 (Rethinking FID: FD-DINOv2/CMMD), 1904.06991 (precision and recall), 1711.10337 (Are GANs created equal?)'
+  access: free
+  use: Read Theis first (likelihood vs sample quality vs usefulness can disagree), then FID, then Rethinking FID for its critique, then precision/recall (fidelity vs diversity) and the large-scale GAN comparison for how to benchmark fairly.
+  why: Evaluation is an explicit scope item and is covered thinly by books; these papers are the standard references.
+  verified: true
+- id: ar-gan-flow-papers
+  role: reference
+  kind: paper
+  title: 'Landmark papers: PixelRNN, VQ-VAE, WGAN, StyleGAN, BigGAN, Glow, Normalizing Flows'
+  by: van den Oord et al.; Arjovsky et al.; Karras et al.; Brock et al.; Kingma and Dhariwal; Rezende and Mohamed
+  url: https://arxiv.org/abs/1601.06759
+  edition_or_term: PixelRNN 1601.06759, VQ-VAE 1711.00937, WGAN 1701.07875, StyleGAN 1812.04948, BigGAN 1809.11096, Glow 1807.03039, Variational Inference with Normalizing Flows 1505.05770, Auto-Encoding Variational Bayes 1312.6114
+  access: free
+  use: Read VAE (1312.6114) and PixelRNN first, then VQ-VAE (discrete latents are the tokenizer idea behind modern image/video generators), WGAN, one of StyleGAN/BigGAN, and Glow.
+  why: Primary sources for each family; VQ-VAE and the flow papers connect directly to diffusion and large-scale generative nodes.
+  verified: true
+- id: goodfellow-ch20
+  role: reference
+  kind: book
+  title: Deep Learning (Goodfellow, Bengio, Courville), chapter 20 Deep Generative Models
+  by: Ian Goodfellow, Yoshua Bengio, Aaron Courville
+  url: https://www.deeplearningbook.org/
+  edition_or_term: MIT Press, 2016 (free HTML)
+  access: free
+  use: Ch. 20 only for Boltzmann machines/EBM background and the early generative landscape; recommended textbook of CS236.
+  why: Fills the energy-based-model gap in UDL; otherwise dated for diffusion/flows.
+  verified: true
 considered:
-  - {title: "MIT 6.S978 Deep Generative Models (Kaiming He, Fall 2024)", url: "https://mit-6s978.github.io/", reason: "Seminar-style graduate course (VAE, AR, GAN, diffusion); good reading lists (schedule page) but seminar format, videos not confirmed, no public homework."}
-  - {title: "CMU 10-423/10-623 Generative AI (Gormley et al.)", url: "https://www.cs.cmu.edu/~mgormley/courses/10423-s24/", reason: "Page live; covers LLMs plus GANs/diffusion; broader than this node; videos listed on archive.org per cs-video-courses (not checked)."}
-  - {title: "Murphy, Probabilistic Machine Learning: Advanced Topics", url: "https://probml.github.io/pml-book/book2.html", reason: "Encyclopedic and free, but long; use as lookup rather than primary text."}
-  - {title: "UIUC ECE 498/598 Deep Generative Models (Fall 2025)", url: "https://rrc-uiuc.notion.site/gen-models-fa25", reason: "Newer run but not reviewed in detail."}
-  - {title: "Cornell Tech CS 6785 Deep Generative Models (Spring 2023 videos)", url: "https://www.youtube.com/playlist?list=PL2UML_KCiC0UPzjW9BjO-IW6dqliu9O4B", reason: "Public alternative; not evaluated."}
-notes: "UDL + CS294-158 is a coherent free pair with public assignments; CS236 provides the probabilistic rigor and EBM coverage. Autoregressive modeling for images is mostly assignment-driven here; LLM-style autoregression is in language-modeling nodes. UDL ch. 18 (diffusion) overlaps with the next node; use them only as a bridge."
+- title: MIT 6.S978 Deep Generative Models (Kaiming He, Fall 2024)
+  url: https://mit-6s978.github.io/
+  reason: Seminar-style graduate course (VAE, AR, GAN, diffusion); good reading lists (schedule page) but seminar format, videos not confirmed, no public homework.
+- title: CMU 10-423/10-623 Generative AI (Gormley et al.)
+  url: https://www.cs.cmu.edu/~mgormley/courses/10423-s24/
+  reason: Page live; covers LLMs plus GANs/diffusion; broader than this node; videos listed on archive.org per cs-video-courses (not checked).
+- title: 'Murphy, Probabilistic Machine Learning: Advanced Topics'
+  url: https://probml.github.io/pml-book/book2.html
+  reason: Encyclopedic and free, but long; use as lookup rather than primary text.
+- title: UIUC ECE 498/598 Deep Generative Models (Fall 2025)
+  url: https://rrc-uiuc.notion.site/gen-models-fa25
+  reason: Newer run but not reviewed in detail.
+- title: Cornell Tech CS 6785 Deep Generative Models (Spring 2023 videos)
+  url: https://www.youtube.com/playlist?list=PL2UML_KCiC0UPzjW9BjO-IW6dqliu9O4B
+  reason: Public alternative; not evaluated.
+notes: UDL + CS294-158 is a coherent free pair with public assignments; CS236 provides the probabilistic rigor and EBM coverage. Autoregressive modeling for images is mostly assignment-driven here; LLM-style autoregression is in language-modeling nodes. UDL ch. 18 (diffusion) overlaps with the next node; use them only as a bridge.
 split_proposal: null
-prereq_changes: "No change. information-theory soft is appropriate (KL, ELBO, bits-back)."
+prereq_changes: null
 open_questions:
-  - "UDL site is a JS app; chapter titles for 14-18 taken from the owner's atlas notes and my memory of the TOC, not from the rendered page."
-  - "CS294-158 SP24 homework contents (hw1-hw4 folders) confirmed via GitHub repo listing only; notebooks not opened."
+- UDL site is a JS app; chapter titles for 14-18 taken from the owner's atlas notes and my memory of the TOC, not from the rendered page.
+- CS294-158 SP24 homework contents (hw1-hw4 folders) confirmed via GitHub repo listing only; notebooks not opened.
 last_verified: 2026-11-18

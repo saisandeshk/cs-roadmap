@@ -1,14 +1,26 @@
 id: digital-logic
 title: Digital Logic Design
 group: G11
-paths: [architecture]
+paths:
+- architecture
 hard: []
-soft: [discrete-math]
+soft:
+- discrete-math
+- computer-systems
 scope: Boolean algebra, combinational and sequential logic, FSMs, timing, number representation.
 level: intro
-estimated_hours: 50
 resources:
-- {id: harris-ddca-rv, role: primary-text, kind: book, title: 'Digital Design and Computer Architecture, RISC-V Edition', by: 'Sarah L. Harris, David Harris', url: 'https://pages.hmc.edu/harris/ddca/ddcarv.html', edition_or_term: 'RISC-V Edition (Morgan Kaufmann/Elsevier, 2021; Elsevier still lists it as the latest edition, no 2025-26 edition found)', access: paid, use: 'Ch. 1 (number systems, gates, CMOS transistors, two''s-complement/fixed/floating point), Ch. 2 (Boolean algebra, K-maps, combinational building blocks, timing: propagation/contamination delay, glitches), Ch. 3 (latches, flip-flops, synchronous design, FSM design, timing analysis and metastability), Ch. 5 (adders, ALU, shifters, counters, memory arrays). Do the odd-numbered exercises (solutions are free on the author page). Skip Ch. 4 here; it is the HDL material for hdl-and-fpga.', why: 'Best single book that goes from transistors to a working RISC-V processor in one voice, so it also serves hdl-and-fpga, processor-design and advanced-microarchitecture. The author page gives free slides, labs, odd-exercise solutions, errata and the SonicRV visualizer; the book itself is paid.', verified: true}
+- id: harris-ddca-rv
+  role: primary-text
+  kind: book
+  title: Digital Design and Computer Architecture, RISC-V Edition
+  by: Sarah L. Harris, David Harris
+  url: https://pages.hmc.edu/harris/ddca/ddcarv.html
+  edition_or_term: RISC-V Edition (Morgan Kaufmann/Elsevier, 2021; Elsevier still lists it as the latest edition, no 2025-26 edition found)
+  access: paid
+  use: 'Ch. 1 (number systems, gates, CMOS transistors, two''s-complement/fixed/floating point), Ch. 2 (Boolean algebra, K-maps, combinational building blocks, timing: propagation/contamination delay, glitches), Ch. 3 (latches, flip-flops, synchronous design, FSM design, timing analysis and metastability), Ch. 5 (adders, ALU, shifters, counters, memory arrays). Do the odd-numbered exercises (solutions are free on the author page). Skip Ch. 4 here; it is the HDL material for hdl-and-fpga.'
+  why: Best single book that goes from transistors to a working RISC-V processor in one voice, so it also serves hdl-and-fpga, processor-design and advanced-microarchitecture. The author page gives free slides, labs, odd-exercise solutions, errata and the SonicRV visualizer; the book itself is paid.
+  verified: true
 - id: eth-ddca
   role: primary-course
   kind: course
@@ -20,7 +32,14 @@ resources:
   use: L1-L4a (transistors and gates, combinational logic I-II, sequential logic and FSMs) and L6 (timing; its verification half, L4b labs/FPGAs and L5 HDL are assigned in hdl-and-fpga), with Labs 1-2 (draw a basic circuit, map it to the FPGA) and problem-solving sessions D1-D2. Labs 3-6 (Verilog) belong to hdl-and-fpga; L7-L13 to processor-design (concept videos only); L14-L19 to advanced-microarchitecture.
   why: Newest term with complete public videos; Mutlu's lectures are tight and the lab manuals, reports and slides are all downloadable. Labs assume a Basys 3 board and Vivado but the circuit-level exercises can be done in simulation. The ISA in later labs is MIPS, not RISC-V.
   verified: true
-  course: {latest_term: Spring 2026, latest_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule', videos: public, public_videos_term: 'Spring 2026 (full livestream playlist, 51 videos; Spring 2025 playlist also public)', public_videos_url: 'https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd', assignments: public, assignments_url: 'https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs'}
+  course:
+    latest_term: Spring 2026
+    latest_url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=schedule
+    videos: public
+    public_videos_term: Spring 2026 (full livestream playlist, 51 videos; Spring 2025 playlist also public)
+    public_videos_url: https://www.youtube.com/playlist?list=PL5Q2soXY2Zi-yo9kK-BKrq11ykNKkVEpd
+    assignments: public
+    assignments_url: https://safari.ethz.ch/digitaltechnik/spring2026/doku.php?id=labs
 - id: nand2tetris
   role: secondary
   kind: course
@@ -32,18 +51,49 @@ resources:
   use: 'Part I projects 1-3 (Boolean logic: build every gate from NAND; Boolean arithmetic: adders and the ALU; memory: flip-flops, registers, RAM) in the bundled hardware simulator and HDL. Projects 4-5 (machine language, CPU) are the bridge to processor-design.'
   why: 'Gives the ground-up ''build it yourself'' loop that a book alone cannot: you cannot proceed unless your gates pass the supplied tests. Free and open for non-profit use; Coursera version costs money but adds certificates. Uses its own tiny HDL (not Verilog), which keeps attention on logic.'
   verified: true
-  course: {latest_term: Self-paced (site projects page (c) 2025; Coursera Part I), latest_url: 'https://www.nand2tetris.org/course', videos: unknown, assignments: public, assignments_url: 'https://www.nand2tetris.org/course'}
-- {id: hdlbits-circuits, role: practice, kind: practice-site, title: 'HDLBits: Circuits (Combinational and Sequential Logic)', by: Henry Wong, url: 'https://hdlbits.01xz.net/wiki/Main_Page', edition_or_term: Live site (checked 2026-11-18), access: free, use: '''Getting Started'' and the first ''Verilog Language'' sets only as far as needed to write simple modules, then ''Circuits > Combinational Logic'' (gates, multiplexers, adders, K-map problems) and ''Circuits > Sequential Logic'' (latches and flip-flops, counters, shift registers, finite state machines). Each problem is auto-checked against a reference by simulation. The rest of ''Verilog Language'' and the ''Verification'' sets are assigned in hdl-and-fpga.', why: Instant-feedback drills for exactly the Harris ch. 2-3 material; doubles as the Verilog entry point (the CMU 18-447 syllabus tells students to review HDLBits before the course)., verified: true}
+  course:
+    latest_term: Self-paced (site projects page (c) 2025; Coursera Part I)
+    latest_url: https://www.nand2tetris.org/course
+    videos: unknown
+    assignments: public
+    assignments_url: https://www.nand2tetris.org/course
+- id: hdlbits-circuits
+  role: practice
+  kind: practice-site
+  title: 'HDLBits: Circuits (Combinational and Sequential Logic)'
+  by: Henry Wong
+  url: https://hdlbits.01xz.net/wiki/Main_Page
+  edition_or_term: Live site (checked 2026-11-18)
+  access: free
+  use: '''Getting Started'' and the first ''Verilog Language'' sets only as far as needed to write simple modules, then ''Circuits > Combinational Logic'' (gates, multiplexers, adders, K-map problems) and ''Circuits > Sequential Logic'' (latches and flip-flops, counters, shift registers, finite state machines). Each problem is auto-checked against a reference by simulation. The rest of ''Verilog Language'' and the ''Verification'' sets are assigned in hdl-and-fpga.'
+  why: Instant-feedback drills for exactly the Harris ch. 2-3 material; doubles as the Verilog entry point (the CMU 18-447 syllabus tells students to review HDLBits before the course).
+  verified: true
 considered:
-- {title: MIT 6.004 Computation Structures (OCW Spring 2017), url: 'https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/', reason: 'Excellent public videos (via OCW) and a different, software-oriented path from gates to a pipelined Beta CPU; kept as an alternative, but newer ETH videos plus Harris cover the same ground with a hardware-design bias.'}
-- {title: 'MIT 6.191 Computation Structures (current numbering of 6.004), Fall 2026', url: 'https://6191.mit.edu/fall26', reason: Current term site; recordings not confirmed public. Worth a look for the CMOS and sequential-circuit lecture notes.}
-- {title: Berkeley EECS 151/251A Fall 2026, url: 'https://eecs151.org/', reason: 'Fuller digital-design treatment (CMOS, logic effort, adders/multipliers, timing) but aimed at the HDL/FPGA/ASIC flow; used as primary course for hdl-and-fpga instead.'}
-- {title: 'Wakerly, Digital Design: Principles and Practices', url: 'https://www.pearson.com/', reason: Classic gate-level text; omitted because Harris covers the same logic design and then continues into HDL and processors. (Publisher page not opened.)}
-- {title: NandGame, url: 'https://nandgame.com/', reason: 'Trimmed after review R2 (same ''build the machine from gates'' modality as Nand2Tetris projects 1-3): zero-install browser puzzle; good warm-up alternative.'}
-- {title: Digital (logic designer and simulator), url: 'https://github.com/hneemann/Digital', reason: 'Trimmed after review R2: excellent teaching simulator (single-gate stepping, FSM editor, Verilog export) but optional next to HDLBits and the Nand2Tetris simulator.'}
-- {title: Build an 8-bit computer from scratch, url: 'https://eater.net/8bit', reason: 'Trimmed after review R2 (third resource of the same modality): physical intuition for clocks, buses and control logic on breadboards; optional viewing.'}
-notes: 'Primary route: Harris ch. 1-3 and 5 alongside ETH DDCA Spring 2026 L1-L4a and L6 with Labs 1-2 (about 35 h), Nand2Tetris projects 1-3 as the build-it-yourself practice (about 10 h) and the HDLBits circuits sets as drill (about 5 h). Hardware boards are optional: HDLBits and the Nand2Tetris simulator cover everything in simulation. The scope item ''number representation'' is covered in Harris ch. 1 and ETH L1-L2. Harris ch. 4 (HDL) and ch. 6-7 are deliberately deferred to hdl-and-fpga and processor-design. After review R2, NandGame, Digital and Ben Eater moved to considered (same modality), and ETH DDCA lecture/lab slices were partitioned across the G11 nodes so no lecture is assigned twice.'
+- title: MIT 6.004 Computation Structures (OCW Spring 2017)
+  url: https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/
+  reason: Excellent public videos (via OCW) and a different, software-oriented path from gates to a pipelined Beta CPU; kept as an alternative, but newer ETH videos plus Harris cover the same ground with a hardware-design bias.
+- title: MIT 6.191 Computation Structures (current numbering of 6.004), Fall 2026
+  url: https://6191.mit.edu/fall26
+  reason: Current term site; recordings not confirmed public. Worth a look for the CMOS and sequential-circuit lecture notes.
+- title: Berkeley EECS 151/251A Fall 2026
+  url: https://eecs151.org/
+  reason: Fuller digital-design treatment (CMOS, logic effort, adders/multipliers, timing) but aimed at the HDL/FPGA/ASIC flow; used as primary course for hdl-and-fpga instead.
+- title: 'Wakerly, Digital Design: Principles and Practices'
+  url: https://www.pearson.com/
+  reason: Classic gate-level text; omitted because Harris covers the same logic design and then continues into HDL and processors. (Publisher page not opened.)
+- title: NandGame
+  url: https://nandgame.com/
+  reason: 'Trimmed after review R2 (same ''build the machine from gates'' modality as Nand2Tetris projects 1-3): zero-install browser puzzle; good warm-up alternative.'
+- title: Digital (logic designer and simulator)
+  url: https://github.com/hneemann/Digital
+  reason: 'Trimmed after review R2: excellent teaching simulator (single-gate stepping, FSM editor, Verilog export) but optional next to HDLBits and the Nand2Tetris simulator.'
+- title: Build an 8-bit computer from scratch
+  url: https://eater.net/8bit
+  reason: 'Trimmed after review R2 (third resource of the same modality): physical intuition for clocks, buses and control logic on breadboards; optional viewing.'
+notes: 'Primary route: Harris ch. 1-3 and 5 alongside ETH DDCA Spring 2026 L1-L4a and L6 with Labs 1-2, Nand2Tetris projects 1-3 as the build-it-yourself practice and the HDLBits circuits sets as drill. Hardware boards are optional: HDLBits and the Nand2Tetris simulator cover everything in simulation. The scope item ''number representation'' is covered in Harris ch. 1 and ETH L1-L2. Harris ch. 4 (HDL) and ch. 6-7 are deliberately deferred to hdl-and-fpga and processor-design. After review R2, NandGame, Digital and Ben Eater moved to considered (same modality), and ETH DDCA lecture/lab slices were partitioned across the G11 nodes so no lecture is assigned twice.'
 split_proposal: null
-prereq_changes: 'soft: discrete-math is fine (Boolean algebra). Consider also listing computer-systems (G4) as soft: bit-level data representation from CS:APP overlaps ch. 1 here. Nothing else needed.'
-open_questions: [Nand2Tetris Part I lecture video availability without paying for Coursera not confirmed (the site publishes project guidelines and slides); marked unknown., 'ETH Spring 2026 lab manual details (board, Vivado version) were read from the labs page but the PDFs were not downloaded.']
+prereq_changes: null
+open_questions:
+- Nand2Tetris Part I lecture video availability without paying for Coursera not confirmed (the site publishes project guidelines and slides); marked unknown.
+- ETH Spring 2026 lab manual details (board, Vivado version) were read from the labs page but the PDFs were not downloaded.
 last_verified: '2026-11-18'

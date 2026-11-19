@@ -7,9 +7,9 @@ hard:
 - python-programming
 soft:
 - c-programming
+- dev-environment
 scope: 'Go for systems/distributed programming: goroutines, channels, sync, testing; enough to do MIT 6.5840-style labs.'
 level: intro
-estimated_hours: 35
 resources:
 - id: gopl
   role: primary-text
@@ -30,7 +30,7 @@ resources:
   url: https://go.dev/tour/
   edition_or_term: Current (Go 1.27 era site)
   access: free
-  use: All modules (Basics, Methods and Interfaces, Generics, Concurrency); do first in about 4 hours. This is also the official Online Go tutorial that MIT 6.5840 requires before Lab 1.
+  use: All modules (Basics, Methods and Interfaces, Generics, Concurrency); This is also the official Online Go tutorial that MIT 6.5840 requires before Lab 1.
   why: Fast, interactive on-ramp that covers generics (missing from GOPL) and is the exact preparation MIT assigns.
   verified: true
 - id: go-concurrency-sources
@@ -126,9 +126,9 @@ considered:
 - title: Go courses with public lectures
   url: https://go.dev/doc/
   reason: No university course with public 2026 videos found; MIT 6.5840 itself serves as the applied Go course (G10).
-notes: 'Small, tooling-flavoured node: Tour of Go (4 hours) then GOPL chapters 1-11 selectively, with the concurrency primary sources and 100 Go Mistakes, then Lab 1 of MIT 6.5840 as the exit test. No primary-course: I found no university-level Go course with public 2026 videos or autograded assignments; MIT 6.5840 requires Go but teaches distributed systems, not the language. GOPL is from 2015 and has no generics, so the Tour and Learn Go with Tests supply that. Current Go release observed on go.dev/dl is 1.27.x.'
-split_proposal: Consider merging into a distributed-systems prerequisites block (G10) as a 35-hour optional module rather than a stand-alone node.
-prereq_changes: 'None; soft c-programming is fine. Consider adding soft: [dev-environment] for go tooling (modules, go test -race).'
+notes: 'Small, tooling-flavoured node: Tour of Go then GOPL chapters 1-11 selectively, with the concurrency primary sources and 100 Go Mistakes, then Lab 1 of MIT 6.5840 as the exit test. No primary-course: I found no university-level Go course with public 2026 videos or autograded assignments; MIT 6.5840 requires Go but teaches distributed systems, not the language. GOPL is from 2015 and has no generics, so the Tour and Learn Go with Tests supply that. Current Go release observed on go.dev/dl is 1.27.x.'
+split_proposal: null
+prereq_changes: null
 open_questions:
 - No primary-course found.
 - 'GOPL edition freshness: no second edition found; book is 2015 and pre-generics (documented in notes).'

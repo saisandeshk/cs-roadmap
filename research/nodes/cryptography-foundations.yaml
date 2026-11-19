@@ -1,97 +1,108 @@
 id: cryptography-foundations
 title: Foundations of Cryptography
 group: G12
-paths: [security, theory]
-hard: [applied-cryptography, algorithm-design]
-soft: [computational-complexity]
-scope: "Provable security, reductions, PRFs/PRPs, CPA/CCA security, zero-knowledge intro."
-
+paths:
+- security
+- theory
+hard:
+- applied-cryptography
+- algorithm-design
+soft:
+- computational-complexity
+scope: Provable security, reductions, PRFs/PRPs, CPA/CCA security, zero-knowledge intro.
 level: advanced
-estimated_hours: 140
 resources:
-  - id: joy-of-crypto
-    role: primary-text
-    kind: book
-    title: "The Joy of Cryptography"
-    by: "Mike Rosulek"
-    url: https://joyofcryptography.com/
-    edition_or_term: "MIT Press open-access edition (CC BY-NC-ND); no version date stated on page"
-    access: free
-    use: "Ch. 1-2 provable-security mindset and libraries, Part 2 Pseudorandomness (Ch. 4-7: PRGs, PRFs, PRPs), Part 3 (Ch. 8-9 CPA and CCA security), Part 4 hashing (10-12), Part 5 (13-16 key exchange, PKE, RSA, signatures), Ch. 17 ratcheting, 18 AKE, 19 Zero-Knowledge Proofs; do the exercises."
-    why: "Teaches reductions and security definitions via the 'security libraries' (hybrid argument) style better than any other text; matches the scope exactly including a zero-knowledge chapter; free."
-    verified: true
-  - id: mit-6-5620
-    role: primary-course
-    kind: course
-    title: "MIT 6.5620 / 6.875 Foundations of Cryptography"
-    by: "Shafi Goldwasser, Vinod Vaikuntanathan (Fall 2026); earlier Goldwasser/Vaikuntanathan/Micali"
-    url: https://mit6875.github.io/
-    edition_or_term: "Fall 2026 (25 lectures, five problem sets, midterm Oct 19)"
-    access: free
-    use: "Lecture notes and problem sets (do PS1-PS3 and check against the posted solutions; PS4-PS5 by self-check): perfect secrecy, PRGs, hardcore bits and Goldreich-Levin, PRFs, CCA, key exchange, RSA, LWE, signatures, commitments, FHE, zero knowledge (GMW, NIZK), secure computation (Yao, BGW). Videos: Spring 2018 YouTube playlist."
-    why: "The standard graduate foundations course; covers every item in the scope, with public notes, slides, psets and solutions. Fall 2026 videos are not stated to be public."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://mit6875.github.io/
-      videos: unknown
-      public_videos_term: "Spring 2018 (6.875)"
-      public_videos_url: https://www.youtube.com/playlist?list=PL6ogFv-ieghe8MOIcpD6UDtdK-UMHG8oH
-      assignments: public
-      assignments_url: https://mit6875.github.io/
-  - id: katz-lindell
-    role: secondary
-    kind: book
-    title: "Introduction to Modern Cryptography, 3rd edition"
-    by: "Jonathan Katz, Yehuda Lindell"
-    url: https://www.cs.umd.edu/~jkatz/imc.html
-    edition_or_term: "3rd edition (CRC Press); errata PDF on author page"
-    access: paid
-    use: "Chapters on definitions, perfect secrecy, private-key encryption and CPA/CCA security, MACs, PRFs/PRPs, hash functions, public-key encryption and signatures (see the PDF table of contents on the author page); use as the rigorous reference for proofs when Joy leaves details out."
-    why: "Standard graduate text with fully rigorous proofs; fills the formal-rigor gap Joy intentionally relaxes. Zero knowledge is only lightly covered."
-    verified: true
-  - id: boneh-shoup-found
-    role: secondary
-    kind: book
-    title: "A Graduate Course in Applied Cryptography (Part III: protocols, sigma, zero-knowledge)"
-    by: "Dan Boneh, Victor Shoup"
-    url: https://toc.cryptobook.us/
-    edition_or_term: "Version 0.6, Jan 2023"
-    access: free
-    use: "Ch. 19 Identification and signatures from sigma protocols, Ch. 20 Proving properties in zero-knowledge, Ch. 22 Threshold cryptography, Ch. 23 Secure multi-party computation; Appendices A-D."
-    why: "Free, rigorous treatment of zero-knowledge and sigma protocols, the part of the scope where Rosulek and K&L are thin."
-    verified: true
-  - id: pass-shelat
-    role: reference
-    kind: book
-    title: "A Course in Cryptography (lecture notes)"
-    by: "Rafael Pass, abhi shelat"
-    url: https://www.cs.cornell.edu/courses/cs4830/2010fa/lecnotes.pdf
-    edition_or_term: "Cornell CS 4830 notes (2010)"
-    access: free
-    use: "Sections on one-way functions, pseudorandomness, hardcore predicates and zero-knowledge proofs (check the PDF table of contents); use as a free, theory-oriented complement to MIT 6.5620."
-    why: "Free foundational-theory notes in the one-way-function-first (complexity-theoretic) style; fills the OWF/ZK theory gap."
-    verified: true
-  - id: cryptohack-found
-    role: practice
-    kind: practice-site
-    title: "CryptoHack: Lattices, Zero-Knowledge Proofs, Isogenies categories"
-    by: "CryptoHack team"
-    url: https://cryptohack.org/challenges/
-    edition_or_term: "Rolling"
-    access: free
-    use: "Categories Zero-Knowledge Proofs, Lattices, Elliptic Curves, plus Hash Functions; solve a handful after each theory unit."
-    why: "Attack-side practice for definitions studied here (e.g., breaking bad ZK or lattice usage)."
-    verified: true
+- id: joy-of-crypto
+  role: primary-text
+  kind: book
+  title: The Joy of Cryptography
+  by: Mike Rosulek
+  url: https://joyofcryptography.com/
+  edition_or_term: MIT Press open-access edition (CC BY-NC-ND); no version date stated on page
+  access: free
+  use: 'Ch. 1-2 provable-security mindset and libraries, Part 2 Pseudorandomness (Ch. 4-7: PRGs, PRFs, PRPs), Part 3 (Ch. 8-9 CPA and CCA security), Part 4 hashing (10-12), Part 5 (13-16 key exchange, PKE, RSA, signatures), Ch. 17 ratcheting, 18 AKE, 19 Zero-Knowledge Proofs; do the exercises.'
+  why: Teaches reductions and security definitions via the 'security libraries' (hybrid argument) style better than any other text; matches the scope exactly including a zero-knowledge chapter; free.
+  verified: true
+- id: mit-6-5620
+  role: primary-course
+  kind: course
+  title: MIT 6.5620 / 6.875 Foundations of Cryptography
+  by: Shafi Goldwasser, Vinod Vaikuntanathan (Fall 2026); earlier Goldwasser/Vaikuntanathan/Micali
+  url: https://mit6875.github.io/
+  edition_or_term: Fall 2026 (25 lectures, five problem sets, midterm Oct 19)
+  access: free
+  use: 'Lecture notes and problem sets (do PS1-PS3 and check against the posted solutions; PS4-PS5 by self-check): perfect secrecy, PRGs, hardcore bits and Goldreich-Levin, PRFs, CCA, key exchange, RSA, LWE, signatures, commitments, FHE, zero knowledge (GMW, NIZK), secure computation (Yao, BGW). Videos: Spring 2018 YouTube playlist.'
+  why: The standard graduate foundations course; covers every item in the scope, with public notes, slides, psets and solutions. Fall 2026 videos are not stated to be public.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://mit6875.github.io/
+    videos: unknown
+    public_videos_term: Spring 2018 (6.875)
+    public_videos_url: https://www.youtube.com/playlist?list=PL6ogFv-ieghe8MOIcpD6UDtdK-UMHG8oH
+    assignments: public
+    assignments_url: https://mit6875.github.io/
+- id: katz-lindell
+  role: secondary
+  kind: book
+  title: Introduction to Modern Cryptography, 3rd edition
+  by: Jonathan Katz, Yehuda Lindell
+  url: https://www.cs.umd.edu/~jkatz/imc.html
+  edition_or_term: 3rd edition (CRC Press); errata PDF on author page
+  access: paid
+  use: Chapters on definitions, perfect secrecy, private-key encryption and CPA/CCA security, MACs, PRFs/PRPs, hash functions, public-key encryption and signatures (see the PDF table of contents on the author page); use as the rigorous reference for proofs when Joy leaves details out.
+  why: Standard graduate text with fully rigorous proofs; fills the formal-rigor gap Joy intentionally relaxes. Zero knowledge is only lightly covered.
+  verified: true
+- id: boneh-shoup-found
+  role: secondary
+  kind: book
+  title: 'A Graduate Course in Applied Cryptography (Part III: protocols, sigma, zero-knowledge)'
+  by: Dan Boneh, Victor Shoup
+  url: https://toc.cryptobook.us/
+  edition_or_term: Version 0.6, Jan 2023
+  access: free
+  use: Ch. 19 Identification and signatures from sigma protocols, Ch. 20 Proving properties in zero-knowledge, Ch. 22 Threshold cryptography, Ch. 23 Secure multi-party computation; Appendices A-D.
+  why: Free, rigorous treatment of zero-knowledge and sigma protocols, the part of the scope where Rosulek and K&L are thin.
+  verified: true
+- id: pass-shelat
+  role: reference
+  kind: book
+  title: A Course in Cryptography (lecture notes)
+  by: Rafael Pass, abhi shelat
+  url: https://www.cs.cornell.edu/courses/cs4830/2010fa/lecnotes.pdf
+  edition_or_term: Cornell CS 4830 notes (2010)
+  access: free
+  use: Sections on one-way functions, pseudorandomness, hardcore predicates and zero-knowledge proofs (check the PDF table of contents); use as a free, theory-oriented complement to MIT 6.5620.
+  why: Free foundational-theory notes in the one-way-function-first (complexity-theoretic) style; fills the OWF/ZK theory gap.
+  verified: true
+- id: cryptohack-found
+  role: practice
+  kind: practice-site
+  title: 'CryptoHack: Lattices, Zero-Knowledge Proofs, Isogenies categories'
+  by: CryptoHack team
+  url: https://cryptohack.org/challenges/
+  edition_or_term: Rolling
+  access: free
+  use: Categories Zero-Knowledge Proofs, Lattices, Elliptic Curves, plus Hash Functions; solve a handful after each theory unit.
+  why: Attack-side practice for definitions studied here (e.g., breaking bad ZK or lattice usage).
+  verified: true
 considered:
-  - {title: "Goldreich, Foundations of Cryptography Vol. 1-2", url: "https://mit6875.github.io/", reason: "Encyclopedic graduate reference listed in the MIT syllabus; too heavy as first text; not opened directly."}
-  - {title: "Boneh & Shoup as primary", url: "https://toc.cryptobook.us/", reason: "Excellent but oriented toward applied constructions; used in applied-cryptography."}
-  - {title: "MIT 6.5620 earlier terms (Fall 2025, 2023, 2022 websites)", url: "https://mit6875.github.io/", reason: "Previous-term sites linked from the current page; videos not stated; Spring 2018 videos are the verified public ones."}
-  - {title: "Stanford CS 255 (Winter 2026) / CS 355", url: "https://cs255.stanford.edu/", reason: "Applied rather than foundations; used in applied-cryptography."}
-notes: "Joy of Cryptography is the primary text because it exactly matches the scope and is free. The node is graduate-level, so the owner may prefer Katz-Lindell as primary on rigor grounds. Fall 2026 MIT page lists topics through zero knowledge, secure computation and steganography/monitoring AI models. Spring 2018 videos predate the current syllabus, so use them for the core PRG/PRF/CPA/CCA/ZK lectures and the Fall 2026 notes for newer topics."
+- title: Goldreich, Foundations of Cryptography Vol. 1-2
+  url: https://mit6875.github.io/
+  reason: Encyclopedic graduate reference listed in the MIT syllabus; too heavy as first text; not opened directly.
+- title: Boneh & Shoup as primary
+  url: https://toc.cryptobook.us/
+  reason: Excellent but oriented toward applied constructions; used in applied-cryptography.
+- title: MIT 6.5620 earlier terms (Fall 2025, 2023, 2022 websites)
+  url: https://mit6875.github.io/
+  reason: Previous-term sites linked from the current page; videos not stated; Spring 2018 videos are the verified public ones.
+- title: Stanford CS 255 (Winter 2026) / CS 355
+  url: https://cs255.stanford.edu/
+  reason: Applied rather than foundations; used in applied-cryptography.
+notes: Joy of Cryptography is the primary text because it exactly matches the scope and is free. The node is graduate-level, so the owner may prefer Katz-Lindell as primary on rigor grounds. Fall 2026 MIT page lists topics through zero knowledge, secure computation and steganography/monitoring AI models. Spring 2018 videos predate the current syllabus, so use them for the core PRG/PRF/CPA/CCA/ZK lectures and the Fall 2026 notes for newer topics.
 split_proposal: null
-prereq_changes: "Hard prereq on algorithm-design is reasonable; MIT requires 6.1400 complexity, so consider promoting computational-complexity from soft to hard for the course route."
+prereq_changes: null
 open_questions:
-  - "No Fall 2026 lecture recordings found for 6.5620; only review-session Panopto links on the page."
-  - "Katz-Lindell publisher page URL (CRC Press) returned 404 for the guessed link; linked author page instead."
+- No Fall 2026 lecture recordings found for 6.5620; only review-session Panopto links on the page.
+- Katz-Lindell publisher page URL (CRC Press) returned 404 for the guessed link; linked author page instead.
 last_verified: 2026-11-18

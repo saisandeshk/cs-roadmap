@@ -1,99 +1,107 @@
-# --- copied from research/skeleton.yaml ---
 id: theory-of-computation
 title: Theory of Computation
 group: G3
-paths: [core, theory]
-hard: [discrete-math]
-soft: []
-scope: "Automata, regular and context-free languages, Turing machines, decidability, P vs NP."
-
-# --- curation data ---
+paths:
+- core
+- theory
+hard:
+- discrete-math
+soft:
+- algorithms
+scope: Automata, regular and context-free languages, Turing machines, decidability, P vs NP.
 level: intermediate
-estimated_hours: 100
 resources:
-  - id: sipser-toc
-    role: primary-text
-    kind: book
-    title: "Introduction to the Theory of Computation, 3rd edition"
-    by: "Michael Sipser"
-    url: https://math.mit.edu/~sipser/book.html
-    edition_or_term: "3rd edition (Cengage, 2012/2013); 2nd edition is acceptable but lacks some exercises"
-    access: paid
-    use: "Part 1 Automata and Languages (ch. 1 regular languages, ch. 2 context-free languages), Part 2 Computability Theory (ch. 3 Turing machines, ch. 4 decidability, ch. 5 reducibility), Part 3 Complexity (ch. 7 time complexity, P, NP, NP-completeness). Read the 'proof idea' paragraphs first, then do the exercises, not only the problems. Ch. 6 (advanced computability/recursion theorem) and ch. 8-10 are optional here (ch. 8-10 are the entry point to computational-complexity)."
-    why: "The standard text, written for exactly this scope: unusually clear proof-idea/proof structure, and the book the best public lectures follow, so reading and watching reinforce one another. Author page lists errata and the Cengage purchase link."
-    verified: true
-  - id: mit-18-404
-    role: primary-course
-    kind: course
-    title: "MIT 18.404J / 6.5400 Theory of Computation"
-    by: "MIT (Michael Sipser)"
-    url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/
-    edition_or_term: "Fall 2020 (OCW videos); live page for Fall 2026"
-    access: free
-    use: "All 25 or so video lectures with the slides (finite automata through P vs NP), lecture notes, problem sets with solutions and exams; follow the course's reading assignments in Sipser. Do each problem set before opening the posted solutions."
-    why: "Taught by the book's author; recorded in full on OCW with problem sets and exams. The only complete public course with hard proof-based assignments at this depth. The live Fall 2026 page says 2026 lectures will NOT be recorded and that the 2020 videos remain the supplement, with new problem sets posted."
-    verified: true
-    course:
-      latest_term: "Fall 2026 (course page math.mit.edu/~sipser/18404; Fall 2025 also taught per MIT TOC calendar)"
-      latest_url: https://math.mit.edu/~sipser/18404
-      videos: none
-      public_videos_term: "Fall 2020"
-      public_videos_url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/resources/lecture-videos/
-      assignments: public
-      assignments_url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/pages/assignments/
-  - id: introtcs
-    role: secondary
-    kind: book
-    title: "Introduction to Theoretical Computer Science"
-    by: "Boaz Barak (Harvard)"
-    url: https://introtcs.org/public/index.html
-    edition_or_term: "Online text (living; Jupyter notebooks)"
-    access: free
-    use: "Computation-via-Boolean-circuits (NAND programs), the equivalence of RAM/Turing/lambda models, uncomputability and Rice's theorem, 'what is an algorithm' chapters; read the chapters on universality, uncomputability and NP/P alongside Sipser ch. 3-5, 7."
-    why: "Gap: gives the circuit/programming view of universality and uncomputability that Sipser lacks (and that complexity and cryptography use later) with executable code and many exercises; free and modern."
-    verified: true
-  - id: viola-toc-videos
-    role: secondary
-    kind: video-series
-    title: "Theory of Computation video lectures with exercises (Emanuele Viola, Northeastern)"
-    by: "Emanuele Viola"
-    url: https://www.khoury.northeastern.edu/home/viola/classes/tocu-generic.html
-    edition_or_term: "Generic course page (undergraduate theory of computation; no fixed term)"
-    access: free
-    use: "Video units on DFAs/NFAs, regular expressions, pumping lemma, CFGs/PDAs, Turing machines, decidability, P/NP, with a grouped exercise file (toc-units) and reading pointers into Sipser, Erickson, Maheshwari-Smid and Viola's Mathematics of the Impossible."
-    why: "Gap: shorter, self-paced videos plus curated exercises if the MIT 2020 lectures (fast, proof-heavy) are too quick; also links alternative free texts."
-    verified: true
-  - id: erickson-models
-    role: secondary
-    kind: book
-    title: "Models of Computation (lecture notes and exercises)"
-    by: "Jeff Erickson"
-    url: https://jeffe.cs.illinois.edu/teaching/algorithms/
-    edition_or_term: "Notes from CS 374 (taught Fall 2023); linked as 'Models of computation notes' on the page"
-    access: free
-    use: "Notes on regular languages (DFA/NFA/regex), context-free grammars, Turing machines and undecidability, and a large bank of exercises with proof patterns for each; use for extra problems and a different explanation of the pumping lemma and reductions."
-    why: "Free, rigorous, exercise-rich companion with a different explanation style than Sipser; useful when stuck on constructions."
-    verified: true
-  - id: sipser-problem-sets
-    role: practice
-    kind: website
-    title: "18.404 problem sets, quizzes, midterm and final exams with solutions (Sipser's course page)"
-    by: "Michael Sipser"
-    url: https://math.mit.edu/~sipser/18404
-    edition_or_term: "Fall 2026 page; also Fall 2020 materials via OCW"
-    access: free
-    use: "Problem Sets 1-6, the sample quiz, midterm and final exams with solutions (current-term psets are posted with solutions); do 1-2 hours per problem before reading solutions."
-    why: "The best-quality proof-writing problems for this material and a self-test of mastery; public and current as of Fall 2026."
-    verified: true
+- id: sipser-toc
+  role: primary-text
+  kind: book
+  title: Introduction to the Theory of Computation, 3rd edition
+  by: Michael Sipser
+  url: https://math.mit.edu/~sipser/book.html
+  edition_or_term: 3rd edition (Cengage, 2012/2013); 2nd edition is acceptable but lacks some exercises
+  access: paid
+  use: Part 1 Automata and Languages (ch. 1 regular languages, ch. 2 context-free languages), Part 2 Computability Theory (ch. 3 Turing machines, ch. 4 decidability, ch. 5 reducibility), Part 3 Complexity (ch. 7 time complexity, P, NP, NP-completeness). Read the 'proof idea' paragraphs first, then do the exercises, not only the problems. Ch. 6 (advanced computability/recursion theorem) and ch. 8-10 are optional here (ch. 8-10 are the entry point to computational-complexity).
+  why: 'The standard text, written for exactly this scope: unusually clear proof-idea/proof structure, and the book the best public lectures follow, so reading and watching reinforce one another. Author page lists errata and the Cengage purchase link.'
+  verified: true
+- id: mit-18-404
+  role: primary-course
+  kind: course
+  title: MIT 18.404J / 6.5400 Theory of Computation
+  by: MIT (Michael Sipser)
+  url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/
+  edition_or_term: Fall 2020 (OCW videos); live page for Fall 2026
+  access: free
+  use: All 25 or so video lectures with the slides (finite automata through P vs NP), lecture notes, problem sets with solutions and exams; follow the course's reading assignments in Sipser. Do each problem set before opening the posted solutions.
+  why: Taught by the book's author; recorded in full on OCW with problem sets and exams. The only complete public course with hard proof-based assignments at this depth. The live Fall 2026 page says 2026 lectures will NOT be recorded and that the 2020 videos remain the supplement, with new problem sets posted.
+  verified: true
+  course:
+    latest_term: Fall 2026 (course page math.mit.edu/~sipser/18404; Fall 2025 also taught per MIT TOC calendar)
+    latest_url: https://math.mit.edu/~sipser/18404
+    videos: none
+    public_videos_term: Fall 2020
+    public_videos_url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/resources/lecture-videos/
+    assignments: public
+    assignments_url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/pages/assignments/
+- id: introtcs
+  role: secondary
+  kind: book
+  title: Introduction to Theoretical Computer Science
+  by: Boaz Barak (Harvard)
+  url: https://introtcs.org/public/index.html
+  edition_or_term: Online text (living; Jupyter notebooks)
+  access: free
+  use: Computation-via-Boolean-circuits (NAND programs), the equivalence of RAM/Turing/lambda models, uncomputability and Rice's theorem, 'what is an algorithm' chapters; read the chapters on universality, uncomputability and NP/P alongside Sipser ch. 3-5, 7.
+  why: 'Gap: gives the circuit/programming view of universality and uncomputability that Sipser lacks (and that complexity and cryptography use later) with executable code and many exercises; free and modern.'
+  verified: true
+- id: viola-toc-videos
+  role: secondary
+  kind: video-series
+  title: Theory of Computation video lectures with exercises (Emanuele Viola, Northeastern)
+  by: Emanuele Viola
+  url: https://www.khoury.northeastern.edu/home/viola/classes/tocu-generic.html
+  edition_or_term: Generic course page (undergraduate theory of computation; no fixed term)
+  access: free
+  use: Video units on DFAs/NFAs, regular expressions, pumping lemma, CFGs/PDAs, Turing machines, decidability, P/NP, with a grouped exercise file (toc-units) and reading pointers into Sipser, Erickson, Maheshwari-Smid and Viola's Mathematics of the Impossible.
+  why: 'Gap: shorter, self-paced videos plus curated exercises if the MIT 2020 lectures (fast, proof-heavy) are too quick; also links alternative free texts.'
+  verified: true
+- id: erickson-models
+  role: secondary
+  kind: book
+  title: Models of Computation (lecture notes and exercises)
+  by: Jeff Erickson
+  url: https://jeffe.cs.illinois.edu/teaching/algorithms/
+  edition_or_term: Notes from CS 374 (taught Fall 2023); linked as 'Models of computation notes' on the page
+  access: free
+  use: Notes on regular languages (DFA/NFA/regex), context-free grammars, Turing machines and undecidability, and a large bank of exercises with proof patterns for each; use for extra problems and a different explanation of the pumping lemma and reductions.
+  why: Free, rigorous, exercise-rich companion with a different explanation style than Sipser; useful when stuck on constructions.
+  verified: true
+- id: sipser-problem-sets
+  role: practice
+  kind: website
+  title: 18.404 problem sets, quizzes, midterm and final exams with solutions (Sipser's course page)
+  by: Michael Sipser
+  url: https://math.mit.edu/~sipser/18404
+  edition_or_term: Fall 2026 page; also Fall 2020 materials via OCW
+  access: free
+  use: Problem Sets 1-6, the sample quiz, midterm and final exams with solutions (current-term psets are posted with solutions).
+  why: The best-quality proof-writing problems for this material and a self-test of mastery; public and current as of Fall 2026.
+  verified: true
 considered:
-  - {title: "Hopcroft, Motwani, Ullman, Introduction to Automata Theory, Languages, and Computation", url: "https://web.cecs.pdx.edu/~harry/videos/", reason: "Encyclopedic classic; more mechanical than Sipser; not chosen. (Link is Harry Porter's free PSU Theory of Computation videos, older 2014 recordings, a decent alternative video series.)"}
-  - {title: "Kozen, Automata and Computability", url: "https://www.cs.ox.ac.uk/teaching/courses/2025-2026/modelsofcomputation", reason: "Elegant lecture-style text used at Oxford for Models of Computation (2025-26); more terse and mathematical; consider for stronger students."}
-  - {title: "CMU 15-251 Great Ideas in Theoretical Computer Science", url: "https://www.cs.cmu.edu/~venkatg/teaching/", reason: "Broader survey course; the 2025 course page URL guessed was not found, so not verified."}
-  - {title: "Maheshwari and Smid, Introduction to Theory of Computation (free)", url: "https://www.khoury.northeastern.edu/home/viola/classes/tocu-generic.html", reason: "Free text pointed to by Viola's course page; fine alternative primary for a free-only route."}
-notes: "Sipser + MIT 18.404J is the unambiguous primary pair; the 2026 course is not recorded, so Fall 2020 OCW videos are the pointer for the newest public recordings, while the live 2026 page still gives current problem sets and exams. Estimated 100 hours assumes two attempts on each problem set. Ch. 8-10 of Sipser (space, intractability, advanced topics) are the bridge to computational-complexity."
+- title: Hopcroft, Motwani, Ullman, Introduction to Automata Theory, Languages, and Computation
+  url: https://web.cecs.pdx.edu/~harry/videos/
+  reason: Encyclopedic classic; more mechanical than Sipser; not chosen. (Link is Harry Porter's free PSU Theory of Computation videos, older 2014 recordings, a decent alternative video series.)
+- title: Kozen, Automata and Computability
+  url: https://www.cs.ox.ac.uk/teaching/courses/2025-2026/modelsofcomputation
+  reason: Elegant lecture-style text used at Oxford for Models of Computation (2025-26); more terse and mathematical; consider for stronger students.
+- title: CMU 15-251 Great Ideas in Theoretical Computer Science
+  url: https://www.cs.cmu.edu/~venkatg/teaching/
+  reason: Broader survey course; the 2025 course page URL guessed was not found, so not verified.
+- title: Maheshwari and Smid, Introduction to Theory of Computation (free)
+  url: https://www.khoury.northeastern.edu/home/viola/classes/tocu-generic.html
+  reason: Free text pointed to by Viola's course page; fine alternative primary for a free-only route.
+notes: Sipser + MIT 18.404J is the unambiguous primary pair; the 2026 course is not recorded, so Fall 2020 OCW videos are the pointer for the newest public recordings, while the live 2026 page still gives current problem sets and exams. Ch. 8-10 of Sipser (space, intractability, advanced topics) are the bridge to computational-complexity.
 split_proposal: null
-prereq_changes: "Could add soft: [algorithms] since NP-completeness proofs assume algorithmic reductions; currently only discrete-math is hard."
+prereq_changes: null
 open_questions:
-  - "Exact number of lectures on the OCW Fall 2020 video page (counted approximately)."
-  - "Whether Viola's videos have been refreshed since the page was written (no term stated)."
+- Exact number of lectures on the OCW Fall 2020 video page (counted approximately).
+- Whether Viola's videos have been refreshed since the page was written (no term stated).
 last_verified: 2026-11-18

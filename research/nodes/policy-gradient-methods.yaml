@@ -9,7 +9,6 @@ hard:
 soft: []
 scope: REINFORCE, baselines, actor-critic, GAE, TRPO/PPO, SAC/TD3 for continuous control.
 level: intermediate
-estimated_hours: 50
 resources:
 - id: spinning-up
   role: primary-text

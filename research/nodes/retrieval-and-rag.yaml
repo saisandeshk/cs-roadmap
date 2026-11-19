@@ -1,227 +1,244 @@
 id: retrieval-and-rag
 title: Retrieval & RAG
 group: G7
-paths: [llm]
+paths:
+- llm
 branch: ai-engineering
-hard: [transformers]
-soft: [nlp-foundations, databases-intro]
-scope: "IR basics (BM25), embeddings, vector search (HNSW, IVF), RAG pipelines and evaluation."
-
+hard:
+- transformers
+soft:
+- nlp-foundations
+- databases-intro
+- llm-evaluation
+scope: IR basics (BM25), embeddings, vector search (HNSW, IVF), RAG pipelines and evaluation.
 level: intermediate
-estimated_hours: 40
 resources:
-  - id: iir
-    role: primary-text
-    kind: book
-    title: "Introduction to Information Retrieval"
-    by: "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schutze"
-    url: https://www.cambridge.org/core/books/introduction-to-information-retrieval/669D108D20F556C5C30957D63B5AB65C
-    edition_or_term: "Cambridge University Press, 2008 (free full text and slides at https://nlp.stanford.edu/IR-book/)"
-    access: free
-    use: "Ch. 1 Boolean retrieval/inverted index, ch. 2 vocabulary and postings, ch. 6 scoring and tf-idf and the vector space model, ch. 8 evaluation (precision/recall, MAP, nDCG, test collections), ch. 11 probabilistic IR (BM25), ch. 12 language models for IR, ch. 13/16 only if you need classification/clustering background."
-    why: "Still the clearest rigorous foundation for sparse retrieval, BM25 and IR evaluation, which every RAG system is built on; free online. Gap: 2008, so no dense retrieval, ANN or RAG; the SLP3 chapter and Pinecone/FAISS items below cover that."
-    verified: true
-  - id: llm-zoomcamp
-    role: primary-course
-    kind: course
-    title: "LLM Zoomcamp 2026 (DataTalks.Club)"
-    by: "Alexey Grigorev, Will Russell, Timur Kamaliev (DataTalks.Club)"
-    url: https://github.com/DataTalksClub/llm-zoomcamp
-    edition_or_term: "2026 cohort (started 2026-06-08; homework and project deadlines closed by Sep 2026); material stays open for self-paced use"
-    access: free
-    use: "Module 1 Agentic RAG (keyword-search RAG, then function calling), Module 2 Vector Search (embeddings, minsearch, sqlitesearch, PGVector), Module 4 Evaluation (retrieval metrics and answer quality, offline and online, LLM-as-judge), Module 6 Best Practices (hybrid search, reranking). Modules 3, 5 and 7 and the capstone are used by llm-applications. Homework is self-checked; about $1-5 in API credits, no GPU. Playlist: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv"
-    why: "Only free course found that builds the whole RAG pipeline (retrieval, vector search, hybrid/rerank) and evaluates it, with public pre-recorded lectures and checkable homework. Gap: dense-retrieval theory is thin, so pair with SLP3 ch. 11 and the Lin et al. text-ranking survey."
-    verified: true
-    course:
-      latest_term: "2026 cohort (Jun-Sep 2026)"
-      latest_url: https://courses.datatalks.club/llm-zoomcamp-2026
-      videos: public
-      public_videos_url: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv
-      assignments: public
-      assignments_url: https://github.com/DataTalksClub/llm-zoomcamp
-  - id: slp3-ch11
-    role: secondary
-    kind: book
-    title: "SLP3 ch. 11: Information Retrieval and Retrieval-Augmented Generation"
-    by: "Dan Jurafsky, James H. Martin"
-    url: https://web.stanford.edu/~jurafsky/slp3/11.pdf
-    edition_or_term: "Aug 19, 2026 draft (slides available)"
-    access: free
-    use: "Read after IIR ch. 6/8 as the modern bridge: sparse tf-idf/BM25 retrieval, dense retrieval with bi-encoders (section 11.3), reranking, and RAG."
-    why: "Short, current (2026) textbook treatment connecting classical IR to dense retrieval and RAG; fills IIR's post-2008 gap in one chapter."
-    verified: true
-  - id: pinecone-faiss
-    role: secondary
-    kind: website
-    title: "Faiss: The Missing Manual (Pinecone Learning Center)"
-    by: "James Briggs / Pinecone"
-    url: https://www.pinecone.io/learn/series/faiss/
-    edition_or_term: "Current series"
-    access: free
-    use: "Ch. 1-2 (Faiss intro, nearest-neighbor indexes incl. flat/IVF), ch. 3-4 (LSH, random projection), ch. 5 product quantization, ch. 6 HNSW (https://www.pinecone.io/learn/series/faiss/hnsw/), ch. 7 index factory; run the notebooks and plot recall vs latency on a small dataset."
-    why: "Clearest free walk-through of IVF/PQ/HNSW trade-offs with runnable FAISS code; fills the vector-search scope item that IIR and the RAG papers do not teach."
-    verified: true
-  - id: faiss-docs
-    role: reference
-    kind: docs
-    title: "Faiss documentation and wiki"
-    by: "Meta FAIR"
-    url: https://faiss.ai/
-    edition_or_term: "Current"
-    access: free
-    use: "Wiki pages 'Guidelines to choose an index', 'Faster search', 'Indexing 1G vectors' (github.com/facebookresearch/faiss/wiki); API reference when building indexes."
-    why: "Authoritative reference for index selection and memory/speed trade-offs."
-    verified: true
-  - id: hnsw-paper
-    role: reference
-    kind: paper
-    title: "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
-    by: "Malkov, Yashunin"
-    url: https://arxiv.org/abs/1603.09320
-    edition_or_term: "2016 (TPAMI 2018)"
-    access: free
-    use: "Sections 3-4 (algorithm, parameters M and efConstruction/efSearch)."
-    why: "Primary source for the dominant ANN index."
-    verified: true
-  - id: sbert
-    role: practice
-    kind: docs
-    title: "Sentence Transformers documentation (semantic search, retrieve and re-rank, training)"
-    by: "UKP Lab / Hugging Face"
-    url: https://www.sbert.net/
-    edition_or_term: "Current"
-    access: free
-    use: "Semantic Search, Retrieve & Re-Rank (bi-encoder + cross-encoder) example, then Training Overview to fine-tune a bi-encoder with MultipleNegativesRankingLoss on in-domain pairs."
-    why: "Hands-on dense retrieval/reranking and embedding fine-tuning with a maintained library."
-    verified: true
-  - id: pyserini
-    role: practice
-    kind: tool
-    title: "Pyserini / Anserini (reproducible BM25, learned sparse and dense retrieval)"
-    by: "Jimmy Lin and the Waterloo/Castorini group"
-    url: https://github.com/castorini/pyserini
-    edition_or_term: "v2.4.0 (Aug 27, 2026), Anserini v2.x on Lucene 10"
-    access: free
-    use: "Run BM25 baselines on MS MARCO passage and a BEIR set with prebuilt indexes, reproduce a dense retriever (e.g. DPR or TCT-ColBERT) and hybrid fusion; compare nDCG@10 with the IIR evaluation metrics."
-    why: "Hidden gem: gold-standard reproducible baselines so you check your own BM25/dense pipeline against published numbers; also exposes REST and MCP interfaces."
-    verified: true
-  - id: ragpaper-survey
-    role: reference
-    kind: paper
-    title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al.) and RAG for LLMs: A Survey (Gao et al.)"
-    by: "Lewis et al.; Gao et al."
-    url: https://arxiv.org/abs/2005.11401
-    edition_or_term: "RAG 2020; survey https://arxiv.org/abs/2312.10997 (2023)"
-    access: free
-    use: "Lewis for the original formulation; Gao survey for taxonomy (naive/advanced/modular RAG, chunking, query rewriting, reranking)."
-    why: "Establishes vocabulary and pipeline variants used by all RAG tooling."
-    verified: true
-  - id: dpr-colbert
-    role: secondary
-    kind: paper
-    title: "Dense Passage Retrieval (DPR) and ColBERTv2"
-    by: "Karpukhin et al.; Santhanam et al."
-    url: https://arxiv.org/abs/2004.04906
-    edition_or_term: "DPR 2020; ColBERTv2 https://arxiv.org/abs/2112.01488 (2021)"
-    access: free
-    use: "DPR sections 3-5 (in-batch negatives, hard negatives, comparison with BM25); ColBERTv2 for late interaction and residual compression."
-    why: "The two main dense-retrieval paradigms (single-vector vs multi-vector); explains when BM25 still wins."
-    verified: true
-  - id: text-ranking-book
-    role: reference
-    kind: paper
-    title: "Pretrained Transformers for Text Ranking: BERT and Beyond"
-    by: "Jimmy Lin, Rodrigo Nogueira, Andrew Yates"
-    url: https://arxiv.org/abs/2010.06467
-    edition_or_term: "2020 (Morgan & Claypool 2021)"
-    access: free
-    use: "Chapters on reranking with cross-encoders, dense retrieval and learned sparse retrieval; skim for design space."
-    why: "Book-length survey bridging IIR to neural IR (pre-LLM, so skip the BERT-specific engineering)."
-    verified: true
-  - id: beir-mteb
-    role: reference
-    kind: paper
-    title: "BEIR and MTEB (retrieval and embedding benchmarks)"
-    by: "Thakur et al.; Muennighoff et al."
-    url: https://arxiv.org/abs/2104.08663
-    edition_or_term: "BEIR 2021; MTEB https://arxiv.org/abs/2210.07316 (2022); live leaderboard https://huggingface.co/spaces/mteb/leaderboard"
-    access: free
-    use: "How retrieval is evaluated zero-shot across domains; use MTEB leaderboard to choose embedding models and note that scores are not task-specific."
-    why: "Evaluation scope item: the standard retrieval benchmarks and their limits."
-    verified: true
-  - id: contextual-retrieval
-    role: secondary
-    kind: article
-    title: "Contextual Retrieval (Anthropic) and Lost in the Middle"
-    by: "Anthropic; Liu et al."
-    url: https://www.anthropic.com/engineering/contextual-retrieval
-    edition_or_term: "Anthropic post 2024; Lost in the Middle https://arxiv.org/abs/2307.03172"
-    access: free
-    use: "Contextual embeddings/BM25 + reranking measured gains; Lost in the Middle for long-context position effects when stuffing retrieved chunks."
-    why: "Practical chunking/reranking improvements with measurements, and the evidence for why more context is not always better."
-    verified: true
-  - id: rag-eval
-    role: secondary
-    kind: paper
-    title: "RAG evaluation: RGB benchmark, FRAMES (Fact, Fetch, and Reason) and Ragas metrics"
-    by: "Chen et al.; Krishna et al.; Ragas team"
-    url: https://arxiv.org/abs/2309.01431
-    edition_or_term: "RGB 2023; FRAMES https://arxiv.org/abs/2409.12941 (2024); Ragas docs https://docs.ragas.io/en/stable/"
-    access: free
-    use: "Separate retrieval metrics (recall@k, nDCG) from generation metrics (faithfulness, answer relevance); implement faithfulness with an LLM judge and validate on 30 hand-labelled examples."
-    why: "Fills the 'RAG evaluation' scope item; Ragas is the common tool, the papers show what to measure and how noisy judges are."
-    verified: true
-  - id: hands-on-llms-ch8
-    role: practice
-    kind: book
-    title: "Hands-On Large Language Models, ch. 8 (Semantic Search and RAG) and ch. 10 (Creating Text Embedding Models)"
-    by: "Jay Alammar, Maarten Grootendorst"
-    url: https://github.com/HandsOnLLM/Hands-On-Large-Language-Models
-    edition_or_term: "O'Reilly 2024 (notebooks free on GitHub)"
-    access: mixed
-    use: "Notebook 'Chapter 8 - Semantic Search.ipynb' (dense retrieval, reranking, RAG) and 'Chapter 10 - Creating Text Embedding Models'."
-    why: "Visual, notebook-driven build of a semantic search + RAG pipeline; good first end-to-end exercise before the production-grade tools."
-    verified: true
-  - id: simple-rag
-    role: practice
-    kind: article
-    title: "Code a simple RAG from scratch"
-    by: "Xuan-Son Nguyen (Hugging Face)"
-    url: https://huggingface.co/blog/ngxson/make-your-own-rag
-    edition_or_term: "Page opened; date not read"
-    access: free
-    use: "Build a tiny local retriever + generator with no framework to see the plumbing before using LangChain/LlamaIndex."
-    why: "Framework-free baseline that demystifies RAG; short."
-    verified: true
-  - id: cs329z-rag
-    role: secondary
-    kind: course
-    title: "Stanford CS329Z, Fall 2026: RAG lecture (chunking, contextual retrieval, RAPTOR, HNSW, BM25/DPR/hybrid, reranking, ColBERT, agentic RAG)"
-    by: "Diyi Yang, Michael Ryan, John Yang"
-    url: https://cs329z.stanford.edu/
-    edition_or_term: "Fall 2026 (lecture of Sep 30, week 2)"
-    access: free
-    use: "Watch the RAG lecture (slides + YouTube video linked on the schedule), read the listed papers (RAG, DPR, ColBERT) and use the homework 1 data-pipeline part (BM25 search, document search; https://github.com/cs329z/assignment1-harness)."
-    why: "Newest public university treatment of the whole modern RAG stack incl. failure modes; recordings public; assignment repo public with tests."
-    verified: true
-    course:
-      latest_term: "Fall 2026"
-      latest_url: https://cs329z.stanford.edu/
-      videos: public
-      assignments: public-with-autograder
-      assignments_url: https://github.com/cs329z/assignment1-harness
+- id: iir
+  role: primary-text
+  kind: book
+  title: Introduction to Information Retrieval
+  by: Christopher D. Manning, Prabhakar Raghavan, Hinrich Schutze
+  url: https://www.cambridge.org/core/books/introduction-to-information-retrieval/669D108D20F556C5C30957D63B5AB65C
+  edition_or_term: Cambridge University Press, 2008 (free full text and slides at https://nlp.stanford.edu/IR-book/)
+  access: free
+  use: Ch. 1 Boolean retrieval/inverted index, ch. 2 vocabulary and postings, ch. 6 scoring and tf-idf and the vector space model, ch. 8 evaluation (precision/recall, MAP, nDCG, test collections), ch. 11 probabilistic IR (BM25), ch. 12 language models for IR, ch. 13/16 only if you need classification/clustering background.
+  why: 'Still the clearest rigorous foundation for sparse retrieval, BM25 and IR evaluation, which every RAG system is built on; free online. Gap: 2008, so no dense retrieval, ANN or RAG; the SLP3 chapter and Pinecone/FAISS items below cover that.'
+  verified: true
+- id: llm-zoomcamp
+  role: primary-course
+  kind: course
+  title: LLM Zoomcamp 2026 (DataTalks.Club)
+  by: Alexey Grigorev, Will Russell, Timur Kamaliev (DataTalks.Club)
+  url: https://github.com/DataTalksClub/llm-zoomcamp
+  edition_or_term: 2026 cohort (started 2026-06-08; homework and project deadlines closed by Sep 2026); material stays open for self-paced use
+  access: free
+  use: 'Module 1 Agentic RAG (keyword-search RAG, then function calling), Module 2 Vector Search (embeddings, minsearch, sqlitesearch, PGVector), Module 4 Evaluation (retrieval metrics and answer quality, offline and online, LLM-as-judge), Module 6 Best Practices (hybrid search, reranking). Modules 3, 5 and 7 and the capstone are used by llm-applications. Homework is self-checked; about $1-5 in API credits, no GPU. Playlist: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv'
+  why: 'Only free course found that builds the whole RAG pipeline (retrieval, vector search, hybrid/rerank) and evaluates it, with public pre-recorded lectures and checkable homework. Gap: dense-retrieval theory is thin, so pair with SLP3 ch. 11 and the Lin et al. text-ranking survey.'
+  verified: true
+  course:
+    latest_term: 2026 cohort (Jun-Sep 2026)
+    latest_url: https://courses.datatalks.club/llm-zoomcamp-2026
+    videos: public
+    public_videos_url: https://www.youtube.com/playlist?list=PL3MmuxUbc_hLZFNgSad56pDBKK8KO0XIv
+    assignments: public
+    assignments_url: https://github.com/DataTalksClub/llm-zoomcamp
+- id: slp3-ch11
+  role: secondary
+  kind: book
+  title: 'SLP3 ch. 11: Information Retrieval and Retrieval-Augmented Generation'
+  by: Dan Jurafsky, James H. Martin
+  url: https://web.stanford.edu/~jurafsky/slp3/11.pdf
+  edition_or_term: Aug 19, 2026 draft (slides available)
+  access: free
+  use: 'Read after IIR ch. 6/8 as the modern bridge: sparse tf-idf/BM25 retrieval, dense retrieval with bi-encoders (section 11.3), reranking, and RAG.'
+  why: Short, current (2026) textbook treatment connecting classical IR to dense retrieval and RAG; fills IIR's post-2008 gap in one chapter.
+  verified: true
+- id: pinecone-faiss
+  role: secondary
+  kind: website
+  title: 'Faiss: The Missing Manual (Pinecone Learning Center)'
+  by: James Briggs / Pinecone
+  url: https://www.pinecone.io/learn/series/faiss/
+  edition_or_term: Current series
+  access: free
+  use: Ch. 1-2 (Faiss intro, nearest-neighbor indexes incl. flat/IVF), ch. 3-4 (LSH, random projection), ch. 5 product quantization, ch. 6 HNSW (https://www.pinecone.io/learn/series/faiss/hnsw/), ch. 7 index factory; run the notebooks and plot recall vs latency on a small dataset.
+  why: Clearest free walk-through of IVF/PQ/HNSW trade-offs with runnable FAISS code; fills the vector-search scope item that IIR and the RAG papers do not teach.
+  verified: true
+- id: faiss-docs
+  role: reference
+  kind: docs
+  title: Faiss documentation and wiki
+  by: Meta FAIR
+  url: https://faiss.ai/
+  edition_or_term: Current
+  access: free
+  use: Wiki pages 'Guidelines to choose an index', 'Faster search', 'Indexing 1G vectors' (github.com/facebookresearch/faiss/wiki); API reference when building indexes.
+  why: Authoritative reference for index selection and memory/speed trade-offs.
+  verified: true
+- id: hnsw-paper
+  role: reference
+  kind: paper
+  title: Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs
+  by: Malkov, Yashunin
+  url: https://arxiv.org/abs/1603.09320
+  edition_or_term: 2016 (TPAMI 2018)
+  access: free
+  use: Sections 3-4 (algorithm, parameters M and efConstruction/efSearch).
+  why: Primary source for the dominant ANN index.
+  verified: true
+- id: sbert
+  role: practice
+  kind: docs
+  title: Sentence Transformers documentation (semantic search, retrieve and re-rank, training)
+  by: UKP Lab / Hugging Face
+  url: https://www.sbert.net/
+  edition_or_term: Current
+  access: free
+  use: Semantic Search, Retrieve & Re-Rank (bi-encoder + cross-encoder) example, then Training Overview to fine-tune a bi-encoder with MultipleNegativesRankingLoss on in-domain pairs.
+  why: Hands-on dense retrieval/reranking and embedding fine-tuning with a maintained library.
+  verified: true
+- id: pyserini
+  role: practice
+  kind: tool
+  title: Pyserini / Anserini (reproducible BM25, learned sparse and dense retrieval)
+  by: Jimmy Lin and the Waterloo/Castorini group
+  url: https://github.com/castorini/pyserini
+  edition_or_term: v2.4.0 (Aug 27, 2026), Anserini v2.x on Lucene 10
+  access: free
+  use: Run BM25 baselines on MS MARCO passage and a BEIR set with prebuilt indexes, reproduce a dense retriever (e.g. DPR or TCT-ColBERT) and hybrid fusion; compare nDCG@10 with the IIR evaluation metrics.
+  why: 'Hidden gem: gold-standard reproducible baselines so you check your own BM25/dense pipeline against published numbers; also exposes REST and MCP interfaces.'
+  verified: true
+- id: ragpaper-survey
+  role: reference
+  kind: paper
+  title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al.) and RAG for LLMs: A Survey (Gao et al.)'
+  by: Lewis et al.; Gao et al.
+  url: https://arxiv.org/abs/2005.11401
+  edition_or_term: RAG 2020; survey https://arxiv.org/abs/2312.10997 (2023)
+  access: free
+  use: Lewis for the original formulation; Gao survey for taxonomy (naive/advanced/modular RAG, chunking, query rewriting, reranking).
+  why: Establishes vocabulary and pipeline variants used by all RAG tooling.
+  verified: true
+- id: dpr-colbert
+  role: secondary
+  kind: paper
+  title: Dense Passage Retrieval (DPR) and ColBERTv2
+  by: Karpukhin et al.; Santhanam et al.
+  url: https://arxiv.org/abs/2004.04906
+  edition_or_term: DPR 2020; ColBERTv2 https://arxiv.org/abs/2112.01488 (2021)
+  access: free
+  use: DPR sections 3-5 (in-batch negatives, hard negatives, comparison with BM25); ColBERTv2 for late interaction and residual compression.
+  why: The two main dense-retrieval paradigms (single-vector vs multi-vector); explains when BM25 still wins.
+  verified: true
+- id: text-ranking-book
+  role: reference
+  kind: paper
+  title: 'Pretrained Transformers for Text Ranking: BERT and Beyond'
+  by: Jimmy Lin, Rodrigo Nogueira, Andrew Yates
+  url: https://arxiv.org/abs/2010.06467
+  edition_or_term: 2020 (Morgan & Claypool 2021)
+  access: free
+  use: Chapters on reranking with cross-encoders, dense retrieval and learned sparse retrieval; skim for design space.
+  why: Book-length survey bridging IIR to neural IR (pre-LLM, so skip the BERT-specific engineering).
+  verified: true
+- id: beir-mteb
+  role: reference
+  kind: paper
+  title: BEIR and MTEB (retrieval and embedding benchmarks)
+  by: Thakur et al.; Muennighoff et al.
+  url: https://arxiv.org/abs/2104.08663
+  edition_or_term: BEIR 2021; MTEB https://arxiv.org/abs/2210.07316 (2022); live leaderboard https://huggingface.co/spaces/mteb/leaderboard
+  access: free
+  use: How retrieval is evaluated zero-shot across domains; use MTEB leaderboard to choose embedding models and note that scores are not task-specific.
+  why: 'Evaluation scope item: the standard retrieval benchmarks and their limits.'
+  verified: true
+- id: contextual-retrieval
+  role: secondary
+  kind: article
+  title: Contextual Retrieval (Anthropic) and Lost in the Middle
+  by: Anthropic; Liu et al.
+  url: https://www.anthropic.com/engineering/contextual-retrieval
+  edition_or_term: Anthropic post 2024; Lost in the Middle https://arxiv.org/abs/2307.03172
+  access: free
+  use: Contextual embeddings/BM25 + reranking measured gains; Lost in the Middle for long-context position effects when stuffing retrieved chunks.
+  why: Practical chunking/reranking improvements with measurements, and the evidence for why more context is not always better.
+  verified: true
+- id: rag-eval
+  role: secondary
+  kind: paper
+  title: 'RAG evaluation: RGB benchmark, FRAMES (Fact, Fetch, and Reason) and Ragas metrics'
+  by: Chen et al.; Krishna et al.; Ragas team
+  url: https://arxiv.org/abs/2309.01431
+  edition_or_term: RGB 2023; FRAMES https://arxiv.org/abs/2409.12941 (2024); Ragas docs https://docs.ragas.io/en/stable/
+  access: free
+  use: Separate retrieval metrics (recall@k, nDCG) from generation metrics (faithfulness, answer relevance); implement faithfulness with an LLM judge and validate on 30 hand-labelled examples.
+  why: Fills the 'RAG evaluation' scope item; Ragas is the common tool, the papers show what to measure and how noisy judges are.
+  verified: true
+- id: hands-on-llms-ch8
+  role: practice
+  kind: book
+  title: Hands-On Large Language Models, ch. 8 (Semantic Search and RAG) and ch. 10 (Creating Text Embedding Models)
+  by: Jay Alammar, Maarten Grootendorst
+  url: https://github.com/HandsOnLLM/Hands-On-Large-Language-Models
+  edition_or_term: O'Reilly 2024 (notebooks free on GitHub)
+  access: mixed
+  use: Notebook 'Chapter 8 - Semantic Search.ipynb' (dense retrieval, reranking, RAG) and 'Chapter 10 - Creating Text Embedding Models'.
+  why: Visual, notebook-driven build of a semantic search + RAG pipeline; good first end-to-end exercise before the production-grade tools.
+  verified: true
+- id: simple-rag
+  role: practice
+  kind: article
+  title: Code a simple RAG from scratch
+  by: Xuan-Son Nguyen (Hugging Face)
+  url: https://huggingface.co/blog/ngxson/make-your-own-rag
+  edition_or_term: Page opened; date not read
+  access: free
+  use: Build a tiny local retriever + generator with no framework to see the plumbing before using LangChain/LlamaIndex.
+  why: Framework-free baseline that demystifies RAG; short.
+  verified: true
+- id: cs329z-rag
+  role: secondary
+  kind: course
+  title: 'Stanford CS329Z, Fall 2026: RAG lecture (chunking, contextual retrieval, RAPTOR, HNSW, BM25/DPR/hybrid, reranking, ColBERT, agentic RAG)'
+  by: Diyi Yang, Michael Ryan, John Yang
+  url: https://cs329z.stanford.edu/
+  edition_or_term: Fall 2026 (lecture of Sep 30, week 2)
+  access: free
+  use: Watch the RAG lecture (slides + YouTube video linked on the schedule), read the listed papers (RAG, DPR, ColBERT) and use the homework 1 data-pipeline part (BM25 search, document search; https://github.com/cs329z/assignment1-harness).
+  why: Newest public university treatment of the whole modern RAG stack incl. failure modes; recordings public; assignment repo public with tests.
+  verified: true
+  course:
+    latest_term: Fall 2026
+    latest_url: https://cs329z.stanford.edu/
+    videos: public
+    assignments: public-with-autograder
+    assignments_url: https://github.com/cs329z/assignment1-harness
 considered:
-  - {title: "Stanford CS 276 Information Retrieval and Web Search (Manning, Nayak)", url: "http://web.stanford.edu/class/cs276/", reason: "The IIR course; the live page shows an old schedule (Python/Java mix, Coursera videos from previous offerings), so term and video status could not be established; IIR itself serves better."}
-  - {title: "CMU 11-711 ANLP retrieval/RAG lectures", url: "https://cmu-l3.github.io/anlp-spring2026/", reason: "Good single lectures; no public recordings confirmed for 2025-26."}
-  - {title: "Anthropic/OpenAI/Weaviate/Qdrant vector-DB docs", url: "https://www.pinecone.io/learn/vector-database/", reason: "Product docs; Pinecone's learning center chosen as vendor-neutral enough; vendor-specific features omitted."}
-  - {title: "AI Engineering Handbook (handbook.academy) Retrieval part", url: "https://ai-eng.handbook.academy/", reason: "Free, ambitious (86 modules, CC BY-SA, in active development, from owner's previous curation), but author unnamed and unproven; revisit later."}
-  - {title: "ANN-Benchmarks", url: "https://ann-benchmarks.com/", reason: "Excellent reference for recall-throughput curves of ANN libraries; included as pointer only."}
-  - {title: "Self-RAG / GraphRAG papers", url: "https://arxiv.org/abs/2310.11511", reason: "Frontier RAG variants (GraphRAG: 2404.16130); better after the basics, link from llm-agents (agentic RAG)."}
-  - {title: "PoisonedRAG and indirect-prompt-injection papers", url: "https://arxiv.org/abs/2402.07867", reason: "RAG security; belongs to llm-agents/safety nodes."}
-notes: "No university course covers IR + dense retrieval + RAG end to end; the primary-course is DataTalks.Club LLM Zoomcamp 2026 (free, public video, checkable homework), with CS329Z's RAG lecture (Fall 2026, public video) as the university lecture. Other candidates: Stanford CME 295 RAG lecture (Nov 2025 edition, https://cme295.stanford.edu/syllabus/); CMU 11-766 Spring 2026 has four retrieval/RAG sessions (https://cmu-llms.org/) but no recordings found. IIR (2008) is for BM25, IR evaluation and inverted-index basics only; it predates dense retrieval, ANN and RAG. Primary route: IIR chapters for BM25/evaluation, SLP3 ch. 11 for dense/RAG, Pinecone FAISS series for ANN indexing, Sentence Transformers + Pyserini for practice, then RAG evaluation with Ragas. IIR's canonical Stanford URL was not reachable (503) from my sandbox, so I linked the Cambridge page, which I opened."
+- title: Stanford CS 276 Information Retrieval and Web Search (Manning, Nayak)
+  url: http://web.stanford.edu/class/cs276/
+  reason: The IIR course; the live page shows an old schedule (Python/Java mix, Coursera videos from previous offerings), so term and video status could not be established; IIR itself serves better.
+- title: CMU 11-711 ANLP retrieval/RAG lectures
+  url: https://cmu-l3.github.io/anlp-spring2026/
+  reason: Good single lectures; no public recordings confirmed for 2025-26.
+- title: Anthropic/OpenAI/Weaviate/Qdrant vector-DB docs
+  url: https://www.pinecone.io/learn/vector-database/
+  reason: Product docs; Pinecone's learning center chosen as vendor-neutral enough; vendor-specific features omitted.
+- title: AI Engineering Handbook (handbook.academy) Retrieval part
+  url: https://ai-eng.handbook.academy/
+  reason: Free, ambitious (86 modules, CC BY-SA, in active development, from owner's previous curation), but author unnamed and unproven; revisit later.
+- title: ANN-Benchmarks
+  url: https://ann-benchmarks.com/
+  reason: Excellent reference for recall-throughput curves of ANN libraries; included as pointer only.
+- title: Self-RAG / GraphRAG papers
+  url: https://arxiv.org/abs/2310.11511
+  reason: 'Frontier RAG variants (GraphRAG: 2404.16130); better after the basics, link from llm-agents (agentic RAG).'
+- title: PoisonedRAG and indirect-prompt-injection papers
+  url: https://arxiv.org/abs/2402.07867
+  reason: RAG security; belongs to llm-agents/safety nodes.
+notes: 'No university course covers IR + dense retrieval + RAG end to end; the primary-course is DataTalks.Club LLM Zoomcamp 2026 (free, public video, checkable homework), with CS329Z''s RAG lecture (Fall 2026, public video) as the university lecture. Other candidates: Stanford CME 295 RAG lecture (Nov 2025 edition, https://cme295.stanford.edu/syllabus/); CMU 11-766 Spring 2026 has four retrieval/RAG sessions (https://cmu-llms.org/) but no recordings found. IIR (2008) is for BM25, IR evaluation and inverted-index basics only; it predates dense retrieval, ANN and RAG. Primary route: IIR chapters for BM25/evaluation, SLP3 ch. 11 for dense/RAG, Pinecone FAISS series for ANN indexing, Sentence Transformers + Pyserini for practice, then RAG evaluation with Ragas. IIR''s canonical Stanford URL was not reachable (503) from my sandbox, so I linked the Cambridge page, which I opened.'
 split_proposal: null
-prereq_changes: "Consider moving 'databases-intro' to soft only for vector DB persistence (as is). Suggest adding soft: [llm-evaluation] (RAG evaluation uses judges/metrics) and make llm-applications soft-depend on this node."
+prereq_changes: null
 open_questions:
-  - "nlp.stanford.edu/IR-book returned HTTP 503 repeatedly from the sandbox; the Cambridge URL is verified and the free-text claim comes from the CS276 page that links it."
-  - "SLP3 11.pdf: index page lists ch. 11 'Information Retrieval and RAG' with slides and 11.pdf returns application/pdf over http (re-checked 2026-11-19); section 11.3 dense-retrieval placement not re-read."
+- nlp.stanford.edu/IR-book returned HTTP 503 repeatedly from the sandbox; the Cambridge URL is verified and the free-text claim comes from the CS276 page that links it.
+- 'SLP3 11.pdf: index page lists ch. 11 ''Information Retrieval and RAG'' with slides and 11.pdf returns application/pdf over http (re-checked 2026-11-19); section 11.3 dense-retrieval placement not re-read.'
 last_verified: 2026-11-18

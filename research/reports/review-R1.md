@@ -54,7 +54,7 @@ Facts I checked and confirmed:
 - [should-fix] Scope item "performance idioms" is not covered. The node defers it to G4/G9 (Algorithmica, Performance Ninja), but the skeleton scope for this node lists it. Fix: either amend the scope, or add one specific resource here, such as a named Algorithmica chapter or Performance Ninja lab. Concepts/ranges (C++20) and constexpr/C++23 library features are covered only through Tour 3e and the learncpp appendix. Name the Tour chapters that cover them.
 - [should-fix] The primary-course has no confirmed public video of the current course (`videos: unknown`). I could not find any 2024-2026 CS106L recordings, and the course site loads its content by script. The only public playlist is Fall 2019 (title verified: "Stanford CS 106L Fall 2019 Lectures"), which predates C++20. The node handles this honestly with CppCon Back to Basics, but `use` for the course (Fall 2026 slides 1-16) cannot be followed along by video. Fix: keep CS106L as primary for slides and activities, and state in `why` that video is 2019 only. Consider a named Back to Basics talk list rather than "search the channel".
 - [suggestion] `learncpp` ch. 18-19 are unfinished. I confirmed the home page lists chapter summaries for 1-17 and 20-27 only. The node already covers this with Tour 3e.
-- [suggestion] Eleven-item resource set for a 110h node. `hackingcpp` and `cppstories` share one entry; `cppquiz` and `exercism-cpp` are both small-drill practice. Acceptable, but exercism-cpp is the weakest.
+- [suggestion] `hackingcpp` and `cppstories` share one entry; `cppquiz` and `exercism-cpp` are both small-drill practice. Acceptable, but exercism-cpp is the weakest.
 - split/prereq: agree with downgrading hard c-programming to soft. learncpp assumes no prior C, and the node's own note says so. Keep python-programming as the hard prerequisite.
 
 ## python-programming
@@ -76,7 +76,7 @@ Facts I checked and confirmed:
 
 ## go-programming
 - [suggestion] No primary-course is stated honestly. Fine.
-- split/prereq: disagree with merging into G10. The node is the entry for the `distributed` path, 35h is a useful unit, and the 6.5840 Lab 1 exit test is well chosen (Spring 2026 page confirmed). Keep as a standalone optional node. Agree with soft dev-environment.
+- split/prereq: disagree with merging into G10. Keep as a standalone optional node. Agree with soft dev-environment.
 
 ## software-construction
 - [should-fix] The primary-text and the primary-course are the same material. `mit-6102-readings`, `mit-6102` and `mit-6102-psets` all point at 6.102 sp26 and give the same psets as use. The practice entry repeats the course `use`. Fix: keep the readings as the text and the course for the schedule; make `mit-6102-psets` list only what is not in the course (the test-first routine and the TypeScript-to-Python retrofit already in `python-spec-practice`).
@@ -86,7 +86,7 @@ Facts I checked and confirmed:
 - split/prereq: agree with soft dev-environment.
 
 ## dev-environment
-- [should-fix] `wizard-zines` states "which are currently free was not checked" and is `mixed`. Resolve it or drop the entry; a hidden gem the owner cannot use for free is not a gap-filler. Eleven resources for a 35h node leaves `neovim-docs` and `man-pages-shellcheck` as the likeliest cuts.
+- [should-fix] `wizard-zines` states "which are currently free was not checked" and is `mixed`. Resolve it or drop the entry; a hidden gem the owner cannot use for free is not a gap-filler.
 - [suggestion] Verified: TLCL Seventh Internet Edition (596 pp) and Missing Semester IAP 2026 (9 lectures, playlist titled "Missing Semester IAP 2026").
 - split/prereq: agree that dev-environment becomes a soft prerequisite of c-programming, data-structures and software-construction.
 
@@ -173,7 +173,7 @@ Facts I checked and confirmed:
 
 ## approximation-algorithms
 - [suggestion] The primary-course (Chekuri CS 583 Sp26) has no current recordings; Fall 2021 is behind a 403 I also hit. The node is honest about this. A fix would only come from evaluating the NYU course (Gupta, 403) or Copenhagen (Pagh, 2021, unopened).
-- [suggestion] Two items in `secondary` are the same job as `roughgarden-cs261-approx` (an on-ramp) and `vazirani-approx` (second text). Acceptable at 130h.
+- [suggestion] Two items in `secondary` are the same job as `roughgarden-cs261-approx` (an on-ramp) and `vazirani-approx` (second text).
 - split/prereq: agree with soft computational-complexity (for the hardness unit) and soft linear-algebra and optimization.
 
 ## computational-complexity

@@ -1,116 +1,118 @@
-# --- copied from research/skeleton.yaml ---
 id: computational-complexity
 title: Computational Complexity
 group: G3
-paths: [theory]
-hard: [theory-of-computation, algorithm-design]
-soft: []
-scope: "Hierarchy theorems, PH, randomized classes, circuits, interactive proofs, PCP intro."
-
-# --- curation data ---
+paths:
+- theory
+hard:
+- theory-of-computation
+- algorithm-design
+soft:
+- probability
+- linear-algebra
+scope: Hierarchy theorems, space complexity, the polynomial hierarchy, randomized classes, Boolean circuits.
 level: advanced
-estimated_hours: 170
 resources:
-  - id: arora-barak
-    role: primary-text
-    kind: book
-    title: "Computational Complexity: A Modern Approach"
-    by: "Sanjeev Arora, Boaz Barak"
-    url: https://theory.cs.princeton.edu/complexity/
-    edition_or_term: "Cambridge University Press 2009; free author draft (489 pp.) at the book site"
-    access: free
-    use: "Chapters on the computational model, NP and NP-completeness, diagonalization (hierarchy theorems), space complexity, the polynomial hierarchy and alternations, Boolean circuits, randomized computation, interactive proofs, complexity of counting, circuit lower bounds, derandomization (hardness vs randomness), and the PCP theorem. Skip cryptography, algebraic models, average-case and quantum computation until needed. Follow O'Donnell's lecture-by-lecture reading list (his page maps each lecture to chapter sections). Do the end-of-chapter exercises for the chapters read (diagonalization, PH, circuits, randomized classes, IP) with full proofs; no official solutions exist, so compare against Cornell CS 6810's scribe notes."
-    why: "The standard graduate text, broad and correct, with free author drafts and teaching plans; matches the scope (hierarchy, PH, randomized classes, circuits, IP, PCP). The 'conceptual' alternative by Goldreich is more philosophical; Arora-Barak is the one lectures and problem sets assume."
-    verified: true
-  - id: odonnell-15-855
-    role: primary-course
-    kind: course
-    title: "CMU 15-855 Graduate Computational Complexity Theory"
-    by: "Ryan O'Donnell (CMU)"
-    url: https://www.cs.cmu.edu/~odonnell/complexity17/
-    edition_or_term: "Fall 2017 (YouTube playlist 'Graduate Complexity Theory at CMU')"
-    access: free
-    use: "All 27 lectures: hierarchy theorems, Hopcroft-Paul-Valiant, circuits, probabilistic classes, quasilinear Cook-Levin, PH and alternation, oracles, time-space tradeoffs for SAT, Merlin-Arthur, IP = PSPACE, AC0 lower bounds and switching lemma, Razborov-Smolensky, hardness vs randomness, hardness amplification; the single homework/handwritten-notes PDF (120 MB) holds problem sets. Prerequisite: Sipser Part III or CMU 15-455 (also on YouTube as 'Undergrad Complexity Theory at CMU', Spring 2017)."
-    why: "Best fully recorded graduate course aimed at the book's exact scope by a gifted lecturer; syllabus maps each lecture to Arora-Barak sections; homework and notes public. Oldest of the options (2017), but complexity content moves slowly. The newer public notes (Cornell Spring 2026, below) cover the same ground without video."
-    verified: true
-    course:
-      latest_term: "Fall 2017"
-      latest_url: https://www.cs.cmu.edu/~odonnell/complexity17/
-      videos: public
-      assignments: public
-      assignments_url: https://www.cs.cmu.edu/~odonnell/complexity17/
-  - id: cornell-cs6810
-    role: secondary
-    kind: course
-    title: "Cornell CS 6810 Theory of Computing (graduate complexity)"
-    by: "Eshan Chattopadhyay (Cornell)"
-    url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
-    edition_or_term: "Spring 2026 (scribe notes posted per lecture; no recordings)"
-    access: free
-    use: "Lecture notes 1-23: TMs, NP, hierarchy theorems, oracles, PH, PSPACE and Savitch, NL = coNL, circuits and Karp-Lipton, AC0 lower bound pointer, randomized classes, BPP in PH, Nisan-Wigderson, interactive proofs (GNI in AM, coNP in IP, sum-check), PCP intro with linearity testing and hardness of approximation."
-    why: "Newest public term (Spring 2026) with posted notes and a clean syllabus; use it to check or update against O'Donnell's 2017 videos, particularly for the IP and PCP lectures. Resources page mirrors Arora-Barak, Goldreich and Wigderson."
-    verified: true
-    course:
-      latest_term: "Spring 2026"
-      latest_url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
-      videos: none
-      assignments: unknown
-  - id: goldreich-cc
-    role: secondary
-    kind: book
-    title: "Computational Complexity: A Conceptual Perspective"
-    by: "Oded Goldreich"
-    url: https://www.wisdom.weizmann.ac.il/~oded/cc-drafts.html
-    edition_or_term: "Cambridge University Press 2008; free drafts on author's site"
-    access: free
-    use: "Chapters on P vs NP, randomness and counting, space complexity, and the PCP and probabilistic-proof chapters as a rigorous alternative proof of PCP and interactive-proof results; read selected sections when Arora-Barak is too terse."
-    why: "Gap: careful definitions and proofs of the proof-systems and pseudorandomness material where Arora-Barak is terse; the 'conceptual' viewpoint helps in synthesizing across topics."
-    verified: true
-  - id: viola-moti
-    role: secondary
-    kind: book
-    title: "Mathematics of the Impossible: The Complexity of Computation"
-    by: "Emanuele Viola"
-    url: https://www.khoury.northeastern.edu/home/viola/
-    edition_or_term: "Free PDF linked from the author's homepage (book titled 'Mathematics of the Impossible')"
-    access: free
-    use: "Chapters on time/space hierarchies, circuits, PH and lower bounds, pseudorandomness and expanders as a compact modern second exposition; pick those chapters where the primary reading is unclear."
-    why: "Hidden gem: a free, recent text that covers neglected gems and breakthroughs (e.g., simplified expositions of classic theorems and recent circuit lower bounds) in a more compact style than Arora-Barak."
-    verified: true
-  - id: thaler-pazk
-    role: secondary
-    kind: book
-    title: "Proofs, Arguments, and Zero-Knowledge"
-    by: "Justin Thaler"
-    url: https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.html
-    edition_or_term: "Free manuscript (technical content stable as of mid-April 2022); supplementary videos"
-    access: free
-    use: "Chapters 2-4 (interactive proofs, sum-check, GKR; his two videos Interactive Proofs Part I and II cover these) as the modern, concrete treatment of the interactive-proof part; PCP chapters if needed."
-    why: "Gap: the interactive-proofs/PCP unit of the scope is best learned with concrete protocols; this gives cryptographic-era perspective with videos."
-    verified: true
-  - id: complexity-zoo
-    role: reference
-    kind: website
-    title: "Complexity Zoo"
-    by: "Scott Aaronson et al."
-    url: https://complexityzoo.net/Complexity_Zoo
-    edition_or_term: "Live wiki"
-    access: free
-    use: "Look up a complexity class and its known relations whenever one appears in reading; do not read linearly."
-    why: "Fast definitions and containment diagrams for the many classes in the course."
-    verified: true
+- id: arora-barak
+  role: primary-text
+  kind: book
+  title: 'Computational Complexity: A Modern Approach'
+  by: Sanjeev Arora, Boaz Barak
+  url: https://theory.cs.princeton.edu/complexity/
+  edition_or_term: Cambridge University Press 2009; free author draft (489 pp.) at the book site
+  access: free
+  use: Chapters on the computational model, NP and NP-completeness, diagonalization (hierarchy theorems), space complexity, the polynomial hierarchy and alternations, Boolean circuits and randomized computation; interactive proofs, counting, lower bounds, derandomization and PCP are in advanced-complexity. Follow O'Donnell's lecture-by-lecture reading list and do the end-of-chapter exercises with full proofs.
+  why: The standard graduate text, broad and correct, with free author drafts and teaching plans; matches the scope (hierarchy, PH, randomized classes, circuits, IP, PCP). The 'conceptual' alternative by Goldreich is more philosophical; Arora-Barak is the one lectures and problem sets assume.
+  verified: true
+- id: odonnell-15-855
+  role: primary-course
+  kind: course
+  title: CMU 15-855 Graduate Computational Complexity Theory
+  by: Ryan O'Donnell (CMU)
+  url: https://www.cs.cmu.edu/~odonnell/complexity17/
+  edition_or_term: Fall 2017 (YouTube playlist 'Graduate Complexity Theory at CMU')
+  access: free
+  use: Lectures on hierarchy theorems, Hopcroft-Paul-Valiant, circuits, probabilistic classes, quasilinear Cook-Levin, PH and alternation, oracles and time-space tradeoffs for SAT; the interactive-proof, lower-bound and pseudorandomness lectures belong to advanced-complexity. The homework/handwritten-notes PDF holds problem sets.
+  why: Best fully recorded graduate course aimed at the book's exact scope by a gifted lecturer; syllabus maps each lecture to Arora-Barak sections; homework and notes public. Oldest of the options (2017), but complexity content moves slowly. The newer public notes (Cornell Spring 2026, below) cover the same ground without video.
+  verified: true
+  course:
+    latest_term: Fall 2017
+    latest_url: https://www.cs.cmu.edu/~odonnell/complexity17/
+    videos: public
+    assignments: public
+    assignments_url: https://www.cs.cmu.edu/~odonnell/complexity17/
+- id: cornell-cs6810
+  role: secondary
+  kind: course
+  title: Cornell CS 6810 Theory of Computing (graduate complexity)
+  by: Eshan Chattopadhyay (Cornell)
+  url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
+  edition_or_term: Spring 2026 (scribe notes posted per lecture; no recordings)
+  access: free
+  use: Lecture notes on TMs, NP, hierarchy theorems, oracles, PH, PSPACE and Savitch, NL = coNL, circuits and Karp-Lipton, randomized classes and BPP in PH.
+  why: Newest public term (Spring 2026) with posted notes and a clean syllabus; use it to check or update against O'Donnell's 2017 videos, particularly for the IP and PCP lectures. Resources page mirrors Arora-Barak, Goldreich and Wigderson.
+  verified: true
+  course:
+    latest_term: Spring 2026
+    latest_url: https://www.cs.cornell.edu/courses/cs6810/2026sp/
+    videos: none
+    assignments: unknown
+- id: goldreich-cc
+  role: secondary
+  kind: book
+  title: 'Computational Complexity: A Conceptual Perspective'
+  by: Oded Goldreich
+  url: https://www.wisdom.weizmann.ac.il/~oded/cc-drafts.html
+  edition_or_term: Cambridge University Press 2008; free drafts on author's site
+  access: free
+  use: Chapters on P vs NP, randomness and counting, space complexity, and the PCP and probabilistic-proof chapters as a rigorous alternative proof of PCP and interactive-proof results; read selected sections when Arora-Barak is too terse.
+  why: 'Gap: careful definitions and proofs of the proof-systems and pseudorandomness material where Arora-Barak is terse; the ''conceptual'' viewpoint helps in synthesizing across topics.'
+  verified: true
+- id: viola-moti
+  role: secondary
+  kind: book
+  title: 'Mathematics of the Impossible: The Complexity of Computation'
+  by: Emanuele Viola
+  url: https://www.khoury.northeastern.edu/home/viola/
+  edition_or_term: Free PDF linked from the author's homepage (book titled 'Mathematics of the Impossible')
+  access: free
+  use: Chapters on time/space hierarchies, circuits, PH and lower bounds, pseudorandomness and expanders as a compact modern second exposition; pick those chapters where the primary reading is unclear.
+  why: 'Hidden gem: a free, recent text that covers neglected gems and breakthroughs (e.g., simplified expositions of classic theorems and recent circuit lower bounds) in a more compact style than Arora-Barak.'
+  verified: true
+- id: complexity-zoo
+  role: reference
+  kind: website
+  title: Complexity Zoo
+  by: Scott Aaronson et al.
+  url: https://complexityzoo.net/Complexity_Zoo
+  edition_or_term: Live wiki
+  access: free
+  use: Look up a complexity class and its known relations whenever one appears in reading; do not read linearly.
+  why: Fast definitions and containment diagrams for the many classes in the course.
+  verified: true
 considered:
-  - {title: "O'Donnell, Undergrad Complexity Theory at CMU (15-455, Spring 2017)", url: "https://www.youtube.com/playlist?list=PLm3J0oaFux3YL5vLXpzOyJiLtqLp6dCW2", reason: "28 lectures corresponding to Sipser Part III; verified live; belongs to the theory-of-computation node as a prerequisite supplement."}
-  - {title: "Avi Wigderson, Mathematics and Computation (free PDF)", url: "https://press.princeton.edu/books/hardcover/9780691189130/mathematics-and-computation", reason: "Panoramic and inspiring; not a textbook; publisher page blocked to bots and the free PDF site was unreachable here, so not verified."}
-  - {title: "UC Santa Cruz CSE 204 Computational Complexity (Seshadhri, Spring 2022)", url: "https://www.youtube.com/playlist?list=PLOQjlWvnI0fYMPFnJeVZ0kt4KPwWcbF0o", reason: "Verified live playlist; more recent recordings (2022) but a less standard syllabus; good alternative."}
-  - {title: "Moore and Mertens, The Nature of Computation", url: "https://global.oup.com/academic/product/the-nature-of-computation-9780199233212", reason: "Wonderful narrative text on P/NP and physics connections; not a rigorous course text; consider for enrichment."}
-  - {title: "TIFR Complexity Theory (Ramprasad, 2025 and 2026)", url: "https://www.tcs.tifr.res.in/~ramprasad/courses/2026-complexity/", reason: "Search result suggests lecture summaries and some videos; the page was unreachable from this environment."}
-  - {title: "MIT 6.5400 / 18.404J Theory of Computation (Sipser)", url: "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/", reason: "Covers the prerequisite level; second half touches space and intractability; belongs to theory-of-computation."}
-notes: "Arora-Barak plus O'Donnell's Fall 2017 videos is the canonical self-study route. Freshest public material is Cornell CS 6810 (Spring 2026, notes only). Derandomization/hardness vs randomness and circuit lower bounds are the deepest parts; 170 hours assumes full coverage of those two units. Estimates exclude quantum complexity, which lives in quantum-computing."
-split_proposal: "Consider splitting into 'Complexity I' (hierarchies, space, PH, randomized classes, circuits) and 'Complexity II / Proofs and Pseudorandomness' (IP, PCP, derandomization, hardness amplification) because the scope is two courses' worth."
-prereq_changes: "Add soft: [probability] (randomized classes, error reduction, Chernoff) and soft: [linear-algebra] (algebraic arguments in IP/PCP, Razborov-Smolensky)."
+- title: O'Donnell, Undergrad Complexity Theory at CMU (15-455, Spring 2017)
+  url: https://www.youtube.com/playlist?list=PLm3J0oaFux3YL5vLXpzOyJiLtqLp6dCW2
+  reason: 28 lectures corresponding to Sipser Part III; verified live; belongs to the theory-of-computation node as a prerequisite supplement.
+- title: Avi Wigderson, Mathematics and Computation (free PDF)
+  url: https://press.princeton.edu/books/hardcover/9780691189130/mathematics-and-computation
+  reason: Panoramic and inspiring; not a textbook; publisher page blocked to bots and the free PDF site was unreachable here, so not verified.
+- title: UC Santa Cruz CSE 204 Computational Complexity (Seshadhri, Spring 2022)
+  url: https://www.youtube.com/playlist?list=PLOQjlWvnI0fYMPFnJeVZ0kt4KPwWcbF0o
+  reason: Verified live playlist; more recent recordings (2022) but a less standard syllabus; good alternative.
+- title: Moore and Mertens, The Nature of Computation
+  url: https://global.oup.com/academic/product/the-nature-of-computation-9780199233212
+  reason: Wonderful narrative text on P/NP and physics connections; not a rigorous course text; consider for enrichment.
+- title: TIFR Complexity Theory (Ramprasad, 2025 and 2026)
+  url: https://www.tcs.tifr.res.in/~ramprasad/courses/2026-complexity/
+  reason: Search result suggests lecture summaries and some videos; the page was unreachable from this environment.
+- title: MIT 6.5400 / 18.404J Theory of Computation (Sipser)
+  url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/
+  reason: Covers the prerequisite level; second half touches space and intractability; belongs to theory-of-computation.
+notes: Arora-Barak plus O'Donnell's Fall 2017 videos is the canonical self-study route. Freshest public material is Cornell CS 6810 (Spring 2026, notes only). Derandomization/hardness vs randomness and circuit lower bounds are the deepest parts; Estimates exclude quantum complexity, which lives in quantum-computing.
+split_proposal: null
+prereq_changes: null
 open_questions:
-  - "Cornell CS 6810 homework availability not checked."
-  - "O'Donnell homework solutions: only the single big PDF located; individual problem sets not separately verified."
-  - "Wigderson book PDF not reachable (proxy); publisher page blocked."
+- Cornell CS 6810 homework availability not checked.
+- 'O''Donnell homework solutions: only the single big PDF located; individual problem sets not separately verified.'
+- Wigderson book PDF not reachable (proxy); publisher page blocked.
 last_verified: 2026-11-18

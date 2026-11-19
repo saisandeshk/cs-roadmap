@@ -7,7 +7,6 @@ hard: []
 soft: []
 scope: 'First programming course in Python: control flow, functions, recursion, data abstraction, OOP basics, simple algorithms (SICP-style intro).'
 level: intro
-estimated_hours: 130
 resources:
 - id: composing-programs
   role: primary-text
@@ -63,7 +62,7 @@ resources:
   by: Philip Guo
   url: https://pythontutor.com/
   access: free
-  use: Paste any lab or homework function and step through it to see frames, objects and references; use for every environment-diagram or aliasing bug in the first 8 weeks.
+  use: Paste any lab or homework function and step through it to see frames, objects and references; use for every environment-diagram or aliasing bug in the first.
   why: Fills the gap of seeing the execution model; it is also the tool the 61A site itself links.
   verified: true
 - id: think-python-3e
@@ -137,8 +136,7 @@ considered:
 - title: MIT 6.100A/6.100L newer terms
   url: https://ocw.mit.edu/
   reason: Only Fall 2022 verified on OCW; newer terms not checked.
-notes: 'Primary route: Composing Programs 3e plus CS 61A (Fall 2026). IMPORTANT: Fall 2026 61A was restructured for the AI era: Scheme is replaced by Gleam in the interpreters/functional unit, macros were cut, topics duplicated in CS 61B were deferred, and a 2-week agentic-coding software-application unit was added. Core abstraction/recursion/OOP/iterator content is unchanged, so the first ~25 lectures and Python projects are still the right route. The older Scheme interpreter project is no longer on the current site (older terms are not publicly archived at a URL I could open), so SICP section 4 is the substitute. Fall 2026 homework credit requires a Preceptor/provenance flow that self-learners should ignore; run the local pytest tests instead. Exercism now points absolute beginners to a separate platform, Jiki, but the Python track is unchanged. Review update (2026-11-19): Fall 2026 has HW 1-8 and Labs 00-10; earlier terms are no longer public (cs61a.org/fa25, sp25 and sp26 return 404,
-  inst.eecs.berkeley.edu archives require CalNet login), so the Fall 2026 site is the only public package. 6.100L promoted from considered to a secondary fallback.'
+notes: 'Primary route: Composing Programs 3e plus CS 61A (Fall 2026). IMPORTANT: Fall 2026 61A was restructured for the AI era: Scheme is replaced by Gleam in the interpreters/functional unit, macros were cut, topics duplicated in CS 61B were deferred, and a 2-week agentic-coding software-application unit was added. Core abstraction/recursion/OOP/iterator content is unchanged, so the first ~25 lectures and Python projects are still the right route. The older Scheme interpreter project is no longer on the current site (older terms are not publicly archived at a URL I could open), so SICP section 4 is the substitute. Fall 2026 homework credit requires a Preceptor/provenance flow that self-learners should ignore; run the local pytest tests instead. Exercism now points absolute beginners to a separate platform, Jiki, but the Python track is unchanged. Review update (2026-11-19): Fall 2026 has HW 1-8 and Labs 00-10; earlier terms are no longer public (cs61a.org/fa25, sp25 and sp26 return 404, inst.eecs.berkeley.edu archives require CalNet login), so the Fall 2026 site is the only public package. 6.100L promoted from considered to a secondary fallback.'
 split_proposal: null
 prereq_changes: null
 open_questions:

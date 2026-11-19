@@ -8,7 +8,6 @@ soft:
 - python-programming
 scope: Shell, Unix/Linux, git, editors, build systems (make/cmake), debuggers/profilers, containers basics (Missing Semester-style).
 level: intro
-estimated_hours: 35
 resources:
 - id: tlcl
   role: primary-text
@@ -48,7 +47,7 @@ resources:
   edition_or_term: 2nd edition (online, kept current)
   access: free
   use: Ch. 2 Git Basics, 3 Git Branching, 5 Distributed Git (workflows), 7 Git Tools (revision selection, stashing, rewriting history, reset demystified, advanced merging, rerere), 10 Git Internals.
-  why: Fills the git-internals and recovery gap in the 90-minute Missing Semester lecture; the canonical reference.
+  why: Fills the git-internals and recovery gap left by the single Missing Semester git lecture; the canonical reference.
   verified: true
 - id: learn-git-branching
   role: practice
@@ -160,9 +159,9 @@ considered:
 - title: Linux Journey / The Art of Command Line (GitHub)
   url: https://linuxjourney.com/
   reason: Linux Journey now redirects to a vendor site; Art of Command Line is a cheat-sheet, not a course.
-notes: The Missing Semester has a 2026 refresh (IAP Jan 2026, nine lectures, YouTube playlist titled Missing Semester IAP 2026). Compared to the 2020 edition it dropped the separate security/cryptography/metaprogramming sessions and added packaging and shipping, agentic coding, code quality and Beyond the Code. It is short (about 9 x 1 hour) so I added TLCL as the primary text for depth on the shell, Pro Git for git depth, and tool-specific resources (Make/CMake, GDB/Valgrind/perf, Docker) that the course only samples. This node can be done in parallel with python-programming (hard prerequisites are empty); a first pass of lectures 1-5 is recommended in week 1.
+notes: The Missing Semester has a 2026 refresh (IAP Jan 2026, nine lectures, YouTube playlist titled Missing Semester IAP 2026). Compared to the 2020 edition it dropped the separate security/cryptography/metaprogramming sessions and added packaging and shipping, agentic coding, code quality and Beyond the Code. It is short so I added TLCL as the primary text for depth on the shell, Pro Git for git depth, and tool-specific resources (Make/CMake, GDB/Valgrind/perf, Docker) that the course only samples. This node can be done in parallel with python-programming (hard prerequisites are empty); a first pass of lectures 1-5 is recommended in week 1.
 split_proposal: null
-prereq_changes: Consider making dev-environment a soft prerequisite of c-programming, data-structures and software-construction (git and terminal are assumed there).
+prereq_changes: null
 open_questions:
 - GNU make manual and Stanford CS107 pages were unreachable by curl; example-based tutorials listed instead.
 last_verified: '2026-11-19'

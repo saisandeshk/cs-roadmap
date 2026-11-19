@@ -9,7 +9,6 @@ hard:
 soft: []
 scope: Behavior cloning, DAgger, inverse RL, offline RL (CQL, IQL), off-policy evaluation.
 level: advanced
-estimated_hours: 45
 resources:
 - id: levine-offline-tutorial
   role: primary-text
@@ -90,7 +89,7 @@ resources:
   edition_or_term: NeurIPS 2020
   access: free
   use: 'The tutorial site: slides and recorded talk linked from the page.'
-  why: The authors' own two-hour spoken version of the tutorial paper; fastest orientation.
+  why: The authors' own spoken version of the tutorial paper; fastest orientation.
   verified: true
 - id: corl-practice
   role: practice
