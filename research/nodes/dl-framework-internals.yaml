@@ -34,7 +34,7 @@ resources:
     course:
       latest_term: "Fall 2026"
       latest_url: https://dlsyscourse.org/
-      videos: unknown
+      videos: enrolled-only
       public_videos_term: "2022 online public course (same lecture content, earlier Needle version)"
       public_videos_url: https://www.youtube.com/@deeplearningsystemscourse1116/videos
       assignments: public
@@ -150,7 +150,7 @@ considered:
   - {title: "CMU 15-442 Machine Learning Systems (Spring 2026) Lab 1 autodiff", url: "https://mlsyscourse.org/", reason: "Newer course by the same authors, adds GPU/LLM systems; slides public, videos unconfirmed."}
   - {title: "tinygrad / micrograd source", url: "https://github.com/tinygrad/tinygrad", reason: "Included via docs and notes; GitHub repo pages not directly opened."}
   - {title: "Dive into Deep Learning", url: "https://d2l.ai/", reason: "Framework usage, not internals; belongs to deep-learning-fundamentals."}
-notes: "Primary-text is deliberately a pair of blog posts by a core maintainer because no book covers PyTorch's real architecture; mlsysbook Ch. 7 supplies the textbook framing. The Fall 2026 CMU term is running now (lectures through Dec 2026); the new-term lectures are recorded for enrolled students and the lectures page says public-course videos will be posted when available (none seen yet), while the 2022 public recordings and the assignment repos stay open. The homework autograder (mugrade) is stated for enrolled students; I treated assignments as public because notebooks/repos with tests are public."
+notes: "Primary-text is deliberately a pair of blog posts by a core maintainer (2019 and 2020) because no book covers PyTorch's real architecture; the posts cover eager mode, autograd and the dispatcher only and predate PyTorch 2 (Dynamo/Inductor, DTensor), which are in ml-compilers and model-parallelism; mlsysbook Ch. 7 supplies the textbook framing. The Fall 2026 CMU term is running now (lectures through Dec 2026); the new-term lectures are recorded for enrolled students and the lectures page says public-course videos will be posted when available (none seen yet), while the 2022 public recordings and the assignment repos stay open. The homework autograder (mugrade) is stated for enrolled students; I treated assignments as public because notebooks/repos with tests are public."
 split_proposal: null
 prereq_changes: null
 open_questions:

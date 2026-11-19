@@ -117,13 +117,13 @@ resources:
 - id: mbrl-hw
   role: practice
   kind: course
-  title: Berkeley CS 285 model-based RL homework (Fall 2023 hw4 / Spring 2026 section 8 and lecture materials)
+  title: Berkeley CS 285 model-based RL homework (Fall 2023 hw4; Spring 2026 section 8 notes)
   by: Sergey Levine and course staff
   url: https://github.com/berkeleydeeprlcourse/homework_fall2023
   edition_or_term: Fall 2023 repo; Spring 2026 repo lists hw1-hw5 without a model-based homework
   access: free
-  use: Fall 2023 repo has hw1-hw5 folders (the model-based assignment is expected to be one of them; exact folder not confirmed); Spring 2026 provides Section 8 notes on model-based RL (https://rail.eecs.berkeley.edu/deeprlcourse/static/sections/section-8.pdf) but no model-based homework.
-  why: Public starter-code route to learned-dynamics MPC practice, if the Fall 2023 model-based homework is present. Content of the folders was not opened.
+  use: 'Fall 2023 hw4 (model-based RL: ensemble dynamics, MPC/CEM, MBPO with SoftActorCritic; confirmed from hw4/cs285/scripts/run_hw4.py, which imports ModelBasedAgent). Spring 2026 provides Section 8 notes on model-based RL (https://rail.eecs.berkeley.edu/deeprlcourse/static/sections/section-8.pdf) but no model-based homework (HW1-HW5 = imitation, PG, Q-learning/AC, LLM RL, offline RL).'
+  why: The only graded public route to learned-dynamics MPC and MBPO practice (starter code, Fall 2023 hw4).
   verified: true
   course:
     latest_term: Fall 2023 / Spring 2026
@@ -157,6 +157,9 @@ considered:
 - title: Stanford CS234 lectures 13-14 (MCTS and "conquering Go"; Shane Gu on world modeling)
   url: https://web.stanford.edu/class/cs234/
   reason: Good lecture slides on MCTS/AlphaGo and world models; videos enrolled-only (Winter 2026).
+- title: Plaat, Deep Reinforcement Learning (textbook; model-based RL chapter)
+  url: https://arxiv.org/abs/2201.02135
+  reason: Textbook alternative to the Moerland survey (Dyna, MuZero, Dreamer-style); also used in deep-value-based-rl as primary-text.
 - title: Kochenderfer, Algorithms for Decision Making (online planning, MPC chapters)
   url: https://algorithmsbook.com/
   reason: Excellent on planning/POMDPs; less on learned deep models.
@@ -164,6 +167,5 @@ notes: 'Primary text choice: no complete textbook covers learned world models; M
 split_proposal: null
 prereq_changes: 'soft prereq: add sutton-barto Ch. 8 context via rl-foundations (already hard through policy-gradient and deep-value)'
 open_questions:
-- Which homework number in homework_fall2023 is model-based was not confirmed (WebFetch only listed hw1-hw5).
 - Neither CS 285 nor CS 224R Spring 2026 videos were publicly linked.
 last_verified: '2026-11-18'

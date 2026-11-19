@@ -29,7 +29,7 @@ resources:
     edition_or_term: "Summer 2022 (10 episodes)"
     access: free
     use: "All 10 episodes (videos on YouTube linked from the schedule page), the episode notebooks, TensorIR exercise and Assignment 1; follow with the GPU/tensor-core tutorial."
-    why: "Public videos plus exercises and an assignment for the primary text; best public recorded ML-compiler course. Dated (2022) but nothing newer with videos and assignments exists."
+    why: "Public videos plus exercises and an assignment for the primary text; best public recorded ML-compiler course. Dated (2022; TVM Unity/Relax/TIRx APIs have changed since, so use it for concepts); nothing newer with videos and assignments exists."
     verified: true
     course:
       latest_term: "Summer 2022"
@@ -78,7 +78,7 @@ resources:
     url: https://openxla.org/xla/architecture
     edition_or_term: "current docs"
     access: free
-    use: "XLA architecture page (HLO, passes, fusion, buffer assignment, GPU/TPU backends) and the StableHLO spec overview (https://openxla.org/stablehlo)."
+    use: "XLA architecture page (HLO, passes, fusion, buffer assignment, GPU/TPU backends) and the StableHLO spec overview (https://openxla.org/stablehlo); also the XLA portion of CS336 lecture 6 (Kernels, Triton, XLA; public video at https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV)."
     why: "The reference for the whole-program, graph-first approach (JAX/TF/TPU); complements the Python-tracing approach of torch.compile."
     verified: true
   - id: mlir-toy
@@ -122,7 +122,7 @@ resources:
     url: https://mlsyscourse.org/schedule
     edition_or_term: "Spring 2026"
     access: free
-    use: "Slides for Week 7 (ML compiler: data layouts, GEMM on modern GPUs), Week 12 (ML compilation), Week 13 (superoptimization, mega-kernel) to see the 2026 view; Lab 3 for kernel-level compiler practice."
+    use: "Slides for Week 7 (ML compiler: data layouts, GEMM on modern GPUs), Week 12 (ML compilation), Week 13 (superoptimization, mega-kernel) as the current (2026) secondary to the 2022 MLC material. Lab 3 is assigned in gemm-and-tensor-cores."
     why: "Newest course by the TVM author; slides are public and cover where compilers are moving (TIRx, mega-kernels)."
     verified: true
     course:
@@ -162,7 +162,7 @@ considered:
   - {title: "Modern GPU Programming for MLSys (TIRx)", url: "https://mlc.ai/modern-gpu-programming-for-mlsys/", reason: "Kernel-level, Blackwell-specific; used in gemm-and-tensor-cores."}
   - {title: "UCSD CSE 291A/DSC 291 (Spring 2026) Triton, graph optimization lectures", url: "https://haoailab.com/cse291-s26/", reason: "Reading list (TVM, Ansor, TASO, PET) is good, but recordings access unclear."}
   - {title: "Cornell CS 6120 Advanced Compilers (self-guided)", url: "https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/", reason: "General compiler optimization belongs to the compiler-optimization prerequisite node."}
-notes: "No single modern text covers TVM + XLA + MLIR + torch.compile. The MLC book/course gives the conceptual core (IR, schedule, search, fusion) with exercises; PyTorch 2 paper + docs cover the dominant practical system; XLA/MLIR are references. The newest public-video course in the area is 2022, so the roadmap should accept that dated-but-sound foundation and add the 2024+ torch.compile material as secondary. CMU 15-442 Spring 2026 slides give a current view but videos are not confirmed public."
+notes: "MLC (2022) is kept for concepts only: TVM Unity APIs have changed, and the mlc.ai/chapter_* links are dead (notes live at book.mlc.ai). CMU 15-442 Spring 2026 weeks 7, 12 and 13 (slides only, no video found) are the current-view secondary. No single modern text covers TVM + XLA + MLIR + torch.compile. The MLC book/course gives the conceptual core (IR, schedule, search, fusion) with exercises; PyTorch 2 paper + docs cover the dominant practical system; XLA/MLIR are references. The newest public-video course in the area is 2022, so the roadmap should accept that dated-but-sound foundation and add the 2024+ torch.compile material as secondary. CMU 15-442 Spring 2026 slides give a current view but videos are not confirmed public."
 split_proposal: null
 prereq_changes: "Consider soft prereq on gpu-programming (compiler backends target GPUs; MLC Ep. 7-8 assume CUDA basics)."
 open_questions:

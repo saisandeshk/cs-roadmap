@@ -131,6 +131,9 @@ considered:
 - title: Bertsekas, Reinforcement Learning and Optimal Control
   url: https://web.mit.edu/dimitrib/www/RLbook.html
   reason: Rigorous DP/optimal-control viewpoint (also paid). Valuable for control-minded learners; not the best first treatment.
+- title: Plaat, Deep Reinforcement Learning (textbook)
+  url: https://arxiv.org/abs/2201.02135
+  reason: Graduate textbook spanning value-based, policy-based, model-based and self-play/multi-agent RL; used in deep-value-based-rl as primary-text, too deep-RL oriented for a foundations node.
 - title: Berkeley CS 185/285
   url: https://rail.eecs.berkeley.edu/deeprlcourse/
   reason: Assumes RL basics (only one RL-basics lecture); belongs to the deep-RL nodes, not here.

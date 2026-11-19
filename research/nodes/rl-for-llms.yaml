@@ -51,7 +51,7 @@ resources:
   edition_or_term: Spring 2026
   access: free
   use: 'Main handout (Spring 2026): implement SFT baselines and a GRPO loop with reward grading, group-normalized advantages, policy-gradient/clip losses and training on a math task; tests via `uv run pytest tests/test_grpo.py` with `tests/adapters.py`. Optional supplement: safety alignment, instruction tuning and DPO/RLHF (the 2025 supplement PDF is linked from the course page).'
-  why: Best public, tested, from-scratch GRPO assignment; lectures 15-17 (post-training, RLVR) are on the public Spring 2026 YouTube playlist.
+  why: Best public, tested, from-scratch GRPO assignment; lectures 15-16 (15 Mid/post-training SFT/RLHF, 16 Post-training RLVR) are on the public Spring 2026 YouTube playlist.
   verified: true
   course:
     latest_term: Spring 2026
@@ -102,10 +102,10 @@ resources:
   role: secondary
   kind: paper
   title: Core RLHF/RLVR papers
-  by: Ouyang; Stiennon; Gao; Rafailov; Ahmadian; Shao; DeepSeek-AI; Lambert; Yu; Liu; Lightman
+  by: Ouyang; Stiennon; Rafailov; Ahmadian; Shao; DeepSeek-AI; Lambert; Yu; Liu; Lightman
   url: https://arxiv.org/abs/2203.02155
   access: free
-  use: InstructGPT (2203.02155), Learning to summarize (https://arxiv.org/abs/2009.01325), Scaling Laws for Reward Model Overoptimization (https://arxiv.org/abs/2210.10760), DPO (https://arxiv.org/abs/2305.18290), RLOO / Back to Basics (https://arxiv.org/abs/2402.14740), DeepSeekMath/GRPO (https://arxiv.org/abs/2402.03300), DeepSeek-R1 (https://arxiv.org/abs/2501.12948), Tulu 3 Section 6 RLVR (https://arxiv.org/abs/2411.15124), DAPO (https://arxiv.org/abs/2503.14476), Dr. GRPO critique (https://arxiv.org/abs/2503.20783), Let's Verify Step by Step (https://arxiv.org/abs/2305.20050).
+  use: InstructGPT (2203.02155), Learning to summarize (https://arxiv.org/abs/2009.01325), DPO (https://arxiv.org/abs/2305.18290), RLOO / Back to Basics (https://arxiv.org/abs/2402.14740), DeepSeekMath/GRPO (https://arxiv.org/abs/2402.03300), DeepSeek-R1 (https://arxiv.org/abs/2501.12948), Tulu 3 Section 6 RLVR (https://arxiv.org/abs/2411.15124), DAPO (https://arxiv.org/abs/2503.14476), Dr. GRPO critique (https://arxiv.org/abs/2503.20783), Let's Verify Step by Step (https://arxiv.org/abs/2305.20050). Reward over-optimization (Gao et al., 2210.10760) is assigned to alignment-and-oversight.
   why: Primary sources for each algorithm; read the loss definitions and the ablations. DAPO and Dr. GRPO document the practical fixes (clip-higher, length bias) to GRPO.
   verified: true
 - id: rl-llm-survey
@@ -194,7 +194,7 @@ considered:
 - title: Open-R1 (Hugging Face)
   url: https://github.com/huggingface/open-r1
   reason: README states the project is no longer maintained and points to TRL; useful as a historical recipe.
-- title: CS 336 lectures 15-17 as the course
+- title: CS 336 lectures 15-16 as the course
   url: https://cs336.stanford.edu/
   reason: Excellent but part of a large from-scratch LM course (prerequisite model/data assignments); used as practice for A5 instead.
 notes: 'Skeleton hard prereq post-training (G7 node) is consistent with the RLHF Book intro chapters overlapping it. There is a clear overlap between this node and alignment-and-oversight (reward hacking, over-optimization); the RLHF Book lecture 9 is the bridge. Course primary is the RLHF Book course (public videos); CS336 A5 is the best public graded assignment. Course-quality verification: the course page itself was read; individual videos were not watched.'

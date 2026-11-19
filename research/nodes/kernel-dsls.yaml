@@ -23,12 +23,12 @@ resources:
   - id: cs336-kernels
     role: primary-course
     kind: course
-    title: "Stanford CS336 Language Modeling from Scratch (Kernels and Triton lecture + Assignment 2 FlashAttention-2 in Triton)"
+    title: "Stanford CS336 Language Modeling from Scratch (Kernels, Triton, XLA lecture + Assignment 2 FlashAttention-2 in Triton)"
     by: "Percy Liang, Tatsunori Hashimoto (Stanford)"
     url: https://cs336.stanford.edu/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lecture 5 (GPUs, TPUs) and Lecture 6 (Kernels, Triton); Assignment 2 part on writing FlashAttention-2 forward in pure PyTorch, then Triton (with autograd function and tests)."
+    use: "Lecture 6 (Kernels, Triton, XLA; the XLA portion is reused in ml-compilers; Lecture 5 is the anchor in ml-performance-modeling); Assignment 2 part on writing FlashAttention-2 forward in pure PyTorch, then Triton (with autograd function and tests)."
     why: "Public lecture + graded assignment that ends in a real fused Triton kernel with a test suite; the only mainstream course that does this."
     verified: true
     course:
@@ -134,7 +134,7 @@ resources:
     url: https://leetgpu.com/challenges
     edition_or_term: "hosted"
     access: account-required
-    use: "Solve softmax, layer norm, matmul and attention challenges in Triton, then compare with a CUDA solution."
+    use: "Solve the attention and normalization challenges in Triton (Softmax and Matrix Multiplication are assigned to other G9 nodes), then compare with a CUDA solution."
     why: "Hosted GPU for Triton practice without local setup."
     verified: true
 considered:
@@ -147,6 +147,6 @@ notes: "Triton is the primary DSL because of ecosystem reach (PyTorch, vLLM, Fla
 split_proposal: null
 prereq_changes: null
 open_questions:
-  - "Which CS336 Spring 2026 lecture number covers 'Kernels, Triton' is taken from the course schedule fetched via WebFetch summary (lecture 6, Apr 15); the lecture materials page is JS-rendered so I did not open the lecture viewer itself."
+  - "Which CS336 Spring 2026 lecture number covers 'Kernels, Triton, XLA' is taken from the course schedule fetched via WebFetch summary (lecture 6, Apr 15); the lecture materials page is JS-rendered so I did not open the lecture viewer itself."
   - "Per-DSL maturity changes quickly (Gluon, cuTile, Helion not studied in depth)."
 last_verified: 2026-11-18

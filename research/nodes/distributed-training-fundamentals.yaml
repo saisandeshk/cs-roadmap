@@ -17,7 +17,7 @@ resources:
     url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
     edition_or_term: "Feb 2025 (interactive book; PDF available; companion repo picotron)"
     access: free
-    use: "High-Level Overview; First Steps: Training on One GPU (memory usage, activation recomputation, gradient accumulation); Data Parallelism (including ZeRO-1/2/3); Appendix A0 Parallel Programming Crash Course (collectives), A1 Distributed Training Profiling, A3 Math for Compute/Communication Overlap; then Finding the Best Training Configuration. Leave TP/PP/CP/EP for the next node."
+    use: "High-Level Overview; First Steps: Training on One GPU (memory usage, activation recomputation, gradient accumulation); Data Parallelism (including ZeRO-1/2/3); Appendix A0 Parallel Programming Crash Course (collectives), A1 Distributed Training Profiling, A3 Math for Compute/Communication Overlap. Leave TP/PP/CP/EP and Finding the Best Training Configuration for the next node."
     why: "Best single narrative from one GPU to thousands, with measured benchmarks (4,000+ runs up to 512 GPUs) and a collectives primer; free and written for practitioners."
     verified: true
   - id: cs336-ddp
@@ -41,7 +41,7 @@ resources:
   - id: scaling-book-sharding
     role: secondary
     kind: book
-    title: "How to Scale Your Model, Ch. 3 Sharded Matrices and Ch. 5 Training Parallelism, plus GPU chapter"
+    title: "How to Scale Your Model, Ch. 3 Sharded Matrices and Ch. 5 Training Parallelism, plus GPU chapter (Ch. 5 is read only here)"
     by: "Google DeepMind (Austin et al.)"
     url: https://jax-ml.github.io/scaling-book/sharding/
     edition_or_term: "2025"
@@ -134,7 +134,7 @@ resources:
     url: https://github.com/mlsyscourse/assignment-distributed-training
     edition_or_term: "Spring 2026"
     access: free
-    use: "Implement split_train, communication groups, DP gradient all-reduce, then the ZeRO Stage 3 FC layer and ZeroDPAdam with the provided pytest + mpirun tests (no GPU needed)."
+    use: "Parts 1 (split_train), 7 (DP gradient all-reduce) and 8-9 (ZeRO Stage 3 FC layer and ZeroDPAdam) with the provided pytest + mpirun tests (no GPU needed). Parts 2-6 (tensor-parallel layer init and forward/backward communication) are in model-parallelism."
     why: "Fully runnable on a laptop with MPI; forces you to write the collective choreography of ZeRO-3 yourself. Autograder is Autolab but local tests are included."
     verified: true
   - id: lambda-guide

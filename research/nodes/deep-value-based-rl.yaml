@@ -11,16 +11,16 @@ scope: DQN and extensions, replay, target networks, stability, distributional RL
 level: intermediate
 estimated_hours: 40
 resources:
-- id: murphy-value
+- id: plaat-drl
   role: primary-text
-  kind: paper
-  title: 'Reinforcement Learning: An Overview, Ch. 2 Value-based RL'
-  by: Kevin Murphy
-  url: https://arxiv.org/abs/2412.05265
-  edition_or_term: arXiv v5, 1 Dec 2025
+  kind: book
+  title: Deep Reinforcement Learning (textbook)
+  by: Aske Plaat
+  url: https://arxiv.org/abs/2201.02135
+  edition_or_term: Springer 2022; free arXiv preprint v5 (Apr 2023); course site https://deep-reinforcement-learning.net/
   access: free
-  use: 'Chapter 2 (value-based RL): fitted/neural Q-learning, DQN, replay and target networks, Double DQN, prioritized replay, distributional RL, the deadly triad and stabilization tricks. Read alongside Sutton-Barto Ch. 9-11 for the function-approximation theory.'
-  why: The only single free text that covers DQN, Rainbow-style extensions and distributional RL in current notation (v5, Dec 2025); Sutton-Barto predates deep RL.
+  use: 'Ch. 2 (tabular value-based RL, as a refresher) and Ch. 3 (Deep Value-based Reinforcement Learning: DQN, replay, target networks, stability, extensions) with its worked examples; read alongside Sutton-Barto Ch. 9-11 for the function-approximation theory. Later chapters (policy-based, model-based, two-agent self-play, multi-agent) also serve the sibling RL nodes.'
+  why: 'A real teaching text (graduate textbook behind a Leiden course; free preprint) that builds DQN and its extensions with examples, in place of a terse survey. Predates 2023-25 agents, so use Murphy Ch. 2 for current notation.'
   verified: true
 - id: cs285
   role: primary-course
@@ -41,6 +41,17 @@ resources:
     public_videos_url: https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps
     assignments: public
     assignments_url: https://github.com/berkeleydeeprlcourse/homework_spring2026
+- id: murphy-value
+  role: reference
+  kind: paper
+  title: 'Reinforcement Learning: An Overview, Ch. 2 Value-based RL'
+  by: Kevin Murphy
+  url: https://arxiv.org/abs/2412.05265
+  edition_or_term: arXiv v5, 1 Dec 2025
+  access: free
+  use: 'Chapter 2 (value-based RL): MDP basics, DP, MC/TD, SARSA, Q-learning, neural fitted Q, DQN, replay and prioritized replay, deadly triad, target networks, Double DQN, dueling, noisy nets, multi-step returns, Rainbow, Bigger-Better-Faster. Each DQN extension gets only a few paragraphs. Distributional RL is NOT in Ch. 2: see Sec. 7.3 (quantile regression, classification) and the Bellemare-Dabney-Rowland book below.'
+  why: Most current free single survey of value-based RL (v5, Dec 2025), useful as the up-to-date notation reference and pointer to recent agents; terse, so not the teaching spine.
+  verified: true
 - id: sb-ch9-11
   role: secondary
   kind: book
@@ -137,6 +148,9 @@ resources:
   why: Practitioner debugging checklist missing from papers.
   verified: true
 considered:
+- title: Murphy RL Overview Ch. 2 as primary-text
+  url: https://arxiv.org/abs/2412.05265
+  reason: Most current but terse survey (a few paragraphs per extension, no distributional RL in Ch. 2); demoted to reference after review in favour of Plaat Ch. 3.
 - title: Stanford CS224R Q-learning and off-policy lectures
   url: https://cs224r.stanford.edu/
   reason: Good second source (Spring 2025 videos public) but overlaps CS285 and has less value-based depth.
@@ -146,7 +160,7 @@ considered:
 - title: David Silver lecture 6 (value function approximation)
   url: https://davidstarsilver.wordpress.com/teaching/
   reason: Pre-deep-RL; useful theory refresher only.
-notes: No dedicated deep-value textbook exists; Murphy Ch. 2 plus the seminal papers is the best compact route. Mnih et al. Nature paper (2015) is not linked because nature.com returned HTTP 429 to the sandbox; the arXiv 2013 paper is the free substitute. Spring 2026 CS 285 lectures are described as streamed and recorded but archive links were not posted at check time.
+notes: Primary text is Plaat Ch. 3 (arXiv preprint of the Springer book; TOC confirmed on deep-reinforcement-learning.net); Murphy Ch. 2 is the current-notation reference and does not cover distributional RL (that is Murphy Sec. 7.3 plus the Bellemare book). Mnih et al. Nature paper (2015) is not linked because nature.com returned HTTP 429 to the sandbox; the arXiv 2013 paper is the free substitute. Spring 2026 CS 285 lectures are described as streamed and recorded but archive links were not posted at check time.
 split_proposal: null
 prereq_changes: Consider adding soft prereq on pytorch/deep learning practice (already hard on deep-learning-fundamentals).
 open_questions:

@@ -148,6 +148,9 @@ considered:
 - title: Georgia Tech CS 7642 RL and Carleton COMP 4900I Multi-agent Aspects of Deep RL (Fall 2026, follows the MARL book)
   url: https://outline.scs.carleton.ca/media/2026/F/COMP4900IF2026/COMP-4900-I-F-2026.pdf
   reason: Syllabi only; no public videos or assignments found.
+- title: Plaat, Deep Reinforcement Learning (textbook; two-agent self-play and multi-agent chapters)
+  url: https://arxiv.org/abs/2201.02135
+  reason: Free textbook-form source for AlphaZero-style self-play search; kept as an optional supplement because the MARL book plus the paper cover the scope.
 - title: JaxMARL / PettingZoo-based benchmark libraries
   url: https://pettingzoo.farama.org/
   reason: Useful tools but not learning material.

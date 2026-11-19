@@ -28,15 +28,13 @@ resources:
     url: https://mlsyscourse.org/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Week 6 slides (Model and Pipeline Parallelism; Tensor Rematerialization and Offload), Week 11 (Mixture of Experts), Week 5 recap (DP and ZeRO); Lab 2 (distributed training with MPI: naive and Megatron-style tensor parallelism, ZeRO-3)."
+    use: "Week 6 slides (Model and Pipeline Parallelism; Tensor Rematerialization and Offload), Week 11 (Mixture of Experts), Week 5 recap (DP and ZeRO); Lab 2 parts 2-6 (naive and Megatron-style tensor parallelism; parts 1, 7-9 are in distributed-training-fundamentals)."
     why: "Most recent course that treats TP/PP/MoE with a graded implementation assignment whose repo is public. Lecture videos not confirmed public, so pair the slides with the Playbook and CS336 lecture 8."
     verified: true
     course:
       latest_term: "Spring 2026"
       latest_url: https://mlsyscourse.org/schedule
       videos: unknown
-      public_videos_term: "CS336 Spring 2026 parallelism lectures 7-8 are public"
-      public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
       assignments: public-with-autograder
       assignments_url: https://github.com/mlsyscourse/assignment-distributed-training
   - id: megatron-papers
@@ -75,12 +73,12 @@ resources:
   - id: scaling-book-training
     role: secondary
     kind: book
-    title: "How to Scale Your Model, Ch. 5 How to Parallelize a Transformer for Training and Ch. 6 Training LLaMA 3 on TPUs"
+    title: "How to Scale Your Model, Ch. 6 Training LLaMA 3 on TPUs"
     by: "Google DeepMind"
-    url: https://jax-ml.github.io/scaling-book/training/
+    url: https://jax-ml.github.io/scaling-book/applied-training/
     edition_or_term: "2025"
     access: free
-    use: "Ch. 5 (data/FSDP/tensor/pipeline and their combinations; communication-bound regimes), Ch. 6 (https://jax-ml.github.io/scaling-book/applied-training/) as a worked sizing example; do the problems."
+    use: "Ch. 6 as a worked sizing example of the data/FSDP/tensor/pipeline combinations; do the problems. Ch. 5 (communication-bound analysis) is read once, in distributed-training-fundamentals."
     why: "Gives the analytic model to pick mesh shapes before you launch, complementing the Playbook's empirical sweeps."
     verified: true
   - id: pytorch-parallel-docs
@@ -141,12 +139,12 @@ resources:
   - id: cmu-lab2
     role: practice
     kind: practice-site
-    title: "CMU 15-442 Lab 2: distributed training with MPI (naive and Megatron-style tensor parallelism, ZeRO-3)"
+    title: "CMU 15-442 Lab 2: distributed training with MPI (naive and Megatron-style tensor parallelism)"
     by: "CMU 15-442 staff"
     url: https://github.com/mlsyscourse/assignment-distributed-training
     edition_or_term: "Spring 2026"
     access: free
-    use: "Parts 2-7 (communication groups, naive vs Megatron forward/backward communication) and parts 8-9 (ZeRO-3); pytest with mpirun, no GPU needed."
+    use: "Parts 2-6 (layer initialization, naive vs Megatron forward/backward communication); parts 1 and 7-9 (data split, DP gradients, ZeRO-3) are done in distributed-training-fundamentals; pytest with mpirun, no GPU needed."
     why: "Hand-written TP communication pattern verified by tests; cheap to run."
     verified: true
   - id: planning-exercise
@@ -167,7 +165,7 @@ considered:
   - {title: "TorchTitan (paper and repo)", url: "https://arxiv.org/abs/2410.06511", reason: "Production reference implementation of composable parallelism; read after Picotron."}
   - {title: "TorchFeather minimal examples (hkproj)", url: "https://github.com/hkproj/torchfeather", reason: "From the owner's earlier curation; page returned 403 so unverified."}
   - {title: "Megatron-LM / Megatron Core and DeepSpeed repos", url: "https://github.com/NVIDIA/Megatron-LM", reason: "Production frameworks to read after the minimal implementations; large codebases."}
-notes: "Same primary-text as the previous node by design (the Playbook spans both); owner may prefer to anchor it once. CMU 15-442 videos unverified, so CS336 lecture 8 and the Playbook carry the conceptual load. Practice requires multiple GPUs for realism; the CMU MPI lab and the planning exercise do not."
+notes: "Same primary-text as the previous node by design (the Playbook spans both); owner may prefer to anchor it once. CMU 15-442 is slides plus a public lab (no lecture videos found), so the primary-course is weaker than CS336 lectures 7-8 (public video, primary in the previous node); CS336 lecture 8 and the Playbook carry the conceptual load. UCSD CSE 234 (Winter 2025) is the alternative if its recordings are confirmed. Reviewer's lab split "parts 1-5 / 6-9" was adjusted to the actual README (parts 1, 7-9 DP/ZeRO in the previous node; parts 2-6 tensor parallel here). Practice requires multiple GPUs for realism; the CMU MPI lab and the planning exercise do not."
 split_proposal: "Checkpointing and fault tolerance could become its own short node (shared with mlops-and-production) if the owner wants it separate from parallelism strategies."
 prereq_changes: null
 open_questions:
