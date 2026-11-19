@@ -86,3 +86,14 @@
 - advanced-database-systems: DDIA ch.4 added; "Databases in 2025" retrospective; Red Book background only; 15-721 no assignments.
 - db-storage-and-indexing, query-processing: BusTub agent-ban note; R&G vs DSC7 note.
 - Not done: Vitillo chapter list (marked from memory); Streaming Systems authors' page (http-only, kept O'Reilly URL).
+
+## G9 ML systems (R4)
+- Scaling book split across nodes: ml-performance-modeling ch.1,2,4,12; distributed-training-fundamentals ch.5; llm-inference-and-serving ch.7-8. kipply only in inference. CS336 A2 = public-with-autograder everywhere.
+- gpu-programming / gpu-performance-optimization / gemm-and-tensor-cores: 6.S894 lectures+labs split without overlap; Boehm kernels 1-6 vs 7-10; LeetGPU sets de-duplicated; PMPP "5th ed., 2026"; lectures 11-13 have no video.
+- kernel-dsls: CS336 L6 "Kernels, Triton, XLA"; L5 removed.
+- dl-framework-internals: posts predate PyTorch 2 (noted); 10-414 videos enrolled-only.
+- ml-compilers: MLC 2022 marked dated; 15-442 weeks 7, 12-13 + CS336 L6 XLA as current secondaries.
+- model-parallelism: unconfirmed public-video fields removed; 15-442 = slides + lab.
+- llm-inference-and-serving: MIT 6.5940 L13/L15 and 15-442 weeks 9-10 added; per-paper gaps; Aug 2025 currency note; EAGLE-3 and MTP added.
+- model-compression: lab numbering/video fields fixed; distillation & QLoRA left to post-training.
+- Declined: reviewer's 15-442 lab split (didn't match README; used parts 1,7,8-9 vs 2-6).

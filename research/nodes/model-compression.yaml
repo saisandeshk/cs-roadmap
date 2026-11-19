@@ -28,14 +28,14 @@ resources:
     url: https://hanlab.mit.edu/courses/2026-fall-65940
     edition_or_term: "Fall 2026"
     access: free
-    use: "Lectures 2-9 (pruning and sparsity I-II, quantization I-II, NAS I-II, knowledge distillation), 10-11 (MCUNet, TinyEngine), 12-15 (Transformer/LLM, LLM quantization and deployment, post-training, long context); Labs: Pruning, Quantization, LLM deployment on laptop (Lab 5), plus the earlier 2024 Lab 4 LLM compression."
+    use: "Lectures 2-9 (pruning and sparsity I-II, quantization I-II, NAS I-II, knowledge distillation), 10-11 (MCUNet, TinyEngine), 12-15 (Transformer/LLM, LLM quantization and deployment, post-training, long context); Fall 2026 labs: Lab 2 Pruning, Lab 4 Quantization, Lab 5 LLM deployment on laptop; plus the Fall 2024 Lab 4 LLM compression (see mit-labs for both numberings)."
     why: "The reference course on efficient ML by the authors of Deep Compression, AWQ, SmoothQuant and TinyEngine; public lecture videos and Colab labs. Fall 2026 run is in progress (lecture videos linked on the page); the Fall 2024 videos are also public."
     verified: true
     course:
       latest_term: "Fall 2026"
       latest_url: https://hanlab.mit.edu/courses/2026-fall-65940
       videos: public
-      public_videos_term: "Fall 2026 (YouTube links on course page; Fall 2024 playlist also public)"
+      public_videos_term: "Fall 2024 (complete playlist; Fall 2026 videos are linked individually on the course page and lectures 19+ were still placeholders on 2026-11-18)"
       public_videos_url: https://www.youtube.com/playlist?list=PL80kAHvQbh-qGtNc54A6KW4i4bkTPjiRF
       assignments: public
       assignments_url: https://hanlab.mit.edu/courses/2026-fall-65940
@@ -64,12 +64,12 @@ resources:
   - id: quant-papers
     role: secondary
     kind: paper
-    title: "LLM quantization papers: LLM.int8(), GPTQ, SmoothQuant, AWQ, QLoRA"
-    by: "Dettmers et al.; Frantar et al.; Xiao et al. (MIT); Lin et al. (MIT); Dettmers et al."
+    title: "LLM quantization papers: LLM.int8(), GPTQ, SmoothQuant, AWQ"
+    by: "Dettmers et al.; Frantar et al.; Xiao et al. (MIT); Lin et al. (MIT)"
     url: https://arxiv.org/abs/2208.07339
-    edition_or_term: "LLM.int8 2208.07339; GPTQ 2210.17323; SmoothQuant 2211.10438; AWQ 2306.00978; QLoRA 2305.14314"
+    edition_or_term: "LLM.int8 2208.07339; GPTQ 2210.17323; SmoothQuant 2211.10438; AWQ 2306.00978 (QLoRA is covered in post-training)"
     access: free
-    use: "Read in that order: outlier features, second-order PTQ, activation-weight scale migration, activation-aware weight scaling, 4-bit NF4 + double quantization for fine-tuning."
+    use: "Read in that order: outlier features, second-order PTQ, activation-weight scale migration, activation-aware weight scaling."
     why: "Primary sources for the core LLM PTQ methods; each short and implementable."
     verified: true
   - id: quant-survey
@@ -93,17 +93,6 @@ resources:
     access: free
     use: "Pruning + quantization + Huffman pipeline; iterative magnitude pruning; one-shot unstructured/2:4 pruning of LLMs; activation-aware magnitude pruning."
     why: "Covers the pruning side from classic to LLM-scale; 2:4 sparsity ties to tensor-core support."
-    verified: true
-  - id: distillation
-    role: secondary
-    kind: paper
-    title: "Distilling the Knowledge in a Neural Network; On-Policy Distillation of Language Models"
-    by: "Hinton, Vinyals, Dean; Agarwal et al."
-    url: https://arxiv.org/abs/1503.02531
-    edition_or_term: "2015; GKD arXiv 2306.13649"
-    access: free
-    use: "Hinton: soft targets and temperature; GKD: on-policy distillation for generative LMs."
-    why: "Primary sources for distillation, classic and LLM versions."
     verified: true
   - id: efficient-survey
     role: reference
@@ -133,9 +122,9 @@ resources:
     title: "MIT 6.5940 labs (Colab): pruning, quantization, NAS, LLM compression, LLM deployment on laptop"
     by: "MIT HAN Lab"
     url: https://hanlab.mit.edu/courses/2024-fall-65940
-    edition_or_term: "Fall 2024 labs 0-5 (Colab/Drive links); Fall 2026 labs listed on the 2026 page"
+    edition_or_term: "Fall 2024 labs 0-5 (Colab/Drive links, URL above); Fall 2026 labs listed on https://hanlab.mit.edu/courses/2026-fall-65940"
     access: free
-    use: "Lab 1 Pruning (fine-grained and channel pruning on a CNN), Lab 2 Quantization (k-means and linear quantization, QAT), Lab 4 LLM Compression (SmoothQuant/AWQ-style), Lab 5 LLM Deployment on Laptop (TinyChat/AWQ with 4-bit weights)."
+    use: "Fall 2024 numbering (URL above): Lab 1 Pruning (fine-grained and channel pruning on a CNN), Lab 2 Quantization (k-means and linear quantization, QAT), Lab 4 LLM Compression (SmoothQuant/AWQ-style), Lab 5 LLM Deployment on Laptop (TinyChat/AWQ with 4-bit weights). Fall 2026 numbering (2026 page): Lab 1 GPU Basics, Lab 2 Pruning, Lab 3 NAS, Lab 4 Quantization, Lab 5 LLM Deployment on Laptop."
     why: "Graded-style notebooks that implement the techniques from scratch; free on Colab."
     verified: true
   - id: llamacpp-practice
@@ -150,13 +139,14 @@ resources:
     why: "The real-world workflow and the evidence for choosing a method; complements the lab notebooks."
     verified: true
 considered:
+  - {title: "Distilling the Knowledge in a Neural Network (Hinton et al.); On-Policy Distillation of Language Models (GKD)", url: "https://arxiv.org/abs/1503.02531", reason: "Distillation papers are curated in post-training (distillation-papers); here distillation is covered by mlsysbook Ch. 10.2 and MIT 6.5940 lecture 9."}
   - {title: "Efficient Deep Learning book (Menghani and Singh)", url: "https://efficientdlbook.com/", reason: "Good scope but only draft chapter PDFs online; use the survey instead."}
   - {title: "CMU 11-868 LLM Systems (model quantization lectures, GPTQ)", url: "https://llmsystem.github.io/llmsystem2026spring/docs/Syllabus", reason: "Two quantization lectures inside a broader course; video status unknown."}
   - {title: "UCSD CSE 234 / 291A quantization lectures (Winter 2025, Spring 2026)", url: "https://haoailab.com/cse291-s26/", reason: "One lecture; recording access unconfirmed."}
   - {title: "TinyML (Warden and Situnayake, O'Reilly) / Harvard TinyML", url: "https://www.oreilly.com/library/view/tinyml/9781492052036/", reason: "Microcontroller-focused hands-on book; narrower than the scope; MIT 6.5940 MCUNet lectures cover on-device ML."}
   - {title: "A Survey of Model Compression and Acceleration for Deep Neural Networks", url: "https://arxiv.org/abs/1710.09282", reason: "Older broad survey superseded by Menghani and Gholami."}
   - {title: "Hands-On LLM Serving and Optimization (O'Reilly, quantization chapters)", url: "https://www.oreilly.com/library/view/hands-on-llm-serving/9798341621480/", reason: "From the owner's seed; paid and not verifiable here."}
-notes: "Course is the backbone because the topic is method-heavy and the MIT HAN lab authored many of the methods. The 2026 course page lists Lab 1 GPU Basics through Lab 5 LLM deployment; the 2024 page has finer-grained lab notebooks (pruning, quantization, NAS, LLM compression). On-device ML is covered by the MCUNet/TinyEngine lectures; no separate resource added. Low-precision floating-point formats (FP8/MX/NVFP4) are in gemm-and-tensor-cores."
+notes: "Course is the backbone because the topic is method-heavy and the MIT HAN lab authored many of the methods. The 2026 course page lists Lab 1 GPU Basics through Lab 5 LLM deployment; the 2024 page has finer-grained lab notebooks (pruning, quantization, NAS, LLM compression). On-device ML is covered by the MCUNet/TinyEngine lectures; no separate resource added. Low-precision floating-point formats (FP8/MX/NVFP4) are in gemm-and-tensor-cores. Distillation and QLoRA are curated in post-training, not repeated here. Menghani's survey (efficient-survey) is the better single reference than the mlsysbook chapter if one is wanted."
 split_proposal: null
 prereq_changes: "Add soft: [llm-inference-and-serving] or reverse (quantization methods are used by serving engines); currently inference's skeleton does not link to compression."
 open_questions:

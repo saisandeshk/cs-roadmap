@@ -161,7 +161,7 @@ considered:
   - {title: "Google ML Crash Course: Production ML systems", url: "https://developers.google.com/machine-learning/crash-course/production-ml-systems", reason: "Short, beginner-level; too shallow for primary."}
   - {title: "MLflow documentation", url: "https://mlflow.org/docs/latest/", reason: "Tool docs used inside Zoomcamp; add if specific tool depth is needed."}
   - {title: "Eugene Yan writing (system design and ML patterns)", url: "https://eugeneyan.com/writing/", reason: "High-quality practitioner essays, but unstructured; keep as reading list."}
-notes: "Node is marked optional in the skeleton. Primary book is paid (publisher O'Reilly page blocks bots, so I linked the author's books page and confirmed the book there via search results). Tooling in the Zoomcamp changes yearly; the concepts in the book and CS 329S are stable. LLM-specific ops (evals, guardrails, observability for agents) are out of scope here and belong to the LLM application nodes."
+notes: "Node is marked optional in the skeleton. Primary book is paid (publisher O'Reilly page blocks bots, so I linked the author's books page and confirmed the book there via search results). Tooling in the Zoomcamp changes yearly; the concepts in the book and CS 329S are stable. Dated parts: the book (2022) and the CS 329S and FSDL 2022 secondaries are four years old, so their tool lists and LLM-free framing are dated while the data, deployment and monitoring concepts hold. LLM-specific ops (evals, guardrails, observability for agents) are out of scope here and belong to the LLM application nodes."
 split_proposal: null
 prereq_changes: null
 open_questions:

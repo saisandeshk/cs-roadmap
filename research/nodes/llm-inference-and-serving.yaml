@@ -18,7 +18,7 @@ resources:
     edition_or_term: "29 Aug 2025 (analyzes vLLM V1 engine, commit 42172ad of 9 Aug 2025)"
     access: free
     use: "Whole post: engine and engine-core, scheduler and KV-cache manager, forward pass; advanced features (chunked prefill, prefix caching, guided decoding, speculative decoding, disaggregated P/D); multi-process and distributed serving; benchmarking and auto-tuning. Read with the vLLM source open."
-    why: "Only long-form walk-through of a modern serving engine from request to kernel, covering every item in the scope; written by an engineer who builds from first principles. Time-stamped to the V1 engine (details will drift)."
+    why: "Only long-form walk-through of a modern serving engine from request to kernel, covering every item in the scope; written by an engineer who builds from first principles. Engine details are as of Aug 2025 (vLLM V1, 15 months old on 2026-11-19); vLLM, SGLang, Dynamo and llm-d change monthly, so check specifics against the current docs listed below."
     verified: true
   - id: cs336-inference
     role: primary-course
@@ -28,7 +28,7 @@ resources:
     url: https://cs336.stanford.edu/
     edition_or_term: "Spring 2026"
     access: free
-    use: "Lecture 10 (Inference, Apr 29 2026); revisit lectures 5 (GPUs) and 2 (resource accounting) for the memory-bound decode argument."
+    use: "Lecture 10 (Inference, Apr 29 2026); lectures 5 (GPUs) and 2 (resource accounting) are the anchors for the memory-bound decode argument (read in ml-performance-modeling)."
     why: "Public lecture video from the best open LLM-from-scratch course; derives prefill/decode costs, KV cache and batching trade-offs. Only one lecture, so the primary text and the system papers carry most of the load."
     verified: true
     course:
@@ -36,8 +36,43 @@ resources:
       latest_url: https://cs336.stanford.edu/
       videos: public
       public_videos_url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
-      assignments: public
+      assignments: public-with-autograder
       assignments_url: https://github.com/stanford-cs336/assignment2-systems
+  - id: mit-6-5940-inference
+    role: secondary
+    kind: course
+    title: "MIT 6.5940 EfficientML (LLM deployment lectures)"
+    by: "Song Han, Shang Yang (MIT)"
+    url: https://hanlab.mit.edu/courses/2026-fall-65940
+    edition_or_term: "Fall 2026"
+    access: free
+    use: "Lecture 13 (LLM Quantization and Deployment, Oct 27) and Lecture 15 (Long Context LLM, Nov 3) as the video track beside CS336 L10; the Nov 24 guest lecture 'Efficient Inference in Production' once its video is posted (no video link as of 2026-11-18)."
+    why: "Second public-video source on serving-side topics (weight/KV quantization, long-context KV handling, deployment) that the single CS336 lecture does not cover."
+    verified: true
+    course:
+      latest_term: "Fall 2026"
+      latest_url: https://hanlab.mit.edu/courses/2026-fall-65940
+      videos: public
+      assignments: public
+      assignments_url: https://hanlab.mit.edu/courses/2026-fall-65940
+  - id: cmu-15442-inference
+    role: secondary
+    kind: course
+    title: "CMU 15-442/642 Machine Learning Systems (LLM serving weeks 9-10, slides)"
+    by: "Zhihao Jia, Tianqi Chen (CMU)"
+    url: https://mlsyscourse.org/schedule
+    edition_or_term: "Spring 2026"
+    access: free
+    use: "Slides for Mar 9 (LLM Serving: continuous batching, PagedAttention, RadixAttention) and Mar 16 (LLM Serving: speculative decoding)."
+    why: "Best-targeted lecture slides on the node's scope; slides only, so pair with the CS336 L10 and MIT 6.5940 videos."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://mlsyscourse.org/schedule
+      videos: unknown
+      public_videos_term: "none found; use CS336 Spring 2026 lecture 10 and MIT 6.5940 Fall 2026 lectures 13 and 15"
+      assignments: public-with-autograder
+      assignments_url: https://github.com/mlsyscourse/assignment-distributed-training
   - id: scaling-book-inference
     role: secondary
     kind: book
@@ -69,17 +104,17 @@ resources:
     edition_or_term: "Orca OSDI 2022; Sarathi-Serve arXiv 2403.02310 (OSDI 2024); DistServe OSDI 2024 (https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin); SGLang arXiv 2312.07104; Mooncake arXiv 2407.00079"
     access: free
     use: "Orca (iteration-level / continuous batching), Sarathi-Serve (chunked prefill, stall-free scheduling), DistServe (prefill/decode disaggregation and goodput), SGLang (prefix reuse via RadixAttention), Mooncake (KV-cache-centric disaggregated architecture)."
-    why: "Each paper introduces one of the scheduling ideas in the scope; read in this order to see the progression."
+    why: "Orca: iteration-level scheduling, the origin of continuous batching. Sarathi-Serve: fixes prefill-induced decode stalls via chunked prefill. DistServe: separates prefill and decode pools and defines goodput as the metric. SGLang: cross-request prefix reuse (RadixAttention) that PagedAttention alone does not give. Mooncake: KV-cache-centric disaggregated architecture in production. Read in this order to see the progression."
     verified: true
   - id: speculative-papers
     role: secondary
     kind: paper
-    title: "Fast Inference from Transformers via Speculative Decoding; Speculative Sampling; EAGLE"
-    by: "Leviathan, Kalman, Matias (Google); Chen et al. (DeepMind); Li et al."
+    title: "Fast Inference from Transformers via Speculative Decoding; Speculative Sampling; EAGLE and EAGLE-3; multi-token prediction (DeepSeek-V3)"
+    by: "Leviathan, Kalman, Matias (Google); Chen et al. (DeepMind); Li et al.; DeepSeek-AI"
     url: https://arxiv.org/abs/2211.17192
-    edition_or_term: "ICML 2023; arXiv 2302.01318; EAGLE arXiv 2401.15077"
+    edition_or_term: "ICML 2023; arXiv 2302.01318; EAGLE arXiv 2401.15077; EAGLE-3 arXiv 2503.01840; DeepSeek-V3 arXiv 2412.19437"
     access: free
-    use: "Leviathan: acceptance-rejection proof and speedup formula; DeepMind paper for the same idea; EAGLE for draft heads reusing target features. Skim the vLLM speculative decoding docs (https://docs.vllm.ai/en/latest/features/speculative_decoding/)."
+    use: "Leviathan: acceptance-rejection proof and speedup formula; DeepMind paper for the same idea; EAGLE for draft heads reusing target features, EAGLE-3 (https://arxiv.org/abs/2503.01840) for the training-time-test successor, and the multi-token-prediction section of DeepSeek-V3 (https://arxiv.org/abs/2412.19437) for MTP used as a draft. Skim the vLLM speculative decoding docs (https://docs.vllm.ai/en/latest/features/speculative_decoding/)."
     why: "Primary sources for speculative decoding, including the proof that the output distribution is unchanged."
     verified: true
   - id: flashinfer
@@ -146,7 +181,7 @@ resources:
     edition_or_term: "2022; Weng https://lilianweng.github.io/posts/2023-01-10-inference-optimization/ (2023)"
     access: free
     use: "kipply for decode arithmetic; Weng for the survey of techniques (quantization, sparsity, distillation, MQA/GQA, FlashAttention, speculative decoding)."
-    why: "Concise surveys that place each optimization on the roofline; kipply's post is also in ml-performance-modeling."
+    why: "Concise surveys that place each optimization on the roofline; kipply's post is listed only here (it was removed from ml-performance-modeling to avoid duplication)."
     verified: true
   - id: nano-vllm
     role: practice
@@ -170,30 +205,18 @@ resources:
     use: "Serve a small model (e.g. 1-8B) on one GPU; sweep request rate and concurrency, record TTFT, TPOT and throughput; toggle prefix caching, chunked prefill, quantization and speculative decoding; explain each result with the scaling-book model."
     why: "Turns the theory into measured trade-offs; needs one 24 GB+ GPU or a cloud instance."
     verified: true
-  - id: llm-inference-scratch
-    role: secondary
-    kind: website
-    title: "LLM Inference: From scratch, one token at a time"
-    by: "Tushar Amrit"
-    url: https://inference.tusharamrit.in/modules/autoregressive-loop.html
-    edition_or_term: "online interactive course, 2026"
-    access: free
-    use: "Modules 01 (autoregressive loop, prefill vs decode), 02 and 04, and 08 (speculative decoding)."
-    why: "Interactive intro for newcomers; from the owner's earlier curation. Quality moderate and author is not a recognized reference, so optional."
-    verified: true
 considered:
   - {title: "Hands-On LLM Serving and Optimization (O'Reilly 2025)", url: "https://www.oreilly.com/library/view/hands-on-llm-serving/9798341621480/", reason: "Heavily used in the owner's seed; paid and O'Reilly pages block verification here, so not chosen as primary over the free, current vLLM walkthrough."}
   - {title: "AI Systems Performance Engineering (Fregly), inference chapters", url: "https://www.oreilly.com/library/view/ai-systems-performance/9798341627772/", reason: "Broad with companion code; could not open the page to verify."}
-  - {title: "CMU 15-442 Spring 2026 Weeks 9-10 (continuous batching, PagedAttention, RadixAttention, speculative decoding)", url: "https://mlsyscourse.org/schedule", reason: "Best-targeted lectures (Zhihao Jia); slides public, videos unconfirmed, so CS336 chosen on video availability."}
+  - {title: "LLM Inference: From scratch, one token at a time (Tushar Amrit)", url: "https://inference.tusharamrit.in/modules/autoregressive-loop.html", reason: "Interactive intro from the owner's earlier curation; author unvetted and hf-continuous-batching covers the same ground, so dropped."}
   - {title: "CMU 11-868 LLM Systems (Spring 2026, Lei Li)", url: "https://llmsystem.github.io/llmsystem2026spring/", reason: "Broad LLM systems with 7 programming assignments (MiniTorch) and guest lectures by Woosuk Kwon and Hao Zhang; slides public, video status unknown, inference only a part."}
   - {title: "UCSD CSE 291A/DSC 291 Deep Learning Systems (Spring 2026)", url: "https://haoailab.com/cse291-s26/", reason: "Guest lectures by Woosuk Kwon (vLLM) and Zihao Ye (FlashInfer); recording access on UCSD podcast unconfirmed."}
-  - {title: "MIT 6.5940 Fall 2026 lectures 12-15 (LLM deployment, long context)", url: "https://hanlab.mit.edu/courses/2026-fall-65940", reason: "Public videos covering quantization/KV compression/StreamingLLM; used in model-compression."}
+  - {title: "MIT 6.5940 Fall 2026 lectures 12-15 (LLM deployment, long context)", url: "https://hanlab.mit.edu/courses/2026-fall-65940", reason: "Primary course in model-compression; lectures 13 and 15 are used here as a secondary video track."}
   - {title: "BentoML LLM Inference Handbook", url: "https://bentoml.com/llm/", reason: "Practitioner handbook; returned HTTP 502 when checked, so not verified."}
   - {title: "Efficiently Scaling Transformer Inference (Pope et al.)", url: "https://arxiv.org/abs/2211.05102", reason: "Included in ml-performance-modeling as reference."}
-notes: "Primary-text is a blog post because engine internals change faster than any book; anchor concepts in the papers and re-check Inside vLLM against current vLLM when roadmap is refreshed. CS336 is a thin primary-course (one lecture) but is the only fully public, recent video source; if the owner prefers a deeper course, CMU 15-442 weeks 9-10 or UCSD 291A are better once recording access is confirmed."
+notes: "Primary-text is a blog post because engine internals change faster than any book; anchor concepts in the papers and re-check Inside vLLM against current vLLM when roadmap is refreshed. CS336 is a thin primary-course (one lecture) but is the only fully public, recent video source; video track is CS336 L10 plus MIT 6.5940 L13/L15, with CMU 15-442 weeks 9-10 as the slides; UCSD 291A is an option once recording access is confirmed."
 split_proposal: "Possibly split into 'LLM inference fundamentals (KV cache, batching, speculation)' and 'Serving systems operations (routing, autoscaling, disaggregation at fleet scale)' if the node feels too large; current estimate fits one node."
 prereq_changes: null
 open_questions:
   - "Recording availability for CMU 15-442, 11-868 and UCSD 291A."
-  - "Tushar Amrit course authorship/quality unvetted."
 last_verified: 2026-11-18

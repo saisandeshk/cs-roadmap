@@ -152,7 +152,7 @@ resources:
     kind: practice-site
     title: "Parallelism planning exercise (paper-and-spreadsheet)"
     by: "Scaling book / Ultra-Scale Playbook"
-    url: https://jax-ml.github.io/scaling-book/applied-training/
+    url: https://jax-ml.github.io/scaling-book/training/
     edition_or_term: "Ch. 6 worked example plus problems in Ch. 5"
     access: free
     use: "For a 70B dense model on 1024 H100s and for an MoE model, choose DP/FSDP/TP/PP/CP/EP degrees and microbatch counts; check memory, global batch size and comm-to-compute ratios using the Playbook's three-step configuration procedure."
@@ -165,7 +165,7 @@ considered:
   - {title: "TorchTitan (paper and repo)", url: "https://arxiv.org/abs/2410.06511", reason: "Production reference implementation of composable parallelism; read after Picotron."}
   - {title: "TorchFeather minimal examples (hkproj)", url: "https://github.com/hkproj/torchfeather", reason: "From the owner's earlier curation; page returned 403 so unverified."}
   - {title: "Megatron-LM / Megatron Core and DeepSpeed repos", url: "https://github.com/NVIDIA/Megatron-LM", reason: "Production frameworks to read after the minimal implementations; large codebases."}
-notes: "Same primary-text as the previous node by design (the Playbook spans both); owner may prefer to anchor it once. CMU 15-442 is slides plus a public lab (no lecture videos found), so the primary-course is weaker than CS336 lectures 7-8 (public video, primary in the previous node); CS336 lecture 8 and the Playbook carry the conceptual load. UCSD CSE 234 (Winter 2025) is the alternative if its recordings are confirmed. Reviewer's lab split "parts 1-5 / 6-9" was adjusted to the actual README (parts 1, 7-9 DP/ZeRO in the previous node; parts 2-6 tensor parallel here). Practice requires multiple GPUs for realism; the CMU MPI lab and the planning exercise do not."
+notes: "Same primary-text as the previous node by design (the Playbook spans both); owner may prefer to anchor it once. CMU 15-442 is slides plus a public lab (no lecture videos found), so the primary-course is weaker than CS336 lectures 7-8 (public video, primary in the previous node); CS336 lecture 8 and the Playbook carry the conceptual load. UCSD CSE 234 (Winter 2025) is the alternative if its recordings are confirmed. Reviewer's lab split (parts 1-5 / 6-9) was adjusted to the actual README (parts 1, 7-9 DP/ZeRO in the previous node; parts 2-6 tensor parallel here). Practice requires multiple GPUs for realism; the CMU MPI lab and the planning exercise do not."
 split_proposal: "Checkpointing and fault tolerance could become its own short node (shared with mlops-and-production) if the owner wants it separate from parallelism strategies."
 prereq_changes: null
 open_questions:
