@@ -45,3 +45,12 @@
 - information-theory: MacKay range 8-11.
 - numerical-methods: primary course -> UT ALAFF (embedded videos, answers); 18.335 secondary; ODEs via FNC ch.6; duplicate practice replaced with 18.335 psets 1-4.
 - Declined: none.
+
+## G11 Hardware & compilers (R2)
+- processor-design: primary course -> Berkeley EECS 151 RISC-V CPU project; ETH DDCA secondary (L7-L13 videos, MIPS-lab caveat).
+- ETH DDCA unified across nodes (id eth-ddca, 227-0003-10V), distinct lectures/labs per node.
+- digital-logic, advanced-microarchitecture, programming-language-concepts: extras moved to considered; PLC route = Grossman A -> Grossman B + PLAI.
+- memory-systems: URL -> ETH Fall 2025 (matches lecture numbers); CS 152 coherence/consistency lectures added; thin ETH coverage noted.
+- Added: Sze/Emer NeurIPS 2019 accelerator tutorial video; Bendersky JIT series; GC Handbook chapters checked.
+- Fixes: CS143 archive.org link removed; NJU Chinese-only videos noted; type-systems no-public-video caveat; Agner Fog verified; in-group duplicates (PLAI, Crafting Interpreters, CS143, Compiler Explorer) removed.
+- Declined: CS 6120 "no video" claim (Fall 2025 page links videos for lessons 2-7 and 12; only 14 lacks one).

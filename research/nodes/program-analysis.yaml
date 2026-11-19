@@ -8,19 +8,19 @@ scope: Lattices, dataflow, abstract interpretation, pointer analysis, symbolic e
 level: advanced
 estimated_hours: 70
 resources:
-- {id: spa-book, role: primary-text, kind: book, title: Static Program Analysis, by: 'Anders Moller, Michael I. Schwartzbach', url: 'https://cs.au.dk/~amoeller/spa/', edition_or_term: 'Free PDF, version dated October 15, 2026 (CC BY-NC-ND 4.0); Aarhus University lecture notes', access: free, use: 'Ch. 2 (TIP language, CFGs), 3 (type analysis by unification), 4 (lattice theory), 5 (dataflow analysis with monotone frameworks), 6 (widening/narrowing), 7 (path sensitivity), 8-9 (interprocedural and distributive analysis/IFDS), 10 (control-flow analysis), 11 (pointer analysis), 12 (abstract interpretation).', why: 'Best compact, rigorous introduction covering lattices, dataflow, abstract interpretation and pointer analysis in one voice; free, regularly updated (latest 2026-10-15), with a Scala implementation (TIP) of every analysis. Symbolic execution is not covered (see secondary resources).', verified: true}
+- {id: spa-book, role: primary-text, kind: book, title: Static Program Analysis, by: 'Anders Moller, Michael I. Schwartzbach', url: 'https://cs.au.dk/~amoeller/spa/', edition_or_term: 'Free PDF (CC BY-NC-ND 4.0); web page says ''Last revision: September 2026'', PDF title page dated October 15, 2026; Aarhus University lecture notes', access: free, use: 'Ch. 2 (TIP language, CFGs), 3 (type analysis by unification), 4 (lattice theory), 5 (dataflow analysis with monotone frameworks), 6 (widening/narrowing), 7 (path sensitivity), 8-9 (interprocedural and distributive analysis/IFDS), 10 (control-flow analysis), 11 (pointer analysis), 12 (abstract interpretation).', why: 'Best compact, rigorous introduction covering lattices, dataflow, abstract interpretation and pointer analysis in one voice; free, regularly updated (latest 2026-10-15), with a Scala implementation (TIP) of every analysis. Symbolic execution is not covered (see secondary resources).', verified: true}
 - id: nju-spa
   role: primary-course
   kind: course
   title: Nanjing University Software Analysis / Static Program Analysis (Tai-e platform)
   by: Nanjing University (Yue Li, Tian Tan)
   url: https://tai-e.pascal-lab.net/en/lectures.html
-  edition_or_term: Developed Spring 2020; page shows no term label; Tai-e README lists 2026 activity
+  edition_or_term: Course developed Spring 2020; the site gives no term label, so no real latest term is known
   access: free
   use: 16 lectures (IR; dataflow applications and foundations; interprocedural analysis; pointer analysis, foundations and context sensitivity; security/taint analysis; Datalog-based analysis; CFL-reachability and IFDS; soundness and soundiness) with English slides, plus all eight assignments on the Tai-e Java framework (Assignments 1-8; the online judge at https://oj.pascal-lab.net/ is open to everyone).
-  why: The only course I found with public videos, English slides and publicly runnable, auto-judged assignments covering the full static-analysis pipeline through pointer and taint analysis. Videos are in Chinese on Bilibili (https://www.bilibili.com/video/BV1b7411K7P4); English slides and assignment docs are available.
+  why: The only course I found with public videos, English slides and publicly runnable, auto-judged assignments covering the full static-analysis pipeline through pointer and taint analysis. The videos are public but Chinese-language (Bilibili, https://www.bilibili.com/video/BV1b7411K7P4); slides and assignment docs are in English.
   verified: true
-  course: {latest_term: Spring 2020 (original; later offerings not labelled on site), latest_url: 'https://tai-e.pascal-lab.net/en/lectures.html', videos: public, public_videos_term: Original 2020 Chinese-language Bilibili videos, public_videos_url: 'https://www.bilibili.com/video/BV1b7411K7P4', assignments: public-with-autograder, assignments_url: 'https://tai-e.pascal-lab.net/intro/overview.html'}
+  course: {latest_term: unknown (course developed Spring 2020; site gives no term label), latest_url: 'https://tai-e.pascal-lab.net/en/lectures.html', videos: public, public_videos_term: 'Spring 2020 recordings, Chinese-language (Bilibili); English slides and assignment docs', public_videos_url: 'https://www.bilibili.com/video/BV1b7411K7P4', assignments: public-with-autograder, assignments_url: 'https://tai-e.pascal-lab.net/intro/overview.html'}
 - id: cmu-17355
   role: secondary
   kind: course
