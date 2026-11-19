@@ -112,6 +112,17 @@ resources:
     use: "Project 3 handout and starter code (network attack/defense exercises)."
     why: "Course-grade project with starter code to practice; assignment contents not fully inspected."
     verified: true
+  - id: seed-network-labs
+    role: practice
+    kind: practice-site
+    title: "SEED Labs 2.0: Network Security Labs"
+    by: "Wenliang Du (Syracuse University)"
+    url: https://seedsecuritylabs.org/Labs_20.04/Networking/
+    edition_or_term: "SEED Labs 2.0 (Ubuntu 20.04 VM, container-based setup)"
+    access: free
+    use: "Packet Sniffing and Spoofing; ARP Cache Poisoning Attack; ICMP Redirect Attack; TCP Attacks (SYN flooding, RST, session hijacking); The Mitnick Attack; the DNS labs (5 labs listed); Firewall Exploration; Firewall Evasion; VPN Tunneling. The full VPN Lab (about a month) is a stretch project."
+    why: "Fills the attacks-and-defenses practice gap: free VM labs that cover TCP, DNS, firewall and VPN work, beyond what pwn.college or CS 155 Project 3 offer."
+    verified: true
   - id: wireshark
     role: practice
     kind: tool
@@ -128,7 +139,7 @@ considered:
   - {title: "Real-World Cryptography (Wong), TLS/Noise/E2EE chapters", url: "https://www.manning.com/books/real-world-cryptography", reason: "Better placed in applied-cryptography."}
   - {title: "Security Engineering 3e, network attack and defence chapter", url: "https://www.cl.cam.ac.uk/~rja14/book.html", reason: "Strong survey but 3e not fully free."}
   - {title: "Cloudflare Learning Center (DDoS, DNS, TLS)", url: "https://www.cloudflare.com/learning/", reason: "Good plain-language intros but marketing-flavored; site returned a bot challenge to curl so not verified."}
-notes: "No standalone network-security course with public videos matches this scope better than Berkeley's networking block; MIT 6.566 adds secure-channel depth. TLS internals are in applied-cryptography as well (protocols), so some overlap: network-security focuses on attacks (ARP/DNS/BGP/DoS), PKI deployment and defenses."
+notes: "De-duplicated with security-fundamentals: that node now reads only CS 161 Ch. 19-22/30-31 and the How the Internet Works/TLS lectures, so Ch. 25-39 and the rest of the networking block belong to this node. Reviewer R2 suggested MIT 6.566 + Bulletproof TLS as the core instead; kept CS 161 because its networking chapters/lectures are the only free source covering ARP/DHCP/DNS/BGP/DoS/firewalls/IDS, while MIT 6.566 covers mainly secure channels, certificates and Tor. No standalone network-security course with public videos matches this scope better than Berkeley's networking block; MIT 6.566 adds secure-channel depth. TLS internals are in applied-cryptography as well (protocols), so some overlap: network-security focuses on attacks (ARP/DNS/BGP/DoS), PKI deployment and defenses."
 split_proposal: null
 prereq_changes: "Add soft: [applied-cryptography] (TLS crypto) or note overlap."
 open_questions:

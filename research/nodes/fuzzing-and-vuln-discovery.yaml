@@ -121,7 +121,7 @@ resources:
     url: https://css.csail.mit.edu/6.566/2026/labs/lab3.html
     edition_or_term: "Spring 2026"
     access: free
-    use: "Build a concolic execution engine for Python (Z3-based) and use it to find bugs in the zoobar app."
+    use: "Watch 6.566 Lecture 10 (symbolic execution), then build a concolic execution engine for Python (Z3-based) and use it to find bugs in the zoobar app."
     why: "A guided build of a symbolic-execution tool, complementing the Fuzzing Book concolic/symbolic chapters."
     verified: true
 considered:

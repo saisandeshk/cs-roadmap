@@ -26,18 +26,19 @@ resources:
     title: "Stanford CS 253: Web Security"
     by: "Feross Aboukhadijeh, Stanford"
     url: https://web.stanford.edu/class/cs253
-    edition_or_term: "Latest term I could confirm: ~2020 (lecture materials and YouTube playlist public); current term not confirmed"
+    edition_or_term: "Fall 2021 (latest offering on the course site)"
     access: free
-    use: "Lectures on the browser security model (same-origin policy, cookies), injection, XSS, CSRF, session attacks, TLS, authentication, DNS rebinding, CSP, third-party content; project/assignment pages if still linked."
+    use: "Lectures on the browser security model (same-origin policy, cookies), injection, XSS, CSRF, session attacks, TLS, authentication, DNS rebinding, CSP, third-party content, with the per-lecture readings on the Fall 2021 page; Assignments 0-4 (handouts public, e.g. Assignment 1 on reflected/stored XSS; Gradescope submission is enrolled-only)."
     why: "The only complete public web-security course with video: browser model first, then attacks and defenses, which the Academy handles tool-first."
     verified: true
     course:
-      latest_term: "unknown (could not load the course site; web.stanford.edu returned 503/timeouts)"
+      latest_term: "Fall 2021"
       latest_url: https://web.stanford.edu/class/cs253
-      videos: public
-      public_videos_term: "~2020 (full playlist on YouTube)"
+      videos: unknown
+      public_videos_term: "Earlier offering (the public YouTube playlist Feross Aboukhadijeh published in 2020, likely Fall 2019)"
       public_videos_url: https://www.youtube.com/playlist?list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-
-      assignments: unknown
+      assignments: public
+      assignments_url: https://web.stanford.edu/class/cs253/assign1
   - id: cs161-web
     role: secondary
     kind: book
@@ -119,10 +120,10 @@ considered:
   - {title: "UC Berkeley CS 161 web block (Fall 2026 lectures)", url: "https://fa26.cs161.org/", reason: "Public videos and a good mental model; chosen only as secondary because a full semester is the fundamentals node, not web specialization."}
   - {title: "The Web Application Hacker's Handbook, 2nd ed.", url: "https://portswigger.net/web-security", reason: "Authors' ideas now live (updated) in the Academy; book is 2011."}
   - {title: "Stanford CS 155 (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Web block recordings Canvas-only; project handout used as practice."}
-notes: "Academy is primary text because it is the best maintained learning content; CS 253 is the only complete video course but its latest verifiable run is ~2020, so treat videos as conceptual and rely on the Academy for current attack techniques. Agentic/LLM web attacks (Web LLM attacks in the Academy) overlap G8's prompt-injection node."
+notes: "Academy is primary text because it is the best maintained learning content. CS 253 is the only complete web-security video course; its latest offering is Fall 2021 (site opens over http; https timed out through the proxy). The Fall 2021 page has its YouTube links commented out in the HTML, so the public recordings are the older 2019-2020 playlist; treat them as conceptual and rely on the Academy for current attack techniques. Agentic/LLM web attacks (Web LLM attacks in the Academy) overlap G8's prompt-injection node."
 split_proposal: null
 prereq_changes: "Add soft: [databases] (SQL injection) and soft: [web-development] if such a node exists."
 open_questions:
-  - "Could not load the CS 253 course site (web.stanford.edu 503/timeouts via proxy): current/latest term and assignments unknown."
+  - "CS 253 Fall 2021 lecture recordings: links on the page are commented out; whether Fall 2021 videos are public is unknown."
   - "Could not open github.com/stanford-web-security (403) so any public assignments there are unverified."
 last_verified: 2026-11-18

@@ -29,13 +29,13 @@ resources:
     edition_or_term: "Winter 2026"
     access: free
     use: "Watch the Online Cryptography lectures (stream ciphers, block ciphers and modes, MACs, collision-resistant hashing, authenticated encryption, key exchange, public-key encryption and signatures); do the problem sets and the two projects (password manager; encrypted chat client) from the CS 255 site."
-    why: "The reference applied-crypto course: rigorous definitions without heavy proofs, directly tied to implementation pitfalls (padding oracles, nonce reuse). Lectures free (Stanford page lists them via Coursera); projects are public."
+    why: "The reference applied-crypto course: rigorous definitions without heavy proofs, directly tied to implementation pitfalls (padding oracles, nonce reuse). Lectures free (Stanford page lists them via Coursera); CS 255 Winter 2026 homework (HW1-4) and both projects (password manager, chat client) with instructions and starter code are public on cs255.stanford.edu."
     verified: true
     course:
       latest_term: "Winter 2026"
       latest_url: https://cs255.stanford.edu/
       videos: enrolled-only
-      public_videos_term: "Online Cryptography course (Coursera 'Cryptography I', ~2012-2020; slides public on Stanford page)"
+      public_videos_term: "Boneh's free Online Cryptography course: every lecture listed on the Stanford page (Coursera-hosted video links plus public slides); CS 255 Winter 2026 itself points to this set ('cs255 online')"
       public_videos_url: https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/
       assignments: public
       assignments_url: https://cs255.stanford.edu/
@@ -47,7 +47,7 @@ resources:
     url: https://toc.cryptobook.us/
     edition_or_term: "Version 0.6, January 2023"
     access: free
-    use: "Part I Secret key (Ch. 2-9: encryption, stream/block ciphers, CPA, integrity, AEAD), Part II Public key (Ch. 10-13, 15 elliptic curves), Part III protocols (Ch. 18-23) for AKE; appendices A-D. Use as proofs/reference alongside Serious Cryptography."
+    use: "Part I Secret key (Ch. 2-9: encryption, stream/block ciphers, CPA, integrity, AEAD), Part II Public key (Ch. 10-13, 15 elliptic curves), Ch. 21 Authenticated key exchange; appendices A-D. Sigma protocols, zero knowledge, threshold crypto and MPC (Ch. 19-20, 22-23) are assigned in cryptography-foundations. Use as proofs/reference alongside Serious Cryptography."
     why: "The rigorous companion: precise definitions and proofs, free; the course's optional text. Heavier than needed for first pass."
     verified: true
   - id: real-world-crypto
@@ -120,7 +120,7 @@ considered:
   - {title: "Katz & Lindell, Introduction to Modern Cryptography, 3rd ed.", url: "https://www.cs.umd.edu/~jkatz/imc.html", reason: "Better as the provable-security text; placed in cryptography-foundations."}
   - {title: "Christof Paar: Introduction to Cryptography (YouTube)", url: "https://www.youtube.com/playlist?list=PLwJWuZfL_Ga2KJrTf9hOIgAQWkSpn9RNm", reason: "Fully public lecture series with accompanying Understanding Cryptography book; less implementation-pitfall focused and older recordings."}
   - {title: "Trail of Bits Testing Handbook: Wycheproof and constant-time sections", url: "https://appsec.guide/", reason: "Useful implementation-testing material; mention in fuzzing node."}
-notes: "Boneh's course lectures: the Stanford page for the online course lists lecture videos on Coursera (I did not confirm whether Coursera auditing is currently free), and CS 255 recordings are on Canvas. Serious Cryptography is paid but Boneh-Shoup is free as the rigorous alternative; if the owner wants all-free, make Boneh-Shoup the primary-text. Pick of Serious Cryptography over Boneh-Shoup: this node is applied and Boneh-Shoup's proofs belong with cryptography-foundations."
+notes: "Boneh's course lectures: the Online Cryptography page says it contains all lectures of the free course, each linked to Coursera, with slides; CS 255 Winter 2026 class recordings are on Canvas (enrolled-only) and its site points to that online set. Serious Cryptography is paid but Boneh-Shoup is free as the rigorous alternative; if the owner wants all-free, make Boneh-Shoup the primary-text. Pick of Serious Cryptography over Boneh-Shoup: this node is applied and Boneh-Shoup's proofs belong with cryptography-foundations."
 split_proposal: null
 prereq_changes: "None. Hard prereqs discrete-math and probability are right for Boneh/Shoup; Serious Cryptography needs less."
 open_questions:

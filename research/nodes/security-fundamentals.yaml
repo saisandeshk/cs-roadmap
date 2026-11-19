@@ -17,7 +17,7 @@ resources:
     url: https://textbook.cs161.org/
     edition_or_term: "Online, actively maintained (changelog on GitHub); PDF regenerated after corrections"
     access: free
-    use: "Ch. 1 Security Principles; Ch. 2-4 memory safety (x86 and call stack, vulnerabilities, mitigations); Ch. 5-16 crypto usage (symmetric, hashes, MACs, DH, public-key, signatures, certificates, passwords); Ch. 17-24 web (SQLi, SOP, cookies, CSRF, XSS, UI attacks); Ch. 25-39 network. Read in lecture order alongside the course."
+    use: "Ch. 1 Security Principles; Ch. 2-4 memory safety (x86 and call stack, vulnerabilities, mitigations); Ch. 5-16 crypto usage (symmetric, hashes, MACs, DH, public-key, signatures, certificates, passwords); as an overview of web and network security read only Ch. 19-22 (SOP, cookies, CSRF, XSS) and Ch. 30-31 (TCP/UDP, TLS). The full web (Ch. 17-24) and network (Ch. 25-39) parts are assigned in web-security and network-security."
     why: "The best single survey text: written for exactly this node's scope, current (TLS, Signal, Bitcoin case studies), free, and paired with a public course and public projects. Breadth-first; depth lives in the downstream nodes."
     verified: true
   - id: cs161-fa26
@@ -28,7 +28,7 @@ resources:
     url: https://cs161.org/
     edition_or_term: "Fall 2026"
     access: free
-    use: "Watch the lecture recordings in order (security principles, memory safety, crypto, networking, web, isolation/hardware/AI security); do Project 1 (memory safety, seven questions Remus..Rigel), Project 3 (web; flags) and the exam-prep discussion worksheets with solutions. Project 2 (design a secure file-sharing system, a crypto-usage exercise) is the best capstone."
+    use: "Watch the lecture recordings for security principles, memory safety, crypto, web, and isolation/hardware/AI security; from the networking block watch only How the Internet Works and TLS (the rest of that block is assigned in network-security); do Project 1 (memory safety, seven questions Remus..Rigel), Project 3 (web; flags) and the exam-prep discussion worksheets with solutions. Project 2 (design a secure file-sharing system, a crypto-usage exercise) is the best capstone."
     why: "The standard intro-security course. Lectures are public on YouTube, projects/homeworks/discussions with solutions are public. Matches the textbook chapter by chapter."
     verified: true
     course:
@@ -91,7 +91,7 @@ resources:
     url: https://pwn.college/intro-to-cybersecurity/
     edition_or_term: "Rolling, 7 modules / ~183 challenges"
     access: free
-    use: "Modules Web Security, Intercepting Communication, Cryptography, Access Control, Integrated Security as the hands-on companion to CS 161's web/network/crypto blocks; Reverse Engineering and Binary Exploitation modules are the bridge into binary-exploitation. Do Linux Luminarium first if the command line is shaky."
+    use: "Modules Cryptography, Access Control and Integrated Security as the hands-on companion to CS 161; Reverse Engineering and Binary Exploitation modules are the bridge into binary-exploitation (the Web Security and Intercepting Communication modules are assigned in web-security and network-security). Do Linux Luminarium first if the command line is shaky."
     why: "Hands-on, auto-graded environment with browser-hosted VM; far more practice volume than CS 161's three projects."
     verified: true
   - id: overthewire-bandit
@@ -109,7 +109,7 @@ considered:
   - {title: "Stanford CS 155 Computer and Network Security (Spring 2026)", url: "https://cs155.stanford.edu/", reason: "Excellent project handouts (control hijacking, web, network) are public, but lecture recordings are Canvas-only; CS 161 has public videos and a free textbook."}
   - {title: "MIT 6.566 Computer Systems Security (Spring 2026)", url: "https://css.csail.mit.edu/6.566/2026/", reason: "Public videos and labs, but paper-based and aimed at seniors/grads; used as primary course for systems-security instead."}
   - {title: "MIT 6.1600 Foundations of Computer Security (Fall 2023)", url: "https://61600.csail.mit.edu/2023/", reason: "Good, more formal alternative; less hands-on than CS 161."}
-  - {title: "SEED Labs (Wenliang Du)", url: "https://seedsecuritylabs.org/", reason: "Large set of VM-based labs with a companion textbook; strong practice alternative, but CS 161 projects plus pwn.college already cover the ground."}
+  - {title: "SEED Labs (Wenliang Du)", url: "https://seedsecuritylabs.org/", reason: "Large set of VM-based labs with a companion textbook; its network labs are used as practice in network-security; for this node CS 161 projects plus pwn.college suffice."}
   - {title: "picoCTF / CMU CyLab Security Academy", url: "https://picoctf.org/", reason: "Friendly beginner CTF; site recently rebranded as CyLab Security Academy; good optional warm-up, overlaps pwn.college."}
 notes: "CS 161 (textbook + course + projects) is the clear primary: it is the only intro security course with public lectures, a free maintained textbook and public projects. The Fall 2026 term is in progress (project 3 due Nov 20 2026) and its lectures link YouTube recordings; I verified the Fall 2025 and Fall 2023 playlists exist. Berkeley's autograder is not public, so projects are self-checked (hand-in not available); starter code and specs are public."
 split_proposal: null
