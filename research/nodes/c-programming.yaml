@@ -10,16 +10,27 @@ soft:
 scope: Pointers, manual memory management, arrays/strings, structs, the C toolchain, undefined behavior, gdb/valgrind/sanitizers.
 level: intermediate
 resources:
-- id: modern-c
+- id: king-c
   role: primary-text
+  kind: book
+  title: 'C Programming: A Modern Approach, 2nd edition'
+  by: K. N. King
+  url: https://wwnorton.com/books/9780393979503
+  edition_or_term: 2nd edition (2008; covers C89 and C99)
+  access: paid
+  use: 'Chapters 1-20 in order: the core language (ch. 1-13, from C fundamentals and expressions through arrays, functions, program organization, pointers, pointers and arrays, and strings), then the advanced features (ch. 14-20: the preprocessor, writing large programs, structures/unions/enumerations, advanced uses of pointers, declarations, program design, low-level programming). Do the exercises and programming projects at the end of each chapter. Use the standard-library chapters (21-27) as needed.'
+  why: 'The clearest book for learning C: every concept is explained, shown in a short program and practised in end-of-chapter exercises and projects, at a pace that suits a Python-first learner. Its pointer, array and string chapters are the best available. It stops at C99, so Modern C covers the newer standards.'
+  verified: true
+- id: modern-c
+  role: secondary
   kind: book
   title: Modern C (C23 edition)
   by: Jens Gustedt
   url: https://gustedt.gitlabpages.inria.fr/modern-c/
   edition_or_term: C23 edition (free PDF latest release 2024-10-15; Manning print/ebook Sept 2025)
   access: mixed
-  use: 'Reading order for a Python-first learner: Dive into Systems ch. 1-2 (or Beej) first for orientation, then Modern C Levels 0-2 (ch. 1-12: core language, objects, values and pointers), then Level 3 (ch. 13-15: lifetime, storage, I/O) and the UB discussion. Skip Level 4 (concurrency, atomics) and defer to G4.'
-  why: The only rigorous modern C tutorial; teaches C as specified (objects, effective types, UB) rather than as folk wisdom, covers C23, and is free as a PDF under CC BY-NC-ND (Manning edition for print).
+  use: 'After King: skim Levels 0-1 for anything new since C99, then read Level 2 and the parts of Level 3 on modern features, lifetime and storage, and the undefined-behaviour discussion. Leave Level 4 (concurrency, atomics) to the concurrent-programming topic.'
+  why: 'Fills the gap King leaves: current to C23 and strict about C''s semantics (objects, effective types, undefined behaviour), so you learn modern C as specified rather than folk wisdom. Free PDF (CC BY-NC-ND), Manning edition in print.'
   verified: true
 - id: cs107
   role: primary-course
@@ -59,8 +70,8 @@ resources:
   url: https://beej.us/guide/bgc/
   edition_or_term: Current online edition (marked beta quality by author)
   access: free
-  use: Read first as a friendly skim of syntax, pointers, structs, strings and malloc before Modern C level 1, and as a lookup afterwards; also the free library-reference volume.
-  why: Warmer and faster than Modern C for a Python-first learner; fills the on-ramp gap.
+  use: Optional quick skim of syntax, pointers, structs, strings and malloc before King if you want an overview first; afterwards a free lookup, with its library-reference volume.
+  why: Faster and warmer than any textbook; useful as orientation and quick reference.
   verified: true
 - id: dis-c
   role: secondary
@@ -82,7 +93,7 @@ resources:
   edition_or_term: 2nd edition (No Starch, Sept 2024; C23)
   access: paid
   use: Chapters on objects/functions/types, pointers, dynamic memory, strings, and the program-structure/debugging-testing-analysis chapters for UB and static analysis practice.
-  why: Security-minded view of the same material (Seacord chaired CERT C), complementing Modern C with concrete UB and bug classes.
+  why: Security-minded view of the same material (Seacord chaired CERT C), complementing King and Modern C with concrete undefined-behaviour and bug classes.
   verified: true
 - id: kr-c
   role: reference
@@ -129,9 +140,6 @@ resources:
   why: Free small-program drilling with automated tests; complements the bigger CS107 assignments.
   verified: true
 considered:
-- title: 'C Programming: A Modern Approach, 2nd edition (K. N. King, W. W. Norton)'
-  url: https://wwnorton.com/books/9780393979503
-  reason: The usual learner textbook and a valid co-primary alternative (gentler, C99-based, many exercises); kept second to Modern C because Modern C is current (C23), free and stricter on semantics.
 - title: CS50x 2026 weeks 1-5 (C)
   url: https://cs50.harvard.edu/x/
   reason: Public videos but covers C as a quick first language; too light on pointers and UB for this node (good teaser only).
@@ -150,7 +158,7 @@ considered:
 - title: Beej Guide to Network Programming
   url: https://beej.us/guide/bgnet/
   reason: Great but belongs to networking node (G4/G10).
-notes: 'Python-first learners should read Beej or Dive into Systems ch. 1 for orientation, then Modern C as the main text while doing CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics). CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so substitute the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) duplicate G4 computer-systems; consider splitting. Compile everything with -Wall -Wextra and sanitizers from day one. Review update (2026-11-19): corrected the SEE note (it is an older CS107 offering, not a different course) and added it as a public-video companion; reading order made explicit; King recorded as co-primary alternative. Kept "lectures 13-25": the Autumn 2026 site lists lectures 01-25 including two no-slide catch-up sessions (20, 25).'
+notes: 'Owner decision (2026-11-19): King is the primary text because it teaches C best (explain, show, practise, with projects in every chapter); Modern C is secondary for C11-C23 and precise semantics. Reading order for a Python-first learner: optionally Dive into Systems ch. 1 or Beej for orientation, then King ch. 1-20 alongside CS107 lectures 1-12 and assign0-assign4 (bits, strings, heap, generics), then Modern C. CS107 videos are enrolled-only (Canvas), but slides, handouts, quizzes, labs and assignment specs are public; assignment starter code and sanitycheck require Stanford myth machines, hence assignments=partial, so use the Exercism, kilo and Build Your Own Lisp projects for autograded practice. CS107 lectures 13-25 (x86-64, heap allocator, optimization) belong to computer-systems. Compile everything with -Wall -Wextra and sanitizers from day one.'
 split_proposal: null
 prereq_changes: null
 open_questions:

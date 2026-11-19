@@ -65,3 +65,5 @@ llm-inference-and-serving, model-parallelism.
 - **ml-fundamentals / applied-ml-practice:** Pyrcz, *Applied Machine Learning in Python: A Hands-on Guide with Code*
   (https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html, free e-book with notebooks) as a secondary
   resource: method walkthroughs in ml-fundamentals; training, feature and model-checking chapters in applied-ml-practice.
+- **c-programming:** King, *C Programming: A Modern Approach* (2nd ed.) is now the primary text (best for learning C,
+  exercises and projects every chapter); Gustedt, *Modern C* (C23) moves to secondary for C11-C23 and precise semantics.
