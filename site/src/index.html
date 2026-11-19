@@ -7,16 +7,17 @@
 <meta name="description" content="A map of computer science: every topic names the text and course to learn it from, and paths run through shared topics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Overpass:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Overpass:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function () {
+  // apply the saved light/dark choice before first paint (dark unless the reader chose otherwise)
   var r = document.documentElement;
   r.setAttribute('data-host-theme', r.getAttribute('data-theme') || '');
   var s = {};
-  try { s = JSON.parse(localStorage.getItem('cs-roadmap:v1:settings') || '{}') || {}; } catch (e) { s = {}; }
-  r.setAttribute('data-skin', s.skin || 'transit');
-  if (s.mode === 'light' || s.mode === 'dark') r.setAttribute('data-theme', s.mode);
+  try { s = JSON.parse(localStorage.getItem('cs-roadmap:v1:settings-v2') || '{}') || {}; } catch (e) { s = {}; }
+  var mode = s.mode || 'dark';
+  if (mode === 'light' || mode === 'dark') r.setAttribute('data-theme', mode);
 })();
 </script>
 </head>
@@ -36,8 +37,11 @@
         <kbd class="search-key" aria-hidden="true">/</kbd>
         <div id="search-results" class="search-results" role="listbox" hidden></div>
       </div>
+      <button type="button" class="btn btn-quiet btn-icon" id="btn-theme" data-action="toggle-theme" aria-label="Switch light or dark">
+        <svg class="ic" aria-hidden="true"><use href="#i-sun"></use></svg>
+      </button>
       <button type="button" class="btn btn-quiet" id="btn-options" data-action="options" aria-haspopup="dialog">
-        <svg class="ic" aria-hidden="true"><use href="#i-sliders"></use></svg><span class="btn-label">Options</span>
+        <svg class="ic" aria-hidden="true"><use href="#i-sliders"></use></svg><span class="btn-label">Settings</span>
       </button>
     </div>
   </div>
@@ -67,6 +71,8 @@
   <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
 </svg>
 <script src="app.js"></script>

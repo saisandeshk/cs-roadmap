@@ -18,10 +18,11 @@
   };
 
   var DEFAULTS = {
-    skin: 'transit', mode: 'auto', dir: 'auto', lines: 'required',
+    mode: 'dark', dir: 'auto', lines: 'all',
     scope: 'route', detail: 'essentials', layout: 'cards', start: 'map', hideDone: false,
   };
-  var settings = Object.assign({}, DEFAULTS, store.get('settings', {}));
+  var SETTINGS_KEY = 'settings-v2';
+  var settings = Object.assign({}, DEFAULTS, store.get(SETTINGS_KEY, {}));
   var progress = store.get('progress', {}) || {};
   var checks = store.get('checks', {}) || {};
   var docEl = document.documentElement;
@@ -32,11 +33,6 @@
   var ui = { scale: null, mapKey: '', selected: null, lastPath: null, courseFilter: 'courses', resetArmed: false, searchSel: -1 };
 
   /* ---------------------------------------------------------------- labels */
-  var SKINS = {
-    transit: { name: 'Transit', note: 'Route-map look. Every path keeps its own line colour.', sw: ['#ffffff', '#0f1217', '#05916a', '#c5cbd5', '#1f6feb', '#f4f5f7'], font: '"Overpass", sans-serif' },
-    datasheet: { name: 'Datasheet', note: 'Engineering datasheet. Grid paper, monospace labels, square corners.', sw: ['#fbfdff', '#0a1929', '#0a62c0', '#c9d7e6', '#7e96b0', '#edf2f8'], font: '"IBM Plex Mono", monospace' },
-    library: { name: 'Library', note: 'Reading room. Book typography and catalogue-card topics.', sw: ['#fbfcf9', '#161c19', '#1c5b48', '#d6dbd4', '#98a49b', '#eef0ec'], font: '"Literata", serif' },
-  };
   var LEVEL = { intro: 'Intro', intermediate: 'Intermediate', advanced: 'Advanced' };
   var KIND = { book: 'Book', website: 'Website', course: 'Course', 'video-series': 'Video series', 'practice-site': 'Practice site', paper: 'Paper', docs: 'Docs', article: 'Article', tool: 'Tool' };
   var ACCESS = { free: 'Free', paid: 'Paid', mixed: 'Partly free', 'account-required': 'Free account' };
@@ -298,20 +294,25 @@
       var k = list.length, step = Math.min(14, (minor - 36) / Math.max(1, k - 1));
       list.forEach(function (ch, i) { set(ch, (i - (k - 1) / 2) * step); });
     }
-    Object.keys(outs).forEach(function (s) { spread(outs[s], function (ch) { return cross(ch.chain[1]); }, function (ch, v) { ch.o1 = v; }); });
-    Object.keys(ins).forEach(function (t) { spread(ins[t], function (ch) { return cross(ch.chain[ch.chain.length - 2]); }, function (ch, v) { ch.o2 = v; }); });
+    var dot = o.dot;   // station mode: lines start and end at a dot this far into the box (along the layer axis)
+    if (dot == null) {
+      Object.keys(outs).forEach(function (s) { spread(outs[s], function (ch) { return cross(ch.chain[1]); }, function (ch, v) { ch.o1 = v; }); });
+      Object.keys(ins).forEach(function (t) { spread(ins[t], function (ch) { return cross(ch.chain[ch.chain.length - 2]); }, function (ch, v) { ch.o2 = v; }); });
+    } else chains.forEach(function (ch) { ch.o1 = 0; ch.o2 = 0; });
 
     var lines = chains.map(function (ch) {
       var a = boxes[ch.chain[0]], b = boxes[ch.chain[ch.chain.length - 1]];
       var pts = [], kinds = [];
-      if (TB) pts.push([a.c + ch.o1, a.y + a.h]); else pts.push([a.x + a.w, a.c + ch.o1]);
+      if (dot != null) pts.push(TB ? [a.c, a.y + dot] : [a.x + dot, a.c]);
+      else if (TB) pts.push([a.c + ch.o1, a.y + a.h]); else pts.push([a.x + a.w, a.c + ch.o1]);
       kinds.push('start');
       ch.chain.slice(1, -1).forEach(function (d) {
         var cc = cross(d), m = majorStart(lay[d]);
         if (TB) { pts.push([cc, m]); kinds.push('curve'); pts.push([cc, m + major]); kinds.push('line'); }
         else { pts.push([m, cc]); kinds.push('curve'); pts.push([m + major, cc]); kinds.push('line'); }
       });
-      if (TB) pts.push([b.c + ch.o2, b.y]); else pts.push([b.x, b.c + ch.o2]);
+      if (dot != null) pts.push(TB ? [b.c, b.y + dot] : [b.x + dot, b.c]);
+      else if (TB) pts.push([b.c + ch.o2, b.y]); else pts.push([b.x, b.c + ch.o2]);
       kinds.push('curve');
       var d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
       for (var i = 1; i < pts.length; i++) {
@@ -338,7 +339,7 @@
     return '<span class="badge' + (cls ? ' ' + cls : '') + '" style="--pc:var(--pc-' + esc(pid) + ')" aria-hidden="true">' + esc(p ? p.code : '?') + '</span>';
   }
   function topicLink(id, extraCls) {
-    if (!has(id)) return '<span class="tlink is-off" title="Not included in this preview">' + esc(id.replace(/-/g, ' ')) + '</span>';
+    if (!has(id)) return '<span class="tlink is-off" title="Part of a path that is not published yet">' + esc(id.replace(/-/g, ' ')) + '</span>';
     var n = node(id), st = statusOf(id);
     return '<a class="tlink' + (st === 'done' ? ' is-done' : '') + (extraCls ? ' ' + extraCls : '') + '" href="#n-' + esc(id) + '" style="--pc:var(--pc-' + esc(homeOf(n)) + ')">' +
       '<span class="dot"></span>' + esc(n.title) + (st === 'done' ? icon('check') : '') + '</a>';
@@ -399,7 +400,7 @@
     var pub = D.paths.filter(function (p) { return p.published; });
     var first = pub[0];
     var html = '<section class="hero wrap">' +
-      '<div><p class="eyebrow">' + (D.site.preview ? 'Preview · ' + plural(pub.length, 'path') + ' switched on' : 'All paths') + '</p>' +
+      '<div><p class="eyebrow">' + (D.site.preview ? pub.length + ' of ' + D.stats.paths + ' paths published' : 'All ' + D.stats.paths + ' paths published') + '</p>' +
       '<h1>' + esc(D.site.title) + '</h1>' +
       '<p class="lede">' + esc(D.site.tagline) + '</p>' +
       '<ul class="how">' +
@@ -408,16 +409,16 @@
       '<li><span class="how-glyph">' + icon('flag') + '</span><span><b>Paths share topics.</b> Mark what you already know and every path shortens to the route that is left.</span></li>' +
       '</ul>' +
       '<div class="hero-actions">' + (first ? '<a class="btn btn-primary" href="#p-' + esc(first.id) + '">' + icon('map') + 'Open ' + esc(first.title) + '</a>' : '') +
-      '<a class="btn" href="#about">' + icon('info') + 'How to read it</a></div></div>' +
-      '<dl class="stats">' +
-      '<div><dt>Topics researched</dt><dd>' + D.stats.topics + '<small>each with a curated text and course</small></dd></div>' +
-      '<div><dt>Paths</dt><dd>' + D.stats.paths + '<small>' + D.stats.published + ' in this preview</small></dd></div>' +
-      '<div><dt>Resources</dt><dd>' + D.stats.resources + '<small>books, courses, sites, practice</small></dd></div>' +
-      '<div><dt>Facts checked</dt><dd>' + esc(monthYear(D.site.checked)) + '<small>course runs, video access, links</small></dd></div>' +
-      '</dl></section>';
+      '<a class="btn" href="#about">' + icon('info') + 'How to read it</a></div>' +
+      '<p class="hero-meta"><span><b>' + D.stats.topics + '</b> topics researched</span><span><b>' + D.stats.paths + '</b> paths</span>' +
+      '<span><b>' + D.stats.resources.toLocaleString('en-US') + '</b> resources</span><span>course facts checked <b>' + esc(monthYear(D.site.checked)) + '</b></span></p></div></section>';
+
+    html += '<section class="section wrap"><div class="sysmap-head"><h2>System map</h2>' +
+      '<p>Each path is a line. A line runs from one path to another when topics in the second require topics in the first; thicker lines carry more prerequisites.</p></div>' +
+      overviewGraph() + '</section>';
 
     html += '<section class="section wrap"><div class="section-head"><h2>Paths</h2><p>' +
-      (D.site.preview ? 'Every path is researched. This preview switches on ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + ' so the design can be judged on real data.' : '') + '</p></div><div class="families">' +
+      (D.site.preview ? 'Every path is researched. ' + esc(pub.map(function (p) { return p.title; }).join(', ')) + (pub.length === 1 ? ' is' : ' are') + ' published first; the others follow in the same format.' : '') + '</p></div><div class="families">' +
       D.families.map(function (f) {
         return '<div><h3 class="family-title">' + esc(f.title) + '</h3><div class="pgrid">' + f.paths.map(function (pid) {
           var p = pathOf(pid);
@@ -429,13 +430,9 @@
               '<span class="pcard-foot"><span>' + plural(p.count, 'topic') + (done ? ' · ' + done + ' done' : '') + '</span><b>Open ' + icon('arrow-right') + '</b></span></a>';
           }
           return '<div class="pcard is-off" style="--pc:var(--pc-' + esc(pid) + ')">' + top +
-            '<span class="pcard-foot"><span>' + plural(p.count, 'topic') + '</span><span>Not in this preview</span></span></div>';
+            '<span class="pcard-foot"><span>' + plural(p.count, 'topic') + '</span><span>Not published yet</span></span></div>';
         }).join('') + '</div></div>';
       }).join('') + '</div></section>';
-
-    html += '<section class="section wrap"><div class="section-head"><h2>How the paths connect</h2>' +
-      '<p>A line runs from one path to another when topics in the second require topics in the first. Thicker lines carry more prerequisites.</p></div>' +
-      overviewGraph() + '</section>';
     return html;
   }
 
@@ -461,7 +458,7 @@
       var style = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + b.w + 'px;height:' + b.h + 'px;--pc:var(--pc-' + esc(pid) + ')';
       return p.published
         ? '<a class="onode" href="#p-' + esc(pid) + '" style="' + style + '">' + inner + '</a>'
-        : '<div class="onode is-off" style="' + style + '" title="Not in this preview">' + inner + '</div>';
+        : '<div class="onode is-off" style="' + style + '" title="Not published yet">' + inner + '</div>';
     }).join('');
     return '<div class="overview"><div class="overview-sizer" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' +
       '<div class="overview-canvas" data-w="' + lay.width + '" data-h="' + lay.height + '" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' + svg + nodes + '</div></div></div>';
@@ -489,15 +486,14 @@
     var homeNames = Object.keys(homes).sort(function (a, b) { return ix.rank['p:' + a] - ix.rank['p:' + b]; }).map(function (h) { return pathOf(h).short; });
     var pct = all.length ? Math.round(100 * done / all.length) : 0;
 
-    var head = '<section class="phead wrap wrap-wide" style="--pc:var(--pc-' + esc(pid) + ')">' +
+    var head = '<section class="phead wrap wrap-wide is-' + view + '" style="--pc:var(--pc-' + esc(pid) + ')">' +
       '<div><p class="eyebrow">' + badge(pid, 'badge-sm') + esc((D.families.filter(function (f) { return f.id === p.family; })[0] || {}).title || '') + ' path</p>' +
       '<h1>' + esc(p.title) + '</h1><p class="lede">' + esc(p.tagline) + '</p>' +
       '<p class="pfacts" style="margin-top:12px"><span><b>' + own.length + '</b> topics in this path</span>' +
       (settings.scope === 'route' && extern ? '<span><b>' + extern + '</b> prerequisites from ' + esc(homeNames.join(', ')) + '</span>' : '') +
       (p.optional ? '<span><b>' + p.optional + '</b> optional</span>' : '') + '</p></div>' +
-      '<div class="phead-side"><div class="dest"><span class="k">Where it leaves you</span><p>' + esc(p.destination) + '</p></div>' +
-      '<div class="meter"><div class="meter-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + all.length + '" aria-valuenow="' + done + '" aria-label="Topics done"><span style="width:' + pct + '%"></span></div>' +
-      '<div class="meter-text"><span>' + done + ' of ' + all.length + ' topics done</span><span>' + (settings.scope === 'route' ? 'including prerequisites' : 'this path only') + '</span></div></div></div></section>';
+      '<div class="phead-side"><div class="dest"><span class="k">Where it leaves you</span><p>' + esc(p.destination) + '</p></div></div>' +
+      lineDiagram(all, done, pct) + '</section>';
 
     var tabs = '<div class="wrap wrap-wide"><div class="ptabs-row"><nav class="tabs" aria-label="Views">' +
       Object.keys(VIEWS).map(function (v) {
@@ -509,6 +505,20 @@
     return head + tabs + '<section class="pbody wrap wrap-wide">' + body + '</section>';
   }
 
+  /* the path's stages as stops on its line; a stop fills in as its topics are done */
+  function lineDiagram(all, done, pct) {
+    var L = assignLayers(all, edgesAmong(all)).layer, stages = [];
+    all.forEach(function (id) { (stages[L[id]] = stages[L[id]] || []).push(id); });
+    var stops = stages.map(function (list, i) {
+      var d = list.filter(function (id) { return statusOf(id) === 'done'; }).length;
+      var cls = 'stop' + (d === list.length ? ' is-done' : d ? ' is-part' : '') + (i === stages.length - 1 ? ' is-end' : '');
+      return '<li class="' + cls + '" title="Stage ' + (i + 1) + ': ' + plural(list.length, 'topic') + (d ? ', ' + d + ' done' : '') + '"><span class="stop-dot"></span><span class="stop-n">' + (i + 1) + '</span></li>';
+    }).join('');
+    return '<div class="linediagram" role="img" aria-label="' + stages.length + ' stages, ' + done + ' of ' + all.length + ' topics done (' + pct + '%)">' +
+      '<span class="k">Stages</span><div class="ld-scroll"><ol class="stops">' + stops + '</ol></div>' +
+      '<span class="ld-done"><b>' + done + '</b> of ' + all.length + ' topics done</span></div>';
+  }
+
   /* map */
   function mapIds(pid) { return routeIds(pid, { hideDone: settings.hideDone }); }
   function mapKey(pid) { return [pid, dirNow(), settings.lines, settings.scope, settings.hideDone, settings.hideDone ? JSON.stringify(progress) : ''].join('|'); }
@@ -516,11 +526,12 @@
   function mapBody(pid, sel) {
     var ids = mapIds(pid);
     var tools = '<div class="maptools"><div class="legend">' +
-      '<span class="lg"><span class="lg-box"></span>In this path</span>' +
-      (settings.scope === 'route' ? '<span class="lg"><span class="lg-box is-ext"></span>Prerequisite from another path</span>' : '') +
+      '<span class="lg"><span class="lg-stn" style="--pc:var(--pc-' + esc(pid) + ')"></span>In this path</span>' +
+      (settings.scope === 'route' ? '<span class="lg"><span class="lg-stn is-ext"></span>Prerequisite from another path</span>' : '') +
+      '<span class="lg"><span class="lg-stn is-opt" style="--pc:var(--pc-' + esc(pid) + ')"></span>Optional</span>' +
       '<span class="lg"><span class="lg-line"></span>Required</span>' +
       (settings.lines === 'all' ? '<span class="lg"><span class="lg-line is-soft"></span>Helpful</span>' : '') +
-      '<span class="lg">' + icon('play') + 'Public lectures</span></div>' +
+      '<span class="lg">' + icon('check') + 'Done</span></div>' +
       '<div class="tools">' +
       '<label class="switch"><input type="checkbox" data-toggle="hideDone"' + (settings.hideDone ? ' checked' : '') + '>Hide done</label>' +
       '<div class="seg" role="group" aria-label="Lines"><button type="button" data-set="lines" data-value="required" aria-pressed="' + (settings.lines === 'required') + '">Required</button><button type="button" data-set="lines" data-value="all" aria-pressed="' + (settings.lines === 'all') + '">+ Helpful</button></div>' +
@@ -539,7 +550,8 @@
   function mapCanvas(pid, ids) {
     var TB = dirNow() === 'TB';
     var lay = layoutGraph(ids, edgesAmong(ids), {
-      dir: dirNow(), nodeW: TB ? 214 : 204, nodeH: 76, gapMajor: TB ? 54 : 60, gapMinor: TB ? 18 : 14, pad: 26, gutter: TB ? 58 : 30,
+      dir: dirNow(), nodeW: TB ? 184 : 214, nodeH: TB ? 84 : 60, gapMajor: TB ? 34 : 62, gapMinor: TB ? 16 : 10,
+      pad: 28, gutter: TB ? 56 : 30, dot: 9,
     });
     ui.lay = lay;
     var showSoft = settings.lines === 'all';
@@ -556,14 +568,14 @@
     }
     var nodes = ids.map(function (id) {
       var n = node(id), b = lay.boxes[id], st = statusOf(id), isExt = n.paths.indexOf(pid) < 0;
-      var cls = ['gnode', isExt ? 'is-ext' : '', n.optional ? 'is-opt' : '', st !== 'todo' ? 'is-' + st : '', ui.selected === id ? 'is-sel' : ''].filter(Boolean).join(' ');
+      var cls = ['gnode', TB ? 'is-tb' : 'is-lr', isExt ? 'is-ext' : 'is-own', n.optional ? 'is-opt' : '', st !== 'todo' ? 'is-' + st : '', ui.selected === id ? 'is-sel' : ''].filter(Boolean).join(' ');
       var kicker = isExt ? pathOf(homeOf(n)).short : (LEVEL[n.level] || '');
       if (n.optional) kicker += ' · optional';
-      var icons = (publicLectures(n) ? icon('play') : '') + (st === 'done' ? icon('check', 'ic-done') : st === 'doing' ? icon('half', 'ic-doing') : '');
+      var mark = st === 'done' ? icon('check', 'ic-done') : st === 'doing' ? icon('half', 'ic-doing') : '';
       return '<button type="button" class="' + cls + '" data-node="' + esc(id) + '" style="left:' + b.x.toFixed(1) + 'px;top:' + b.y.toFixed(1) + 'px;width:' + b.w + 'px;height:' + b.h + 'px;--pc:var(--pc-' + esc(homeOf(n)) + ')" ' +
         'aria-label="' + esc(n.title + (isExt ? ', prerequisite from ' + pathOf(homeOf(n)).short : '') + ', stage ' + (b.layer + 1) + ', ' + STATUS[st]) + '">' +
-        '<span class="gnode-meta"><span class="dot"></span><span class="gnode-kicker">' + esc(kicker) + '</span><span class="gnode-icons">' + icons + '</span></span>' +
-        '<span class="gnode-title">' + esc(n.title) + '</span></button>';
+        '<span class="stn-dot"></span><span class="stn-label"><span class="stn-kicker">' + mark + esc(kicker) + '</span>' +
+        '<span class="stn-name">' + esc(n.title) + '</span></span></button>';
     }).join('');
     return '<div class="map-canvas" id="map-canvas" style="width:' + lay.width + 'px;height:' + lay.height + 'px">' + labels + svg + nodes + '</div>';
   }
@@ -586,7 +598,7 @@
     var vp = $('#map-vp'); if (!vp || !ui.lay) return 1;
     var fit = (vp.clientWidth - 4) / ui.lay.width;
     if (!ui.lay.TB) fit = Math.min(fit, (vp.clientHeight - 4) / ui.lay.height);
-    return Math.max(0.5, Math.min(1, fit));
+    return Math.max(0.3, Math.min(1, fit));
   }
   function setupMap(pid, keepView) {
     var vp = $('#map-vp'); if (!vp) return;
@@ -596,7 +608,15 @@
     if (prev && prev.s) {
       ui.scale = prev.s; setScale(prev.s); vp.scrollLeft = prev.l; vp.scrollTop = prev.t;
     } else {
-      ui.scale = null; var f = fitScale(); ui.scale = f; setScale(f); vp.scrollLeft = 0; vp.scrollTop = 0;
+      // open at a readable size; the Fit button zooms out to the whole route
+      ui.scale = null; var f = Math.max(isWide() ? 0.74 : 0.62, fitScale()); ui.scale = f; setScale(f); vp.scrollLeft = 0; vp.scrollTop = 0;
+      if (ui.lay.TB) {   // top-to-bottom maps are wide: start centred on the first stage
+        var first = Object.keys(ui.lay.boxes).map(function (k) { return ui.lay.boxes[k]; }).filter(function (b) { return b.layer === 0; });
+        if (first.length) {
+          var mid = first.reduce(function (s, b) { return s + b.c; }, 0) / first.length;
+          vp.scrollLeft = Math.max(0, mid * f - vp.clientWidth / 2);
+        }
+      }
     }
     vp.addEventListener('scroll', function () { ui.scrollL = vp.scrollLeft; ui.scrollT = vp.scrollTop; }, { passive: true });
     vp.addEventListener('wheel', function (ev) {
@@ -882,7 +902,7 @@
       '</div>' +
       '<div class="about-card"><h2>Where the data comes from</h2><p class="prose">Built from the research in the repository (<code>research/nodes</code>): ' + D.stats.topics + ' topics across ' + D.stats.paths +
       ' paths, each researched, independently reviewed and link-checked. Course facts were last checked in ' + esc(monthYear(D.site.checked)) + '. ' +
-      (D.site.preview ? 'This preview switches on one path; the presentation options (look, map direction, guide layout and more) are under Options at the top of the page.' : '') +
+      (D.site.preview ? 'Paths are published one at a time; the rest are researched and follow in the same format. Light or dark, map direction and other preferences are under Settings at the top of the page.' : '') +
       (D.site.repo ? ' Source: ' + ext(D.site.repo, esc(D.site.repo.replace(/^https:\/\//, ''))) + '.' : '') + '</p></div></section>';
   }
 
@@ -900,32 +920,20 @@
     ] },
   ];
   function optionsHtml() {
-    var skinCards = Object.keys(SKINS).map(function (k) {
-      var s = SKINS[k], on = settings.skin === k, sw = s.sw;
-      var prev = '<span class="skin-preview" style="background:' + sw[5] + '">' +
-        '<i style="left:8px;top:8px;right:8px;height:18px;background:' + sw[0] + ';border:1px solid ' + sw[3] + '"></i>' +
-        '<i style="left:14px;top:12px;width:46%;height:8px;background:' + sw[1] + ';border-radius:2px"></i>' +
-        '<i style="left:8px;bottom:9px;width:38%;height:20px;background:' + sw[0] + ';border:2px solid ' + sw[2] + ';border-radius:' + (k === 'transit' ? '8px' : '2px') + '"></i>' +
-        '<i style="right:8px;bottom:9px;width:38%;height:20px;background:' + sw[0] + ';border:2px solid ' + sw[4] + ';border-radius:' + (k === 'transit' ? '8px' : '2px') + '"></i>' +
-        '<i style="left:30%;right:30%;bottom:18px;height:2px;background:' + sw[2] + '"></i>' +
-        '<i style="right:10px;top:12px;font:600 11px/1 ' + s.font + ';color:' + sw[1] + ';font-style:normal">Aa</i></span>';
-      return '<label class="skin' + (on ? ' is-on' : '') + '"><input type="radio" name="opt-skin" value="' + k + '"' + (on ? ' checked' : '') + ' data-opt="skin">' + prev +
-        '<b>' + esc(s.name) + '</b><small>' + esc(s.note) + '</small></label>';
-    }).join('');
     function seg(row) {
       return '<div class="seg" role="radiogroup" aria-label="' + esc(row.label) + '">' + row.choices.map(function (ch) {
         var on = String(settings[row.key]) === ch[0];
         return '<label class="' + (on ? 'is-on' : '') + '"><input type="radio" name="opt-' + row.key + '" value="' + ch[0] + '"' + (on ? ' checked' : '') + ' data-opt="' + row.key + '">' + esc(ch[1]) + '</label>';
       }).join('') + '</div>';
     }
-    var body = '<fieldset class="opt-group"><legend>Look</legend><div class="skins">' + skinCards + '</div>' +
-      '<div class="opt-row"><span>Light or dark</span>' + seg({ key: 'mode', label: 'Light or dark', choices: [['auto', 'Match device'], ['light', 'Light'], ['dark', 'Dark']] }) + '</div></fieldset>' +
+    var body = '<fieldset class="opt-group"><legend>Appearance</legend>' +
+      '<div class="opt-row"><span>Light or dark</span>' + seg({ key: 'mode', label: 'Light or dark', choices: [['dark', 'Dark'], ['light', 'Light'], ['auto', 'Match device']] }) + '</div></fieldset>' +
       OPTION_ROWS.map(function (g) {
         return '<fieldset class="opt-group"><legend>' + esc(g.group) + '</legend>' + g.rows.map(function (row) {
           return '<div class="opt-row"><span>' + esc(row.label) + '</span>' + seg(row) + (row.help ? '<p class="opt-help">' + esc(row.help) + '</p>' : '') + '</div>';
         }).join('') + '</fieldset>';
       }).join('');
-    return '<div class="dlg-frame"><div class="dlg-head"><div><h2 id="dlg-options-title">Options</h2><p>Every choice applies at once, so you can compare looks and layouts for the final version. Choices and progress stay in this browser.</p></div>' +
+    return '<div class="dlg-frame"><div class="dlg-head"><div><h2 id="dlg-options-title">Settings</h2><p>Changes apply at once. Settings and progress stay in this browser.</p></div>' +
       '<button type="button" class="btn btn-quiet btn-sm" data-action="close-dialog" aria-label="Close">' + icon('close') + '</button></div>' +
       '<div class="dlg-body">' + body + '</div>' +
       '<div class="dlg-foot"><button type="button" class="btn btn-sm" data-action="reset-options">Restore defaults</button>' +
@@ -995,7 +1003,7 @@
     ui.searchHits = hits;
     if (ui.searchSel >= hits.length) ui.searchSel = hits.length - 1;
     var html = '';
-    if (!hits.length) html = '<div class="sr-empty">Nothing matches “' + esc(q) + '” in this preview.</div>';
+    if (!hits.length) html = '<div class="sr-empty">Nothing matches “' + esc(q) + '” in the published paths.</div>';
     else {
       var lastType = '';
       hits.forEach(function (h, i) {
@@ -1040,7 +1048,7 @@
     $('#crumbs').innerHTML = parts.join('<span class="sep">/</span>');
   }
   function footer() {
-    $('#footer').innerHTML = '<span>' + esc(D.site.title) + ' · ' + D.stats.topics + ' topics, ' + D.stats.paths + ' paths' + (D.site.preview ? ' · preview with ' + plural(D.stats.published, 'path') : '') + '</span>' +
+    $('#footer').innerHTML = '<span>' + esc(D.site.title) + ' · ' + D.stats.topics + ' topics researched across ' + D.stats.paths + ' paths' + (D.site.preview ? ' · ' + D.stats.published + ' published' : '') + '</span>' +
       '<span>Course facts checked ' + esc(monthYear(D.site.checked)) + ' · <a href="#about">How to read it</a>' + (D.site.repo ? ' · ' + ext(D.site.repo, 'Source') : '') + '</span>';
   }
 
@@ -1053,7 +1061,7 @@
     var html;
     if (r.page === 'path') {
       if (!pathOf(r.path)) html = notFound('That path does not exist.');
-      else if (!pathOf(r.path).published) html = notFound(pathOf(r.path).title + ' is researched but not switched on in this preview.');
+      else if (!pathOf(r.path).published) html = notFound(pathOf(r.path).title + ' is researched but not published yet.');
       else {
         ui.lastPath = r.path;
         var sameMap = r.view === 'map' && ui.mapPath === r.path && $('#map-vp') && !opts.full;
@@ -1067,7 +1075,7 @@
         ui.mapPath = r.view === 'map' ? r.path : null;
       }
     } else if (r.page === 'topic') {
-      html = has(r.id) ? topicView(r.id) : notFound('That topic is not part of this preview.');
+      html = has(r.id) ? topicView(r.id) : notFound('That topic belongs to a path that is not published yet.');
       ui.mapPath = null;
     } else if (r.page === 'about') { html = aboutView(); ui.mapPath = null; }
     else { html = homeView(); ui.mapPath = null; }
@@ -1101,20 +1109,31 @@
 
   // Only touch data-theme when this page set it: in "auto" an embedding host's own light/dark choice stays in charge.
   var ownTheme = settings.mode === 'light' || settings.mode === 'dark';
+  function isDarkNow() {
+    var t = docEl.getAttribute('data-theme');
+    if (t === 'dark' || t === 'light') return t === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
   function applyLook() {
-    docEl.setAttribute('data-skin', settings.skin);
     if (settings.mode === 'light' || settings.mode === 'dark') { docEl.setAttribute('data-theme', settings.mode); ownTheme = true; }
     else if (ownTheme) {
       if (hostTheme) docEl.setAttribute('data-theme', hostTheme); else docEl.removeAttribute('data-theme');
       ownTheme = false;
     }
+    var btn = $('#btn-theme');
+    if (btn) {
+      var dark = isDarkNow();
+      btn.innerHTML = icon(dark ? 'sun' : 'moon');
+      btn.setAttribute('aria-label', dark ? 'Switch to light' : 'Switch to dark');
+      btn.setAttribute('title', dark ? 'Switch to light' : 'Switch to dark');
+    }
   }
-  function saveSettings() { store.set('settings', settings); }
+  function saveSettings() { store.set(SETTINGS_KEY, settings); }
   function setSetting(key, value) {
     if (key === 'hideDone') value = !!value;
     settings[key] = value;
     saveSettings();
-    if (key === 'skin' || key === 'mode') { applyLook(); refreshOptions(); return; }
+    if (key === 'mode') { applyLook(); refreshOptions(); return; }
     refreshOptions();
     render({ keepScroll: true, full: true, silent: true });
   }
@@ -1153,6 +1172,7 @@
     var dlg = t.closest('dialog');
     switch (act) {
       case 'options': openOptions(); break;
+      case 'toggle-theme': setSetting('mode', isDarkNow() ? 'light' : 'dark'); break;
       case 'close-dialog': if (dlg) dlg.close(); break;
       case 'reset-options':
         settings = Object.assign({}, DEFAULTS); saveSettings(); applyLook(); refreshOptions(); render({ keepScroll: true, full: true, silent: true }); break;

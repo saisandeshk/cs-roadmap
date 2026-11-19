@@ -30,29 +30,26 @@ sharing a preview outside GitHub Pages.
 Progress (not started / in progress / done, per topic and per resource) and the starting point are stored in the
 browser's local storage. Nothing is sent anywhere.
 
-## Presentation options to choose from
+## Settings
 
-Everything below can be switched live under **Options** on the site. Once you pick, set the defaults in
-`DEFAULTS` at the top of `src/app.js` (and, if you like, remove the choices you do not want from `OPTION_ROWS`
-and `SKINS`).
+The look is fixed: the Transit theme (route-map style, each path keeps its own line colour), dark by default.
+Readers can change these under **Settings** (the sun/moon button in the top bar switches light and dark); the
+defaults live in `DEFAULTS` at the top of `src/app.js`.
 
 | Setting | Choices | Default |
 |---|---|---|
-| Theme (`skin`) | **Transit**: route-map look, each path has its own line colour. **Datasheet**: engineering datasheet, grid paper, monospace labels, square corners. **Library**: reading-room look, book typography, catalogue-card topics | Transit |
-| Light or dark (`mode`) | Match device, Light, Dark | Match device |
+| Light or dark (`mode`) | Dark, Light, Match device | Dark |
 | Map direction (`dir`) | Auto (left to right on wide screens, top to bottom on phones), Top to bottom, Left to right | Auto |
-| Map lines (`lines`) | Required only, Required and helpful | Required only |
+| Map lines (`lines`) | Required only, Required and helpful | Required and helpful |
 | Topics in a path (`scope`) | The path and the prerequisites it borrows from other paths, or this path only | Path and prerequisites |
 | Guide layout (`layout`) | Cards (syllabus-like), compact table | Cards |
 | Topic pages (`detail`) | Essentials first (extra sections folded), everything open | Essentials first |
 | A path opens on (`start`) | Map, Guide | Map |
 
-Open question kept for you: whether a course that serves several topics (CS336 serves six topics on this route)
-should be presented once, as in the Courses view, or topic by topic, as on the map and in the guide. The site
-currently offers both.
+A course that serves several topics (CS336 serves six on the ML Systems route) is shown topic by topic on the map,
+in the guide and on topic pages, and once with all its uses in the Courses view.
 
-## Themes
+## Colours
 
-Each skin in `src/styles.css` defines a light palette (`--l-*`) and a dark palette (`--d-*`), fonts and corner
-radii; the light/dark blocks map those onto the tokens components use. Path colours (`--pcl-*`, `--pcd-*`) are
-shared by every skin. To drop a skin, delete its block and its entry in `SKINS`.
+`src/styles.css` defines a light palette (`--l-*`) and a dark palette (`--d-*`); the light/dark blocks map them onto
+the tokens components use. Each path has an identity colour (`--pcl-*` light, `--pcd-*` dark).

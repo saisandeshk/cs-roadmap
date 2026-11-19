@@ -9,8 +9,8 @@ lectures are public, assignment access) were checked in November 2026.
   Generative Models, AI Safety & Interpretability, ML Systems & GPU Computing, Distributed Systems, Database Systems,
   OS Internals & Performance Engineering, Computer Architecture & Hardware, Programming Languages & Compilers,
   Security & Cryptography, Theory & Advanced Algorithms.
-- Website: `https://saisandeshk.github.io/cs-roadmap/` once GitHub Pages is switched on (see below).
-  The example build publishes one path, ML Systems & GPU Computing, with every prerequisite it needs.
+- Website: https://saisandeshk.github.io/cs-roadmap/
+  ML Systems & GPU Computing is published first, with every prerequisite it needs; the other paths are researched and follow.
 
 ## Layout
 
@@ -40,4 +40,4 @@ python3 -m http.server --directory _site 8000
 2. Push to the default branch. The `Site` workflow validates the data, builds `_site/` and deploys it.
 3. To publish more paths, edit `site/config.yaml` (`publish_paths: all` publishes everything).
 
-Presentation options (theme, light or dark, map direction, guide layout and more) are explained in `site/README.md`.
+Reader settings (light or dark, map direction, guide layout and more) are explained in `site/README.md`.
