@@ -19,7 +19,7 @@ resources:
     url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/all.pdf
     edition_or_term: "Fall 2020 combined notes (PDF, about 4 MB); course site also has Spring 2024 materials"
     access: free
-    use: "Ch. 1-2 (MST history, linear-time randomized MST, matroids), 3 (dynamic connectivity, amortized), 6-8 (matchings: combinatorial, weighted, algebraic), 9-12 (concentration, JL dimension reduction, streaming, SVD), 13-17 (online learning with experts, LPs via experts, approximate max-flow, gradient and mirror descent), 22 (competitive analysis, online algorithms). Read chapters selectively against the course topic of the week."
+    use: "Ch. 1-2 (MST history, linear-time randomized MST, matroids), 3 (dynamic connectivity, amortized), 6-8 (matchings: combinatorial, weighted, algebraic), 9-12 (concentration, JL dimension reduction, streaming, SVD), 13 (online learning with experts), 22 (competitive analysis, online algorithms); ch. 14-17 (LPs and approximate max-flow via experts, gradient and mirror descent) are optional, outside the node's scope. Read chapters selectively against the course topic of the week."
     why: "The best free, modern graduate-level text that matches this scope: matchings and flows with LP duality, online algorithms, streaming and sketching, and continuous-optimization methods, written to be read; notes are explicitly not fully proofread, so cross-check with CLRS/K&T."
     verified: true
   - id: karger-6-854
@@ -49,13 +49,15 @@ resources:
     url: https://timroughgarden.org/w16/w16.html
     edition_or_term: "Winter 2016 (20 lectures with videos and notes, exercise sets, 4 problem sets)"
     access: free
-    use: "Lectures 1-6 (max flow: Ford-Fulkerson, Edmonds-Karp, Dinic, push-relabel; min cut; bipartite matching and Hall; Hungarian algorithm), 7-10 (LP, duality, complementary slackness, minimax, simplex/ellipsoid), 11-14 (multiplicative weights, online algorithms). Do the weekly exercise sets and the four problem sets. YouTube playlist: 'A Second Course in Algorithms (Stanford CS261, Winter 2016)'."
+    use: "Lectures 1-6 (max flow: Ford-Fulkerson, Edmonds-Karp, Dinic, push-relabel; min cut; bipartite matching and Hall; Hungarian algorithm), 7-10 (LP, duality, complementary slackness, minimax, simplex/ellipsoid), 11-14 (multiplicative weights, online algorithms). Do the weekly exercise sets and the four problem sets. Videos: YouTube playlist in the course block."
     why: "Gap: the clearest public teaching of flows, matching and LP duality at the right level before Karger/Gupta, with problem sets and exercise sets public. Also feeds approximation-algorithms (lectures 15-18)."
     verified: true
     course:
       latest_term: "Winter 2016 (later Stanford versions taught by others; no public recordings located)"
       latest_url: https://timroughgarden.org/w16/w16.html
       videos: public
+      public_videos_term: "Winter 2016"
+      public_videos_url: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc
       assignments: public
       assignments_url: https://timroughgarden.org/w16/w16.html
   - id: demaine-6-851
@@ -77,17 +79,6 @@ resources:
       public_videos_url: https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/video_galleries/lecture-videos/
       assignments: public
       assignments_url: https://courses.csail.mit.edu/6.851/spring21/index.html
-  - id: foundations-of-data-science
-    role: secondary
-    kind: book
-    title: "Foundations of Data Science"
-    by: "Avrim Blum, John Hopcroft, Ravindran Kannan"
-    url: https://www.cs.cornell.edu/jeh/book.pdf
-    edition_or_term: "Draft of 4 January 2018 (free PDF; Cambridge University Press 2020 edition)"
-    access: free
-    use: "Chapter on streaming and sketching (frequency moments, count-min, distinct elements) and high-dimensional geometry/random projection as a second treatment of streaming algorithms after Gupta ch. 10-11."
-    why: "Gap: the scope's streaming algorithms get only a lecture in Karger; this gives a systematic, readable treatment."
-    verified: true
   - id: clrs-ref
     role: reference
     kind: book
@@ -135,12 +126,12 @@ resources:
 considered:
   - {title: "Roughgarden/Valiant, Stanford CS 168 The Modern Algorithmic Toolbox", url: "https://web.stanford.edu/class/cs168/", reason: "Great hashing/sketching/LP/spectral view but web.stanford.edu could not be reached from this environment; not verified."}
   - {title: "MIT 6.854 Spring 2016 (Ankur Moitra) YouTube", url: "https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c", reason: "Verified live playlist titled 'MIT 6.854 (Advanced Algorithms), Spring 2016'; alternative public recording with a more modern selection (e.g. sketching); chosen Karger for fuller notes."}
-  - {title: "Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, videos posted)", url: "https://www.cs.cornell.edu/courses/cs6820/2025fa/", reason: "Newest public recordings of an advanced algorithms course (matchings, LP duality, online matching, approximation, spectral methods, random sampling); verified lecture list with Video and Notes links, but selection differs from the scope; strong alternate primary-course."}
+  - {title: "Cornell CS 5820/6820 Analysis of Algorithms (Fall 2025, videos posted)", url: "https://www.cs.cornell.edu/courses/cs6820/2025fa/", reason: "Newest public recordings of an advanced algorithms course (matchings, LP duality, online matching, approximation, spectral methods, random sampling); verified lecture list with Video and Notes links, but selection differs from the scope; Zoom recording links tested 2026-11-19: they return a Zoom error page without a Cornell login, so not usable as a public primary-course."}
   - {title: "CMU 15-850 Advanced Algorithms (Spring 2023 Panopto)", url: "https://www.cs.cmu.edu/~15850/", reason: "Spring 2023 recordings are on CMU Panopto; access not verified."}
   - {title: "Harvard CS 224 Advanced Algorithms (Fall 2014, Nelson)", url: "https://people.seas.harvard.edu/~cs224/fall14/index.html", reason: "Videos on YouTube; older and heavier on streaming; listed in cs-video-courses; not opened."}
   - {title: "UCSC / Purdue / Marburg advanced algorithms playlists (Marburg CS 627 Summer 2025 videos)", url: "https://www.wild-inter.net/teaching/advalg/", reason: "Recent video set listed in cs-video-courses; not opened."}
   - {title: "Mehlhorn and Sanders, Algorithms and Data Structures: The Basic Toolbox (free)", url: "https://people.mpi-inf.mpg.de/~mehlhorn/Toolbox.html", reason: "Strong on engineering of data structures; not a graduate theory text; not opened."}
-notes: "No single book covers the scope, so the primary-text is Gupta's graduate notes (free), with Karger's lecture notes and videos as the course, Roughgarden's CS261 as the clearest on-ramp for flows/LP, and Demaine's 6.851 for advanced data structures. Karger's newest recordings (Fall 2022/2024) were not found; the Fall 2021 recordings are public on YouTube via the materials page. 170 hours assumes selecting about two thirds of the material."
+notes: "No single book covers the scope, so the primary-text is Gupta's graduate notes (free), with Karger's lecture notes and videos as the course, Roughgarden's CS261 as the clearest on-ramp for flows/LP, and Demaine's 6.851 for advanced data structures. Karger's newest recordings (Fall 2022/2024) were not found; the Fall 2021 recordings are public on YouTube via the materials page. 170 hours assumes selecting about two thirds of the material. Review R1 asked whether Cornell CS 5820/6820 Fall 2025 (newer, per-lecture recordings) should replace Karger: its Zoom recording links returned a Zoom error page when opened without a Cornell login (tested 2026-11-19), so Karger stays primary. A second streaming treatment (Foundations of Data Science, Blum-Hopcroft-Kannan) is listed in randomized-algorithms and not repeated here."
 split_proposal: "Consider splitting out 'Data Structures (Advanced)' (persistence, integer structures, hashing, cache-oblivious; Demaine 6.851) and 'Streaming and Sketching' from this node; the scope as written covers four distinct areas."
 prereq_changes: "Add soft: [probability] and soft: [linear-algebra] (LP duality, JL, SVD, concentration)."
 open_questions:

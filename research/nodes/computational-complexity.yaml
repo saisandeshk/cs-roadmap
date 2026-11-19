@@ -19,7 +19,7 @@ resources:
     url: https://theory.cs.princeton.edu/complexity/
     edition_or_term: "Cambridge University Press 2009; free author draft (489 pp.) at the book site"
     access: free
-    use: "Chapters on the computational model, NP and NP-completeness, diagonalization (hierarchy theorems), space complexity, the polynomial hierarchy and alternations, Boolean circuits, randomized computation, interactive proofs, complexity of counting, circuit lower bounds, derandomization (hardness vs randomness), and the PCP theorem. Skip cryptography, algebraic models, average-case and quantum computation until needed. Follow O'Donnell's lecture-by-lecture reading list (his page maps each lecture to chapter sections)."
+    use: "Chapters on the computational model, NP and NP-completeness, diagonalization (hierarchy theorems), space complexity, the polynomial hierarchy and alternations, Boolean circuits, randomized computation, interactive proofs, complexity of counting, circuit lower bounds, derandomization (hardness vs randomness), and the PCP theorem. Skip cryptography, algebraic models, average-case and quantum computation until needed. Follow O'Donnell's lecture-by-lecture reading list (his page maps each lecture to chapter sections). Do the end-of-chapter exercises for the chapters read (diagonalization, PH, circuits, randomized classes, IP) with full proofs; no official solutions exist, so compare against Cornell CS 6810's scribe notes."
     why: "The standard graduate text, broad and correct, with free author drafts and teaching plans; matches the scope (hierarchy, PH, randomized classes, circuits, IP, PCP). The 'conceptual' alternative by Goldreich is more philosophical; Arora-Barak is the one lectures and problem sets assume."
     verified: true
   - id: odonnell-15-855
@@ -98,17 +98,6 @@ resources:
     access: free
     use: "Look up a complexity class and its known relations whenever one appears in reading; do not read linearly."
     why: "Fast definitions and containment diagrams for the many classes in the course."
-    verified: true
-  - id: ab-exercises
-    role: practice
-    kind: book
-    title: "Arora-Barak chapter exercises and O'Donnell homeworks"
-    by: "Arora, Barak; O'Donnell"
-    url: https://www.cs.cmu.edu/~odonnell/complexity17/
-    edition_or_term: "Exercises at end of each chapter; O'Donnell Fall 2017 homework inside the 120 MB notes PDF"
-    access: free
-    use: "Do the Arora-Barak exercises on the chapters read (diagonalization, PH, circuits, randomized classes, IP) and the homework problems in O'Donnell's PDF; aim for full proofs, and compare with Cornell's scribe notes."
-    why: "Proof-writing on diagonalization, simulation arguments and oracle constructions is the real skill of the subject; exercises are the only way to test it. No official solutions exist."
     verified: true
 considered:
   - {title: "O'Donnell, Undergrad Complexity Theory at CMU (15-455, Spring 2017)", url: "https://www.youtube.com/playlist?list=PLm3J0oaFux3YL5vLXpzOyJiLtqLp6dCW2", reason: "28 lectures corresponding to Sipser Part III; verified live; belongs to the theory-of-computation node as a prerequisite supplement."}

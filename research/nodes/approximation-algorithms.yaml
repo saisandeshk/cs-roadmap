@@ -102,16 +102,16 @@ resources:
       videos: none
       assignments: public
       assignments_url: https://theory.epfl.ch/osven/courses/Approx13/
-  - id: chekuri-homework
+  - id: chekuri-homework-fa21
     role: practice
     kind: website
-    title: "CS 583 Homework 0-4 and midterm (Spring 2026) plus old homeworks from earlier editions"
+    title: "CS 583 Fall 2021 homeworks 0-6 (and Spring 2018 homeworks 1-6 on the same page)"
     by: "Chandra Chekuri"
-    url: https://courses.grainger.illinois.edu/cs583/sp2026/
-    edition_or_term: "Spring 2026 (earlier editions: Fall 2021, Spring 2018, Spring 2016, Fall 2013)"
+    url: https://courses.grainger.illinois.edu/cs583/fa2021/
+    edition_or_term: "Fall 2021 edition page (Homework 0-6 with tex files; Spring 2018 Homework 1-6 also listed)"
     access: free
-    use: "Homework 0 through 4 and midterm PDFs linked from the page; for extra volume use the old homeworks and exams of Fall 2021, Spring 2018 and Spring 2016 listed on the same page."
-    why: "The only publicly posted, current proof-style problem sets in this area; W&S exercises have no solutions available."
+    use: "After the Spring 2026 Homework 0-4 and midterm assigned in the primary course, do Fall 2021 Homework 0-6 for extra volume on covering, packing, scheduling, LP rounding, primal-dual and cut problems; Spring 2018 sets as a further reserve."
+    why: "Extra public proof-style problem sets beyond the current term's, keyed to the same lectures; W&S exercises have no public solutions."
     verified: true
   - id: compendium-np-opt
     role: reference

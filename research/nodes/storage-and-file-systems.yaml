@@ -12,14 +12,33 @@ resources:
   - id: ostep-persistence
     role: primary-text
     kind: book
-    title: "Operating Systems: Three Easy Pieces, Part III: Persistence"
+    title: "Operating Systems: Three Easy Pieces, Part III: Persistence (advanced chapters)"
     by: "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
     url: https://pages.cs.wisc.edu/~remzi/OSTEP/
     edition_or_term: "Version 1.10 (Nov 2023)"
     access: free
-    use: "I/O devices; hard disk drives; RAID; files and directories; file system implementation (vsfs); locality and the Fast File System; crash consistency (fsck and journaling); log-structured file systems; flash-based SSDs; data integrity and protection; then the distributed-FS chapters (NFS, AFS) if wanted. Chapter PDFs: file-devices, file-disks, file-raid, file-intro, file-implementation, file-ffs, file-journaling, file-lfs, file-ssd, file-integrity."
+    use: "Chapters not read in operating-systems: 38 RAID, 41 locality and the Fast File System, 43 log-structured file systems, 44 flash-based SSDs, 45 data integrity and protection; re-skim 40 (vsfs) and 42 (crash consistency/journaling) from the OS node first. Optional: distributed FS chapters (NFS, AFS). Chapter PDFs: file-raid, file-ffs, file-lfs, file-ssd, file-integrity."
     why: "The clearest and most complete short treatment of exactly this scope (disks, RAID, FFS, journaling, LFS, SSDs) with simulators for each; free. Copy-on-write file systems (ZFS/Btrfs) get only a few pages, so add the secondary reading."
     verified: true
+  - id: eth-modern-ssds
+    role: secondary
+    kind: course
+    title: "ETH Zurich: Understanding and Designing Modern Storage Systems (227-0085-44L)"
+    by: "ETH Zurich SAFARI group (Onur Mutlu's group; course mentors listed on the page)"
+    url: https://safari.ethz.ch/projects_and_seminars/spring2026/doku.php?id=modern_ssds
+    edition_or_term: "Spring 2026 (project and seminar course)"
+    access: free
+    use: "Watch the Spring 2026 livestreamed meetings or the Spring 2024 lecture playlist: course introduction, basics of NAND flash-based SSDs, MQSim, processing inside/using NAND flash, SSD performance and advanced NAND commands, address mapping and garbage collection, and later meetings. Use the slides (PDF/PPT per meeting). The project (refactoring the MQSim SSD simulator) is designed for enrolled students; self-learners can follow it as an open-ended MQSim exercise."
+    why: "The only course found with public lecture videos for the node's SSD/flash item: NAND characteristics, FTL (mapping, GC, wear leveling) and SSD performance, at research depth. Covers SSDs only, not file-system design, so it is secondary rather than primary-course."
+    verified: true
+    course:
+      latest_term: "Spring 2026"
+      latest_url: https://safari.ethz.ch/projects_and_seminars/spring2026/doku.php?id=modern_ssds
+      videos: public
+      public_videos_term: "Spring 2024 lecture playlist; Spring 2026 meetings linked individually as YouTube livestreams"
+      public_videos_url: https://youtube.com/playlist?list=PL5Q2soXY2Zi_vvYPRfYd1dJ8Am5bvJ-A4
+      assignments: partial
+      assignments_url: https://safari.ethz.ch/projects_and_seminars/spring2026/doku.php?id=modern_ssds
   - id: ostep-fs-homework
     role: practice
     kind: practice-site
@@ -28,19 +47,8 @@ resources:
     url: https://github.com/remzi-arpacidusseau/ostep-homework
     edition_or_term: "current master"
     access: free
-    use: "file-disks (disk.py: seek/rotation/scheduling), file-raid (raid.py), file-implementation (vsfs.py), file-ffs (ffs.py), file-journaling (fsck.py: crash scenarios), file-lfs (lfs.py), file-ssd (ssd.py: FTL, garbage collection, wear), file-integrity (checksum.py)."
+    use: "file-raid (raid.py), file-ffs (ffs.py), file-lfs (lfs.py), file-ssd (ssd.py: FTL, garbage collection, wear), file-integrity (checksum.py). The disk, vsfs and journaling simulators are done in operating-systems."
     why: "Each simulator makes one design decision visible (allocation policy, journal modes, FTL mapping); fast feedback on whether the chapter's logic is understood."
-    verified: true
-  - id: mit-fs-lectures-lab
-    role: practice
-    kind: practice-site
-    title: "MIT 6.1810 file-system lecture notes and fs lab (xv6)"
-    by: "MIT PDOS"
-    url: https://pdos.csail.mit.edu/6.1810/2025/labs/fs.html
-    edition_or_term: "Fall 2025"
-    access: free
-    use: "Read lecture notes l-fs.txt (file systems), l-crash.txt (crash recovery, logging) and l-journal.txt (file-system performance and fast crash recovery); do the fs lab (large files via doubly-indirect blocks, symbolic links) and read xv6 book ch. 10-11 (file system and logging) side by side."
-    why: "Builds and debugs a real inode/log file system in a small kernel; the OS-level counterpart to OSTEP's simulators."
     verified: true
   - id: ostep-fs-checker
     role: practice
@@ -144,15 +152,14 @@ resources:
 considered:
   - {title: "Database Internals (Alex Petrov, O'Reilly 2019), Part I Storage Engines", url: "https://www.databass.dev/", reason: "B-tree vs LSM storage engines in depth; belongs to the databases path (G10); page checked but book not opened."}
   - {title: "Designing Data-Intensive Applications, ch. 3 (Storage and Retrieval)", url: "https://dataintensive.net/", reason: "Excellent overview of LSM/B-tree/column storage; more database-oriented, owned by G10."}
-  - {title: "ETH 'Understanding and Designing Modern Storage Systems' (Mutlu group, Spring 2026)", url: "https://safari.ethz.ch/projects_and_seminars/spring2026/doku.php?id=modern_storage_systems", reason: "Project/seminar course with SSD focus; page exists but is a project course and I found no lecture series to follow; see also 'Modern SSDs' course on the same site."}
   - {title: "Operating Systems: Principles and Practice, Vol. 4 Persistent Storage", url: "https://ospp.cs.washington.edu/", reason: "Alternative to OSTEP; overlaps heavily; paid."}
   - {title: "Course: CMU 15-746 / UW CS 736 / Stony Brook CSE 590 storage systems", url: "https://www3.cs.stonybrook.edu/~ezk/cse590-s25", reason: "Graduate storage courses exist (Stony Brook CSE 590 Spring 2025 syllabus public) but I found none with public lectures; 15-746 and CS 736 pages did not resolve or are only old directory listings."}
   - {title: "Linux Storage Stack Diagram (Thomas-Krenn)", url: "https://www.thomas-krenn.com/en/wiki/Linux_Storage_Stack_Diagram", reason: "Folded into the kernel-docs reference above."}
-notes: "OSTEP's persistence part is the primary text and the same book as the OS node's primary; the OSTEP homeworks overlap with that node (use them there or here, not twice). No video course for storage was found; the strongest hands-on resources are the OSTEP simulators, xv6 fs lab and FUSE. The scope 'SSD/flash, storage stack, RAID' is covered by OSTEP chapters plus papers and kernel docs. Copy-on-write file systems (ZFS/Btrfs) are under-served: the references are the OpenZFS/Btrfs docs; ZFS design papers (Bonwick) were not reachable (usenix legacy URL 404). If the owner wants CoW depth, add the Btrfs paper (Rodeh et al.) and ZFS end-to-end integrity materials in a later pass."
+notes: "Primary text is OSTEP's persistence part, split with operating-systems so no chapter is assigned twice (this node: 38, 41, 43-45; OS: 36-37, 39-40, 42). A distinct text (McKusick et al., FreeBSD D&I, or Pate, UNIX Filesystems) was suggested in review R2 but could not be verified (Pearson page 404), so it is not added. No primary-course: the ETH Modern Storage Systems course (corrected URL; the earlier modern_storage_systems URL was a non-existent DokuWiki topic) has public videos but covers SSD/flash only, so it is a secondary course. The xv6 fs lab and 6.1810 fs/crash lectures are assigned in os-kernel-implementation (MIT 6.1810); the xv6 file-system checker project is assigned here only. Copy-on-write file systems (ZFS/Btrfs) are under-served: references are the OpenZFS/Btrfs docs; the Bonwick ZFS paper URL returned 404."
 split_proposal: null
 prereq_changes: "Consider adding soft: [concurrent-programming] (journaling/locking) and databases (storage engine cross-link) as 'related' rather than prerequisites."
 open_questions:
-  - "No primary-course found: confirm if a public storage-systems course (CMU 15-746, Wisconsin CS 736, UCSC CSE 232) has video."
+  - "No file-system-design course with public video found: confirm whether CMU 15-746, Wisconsin CS 736 or UCSC CSE 232 have recordings. ETH Spring 2026 livestream playlist link on the course page looks truncated; individual meeting videos are linked."
   - "Bonwick ZFS paper URL (usenix.org/legacy/event/usenix99/...) returned 404; find a current link."
   - "Stony Brook CSE 590 URL in considered was returned by search but not opened."
 last_verified: 2026-11-18

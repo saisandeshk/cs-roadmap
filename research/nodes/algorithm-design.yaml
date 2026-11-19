@@ -88,7 +88,7 @@ resources:
     url: https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/
     edition_or_term: "Fall 2014 videos (OCW); Spring 2019 course site with problem sets"
     access: free
-    use: "The early lecture videos on NP-hardness reduction technique (check the OCW lecture list for the reduction-from-SAT/3-Partition/Hamiltonicity lectures), then the problem sets on the Spring 2019 site; use only for reduction-writing practice."
+    use: "Fall 2014 lectures 2-3 (3-Partition I-II), 4-7 (SAT I, SAT Reductions, Circuit SAT, Planar SAT), 8 (Hamiltonicity) and 9 (Graph Problems), then the problem sets on the Spring 2019 site; use only for reduction-writing practice. Lectures 10-12 (inapproximability, gaps and PCP) belong to approximation-algorithms."
     why: "Hidden gem: the only public course devoted to inventing NP-hardness reductions; closes the gap between 'know the textbook reductions' and 'prove a new problem hard'."
     verified: true
     course:

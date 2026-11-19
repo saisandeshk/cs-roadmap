@@ -19,7 +19,7 @@ resources:
     url: https://www.cambridge.org/core/books/understanding-machine-learning/3059695661405D25673058E43C8BE2A6
     edition_or_term: "Cambridge University Press 2014; free author PDF (huji.ac.il/~shais/UnderstandingMachineLearning; the site was blocked from this environment)"
     access: mixed
-    use: "Part I: ch. 2-6 (PAC, agnostic PAC, uniform convergence, bias-complexity, VC dimension), 7-8 (non-uniform learnability, runtime); Part II: ch. 9 (linear predictors), 12-14 (convex learning, regularization and stability, SGD), 16 (kernels); Part III: ch. 21 (online learning), 26 (Rademacher complexity), 27 (covering numbers), 31 (PAC-Bayes); optionally 28 (proof of fundamental theorem). Do the exercises on every chapter read. Chapter numbers are from memory of the printed edition and were not checked against the table of contents."
+    use: "Part I: ch. 2-6 (PAC, agnostic PAC, uniform convergence, bias-complexity, VC dimension), 7-8 (non-uniform learnability, runtime); Part II: ch. 9 (linear predictors), 12-14 (convex learning, regularization and stability, SGD), 16 (kernels); Part III: ch. 21 (online learning), 26 (Rademacher complexity), 27 (covering numbers), 31 (PAC-Bayes); optionally 28 (proof of fundamental theorem). Exercises: at least 4 per chapter read; in particular prove unaided the sample complexity of finite hypothesis classes (ch. 2-4), the VC dimension of halfspaces and axis-aligned rectangles (ch. 6), the Rademacher bound for bounded-norm linear predictors (ch. 26) and the regret bound for online gradient descent (ch. 21). Chapter numbers are from memory of the printed edition and were not checked against the table of contents."
     why: "The standard rigorous introduction that matches the scope (PAC, VC, Rademacher, online); written as a book with exercises; free PDF from the authors. Does not cover overparameterized/deep generalization, hence Bach and Telgarsky below."
     verified: true
   - id: cs229m
@@ -106,25 +106,14 @@ resources:
     use: "Sub-Gaussian and sub-exponential tails, concentration inequalities, covering numbers, chaining and generic chaining, VC dimension, Rademacher symmetrization: look up the technique when a proof calls it."
     why: "Gap: the probability toolbox behind uniform convergence and Rademacher bounds, in textbook form with exercises."
     verified: true
-  - id: ssbd-exercises
-    role: practice
-    kind: book
-    title: "Understanding Machine Learning: chapter exercises (and proofs to reproduce)"
-    by: "Shalev-Shwartz, Ben-David"
-    url: https://www.cambridge.org/core/books/understanding-machine-learning/3059695661405D25673058E43C8BE2A6
-    edition_or_term: "Exercises at the end of each chapter"
-    access: mixed
-    use: "Prove yourself: sample complexity of finite hypothesis classes (ch. 2-4), VC dimension of halfspaces and axis-aligned rectangles (ch. 6), Rademacher bound for linear predictors with bounded norm (ch. 26), regret bound for online gradient descent (ch. 21); attempt at least 4 exercises per chapter."
-    why: "Learning theory is learned by proving; these named derivations are the checks that you can produce the core theorems unaided."
-    verified: true
 considered:
   - {title: "MIT 9.520 Statistical Learning Theory and Applications (Fall 2015 videos)", url: "https://www.youtube.com/playlist?list=PLyGKBDfnk-iDj3FBd0Avr_dLbrU8VG73O", reason: "Verified live playlist; older and kernel/regularization-centric (Poggio, Rosasco); broader than classical PAC; alternative for the kernel/RKHS unit."}
-  - {title: "KAIST EE531 Statistical Learning Theory (Spring 2026)", url: "https://www.youtube.com/playlist?list=PL7ToDS7cyORV5XtQ_Kkj07yp_3BnNouWK", reason: "Verified live playlist titled 'EE531: Statistical Learning'; very recent video recordings (course listed in cs-video-courses as Spring 2026); selection not checked, so a candidate to evaluate as alternate course."}
+  - {title: "KAIST EE531 Statistical Learning Theory (Spring 2026)", url: "https://www.youtube.com/playlist?list=PL7ToDS7cyORV5XtQ_Kkj07yp_3BnNouWK", reason: "Verified live playlist titled 'EE531: Statistical Learning'; very recent video recordings (course listed in cs-video-courses as Spring 2026); review R1 counted only 17 videos, so not a candidate for primary-course."}
   - {title: "KAIST CS492 Computational Learning Theory (Fall 2021)", url: "https://www.youtube.com/playlist?list=PLvV9DPeJV9xzOggE1dvO4gcFr6Rf2AfeN", reason: "Verified live playlist; PAC-centric; not examined."}
   - {title: "Wainwright, High-Dimensional Statistics", url: "https://www.cambridge.org/core/books/highdimensional-statistics/8A91ECEEC38F46DAB53E9FF8757C7A4E", reason: "Gold standard for non-asymptotic statistics; advanced; URL from memory not opened."}
   - {title: "Mohri et al. course materials / Mohri slides", url: "https://cs.nyu.edu/~mohri/mlbook/", reason: "Used as secondary text."}
   - {title: "Statistical Learning Theory and Sequential Prediction (Rakhlin, Sridharan notes)", url: "https://www.mit.edu/~rakhlin/courses/", reason: "Excellent for online and sequential complexities; URL not opened."}
-notes: "Primary pairing: Shalev-Shwartz & Ben-David for classical PAC/VC/Rademacher/online, with CS229M (2021 videos and 2022 notes) as the course and Bach plus Telgarsky as the modern/deep-learning extension. The newest public lecture recordings I confirmed are Fall 2021 (CS229M); KAIST EE531 Spring 2026 playlist exists and may be a good fresher alternative but is not vetted. Scope's 'generalization theory for deep learning' has no single text: use Bach ch. 12, Telgarsky and the Bartlett-Montanari-Rakhlin survey. 150 hours assume the classical core in depth and DL theory at survey depth."
+notes: "Free author PDF of S-S&B (unverified, site blocked from this environment): https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf. Primary pairing: Shalev-Shwartz & Ben-David for classical PAC/VC/Rademacher/online, with CS229M (2021 videos and 2022 notes) as the course and Bach plus Telgarsky as the modern/deep-learning extension. The newest public lecture recordings I confirmed are Fall 2021 (CS229M); KAIST EE531 Spring 2026 playlist exists but has only 17 videos (per review R1), so it is not a primary-course candidate. Scope's 'generalization theory for deep learning' has no single text: use Bach ch. 12, Telgarsky and the Bartlett-Montanari-Rakhlin survey. 150 hours assume the classical core in depth and DL theory at survey depth."
 split_proposal: "Possible split into 'Statistical Learning Theory' (PAC, VC, Rademacher, online) and 'Theory of Deep Learning' (approximation, optimization, generalization of overparameterized nets, NTK), since the latter is a research-level topic."
 prereq_changes: "Add soft: [linear-algebra] and soft: [algorithm-design] (for the NP-hardness of learning and boosting sections); optimization is already soft."
 open_questions:

@@ -66,13 +66,13 @@ resources:
   - id: princeton-coursera-part1
     role: practice
     kind: course
-    title: "Algorithms, Part I (Princeton, Coursera)"
+    title: "Algorithms, Part I (Princeton, Coursera; Java)"
     by: "Kevin Wayne, Robert Sedgewick"
     url: https://www.coursera.org/learn/algorithms-part1
     edition_or_term: "Self-paced Coursera course"
     access: account-required
-    use: "Programming assignments only: Percolation (union-find), Deques and Randomized Queues, Collinear Points (sorting), 8 Puzzle (priority queue and A*), Kd-Trees. Part II assignments (WordNet, Seam Carving, Baseball Elimination, Boggle, Burrows-Wheeler) cover graphs, shortest paths, flow and strings if wanted."
-    why: "The only widely available autograded, performance-scored programming assignments for core algorithms; checks that implementations meet stated time and memory bounds. Coursera sign-in required and the listing shows it is live, but I could not confirm current video or grading access terms."
+    use: "Optional, after CSES / USACO Guide / AtCoder DP (the main practice). Java only. Programming assignments only: Percolation (union-find), Deques and Randomized Queues, Collinear Points (sorting), 8 Puzzle (priority queue and A*), Kd-Trees. Part II assignments (WordNet, Seam Carving, Baseball Elimination, Boggle, Burrows-Wheeler) cover graphs, shortest paths, flow and strings if wanted."
+    why: "Autograded, performance-scored programming assignments that check implementations meet stated time and memory bounds. Weakest practice item for a Python-first learner: assignments must be written in Java, a Coursera account is required, and free audit rights to videos and graded assignments were not checked. Percolation and Deques overlap the data-structures node."
     verified: true
     course:
       latest_term: "Self-paced (no fixed term)"
@@ -110,7 +110,7 @@ resources:
     url: https://atcoder.jp/contests/dp
     edition_or_term: "Educational DP Contest (26 problems A-Z)"
     access: free
-    use: "Problems A-N in order (Frog 1/2, Knapsack 1/2, LCS, Longest Path, Coins, Sushi, Stones, Grid 1, Bag of Candies, Slimes, Vacation); O-Z only after the DP chapters of the course."
+    use: "Problems A-N in order (A Frog 1, B Frog 2, C Vacation, D Knapsack 1, E Knapsack 2, F LCS, G Longest Path, H Grid 1, I Coins, J Sushi, K Stones, L Deque, M Candies, N Slimes); O-Z only after the DP chapters of the course."
     why: "A single contest that walks through every classic DP pattern in order of difficulty with editorials; fills the 'DP needs volume' gap that lectures cannot."
     verified: true
   - id: visualgo

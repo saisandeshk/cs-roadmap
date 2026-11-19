@@ -20,7 +20,7 @@ resources:
     url: https://www.cambridge.org/highereducation/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE
     edition_or_term: "10th Anniversary Edition (Cambridge University Press, 2010; first published 2000)"
     access: paid
-    use: "Ch. 1-2 (introduction, postulates of quantum mechanics, density operator), 4 (quantum circuits), 5 (quantum Fourier transform and phase estimation, order-finding, Shor), 6 (quantum search, Grover and its optimality), 8 (quantum noise and operations), 10 (quantum error correction: Shor code, stabilizer/CSS), 11-12 (entropy and quantum information theory, sampled). Skip ch. 7 (physical realizations) except as an overview. Do the problems at the end of chapters 4-6."
+    use: "Ch. 1-2 (introduction, postulates of quantum mechanics, density operator), 4 (quantum circuits), 5 (quantum Fourier transform and phase estimation, order-finding, Shor), 6 (quantum search, Grover and its optimality), 8 (quantum noise and operations), 10 (quantum error correction: Shor code, stabilizer/CSS), 11-12 (entropy and quantum information theory, sampled). Skip ch. 7 (physical realizations) except as an overview. Do the problems and exercises at the end of ch. 4 (circuits), 5 (QFT, phase estimation, order finding), 6 (search) and 8 (operator-sum representation) as the calculation drills."
     why: "The canonical, most complete textbook covering the whole scope (qubits, circuits, Shor, Grover, quantum information basics, error correction) with exercises; the course pages of O'Donnell and many others call it the standard reference. Dated on hardware only. For a shorter CS-first first pass see de Wolf's free notes."
     verified: true
   - id: watrous-ibm
@@ -122,17 +122,6 @@ resources:
     access: free
     use: "Build in Quirk: Bell state, teleportation, superdense coding, Deutsch-Jozsa, Bernstein-Vazirani, QFT, Grover on 3 qubits; then redo teleportation, Simon and phase estimation in Qiskit using the IBM course lab exercises."
     why: "Gap: nothing builds intuition like seeing amplitudes change as you place gates; the course exercises are mostly pencil-and-paper otherwise."
-    verified: true
-  - id: ncp-problems
-    role: practice
-    kind: book
-    title: "Nielsen & Chuang end-of-chapter problems"
-    by: "Nielsen, Chuang"
-    url: https://www.cambridge.org/highereducation/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE
-    edition_or_term: "10th anniversary edition"
-    access: paid
-    use: "The problems and exercises at the end of ch. 4 (circuits), 5 (QFT, phase estimation, order finding), 6 (search) and 8 (operator-sum representation); also the Watrous course exercises."
-    why: "Calculation drills for the algebra of unitaries, density matrices and algorithms."
     verified: true
 considered:
   - {title: "Mermin, Quantum Computer Science: An Introduction", url: "https://www.cambridge.org/9780521876582", reason: "O'Donnell calls it 'probably the textbook I like the best'; short, CS-friendly; Cambridge page blocked to bots, not opened; strong alternative primary-text."}
